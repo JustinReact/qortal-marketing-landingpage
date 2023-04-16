@@ -1,6 +1,9 @@
 import { styled } from "@mui/system";
-import { Box, Button, Grid } from "@mui/material";
+import { Box, Button, Grid, LinearProgress } from "@mui/material";
 import ZoomInIcon from "@mui/icons-material/ZoomIn";
+import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
+import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
+import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 
 interface StepDivProps {
   selected?: boolean;
@@ -19,28 +22,31 @@ export const Container = styled(Grid)({
 });
 
 export const StepsColumn = styled(Grid)({
-  display: "grid",
+  display: "flex",
+  flexDirection: "column",
   flex: 1,
-  padding: "15px",
+  gap: "7px",
+  padding: "15px 0",
   marginRight: "5px",
-  gridTemplateRows: "repeat(4, minmax(60px, 70px))",
-  rowGap: "20px",
+  height: "fit-content",
   backgroundColor: "#e9e7e7",
   borderRadius: "3px",
   boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px;",
 });
 
 export const StepDiv = styled(Grid)<StepDivProps>(({ selected }) => ({
-  borderRadius: "5px",
-  padding: "5px 10px",
+  padding: "8px 20px",
   transition: "all 0.3s ease-in-out",
   boxShadow: selected ? "0px 0px 5px #183beb" : "none",
   cursor: selected ? "default" : "pointer",
+  borderTop: "1px solid #cbc4c4c1",
+  borderBottom: "1px solid #cbc4c4c1",
   "&:hover": {
     boxShadow: selected
       ? "0px 0px 5px #183beb"
       : "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;",
   },
+  height: "70px",
 }));
 
 export const StepCard = styled(Grid)({
@@ -79,7 +85,7 @@ export const Screenshot = styled("img")({
   width: "100%",
   height: "350px",
   borderRadius: "5px",
-  objectFit: "contain",
+  objectFit: "cover",
 });
 
 export const ModalScreenshot = styled("img")({
@@ -172,3 +178,72 @@ export const ScreenshotContainer = styled(Box)({
     opacity: 1,
   },
 });
+
+export const ArrowDown = styled(ArrowDownwardIcon)({
+  fontSize: "30px",
+  color: "black",
+});
+
+export const ProceedButton = styled(Button)({
+  backgroundColor: "#00c71b",
+  color: "black",
+  borderRadius: "5px",
+  width: "auto",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-evenly",
+  fontSize: "18px",
+  fontFamily: "Roboto, sans-serif",
+  fontWeight: 300,
+  letterSpacing: "0.3px",
+  "&:hover": {
+    backgroundColor: "#00c71b",
+    cursor: "pointer",
+  },
+});
+
+export const ProgressBar = styled(LinearProgress)({
+  height: "10px",
+  borderRadius: "5px",
+  overflow: "hidden",
+  backgroundColor: "#d7d7d7",
+  "& .MuiLinearProgress-bar": {
+    backgroundColor: "#6495ed",
+  },
+});
+
+export const LeftArrow = styled(KeyboardArrowLeftIcon)({
+  color: "black",
+  fontSize: "25px",
+  padding: "3px 6px",
+  borderRadius: "50%",
+  backgroundColor: "#d7d7d7",
+  transition: "all 0.3s ease-in-out",
+  "&:hover": {
+    cursor: "pointer",
+    boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 12px",
+    backgroundColor: "#cecbcb",
+  },
+});
+
+export const RightArrow = styled(KeyboardArrowRightIcon)({
+  color: "black",
+  fontSize: "27px",
+  padding: "3px 6px",
+  borderRadius: "50%",
+  backgroundColor: "#d7d7d7",
+  transition: "all 0.3s ease-in-out",
+  "&:hover": {
+    cursor: "pointer",
+    boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 12px",
+    backgroundColor: "#cecbcb",
+  },
+});
+
+// export const Divider = styled(Box)({
+//   width: "88%",
+//   height: "1px",
+//   backgroundColor: "#b4afaf",
+//   opacity: 0.8,
+//   alignSelf: "center",
+// });

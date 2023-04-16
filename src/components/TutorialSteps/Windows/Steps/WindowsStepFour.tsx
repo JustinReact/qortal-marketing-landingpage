@@ -7,13 +7,13 @@ import {
   StepCard,
   StepColumn,
 } from "../../Steps-styles";
-import { Grid, Typography } from "@mui/material";
+import { Grid, Link, Typography } from "@mui/material";
 import Modal from "../../../Common/Modal";
-import StepTwoImg from "../../../../images/Windows/WindowsStepTwo.webp";
+import StepFourImg from "../../../../images/Windows/WindowsStepFour.webp";
 
-interface WindowsStepTwoProps {}
+interface WindowsStepFourProps {}
 
-const WindowsStepTwo: FC<WindowsStepTwoProps> = () => {
+const WindowsStepFour: FC<WindowsStepFourProps> = () => {
   const [openModal, setOpenModal] = useState<boolean>(false);
 
   return (
@@ -26,29 +26,39 @@ const WindowsStepTwo: FC<WindowsStepTwoProps> = () => {
               variant="h4"
               sx={{ userSelect: "none", lineHeight: "30px" }}
             >
-              You may encounter a Windows Security warning after trying to
-              execute the Qortal.exe file you downloaded. Click{" "}
-              <span style={{ fontWeight: "bold" }}>"Run Anyway" </span> to
-              continue.
+              Upon launching the Qortal UI, you will be prompted to install the
+              Qortal Core, which will connect you to the Qortal Blockchain.
+              Click <span style={{ fontWeight: "bold" }}>yes</span> to install
+              the Qortal Core.
             </Typography>
             <Typography
               fontFamily="Manrope"
               variant="h4"
               sx={{ userSelect: "none", lineHeight: "30px" }}
             >
-              If this option is not available to you, you may need to change
-              your Windows Security settings. Search for{" "}
-              <span style={{ fontWeight: "bold" }}>App & Browser Control </span>
-              in your System Settings.
+              Once launched, you will be able to create a{" "}
+              <span style={{ fontWeight: "bold" }}>new account</span>, or import
+              an existing account. You will then be able to start minting and
+              building Q-Apps.
             </Typography>
             <Typography
               fontFamily="Manrope"
               variant="h4"
               sx={{ userSelect: "none", lineHeight: "30px" }}
             >
-              Under ‘Check apps and files’, select the ‘Warn’ option instead of
-              the ‘Block’ option. In Windows 11, this option may be found under
-              <span style={{ fontWeight: "bold" }}> ‘Smart App Control’.</span>
+              For more information abouting minting and building decentralized
+              applications on Qortal, please visit the Qortal Wiki{" "}
+              <Link
+                aria-label="Qortal Wiki"
+                underline="none"
+                variant="inherit"
+                color="primary"
+                href="https://wiki.qortal.org/doku.php?id=home"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                here.
+              </Link>
             </Typography>
           </StepColumn>
         </Grid>
@@ -63,18 +73,18 @@ const WindowsStepTwo: FC<WindowsStepTwoProps> = () => {
           }}
         >
           <ScreenshotContainer onClick={() => setOpenModal(true)}>
-            <Screenshot src={StepTwoImg} alt="step1" />
+            <Screenshot src={StepFourImg} alt="step1" />
             <MagnifyingGlass id="magnifying-glass" />
           </ScreenshotContainer>
         </Grid>
       </StepCard>
       {openModal && (
         <Modal onClickFunc={() => setOpenModal(false)}>
-          <ModalScreenshot src={StepTwoImg} alt="step1"></ModalScreenshot>
+          <ModalScreenshot src={StepFourImg} alt="step1"></ModalScreenshot>
         </Modal>
       )}
     </>
   );
 };
 
-export default WindowsStepTwo;
+export default WindowsStepFour;
