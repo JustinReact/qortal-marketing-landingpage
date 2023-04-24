@@ -53,33 +53,30 @@ const WindowsSteps = () => {
       <StepsColumn item>
         {steps.map((step, index) => {
           return (
-            <Fragment key={index}>
-              <StepDiv
-                item
-                key={index}
-                selected={currentStep === step.step}
-                onClick={() => setCurrentStep(step.step)}
+            <StepDiv
+              item
+              key={index}
+              selected={currentStep === step.step}
+              onClick={() => setCurrentStep(step.step)}
+            >
+              <Typography
+                fontFamily="Montserrat"
+                fontWeight="400"
+                variant="h4"
+                sx={{ userSelect: "none" }}
               >
-                <Typography
-                  fontFamily="Montserrat"
-                  fontWeight="400"
-                  variant="h4"
-                  sx={{ userSelect: "none" }}
-                >
-                  Step {step.step}
-                </Typography>
-                <Typography
-                  fontFamily="Roboto"
-                  fontWeight="400"
-                  letterSpacing="0.3px"
-                  variant="h5"
-                  sx={{ userSelect: "none" }}
-                >
-                  {step.name}
-                </Typography>
-              </StepDiv>
-              {/* {index !== steps.length - 1 && <Divider />}{" "} */}
-            </Fragment>
+                Step {step.step}
+              </Typography>
+              <Typography
+                fontFamily="Cambon Light"
+                fontWeight="400"
+                letterSpacing="0.3px"
+                variant="h5"
+                sx={{ userSelect: "none" }}
+              >
+                {step.name}
+              </Typography>
+            </StepDiv>
           );
         })}
       </StepsColumn>

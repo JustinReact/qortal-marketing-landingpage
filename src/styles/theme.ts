@@ -1,21 +1,6 @@
 import { createTheme } from '@mui/material/styles';
 
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: '#3f51b5', // Customize the primary color
-    },
-    secondary: {
-      main: '#f50057', // Customize the secondary color
-    },
-    background: {
-      default: '#f3f3f3', // Customize the background color
-    },
-    text: {
-      primary: '#212121', // Customize the primary text color
-      secondary: '#757575', // Customize the secondary text color
-    },
-  },
+const commonThemeOptions = createTheme({
   components: {
     MuiButton: {
       styleOverrides: {
@@ -34,33 +19,27 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: "'Roboto', 'Raleway', 'Manrope', 'Plus Jakarta Sans', 'Nanum Gothic', 'Helvetica', 'Arial', sans-serif", // Customize the font family
+    fontFamily: "'Cambon Light', 'Raleway', 'Cairo',",
     button: {
       textTransform: 'none',
     },
     h1: {
-      fontSize: '2rem',
-      fontWeight: 600,
+      fontSize: '40px',
     },
     h2: {
-      fontSize: '1.75rem',
-      fontWeight: 500,
+      fontSize: '30px',
     },
     h3: {
-      fontSize: '1.5rem',
-      fontWeight: 500,
+      fontSize: '20px',
     },
     h4: {
-      fontSize: '1.25rem',
-      fontWeight: 500,
+      fontSize: '18px',
     },
     h5: {
-      fontSize: '1rem',
-      fontWeight: 500,
+      fontSize: '16px',
     },
     h6: {
-      fontSize: '0.875rem',
-      fontWeight: 500,
+      fontSize: '14px',
     },
     body1: {
       fontSize: '1rem',
@@ -84,4 +63,97 @@ const theme = createTheme({
   }
 });
 
-export default theme;
+const lightTheme = createTheme({
+  ...commonThemeOptions,
+  palette: {
+    mode: 'light',
+    primary: {
+      main: '#f4f4fb',
+      dark: '#eaecf4',
+      light: '#f9f9fd'
+    },
+    secondary: {
+      main: '#115bc5'
+    },
+    background: {
+      default: '#fcfbfd'
+    },
+    text: {
+      primary: '#000000',
+      secondary: '#525252'
+    }
+  },
+  components: {
+    MuiCard: {
+      styleOverrides: {
+        root: {
+          boxShadow:
+            'rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;',
+          borderRadius: '8px',
+          transition: 'all 0.3s ease-in-out',
+          '&:hover': {
+            cursor: 'pointer',
+            boxShadow:
+              'rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;'
+          }
+        }
+      }
+    },
+    MuiIcon:{
+      defaultProps: {
+        style: {
+          color: '#000000'
+        }
+      }
+    },
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          boxShadow: "none",
+          transition: 'all 0.3s ease-in-out',
+          '&:hover': {
+            cursor: 'pointer',
+            boxShadow: "rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;"
+          },
+        },
+      },
+      defaultProps: {
+        disableElevation: true,
+        disableRipple: true,
+      },
+    },
+  },
+})
+
+const darkTheme = createTheme({
+  ...commonThemeOptions,
+  palette: {
+    mode: 'dark',
+    primary: {
+      main: "#115bc5",
+      dark: "#043596",
+      light: "#a9cae9"
+    }
+  },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          boxShadow: "none",
+          transition: 'filter 0.3s ease-in-out',
+          '&:hover': {
+            cursor: 'pointer',
+            backgroundColor: "inherit",
+            boxShadow: "0px 4px 5px 0px hsla(0,0%,0%,0.14), 0px 1px 10px 0px hsla(0,0%,0%,0.12), 0px 2px 4px -1px hsla(0,0%,0%,0.2)"
+          },
+        },
+      },
+      defaultProps: {
+        disableElevation: true,
+        disableRipple: true,
+      },
+    },
+  }
+});
+
+export {lightTheme, darkTheme};

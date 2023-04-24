@@ -8,6 +8,7 @@ import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 interface StepDivProps {
   selected?: boolean;
   shiny?: { isOn: boolean };
+  downloadOption?: boolean;
 }
 
 export const Container = styled(Grid)({
@@ -240,10 +241,44 @@ export const RightArrow = styled(KeyboardArrowRightIcon)({
   },
 });
 
-// export const Divider = styled(Box)({
-//   width: "88%",
-//   height: "1px",
-//   backgroundColor: "#b4afaf",
-//   opacity: 0.8,
-//   alignSelf: "center",
-// });
+// Linux Steps
+
+export const LinuxStepsContainer = styled(Grid)({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "flex-start",
+  padding: "0",
+});
+
+export const LinuxStepColumnsContainer = styled(Box)({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "flex-start",
+  width: "100%",
+});
+
+export const LinuxStepColumn = styled(Grid)({
+  display: "flex",
+  justifyContent: "center",
+  width: "100%",
+});
+
+export const DownloadOptionCard = styled(Box)<StepDivProps>(
+  ({ downloadOption }) => ({
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    maxWidth: "85%",
+    width: "100%",
+    padding: "10px",
+    height: "50px",
+    borderRadius: "8px",
+    backgroundColor: downloadOption ? "#e17eff" : "whitesmoke",
+    boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;",
+    transition: "all 0.3s ease-in-out",
+    "&: hover": {
+      cursor: "pointer",
+      backgroundColor: "#f0eeee",
+    },
+  })
+);
