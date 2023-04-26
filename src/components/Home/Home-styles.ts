@@ -26,13 +26,14 @@ export const HeaderNav = styled(Box)({
   padding: "0 100px",
 });
 
-export const QblogLogoContainer = styled('img')({
+export const QblogLogoContainer = styled('img')(({ theme }) => ({
   width: '120px',
   height: 'auto',
   userSelect: 'none',
   objectFit: 'contain',
-  cursor: 'pointer'
-})
+  cursor: 'pointer',
+  filter: theme.palette.mode === "dark" ? "drop-shadow(0px 4px 6px rgba(255, 255, 255, 0.1)) brightness(1.2)" : "none",
+}));
 
 export const Column = styled(Grid)({
   display: 'flex',
@@ -49,27 +50,39 @@ export const HeaderText = styled(Typography)(({ theme }) => ({
   lineHeight:"60px",
   textAlign:"center",
   color: theme.palette.text.primary,
+  marginTop: "25px",
   userSelect: "none" 
 }));
 
-export const SubHeaderText = styled(Typography)(({ theme }) => ({
+export const SubHeaderText = styled(Typography)({
   fontFamily:"Oxygen",
   fontWeight:"400",
   letterSpacing:"0.3px",
+  fontSize:"32px",
   userSelect: "none"
-}));
-
-export const StyledButton = styled(Button)({
-  margin: '1rem',
-  padding: '0.75rem 1.5rem',
-  fontSize: '1.5rem',
-  fontWeight: 'bold',
-  textTransform: 'uppercase',
-  backgroundColor: 'darkgrey',
-  borderRadius: '10px',
 });
 
-export const DiscordButton = styled(Button)({
+export const ButtonRow = styled(Box)({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-evenly",
+  width:"100%",
+  marginTop:"25px"
+});
+
+export const StyledButton = styled(Button)({
+  fontSize: '25px',
+  borderRadius: "35px",
+  padding: "7px 55px",
+  fontFamily: "Montserrat",
+  color:"#ffffff",
+  backgroundColor: "#115bc5",
+  "&:hover": {
+    backgroundColor: "#043596"
+  }
+});
+
+export const DiscordButton = styled(Button)(({ theme }) => ({
   display: "flex",
   justifyContent: "space-between",
   border: "2px solid #4a93f8",
@@ -80,10 +93,12 @@ export const DiscordButton = styled(Button)({
   height: '48px',
   borderRadius: "2px",
   padding: "0 0 0 20px",
+  transition: "all 0.3s ease-in-out",
   "&:hover": {
-    backgroundColor: "#1e62c3"
+    backgroundColor: "#1e62c3",
+    boxShadow: theme.palette.mode === "dark" ? "0px 8px 10px 1px hsla(0,0%,0%,0.14), 0px 3px 14px 2px hsla(0,0%,0%, 12), 0px 5px 5px -3px hsla(0,0%,0%,0.2)" : "rgba(0, 0, 0, 0.1) 0px 4px 12px"
   }
-});
+}));
 
 export const TriangleContainer = styled(Box)({
   display: "flex",

@@ -13,6 +13,7 @@ import {
   TriangleIcon,
   TriangleContainer,
   ThemeSelectRow,
+  ButtonRow,
 } from "./Home-styles";
 import { LightModeSVG } from "../Common/Icons/LightModeSVG";
 import { DarkModeSVG } from "../Common/Icons/DarkModeSVG";
@@ -81,30 +82,22 @@ const Home: FC<HomeProps> = ({ setTheme }) => {
           ? "Windows Guide"
           : "Linux Guide"}
       </SubHeaderText>
-      <Grid container spacing={2}>
+      <Grid container>
         {!operatingSystem ? (
-          <>
-            <Column item xs={12} sm={6}>
-              <StyledButton
-                onClick={() => setOperatingSystem("windows")}
-                variant="contained"
-                color="primary"
-                size="large"
-              >
-                Windows
-              </StyledButton>
-            </Column>
-            <Column item xs={12} sm={6}>
-              <StyledButton
-                onClick={() => setOperatingSystem("linux")}
-                variant="contained"
-                color="primary"
-                size="large"
-              >
-                Linux
-              </StyledButton>
-            </Column>
-          </>
+          <ButtonRow>
+            <StyledButton
+              onClick={() => setOperatingSystem("windows")}
+              variant="contained"
+            >
+              Windows
+            </StyledButton>
+            <StyledButton
+              onClick={() => setOperatingSystem("linux")}
+              variant="contained"
+            >
+              Linux
+            </StyledButton>
+          </ButtonRow>
         ) : (
           <OperatingSystem
             operatingSystem={operatingSystem}

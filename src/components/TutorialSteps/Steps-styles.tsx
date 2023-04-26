@@ -1,5 +1,5 @@
 import { styled } from "@mui/system";
-import { Box, Button, Grid, LinearProgress } from "@mui/material";
+import { Box, Button, Grid, LinearProgress, Typography } from "@mui/material";
 import ZoomInIcon from "@mui/icons-material/ZoomIn";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
@@ -22,33 +22,67 @@ export const Container = styled(Grid)({
   },
 });
 
-export const StepsColumn = styled(Grid)({
+export const StepsColumn = styled(Grid)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   flex: 1,
   gap: "7px",
-  padding: "15px 0",
+  padding: "2px 0",
   marginRight: "5px",
   height: "fit-content",
-  backgroundColor: "#e9e7e7",
+  backgroundColor:
+    theme.palette.mode === "light"
+      ? `${theme.palette.primary.main}`
+      : `${theme.palette.secondary.dark}`,
   borderRadius: "3px",
   boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px;",
-});
+}));
 
-export const StepDiv = styled(Grid)<StepDivProps>(({ selected }) => ({
+export const StepDiv = styled(Grid)<StepDivProps>(({ selected, theme }) => ({
   padding: "8px 20px",
   transition: "all 0.3s ease-in-out",
-  boxShadow: selected ? "0px 0px 5px #183beb" : "none",
+  boxShadow:
+    selected && theme.palette.mode === "light"
+      ? `0px 0px 5px ${theme.palette.secondary.main}`
+      : selected && theme.palette.mode === "dark"
+      ? "0px 0px 5px #abaeb7"
+      : "none",
   cursor: selected ? "default" : "pointer",
-  borderTop: "1px solid #cbc4c4c1",
-  borderBottom: "1px solid #cbc4c4c1",
+  borderTop:
+    theme.palette.mode === "light"
+      ? `1px solid ${theme.palette.primary.dark}`
+      : `1px solid #cbd0d582`,
+  borderBottom:
+    theme.palette.mode === "light"
+      ? `1px solid ${theme.palette.primary.dark}`
+      : `1px solid #cbd0d582`,
   "&:hover": {
-    boxShadow: selected
-      ? "0px 0px 5px #183beb"
-      : "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;",
+    boxShadow:
+      selected && theme.palette.mode === "light"
+        ? `0px 0px 5px ${theme.palette.secondary.main}`
+        : selected && theme.palette.mode === "dark"
+        ? "0px 0px 5px #abaeb7"
+        : theme.palette.mode === "light"
+        ? "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px"
+        : "0px 8px 10px 1px hsla(0,0%,0%,0.14), 0px 3px 14px 2px hsla(0,0%,0%,0.12), 0px 5px 5px -3px hsla(0,0%,0%,0.2)",
   },
   height: "70px",
 }));
+
+export const StepText = styled(Typography)({
+  fontFamily: "Montserrat",
+  fontWeight: "400",
+  fontSize: "19.5px",
+  userSelect: "none",
+});
+
+export const StepSubText = styled(Typography)({
+  fontFamily: "Cambon Light",
+  fontWeight: "400",
+  letterSpacing: "0.3px",
+  fontSize: "16.5px",
+  userSelect: "none",
+});
 
 export const StepCard = styled(Grid)({
   display: "flex",
@@ -203,15 +237,18 @@ export const ProceedButton = styled(Button)({
   },
 });
 
-export const ProgressBar = styled(LinearProgress)({
+export const ProgressBar = styled(LinearProgress)(({ theme }) => ({
   height: "10px",
   borderRadius: "5px",
   overflow: "hidden",
-  backgroundColor: "#d7d7d7",
+  backgroundColor:
+    theme.palette.mode === "light"
+      ? `${theme.palette.primary.main}`
+      : `${theme.palette.secondary.dark}`,
   "& .MuiLinearProgress-bar": {
     backgroundColor: "#6495ed",
   },
-});
+}));
 
 export const LeftArrow = styled(KeyboardArrowLeftIcon)({
   color: "black",

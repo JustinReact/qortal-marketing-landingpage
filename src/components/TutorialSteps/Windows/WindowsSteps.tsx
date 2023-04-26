@@ -9,6 +9,8 @@ import {
   ProgressBar,
   LeftArrow,
   RightArrow,
+  StepText,
+  StepSubText,
 } from "../Steps-styles";
 import { useTheme } from "@mui/material";
 import WindowsStepOne from "./Steps/WindowsStepOne";
@@ -59,23 +61,8 @@ const WindowsSteps = () => {
               selected={currentStep === step.step}
               onClick={() => setCurrentStep(step.step)}
             >
-              <Typography
-                fontFamily="Montserrat"
-                fontWeight="400"
-                variant="h4"
-                sx={{ userSelect: "none" }}
-              >
-                Step {step.step}
-              </Typography>
-              <Typography
-                fontFamily="Cambon Light"
-                fontWeight="400"
-                letterSpacing="0.3px"
-                variant="h5"
-                sx={{ userSelect: "none" }}
-              >
-                {step.name}
-              </Typography>
+              <StepText>Step {step.step}</StepText>
+              <StepSubText>{step.name}</StepSubText>
             </StepDiv>
           );
         })}

@@ -8,7 +8,7 @@ export const MainContainer = styled(Grid)({
 })
 
 export const BackButton = styled(Button)(({ theme }) => ({
-  backgroundColor: theme.palette.secondary.main,
+  backgroundColor: theme.palette.secondary.light,
   color: theme.palette.text.primary,
   padding: "8px 16px",
   borderRadius: "7px",
@@ -19,7 +19,8 @@ export const BackButton = styled(Button)(({ theme }) => ({
   transition: "all 0.3s ease-in-out",
   '&:hover': {
     cursor: "pointer",
-    boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;",
-    backgroundColor: "#e75588",
+    // boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;",
+    backgroundColor: theme.palette.secondary.light,
+    filter: "brightness(0.9)"
   },
 }))

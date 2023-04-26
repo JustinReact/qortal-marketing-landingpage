@@ -8,8 +8,6 @@ import Home from "./components/Home/Home";
 function App() {
   const [theme, setTheme] = useState("light");
 
-  console.log({ theme });
-
   return (
     <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
       <CssBaseline />
