@@ -36,7 +36,7 @@ export const Backdrop = styled(Box)({
     zIndex: 5,
   });
 
-  export const Modalbody = styled(Box)({
+  export const Modalbody = styled(Box)(({ theme }) => ({
     display: "flex",
     width: "80vw",
     height: "80vh",
@@ -44,7 +44,7 @@ export const Backdrop = styled(Box)({
     boxShadow: "rgb(60 64 67 / 30%) 0px 1px 2px 0px, rgb(60 64 67 / 15%) 0px 2px 6px 2px",
     flexDirection: "column",
     padding: "15px",
-    backgroundColor: "white",
+    backgroundColor: theme.palette.mode === "light" ? "white" : theme.palette.secondary.dark,
     left: "50%",
     top: 0,
     transform: "translate(-50%, 10%)",
@@ -53,4 +53,4 @@ export const Backdrop = styled(Box)({
     animation: `1s cubic-bezier(0.22, 1, 0.36, 1) 0s 1 normal forwards running ${modal_transition}`,
     maxHeight: "80%",
     zIndex: 60
-  })
+  }))

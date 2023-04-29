@@ -1,16 +1,17 @@
 import { useState } from "react";
-import { Grid, Typography } from "@mui/material";
+import { Grid } from "@mui/material";
 import {
   DownloadButton,
   MagnifyingGlass,
   ModalScreenshot,
+  MuseoFont,
   Screenshot,
   ScreenshotContainer,
   StepCard,
   StepColumn,
 } from "../../Steps-styles";
 import StepOneImg from "../../../../images/Windows/WindowsStepOne.png";
-import Modal from "../../../Common/Modal";
+import Modal from "../../../Common/Modal/Modal";
 
 interface WindowsStepOneProps {
   setShinyButton: React.Dispatch<React.SetStateAction<boolean>>;
@@ -23,14 +24,10 @@ const WindowsStepOne = ({ setShinyButton }: WindowsStepOneProps) => {
     <>
       <StepCard>
         <Grid item xs={6}>
-          <StepColumn container direction="column">
-            <Typography
-              fontFamily="Manrope"
-              variant="h4"
-              sx={{ userSelect: "none" }}
-            >
+          <StepColumn container direction="column" style={{ gap: "25px" }}>
+            <MuseoFont variant="h3">
               Get started with Qortal by downloading our user-friendly UI!
-            </Typography>
+            </MuseoFont>
             <DownloadButton
               variant="contained"
               onClick={() => {
@@ -61,7 +58,7 @@ const WindowsStepOne = ({ setShinyButton }: WindowsStepOneProps) => {
         </Grid>
       </StepCard>
       {openModal && (
-        <Modal onClickFunc={() => setOpenModal(false)}>
+        <Modal openModal={openModal} onClickFunc={() => setOpenModal(false)}>
           <ModalScreenshot src={StepOneImg} alt="step1"></ModalScreenshot>
         </Modal>
       )}

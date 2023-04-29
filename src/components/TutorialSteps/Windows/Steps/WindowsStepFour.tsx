@@ -8,7 +8,7 @@ import {
   StepColumn,
 } from "../../Steps-styles";
 import { Grid, Link, Typography } from "@mui/material";
-import Modal from "../../../Common/Modal";
+import Modal from "../../../Common/Modal/Modal";
 import StepFourImg from "../../../../images/Windows/WindowsStepFour.webp";
 
 interface WindowsStepFourProps {}
@@ -41,25 +41,6 @@ const WindowsStepFour: FC<WindowsStepFourProps> = () => {
               an existing account. You will then be able to start minting and
               building Q-Apps.
             </Typography>
-            <Typography
-              fontFamily="Manrope"
-              variant="h4"
-              sx={{ userSelect: "none", lineHeight: "30px" }}
-            >
-              For more information abouting minting and building decentralized
-              applications on Qortal, please visit the Qortal Wiki{" "}
-              <Link
-                aria-label="Qortal Wiki"
-                underline="none"
-                variant="inherit"
-                color="primary"
-                href="https://wiki.qortal.org/doku.php?id=home"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                here.
-              </Link>
-            </Typography>
           </StepColumn>
         </Grid>
         <Grid
@@ -79,7 +60,7 @@ const WindowsStepFour: FC<WindowsStepFourProps> = () => {
         </Grid>
       </StepCard>
       {openModal && (
-        <Modal onClickFunc={() => setOpenModal(false)}>
+        <Modal openModal={openModal} onClickFunc={() => setOpenModal(false)}>
           <ModalScreenshot src={StepFourImg} alt="step1"></ModalScreenshot>
         </Modal>
       )}

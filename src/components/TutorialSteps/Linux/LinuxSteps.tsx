@@ -40,6 +40,7 @@ const LinuxSteps = () => {
 
   const [currentStep, setCurrentStep] = useState<number>(1);
   const [shinyButton, setShinyButton] = useState<boolean>(false);
+  const [downloadOption, setDownloadOption] = useState<string>("appImage");
 
   return (
     <Container container>
@@ -114,7 +115,10 @@ const LinuxSteps = () => {
                 sx={{
                   display: "flex",
                   alignItems: "center",
-                  justifyContent: "space-evenly",
+                  justifyContent:
+                    currentStep === 1 && downloadOption === "terminal"
+                      ? "flex-start"
+                      : "space-evenly",
                   gap: "15px",
                 }}
               >
@@ -154,14 +158,22 @@ const LinuxSteps = () => {
           </Grid>
         </>
         <LinuxStepsContainer item>
-          {currentStep === 1 ? <LinuxStepOne /> : null}
+          {currentStep === 1 ? (
+            <LinuxStepOne
+              downloadOption={downloadOption}
+              setDownloadOption={setDownloadOption}
+            />
+          ) : null}
         </LinuxStepsContainer>
         <Box
           sx={{
             display: "flex",
             justifyContent: currentStep !== 1 ? "space-between" : "flex-end",
             width: "100%",
-            marginTop: "15px",
+            marginTop:
+              currentStep === 1 && downloadOption === "terminal"
+                ? "auto"
+                : "15px",
           }}
         >
           <PreviousButton

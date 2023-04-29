@@ -3,10 +3,11 @@ import { Backdrop, Modalbody } from "./Modal-styles";
 
 interface ModalProps {
   children: React.ReactNode;
+  openModal: boolean;
   onClickFunc: () => void;
 }
 
-const Modal: FC<ModalProps> = ({ onClickFunc, children }) => {
+const Modal: FC<ModalProps> = ({ onClickFunc, children, openModal }) => {
   const modalRef = useRef(null);
 
   useEffect(() => {
@@ -19,6 +20,17 @@ const Modal: FC<ModalProps> = ({ onClickFunc, children }) => {
       }
     };
   }, []);
+
+  // useEffect to hide the body when the mobile side drawer is open
+
+  useEffect(() => {
+    if (openModal) {
+      document.body.style.cssText = "overflow-y: hidden !important;";
+    }
+    return () => {
+      document.body.style.cssText = "";
+    };
+  }, [openModal]);
 
   return (
     <div>

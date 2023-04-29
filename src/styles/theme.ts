@@ -2,6 +2,15 @@ import { createTheme } from "@mui/material/styles";
 
 const commonThemeOptions = createTheme({
   components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        ':root': {
+          padding: '0px',
+          margin: '0px',
+          boxSizing: 'border-box',
+        }
+      },
+    },
     MuiButton: {
       styleOverrides: {
         root: {
@@ -19,7 +28,7 @@ const commonThemeOptions = createTheme({
     },
   },
   typography: {
-    fontFamily: "'Cambon Light', 'Raleway', 'Cairo',",
+    fontFamily: "'Museo', 'Raleway', 'Cairo',",
     button: {
       textTransform: "none",
     },
@@ -74,6 +83,7 @@ const lightTheme = createTheme({
     },
     secondary: {
       main: "#115bc5",
+      light: "#7f7cf5ff"
     },
     background: {
       default: "#fcfbfd",
@@ -84,6 +94,30 @@ const lightTheme = createTheme({
     },
   },
   components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+         'body::-webkit-scrollbar-track': {
+          backgroundColor: "#fcfbfd"
+        },
+        'body::-webkit-scrollbar-track:hover': {
+          backgroundColor: "#fcfbfd"
+        },
+        'body::-webkit-scrollbar': {
+          width: '16px',
+          height: '10px',
+          backgroundColor: '#fcfbfd',
+        },
+        'body::-webkit-scrollbar-thumb': {
+          backgroundColor: '#115bc5',
+          borderRadius: '8px',
+          backgroundClip: 'content-box',
+          border: '4px solid transparent',
+        },
+        'body::-webkit-scrollbar-thumb:hover': {
+          backgroundColor: '#1153af',
+        },
+      },
+    },
     MuiCard: {
       styleOverrides: {
         root: {
@@ -114,7 +148,7 @@ const lightTheme = createTheme({
           "&:hover": {
             cursor: "pointer",
             boxShadow:
-              "rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;",
+              "rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;",
           },
         },
       },
@@ -137,14 +171,42 @@ const darkTheme = createTheme({
     },
     secondary: {
       main: "#359ff7ff",
-      light: "#6F8CA6",
+      light: "#5657b1",
       dark: "#302F40"
     },
     background: {
       default: "#060a1e",
-    }
+    },
+    text: {
+      primary: "#ffffff",
+      secondary: "#525252",
+    },
   },
   components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+         'body::-webkit-scrollbar-track': {
+          backgroundColor: "#060a1e"
+        },
+        'body::-webkit-scrollbar-track:hover': {
+          backgroundColor: "#060a1e"
+        },
+        'body::-webkit-scrollbar': {
+          width: '16px',
+          height: '10px',
+          backgroundColor: '#060a1e',
+        },
+        'body::-webkit-scrollbar-thumb': {
+          backgroundColor: '#5657b1',
+          borderRadius: '8px',
+          backgroundClip: 'content-box',
+          border: '4px solid transparent',
+        },
+        'body::-webkit-scrollbar-thumb:hover': {
+          backgroundColor: '#4e50a1',
+        },
+      },
+    },
     MuiCard: {
       styleOverrides: {
         root: {

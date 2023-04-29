@@ -9,6 +9,7 @@ interface StepDivProps {
   selected?: boolean;
   shiny?: { isOn: boolean };
   downloadOption?: boolean;
+  preventClick?: boolean;
 }
 
 export const Container = styled(Grid)({
@@ -25,6 +26,8 @@ export const Container = styled(Grid)({
 export const StepsColumn = styled(Grid)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
+  justifyContent: "space-evenly",
+  minHeight: "400px",
   flex: 1,
   gap: "7px",
   padding: "2px 0",
@@ -45,7 +48,7 @@ export const StepDiv = styled(Grid)<StepDivProps>(({ selected, theme }) => ({
     selected && theme.palette.mode === "light"
       ? `0px 0px 5px ${theme.palette.secondary.main}`
       : selected && theme.palette.mode === "dark"
-      ? "0px 0px 5px #abaeb7"
+      ? "0px 0px 5px #5638fb"
       : "none",
   cursor: selected ? "default" : "pointer",
   borderTop:
@@ -61,7 +64,7 @@ export const StepDiv = styled(Grid)<StepDivProps>(({ selected, theme }) => ({
       selected && theme.palette.mode === "light"
         ? `0px 0px 5px ${theme.palette.secondary.main}`
         : selected && theme.palette.mode === "dark"
-        ? "0px 0px 5px #abaeb7"
+        ? "0px 0px 5px #5638fb"
         : theme.palette.mode === "light"
         ? "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px"
         : "0px 8px 10px 1px hsla(0,0%,0%,0.14), 0px 3px 14px 2px hsla(0,0%,0%,0.12), 0px 5px 5px -3px hsla(0,0%,0%,0.2)",
@@ -77,32 +80,68 @@ export const StepText = styled(Typography)({
 });
 
 export const StepSubText = styled(Typography)({
-  fontFamily: "Cambon Light",
-  fontWeight: "400",
+  fontFamily: "Museo",
+  fontWeight: "300",
   letterSpacing: "0.3px",
-  fontSize: "16.5px",
+  fontSize: "17px",
   userSelect: "none",
 });
 
-export const StepCard = styled(Grid)({
+export const StepCard = styled(Grid)(({ theme }) => ({
   display: "flex",
   padding: "5px 15px 5px 15px",
   alignItems: "center",
   borderRadius: "5px",
-  boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
-  backgroundColor: "white",
-});
+  boxShadow:
+    theme.palette.mode === "light"
+      ? "rgba(149, 157, 165, 0.2) 0px 8px 24px"
+      : "none",
+  backgroundColor: theme.palette.mode === "light" ? "#fff" : "#1a1d2c",
+  gap: "5px",
+}));
 
-export const StepColumn = styled(Grid)({
+export const StepColumn = styled(Grid)(({ theme }) => ({
   gap: "15px",
   padding: "5px 15px",
+  height: "auto",
+  overflowY: "auto",
+  overflowX: "hidden",
+  maxHeight: "350px",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "flexStart",
+  flexDirection: "column",
+  flexWrap: "nowrap",
+  "&::-webkit-scrollbar": {
+    width: "16px",
+    height: "10px",
+    backgroundColor: "transparent",
+  },
+  "&::-webkit-scrollbar-track": {
+    backgroundColor: "transparent",
+  },
+
+  "&::-webkit-scrollbar-thumb": {
+    backgroundColor:
+      theme.palette.mode === "light"
+        ? theme.palette.primary.main
+        : theme.palette.secondary.light,
+    borderRadius: "8px",
+    backgroundClip: "content-box",
+    border: "4px solid transparent",
+  },
+  "&::-webkit-scrollbar-thumb:hover": {
+    backgroundColor:
+      theme.palette.mode === "light" ? theme.palette.primary.dark : "#4e50a1",
+  },
   "@media (max-width: 600px)": {
     padding: "20px",
   },
-});
+}));
 
-export const DownloadButton = styled(Button)({
-  backgroundColor: "cornflowerblue",
+export const DownloadButton = styled(Button)(({ theme }) => ({
+  backgroundColor: theme.palette.secondary.main,
+  color: "#fff",
   borderRadius: "50px",
   alignSelf: "center",
   fontFamily: "Roboto, sans-serif",
@@ -111,10 +150,9 @@ export const DownloadButton = styled(Button)({
   transition: "all 0.3s ease-in-out",
   "&:hover": {
     cursor: "pointer",
-    backgroundColor: "cornflowerblue",
-    boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 12px",
+    backgroundColor: theme.palette.secondary.main,
   },
-});
+}));
 
 export const Screenshot = styled("img")({
   width: "100%",
@@ -246,36 +284,82 @@ export const ProgressBar = styled(LinearProgress)(({ theme }) => ({
       ? `${theme.palette.primary.main}`
       : `${theme.palette.secondary.dark}`,
   "& .MuiLinearProgress-bar": {
-    backgroundColor: "#6495ed",
+    backgroundColor: theme.palette.secondary.main,
   },
 }));
 
-export const LeftArrow = styled(KeyboardArrowLeftIcon)({
-  color: "black",
-  fontSize: "25px",
-  padding: "3px 6px",
-  borderRadius: "50%",
-  backgroundColor: "#d7d7d7",
-  transition: "all 0.3s ease-in-out",
-  "&:hover": {
-    cursor: "pointer",
-    boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 12px",
-    backgroundColor: "#cecbcb",
-  },
-});
+export const LeftArrow = styled(KeyboardArrowLeftIcon)<StepDivProps>(
+  ({ preventClick, theme }) => ({
+    color: theme.palette.text.primary,
+    opacity: preventClick && theme.palette.mode === "dark" ? 0.5 : 1,
+    pointerEvents: preventClick ? "none" : "all",
+    cursor: preventClick ? "not-allowed" : "pointer",
+    fontSize: "25px",
+    padding: "3px 6px",
+    borderRadius: "50%",
+    backgroundColor:
+      theme.palette.mode === "light" && preventClick
+        ? "#afafaf"
+        : theme.palette.mode === "light" && !preventClick
+        ? `${theme.palette.primary.main}`
+        : theme.palette.mode === "dark" && preventClick
+        ? `${theme.palette.secondary.dark}`
+        : `${theme.palette.secondary.dark}`,
+    transition: "all 0.3s ease-in-out",
+    "&:hover": {
+      cursor: "pointer",
+      boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 12px",
+      backgroundColor:
+        theme.palette.mode === "light"
+          ? `${theme.palette.primary.dark}`
+          : `${theme.palette.secondary.light}`,
+    },
+  })
+);
 
-export const RightArrow = styled(KeyboardArrowRightIcon)({
-  color: "black",
-  fontSize: "27px",
-  padding: "3px 6px",
-  borderRadius: "50%",
-  backgroundColor: "#d7d7d7",
-  transition: "all 0.3s ease-in-out",
-  "&:hover": {
-    cursor: "pointer",
-    boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 12px",
-    backgroundColor: "#cecbcb",
-  },
+export const StepNumberBubble = styled(Typography)(({ theme }) => ({
+  fontFamily: "Museo",
+  width: "fit-content",
+  backgroundColor: theme.palette.secondary.main,
+  color: "white",
+  padding: "5px 10px",
+  borderRadius: "18px",
+  userSelect: "none",
+}));
+
+export const RightArrow = styled(KeyboardArrowRightIcon)<StepDivProps>(
+  ({ preventClick, theme }) => ({
+    color: theme.palette.text.primary,
+    opacity: preventClick && theme.palette.mode === "dark" ? 0.5 : 1,
+    pointerEvents: preventClick ? "none" : "all",
+    cursor: preventClick ? "not-allowed" : "pointer",
+    fontSize: "27px",
+    padding: "3px 6px",
+    borderRadius: "50%",
+    backgroundColor:
+      theme.palette.mode === "light" && preventClick
+        ? "#afafaf"
+        : theme.palette.mode === "light" && !preventClick
+        ? `${theme.palette.primary.main}`
+        : theme.palette.mode === "dark" && preventClick
+        ? `${theme.palette.secondary.dark}`
+        : `${theme.palette.secondary.dark}`,
+    transition: "all 0.3s ease-in-out",
+    "&:hover": {
+      cursor: "pointer",
+      boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 12px",
+      backgroundColor:
+        theme.palette.mode === "light"
+          ? `${theme.palette.primary.dark}`
+          : `${theme.palette.secondary.light}`,
+    },
+  })
+);
+
+export const MuseoFont = styled(Typography)({
+  fontFamily: "Museo",
+  letterSpacing: "0.3px",
+  userSelect: "none",
 });
 
 // Linux Steps
@@ -292,6 +376,7 @@ export const LinuxStepColumnsContainer = styled(Box)({
   flexDirection: "column",
   alignItems: "flex-start",
   width: "100%",
+  gap: "15px",
 });
 
 export const LinuxStepColumn = styled(Grid)({
@@ -300,22 +385,41 @@ export const LinuxStepColumn = styled(Grid)({
   width: "100%",
 });
 
-export const DownloadOptionCard = styled(Box)<StepDivProps>(
-  ({ downloadOption }) => ({
+export const DownloadOptionCard = styled(Button)<StepDivProps>(
+  ({ downloadOption, theme }) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     maxWidth: "85%",
     width: "100%",
-    padding: "10px",
-    height: "50px",
-    borderRadius: "8px",
-    backgroundColor: downloadOption ? "#e17eff" : "whitesmoke",
-    boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;",
+    padding: "5px 10px",
+    height: "40px",
+    borderRadius: "5px",
+    backgroundColor:
+      downloadOption && theme.palette.mode === "dark"
+        ? "#5657b1"
+        : !downloadOption && theme.palette.mode === "dark"
+        ? "#47474e"
+        : downloadOption && theme.palette.mode === "light"
+        ? theme.palette.secondary.light
+        : theme.palette.primary.dark,
+    color:
+      downloadOption && theme.palette.mode === "light"
+        ? "#ffffff"
+        : !downloadOption && theme.palette.mode === "light"
+        ? " #000000"
+        : "#ffffff",
     transition: "all 0.3s ease-in-out",
     "&: hover": {
       cursor: "pointer",
-      backgroundColor: "#f0eeee",
+      backgroundColor:
+        downloadOption && theme.palette.mode === "dark"
+          ? "#5657b1"
+          : !downloadOption && theme.palette.mode === "dark"
+          ? "#47474e"
+          : downloadOption && theme.palette.mode === "light"
+          ? theme.palette.secondary.light
+          : theme.palette.primary.dark,
     },
   })
 );

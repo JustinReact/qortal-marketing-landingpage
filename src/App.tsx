@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
 import { lightTheme, darkTheme } from "./styles/theme";
-import Home from "./components/Home/Home";
+import Home from "./pages/Home/Home";
 
 function App() {
   const [theme, setTheme] = useState("light");

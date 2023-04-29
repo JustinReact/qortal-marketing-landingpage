@@ -1,13 +1,7 @@
 import { StyledIcon } from "./Icons-styles";
+import { IconTypes } from "./IconTypes";
 
-interface NewWindowSVGProps {
-  color: string;
-  height: string;
-  width: string;
-  onClickFunc: () => void;
-}
-
-export const DarkModeSVG: React.FC<NewWindowSVGProps> = ({
+export const DarkModeSVG: React.FC<IconTypes> = ({
   color,
   height,
   width,

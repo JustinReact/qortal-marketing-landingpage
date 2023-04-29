@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { LinuxTerminal } from "../LinuxTerminal/LinuxTerminal";
 import { Grid, Typography, Box } from "@mui/material";
 import {
   DownloadButton,
@@ -13,15 +14,26 @@ import {
 } from "../../Steps-styles";
 import StepOneImg from "../../../../images/Windows/WindowsStepOne.png";
 
-const LinuxStepOne = () => {
-  const [downloadOption, setDownloadOption] = useState<string>("appImage");
+interface LinuxStepOneProps {
+  downloadOption: string;
+  setDownloadOption: (option: string) => void;
+}
 
+const LinuxStepOne = ({
+  downloadOption,
+  setDownloadOption,
+}: LinuxStepOneProps) => {
   return (
-    <StepCard style={{ padding: "18px 15px 15px 15px", marginTop: "18px" }}>
+    <StepCard
+      style={{
+        padding: "18px 15px 15px 15px",
+        marginTop: "18px",
+        width: "100%",
+      }}
+    >
       <LinuxStepColumnsContainer>
         <Grid
           container
-          sm={12}
           sx={{ flexWrap: "nowrap", justifyContent: "space-between" }}
         >
           <LinuxStepColumn item sm={6} xs={12}>
@@ -46,43 +58,50 @@ const LinuxStepOne = () => {
           </LinuxStepColumn>
         </Grid>
         <Grid container sx={{ display: "flex", alignItems: "center" }}>
-          <Grid item xs={6}>
-            <StepColumn container direction="column">
-              <Typography
-                fontFamily="Manrope"
-                variant="h4"
-                sx={{ userSelect: "none" }}
-              >
-                Get started with Qortal by downloading our user-friendly UI!
-              </Typography>
-              <DownloadButton
-                variant="contained"
-                onClick={() => {
-                  // setShinyButton(true);
-                  return;
-                  window.location.href =
-                    "https://github.com/Qortal/qortal-ui/releases/latest/download/Qortal-Setup-win64.exe";
+          {downloadOption === "appImage" ? (
+            <>
+              <Grid item xs={6}>
+                <StepColumn container direction="column">
+                  <Typography
+                    fontFamily="Manrope"
+                    variant="h4"
+                    sx={{ userSelect: "none" }}
+                  >
+                    Get started with Qortal by downloading our user-friendly UI!
+                  </Typography>
+                  <DownloadButton
+                    variant="contained"
+                    onClick={() => {
+                      // setShinyButton(true);
+                      return;
+                      window.location.href =
+                        "https://github.com/Qortal/qortal-ui/releases/latest/download/Qortal-Setup-win64.exe";
+                    }}
+                  >
+                    Download Qortal UI
+                  </DownloadButton>
+                </StepColumn>
+              </Grid>
+
+              <Grid
+                item
+                xs={6}
+                sx={{
+                  objectFit: "contain",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
                 }}
               >
-                Download Qortal UI
-              </DownloadButton>
-            </StepColumn>
-          </Grid>
-          <Grid
-            item
-            xs={6}
-            sx={{
-              objectFit: "contain",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <ScreenshotContainer>
-              <Screenshot src={StepOneImg} alt="step1" />
-              <MagnifyingGlass id="magnifying-glass" />
-            </ScreenshotContainer>
-          </Grid>
+                <ScreenshotContainer>
+                  <Screenshot src={StepOneImg} alt="step1" />
+                  <MagnifyingGlass id="magnifying-glass" />
+                </ScreenshotContainer>
+              </Grid>
+            </>
+          ) : (
+            <LinuxTerminal />
+          )}
         </Grid>
       </LinuxStepColumnsContainer>
     </StepCard>

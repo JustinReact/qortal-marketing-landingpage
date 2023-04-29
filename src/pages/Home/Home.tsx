@@ -15,9 +15,9 @@ import {
   ThemeSelectRow,
   ButtonRow,
 } from "./Home-styles";
-import { LightModeSVG } from "../Common/Icons/LightModeSVG";
-import { DarkModeSVG } from "../Common/Icons/DarkModeSVG";
-import OperatingSystem from "../OperatingSystem/OperatingSystem";
+import { LightModeSVG } from "../../components/Common/Icons/LightModeSVG";
+import { DarkModeSVG } from "../../components/Common/Icons/DarkModeSVG";
+import OperatingSystem from "../../components/OperatingSystem/OperatingSystem";
 import QortalLogo from "../../images/Logo/QortalLogo.png";
 
 // Define your component's props interface here

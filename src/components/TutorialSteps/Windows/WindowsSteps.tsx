@@ -11,6 +11,7 @@ import {
   RightArrow,
   StepText,
   StepSubText,
+  StepNumberBubble,
 } from "../Steps-styles";
 import { useTheme } from "@mui/material";
 import WindowsStepOne from "./Steps/WindowsStepOne";
@@ -18,6 +19,7 @@ import WindowsStepTwo from "./Steps/WindowsStepTwo";
 import WindowsStepThree from "./Steps/WindowsStepThree";
 import WindowsStepFour from "./Steps/WindowsStepFour";
 import WindowsStepFive from "./Steps/WindowsStepFive";
+import WindowsStepSix from "./Steps/WindowsStepSix";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
 const WindowsSteps = () => {
@@ -43,6 +45,10 @@ const WindowsSteps = () => {
     },
     {
       step: 5,
+      name: "Make Sure Core is Running",
+    },
+    {
+      step: 6,
       name: "Completed! 🎉",
     },
   ]);
@@ -72,7 +78,7 @@ const WindowsSteps = () => {
         direction="column"
         sx={{
           minHeight: "500px",
-          justifyContent: "space-between",
+          gap: "15px",
           marginTop: isMobile ? "0" : "-20px",
         }}
       >
@@ -113,35 +119,17 @@ const WindowsSteps = () => {
                 }}
               >
                 <LeftArrow
-                  style={{
-                    opacity: currentStep === 1 ? 0.5 : 1,
-                    pointerEvents: currentStep === 1 ? "none" : "all",
-                    cursor: currentStep === 1 ? "auto" : "pointer",
-                  }}
+                  type="button"
+                  preventClick={currentStep === 1 ? true : false}
                   onClick={() => setCurrentStep((prev) => prev - 1)}
                 />
-                <Typography
-                  variant="h4"
-                  fontFamily="Raleway"
-                  sx={{
-                    width: "fit-content",
-                    backgroundColor: "#6495ed",
-                    color: "white",
-                    padding: "5px 10px",
-                    borderRadius: "18px",
-                    userSelect: "none",
-                  }}
-                >
+                <StepNumberBubble variant="h5">
                   {`${currentStep} of ${steps.length}`}
-                </Typography>
+                </StepNumberBubble>
                 <RightArrow
+                  type="button"
+                  preventClick={currentStep === steps.length}
                   onClick={() => setCurrentStep((prev) => prev + 1)}
-                  style={{
-                    opacity: currentStep === steps.length ? 0.5 : 1,
-                    pointerEvents:
-                      currentStep === steps.length ? "none" : "all",
-                    cursor: currentStep === steps.length ? "auto" : "pointer",
-                  }}
                 />
               </Box>
             </Grid>
@@ -158,6 +146,8 @@ const WindowsSteps = () => {
             <WindowsStepFour />
           ) : currentStep === 5 ? (
             <WindowsStepFive />
+          ) : currentStep === 6 ? (
+            <WindowsStepSix />
           ) : null}
         </Grid>
         <Box
