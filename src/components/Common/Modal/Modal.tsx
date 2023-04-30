@@ -3,11 +3,19 @@ import { Backdrop, Modalbody } from "./Modal-styles";
 
 interface ModalProps {
   children: React.ReactNode;
+  toggleLeft?: React.ReactNode;
+  toggleRight?: React.ReactNode;
   openModal: boolean;
-  onClickFunc: () => void;
+  onClickFunc: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 }
 
-const Modal: FC<ModalProps> = ({ onClickFunc, children, openModal }) => {
+const Modal: FC<ModalProps> = ({
+  onClickFunc,
+  children,
+  openModal,
+  toggleLeft,
+  toggleRight,
+}) => {
   const modalRef = useRef(null);
 
   useEffect(() => {
@@ -37,15 +45,13 @@ const Modal: FC<ModalProps> = ({ onClickFunc, children, openModal }) => {
       <Backdrop
         ref={modalRef}
         tabIndex={-1}
-        onKeyDown={(e) => {
-          if (e.key === "Escape") {
-            onClickFunc();
-          }
+        onClick={(e: any) => {
+          onClickFunc(e);
         }}
-        onClick={() => {
-          onClickFunc();
-        }}
-      ></Backdrop>
+      >
+        {toggleLeft}
+        {toggleRight}
+      </Backdrop>
       <Modalbody>{children}</Modalbody>
     </div>
   );

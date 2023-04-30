@@ -15,7 +15,7 @@ import {
   ScreenshotContainer,
 } from "../../Steps-styles";
 import { CheckmarkSVG } from "../../../Common/Icons/CheckmarkSVG";
-import TerminalScreenshot from "../../../../images/Linux/LinuxTerminal.png";
+import TerminalScreenshot from "../../../../images/Linux/LinuxTerminalScreenshot.png";
 import Modal from "../../../Common/Modal/Modal";
 
 export const LinuxTerminal = () => {
@@ -44,6 +44,10 @@ export const LinuxTerminal = () => {
       <MuseoFont variant="h3" sx={{ margin: "15px 0 20px 0" }}>
         You can download the Qortal UI by copying the wget script below and
         running it in your terminal!
+      </MuseoFont>
+      <MuseoFont variant="h3" sx={{ margin: "0px 0 20px 0" }}>
+        Once the download is completed, the application shortcut will appear
+        directly on your desktop. You can launch the UI directly from there!
       </MuseoFont>
       <Box sx={{ position: "relative", marginBottom: "15px" }}>
         <CopyButton onClick={copyToClipboard}>

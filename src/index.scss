@@ -63,3 +63,25 @@ body::-webkit-scrollbar-thumb {
 body::-webkit-scrollbar-thumb:hover {
   background-color: #1153af;
 }
+
+.chevron-left {
+  position: absolute;
+  left: 50px;
+  top: 50%;
+  transition: all 0.3s ease-in-out;
+  & :hover {
+    cursor: pointer;
+    scale: 1.07;
+  }
+}
+
+.chevron-right {
+  position: absolute;
+  right: 50px;
+  top: 50%;
+  transition: all 0.3s ease-in-out;
+  & :hover {
+    cursor: pointer;
+    scale: 1.07;
+  }
+}

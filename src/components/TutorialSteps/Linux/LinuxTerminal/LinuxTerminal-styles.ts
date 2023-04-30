@@ -30,7 +30,7 @@ export const CheckmarkIcon = styled(Box)(({ theme }) => ({
 export const LinuxTerminalContainer = styled("div")(({ theme }) => ({
   backgroundColor: theme.palette.mode === "light" ? `${theme.palette.primary.main} !important` : "#0a0a108f",
   borderRadius: "8px",
-  padding: "35px 10px 10px 10px",
+  padding: "30px 10px 10px 10px",
   fontSize: "18px",
   fontFamily: "monospace"
 }));

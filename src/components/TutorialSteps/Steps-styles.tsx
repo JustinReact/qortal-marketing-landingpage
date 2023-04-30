@@ -4,6 +4,8 @@ import ZoomInIcon from "@mui/icons-material/ZoomIn";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import { ChevronLeftSVG } from "../Common/Icons/ChevronLeftSVG";
+import { ChevronRightSVG } from "../Common/Icons/ChevronRightSVG";
 
 interface StepDivProps {
   selected?: boolean;
@@ -359,6 +361,7 @@ export const RightArrow = styled(KeyboardArrowRightIcon)<StepDivProps>(
 export const MuseoFont = styled(Typography)({
   fontFamily: "Museo",
   letterSpacing: "0.3px",
+  lineHeight: "30px",
   userSelect: "none",
 });
 
@@ -423,3 +426,31 @@ export const DownloadOptionCard = styled(Button)<StepDivProps>(
     },
   })
 );
+
+export const ScreenshotColumn = styled(Grid)({
+  objectFit: "contain",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  flexDirection: "column",
+});
+
+export const ImageToggleRow = styled(Box)({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: "12px",
+});
+
+export const ImageToggleDot = styled("div")<StepDivProps>(({ selected }) => ({
+  width: "10px",
+  height: "10px",
+  borderRadius: "50%",
+  backgroundColor: selected ? "#616161" : "#cecaca",
+  border: "none",
+  transition: "all 0.3s ease-in-out",
+  "&:hover": {
+    cursor: "pointer",
+    filter: selected ? "brightness(1)" : "brightness(0.8)",
+  },
+}));
