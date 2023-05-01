@@ -167,7 +167,9 @@ export const ModalScreenshot = styled("img")({
   width: "100%",
   height: "100%",
   borderRadius: "5px",
+  userSelect: "none",
   objectFit: "contain",
+  maxHeight: "-webkit-fill-available",
 });
 
 export const PreviousButton = styled(Button)({

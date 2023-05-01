@@ -1,19 +1,20 @@
 import { useState, FC } from "react";
 import { Grid, useTheme } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { QortalBigLogo } from "../../components/Common/Logo/QortalBigLogo";
+import { Lines } from "../../components/Common/Lines/Lines";
 import {
   Wrapper,
-  Column,
   StyledButton,
   HeaderText,
   SubHeaderText,
   HeaderNav,
-  QblogLogoContainer,
   DiscordButton,
   TriangleIcon,
   TriangleContainer,
   ThemeSelectRow,
   ButtonRow,
+  QortalLogoContainer,
 } from "./Home-styles";
 import { LightModeSVG } from "../../components/Common/Icons/LightModeSVG";
 import { DarkModeSVG } from "../../components/Common/Icons/DarkModeSVG";
@@ -33,6 +34,7 @@ const Home: FC<HomeProps> = ({ setTheme }) => {
 
   return (
     <Wrapper>
+      <Lines />
       <HeaderNav>
         <ThemeSelectRow>
           {theme.palette.mode === "dark" ? (
@@ -50,7 +52,7 @@ const Home: FC<HomeProps> = ({ setTheme }) => {
               width="22"
             />
           )}
-          <QblogLogoContainer
+          <QortalLogoContainer
             src={QortalLogo}
             alt="Qblog Logo"
             onClick={() => {
@@ -84,20 +86,23 @@ const Home: FC<HomeProps> = ({ setTheme }) => {
       </SubHeaderText>
       <Grid container>
         {!operatingSystem ? (
-          <ButtonRow>
-            <StyledButton
-              onClick={() => setOperatingSystem("windows")}
-              variant="contained"
-            >
-              Windows
-            </StyledButton>
-            <StyledButton
-              onClick={() => setOperatingSystem("linux")}
-              variant="contained"
-            >
-              Linux
-            </StyledButton>
-          </ButtonRow>
+          <>
+            <QortalBigLogo />
+            <ButtonRow>
+              <StyledButton
+                onClick={() => setOperatingSystem("windows")}
+                variant="contained"
+              >
+                Windows
+              </StyledButton>
+              <StyledButton
+                onClick={() => setOperatingSystem("linux")}
+                variant="contained"
+              >
+                Linux
+              </StyledButton>
+            </ButtonRow>
+          </>
         ) : (
           <OperatingSystem
             operatingSystem={operatingSystem}

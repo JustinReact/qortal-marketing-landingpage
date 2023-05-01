@@ -83,9 +83,11 @@ const WindowsStepSix: FC<WindowsStepSixProps> = () => {
         </Grid>
       </StepCard>
       {openModal && (
-        <Modal openModal={openModal} onClickFunc={() => setOpenModal(false)}>
-          <ModalScreenshot src={StepSixImg} alt="step1"></ModalScreenshot>
-        </Modal>
+        <Modal
+          images={[StepSixImg]}
+          openModal={openModal}
+          onClickFunc={() => setOpenModal(false)}
+        ></Modal>
       )}
     </>
   );

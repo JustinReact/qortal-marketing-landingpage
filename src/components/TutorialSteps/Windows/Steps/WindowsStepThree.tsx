@@ -49,9 +49,11 @@ const WindowsStepThree: FC<WindowsStepThreeProps> = () => {
         </Grid>
       </StepCard>
       {openModal && (
-        <Modal openModal={openModal} onClickFunc={() => setOpenModal(false)}>
-          <ModalScreenshot src={StepThreeImg} alt="step1"></ModalScreenshot>
-        </Modal>
+        <Modal
+          images={[StepThreeImg]}
+          openModal={openModal}
+          onClickFunc={() => setOpenModal(false)}
+        ></Modal>
       )}
     </>
   );

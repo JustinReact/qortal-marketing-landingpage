@@ -1,4 +1,6 @@
 import { createTheme } from "@mui/material/styles";
+import HexagonBG from "../images/Home/HexagonBG.png";
+import HexagonBGLight from "../images/Home/HexagonBGLight.png";
 
 const commonThemeOptions = createTheme({
   components: {
@@ -96,6 +98,12 @@ const lightTheme = createTheme({
   components: {
     MuiCssBaseline: {
       styleOverrides: {
+        'body': {
+          backgroundImage: `url(${HexagonBGLight})`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "80%",
+          backgroundPosition: "center center",
+        },
          'body::-webkit-scrollbar-track': {
           backgroundColor: "#fcfbfd"
         },
@@ -185,6 +193,12 @@ const darkTheme = createTheme({
   components: {
     MuiCssBaseline: {
       styleOverrides: {
+        'body': {
+          backgroundImage: `url(${HexagonBG})`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "80%",
+          backgroundPosition: "center center",
+        },
          'body::-webkit-scrollbar-track': {
           backgroundColor: "#060a1e"
         },

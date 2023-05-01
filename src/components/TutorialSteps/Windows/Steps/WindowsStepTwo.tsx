@@ -58,9 +58,11 @@ const WindowsStepTwo: FC<WindowsStepTwoProps> = () => {
         </Grid>
       </StepCard>
       {openModal && (
-        <Modal openModal={openModal} onClickFunc={() => setOpenModal(false)}>
-          <ModalScreenshot src={StepTwoImg} alt="step1"></ModalScreenshot>
-        </Modal>
+        <Modal
+          images={[StepTwoImg]}
+          openModal={openModal}
+          onClickFunc={() => setOpenModal(false)}
+        ></Modal>
       )}
     </>
   );

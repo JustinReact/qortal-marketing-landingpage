@@ -58,9 +58,11 @@ const WindowsStepOne = ({ setShinyButton }: WindowsStepOneProps) => {
         </Grid>
       </StepCard>
       {openModal && (
-        <Modal openModal={openModal} onClickFunc={() => setOpenModal(false)}>
-          <ModalScreenshot src={StepOneImg} alt="step1"></ModalScreenshot>
-        </Modal>
+        <Modal
+          images={[StepOneImg]}
+          openModal={openModal}
+          onClickFunc={() => setOpenModal(false)}
+        ></Modal>
       )}
     </>
   );

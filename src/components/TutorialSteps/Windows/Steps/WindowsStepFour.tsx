@@ -60,9 +60,11 @@ const WindowsStepFour: FC<WindowsStepFourProps> = () => {
         </Grid>
       </StepCard>
       {openModal && (
-        <Modal openModal={openModal} onClickFunc={() => setOpenModal(false)}>
-          <ModalScreenshot src={StepFourImg} alt="step1"></ModalScreenshot>
-        </Modal>
+        <Modal
+          images={[StepFourImg]}
+          openModal={openModal}
+          onClickFunc={() => setOpenModal(false)}
+        ></Modal>
       )}
     </>
   );

@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { LinuxTerminal } from "../LinuxTerminal/LinuxTerminal";
 import { Grid, Typography, Box, useTheme } from "@mui/material";
 import {
@@ -9,7 +9,6 @@ import {
   LinuxStepColumn,
   LinuxStepColumnsContainer,
   MagnifyingGlass,
-  ModalScreenshot,
   MuseoFont,
   Screenshot,
   ScreenshotColumn,
@@ -20,8 +19,6 @@ import {
 import LinuxDownloadImg from "../../../../images/Linux/LinuxDownload.png";
 import LinuxAppPermissionImg from "../../../../images/Linux/LinuxAppPermission.png";
 import Modal from "../../../Common/Modal/Modal";
-import { ChevronLeftSVG } from "../../../Common/Icons/ChevronLeftSVG";
-import { ChevronRightSVG } from "../../../Common/Icons/ChevronRightSVG";
 
 interface LinuxStepOneProps {
   downloadOption: string;
@@ -35,9 +32,6 @@ const LinuxStepOne = ({
   const theme = useTheme();
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [imageSelected, setImageSelected] = useState<string>("image1");
-
-  const toggleLeftRef = useRef<HTMLDivElement | null>(null);
-  const toggleRightRef = useRef<HTMLDivElement | null>(null);
 
   return (
     <>
@@ -143,50 +137,12 @@ const LinuxStepOne = ({
       </StepCard>
       {openModal && (
         <Modal
-          toggleLeft={
-            <ChevronLeftSVG
-              onClickFunc={() => {
-                setImageSelected((prev) =>
-                  prev === "image1" ? "image2" : "image1"
-                );
-              }}
-              color={theme.palette.text.primary}
-              height={"50"}
-              width={"50"}
-              className={"chevron-left"}
-              ref={toggleLeftRef}
-            />
-          }
-          toggleRight={
-            <ChevronRightSVG
-              onClickFunc={() => {
-                setImageSelected((prev) =>
-                  prev === "image1" ? "image2" : "image1"
-                );
-              }}
-              color={theme.palette.text.primary}
-              height={"50"}
-              width={"50"}
-              className={"chevron-right"}
-              ref={toggleRightRef}
-            />
-          }
           openModal={openModal}
           onClickFunc={() => {
             setOpenModal(false);
           }}
-        >
-          <Box sx={{ position: "relative" }}>
-            <ModalScreenshot
-              src={
-                imageSelected === "image1"
-                  ? LinuxDownloadImg
-                  : LinuxAppPermissionImg
-              }
-              alt="step1"
-            ></ModalScreenshot>
-          </Box>
-        </Modal>
+          images={[LinuxDownloadImg, LinuxAppPermissionImg]}
+        ></Modal>
       )}
     </>
   );

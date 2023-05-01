@@ -2,6 +2,7 @@ import { styled } from "@mui/system";
 import { Box, Button, Grid, Typography } from '@mui/material';
 
 export const Wrapper = styled("div")({
+  position: "relative",
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
@@ -17,16 +18,19 @@ export const ThemeSelectRow = styled(Box)({
   gap: "25px"
 })
 
-export const HeaderNav = styled(Box)({
+export const HeaderNav = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "row",
   justifyContent: "space-between",
   alignItems: "center",
   width: "100%",
   padding: "0 100px",
-});
+  [theme.breakpoints.only('xs')]: {
+    padding: '0',
+  },
+}));
 
-export const QblogLogoContainer = styled('img')(({ theme }) => ({
+export const QortalLogoContainer = styled('img')(({ theme }) => ({
   width: '120px',
   height: 'auto',
   userSelect: 'none',
@@ -67,7 +71,7 @@ export const ButtonRow = styled(Box)({
   alignItems: "center",
   justifyContent: "space-evenly",
   width:"100%",
-  marginTop:"25px"
+  zIndex: 2,
 });
 
 export const StyledButton = styled(Button)({
@@ -77,6 +81,7 @@ export const StyledButton = styled(Button)({
   fontFamily: "Montserrat",
   color:"#ffffff",
   backgroundColor: "#115bc5",
+  transition: "all 0.3s ease-in-out",
   "&:hover": {
     backgroundColor: "#043596"
   }

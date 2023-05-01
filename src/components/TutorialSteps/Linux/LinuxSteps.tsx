@@ -14,6 +14,9 @@ import {
 import { useTheme } from "@mui/material";
 import LinuxStepOne from "./Steps/LinuxStepOne";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import WindowsStepFour from "../Windows/Steps/WindowsStepFour";
+import WindowsStepFive from "../Windows/Steps/WindowsStepFive";
+import WindowsStepSix from "../Windows/Steps/WindowsStepSix";
 
 const LinuxSteps = () => {
   const theme = useTheme();
@@ -22,19 +25,19 @@ const LinuxSteps = () => {
   const [steps, setSteps] = useState<{ step: number; name: string }[]>([
     {
       step: 1,
-      name: "Download Qortal UI",
+      name: "Download & Install Qortal UI",
     },
     {
       step: 2,
-      name: "Install Qortal UI",
-    },
-    {
-      step: 3,
       name: "Install Qortal Core",
     },
     {
       step: 3,
-      name: "Install QortalC ore",
+      name: "Make Sure Core is Running",
+    },
+    {
+      step: 4,
+      name: "Completed! 🎉",
     },
   ]);
 
@@ -44,7 +47,7 @@ const LinuxSteps = () => {
 
   return (
     <Container container>
-      <StepsColumn item>
+      <StepsColumn style={{ minHeight: "300px" }} item>
         {steps.map((step, index) => {
           return (
             <StepDiv
@@ -163,6 +166,12 @@ const LinuxSteps = () => {
               downloadOption={downloadOption}
               setDownloadOption={setDownloadOption}
             />
+          ) : currentStep === 2 ? (
+            <WindowsStepFour />
+          ) : currentStep === 3 ? (
+            <WindowsStepFive />
+          ) : currentStep === 4 ? (
+            <WindowsStepSix />
           ) : null}
         </LinuxStepsContainer>
         <Box

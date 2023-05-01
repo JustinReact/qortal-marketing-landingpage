@@ -54,9 +54,11 @@ const WindowsStepFive: FC<WindowsStepFiveProps> = () => {
         </Grid>
       </StepCard>
       {openModal && (
-        <Modal openModal={openModal} onClickFunc={() => setOpenModal(false)}>
-          <ModalScreenshot src={StepFiveImg} alt="step1"></ModalScreenshot>
-        </Modal>
+        <Modal
+          images={[StepFiveImg]}
+          openModal={openModal}
+          onClickFunc={() => setOpenModal(false)}
+        ></Modal>
       )}
     </>
   );
