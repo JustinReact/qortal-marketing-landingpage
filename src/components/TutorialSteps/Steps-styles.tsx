@@ -41,6 +41,9 @@ export const StepsColumn = styled(Grid)(({ theme }) => ({
       : `${theme.palette.secondary.dark}`,
   borderRadius: "3px",
   boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px;",
+  [theme.breakpoints.down("sm")]: {
+    display: "none",
+  },
 }));
 
 export const StepDiv = styled(Grid)<StepDivProps>(({ selected, theme }) => ({
@@ -88,6 +91,38 @@ export const StepSubText = styled(Typography)({
   fontSize: "17px",
   userSelect: "none",
 });
+
+export const StepName = styled(Grid)(({ theme }) => ({
+  [theme.breakpoints.down("sm")]: {
+    display: "flex",
+    justifyContent: "center",
+    marginTop: "5px",
+    padding: "5px",
+    flexDirection: "column",
+  },
+}));
+
+export const StepTitle = styled(Typography)(({ theme }) => ({
+  fontFamily: "Raleway",
+  fontSize: "18px",
+  fontWeight: "normal",
+  userSelect: "none",
+  [theme.breakpoints.down("sm")]: {
+    fontSize: "19px",
+    textAlign: "center",
+    fontWeight: "bold",
+  },
+}));
+
+export const StepInformation = styled(Grid)(({ theme }) => ({
+  display: "flex",
+  justifyContent: "flex-end",
+  gap: "35px",
+  alignItems: "center",
+  [theme.breakpoints.down("sm")]: {
+    display: "none",
+  },
+}));
 
 export const StepCard = styled(Grid)(({ theme }) => ({
   display: "flex",
@@ -454,5 +489,52 @@ export const ImageToggleDot = styled("div")<StepDivProps>(({ selected }) => ({
   "&:hover": {
     cursor: "pointer",
     filter: selected ? "brightness(1)" : "brightness(0.8)",
+  },
+}));
+
+export const MobileStepRow = styled(Box)(({ theme }) => ({
+  display: "flex",
+  justifyContent: "center",
+  [theme.breakpoints.up("sm")]: {
+    display: "none",
+  },
+}));
+
+export const MobileStepLine = styled(Box)(({ theme }) => ({
+  fontFamily: "Museo",
+  height: "1px",
+  width: "100%",
+  marginTop: "40px",
+  marginBottom: "40px",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+}));
+
+export const MobileStepDot = styled("div")(({ theme }) => ({
+  width: "38px",
+  height: "38px",
+  borderRadius: "50%",
+  backgroundColor: "#f8fafb",
+  border: "1px solid rgba(206, 203, 203, 0.432)",
+  transition: "all 0.1s ease-in-out",
+  color: "black",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  userSelect: "none",
+
+  "&.StepInnerDot": {
+    width: "38px",
+    height: "38px",
+    borderRadius: "50%",
+    borderColor: theme.palette.secondary.light,
+    background: theme.palette.secondary.light,
+    color: "white",
+    boxShadow: "none",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    userSelect: "none",
   },
 }));

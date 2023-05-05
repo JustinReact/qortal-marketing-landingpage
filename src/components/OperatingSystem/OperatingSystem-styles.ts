@@ -1,11 +1,16 @@
-import { Grid, Button } from "@mui/material";
+import { Grid, Button, Box } from "@mui/material";
 import { styled } from "@mui/system";
 
-export const MainContainer = styled(Grid)({
+export const MainContainer = styled(Grid)(({ theme }) => ({
   padding: "20px 40px",
   margin: "0",
   gap: "40px",
-})
+  zIndex: 2,
+  [theme.breakpoints.down('sm')]: {
+    gap:"10px",
+    padding: 0
+  }
+}))
 
 export const BackButton = styled(Button)(({ theme }) => ({
   backgroundColor: theme.palette.secondary.light,
@@ -19,8 +24,26 @@ export const BackButton = styled(Button)(({ theme }) => ({
   transition: "all 0.3s ease-in-out",
   '&:hover': {
     cursor: "pointer",
-    // boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;",
     backgroundColor: theme.palette.secondary.light,
     filter: "brightness(0.9)"
   },
+[theme.breakpoints.down('sm')]: {
+  display: "none"
+}
 }))
+
+export const BackArrowIcon = styled(Box)(({theme}) => ({
+    display: "flex",
+    alignItems: "center",  
+    justifyContent: "center",
+    padding: "5px",
+    borderRadius: "50%",
+    backgroundColor: theme.palette.secondary.light,
+    "&:hover": {
+      cursor: "pointer",
+    },
+    [theme.breakpoints.up('sm')]: {
+      display: "none"
+    }
+}));
+

@@ -10,6 +10,12 @@ import {
   LeftArrow,
   RightArrow,
   LinuxStepsContainer,
+  MobileStepDot,
+  MobileStepLine,
+  MobileStepRow,
+  StepInformation,
+  StepName,
+  StepTitle,
 } from "../Steps-styles";
 import { useTheme } from "@mui/material";
 import LinuxStepOne from "./Steps/LinuxStepOne";
@@ -88,26 +94,53 @@ const LinuxSteps = () => {
       >
         <>
           <Grid container sx={{ alignItems: "center" }}>
-            <Grid item xs={12} sm={6}>
-              <Typography
-                variant="h4"
-                fontFamily="Raleway"
-                sx={{ userSelect: "none" }}
-              >
+            <StepName item xs={12} sm={6}>
+              <StepTitle>
                 {steps.filter((step) => step.step === currentStep)[0].name}
-              </Typography>
-            </Grid>
-            <Grid
-              item
-              xs={12}
-              sm={6}
-              sx={{
-                display: "flex",
-                justifyContent: "flex-end",
-                gap: "35px",
-                alignItems: "center",
-              }}
-            >
+              </StepTitle>
+              <MobileStepRow>
+                <MobileStepLine
+                  style={{
+                    background:
+                      currentStep === 1
+                        ? `linear-gradient(to right, ${theme.palette.secondary.light} 20%, #e4e2e2 20%,#e4e2e2 40%, #e4e2e2 60%, #e4e2e2 80%, #e4e2e2 100%)`
+                        : currentStep === 2
+                        ? `linear-gradient(to right, ${theme.palette.secondary.light} 0%, ${theme.palette.secondary.light} 50%, #e4e2e2 50%, #e4e2e2 60%, #e4e2e2 80%, #e4e2e2 100%)`
+                        : currentStep === 3
+                        ? `linear-gradient(to right, ${theme.palette.secondary.light} 0%, ${theme.palette.secondary.light} 80%, #e4e2e2 80%, #e4e2e2 100%`
+                        : currentStep === 4
+                        ? `linear-gradient(to right, ${theme.palette.secondary.light} 0%, ${theme.palette.secondary.light} 100%)`
+                        : "linear-gradient(to right, #e4e2e2 0%, #e4e2e2 100%)",
+                  }}
+                >
+                  <MobileStepDot
+                    onClick={() => setCurrentStep(1)}
+                    className={currentStep >= 1 ? "StepInnerDot" : ""}
+                  >
+                    1
+                  </MobileStepDot>
+                  <MobileStepDot
+                    onClick={() => setCurrentStep(2)}
+                    className={currentStep >= 2 ? "StepInnerDot" : ""}
+                  >
+                    2
+                  </MobileStepDot>
+                  <MobileStepDot
+                    onClick={() => setCurrentStep(3)}
+                    className={currentStep >= 3 ? "StepInnerDot" : ""}
+                  >
+                    3
+                  </MobileStepDot>
+                  <MobileStepDot
+                    onClick={() => setCurrentStep(4)}
+                    className={currentStep >= 4 ? "StepInnerDot" : ""}
+                  >
+                    4
+                  </MobileStepDot>
+                </MobileStepLine>
+              </MobileStepRow>
+            </StepName>
+            <StepInformation item xs={12} sm={6}>
               <Box sx={{ width: "30%" }}>
                 <ProgressBar
                   variant="determinate"
@@ -157,7 +190,7 @@ const LinuxSteps = () => {
                   }}
                 />
               </Box>
-            </Grid>
+            </StepInformation>
           </Grid>
         </>
         <LinuxStepsContainer item>

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { LinuxTerminal } from "../LinuxTerminal/LinuxTerminal";
-import { Grid, Typography, Box, useTheme } from "@mui/material";
+import { Grid, Typography, Box, useTheme, useMediaQuery } from "@mui/material";
 import {
   DownloadButton,
   DownloadOptionCard,
@@ -30,6 +30,7 @@ const LinuxStepOne = ({
   setDownloadOption,
 }: LinuxStepOneProps) => {
   const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [imageSelected, setImageSelected] = useState<string>("image1");
 
@@ -38,7 +39,7 @@ const LinuxStepOne = ({
       <StepCard
         style={{
           padding: "18px 15px 15px 15px",
-          marginTop: "18px",
+          marginTop: isMobile ? "5px" : "18px",
           width: "100%",
         }}
       >

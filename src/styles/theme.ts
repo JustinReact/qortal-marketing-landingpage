@@ -103,6 +103,10 @@ const lightTheme = createTheme({
           backgroundRepeat: "no-repeat",
           backgroundSize: "80%",
           backgroundPosition: "center center",
+          '@media (max-width: 600px)': {
+            backgroundPosition: "20% center",
+            backgroundSize: "auto",
+          },
         },
          'body::-webkit-scrollbar-track': {
           backgroundColor: "#fcfbfd"
@@ -198,6 +202,10 @@ const darkTheme = createTheme({
           backgroundRepeat: "no-repeat",
           backgroundSize: "80%",
           backgroundPosition: "center center",
+          '@media (max-width: 600px)': {
+            backgroundPosition: "20% center",
+            backgroundSize: "auto",
+          },
         },
          'body::-webkit-scrollbar-track': {
           backgroundColor: "#060a1e"

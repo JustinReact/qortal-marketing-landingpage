@@ -1,5 +1,5 @@
 import { useState, FC } from "react";
-import { Grid, useTheme } from "@mui/material";
+import { Grid, useMediaQuery, useTheme } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { QortalBigLogo } from "../../components/Common/Logo/QortalBigLogo";
 import { Lines } from "../../components/Common/Lines/Lines";
@@ -28,8 +28,10 @@ interface HomeProps {
 
 // Define your component here
 const Home: FC<HomeProps> = ({ setTheme }) => {
-  const navigate = useNavigate();
   const theme = useTheme();
+  const navigate = useNavigate();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
   const [operatingSystem, setOperatingSystem] = useState<string>("");
 
   return (
@@ -75,7 +77,8 @@ const Home: FC<HomeProps> = ({ setTheme }) => {
         <span style={{ color: theme.palette.secondary.main }}>
           Build Javascript Applications
         </span>{" "}
-        on the First <br /> Fully Decentralized Blockchain Platform: Qortal
+        on the First {!isMobile && <br />}
+        Fully Decentralized Blockchain Platform: Qortal
       </HeaderText>
       <SubHeaderText variant="h2">
         {!operatingSystem
