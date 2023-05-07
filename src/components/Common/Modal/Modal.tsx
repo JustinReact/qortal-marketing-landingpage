@@ -1,9 +1,13 @@
 import { FC, useEffect, useRef, useState } from "react";
-import { Backdrop, Modalbody } from "./Modal-styles";
-import { ChevronLeftSVG } from "../Icons/ChevronLeftSVG";
-import { ChevronRightSVG } from "../Icons/ChevronRightSVG";
+import {
+  Backdrop,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  CloseIcon,
+  Modalbody,
+} from "./Modal-styles";
 import { ModalScreenshot } from "../../TutorialSteps/Steps-styles";
-import { Box, useTheme } from "@mui/material";
+import { useTheme } from "@mui/material";
 
 interface ModalProps {
   openModal: boolean;
@@ -62,7 +66,7 @@ const Modal: FC<ModalProps> = ({ onClickFunc, openModal, images }) => {
       >
         {images.length > 1 && (
           <>
-            <ChevronLeftSVG
+            <ChevronLeftIcon
               onClickFunc={() => {
                 const imageIndex = images.findIndex(
                   (image) => image === imageSelected
@@ -76,10 +80,9 @@ const Modal: FC<ModalProps> = ({ onClickFunc, openModal, images }) => {
               color={theme.palette.text.primary}
               height={"50"}
               width={"50"}
-              className={"chevron-left"}
               ref={toggleLeftRef}
             />
-            <ChevronRightSVG
+            <ChevronRightIcon
               onClickFunc={() => {
                 const imageIndex = images.findIndex(
                   (image) => image === imageSelected
@@ -93,7 +96,6 @@ const Modal: FC<ModalProps> = ({ onClickFunc, openModal, images }) => {
               color={theme.palette.text.primary}
               height={"50"}
               width={"50"}
-              className={"chevron-right"}
               ref={toggleRightRef}
             />
           </>
@@ -104,6 +106,14 @@ const Modal: FC<ModalProps> = ({ onClickFunc, openModal, images }) => {
           src={imageSelected}
           alt="modal-image"
         ></ModalScreenshot>
+        <CloseIcon
+          onClickFunc={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+            onClickFunc(e);
+          }}
+          color={theme.palette.text.primary}
+          height={"32"}
+          width={"32"}
+        />
       </Modalbody>
     </div>
   );

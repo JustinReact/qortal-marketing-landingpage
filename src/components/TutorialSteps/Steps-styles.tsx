@@ -4,8 +4,6 @@ import ZoomInIcon from "@mui/icons-material/ZoomIn";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
-import { ChevronLeftSVG } from "../Common/Icons/ChevronLeftSVG";
-import { ChevronRightSVG } from "../Common/Icons/ChevronRightSVG";
 
 interface StepDivProps {
   selected?: boolean;
@@ -137,6 +135,14 @@ export const StepCard = styled(Grid)(({ theme }) => ({
   gap: "5px",
 }));
 
+export const StepCardInnerContainer = styled(Grid)(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  [theme.breakpoints.down("md")]: {
+    flexDirection: "column",
+  },
+}));
+
 export const StepColumn = styled(Grid)(({ theme }) => ({
   gap: "15px",
   padding: "5px 15px",
@@ -174,6 +180,9 @@ export const StepColumn = styled(Grid)(({ theme }) => ({
   "@media (max-width: 600px)": {
     padding: "20px",
   },
+  [theme.breakpoints.down("md")]: {
+    maxHeight: "100%",
+  },
 }));
 
 export const DownloadButton = styled(Button)(({ theme }) => ({
@@ -198,14 +207,17 @@ export const Screenshot = styled("img")({
   objectFit: "cover",
 });
 
-export const ModalScreenshot = styled("img")({
+export const ModalScreenshot = styled("img")(({ theme }) => ({
   width: "100%",
   height: "100%",
   borderRadius: "5px",
   userSelect: "none",
   objectFit: "contain",
   maxHeight: "-webkit-fill-available",
-});
+  [theme.breakpoints.down("sm")]: {
+    rotate: "90deg",
+  },
+}));
 
 export const PreviousButton = styled(Button)({
   position: "relative",

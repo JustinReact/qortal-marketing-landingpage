@@ -14,6 +14,7 @@ import {
   ScreenshotColumn,
   ScreenshotContainer,
   StepCard,
+  StepCardInnerContainer,
   StepColumn,
 } from "../../Steps-styles";
 import LinuxDownloadImg from "../../../../images/Linux/LinuxDownload.png";
@@ -58,7 +59,7 @@ const LinuxStepOne = ({
                   fontFamily="Montserrat"
                   fontWeight="400"
                 >
-                  Appimage Installer
+                  {isMobile ? "Appimage" : "Appimage Installer"}{" "}
                 </Typography>
               </DownloadOptionCard>
             </LinuxStepColumn>
@@ -77,10 +78,10 @@ const LinuxStepOne = ({
               </DownloadOptionCard>
             </LinuxStepColumn>
           </Grid>
-          <Grid container sx={{ display: "flex", alignItems: "center" }}>
+          <StepCardInnerContainer container>
             {downloadOption === "appImage" ? (
               <>
-                <Grid item xs={6}>
+                <Grid item xs={12} sm={12} md={12} lg={6}>
                   <StepColumn container direction="column">
                     <MuseoFont variant="h3">
                       Download and install the Qortal UI appimage installer by
@@ -105,7 +106,7 @@ const LinuxStepOne = ({
                   </StepColumn>
                 </Grid>
 
-                <ScreenshotColumn item xs={6}>
+                <ScreenshotColumn item xs={12} sm={12} md={12} lg={6}>
                   <ScreenshotContainer onClick={() => setOpenModal(true)}>
                     <Screenshot
                       sx={{ objectFit: "contain" }}
@@ -133,7 +134,7 @@ const LinuxStepOne = ({
             ) : (
               <LinuxTerminal />
             )}
-          </Grid>
+          </StepCardInnerContainer>
         </LinuxStepColumnsContainer>
       </StepCard>
       {openModal && (

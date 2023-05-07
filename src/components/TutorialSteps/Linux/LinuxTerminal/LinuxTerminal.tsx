@@ -73,7 +73,11 @@ export const LinuxTerminal = () => {
         </ScreenshotContainer>
       </ScreenshotRow>
       {openModal && (
-        <Modal openModal={openModal} onClickFunc={() => setOpenModal(false)}>
+        <Modal
+          images={[TerminalScreenshot]}
+          openModal={openModal}
+          onClickFunc={() => setOpenModal(false)}
+        >
           <ModalScreenshot
             src={TerminalScreenshot}
             alt="step1"
