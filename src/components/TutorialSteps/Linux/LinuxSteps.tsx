@@ -213,7 +213,7 @@ const LinuxSteps = () => {
             justifyContent: currentStep !== 1 ? "space-between" : "flex-end",
             width: "100%",
             marginTop:
-              currentStep === 1 && downloadOption === "terminal"
+              currentStep === 1 && downloadOption === "terminal" && !isMobile
                 ? "auto"
                 : "15px",
           }}

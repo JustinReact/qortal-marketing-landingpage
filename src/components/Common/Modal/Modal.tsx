@@ -11,11 +11,17 @@ import { useTheme } from "@mui/material";
 
 interface ModalProps {
   openModal: boolean;
+  onImageChangeFunc?: (image: string) => void;
   onClickFunc: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
   images: string[];
 }
 
-const Modal: FC<ModalProps> = ({ onClickFunc, openModal, images }) => {
+const Modal: FC<ModalProps> = ({
+  onClickFunc,
+  onImageChangeFunc,
+  openModal,
+  images,
+}) => {
   const theme = useTheme();
   const modalRef = useRef(null);
 
@@ -46,9 +52,6 @@ const Modal: FC<ModalProps> = ({ onClickFunc, openModal, images }) => {
     };
   }, [openModal]);
 
-  console.log({ imageSelected });
-  console.log({ images });
-
   return (
     <div>
       <Backdrop
@@ -73,8 +76,12 @@ const Modal: FC<ModalProps> = ({ onClickFunc, openModal, images }) => {
                 );
                 if (imageIndex === 0) {
                   setImageSelected(images[images.length - 1]);
+                  onImageChangeFunc &&
+                    onImageChangeFunc(images[images.length - 1]);
                 } else {
                   setImageSelected(images[imageIndex - 1]);
+                  onImageChangeFunc &&
+                    onImageChangeFunc(images[imageIndex - 1]);
                 }
               }}
               color={theme.palette.text.primary}
@@ -89,8 +96,11 @@ const Modal: FC<ModalProps> = ({ onClickFunc, openModal, images }) => {
                 );
                 if (imageIndex === images.length - 1) {
                   setImageSelected(images[0]);
+                  onImageChangeFunc && onImageChangeFunc(images[0]);
                 } else {
                   setImageSelected(images[imageIndex + 1]);
+                  onImageChangeFunc &&
+                    onImageChangeFunc(images[imageIndex + 1]);
                 }
               }}
               color={theme.palette.text.primary}

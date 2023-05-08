@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
-import { Box, useTheme } from "@mui/material";
+import { Box, Grid, useTheme } from "@mui/material";
 import {
   CheckmarkIcon,
   CopyButton,
   LinuxTerminalContainer,
   ScreenshotRow,
+  ScriptCard,
 } from "./LinuxTerminal-styles";
 import { CopySVG } from "../../../Common/Icons/CopySVG";
 import {
@@ -13,18 +14,22 @@ import {
   MuseoFont,
   Screenshot,
   ScreenshotContainer,
+  StepColumn,
 } from "../../Steps-styles";
 import { CheckmarkSVG } from "../../../Common/Icons/CheckmarkSVG";
-import TerminalScreenshot from "../../../../images/Linux/LinuxTerminalScreenshot.png";
 import Modal from "../../../Common/Modal/Modal";
+import TerminalScreenshot from "../../../../images/Linux/LinuxTerminalScreenshot.png";
 
-export const LinuxTerminal = () => {
+interface TerminalProps {
+  setOpenModal: () => void;
+}
+
+export const LinuxTerminal: React.FC<TerminalProps> = ({ setOpenModal }) => {
   const theme = useTheme();
   const [linuxCommand] = useState<string>(
     "cd && cd Desktop && curl -L -O https://github.com/Qortal/qortal-ui/releases/latest/download/Qortal-Setup-amd64.AppImage && mv Qortal-Setup*.AppImage Qortal-UI && chmod +x Qortal-UI"
   );
   const [copied, setCopied] = useState<boolean>(false);
-  const [openModal, setOpenModal] = useState<boolean>(false);
 
   const copyToClipboard = () => {
     setCopied(true);
@@ -40,7 +45,7 @@ export const LinuxTerminal = () => {
   }, [copied]);
 
   return (
-    <>
+    <Grid item xs={12} sm={12} md={12} lg={6} className="terminal-container">
       <MuseoFont variant="h3" sx={{ margin: "15px 0 20px 0" }}>
         You can download the Qortal UI by copying the wget script below and
         running it in your terminal!
@@ -49,7 +54,7 @@ export const LinuxTerminal = () => {
         Once the download is completed, the application shortcut will appear
         directly on your desktop. You can launch the UI directly from there!
       </MuseoFont>
-      <Box sx={{ position: "relative", marginBottom: "15px" }}>
+      <ScriptCard>
         <CopyButton onClick={copyToClipboard}>
           Copy
           {!copied ? (
@@ -61,9 +66,9 @@ export const LinuxTerminal = () => {
           )}
         </CopyButton>
         <LinuxTerminalContainer>{linuxCommand}</LinuxTerminalContainer>
-      </Box>
+      </ScriptCard>
       <ScreenshotRow>
-        <ScreenshotContainer onClick={() => setOpenModal(true)}>
+        <ScreenshotContainer onClick={() => setOpenModal()}>
           <Screenshot
             sx={{ objectFit: "contain" }}
             src={TerminalScreenshot}
@@ -72,18 +77,6 @@ export const LinuxTerminal = () => {
           <MagnifyingGlass id="magnifying-glass" />
         </ScreenshotContainer>
       </ScreenshotRow>
-      {openModal && (
-        <Modal
-          images={[TerminalScreenshot]}
-          openModal={openModal}
-          onClickFunc={() => setOpenModal(false)}
-        >
-          <ModalScreenshot
-            src={TerminalScreenshot}
-            alt="step1"
-          ></ModalScreenshot>
-        </Modal>
-      )}
-    </>
+    </Grid>
   );
 };

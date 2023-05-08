@@ -141,6 +141,9 @@ export const StepCardInnerContainer = styled(Grid)(({ theme }) => ({
   [theme.breakpoints.down("md")]: {
     flexDirection: "column",
   },
+  [theme.breakpoints.only("md")]: {
+    gap: "15px",
+  },
 }));
 
 export const StepColumn = styled(Grid)(({ theme }) => ({
@@ -293,7 +296,6 @@ export const MagnifyingGlass = styled(ZoomInIcon)({
 
 export const ScreenshotContainer = styled(Box)({
   position: "relative",
-  objectFit: "cover",
   userSelect: "none",
   "&:hover": {
     cursor: "pointer",
@@ -491,18 +493,27 @@ export const ImageToggleRow = styled(Box)({
   gap: "12px",
 });
 
-export const ImageToggleDot = styled("div")<StepDivProps>(({ selected }) => ({
-  width: "10px",
-  height: "10px",
-  borderRadius: "50%",
-  backgroundColor: selected ? "#616161" : "#cecaca",
-  border: "none",
-  transition: "all 0.3s ease-in-out",
-  "&:hover": {
-    cursor: "pointer",
-    filter: selected ? "brightness(1)" : "brightness(0.8)",
-  },
-}));
+export const ImageToggleDot = styled("div")<StepDivProps>(
+  ({ selected, theme }) => ({
+    width: "10px",
+    height: "10px",
+    borderRadius: "50%",
+    backgroundColor:
+      selected && theme.palette.mode === "dark"
+        ? "#cecaca"
+        : selected && theme.palette.mode === "light"
+        ? "#616161"
+        : !selected && theme.palette.mode === "dark"
+        ? "#616161"
+        : "#cecaca",
+    border: "none",
+    transition: "all 0.3s ease-in-out",
+    "&:hover": {
+      cursor: "pointer",
+      filter: selected ? "brightness(1)" : "brightness(0.8)",
+    },
+  })
+);
 
 export const MobileStepRow = styled(Box)(({ theme }) => ({
   display: "flex",

@@ -57,6 +57,27 @@ export const Modalbody = styled(Box)(({ theme }) => ({
   animation: `1s cubic-bezier(0.22, 1, 0.36, 1) 0s 1 normal forwards running ${modal_transition}`,
   maxHeight: "80%",
   zIndex: 60,
+  [theme.breakpoints.down("sm")]: {
+    display: "flex",
+    transform: "none",
+    position: "fixed",
+    width: "100vw",
+    height: "100%",
+    maxHeight: "100%",
+    boxShadow: "rgb(60 64 67 / 30%) 0px 1px 2px 0px, rgb(60 64 67 / 15%) 0px 2px 6px 2px",
+    flexDirection: "column",
+    justifyContent: "center",
+    overflow: "hidden",
+    padding: "20px 15px 15px 15px",
+  backgroundColor: theme.palette.background.default,
+    left: 0,
+    top: 0,
+    bottom: 0,
+    right: 0,
+    borderRadius: 0,
+    animation: "1s cubic-bezier(0.22, 1, 0.36, 1) 0s 1 normal forwards running animation-1wf7x19",
+    zIndex: "60",
+}
 }));
 
 export const ChevronLeftIcon = styled(ChevronLeftSVG)({
@@ -91,6 +112,9 @@ export const CloseIcon = styled(CloseSVG)(({theme}) => ({
       scale: "1.1",
   },
   [theme.breakpoints.down("sm")]: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "flex-end",
     top: 0,
     right: "20px",
     bottom: "20px",
