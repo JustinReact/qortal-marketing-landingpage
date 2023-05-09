@@ -45,38 +45,45 @@ export const LinuxTerminal: React.FC<TerminalProps> = ({ setOpenModal }) => {
   }, [copied]);
 
   return (
-    <Grid item xs={12} sm={12} md={12} lg={6} className="terminal-container">
-      <MuseoFont variant="h3" sx={{ margin: "15px 0 20px 0" }}>
-        You can download the Qortal UI by copying the wget script below and
-        running it in your terminal!
-      </MuseoFont>
-      <MuseoFont variant="h3" sx={{ margin: "0px 0 20px 0" }}>
-        Once the download is completed, the application shortcut will appear
-        directly on your desktop. You can launch the UI directly from there!
-      </MuseoFont>
-      <ScriptCard>
-        <CopyButton onClick={copyToClipboard}>
-          Copy
-          {!copied ? (
-            <CopySVG color={"#ffffff"} height="22" width="22" />
-          ) : (
-            <CheckmarkIcon>
-              <CheckmarkSVG height="18" width="18" color={"#ffffff"} />
-            </CheckmarkIcon>
-          )}
-        </CopyButton>
-        <LinuxTerminalContainer>{linuxCommand}</LinuxTerminalContainer>
-      </ScriptCard>
-      <ScreenshotRow>
-        <ScreenshotContainer onClick={() => setOpenModal()}>
-          <Screenshot
-            sx={{ objectFit: "contain" }}
-            src={TerminalScreenshot}
-            alt="step1"
-          />
-          <MagnifyingGlass id="magnifying-glass" />
-        </ScreenshotContainer>
-      </ScreenshotRow>
+    <Grid container>
+      <Grid item xs={12} sm={12} md={12} lg={6}>
+        <MuseoFont variant="h3" sx={{ margin: "15px 0 20px 0" }}>
+          You can download the Qortal UI by copying the wget script below and
+          running it in your terminal!
+        </MuseoFont>
+        <MuseoFont variant="h3" sx={{ margin: "0px 0 20px 0" }}>
+          Once the download is completed, the application shortcut will appear
+          directly on your desktop. You can launch the UI directly from there!
+        </MuseoFont>
+        <ScriptCard>
+          <CopyButton onClick={copyToClipboard}>
+            Copy
+            {!copied ? (
+              <CopySVG color={"#ffffff"} height="22" width="22" />
+            ) : (
+              <CheckmarkIcon>
+                <CheckmarkSVG height="18" width="18" color={"#ffffff"} />
+              </CheckmarkIcon>
+            )}
+          </CopyButton>
+          <LinuxTerminalContainer>{linuxCommand}</LinuxTerminalContainer>
+        </ScriptCard>
+      </Grid>
+      <Grid item xs={12} sm={12} md={12} lg={6}>
+        <ScreenshotRow>
+          <ScreenshotContainer
+            sx={{ padding: "0 8px" }}
+            onClick={() => setOpenModal()}
+          >
+            <Screenshot
+              sx={{ objectFit: "contain" }}
+              src={TerminalScreenshot}
+              alt="step1"
+            />
+            <MagnifyingGlass id="magnifying-glass" />
+          </ScreenshotContainer>
+        </ScreenshotRow>
+      </Grid>
     </Grid>
   );
 };

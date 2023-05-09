@@ -132,7 +132,6 @@ export const StepCard = styled(Grid)(({ theme }) => ({
       ? "rgba(149, 157, 165, 0.2) 0px 8px 24px"
       : "none",
   backgroundColor: theme.palette.mode === "light" ? "#fff" : "#1a1d2c",
-  gap: "5px",
 }));
 
 export const StepCardInnerContainer = styled(Grid)(({ theme }) => ({
@@ -207,7 +206,7 @@ export const Screenshot = styled("img")({
   width: "100%",
   height: "350px",
   borderRadius: "5px",
-  objectFit: "cover",
+  objectFit: "contain",
 });
 
 export const ModalScreenshot = styled("img")(({ theme }) => ({

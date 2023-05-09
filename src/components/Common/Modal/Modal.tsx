@@ -1,4 +1,5 @@
 import { FC, useEffect, useRef, useState } from "react";
+import { useSwipeable } from "react-swipeable";
 import {
   Backdrop,
   ChevronLeftIcon,
@@ -51,6 +52,32 @@ const Modal: FC<ModalProps> = ({
       document.body.style.cssText = "";
     };
   }, [openModal]);
+
+  const imageSwipeHandlers = useSwipeable({
+    onSwipedUp: () => {
+      const imageIndex = images.findIndex((image) => image === imageSelected);
+      if (imageIndex === 0) {
+        setImageSelected(images[images.length - 1]);
+        onImageChangeFunc && onImageChangeFunc(images[images.length - 1]);
+      } else {
+        setImageSelected(images[imageIndex - 1]);
+        onImageChangeFunc && onImageChangeFunc(images[imageIndex - 1]);
+      }
+    },
+    onSwipedDown: () => {
+      const imageIndex = images.findIndex((image) => image === imageSelected);
+      if (imageIndex === images.length - 1) {
+        setImageSelected(images[0]);
+        onImageChangeFunc && onImageChangeFunc(images[0]);
+      } else {
+        setImageSelected(images[imageIndex + 1]);
+        onImageChangeFunc && onImageChangeFunc(images[imageIndex + 1]);
+      }
+    },
+    swipeDuration: 500,
+    preventScrollOnSwipe: true,
+    trackMouse: true,
+  });
 
   return (
     <div>
@@ -111,7 +138,7 @@ const Modal: FC<ModalProps> = ({
           </>
         )}
       </Backdrop>
-      <Modalbody>
+      <Modalbody {...imageSwipeHandlers}>
         <ModalScreenshot
           src={imageSelected}
           alt="modal-image"

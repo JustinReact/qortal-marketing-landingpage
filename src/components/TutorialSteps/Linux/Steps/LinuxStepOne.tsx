@@ -119,7 +119,7 @@ const LinuxStepOne = ({
           <StepCardInnerContainer container>
             {downloadOption === "appImage" ? (
               <>
-                <Grid item xs={12} sm={12} md={12} lg={6}>
+                <Grid item xs={12} md={12} lg={6}>
                   <StepColumn container direction="column">
                     <MuseoFont variant="h3">
                       Download and install the Qortal UI appimage installer by
@@ -148,7 +148,6 @@ const LinuxStepOne = ({
                   {...imageSwipeHandlers}
                   item
                   xs={12}
-                  sm={12}
                   md={12}
                   lg={6}
                 >

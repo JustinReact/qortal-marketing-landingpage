@@ -6,7 +6,7 @@ import { lightTheme, darkTheme } from "./styles/theme";
 import Home from "./pages/Home/Home";
 
 function App() {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState("dark");
 
   return (
     <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>

@@ -19,9 +19,9 @@ const WindowsStepTwo: FC<WindowsStepTwoProps> = () => {
 
   return (
     <>
-      <StepCard>
-        <Grid item xs={6}>
-          <StepColumn id="step-column" container direction="column">
+      <StepCard container>
+        <Grid item lg={6} md={12} xs={12}>
+          <StepColumn container direction="column">
             <MuseoFont variant="h3">
               You may encounter a Windows Security warning after trying to
               execute the Qortal.exe file you downloaded. Click{" "}
@@ -43,7 +43,9 @@ const WindowsStepTwo: FC<WindowsStepTwoProps> = () => {
         </Grid>
         <Grid
           item
-          xs={6}
+          lg={6}
+          md={12}
+          xs={12}
           sx={{
             objectFit: "contain",
             display: "flex",

@@ -18,8 +18,8 @@ const WindowsStepFive: FC<WindowsStepFiveProps> = () => {
 
   return (
     <>
-      <StepCard>
-        <Grid item xs={6}>
+      <StepCard container>
+        <Grid item lg={6} md={12} sm={12} xs={12}>
           <StepColumn container direction="column">
             <Typography
               fontFamily="Manrope"
@@ -35,7 +35,10 @@ const WindowsStepFive: FC<WindowsStepFiveProps> = () => {
         </Grid>
         <Grid
           item
-          xs={6}
+          lg={6}
+          md={12}
+          sm={12}
+          xs={12}
           sx={{
             objectFit: "contain",
             display: "flex",

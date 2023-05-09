@@ -16,6 +16,9 @@ import {
   StepInformation,
   StepName,
   StepTitle,
+  StepText,
+  StepSubText,
+  StepNumberBubble,
 } from "../Steps-styles";
 import { useTheme } from "@mui/material";
 import LinuxStepOne from "./Steps/LinuxStepOne";
@@ -62,23 +65,8 @@ const LinuxSteps = () => {
               selected={currentStep === step.step}
               onClick={() => setCurrentStep(step.step)}
             >
-              <Typography
-                fontFamily="Montserrat"
-                fontWeight="400"
-                variant="h4"
-                sx={{ userSelect: "none" }}
-              >
-                Step {step.step}
-              </Typography>
-              <Typography
-                fontFamily="Roboto"
-                fontWeight="400"
-                letterSpacing="0.3px"
-                variant="h5"
-                sx={{ userSelect: "none" }}
-              >
-                {step.name}
-              </Typography>
+              <StepText>Step {step.step}</StepText>
+              <StepSubText>{step.name}</StepSubText>
             </StepDiv>
           );
         })}
@@ -113,30 +101,18 @@ const LinuxSteps = () => {
                         : "linear-gradient(to right, #e4e2e2 0%, #e4e2e2 100%)",
                   }}
                 >
-                  <MobileStepDot
-                    onClick={() => setCurrentStep(1)}
-                    className={currentStep >= 1 ? "StepInnerDot" : ""}
-                  >
-                    1
-                  </MobileStepDot>
-                  <MobileStepDot
-                    onClick={() => setCurrentStep(2)}
-                    className={currentStep >= 2 ? "StepInnerDot" : ""}
-                  >
-                    2
-                  </MobileStepDot>
-                  <MobileStepDot
-                    onClick={() => setCurrentStep(3)}
-                    className={currentStep >= 3 ? "StepInnerDot" : ""}
-                  >
-                    3
-                  </MobileStepDot>
-                  <MobileStepDot
-                    onClick={() => setCurrentStep(4)}
-                    className={currentStep >= 4 ? "StepInnerDot" : ""}
-                  >
-                    4
-                  </MobileStepDot>
+                  {steps.map((step, index) => {
+                    return (
+                      <MobileStepDot
+                        onClick={() => setCurrentStep(index + 1)}
+                        className={
+                          currentStep >= index + 1 ? "StepInnerDot" : ""
+                        }
+                      >
+                        {index + 1}
+                      </MobileStepDot>
+                    );
+                  })}
                 </MobileStepLine>
               </MobileStepRow>
             </StepName>
@@ -166,20 +142,9 @@ const LinuxSteps = () => {
                   }}
                   onClick={() => setCurrentStep((prev) => prev - 1)}
                 />
-                <Typography
-                  variant="h4"
-                  fontFamily="Raleway"
-                  sx={{
-                    width: "fit-content",
-                    backgroundColor: "#6495ed",
-                    color: "white",
-                    padding: "5px 10px",
-                    borderRadius: "18px",
-                    userSelect: "none",
-                  }}
-                >
+                <StepNumberBubble variant="h5">
                   {`${currentStep} of ${steps.length}`}
-                </Typography>
+                </StepNumberBubble>
                 <RightArrow
                   onClick={() => setCurrentStep((prev) => prev + 1)}
                   style={{

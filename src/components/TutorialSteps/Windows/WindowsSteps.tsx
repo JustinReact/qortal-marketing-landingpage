@@ -12,6 +12,12 @@ import {
   StepText,
   StepSubText,
   StepNumberBubble,
+  StepTitle,
+  StepName,
+  MobileStepRow,
+  MobileStepLine,
+  MobileStepDot,
+  StepInformation,
 } from "../Steps-styles";
 import { useTheme } from "@mui/material";
 import WindowsStepOne from "./Steps/WindowsStepOne";
@@ -78,32 +84,51 @@ const WindowsSteps = () => {
         direction="column"
         sx={{
           minHeight: "500px",
-          gap: "15px",
+          justifyContent: "space-between",
           marginTop: isMobile ? "0" : "-20px",
         }}
       >
         <>
           <Grid container sx={{ alignItems: "center" }}>
-            <Grid item xs={12} sm={6}>
-              <Typography
-                variant="h4"
-                fontFamily="Raleway"
-                sx={{ userSelect: "none" }}
-              >
+            <StepName item xs={12} sm={6}>
+              <StepTitle>
                 {steps.filter((step) => step.step === currentStep)[0].name}
-              </Typography>
-            </Grid>
-            <Grid
-              item
-              xs={12}
-              sm={6}
-              sx={{
-                display: "flex",
-                justifyContent: "flex-end",
-                gap: "35px",
-                alignItems: "center",
-              }}
-            >
+              </StepTitle>
+              <MobileStepRow>
+                <MobileStepLine
+                  style={{
+                    background:
+                      currentStep === 1
+                        ? `linear-gradient(to right, ${theme.palette.secondary.light} 16.67%, #e4e2e2 16.67%, #e4e2e2 33.33%, #e4e2e2 50%, #e4e2e2 66.67%, #e4e2e2 83.33%, #e4e2e2 100%)`
+                        : currentStep === 2
+                        ? `linear-gradient(to right, ${theme.palette.secondary.light} 0%, ${theme.palette.secondary.light} 33.33%, #e4e2e2 33.33%, #e4e2e2 50%, #e4e2e2 66.67%, #e4e2e2 83.33%, #e4e2e2 100%)`
+                        : currentStep === 3
+                        ? `linear-gradient(to right, ${theme.palette.secondary.light} 0%, ${theme.palette.secondary.light} 50%, #e4e2e2 50%, #e4e2e2 66.67%, #e4e2e2 83.33%, #e4e2e2 100%)`
+                        : currentStep === 4
+                        ? `linear-gradient(to right, ${theme.palette.secondary.light} 0%, ${theme.palette.secondary.light} 66.67%, #e4e2e2 66.67%, #e4e2e2 83.33%, #e4e2e2 100%)`
+                        : currentStep === 5
+                        ? `linear-gradient(to right, ${theme.palette.secondary.light} 0%, ${theme.palette.secondary.light} 83.33%, #e4e2e2 83.33%, #e4e2e2 100%)`
+                        : currentStep === 6
+                        ? `linear-gradient(to right, ${theme.palette.secondary.light} 0%, ${theme.palette.secondary.light} 100%)`
+                        : "linear-gradient(to right, #e4e2e2 0%, #e4e2e2 100%)",
+                  }}
+                >
+                  {steps.map((step, index) => {
+                    return (
+                      <MobileStepDot
+                        onClick={() => setCurrentStep(index + 1)}
+                        className={
+                          currentStep >= index + 1 ? "StepInnerDot" : ""
+                        }
+                      >
+                        {index + 1}
+                      </MobileStepDot>
+                    );
+                  })}
+                </MobileStepLine>
+              </MobileStepRow>
+            </StepName>
+            <StepInformation item xs={12} sm={6}>
               <Box sx={{ width: "30%" }}>
                 <ProgressBar
                   variant="determinate"
@@ -132,7 +157,7 @@ const WindowsSteps = () => {
                   onClick={() => setCurrentStep((prev) => prev + 1)}
                 />
               </Box>
-            </Grid>
+            </StepInformation>
           </Grid>
         </>
         <Grid item sx={{ padding: "0" }}>

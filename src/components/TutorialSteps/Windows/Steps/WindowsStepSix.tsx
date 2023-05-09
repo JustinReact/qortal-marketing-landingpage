@@ -20,8 +20,8 @@ const WindowsStepSix: FC<WindowsStepSixProps> = () => {
 
   return (
     <>
-      <StepCard>
-        <Grid item xs={6}>
+      <StepCard container>
+        <Grid item lg={6} md={12} sm={12} xs={12}>
           <StepColumn container direction="column">
             <Typography
               fontFamily="Manrope"
@@ -64,7 +64,10 @@ const WindowsStepSix: FC<WindowsStepSixProps> = () => {
         </Grid>
         <Grid
           item
-          xs={6}
+          lg={6}
+          md={12}
+          sm={12}
+          xs={12}
           sx={{
             objectFit: "contain",
             display: "flex",
