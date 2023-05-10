@@ -12,16 +12,16 @@ interface StepDivProps {
   preventClick?: boolean;
 }
 
-export const Container = styled(Grid)({
+export const Container = styled(Grid)(({ theme }) => ({
   display: "grid",
   gridTemplateColumns: "1fr 2fr",
   width: " 100%",
   gridGap: "20px",
-  "@media (max-width: 600px)": {
+  [theme.breakpoints.down("md")]: {
     gridTemplateColumns: "1fr",
     gridGap: "20px",
   },
-});
+}));
 
 export const StepsColumn = styled(Grid)(({ theme }) => ({
   display: "flex",
@@ -39,7 +39,7 @@ export const StepsColumn = styled(Grid)(({ theme }) => ({
       : `${theme.palette.secondary.dark}`,
   borderRadius: "3px",
   boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px;",
-  [theme.breakpoints.down("sm")]: {
+  [theme.breakpoints.down("md")]: {
     display: "none",
   },
 }));
@@ -91,7 +91,7 @@ export const StepSubText = styled(Typography)({
 });
 
 export const StepName = styled(Grid)(({ theme }) => ({
-  [theme.breakpoints.down("sm")]: {
+  [theme.breakpoints.down("md")]: {
     display: "flex",
     justifyContent: "center",
     marginTop: "5px",
@@ -105,7 +105,7 @@ export const StepTitle = styled(Typography)(({ theme }) => ({
   fontSize: "18px",
   fontWeight: "normal",
   userSelect: "none",
-  [theme.breakpoints.down("sm")]: {
+  [theme.breakpoints.down("md")]: {
     fontSize: "19px",
     textAlign: "center",
     fontWeight: "bold",
@@ -117,7 +117,7 @@ export const StepInformation = styled(Grid)(({ theme }) => ({
   justifyContent: "flex-end",
   gap: "35px",
   alignItems: "center",
-  [theme.breakpoints.down("sm")]: {
+  [theme.breakpoints.down("md")]: {
     display: "none",
   },
 }));
@@ -517,7 +517,7 @@ export const ImageToggleDot = styled("div")<StepDivProps>(
 export const MobileStepRow = styled(Box)(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
-  [theme.breakpoints.up("sm")]: {
+  "@media (min-width: 960px)": {
     display: "none",
   },
 }));

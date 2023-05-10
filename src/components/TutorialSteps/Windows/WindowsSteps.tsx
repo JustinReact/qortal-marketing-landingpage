@@ -90,7 +90,7 @@ const WindowsSteps = () => {
       >
         <>
           <Grid container sx={{ alignItems: "center" }}>
-            <StepName item xs={12} sm={6}>
+            <StepName item xs={12} sm={12} md={6}>
               <StepTitle>
                 {steps.filter((step) => step.step === currentStep)[0].name}
               </StepTitle>
@@ -128,7 +128,7 @@ const WindowsSteps = () => {
                 </MobileStepLine>
               </MobileStepRow>
             </StepName>
-            <StepInformation item xs={12} sm={6}>
+            <StepInformation item xs={12} sm={12} md={6}>
               <Box sx={{ width: "30%" }}>
                 <ProgressBar
                   variant="determinate"
