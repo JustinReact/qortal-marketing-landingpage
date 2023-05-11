@@ -41,7 +41,7 @@ const commonThemeOptions = createTheme({
       fontSize: "30px",
     },
     h3: {
-      fontSize: "20px",
+      fontSize: "21px",
     },
     h4: {
       fontSize: "18px",

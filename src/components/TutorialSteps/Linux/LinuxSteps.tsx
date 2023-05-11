@@ -18,6 +18,7 @@ import {
   StepTitle,
   StepText,
   StepSubText,
+  StepInformationContainer,
   StepNumberBubble,
 } from "../Steps-styles";
 import { useTheme } from "@mui/material";
@@ -71,15 +72,7 @@ const LinuxSteps = () => {
           );
         })}
       </StepsColumn>
-      <Grid
-        container
-        direction="column"
-        sx={{
-          minHeight: "500px",
-          justifyContent: "space-between",
-          marginTop: isMobile ? "0" : "-20px",
-        }}
-      >
+      <StepInformationContainer container direction="column">
         <>
           <Grid container sx={{ alignItems: "center" }}>
             <StepName item xs={12} sm={12} md={6}>
@@ -104,6 +97,7 @@ const LinuxSteps = () => {
                   {steps.map((step, index) => {
                     return (
                       <MobileStepDot
+                        key={index}
                         onClick={() => setCurrentStep(index + 1)}
                         className={
                           currentStep >= index + 1 ? "StepInnerDot" : ""
@@ -177,10 +171,6 @@ const LinuxSteps = () => {
             display: "flex",
             justifyContent: currentStep !== 1 ? "space-between" : "flex-end",
             width: "100%",
-            marginTop:
-              currentStep === 1 && downloadOption === "terminal" && !isMobile
-                ? "auto"
-                : "15px",
           }}
         >
           <PreviousButton
@@ -200,7 +190,7 @@ const LinuxSteps = () => {
             Next
           </NextButton>
         </Box>
-      </Grid>
+      </StepInformationContainer>
     </Container>
   );
 };

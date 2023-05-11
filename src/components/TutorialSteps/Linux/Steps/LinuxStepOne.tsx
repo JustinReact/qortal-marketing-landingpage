@@ -78,7 +78,6 @@ const LinuxStepOne = ({
       <StepCard
         style={{
           padding: "18px 15px 15px 15px",
-          marginTop: isMobile ? "5px" : "18px",
           width: "100%",
         }}
       >

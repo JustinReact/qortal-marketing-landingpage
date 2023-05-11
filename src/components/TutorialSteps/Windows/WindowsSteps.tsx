@@ -18,6 +18,7 @@ import {
   MobileStepLine,
   MobileStepDot,
   StepInformation,
+  StepInformationContainer,
 } from "../Steps-styles";
 import { useTheme } from "@mui/material";
 import WindowsStepOne from "./Steps/WindowsStepOne";
@@ -79,15 +80,7 @@ const WindowsSteps = () => {
           );
         })}
       </StepsColumn>
-      <Grid
-        container
-        direction="column"
-        sx={{
-          minHeight: "500px",
-          justifyContent: "space-between",
-          marginTop: isMobile ? "0" : "-20px",
-        }}
-      >
+      <StepInformationContainer container direction="column">
         <>
           <Grid container sx={{ alignItems: "center" }}>
             <StepName item xs={12} sm={12} md={6}>
@@ -116,6 +109,7 @@ const WindowsSteps = () => {
                   {steps.map((step, index) => {
                     return (
                       <MobileStepDot
+                        key={index}
                         onClick={() => setCurrentStep(index + 1)}
                         className={
                           currentStep >= index + 1 ? "StepInnerDot" : ""
@@ -180,7 +174,6 @@ const WindowsSteps = () => {
             display: "flex",
             justifyContent: currentStep !== 1 ? "space-between" : "flex-end",
             width: "100%",
-            marginTop: "15px",
           }}
         >
           <PreviousButton
@@ -200,7 +193,7 @@ const WindowsSteps = () => {
             Next
           </NextButton>
         </Box>
-      </Grid>
+      </StepInformationContainer>
     </Container>
   );
 };

@@ -28,6 +28,7 @@ export const StepsColumn = styled(Grid)(({ theme }) => ({
   flexDirection: "column",
   justifyContent: "space-evenly",
   minHeight: "400px",
+  minWidth: "330px",
   flex: 1,
   gap: "7px",
   padding: "2px 0",
@@ -47,6 +48,7 @@ export const StepsColumn = styled(Grid)(({ theme }) => ({
 export const StepDiv = styled(Grid)<StepDivProps>(({ selected, theme }) => ({
   padding: "8px 20px",
   transition: "all 0.3s ease-in-out",
+  overflow: "hidden",
   boxShadow:
     selected && theme.palette.mode === "light"
       ? `0px 0px 5px ${theme.palette.secondary.main}`
@@ -87,10 +89,15 @@ export const StepSubText = styled(Typography)({
   fontWeight: "300",
   letterSpacing: "0.3px",
   fontSize: "17px",
+  overflow: "hidden",
+  textOverflow: "ellipsis",
+  whiteSpace: "nowrap",
+  maxWidth: "100%",
   userSelect: "none",
 });
 
 export const StepName = styled(Grid)(({ theme }) => ({
+  overflow: "hidden",
   [theme.breakpoints.down("md")]: {
     display: "flex",
     justifyContent: "center",
@@ -104,12 +111,22 @@ export const StepTitle = styled(Typography)(({ theme }) => ({
   fontFamily: "Raleway",
   fontSize: "18px",
   fontWeight: "normal",
+  overflow: "hidden",
+  textOverflow: "ellipsis",
+  whiteSpace: "nowrap",
+  maxWidth: "100%",
   userSelect: "none",
   [theme.breakpoints.down("md")]: {
     fontSize: "19px",
     textAlign: "center",
     fontWeight: "bold",
   },
+}));
+
+
+export const StepInformationContainer = styled(Grid)(({ theme }) => ({
+  minHeight: "500px",
+    gap: "13px"
 }));
 
 export const StepInformation = styled(Grid)(({ theme }) => ({
