@@ -50,7 +50,6 @@ export const Column = styled(Grid)({
 });
 
 export const HeaderText = styled(Typography)(({ theme }) => ({
-  fontSize: "42px",
   fontFamily: "Montserrat",
   fontWeight: "600",
   letterSpacing: "1.5px",
@@ -59,6 +58,9 @@ export const HeaderText = styled(Typography)(({ theme }) => ({
   color: theme.palette.text.primary,
   marginTop: "25px",
   userSelect: "none",
+  [theme.breakpoints.only("md")]: {
+    padding: "0 15px",
+  },
   [theme.breakpoints.down("sm")]: {
     lineHeight: "55px",
   },
@@ -70,11 +72,21 @@ export const SubHeaderText = styled(Typography)(({ theme }) => ({
   letterSpacing: "0.3px",
   fontSize: "32px",
   userSelect: "none",
+  [theme.breakpoints.only("md")]: {
+    padding: "0 15px",
+  },
   [theme.breakpoints.down("sm")]: {
     textAlign: "center",
     lineHeight: "40px",
     marginTop: "10px",
   },
+}));
+
+export const FooterRow = styled(Grid)(({ theme }) => ({ 
+  gap: '15px',
+  [theme.breakpoints.down("sm")]: {
+    gap: '35px',
+  }
 }));
 
 export const ButtonRow = styled(Box)(({theme}) => ({
@@ -84,9 +96,9 @@ export const ButtonRow = styled(Box)(({theme}) => ({
   width: "100%",
   zIndex: 2,
   [theme.breakpoints.down("sm")]: {
+    flexDirection: "column",
     gap: "30px",
     justifyContent: "center",
-    marginTop: "55px",
     paddingBottom: "15px",
   },
 }));
@@ -99,6 +111,7 @@ export const StyledButton = styled(Button)(({theme}) => ({
   color: "#ffffff",
   backgroundColor: "#115bc5",
   transition: "all 0.3s ease-in-out",
+  gap: "10px",
   "&:hover": {
     backgroundColor: "#043596",
   },

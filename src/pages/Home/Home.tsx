@@ -15,12 +15,15 @@ import {
   ThemeSelectRow,
   ButtonRow,
   QortalLogoContainer,
+  FooterRow,
 } from "./Home-styles";
 import { LightModeSVG } from "../../components/Common/Icons/LightModeSVG";
 import { DarkModeSVG } from "../../components/Common/Icons/DarkModeSVG";
 import OperatingSystem from "../../components/OperatingSystem/OperatingSystem";
 import QortalLogo from "../../images/Logo/QortalLogo.png";
-
+import { WindowsSVG } from "../../components/Common/Icons/WindowsSVG";
+import { LinuxSVG } from "../../components/Common/Icons/LinuxSVG";
+import { AppleSVG } from "../../components/Common/Icons/AppleSVG";
 // Define your component's props interface here
 interface HomeProps {
   setTheme: (val: string) => void;
@@ -73,7 +76,7 @@ const Home: FC<HomeProps> = ({ setTheme }) => {
           </TriangleContainer>
         </DiscordButton>
       </HeaderNav>
-      <HeaderText>
+      <HeaderText  variant="h1">
         <span style={{ color: theme.palette.secondary.main }}>
           Build Javascript Applications
         </span>{" "}
@@ -85,9 +88,12 @@ const Home: FC<HomeProps> = ({ setTheme }) => {
           ? "Fast installation, and faster app deployment! Firstly, which OS are you using?"
           : operatingSystem === "windows"
           ? "Windows Guide"
-          : "Linux Guide"}
+          : operatingSystem === "linux" ? "Linux Guide"
+          : operatingSystem === "mac" ? "Mac Guide"
+          : null
+        }
       </SubHeaderText>
-      <Grid container>
+      <FooterRow container>
         {!operatingSystem ? (
           <>
             <QortalBigLogo />
@@ -96,12 +102,21 @@ const Home: FC<HomeProps> = ({ setTheme }) => {
                 onClick={() => setOperatingSystem("windows")}
                 variant="contained"
               >
+                <WindowsSVG color={"#ffffff"} height={"25"} width={"25"} />
                 Windows
+              </StyledButton>
+              <StyledButton
+                onClick={() => setOperatingSystem("mac")}
+                variant="contained"
+              >
+                <AppleSVG color={"#ffffff"} height={"25"} width={"25"} />
+                Mac
               </StyledButton>
               <StyledButton
                 onClick={() => setOperatingSystem("linux")}
                 variant="contained"
               >
+                <LinuxSVG color={"#ffffff"} height={"25"} width={"25"} />
                 Linux
               </StyledButton>
             </ButtonRow>
@@ -112,7 +127,7 @@ const Home: FC<HomeProps> = ({ setTheme }) => {
             setOperatingSystem={setOperatingSystem}
           />
         )}
-      </Grid>
+      </FooterRow>
     </Wrapper>
   );
 };

@@ -8,6 +8,7 @@ import { FC } from "react";
 import WindowsSteps from "../TutorialSteps/Windows/WindowsSteps";
 import LinuxSteps from "../TutorialSteps/Linux/LinuxSteps";
 import { BackArrowSVG } from "../Common/Icons/BackArrowSVG";
+import MacSteps from "../TutorialSteps/Mac/MacSteps";
 
 interface OperatingSystemOptions {
   operatingSystem: string;
@@ -38,7 +39,13 @@ const OperatingSystem: FC<OperatingSystemOptions> = ({
           display: isMobile ? "none" : "block",
         }}
       />
-      {operatingSystem === "windows" ? <WindowsSteps /> : <LinuxSteps />}
+      {operatingSystem === "windows" ? (
+        <WindowsSteps />
+      ) : operatingSystem === "linux" ? (
+        <LinuxSteps />
+      ) : operatingSystem === "mac" ? (
+        <MacSteps />
+      ) : null}
     </MainContainer>
   );
 };

@@ -3,7 +3,6 @@ import { Grid } from "@mui/material";
 import {
   DownloadButton,
   MagnifyingGlass,
-  ModalScreenshot,
   MuseoFont,
   Screenshot,
   ScreenshotContainer,

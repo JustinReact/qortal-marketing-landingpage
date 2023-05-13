@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Grid, Box } from "@mui/material";
+import { useState, Fragment } from "react";
+import { Grid, Typography, Box } from "@mui/material";
 import {
   Container,
   NextButton,
@@ -22,12 +22,9 @@ import {
   StepNumberBubble,
 } from "../Steps-styles";
 import { useTheme } from "@mui/material";
-import LinuxStepOne from "./Steps/LinuxStepOne";
-import WindowsStepFour from "../Windows/Steps/WindowsStepFour";
-import WindowsStepFive from "../Windows/Steps/WindowsStepFive";
-import WindowsStepSix from "../Windows/Steps/WindowsStepSix";
+import MacStepOne from "./Steps/MacStepOne";
 
-const LinuxSteps = () => {
+const MacSteps = () => {
   const theme = useTheme();
 
   const [steps] = useState<{ step: number; name: string }[]>([
@@ -40,18 +37,21 @@ const LinuxSteps = () => {
       name: "Install Qortal Core",
     },
     {
-      step: 3,
-      name: "Make Sure Core is Running",
+      step: 2,
+      name: "Make Sure Java is Installed",
     },
     {
       step: 4,
+      name: "Make Sure Core is Running",
+    },
+    {
+      step: 5,
       name: "Completed! 🎉",
     },
   ]);
 
   const [currentStep, setCurrentStep] = useState<number>(1);
   const [shinyButton, setShinyButton] = useState<boolean>(false);
-  const [downloadOption, setDownloadOption] = useState<string>("appImage");
 
   return (
     <Container container>
@@ -119,10 +119,7 @@ const LinuxSteps = () => {
                 sx={{
                   display: "flex",
                   alignItems: "center",
-                  justifyContent:
-                    currentStep === 1 && downloadOption === "terminal"
-                      ? "flex-start"
-                      : "space-evenly",
+                  justifyContent: "space-evenly",
                   gap: "15px",
                 }}
               >
@@ -151,18 +148,7 @@ const LinuxSteps = () => {
           </Grid>
         </>
         <LinuxStepsContainer item>
-          {currentStep === 1 ? (
-            <LinuxStepOne
-              downloadOption={downloadOption}
-              setDownloadOption={setDownloadOption}
-            />
-          ) : currentStep === 2 ? (
-            <WindowsStepFour />
-          ) : currentStep === 3 ? (
-            <WindowsStepFive />
-          ) : currentStep === 4 ? (
-            <WindowsStepSix />
-          ) : null}
+          {currentStep === 1 ? <MacStepOne setShinyButton={setShinyButton} /> : null}
         </LinuxStepsContainer>
         <Box
           sx={{
@@ -193,4 +179,4 @@ const LinuxSteps = () => {
   );
 };
 
-export default LinuxSteps;
+export default MacSteps;

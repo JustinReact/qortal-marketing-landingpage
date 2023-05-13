@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSwipeable } from "react-swipeable";
 import { LinuxTerminal } from "../LinuxTerminal/LinuxTerminal";
 import { Grid, Typography, Box, useTheme, useMediaQuery } from "@mui/material";
@@ -37,6 +37,8 @@ const LinuxStepOne = ({
 
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [selectedImage, setSelectedImage] = useState<string>(LinuxDownloadImg);
+  const [modalImages, setModalImages] = useState<string[]>([]);
+
 
   const images = [
     {
@@ -48,6 +50,19 @@ const LinuxStepOne = ({
       alt: "step2",
     },
   ];
+
+   // Only re-render the modal when the openModal state changes
+
+  useEffect(() => {
+    if (openModal) {
+      setModalImages([
+        selectedImage,
+        ...images
+          .filter((img) => img.src !== selectedImage)
+          .map((img) => img.src),
+      ]);
+    }
+  }, [openModal]);
 
   const imageSwipeHandlers = useSwipeable({
     onSwipedLeft: () =>
@@ -193,12 +208,7 @@ const LinuxStepOne = ({
             setOpenModal(false);
           }}
           onImageChangeFunc={(image) => setSelectedImage(image)}
-          images={[
-            selectedImage,
-            ...images
-              .filter((img) => img.src !== selectedImage)
-              .map((img) => img.src),
-          ]}
+          images={modalImages}
         ></Modal>
       ) : openModal && downloadOption === "terminal" ? (
         <Modal

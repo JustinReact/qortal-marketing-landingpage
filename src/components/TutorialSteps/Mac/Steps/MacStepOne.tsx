@@ -1,6 +1,8 @@
-import { FC, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useSwipeable } from "react-swipeable";
+import { Grid } from "@mui/material";
 import {
+  DownloadButton,
   ImageToggleDot,
   ImageToggleRow,
   MagnifyingGlass,
@@ -11,43 +13,52 @@ import {
   StepCard,
   StepColumn,
 } from "../../Steps-styles";
-import { Grid, Typography } from "@mui/material";
 import Modal from "../../../Common/Modal/Modal";
-import StartQortalCore from "../../../../images/Windows/WindowsStepFive.webp";
-import ChangeStartQortalCoreDefault from "../../../../images/Windows/WindowsStepFive2.webp";
+import MacStepOne1 from "../../../../images/Mac/MacStep1-1.jpg";
+import MacStepOne2 from "../../../../images/Mac/MacStep1-2.jpg";
+import MacStepOne3 from "../../../../images/Mac/MacStep1-3.jpg";
+import MacStepOne4 from "../../../../images/Mac/MacStep1-4.jpg";
 
-interface WindowsStepFiveProps {}
+interface MacStepOneProps {
+  setShinyButton: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
-const WindowsStepFive: FC<WindowsStepFiveProps> = () => {
+const MacStepOne = ({ setShinyButton }: MacStepOneProps) => {
   const [openModal, setOpenModal] = useState<boolean>(false);
-  const [selectedImage, setSelectedImage] = useState<string>(StartQortalCore);
+  const [selectedImage, setSelectedImage] = useState<string>(MacStepOne1);
   const [modalImages, setModalImages] = useState<string[]>([]);
-
 
   const images = [
     {
-      src: StartQortalCore,
+      src: MacStepOne1,
       alt: "step1",
     },
     {
-      src: ChangeStartQortalCoreDefault,
+      src: MacStepOne2,
       alt: "step2",
+    },
+    {
+      src: MacStepOne3,
+      alt: "step3",
+    },
+    {
+      src: MacStepOne4,
+      alt: "step4",
     },
   ];
 
-    // Only re-render the modal when the openModal state changes
+  // Only re-render the modal when the openModal state changes
 
-    useEffect(() => {
-      if (openModal) {
-        setModalImages([
-          selectedImage,
-          ...images
-            .filter((img) => img.src !== selectedImage)
-            .map((img) => img.src),
-        ]);
-      }
-    }, [openModal]);
-  
+  useEffect(() => {
+    if (openModal) {
+      setModalImages([
+        selectedImage,
+        ...images
+          .filter((img) => img.src !== selectedImage)
+          .map((img) => img.src),
+      ]);
+    }
+  }, [openModal]);
 
   const imageSwipeHandlers = useSwipeable({
     onSwipedLeft: () =>
@@ -76,38 +87,33 @@ const WindowsStepFive: FC<WindowsStepFiveProps> = () => {
   return (
     <>
       <StepCard container>
-        <Grid item lg={6} md={12} sm={12} xs={12}>
+        <Grid item lg={6} md={12} xs={12}>
           <StepColumn container direction="column">
             <MuseoFont variant="h3">
-              If your core is not running when launching the Qortal UI, you will
-              be automatically prompted to start it. Click the button{" "}
-              <span style={{ fontWeight: "bold" }}>START QORTAL CORE</span> to
-              start the core.
+              Get started with Qortal by downloading our user-friendly UI!
+            </MuseoFont>
+            <DownloadButton
+              variant="contained"
+              onClick={() => {
+                setShinyButton(true);
+                return;
+                window.location.href =
+                  "https://github.com/Qortal/qortal-ui/releases/latest/download/Qortal-Setup-macOS.dmg";
+              }}
+            >
+              Download Qortal UI
+            </DownloadButton>
+            <MuseoFont variant="h3">
+              When prompted if you sure you want to open this file, click{" "}
+              <strong>"Open"</strong>.
             </MuseoFont>
             <MuseoFont variant="h3">
-              You may optionally choose to have the core start automatically
-              when you launch the Qortal UI by checking the box at the bottom of
-              the modal.
-            </MuseoFont>
-            <MuseoFont variant="h3">
-              This option can later be changed by right clicking on the Qortal
-              UI icon in the bottom right
+              Once downloaded, open the .dmg file and drag the Qortal icon into
+              the Applications folder.
             </MuseoFont>
           </StepColumn>
         </Grid>
-        <ScreenshotColumn
-          {...imageSwipeHandlers}
-          item
-          lg={6}
-          md={12}
-          xs={12}
-          sx={{
-            objectFit: "contain",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
+        <ScreenshotColumn {...imageSwipeHandlers} item lg={6} md={12} xs={12}>
           {images.map((image, index) => (
             <ScreenshotContainer
               key={index}
@@ -150,4 +156,4 @@ const WindowsStepFive: FC<WindowsStepFiveProps> = () => {
   );
 };
 
-export default WindowsStepFive;
+export default MacStepOne;
