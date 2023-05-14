@@ -23,6 +23,8 @@ import {
 } from "../Steps-styles";
 import { useTheme } from "@mui/material";
 import MacStepOne from "./Steps/MacStepOne";
+import MacStepTwo from "./Steps/MacStepTwo";
+import MacStepThree from "./Steps/MacStepThree";
 
 const MacSteps = () => {
   const theme = useTheme();
@@ -34,11 +36,11 @@ const MacSteps = () => {
     },
     {
       step: 2,
-      name: "Install Qortal Core",
+      name: "Make Sure Java is Installed",
     },
     {
-      step: 2,
-      name: "Make Sure Java is Installed",
+      step: 3,
+      name: "Install Qortal Core",
     },
     {
       step: 4,
@@ -148,7 +150,14 @@ const MacSteps = () => {
           </Grid>
         </>
         <LinuxStepsContainer item>
-          {currentStep === 1 ? <MacStepOne setShinyButton={setShinyButton} /> : null}
+          {currentStep === 1 ? (
+            <MacStepOne setShinyButton={setShinyButton} />
+          ) : currentStep === 2 ? (
+            <MacStepTwo />
+          ) : currentStep === 3 ? (
+            <MacStepThree />
+          )
+          : null}
         </LinuxStepsContainer>
         <Box
           sx={{

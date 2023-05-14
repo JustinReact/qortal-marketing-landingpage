@@ -1,13 +1,17 @@
+import { FC } from "react";
 import { Divider, useMediaQuery, useTheme } from "@mui/material";
+import { BackArrowSVG } from "../Common/Icons/BackArrowSVG";
 import {
   BackArrowIcon,
   BackButton,
+  BackRow,
+  DownArrowIcon,
   MainContainer,
+  SubHeaderRow,
+  SubHeaderText,
 } from "./OperatingSystem-styles";
-import { FC } from "react";
 import WindowsSteps from "../TutorialSteps/Windows/WindowsSteps";
 import LinuxSteps from "../TutorialSteps/Linux/LinuxSteps";
-import { BackArrowSVG } from "../Common/Icons/BackArrowSVG";
 import MacSteps from "../TutorialSteps/Mac/MacSteps";
 
 interface OperatingSystemOptions {
@@ -24,10 +28,45 @@ const OperatingSystem: FC<OperatingSystemOptions> = ({
 
   return (
     <MainContainer container>
-      <BackButton onClick={() => setOperatingSystem("")}>Back Home</BackButton>
-      <BackArrowIcon onClick={() => setOperatingSystem("")}>
-        <BackArrowSVG color="#ffffff" height="25" width="25" />
-      </BackArrowIcon>
+      <BackRow>
+        <BackButton onClick={() => setOperatingSystem("")}>
+          Back Home
+        </BackButton>
+        <SubHeaderText sx={{}}>
+          <SubHeaderRow>
+            <BackArrowIcon onClick={() => setOperatingSystem("")}>
+              <BackArrowSVG color="#ffffff" height="25" width="25" />
+            </BackArrowIcon>
+            {operatingSystem === "windows" ? (
+              <span>
+                Follow through the steps below to install Qortal on{" "}
+                <span style={{ color: theme.palette.secondary.main }}>
+                  Windows
+                </span>
+              </span>
+            ) : operatingSystem === "linux" ? (
+              <span>
+                Follow through the steps below to install Qortal on{" "}
+                <span style={{ color: theme.palette.secondary.main }}>
+                  Linux
+                </span>
+              </span>
+            ) : operatingSystem === "mac" ? (
+              <span>
+                Follow through the steps below to install Qortal on{" "}
+                <span style={{ color: theme.palette.secondary.main }}>
+                  Mac OS
+                </span>
+              </span>
+            ) : null}
+            <DownArrowIcon
+              color={theme.palette.text.primary}
+              height={"32"}
+              width={"32"}
+            />
+          </SubHeaderRow>
+        </SubHeaderText>
+      </BackRow>
       <Divider
         component="div"
         role="presentation"

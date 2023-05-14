@@ -70,7 +70,6 @@ export const SubHeaderText = styled(Typography)(({ theme }) => ({
   fontFamily: "Oxygen",
   fontWeight: "400",
   letterSpacing: "0.3px",
-  fontSize: "32px",
   userSelect: "none",
   [theme.breakpoints.only("md")]: {
     padding: "0 15px",
@@ -83,7 +82,7 @@ export const SubHeaderText = styled(Typography)(({ theme }) => ({
 }));
 
 export const FooterRow = styled(Grid)(({ theme }) => ({ 
-  gap: '15px',
+  gap: '20px',
   [theme.breakpoints.down("sm")]: {
     gap: '35px',
   }

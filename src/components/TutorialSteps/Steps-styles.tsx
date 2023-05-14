@@ -123,10 +123,9 @@ export const StepTitle = styled(Typography)(({ theme }) => ({
   },
 }));
 
-
 export const StepInformationContainer = styled(Grid)(({ theme }) => ({
   minHeight: "500px",
-    gap: "13px"
+  gap: "13px",
 }));
 
 export const StepInformation = styled(Grid)(({ theme }) => ({
@@ -258,7 +257,7 @@ export const PreviousButton = styled(Button)({
   },
 });
 
-export const NextButton = styled(Button)<StepDivProps>(({ shiny }) => ({
+export const NextButton = styled(Button)<StepDivProps>(({ shiny, theme }) => ({
   position: "relative",
   padding: "5px 10px",
   borderRadius: "6px",
@@ -277,7 +276,11 @@ export const NextButton = styled(Button)<StepDivProps>(({ shiny }) => ({
     backgroundColor: "#00c71b",
     boxShadow: shiny?.isOn
       ? "0 0 20px rgba(255, 255, 255, 0.8)"
-      : "rgba(0, 0, 0, 0.1) 0px 4px 12px",
+      : !shiny?.isOn && theme.palette.mode === "light"
+      ? "rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px"
+      : !shiny?.isOn && theme.palette.mode === "dark"
+      ? "0px 24px 38px 3px hsla(0,0%,0%,0.09), 0px 9px 46px 8px hsla(0,0%,0%,0.09), 0px 11px 14px -7px hsla(0,0%,0%,0.9);"
+      : "none",
   },
   "&::before": {
     content: '""',

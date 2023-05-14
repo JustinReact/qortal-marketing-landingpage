@@ -84,14 +84,7 @@ const Home: FC<HomeProps> = ({ setTheme }) => {
         Fully Decentralized Blockchain Platform: Qortal
       </HeaderText>
       <SubHeaderText variant="h2">
-        {!operatingSystem
-          ? "Fast installation, and faster app deployment! Firstly, which OS are you using?"
-          : operatingSystem === "windows"
-          ? "Windows Guide"
-          : operatingSystem === "linux" ? "Linux Guide"
-          : operatingSystem === "mac" ? "Mac Guide"
-          : null
-        }
+        Fast installation, and faster app deployment! Firstly, which OS are you using?
       </SubHeaderText>
       <FooterRow container>
         {!operatingSystem ? (

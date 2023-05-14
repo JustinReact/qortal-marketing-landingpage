@@ -26,14 +26,14 @@ const WindowsStepFour: FC<WindowsStepFourProps> = () => {
             >
               Upon launching the Qortal UI, you will be prompted to install the
               Qortal Core, which will connect you to the Qortal Blockchain.
-              Click <span style={{ fontWeight: "bold" }}>DOWNLOAD QORTAL CORE</span> to install
+              Click <strong>DOWNLOAD QORTAL CORE</strong> to install
               the Qortal Core.
             </MuseoFont>
             <MuseoFont
               variant="h3"
             >
               Once launched, you will be able to create a{" "}
-              <span style={{ fontWeight: "bold" }}>new account</span>, or import
+              <strong>new account</strong>, or import
               an existing account. You will then be able to start minting and
               building Q-Apps.
             </MuseoFont>
