@@ -6,6 +6,7 @@ import { lightTheme, darkTheme } from "./styles/theme";
 import Home from "./pages/Home/Home";
 import { NotFound } from "./pages/NotFound/NotFound";
 import { ErrorElement } from "./components/Common/Error/ErrorElement";
+import Api from "./pages/Docs/Api/Api";
 
 function App() {
   const [theme, setTheme] = useState("dark");
@@ -32,6 +33,10 @@ function App() {
             path="/"
             element={<Home setTheme={(val: string) => setTheme(val)} />}
           />
+          <Route
+              path="/docs/api"
+              element={<Api setTheme={(val: string) => setTheme(val)} />}
+            />
           <Route path="*" element={<NotFound />} />
         </Routes>
       )}
