@@ -54,3 +54,21 @@ export const Code = styled('code')(({ theme }) => ({
   fontFamily: "'Courier New', monospace",
   color: '#333'
 }))
+export const RowContainer = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  gap: '10px',
+  alignItems: 'center'
+}))
+export const ColumnContainer = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  gap: '10px',
+  flexDirection: 'column'
+}))
+
+export const InformationParagraph = styled(Typography)(({ theme }) => ({
+  fontSize: '16px',
+  lineHeight: '28px',
+  fontFamily: 'Roboto',
+  width: 'fit-content',
+  color: theme.palette.mode === 'light' ? '#837d7d' : '#6f7587'
+}))

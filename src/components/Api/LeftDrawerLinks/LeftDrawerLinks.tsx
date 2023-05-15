@@ -149,7 +149,13 @@ export const LeftDrawerLinks: FC<LeftDrawerLinksProps> = ({
                                 subSection?.id === selectedSection ? 'red' : ''
                             }}
                           >
-                            <ListItemText primary={subSection.title} />
+                            <Typography
+                              sx={{
+                                fontSize: '12px'
+                              }}
+                            >
+                              {subSection.title}
+                            </Typography>
                           </ListItemButton>
                         </ListItem>
                       )

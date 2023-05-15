@@ -13,6 +13,12 @@ import { IntegrationIntroduction } from '../components/Api/ApiSections/Javascrip
 import { Interaction } from '../components/Api/ApiSections/JavascriptIntegration/Interaction'
 import { QortalRequestIntroduction } from '../components/Api/ApiSections/QortalRequest/QortalRequestIntroduction'
 import { GET_USER_ACCOUNT } from '../components/Api/ApiSections/QortalRequest/GET_USER_ACCOUNT'
+import { GET_ACCOUNT_DATA } from '../components/Api/ApiSections/QortalRequest/GET_ACCOUNT_DATA'
+import { GET_ACCOUNT_NAMES } from '../components/Api/ApiSections/QortalRequest/GET_ACCOUNT_NAMES'
+import { SEARCH_NAMES } from '../components/Api/ApiSections/QortalRequest/SEARCH_NAMES'
+import { GET_NAME_DATA } from '../components/Api/ApiSections/QortalRequest/GET_NAME_DATA'
+import { LIST_QDN_RESOURCES } from '../components/Api/ApiSections/QortalRequest/LIST_QDN_RESOURCES'
+import { SEARCH_QDN_RESOURCES } from '../components/Api/ApiSections/QortalRequest/SEARCH_QDN_RESOURCES'
 
 export const tableOfContents = [
   {
@@ -99,23 +105,33 @@ export const tableOfContents = [
       },
       {
         title: 'GET_ACCOUNT_DATA',
-        component: ''
+        Component: (props: any) => <GET_ACCOUNT_DATA {...props} />,
+        id: 'GET_ACCOUNT_DATA'
       },
       {
         title: 'GET_ACCOUNT_NAMES',
-        component: ''
+        Component: (props: any) => <GET_ACCOUNT_NAMES {...props} />,
+        id: 'GET_ACCOUNT_NAMES'
+      },
+      {
+        title: 'SEARCH_NAMES',
+        Component: (props: any) => <SEARCH_NAMES {...props} />,
+        id: 'SEARCH_NAMES'
       },
       {
         title: 'GET_NAME_DATA',
-        component: ''
+        Component: (props: any) => <GET_NAME_DATA {...props} />,
+        id: 'GET_NAME_DATA'
       },
       {
         title: 'LIST_QDN_RESOURCES',
-        component: ''
+        Component: (props: any) => <LIST_QDN_RESOURCES {...props} />,
+        id: 'LIST_QDN_RESOURCES'
       },
       {
         title: 'SEARCH_QDN_RESOURCES',
-        component: ''
+        Component: (props: any) => <SEARCH_QDN_RESOURCES {...props} />,
+        id: 'SEARCH_QDN_RESOURCES'
       },
       {
         title: 'GET_QDN_RESOURCE_STATUS',

@@ -10,11 +10,14 @@ import {
   SectionParagraph,
   SubTitle
 } from '../Common/common-styles'
+import { Box, Button, Grid, Typography } from '@mui/material'
+
 import { DisplayCode } from '../Common/DisplayCode'
 import { DisplayCodeResponse } from '../Common/DisplayCodeResponse'
 import InfoIcon from '@mui/icons-material/Info'
-import { Box, Typography } from '@mui/material'
 import { InformationSection } from '../Common/InformationSection'
+import { LinkApi } from '../Common/LinkApi'
+
 interface SectionProps {
   title: string
   setSelectedSection: (sectionId: string) => void
@@ -22,19 +25,24 @@ interface SectionProps {
 }
 
 const codeBlock1 = `
-const account = await qortalRequest({
-  action: "GET_USER_ACCOUNT"
+const response = await qortalRequest({
+  action: "GET_NAME_DATA",
+  name: "QortalDemo"
 });
 `.trim()
 
 const codeBlockResponse = `
 {
-  "address": "QZLJV7wbaFyxaoZQsjm6rb9MWMiDzWsqM2",
-  "publicKey": "APLQ85zRbgRdrLTU7GgeTt35kvVhxmSjoCB4wX99HjYd",
+  "name": "QortalDemo",
+  "reducedName": "q0rta1dem0",
+  "owner": "QZLJV7wbaFyxaoZQsjm6rb9MWMiDzWsqM2",
+  "data": "Registered Name on the Qortal Chain",
+  "registered": 1628962032704,
+  "isForSale": false
 }
 `.trim()
 
-export const GET_USER_ACCOUNT: FC<SectionProps> = ({
+export const GET_NAME_DATA: FC<SectionProps> = ({
   title,
   setSelectedSection,
   id
@@ -53,7 +61,10 @@ export const GET_USER_ACCOUNT: FC<SectionProps> = ({
         >
           <InformationSection>
             <InformationParagraph>
-              This action requires user approval
+              Equivalent to:{' '}
+              <LinkApi url="api-documentation/#/Names/getName">
+                <Code>/names/QortalDemo</Code>
+              </LinkApi>
             </InformationParagraph>
           </InformationSection>
 
