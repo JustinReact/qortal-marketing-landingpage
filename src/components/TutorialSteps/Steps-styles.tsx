@@ -120,6 +120,7 @@ export const StepTitle = styled(Typography)(({ theme }) => ({
     fontSize: "19px",
     textAlign: "center",
     fontWeight: "bold",
+    whiteSpace: "normal",
   },
 }));
 
@@ -218,12 +219,15 @@ export const DownloadButton = styled(Button)(({ theme }) => ({
   },
 }));
 
-export const Screenshot = styled("img")({
+export const Screenshot = styled("img")(({ theme }) => ({
   width: "100%",
-  height: "350px",
+  height: "auto",
   borderRadius: "5px",
   objectFit: "contain",
-});
+  [theme.breakpoints.up("sm")]: {
+    paddingLeft: "5px"
+  }
+}));
 
 export const ModalScreenshot = styled("img")(({ theme }) => ({
   width: "100%",

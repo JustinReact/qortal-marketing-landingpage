@@ -2,6 +2,7 @@ import { FC, useState } from "react";
 import {
   MagnifyingGlass,
   ModalScreenshot,
+  MuseoFont,
   Screenshot,
   ScreenshotContainer,
   StepCard,
@@ -18,23 +19,24 @@ const WindowsStepThree: FC<WindowsStepThreeProps> = () => {
 
   return (
     <>
-      <StepCard>
-        <Grid item xs={6}>
+      <StepCard container>
+        <Grid item lg={6} md={12} sm={12} xs={12}>
           <StepColumn container direction="column">
-            <Typography
-              fontFamily="Manrope"
-              variant="h4"
-              sx={{ userSelect: "none", lineHeight: "30px" }}
+            <MuseoFont
+              variant="h3"
             >
               Execute the Qortal installer located in your downloads folder.
               Click next next next finish through the install like any normal
               installation.
-            </Typography>
+            </MuseoFont>
           </StepColumn>
         </Grid>
         <Grid
           item
-          xs={6}
+          lg={6}
+          md={12}
+          sm={12}
+          xs={12}
           sx={{
             objectFit: "contain",
             display: "flex",

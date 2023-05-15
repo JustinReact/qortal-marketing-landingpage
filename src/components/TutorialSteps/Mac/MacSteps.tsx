@@ -25,6 +25,8 @@ import { useTheme } from "@mui/material";
 import MacStepOne from "./Steps/MacStepOne";
 import MacStepTwo from "./Steps/MacStepTwo";
 import MacStepThree from "./Steps/MacStepThree";
+import MacStepFour from "./Steps/MacStepFour";
+import WindowsStepSix from "../Windows/Steps/WindowsStepSix";
 
 const MacSteps = () => {
   const theme = useTheme();
@@ -156,6 +158,10 @@ const MacSteps = () => {
             <MacStepTwo />
           ) : currentStep === 3 ? (
             <MacStepThree />
+          ) : currentStep === 4 ? (
+            <MacStepFour />
+          ) : currentStep === 5 ? (
+            <WindowsStepSix />
           )
           : null}
         </LinuxStepsContainer>

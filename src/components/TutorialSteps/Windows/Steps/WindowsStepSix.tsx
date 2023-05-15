@@ -8,6 +8,7 @@ import {
   StepColumn,
   ArrowDown,
   ProceedButton,
+  MuseoFont,
 } from "../../Steps-styles";
 import { Box, Grid, Typography } from "@mui/material";
 import Modal from "../../../Common/Modal/Modal";
@@ -23,25 +24,17 @@ const WindowsStepSix: FC<WindowsStepSixProps> = () => {
       <StepCard container>
         <Grid item lg={6} md={12} sm={12} xs={12}>
           <StepColumn container direction="column">
-            <Typography
-              fontFamily="Manrope"
-              variant="h4"
-              sx={{ userSelect: "none", lineHeight: "30px" }}
-            >
+            <MuseoFont variant="h3">
               Once you have opened Qortal, you can visit the Q-Apps section in
               the sidenav menu. Here you can find a list of all the Q-Apps that
               are currently available. You can download those you wish to try,
               or upload your own.
-            </Typography>
-            <Typography
-              fontFamily="Manrope"
-              variant="h4"
-              sx={{ userSelect: "none", lineHeight: "30px" }}
-            >
+            </MuseoFont>
+            <MuseoFont variant="h3">
               For more information on Q-Apps, proceed to the next section, where
               you will find an explainer video, as well as a short PDF guide you
               can download to learn more about Q-Apps.
-            </Typography>
+            </MuseoFont>
             <Box
               sx={{
                 display: "flex",
