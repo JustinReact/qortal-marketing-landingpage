@@ -4,8 +4,6 @@ import ZoomInIcon from "@mui/icons-material/ZoomIn";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
-import { ChevronLeftSVG } from "../Common/Icons/ChevronLeftSVG";
-import { ChevronRightSVG } from "../Common/Icons/ChevronRightSVG";
 
 interface StepDivProps {
   selected?: boolean;
@@ -14,22 +12,23 @@ interface StepDivProps {
   preventClick?: boolean;
 }
 
-export const Container = styled(Grid)({
+export const Container = styled(Grid)(({ theme }) => ({
   display: "grid",
   gridTemplateColumns: "1fr 2fr",
   width: " 100%",
   gridGap: "20px",
-  "@media (max-width: 600px)": {
+  [theme.breakpoints.down("md")]: {
     gridTemplateColumns: "1fr",
     gridGap: "20px",
   },
-});
+}));
 
 export const StepsColumn = styled(Grid)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   justifyContent: "space-evenly",
   minHeight: "400px",
+  minWidth: "330px",
   flex: 1,
   gap: "7px",
   padding: "2px 0",
@@ -41,7 +40,7 @@ export const StepsColumn = styled(Grid)(({ theme }) => ({
       : `${theme.palette.secondary.dark}`,
   borderRadius: "3px",
   boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px;",
-  [theme.breakpoints.down("sm")]: {
+  [theme.breakpoints.down("md")]: {
     display: "none",
   },
 }));
@@ -49,6 +48,7 @@ export const StepsColumn = styled(Grid)(({ theme }) => ({
 export const StepDiv = styled(Grid)<StepDivProps>(({ selected, theme }) => ({
   padding: "8px 20px",
   transition: "all 0.3s ease-in-out",
+  overflow: "hidden",
   boxShadow:
     selected && theme.palette.mode === "light"
       ? `0px 0px 5px ${theme.palette.secondary.main}`
@@ -89,11 +89,16 @@ export const StepSubText = styled(Typography)({
   fontWeight: "300",
   letterSpacing: "0.3px",
   fontSize: "17px",
+  overflow: "hidden",
+  textOverflow: "ellipsis",
+  whiteSpace: "nowrap",
+  maxWidth: "100%",
   userSelect: "none",
 });
 
 export const StepName = styled(Grid)(({ theme }) => ({
-  [theme.breakpoints.down("sm")]: {
+  overflow: "hidden",
+  [theme.breakpoints.down("md")]: {
     display: "flex",
     justifyContent: "center",
     marginTop: "5px",
@@ -106,12 +111,22 @@ export const StepTitle = styled(Typography)(({ theme }) => ({
   fontFamily: "Raleway",
   fontSize: "18px",
   fontWeight: "normal",
+  overflow: "hidden",
+  textOverflow: "ellipsis",
+  whiteSpace: "nowrap",
+  maxWidth: "100%",
   userSelect: "none",
-  [theme.breakpoints.down("sm")]: {
+  [theme.breakpoints.down("md")]: {
     fontSize: "19px",
     textAlign: "center",
     fontWeight: "bold",
+    whiteSpace: "normal",
   },
+}));
+
+export const StepInformationContainer = styled(Grid)(({ theme }) => ({
+  minHeight: "500px",
+  gap: "13px",
 }));
 
 export const StepInformation = styled(Grid)(({ theme }) => ({
@@ -119,7 +134,7 @@ export const StepInformation = styled(Grid)(({ theme }) => ({
   justifyContent: "flex-end",
   gap: "35px",
   alignItems: "center",
-  [theme.breakpoints.down("sm")]: {
+  [theme.breakpoints.down("md")]: {
     display: "none",
   },
 }));
@@ -134,7 +149,17 @@ export const StepCard = styled(Grid)(({ theme }) => ({
       ? "rgba(149, 157, 165, 0.2) 0px 8px 24px"
       : "none",
   backgroundColor: theme.palette.mode === "light" ? "#fff" : "#1a1d2c",
-  gap: "5px",
+}));
+
+export const StepCardInnerContainer = styled(Grid)(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  [theme.breakpoints.down("md")]: {
+    flexDirection: "column",
+  },
+  [theme.breakpoints.only("md")]: {
+    gap: "15px",
+  },
 }));
 
 export const StepColumn = styled(Grid)(({ theme }) => ({
@@ -174,6 +199,9 @@ export const StepColumn = styled(Grid)(({ theme }) => ({
   "@media (max-width: 600px)": {
     padding: "20px",
   },
+  [theme.breakpoints.down("md")]: {
+    maxHeight: "100%",
+  },
 }));
 
 export const DownloadButton = styled(Button)(({ theme }) => ({
@@ -191,21 +219,27 @@ export const DownloadButton = styled(Button)(({ theme }) => ({
   },
 }));
 
-export const Screenshot = styled("img")({
+export const Screenshot = styled("img")(({ theme }) => ({
   width: "100%",
-  height: "350px",
+  height: "auto",
   borderRadius: "5px",
-  objectFit: "cover",
-});
+  objectFit: "contain",
+  [theme.breakpoints.up("sm")]: {
+    paddingLeft: "5px"
+  }
+}));
 
-export const ModalScreenshot = styled("img")({
+export const ModalScreenshot = styled("img")(({ theme }) => ({
   width: "100%",
   height: "100%",
   borderRadius: "5px",
   userSelect: "none",
   objectFit: "contain",
   maxHeight: "-webkit-fill-available",
-});
+  [theme.breakpoints.down("sm")]: {
+    rotate: "90deg",
+  },
+}));
 
 export const PreviousButton = styled(Button)({
   position: "relative",
@@ -227,7 +261,7 @@ export const PreviousButton = styled(Button)({
   },
 });
 
-export const NextButton = styled(Button)<StepDivProps>(({ shiny }) => ({
+export const NextButton = styled(Button)<StepDivProps>(({ shiny, theme }) => ({
   position: "relative",
   padding: "5px 10px",
   borderRadius: "6px",
@@ -246,7 +280,11 @@ export const NextButton = styled(Button)<StepDivProps>(({ shiny }) => ({
     backgroundColor: "#00c71b",
     boxShadow: shiny?.isOn
       ? "0 0 20px rgba(255, 255, 255, 0.8)"
-      : "rgba(0, 0, 0, 0.1) 0px 4px 12px",
+      : !shiny?.isOn && theme.palette.mode === "light"
+      ? "rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px"
+      : !shiny?.isOn && theme.palette.mode === "dark"
+      ? "0px 24px 38px 3px hsla(0,0%,0%,0.09), 0px 9px 46px 8px hsla(0,0%,0%,0.09), 0px 11px 14px -7px hsla(0,0%,0%,0.9);"
+      : "none",
   },
   "&::before": {
     content: '""',
@@ -281,7 +319,6 @@ export const MagnifyingGlass = styled(ZoomInIcon)({
 
 export const ScreenshotContainer = styled(Box)({
   position: "relative",
-  objectFit: "cover",
   userSelect: "none",
   "&:hover": {
     cursor: "pointer",
@@ -479,23 +516,32 @@ export const ImageToggleRow = styled(Box)({
   gap: "12px",
 });
 
-export const ImageToggleDot = styled("div")<StepDivProps>(({ selected }) => ({
-  width: "10px",
-  height: "10px",
-  borderRadius: "50%",
-  backgroundColor: selected ? "#616161" : "#cecaca",
-  border: "none",
-  transition: "all 0.3s ease-in-out",
-  "&:hover": {
-    cursor: "pointer",
-    filter: selected ? "brightness(1)" : "brightness(0.8)",
-  },
-}));
+export const ImageToggleDot = styled("div")<StepDivProps>(
+  ({ selected, theme }) => ({
+    width: "10px",
+    height: "10px",
+    borderRadius: "50%",
+    backgroundColor:
+      selected && theme.palette.mode === "dark"
+        ? "#cecaca"
+        : selected && theme.palette.mode === "light"
+        ? "#616161"
+        : !selected && theme.palette.mode === "dark"
+        ? "#616161"
+        : "#cecaca",
+    border: "none",
+    transition: "all 0.3s ease-in-out",
+    "&:hover": {
+      cursor: "pointer",
+      filter: selected ? "brightness(1)" : "brightness(0.8)",
+    },
+  })
+);
 
 export const MobileStepRow = styled(Box)(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
-  [theme.breakpoints.up("sm")]: {
+  "@media (min-width: 960px)": {
     display: "none",
   },
 }));

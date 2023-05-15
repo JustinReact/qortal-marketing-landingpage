@@ -1,7 +1,7 @@
 import { forwardRef, HTMLAttributes } from "react";
-import { ChevronSVGProps } from "./IconTypes";
+import { IconTypes } from "./IconTypes";
 
-type Props = ChevronSVGProps & HTMLAttributes<HTMLDivElement>;
+type Props = IconTypes & HTMLAttributes<HTMLDivElement>;
 
 export const ChevronLeftSVG = forwardRef<HTMLDivElement, Props>(
   ({ color, height, width, onClickFunc, className }, ref) => {

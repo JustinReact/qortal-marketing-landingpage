@@ -35,13 +35,13 @@ const commonThemeOptions = createTheme({
       textTransform: "none",
     },
     h1: {
-      fontSize: "40px",
+      fontSize: "42px",
     },
     h2: {
-      fontSize: "30px",
+      fontSize: "32px",
     },
     h3: {
-      fontSize: "20px",
+      fontSize: "21px",
     },
     h4: {
       fontSize: "18px",

@@ -1,24 +1,34 @@
-import { FC, useEffect, useRef, useState } from "react";
-import { Backdrop, Modalbody } from "./Modal-styles";
-import { ChevronLeftSVG } from "../Icons/ChevronLeftSVG";
-import { ChevronRightSVG } from "../Icons/ChevronRightSVG";
+import { FC, useEffect, useRef, useState, memo } from "react";
+import { useSwipeable } from "react-swipeable";
+import {
+  Backdrop,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  CloseIcon,
+  Modalbody,
+} from "./Modal-styles";
 import { ModalScreenshot } from "../../TutorialSteps/Steps-styles";
-import { Box, useTheme } from "@mui/material";
+import { useTheme } from "@mui/material";
 
 interface ModalProps {
   openModal: boolean;
+  onImageChangeFunc?: (image: string) => void;
   onClickFunc: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
   images: string[];
 }
 
-const Modal: FC<ModalProps> = ({ onClickFunc, openModal, images }) => {
+const Modal: FC<ModalProps> = ({
+  onClickFunc,
+  onImageChangeFunc,
+  openModal,
+  images,
+}) => {
   const theme = useTheme();
   const modalRef = useRef(null);
-
-  const [imageSelected, setImageSelected] = useState<string>(images[0]);
-
   const toggleLeftRef = useRef<HTMLDivElement | null>(null);
   const toggleRightRef = useRef<HTMLDivElement | null>(null);
+
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
   useEffect(() => {
     if (modalRef.current) {
@@ -42,8 +52,34 @@ const Modal: FC<ModalProps> = ({ onClickFunc, openModal, images }) => {
     };
   }, [openModal]);
 
-  console.log({ imageSelected });
-  console.log({ images });
+  const handlePreviousImage = () => {
+    const newIndex =
+      selectedImageIndex === 0 ? images.length - 1 : selectedImageIndex - 1;
+    onImageChangeFunc && onImageChangeFunc(images[newIndex]);
+    setSelectedImageIndex(newIndex);
+  };
+
+  const handleNextImage = () => {
+    const newIndex =
+      selectedImageIndex === images.length - 1 ? 0 : selectedImageIndex + 1;
+
+    onImageChangeFunc && onImageChangeFunc(images[newIndex]);
+    setSelectedImageIndex(newIndex);
+  };
+
+  // Modal Mobile Swipe Handlers
+
+  const imageSwipeHandlers = useSwipeable({
+    onSwipedUp: () => {
+      handlePreviousImage();
+    },
+    onSwipedDown: () => {
+      handleNextImage();
+    },
+    swipeDuration: 500,
+    preventScrollOnSwipe: true,
+    trackMouse: true,
+  });
 
   return (
     <div>
@@ -62,48 +98,40 @@ const Modal: FC<ModalProps> = ({ onClickFunc, openModal, images }) => {
       >
         {images.length > 1 && (
           <>
-            <ChevronLeftSVG
+            <ChevronLeftIcon
               onClickFunc={() => {
-                const imageIndex = images.findIndex(
-                  (image) => image === imageSelected
-                );
-                if (imageIndex === 0) {
-                  setImageSelected(images[images.length - 1]);
-                } else {
-                  setImageSelected(images[imageIndex - 1]);
-                }
+                handlePreviousImage();
               }}
               color={theme.palette.text.primary}
               height={"50"}
               width={"50"}
-              className={"chevron-left"}
               ref={toggleLeftRef}
             />
-            <ChevronRightSVG
+            <ChevronRightIcon
               onClickFunc={() => {
-                const imageIndex = images.findIndex(
-                  (image) => image === imageSelected
-                );
-                if (imageIndex === images.length - 1) {
-                  setImageSelected(images[0]);
-                } else {
-                  setImageSelected(images[imageIndex + 1]);
-                }
+                handleNextImage();
               }}
               color={theme.palette.text.primary}
               height={"50"}
               width={"50"}
-              className={"chevron-right"}
               ref={toggleRightRef}
             />
           </>
         )}
       </Backdrop>
-      <Modalbody>
+      <Modalbody {...imageSwipeHandlers}>
         <ModalScreenshot
-          src={imageSelected}
+          src={images[selectedImageIndex]}
           alt="modal-image"
         ></ModalScreenshot>
+        <CloseIcon
+          onClickFunc={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+            onClickFunc(e);
+          }}
+          color={theme.palette.text.primary}
+          height={"32"}
+          width={"32"}
+        />
       </Modalbody>
     </div>
   );

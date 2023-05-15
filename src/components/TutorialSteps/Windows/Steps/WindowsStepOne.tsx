@@ -3,7 +3,6 @@ import { Grid } from "@mui/material";
 import {
   DownloadButton,
   MagnifyingGlass,
-  ModalScreenshot,
   MuseoFont,
   Screenshot,
   ScreenshotContainer,
@@ -22,9 +21,9 @@ const WindowsStepOne = ({ setShinyButton }: WindowsStepOneProps) => {
 
   return (
     <>
-      <StepCard>
-        <Grid item xs={6}>
-          <StepColumn container direction="column" style={{ gap: "25px" }}>
+      <StepCard container>
+        <Grid item lg={6} md={12} xs={12}>
+          <StepColumn container direction="column">
             <MuseoFont variant="h3">
               Get started with Qortal by downloading our user-friendly UI!
             </MuseoFont>
@@ -43,7 +42,9 @@ const WindowsStepOne = ({ setShinyButton }: WindowsStepOneProps) => {
         </Grid>
         <Grid
           item
-          xs={6}
+          lg={6}
+          md={12}
+          xs={12}
           sx={{
             objectFit: "contain",
             display: "flex",

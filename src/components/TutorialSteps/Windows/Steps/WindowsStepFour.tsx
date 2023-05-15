@@ -1,13 +1,13 @@
 import { FC, useState } from "react";
 import {
   MagnifyingGlass,
-  ModalScreenshot,
+  MuseoFont,
   Screenshot,
   ScreenshotContainer,
   StepCard,
   StepColumn,
 } from "../../Steps-styles";
-import { Grid, Link, Typography } from "@mui/material";
+import { Grid} from "@mui/material";
 import Modal from "../../../Common/Modal/Modal";
 import StepFourImg from "../../../../images/Windows/WindowsStepFour.webp";
 
@@ -18,34 +18,33 @@ const WindowsStepFour: FC<WindowsStepFourProps> = () => {
 
   return (
     <>
-      <StepCard>
-        <Grid item xs={6}>
-          <StepColumn container direction="column">
-            <Typography
-              fontFamily="Manrope"
-              variant="h4"
-              sx={{ userSelect: "none", lineHeight: "30px" }}
+      <StepCard container>
+        <Grid item lg={6} md={12} sm={12} xs={12}>
+          <StepColumn>
+            <MuseoFont
+              variant="h3"
             >
               Upon launching the Qortal UI, you will be prompted to install the
               Qortal Core, which will connect you to the Qortal Blockchain.
-              Click <span style={{ fontWeight: "bold" }}>yes</span> to install
+              Click <strong>DOWNLOAD QORTAL CORE</strong> to install
               the Qortal Core.
-            </Typography>
-            <Typography
-              fontFamily="Manrope"
-              variant="h4"
-              sx={{ userSelect: "none", lineHeight: "30px" }}
+            </MuseoFont>
+            <MuseoFont
+              variant="h3"
             >
               Once launched, you will be able to create a{" "}
-              <span style={{ fontWeight: "bold" }}>new account</span>, or import
+              <strong>new account</strong>, or import
               an existing account. You will then be able to start minting and
               building Q-Apps.
-            </Typography>
+            </MuseoFont>
           </StepColumn>
         </Grid>
         <Grid
           item
-          xs={6}
+          lg={6}
+          md={12}
+          sm={12}
+          xs={12}
           sx={{
             objectFit: "contain",
             display: "flex",

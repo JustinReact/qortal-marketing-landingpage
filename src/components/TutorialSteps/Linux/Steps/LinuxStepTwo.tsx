@@ -18,6 +18,8 @@ import {
 import LinuxDownloadImg from "../../../../images/Linux/LinuxDownload.png";
 import Modal from "../../../Common/Modal/Modal";
 
+// Not currently used
+
 const LinuxStepTwo = () => {
   const theme = useTheme();
   const [openModal, setOpenModal] = useState<boolean>(false);
@@ -34,7 +36,7 @@ const LinuxStepTwo = () => {
         <LinuxStepColumnsContainer>
           <Grid container sx={{ display: "flex", alignItems: "center" }}>
             <>
-              <Grid item xs={6}>
+              <Grid item sm={6} xs={12}>
                 <StepColumn container direction="column">
                   <MuseoFont variant="h3">
                     Download and install the Qortal UI appimage installer by

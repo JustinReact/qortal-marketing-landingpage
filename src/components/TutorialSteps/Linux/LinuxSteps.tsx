@@ -1,5 +1,5 @@
-import { useState, Fragment } from "react";
-import { Grid, Typography, Box } from "@mui/material";
+import { useState } from "react";
+import { Grid, Box } from "@mui/material";
 import {
   Container,
   NextButton,
@@ -16,19 +16,21 @@ import {
   StepInformation,
   StepName,
   StepTitle,
+  StepText,
+  StepSubText,
+  StepInformationContainer,
+  StepNumberBubble,
 } from "../Steps-styles";
 import { useTheme } from "@mui/material";
 import LinuxStepOne from "./Steps/LinuxStepOne";
-import useMediaQuery from "@mui/material/useMediaQuery";
 import WindowsStepFour from "../Windows/Steps/WindowsStepFour";
 import WindowsStepFive from "../Windows/Steps/WindowsStepFive";
 import WindowsStepSix from "../Windows/Steps/WindowsStepSix";
 
 const LinuxSteps = () => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
-  const [steps, setSteps] = useState<{ step: number; name: string }[]>([
+  const [steps] = useState<{ step: number; name: string }[]>([
     {
       step: 1,
       name: "Download & Install Qortal UI",
@@ -62,39 +64,16 @@ const LinuxSteps = () => {
               selected={currentStep === step.step}
               onClick={() => setCurrentStep(step.step)}
             >
-              <Typography
-                fontFamily="Montserrat"
-                fontWeight="400"
-                variant="h4"
-                sx={{ userSelect: "none" }}
-              >
-                Step {step.step}
-              </Typography>
-              <Typography
-                fontFamily="Roboto"
-                fontWeight="400"
-                letterSpacing="0.3px"
-                variant="h5"
-                sx={{ userSelect: "none" }}
-              >
-                {step.name}
-              </Typography>
+              <StepText>Step {step.step}</StepText>
+              <StepSubText>{step.name}</StepSubText>
             </StepDiv>
           );
         })}
       </StepsColumn>
-      <Grid
-        container
-        direction="column"
-        sx={{
-          minHeight: "500px",
-          justifyContent: "space-between",
-          marginTop: isMobile ? "0" : "-20px",
-        }}
-      >
+      <StepInformationContainer container direction="column">
         <>
           <Grid container sx={{ alignItems: "center" }}>
-            <StepName item xs={12} sm={6}>
+            <StepName item xs={12} sm={12} md={6}>
               <StepTitle>
                 {steps.filter((step) => step.step === currentStep)[0].name}
               </StepTitle>
@@ -113,34 +92,23 @@ const LinuxSteps = () => {
                         : "linear-gradient(to right, #e4e2e2 0%, #e4e2e2 100%)",
                   }}
                 >
-                  <MobileStepDot
-                    onClick={() => setCurrentStep(1)}
-                    className={currentStep >= 1 ? "StepInnerDot" : ""}
-                  >
-                    1
-                  </MobileStepDot>
-                  <MobileStepDot
-                    onClick={() => setCurrentStep(2)}
-                    className={currentStep >= 2 ? "StepInnerDot" : ""}
-                  >
-                    2
-                  </MobileStepDot>
-                  <MobileStepDot
-                    onClick={() => setCurrentStep(3)}
-                    className={currentStep >= 3 ? "StepInnerDot" : ""}
-                  >
-                    3
-                  </MobileStepDot>
-                  <MobileStepDot
-                    onClick={() => setCurrentStep(4)}
-                    className={currentStep >= 4 ? "StepInnerDot" : ""}
-                  >
-                    4
-                  </MobileStepDot>
+                  {steps.map((step, index) => {
+                    return (
+                      <MobileStepDot
+                        key={index}
+                        onClick={() => setCurrentStep(index + 1)}
+                        className={
+                          currentStep >= index + 1 ? "StepInnerDot" : ""
+                        }
+                      >
+                        {index + 1}
+                      </MobileStepDot>
+                    );
+                  })}
                 </MobileStepLine>
               </MobileStepRow>
             </StepName>
-            <StepInformation item xs={12} sm={6}>
+            <StepInformation item xs={12} sm={6} md={6}>
               <Box sx={{ width: "30%" }}>
                 <ProgressBar
                   variant="determinate"
@@ -166,20 +134,9 @@ const LinuxSteps = () => {
                   }}
                   onClick={() => setCurrentStep((prev) => prev - 1)}
                 />
-                <Typography
-                  variant="h4"
-                  fontFamily="Raleway"
-                  sx={{
-                    width: "fit-content",
-                    backgroundColor: "#6495ed",
-                    color: "white",
-                    padding: "5px 10px",
-                    borderRadius: "18px",
-                    userSelect: "none",
-                  }}
-                >
+                <StepNumberBubble variant="h5">
                   {`${currentStep} of ${steps.length}`}
-                </Typography>
+                </StepNumberBubble>
                 <RightArrow
                   onClick={() => setCurrentStep((prev) => prev + 1)}
                   style={{
@@ -212,10 +169,6 @@ const LinuxSteps = () => {
             display: "flex",
             justifyContent: currentStep !== 1 ? "space-between" : "flex-end",
             width: "100%",
-            marginTop:
-              currentStep === 1 && downloadOption === "terminal"
-                ? "auto"
-                : "15px",
           }}
         >
           <PreviousButton
@@ -235,7 +188,7 @@ const LinuxSteps = () => {
             Next
           </NextButton>
         </Box>
-      </Grid>
+      </StepInformationContainer>
     </Container>
   );
 };

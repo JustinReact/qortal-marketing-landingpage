@@ -1,3 +1,5 @@
+// Font Families
+
 @font-face {
   font-family: "CambonLight";
   src: url("./assets/fonts/Cambon-Light.ttf") format("truetype");
@@ -31,26 +33,4 @@
 @font-face {
   font-family: "Museo";
   src: url("./assets/fonts/Museo.ttf") format("truetype");
-}
-
-.chevron-left {
-  position: absolute;
-  left: 50px;
-  top: 50%;
-  transition: all 0.3s ease-in-out;
-  & :hover {
-    cursor: pointer;
-    scale: 1.07;
-  }
-}
-
-.chevron-right {
-  position: absolute;
-  right: 50px;
-  top: 50%;
-  transition: all 0.3s ease-in-out;
-  & :hover {
-    cursor: pointer;
-    scale: 1.07;
-  }
 }

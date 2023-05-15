@@ -2,9 +2,6 @@ export interface IconTypes {
   color: string;
   height: string;
   width: string;
-  onClickFunc?: () => void;
-}
-
-export interface ChevronSVGProps extends IconTypes {
   className?: string;
+  onClickFunc?: ((e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void) | (() => void);
 }
