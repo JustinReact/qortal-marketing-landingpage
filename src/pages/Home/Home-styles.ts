@@ -1,162 +1,80 @@
-import { styled } from "@mui/system";
-import { Box, Button, Grid, Typography } from "@mui/material";
-
-export const Wrapper = styled("div")({
-  position: "relative",
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  justifyContent: "flex-start",
-  minHeight: "100vh",
-  padding: "2rem 1rem",
-  gap: "20px",
-});
-
-export const ThemeSelectRow = styled(Box)({
-  display: "flex",
-  alignItems: "center",
-  gap: "25px",
-});
-
-export const HeaderNav = styled(Box)(({ theme }) => ({
-  display: "flex",
-  flexDirection: "row",
-  justifyContent: "space-between",
-  alignItems: "center",
-  width: "100%",
-  padding: "0 100px",
-  [theme.breakpoints.only("xs")]: {
-    padding: "0",
-  },
-}));
-
-export const QortalLogoContainer = styled("img")(({ theme }) => ({
-  width: "120px",
-  height: "auto",
-  userSelect: "none",
-  objectFit: "contain",
-  cursor: "pointer",
-  filter:
-    theme.palette.mode === "dark"
-      ? "drop-shadow(0px 4px 6px rgba(255, 255, 255, 0.1)) brightness(1.2)"
-      : "none",
-}));
+import { styled } from '@mui/system'
+import { Box, Button, Grid, Typography } from '@mui/material'
 
 export const Column = styled(Grid)({
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "center",
-  alignItems: "center",
-});
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center'
+})
 
 export const HeaderText = styled(Typography)(({ theme }) => ({
-  fontFamily: "Montserrat",
-  fontWeight: "600",
-  letterSpacing: "1.5px",
-  lineHeight: "60px",
-  textAlign: "center",
+  fontFamily: 'Montserrat',
+  fontWeight: '600',
+  letterSpacing: '1.5px',
+  lineHeight: '60px',
+  textAlign: 'center',
   color: theme.palette.text.primary,
-  marginTop: "25px",
-  userSelect: "none",
-  [theme.breakpoints.only("md")]: {
-    padding: "0 15px",
+  marginTop: '25px',
+  userSelect: 'none',
+  [theme.breakpoints.only('md')]: {
+    padding: '0 15px'
   },
-  [theme.breakpoints.down("sm")]: {
-    lineHeight: "55px",
-  },
-}));
+  [theme.breakpoints.down('sm')]: {
+    lineHeight: '55px'
+  }
+}))
 
 export const SubHeaderText = styled(Typography)(({ theme }) => ({
-  fontFamily: "Oxygen",
-  fontWeight: "400",
-  letterSpacing: "0.3px",
-  userSelect: "none",
-  [theme.breakpoints.only("md")]: {
-    padding: "0 15px",
+  fontFamily: 'Oxygen',
+  fontWeight: '400',
+  letterSpacing: '0.3px',
+  userSelect: 'none',
+  [theme.breakpoints.only('md')]: {
+    padding: '0 15px'
   },
-  [theme.breakpoints.down("sm")]: {
-    textAlign: "center",
-    lineHeight: "40px",
-    marginTop: "10px",
-  },
-}));
+  [theme.breakpoints.down('sm')]: {
+    textAlign: 'center',
+    lineHeight: '40px',
+    marginTop: '10px'
+  }
+}))
 
-export const FooterRow = styled(Grid)(({ theme }) => ({ 
+export const FooterRow = styled(Grid)(({ theme }) => ({
   gap: '20px',
-  [theme.breakpoints.down("sm")]: {
-    gap: '35px',
+  [theme.breakpoints.down('sm')]: {
+    gap: '35px'
   }
-}));
+}))
 
-export const ButtonRow = styled(Box)(({theme}) => ({
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "space-evenly",
-  width: "100%",
+export const ButtonRow = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-evenly',
+  width: '100%',
   zIndex: 2,
-  [theme.breakpoints.down("sm")]: {
-    flexDirection: "column",
-    gap: "30px",
-    justifyContent: "center",
-    paddingBottom: "15px",
-  },
-}));
-
-export const StyledButton = styled(Button)(({theme}) => ({
-  fontSize: "25px",
-  borderRadius: "35px",
-  padding: "7px 55px",
-  fontFamily: "Montserrat",
-  color: "#ffffff",
-  backgroundColor: "#115bc5",
-  transition: "all 0.3s ease-in-out",
-  gap: "10px",
-  "&:hover": {
-    backgroundColor: "#043596",
-  },
-  [theme.breakpoints.down("sm")]: {
-    minWidth: "154px",
-    padding: "7px 25px",
+  [theme.breakpoints.down('sm')]: {
+    flexDirection: 'column',
+    gap: '30px',
+    justifyContent: 'center',
+    paddingBottom: '15px'
   }
-}));
+}))
 
-export const DiscordButton = styled(Button)(({ theme }) => ({
-  display: "flex",
-  justifyContent: "space-between",
-  border: "2px solid #4a93f8",
-  backgroundColor: "#1e62c3",
-  fontFamily: "Oxygen",
-  fontSize: "16px",
-  color: "white",
-  height: "48px",
-  borderRadius: "2px",
-  padding: "0 0 0 20px",
-  transition: "all 0.3s ease-in-out",
-  "&:hover": {
-    backgroundColor: "#1e62c3",
-    boxShadow:
-      theme.palette.mode === "dark"
-        ? "0px 8px 10px 1px hsla(0,0%,0%,0.14), 0px 3px 14px 2px hsla(0,0%,0%, 12), 0px 5px 5px -3px hsla(0,0%,0%,0.2)"
-        : "rgba(0, 0, 0, 0.1) 0px 4px 12px",
+export const StyledButton = styled(Button)(({ theme }) => ({
+  fontSize: '25px',
+  borderRadius: '35px',
+  padding: '7px 55px',
+  fontFamily: 'Montserrat',
+  color: '#ffffff',
+  backgroundColor: '#115bc5',
+  transition: 'all 0.3s ease-in-out',
+  gap: '10px',
+  '&:hover': {
+    backgroundColor: '#043596'
   },
-}));
-
-export const TriangleContainer = styled(Box)({
-  display: "flex",
-  alignItems: "center",
-  width: "40px",
-  height: "100%",
-  padding: "0 20px",
-  marginLeft: "20px",
-  backgroundColor: "rgb(53,159,247)",
-  background:
-    "linear-gradient(180deg, rgba(53,159,247,1) 30%, rgba(127,124,245,1) 100%)",
-});
-
-export const TriangleIcon = styled("div")({
-  transform: "translateX(-3px)",
-  height: 0,
-  borderTop: "5px solid transparent",
-  borderBottom: "5px solid transparent",
-  borderLeft: "10px solid white",
-});
+  [theme.breakpoints.down('sm')]: {
+    minWidth: '154px',
+    padding: '7px 25px'
+  }
+}))
