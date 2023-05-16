@@ -19,6 +19,10 @@ import { SEARCH_NAMES } from '../components/Api/ApiSections/QortalRequest/SEARCH
 import { GET_NAME_DATA } from '../components/Api/ApiSections/QortalRequest/GET_NAME_DATA'
 import { LIST_QDN_RESOURCES } from '../components/Api/ApiSections/QortalRequest/LIST_QDN_RESOURCES'
 import { SEARCH_QDN_RESOURCES } from '../components/Api/ApiSections/QortalRequest/SEARCH_QDN_RESOURCES'
+import { GET_QDN_RESOURCE_STATUS } from '../components/Api/ApiSections/QortalRequest/GET_QDN_RESOURCE_STATUS'
+import { GET_QDN_RESOURCE_PROPERTIES } from '../components/Api/ApiSections/QortalRequest/GET_QDN_RESOURCE_PROPERTIES'
+import { GET_QDN_RESOURCE_METADATA } from '../components/Api/ApiSections/QortalRequest/GET_QDN_RESOURCE_METADATA'
+import { GET_QDN_RESOURCE_URL } from '../components/Api/ApiSections/QortalRequest/GET_QDN_RESOURCE_URL'
 
 export const tableOfContents = [
   {
@@ -135,19 +139,23 @@ export const tableOfContents = [
       },
       {
         title: 'GET_QDN_RESOURCE_STATUS',
-        component: ''
+        Component: (props: any) => <GET_QDN_RESOURCE_STATUS {...props} />,
+        id: 'GET_QDN_RESOURCE_STATUS'
       },
       {
         title: 'GET_QDN_RESOURCE_PROPERTIES',
-        component: ''
+        Component: (props: any) => <GET_QDN_RESOURCE_PROPERTIES {...props} />,
+        id: 'GET_QDN_RESOURCE_PROPERTIES'
       },
       {
         title: 'GET_QDN_RESOURCE_METADATA',
-        component: ''
+        Component: (props: any) => <GET_QDN_RESOURCE_METADATA {...props} />,
+        id: 'GET_QDN_RESOURCE_METADATA'
       },
       {
         title: 'GET_QDN_RESOURCE_URL',
-        component: ''
+        Component: (props: any) => <GET_QDN_RESOURCE_URL {...props} />,
+        id: 'GET_QDN_RESOURCE_URL'
       },
       {
         title: 'LINK_TO_QDN_RESOURCE',
