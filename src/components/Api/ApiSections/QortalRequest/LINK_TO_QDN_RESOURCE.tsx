@@ -25,19 +25,28 @@ interface SectionProps {
 }
 
 const codeBlock1 = `
-const response =  await qortalRequest({
-  action: "GET_QDN_RESOURCE_METADATA",
-  name: "Q-Blog",
-  service: "BLOG_POST",
-  identifier: "q-blog-qblog-post-Publishing-Blog-s-SncAO3" // Optional
-});
+const handleLinkProgrammatically = async () => {
+  await qortalRequest({
+      action: "LINK_TO_QDN_RESOURCE",
+      service: "WEBSITE",
+      name: "QortalDemo",
+  });
+}
+
+const handleLinkProgrammaticallyWithPath = async () => {
+  await qortalRequest({
+    action: "LINK_TO_QDN_RESOURCE",
+    service: "WEBSITE",
+    name: "QortalDemo",
+    path: "/minting-leveling/index.html"
+  });
+}
+
+handleLinkProgramatically()
+handleLinkProgrammaticallyWithPath()
 `.trim()
 
-const codeBlockResponse = `
-'/arbitrary/BLOG_POST/Q-Blog/q-blog-qblog-post-Publishing-Blog-s-SncAO3'
-`.trim()
-
-export const GET_QDN_RESOURCE_URL: FC<SectionProps> = ({
+export const LINK_TO_QDN_RESOURCE: FC<SectionProps> = ({
   title,
   setSelectedSection,
   id
@@ -56,20 +65,15 @@ export const GET_QDN_RESOURCE_URL: FC<SectionProps> = ({
         >
           <InformationSection>
             <InformationParagraph>
-              Equivalent to:{' '}
-              <LinkApi url="api-documentation/#/Arbitrary/getMetadata">
-                <Code>
-                  {'/arbitrary/metadata/{service}/{name}/{identifier}'}
-                </Code>
-              </LinkApi>
+              Note: an alternate method is to include{' '}
+              <Code>
+                {'<a href="qortal://WEBSITE/QortalDemo">link text</a>'}
+              </Code>{' '}
+              within your HTML code.
             </InformationParagraph>
           </InformationSection>
 
           <DisplayCode codeBlock={codeBlock1} language="javascript" />
-          <DisplayCodeResponse
-            codeBlock={codeBlockResponse}
-            language="javascript"
-          />
         </ParagraphContainer>
       </SectionContainer>
     </SectionWrapper>

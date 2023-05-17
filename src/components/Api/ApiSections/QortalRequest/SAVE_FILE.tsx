@@ -25,19 +25,15 @@ interface SectionProps {
 }
 
 const codeBlock1 = `
-const response =  await qortalRequest({
-  action: "GET_QDN_RESOURCE_METADATA",
-  name: "Q-Blog",
-  service: "BLOG_POST",
-  identifier: "q-blog-qblog-post-Publishing-Blog-s-SncAO3" // Optional
+await qortalRequest({
+  action: "SAVE_FILE",
+  blob: dataBlob,
+  filename: "myfile.pdf",
+  mimeType: "application/pdf" // Optional but recommended
 });
 `.trim()
 
-const codeBlockResponse = `
-'/arbitrary/BLOG_POST/Q-Blog/q-blog-qblog-post-Publishing-Blog-s-SncAO3'
-`.trim()
-
-export const GET_QDN_RESOURCE_URL: FC<SectionProps> = ({
+export const SAVE_FILE: FC<SectionProps> = ({
   title,
   setSelectedSection,
   id
@@ -56,20 +52,10 @@ export const GET_QDN_RESOURCE_URL: FC<SectionProps> = ({
         >
           <InformationSection>
             <InformationParagraph>
-              Equivalent to:{' '}
-              <LinkApi url="api-documentation/#/Arbitrary/getMetadata">
-                <Code>
-                  {'/arbitrary/metadata/{service}/{name}/{identifier}'}
-                </Code>
-              </LinkApi>
+              This action requires user approval
             </InformationParagraph>
           </InformationSection>
-
           <DisplayCode codeBlock={codeBlock1} language="javascript" />
-          <DisplayCodeResponse
-            codeBlock={codeBlockResponse}
-            language="javascript"
-          />
         </ParagraphContainer>
       </SectionContainer>
     </SectionWrapper>

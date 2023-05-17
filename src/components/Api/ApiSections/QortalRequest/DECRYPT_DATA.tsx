@@ -25,19 +25,18 @@ interface SectionProps {
 }
 
 const codeBlock1 = `
-const response =  await qortalRequest({
-  action: "GET_QDN_RESOURCE_METADATA",
-  name: "Q-Blog",
-  service: "BLOG_POST",
-  identifier: "q-blog-qblog-post-Publishing-Blog-s-SncAO3" // Optional
+const response = await qortalRequest({
+  action: 'DECRYPT_DATA',
+  encryptedData: base64, // has to be in base64 format
+  publicKey: publicKey  // requires the public key of the opposite user with whom you've created the encrypted data.
 });
 `.trim()
 
 const codeBlockResponse = `
-'/arbitrary/BLOG_POST/Q-Blog/q-blog-qblog-post-Publishing-Blog-s-SncAO3'
+AAAAIGZ0eXBhdmlmAAAAAGF2aWZtaWYxbWlhZ... // Decrypted data is returned in base64 format
 `.trim()
 
-export const GET_QDN_RESOURCE_URL: FC<SectionProps> = ({
+export const DECRYPT_DATA: FC<SectionProps> = ({
   title,
   setSelectedSection,
   id
@@ -54,17 +53,7 @@ export const GET_QDN_RESOURCE_URL: FC<SectionProps> = ({
             width: '100%'
           }}
         >
-          <InformationSection>
-            <InformationParagraph>
-              Equivalent to:{' '}
-              <LinkApi url="api-documentation/#/Arbitrary/getMetadata">
-                <Code>
-                  {'/arbitrary/metadata/{service}/{name}/{identifier}'}
-                </Code>
-              </LinkApi>
-            </InformationParagraph>
-          </InformationSection>
-
+          <InformationSection></InformationSection>
           <DisplayCode codeBlock={codeBlock1} language="javascript" />
           <DisplayCodeResponse
             codeBlock={codeBlockResponse}

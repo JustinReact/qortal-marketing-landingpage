@@ -10,14 +10,11 @@ import {
   SectionParagraph,
   SubTitle
 } from '../Common/common-styles'
-import { Box, Button, Grid, Typography } from '@mui/material'
-
 import { DisplayCode } from '../Common/DisplayCode'
 import { DisplayCodeResponse } from '../Common/DisplayCodeResponse'
 import InfoIcon from '@mui/icons-material/Info'
+import { Box, Typography } from '@mui/material'
 import { InformationSection } from '../Common/InformationSection'
-import { LinkApi } from '../Common/LinkApi'
-
 interface SectionProps {
   title: string
   setSelectedSection: (sectionId: string) => void
@@ -25,19 +22,17 @@ interface SectionProps {
 }
 
 const codeBlock1 = `
-const response =  await qortalRequest({
-  action: "GET_QDN_RESOURCE_METADATA",
-  name: "Q-Blog",
-  service: "BLOG_POST",
-  identifier: "q-blog-qblog-post-Publishing-Blog-s-SncAO3" // Optional
+const response = await qortalRequest({
+  action: "GET_WALLET_BALANCE",
+  coin: "QORT"
 });
 `.trim()
 
 const codeBlockResponse = `
-'/arbitrary/BLOG_POST/Q-Blog/q-blog-qblog-post-Publishing-Blog-s-SncAO3'
+7.11
 `.trim()
 
-export const GET_QDN_RESOURCE_URL: FC<SectionProps> = ({
+export const GET_WALLET_BALANCE: FC<SectionProps> = ({
   title,
   setSelectedSection,
   id
@@ -56,12 +51,7 @@ export const GET_QDN_RESOURCE_URL: FC<SectionProps> = ({
         >
           <InformationSection>
             <InformationParagraph>
-              Equivalent to:{' '}
-              <LinkApi url="api-documentation/#/Arbitrary/getMetadata">
-                <Code>
-                  {'/arbitrary/metadata/{service}/{name}/{identifier}'}
-                </Code>
-              </LinkApi>
+              This action requires user approval
             </InformationParagraph>
           </InformationSection>
 
