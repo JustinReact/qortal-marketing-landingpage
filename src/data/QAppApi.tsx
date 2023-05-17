@@ -19,6 +19,18 @@ import { SEARCH_NAMES } from '../components/Api/ApiSections/QortalRequest/SEARCH
 import { GET_NAME_DATA } from '../components/Api/ApiSections/QortalRequest/GET_NAME_DATA'
 import { LIST_QDN_RESOURCES } from '../components/Api/ApiSections/QortalRequest/LIST_QDN_RESOURCES'
 import { SEARCH_QDN_RESOURCES } from '../components/Api/ApiSections/QortalRequest/SEARCH_QDN_RESOURCES'
+import { GET_QDN_RESOURCE_STATUS } from '../components/Api/ApiSections/QortalRequest/GET_QDN_RESOURCE_STATUS'
+import { GET_QDN_RESOURCE_PROPERTIES } from '../components/Api/ApiSections/QortalRequest/GET_QDN_RESOURCE_PROPERTIES'
+import { GET_QDN_RESOURCE_METADATA } from '../components/Api/ApiSections/QortalRequest/GET_QDN_RESOURCE_METADATA'
+import { GET_QDN_RESOURCE_URL } from '../components/Api/ApiSections/QortalRequest/GET_QDN_RESOURCE_URL'
+import { LINK_TO_QDN_RESOURCE } from '../components/Api/ApiSections/QortalRequest/LINK_TO_QDN_RESOURCE'
+import { FETCH_QDN_RESOURCE } from '../components/Api/ApiSections/QortalRequest/FETCH_QDN_RESOURCE'
+import { PUBLISH_QDN_RESOURCE } from '../components/Api/ApiSections/QortalRequest/PUBLISH_QDN_RESOURCE'
+import { DECRYPT_DATA } from '../components/Api/ApiSections/QortalRequest/DECRYPT_DATA'
+import { SAVE_FILE } from '../components/Api/ApiSections/QortalRequest/SAVE_FILE'
+import { GET_WALLET_BALANCE } from '../components/Api/ApiSections/QortalRequest/GET_WALLET_BALANCE'
+import { GET_BALANCE } from '../components/Api/ApiSections/QortalRequest/GET_BALANCE'
+import { SEND_COIN } from '../components/Api/ApiSections/QortalRequest/SEND_COIN'
 
 export const tableOfContents = [
   {
@@ -135,55 +147,63 @@ export const tableOfContents = [
       },
       {
         title: 'GET_QDN_RESOURCE_STATUS',
-        component: ''
+        Component: (props: any) => <GET_QDN_RESOURCE_STATUS {...props} />,
+        id: 'GET_QDN_RESOURCE_STATUS'
       },
       {
         title: 'GET_QDN_RESOURCE_PROPERTIES',
-        component: ''
+        Component: (props: any) => <GET_QDN_RESOURCE_PROPERTIES {...props} />,
+        id: 'GET_QDN_RESOURCE_PROPERTIES'
       },
       {
         title: 'GET_QDN_RESOURCE_METADATA',
-        component: ''
+        Component: (props: any) => <GET_QDN_RESOURCE_METADATA {...props} />,
+        id: 'GET_QDN_RESOURCE_METADATA'
       },
       {
         title: 'GET_QDN_RESOURCE_URL',
-        component: ''
+        Component: (props: any) => <GET_QDN_RESOURCE_URL {...props} />,
+        id: 'GET_QDN_RESOURCE_URL'
       },
       {
         title: 'LINK_TO_QDN_RESOURCE',
-        component: ''
+        Component: (props: any) => <LINK_TO_QDN_RESOURCE {...props} />,
+        id: 'LINK_TO_QDN_RESOURCE'
       },
       {
         title: 'FETCH_QDN_RESOURCE',
-        component: ''
+        Component: (props: any) => <FETCH_QDN_RESOURCE {...props} />,
+        id: 'FETCH_QDN_RESOURCE'
       },
       {
         title: 'PUBLISH_QDN_RESOURCE',
-        component: ''
-      },
-      {
-        title: 'PUBLISH_MULTIPLE_QDN_RESOURCES',
-        component: ''
+        Component: (props: any) => <PUBLISH_QDN_RESOURCE {...props} />,
+        id: 'PUBLISH_QDN_RESOURCE'
       },
       {
         title: 'DECRYPT_DATA',
-        component: ''
+        Component: (props: any) => <DECRYPT_DATA {...props} />,
+        id: 'DECRYPT_DATA'
       },
       {
         title: 'SAVE_FILE',
-        component: ''
+        Component: (props: any) => <SAVE_FILE {...props} />,
+        id: 'SAVE_FILE'
       },
       {
         title: 'GET_WALLET_BALANCE',
-        component: ''
+        Component: (props: any) => <GET_WALLET_BALANCE {...props} />,
+        id: 'GET_WALLET_BALANCE'
       },
       {
         title: 'GET_BALANCE',
-        component: ''
+        Component: (props: any) => <GET_BALANCE {...props} />,
+        id: 'GET_BALANCE'
       },
       {
         title: 'SEND_COIN',
-        component: ''
+        Component: (props: any) => <SEND_COIN {...props} />,
+        id: 'SEND_COIN'
       },
       {
         title: 'SEARCH_CHAT_MESSAGES',
