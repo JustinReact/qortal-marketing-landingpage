@@ -47,7 +47,30 @@ const response = await qortalRequest({
 `.trim()
 
 const codeBlockResponse = `
-true
+{
+  "type": "ARBITRARY",
+  "timestamp": 1684337616751,
+  "reference": "4j2iPN5Xwgocs8Z32JB4UB63G87qS43kPyEwFmQMLvWBXtrSQwAfyx8S9CqQvbregnstXFKqXpkPT2dNdAscriT4",
+  "fee": "0.00100000",
+  "signature": "5Y6Jdyvo8n6JB44qC8i57x2gA3VXd7aah42GvnzkXL459vCWrRE5gae5TWbGqJxmKnk4p5ESHESv2FJfyB8bdzs9",
+  "txGroupId": 0,
+  "approvalStatus": "NOT_REQUIRED",
+  "creatorAddress": "QMjCNsctvWLoDdPSRpHn6TF2j96iDr9YWm",
+  "version": 5,
+  "senderPublicKey": "Bjo1iUHJXbCb4LKabmE6KWNL5jSgCK36ypasoDgJG53U",
+  "service": 777,
+  "nonce": 0,
+  "size": 496,
+  "name": "Demo",
+  "identifier": "myapp-image1234",
+  "method": "PUT",
+  "secret": "GELP1wMCyMAcwLWTvsAjsFoiR63BcAF7wmrhd1NVhjL",
+  "compression": "ZIP",
+  "data": "ArzaQASrXM74SDhWp6JhhmUBsocWRoVajZFtYECnAEEy",
+  "dataType": "DATA_HASH",
+  "metadataHash": "DU1sYzPcRnvAUL6VzerhAmDQUyrn4UceAvV4K6WtZxBi",
+  "payments": []
+}
 `.trim()
 
 const codeBlock2 = `
@@ -75,7 +98,56 @@ const response = await qortalRequest({
 `.trim()
 
 const codeBlockResponse2 = `
-[true, true]
+[
+  {
+    "type": "ARBITRARY",
+    "timestamp": 1684337616751,
+    "reference": "4j2iPN5Xwgocs8Z32JB4UB63G87qS43kPyEwFmQMLvWBXtrSQwAfyx8S9CqQvbregnstXFKqXpkPT2dNdAscriT4",
+    "fee": "0.00100000",
+    "signature": "5Y6Jdyvo8n6JB44qC8i57x2gA3VXd7aah42GvnzkXL459vCWrRE5gae5TWbGqJxmKnk4p5ESHESv2FJfyB8bdzs9",
+    "txGroupId": 0,
+    "approvalStatus": "NOT_REQUIRED",
+    "creatorAddress": "QMjCNsctvWLoDdPSRpHn6TF2j96iDr9YWm",
+    "version": 5,
+    "senderPublicKey": "Bjo1iUHJXbCb4LKabmE6KWNL5jSgCK36ypasoDgJG53U",
+    "service": 777,
+    "nonce": 0,
+    "size": 496,
+    "name": "Demo",
+    "identifier": "myapp-image1",
+    "method": "PUT",
+    "secret": "GELP1wMCyMAcwLWTvsAjsFoiR63BcAF7wmrhd1NVhjL",
+    "compression": "ZIP",
+    "data": "ArzaQASrXM74SDhWp6JhhmUBsocWRoVajZFtYECnAEEy",
+    "dataType": "DATA_HASH",
+    "metadataHash": "DU1sYzPcRnvAUL6VzerhAmDQUyrn4UceAvV4K6WtZxBi",
+    "payments": []
+  },
+  {
+    "type": "ARBITRARY",
+    "timestamp": 1684337616751,
+    "reference": "4j2iPN5Xwgocs8Z32JB4UB63G87qS43kPyEwFmQMLvWBXtrSQwAfyx8S9CqQvbregnstXFKqXpkPT2dNdAscriT4",
+    "fee": "0.00100000",
+    "signature": "5Y6Jdyvo8n6JB44qC8i57x2gA3VXd7aah42GvnzkXL459vCWrRE5gae5TWbGqJxmKnk4p5ESHESv2FJfyB8bdzs9",
+    "txGroupId": 0,
+    "approvalStatus": "NOT_REQUIRED",
+    "creatorAddress": "QMjCNsctvWLoDdPSRpHn6TF2j96iDr9YWm",
+    "version": 5,
+    "senderPublicKey": "Bjo1iUHJXbCb4LKabmE6KWNL5jSgCK36ypasoDgJG53U",
+    "service": 777,
+    "nonce": 0,
+    "size": 496,
+    "name": "Demo",
+    "identifier": "myapp-image2",
+    "method": "PUT",
+    "secret": "GELP1wMCyMAcwLWTvsAjsFoiR63BcAF7wmrhd1NVhjL",
+    "compression": "ZIP",
+    "data": "ArzaQASrXM74SDhWp6JhhmUBsocWRoVajZFtYECnAEEy",
+    "dataType": "DATA_HASH",
+    "metadataHash": "DU1sYzPcRnvAUL6VzerhAmDQUyrn4UceAvV4K6WtZxBi",
+    "payments": []
+  }
+]
 `.trim()
 
 export const PUBLISH_QDN_RESOURCE: FC<SectionProps> = ({

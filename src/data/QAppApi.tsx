@@ -31,6 +31,14 @@ import { SAVE_FILE } from '../components/Api/ApiSections/QortalRequest/SAVE_FILE
 import { GET_WALLET_BALANCE } from '../components/Api/ApiSections/QortalRequest/GET_WALLET_BALANCE'
 import { GET_BALANCE } from '../components/Api/ApiSections/QortalRequest/GET_BALANCE'
 import { SEND_COIN } from '../components/Api/ApiSections/QortalRequest/SEND_COIN'
+import { SEARCH_CHAT_MESSAGES } from '../components/Api/ApiSections/QortalRequest/SEARCH_CHAT_MESSAGES'
+import { SEND_CHAT_MESSAGE } from '../components/Api/ApiSections/QortalRequest/SEND_CHAT_MESSAGE'
+import { LIST_GROUPS } from '../components/Api/ApiSections/QortalRequest/LIST_GROUPS'
+import { JOIN_GROUP } from '../components/Api/ApiSections/QortalRequest/JOIN_GROUP'
+import { FETCH_BLOCK } from '../components/Api/ApiSections/QortalRequest/FETCH_BLOCK'
+import { SEARCH_TRANSACTIONS } from '../components/Api/ApiSections/QortalRequest/SEARCH_TRANSACTIONS'
+import { GET_PRICE } from '../components/Api/ApiSections/QortalRequest/GET_PRICE'
+import { LISTS } from '../components/Api/ApiSections/QortalRequest/LISTS'
 
 export const tableOfContents = [
   {
@@ -207,63 +215,43 @@ export const tableOfContents = [
       },
       {
         title: 'SEARCH_CHAT_MESSAGES',
-        component: ''
+        Component: (props: any) => <SEARCH_CHAT_MESSAGES {...props} />,
+        id: 'SEARCH_CHAT_MESSAGES'
       },
       {
         title: 'SEND_CHAT_MESSAGE',
-        component: ''
+        Component: (props: any) => <SEND_CHAT_MESSAGE {...props} />,
+        id: 'SEND_CHAT_MESSAGE'
       },
       {
         title: 'LIST_GROUPS',
-        component: ''
+        Component: (props: any) => <LIST_GROUPS {...props} />,
+        id: 'LIST_GROUPS'
       },
       {
         title: 'JOIN_GROUP',
-        component: ''
-      },
-      {
-        title: 'DEPLOY_AT',
-        component: ''
-      },
-      {
-        title: 'GET_AT',
-        component: ''
-      },
-      {
-        title: 'GET_AT_DATA',
-        component: ''
-      },
-      {
-        title: 'LIST_ATS',
-        component: ''
+        Component: (props: any) => <JOIN_GROUP {...props} />,
+        id: 'JOIN_GROUP'
       },
       {
         title: 'FETCH_BLOCK',
-        component: ''
-      },
-      {
-        title: 'FETCH_BLOCK_RANGE',
-        component: ''
+        Component: (props: any) => <FETCH_BLOCK {...props} />,
+        id: 'FETCH_BLOCK'
       },
       {
         title: 'SEARCH_TRANSACTIONS',
-        component: ''
+        Component: (props: any) => <SEARCH_TRANSACTIONS {...props} />,
+        id: 'SEARCH_TRANSACTIONS'
       },
       {
         title: 'GET_PRICE',
-        component: ''
+        Component: (props: any) => <GET_PRICE {...props} />,
+        id: 'GET_PRICE'
       },
       {
-        title: 'GET_LIST_ITEMS',
-        component: ''
-      },
-      {
-        title: 'ADD_LIST_ITEMS',
-        component: ''
-      },
-      {
-        title: 'DELETE_LIST_ITEM',
-        component: ''
+        title: 'LISTS',
+        Component: (props: any) => <LISTS {...props} />,
+        id: 'LISTS'
       }
     ]
   }
