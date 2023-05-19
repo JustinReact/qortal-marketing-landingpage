@@ -1,39 +1,39 @@
-import React, { FC, useEffect } from 'react'
-import { SectionWrapper } from '../Common/SectionWrapper'
+import React, { FC, useEffect } from "react";
+import { SectionWrapper } from "../Common/SectionWrapper";
 import {
   Code,
   ParagraphContainer,
   SectionContainer,
   SectionParagraph
-} from '../Common/common-styles'
-import { DisplayCode } from '../Common/DisplayCode'
+} from "../Common/Common-styles";
+import { DisplayCode } from "../Common/DisplayCode";
 
 interface SectionProps {
-  title: string
-  setSelectedSection: (sectionId: string) => void
-  id: string
+  title: string;
+  setSelectedSection: (sectionId: string) => void;
+  id: string;
 }
 
 const codeBlock1 = `
 <a href="qortal://{service}/{name}/{identifier}/{path}">link text</a>
-`.trim()
+`.trim();
 
 const codeBlock2 = `
 <a href="qortal://WEBSITE/QortalDemo">link text</a>
-`.trim()
+`.trim();
 
 const codeBlock3 = `
 <a href="qortal://WEBSITE/QortalDemo/minting-leveling/index.html">link text</a>
-`.trim()
+`.trim();
 const codeBlock4 = `
 <a href="qortal://THUMBNAIL/QortalDemo/qortal_avatar">avatar</a>
-`.trim()
+`.trim();
 const codeBlock5 = `
 <a href="qortal://WEBSITE/QortalDemo/default">link to root of website</a>
-`.trim()
+`.trim();
 const codeBlock6 = `
 <a href="qortal://WEBSITE/QortalDemo/default/minting-leveling/index.html">link to subpage of website</a>
-`.trim()
+`.trim();
 
 export const LinkingToResources: FC<SectionProps> = ({
   title,
@@ -49,7 +49,7 @@ export const LinkingToResources: FC<SectionProps> = ({
       <SectionContainer>
         <ParagraphContainer
           sx={{
-            width: '100%'
+            width: "100%"
           }}
         >
           <SectionParagraph>
@@ -90,5 +90,5 @@ export const LinkingToResources: FC<SectionProps> = ({
         </ParagraphContainer>
       </SectionContainer>
     </SectionWrapper>
-  )
-}
+  );
+};

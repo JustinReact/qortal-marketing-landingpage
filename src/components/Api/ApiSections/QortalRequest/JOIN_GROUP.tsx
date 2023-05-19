@@ -1,5 +1,5 @@
-import React, { FC, useEffect } from 'react'
-import { SectionWrapper } from '../Common/SectionWrapper'
+import React, { FC, useEffect } from "react";
+import { SectionWrapper } from "../Common/SectionWrapper";
 import {
   Code,
   ColumnContainer,
@@ -9,16 +9,16 @@ import {
   SectionContainer,
   SectionParagraph,
   SubTitle
-} from '../Common/common-styles'
-import { DisplayCode } from '../Common/DisplayCode'
-import { DisplayCodeResponse } from '../Common/DisplayCodeResponse'
-import InfoIcon from '@mui/icons-material/Info'
-import { Box, Typography } from '@mui/material'
-import { InformationSection } from '../Common/InformationSection'
+} from "../Common/Common-styles";
+import { DisplayCode } from "../Common/DisplayCode";
+import { DisplayCodeResponse } from "../Common/DisplayCodeResponse";
+import InfoIcon from "@mui/icons-material/Info";
+import { Box, Typography } from "@mui/material";
+import { InformationSection } from "../Common/InformationSection";
 interface SectionProps {
-  title: string
-  setSelectedSection: (sectionId: string) => void
-  id: string
+  title: string;
+  setSelectedSection: (sectionId: string) => void;
+  id: string;
 }
 
 const codeBlock1 = `
@@ -26,11 +26,11 @@ const response = await qortalRequest({
   action: "JOIN_GROUP",
   groupId: 100
 });
-`.trim()
+`.trim();
 
 const codeBlockResponse = `
 true
-`.trim()
+`.trim();
 
 export const JOIN_GROUP: FC<SectionProps> = ({
   title,
@@ -46,7 +46,7 @@ export const JOIN_GROUP: FC<SectionProps> = ({
       <SectionContainer>
         <ParagraphContainer
           sx={{
-            width: '100%'
+            width: "100%"
           }}
         >
           <InformationSection>
@@ -62,5 +62,5 @@ export const JOIN_GROUP: FC<SectionProps> = ({
         </ParagraphContainer>
       </SectionContainer>
     </SectionWrapper>
-  )
-}
+  );
+};

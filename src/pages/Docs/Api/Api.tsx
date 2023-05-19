@@ -1,10 +1,6 @@
 import { Box, useTheme } from "@mui/material";
 import { FC, Fragment, useState } from "react";
-import { Typography } from "@mui/material";
-import {
-  LeftDrawerLinks,
-  drawerWidth
-} from "../../../components/Api/LeftDrawerLinks/LeftDrawerLinks";
+import { LeftDrawerLinks } from "../../../components/Api/LeftDrawerLinks/LeftDrawerLinks";
 import { Wrapper } from "./Api-styles";
 import { tableOfContents } from "../../../data/QAppApi";
 
@@ -23,7 +19,8 @@ const Api: FC<ApiProps> = ({ setTheme }) => {
         sx={{
           width: "100%",
           display: "flex",
-          flexDirection: "column"
+          flexDirection: "column",
+          textAlign: "justify"
         }}
       >
         <Box>

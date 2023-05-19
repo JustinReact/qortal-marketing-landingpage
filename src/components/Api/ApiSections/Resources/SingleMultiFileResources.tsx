@@ -1,15 +1,15 @@
-import React, { FC, useEffect } from 'react'
-import { SectionWrapper } from '../Common/SectionWrapper'
+import React, { FC, useEffect } from "react";
+import { SectionWrapper } from "../Common/SectionWrapper";
 import {
   Code,
   ParagraphContainer,
   SectionContainer,
   SectionParagraph
-} from '../Common/common-styles'
+} from "../Common/Common-styles";
 interface SectionProps {
-  title: string
-  setSelectedSection: (sectionId: string) => void
-  id: string
+  title: string;
+  setSelectedSection: (sectionId: string) => void;
+  id: string;
 }
 export const SingleMultiFileResources: FC<SectionProps> = ({
   title,
@@ -25,7 +25,7 @@ export const SingleMultiFileResources: FC<SectionProps> = ({
       <SectionContainer>
         <ParagraphContainer>
           <SectionParagraph>
-            Some resources, such as those published with the <Code>IMAGE</Code>{' '}
+            Some resources, such as those published with the <Code>IMAGE</Code>{" "}
             or <Code>JSON</Code>
             service, consist of a single file or piece of data (the image or the
             JSON string). This is the most common type of QDN resource,
@@ -33,8 +33,8 @@ export const SingleMultiFileResources: FC<SectionProps> = ({
             supplying a base64-encoded string containing the data.
           </SectionParagraph>
           <SectionParagraph>
-            Other resources, such as those published with the{' '}
-            <Code>WEBSITE</Code>, <Code>APP</Code>, or{' '}
+            Other resources, such as those published with the{" "}
+            <Code>WEBSITE</Code>, <Code>APP</Code>, or{" "}
             <Code>GIF_REPOSITORY</Code> service, can contain multiple files and
             directories. Publishing these kinds of files is not yet available
             for Q-Apps, however it is possible to retrieve multi-file resources
@@ -45,10 +45,7 @@ export const SingleMultiFileResources: FC<SectionProps> = ({
             automatically return the contents of the single file.
           </SectionParagraph>
         </ParagraphContainer>
-        <ParagraphContainer>
-          <SectionParagraph>hello</SectionParagraph>
-        </ParagraphContainer>
       </SectionContainer>
     </SectionWrapper>
-  )
-}
+  );
+};

@@ -1,5 +1,5 @@
-import React, { FC, useEffect } from 'react'
-import { SectionWrapper } from '../Common/SectionWrapper'
+import React, { FC, useEffect } from "react";
+import { SectionWrapper } from "../Common/SectionWrapper";
 import {
   Code,
   ColumnContainer,
@@ -9,17 +9,17 @@ import {
   SectionContainer,
   SectionParagraph,
   SubTitle
-} from '../Common/common-styles'
-import { DisplayCode } from '../Common/DisplayCode'
-import { DisplayCodeResponse } from '../Common/DisplayCodeResponse'
-import InfoIcon from '@mui/icons-material/Info'
-import { Box, Typography } from '@mui/material'
-import { InformationSection } from '../Common/InformationSection'
-import { LinkApi } from '../Common/LinkApi'
+} from "../Common/Common-styles";
+import { DisplayCode } from "../Common/DisplayCode";
+import { DisplayCodeResponse } from "../Common/DisplayCodeResponse";
+import InfoIcon from "@mui/icons-material/Info";
+import { Box, Typography } from "@mui/material";
+import { InformationSection } from "../Common/InformationSection";
+import { LinkApi } from "../Common/LinkApi";
 interface SectionProps {
-  title: string
-  setSelectedSection: (sectionId: string) => void
-  id: string
+  title: string;
+  setSelectedSection: (sectionId: string) => void;
+  id: string;
 }
 
 const codeBlock1 = `
@@ -27,13 +27,13 @@ const response = await qortalRequest({
   action: "FETCH_BLOCK",
   signature: "875yGFUy1zHV2hmxNWzrhtn9S1zkeD7SQppwdXFysvTXrankCHCz4iyAUgCBM3GjvibbnyRQpriuy1cyu953U1u5uQdzuH3QjQivi9UVwz86z1Akn17MGd5Z5STjpDT7248K6vzMamuqDei57Znonr8GGgn8yyyABn35CbZUCeAuXju"
 });
-`.trim()
+`.trim();
 const codeBlock2 = `
 const response = await qortalRequest({
   action: "FETCH_BLOCK",
   height: "1139850"
 });
-`.trim()
+`.trim();
 
 const codeBlock3 = `
 const response = await qortalRequest({
@@ -42,7 +42,7 @@ const response = await qortalRequest({
   count: 20,
   reverse: false
 });
-`.trim()
+`.trim();
 
 const codeBlockResponse = `
 {
@@ -62,16 +62,16 @@ const codeBlockResponse = `
   "onlineAccountsCount": 4707,
   "minterAddress": "QVLSru2TzBrgAmqJMzTwsBxwm98ABfGsdj"
 }
-`.trim()
+`.trim();
 const codeBlockResponse2 = `
 // same response as 'Fetch block by signature'
-`.trim()
+`.trim();
 
 const codeBlockResponse3 = `
 [
   // an array of objects such as the response of 'Fetch block by signature'
 ]
-`.trim()
+`.trim();
 
 export const FETCH_BLOCK: FC<SectionProps> = ({
   title,
@@ -87,15 +87,15 @@ export const FETCH_BLOCK: FC<SectionProps> = ({
       <SectionContainer>
         <ParagraphContainer
           sx={{
-            width: '100%'
+            width: "100%"
           }}
         >
           <SubTitle>Fetch block by signature</SubTitle>
           <InformationSection>
             <InformationParagraph>
-              Equivalent to:{' '}
+              Equivalent to:{" "}
               <LinkApi url="api-documentation/#/Blocks/getChild">
-                <Code>{'/blocks/child/{signature}'}</Code>
+                <Code>{"/blocks/child/{signature}"}</Code>
               </LinkApi>
             </InformationParagraph>
           </InformationSection>
@@ -107,9 +107,9 @@ export const FETCH_BLOCK: FC<SectionProps> = ({
           <SubTitle>Fetch block by height</SubTitle>
           <InformationSection>
             <InformationParagraph>
-              Equivalent to:{' '}
+              Equivalent to:{" "}
               <LinkApi url="api-documentation/#/Blocks/getByHeight">
-                <Code>{'/blocks/byheight/{height}'}</Code>
+                <Code>{"/blocks/byheight/{height}"}</Code>
               </LinkApi>
             </InformationParagraph>
           </InformationSection>
@@ -122,9 +122,9 @@ export const FETCH_BLOCK: FC<SectionProps> = ({
           <SubTitle>Fetch a range of blocks</SubTitle>
           <InformationSection>
             <InformationParagraph>
-              Equivalent to:{' '}
+              Equivalent to:{" "}
               <LinkApi url="api-documentation/#/Blocks/getBlockRange">
-                <Code>{'/blocks/range/{height}'}</Code>
+                <Code>{"/blocks/range/{height}"}</Code>
               </LinkApi>
             </InformationParagraph>
           </InformationSection>
@@ -136,5 +136,5 @@ export const FETCH_BLOCK: FC<SectionProps> = ({
         </ParagraphContainer>
       </SectionContainer>
     </SectionWrapper>
-  )
-}
+  );
+};

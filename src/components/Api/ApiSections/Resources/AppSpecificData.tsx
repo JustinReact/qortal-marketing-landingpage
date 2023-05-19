@@ -1,15 +1,15 @@
-import React, { FC, useEffect } from 'react'
-import { SectionWrapper } from '../Common/SectionWrapper'
+import React, { FC, useEffect } from "react";
+import { SectionWrapper } from "../Common/SectionWrapper";
 import {
   Code,
   ParagraphContainer,
   SectionContainer,
   SectionParagraph
-} from '../Common/common-styles'
+} from "../Common/Common-styles";
 interface SectionProps {
-  title: string
-  setSelectedSection: (sectionId: string) => void
-  id: string
+  title: string;
+  setSelectedSection: (sectionId: string) => void;
+  id: string;
 }
 export const AppSpecificData: FC<SectionProps> = ({
   title,
@@ -40,10 +40,10 @@ export const AppSpecificData: FC<SectionProps> = ({
             For instance, an app called <Code>MyApp</Code> could allow users to
             publish JSON data. The app could choose to prefix all identifiers
             with the string <Code>myapp_</Code>, and then use a random string
-            for each published resource (resulting in identifiers such as{' '}
+            for each published resource (resulting in identifiers such as{" "}
             <Code>myapp_qR5ndZ8v</Code>). Then, to locate data that has
             potentially been published by users of MyApp, it can later search
-            the QDN database for items with <Code>"service": "JSON"</Code> and{' '}
+            the QDN database for items with <Code>"service": "JSON"</Code> and{" "}
             <Code>"identifier": "myapp_"</Code>. The SEARCH_QDN_RESOURCES action
             has a <Code>prefix</Code> option in order to match identifiers
             beginning with the supplied string.
@@ -61,5 +61,5 @@ export const AppSpecificData: FC<SectionProps> = ({
         </ParagraphContainer>
       </SectionContainer>
     </SectionWrapper>
-  )
-}
+  );
+};

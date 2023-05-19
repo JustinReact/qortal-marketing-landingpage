@@ -1,0 +1,144 @@
+import { styled } from "@mui/system";
+import { Box, Typography } from "@mui/material";
+import { QortalSVG } from "../../../Common/Icons/QortalSVG";
+import ContentPasteTwoToneIcon from "@mui/icons-material/ContentPasteTwoTone";
+
+export const MainBox = styled(Box)(({ theme }) => ({
+  position: "relative",
+  minHeight: "100px",
+  width: "100%",
+  padding: "20px 35px"
+}));
+
+export const SectionContainer = styled(Box)(({ theme }) => ({
+  width: "100%",
+  display: "flex",
+  gap: "50px"
+}));
+
+export const ParagraphContainer = styled(Box)(({ theme }) => ({
+  width: "100%",
+  display: "flex",
+  flexDirection: "column"
+}));
+
+export const SectionTitleText = styled(Typography)(({ theme }) => ({
+  fontFamily: "Oxygen",
+  fontWeight: "400",
+  letterSpacing: "0.3px",
+  fontSize: "32px",
+  [theme.breakpoints.down("sm")]: {
+    textAlign: "center",
+    lineHeight: "40px",
+    marginTop: "10px"
+  }
+}));
+
+export const SubTitle = styled(Typography)(({ theme }) => ({
+  fontFamily: "Oxygen",
+  fontWeight: "400",
+  letterSpacing: "0.3px",
+  fontSize: "24px",
+  marginTop: "10px",
+  [theme.breakpoints.down("sm")]: {
+    textAlign: "center",
+    lineHeight: "40px",
+    marginTop: "10px"
+  }
+}));
+
+export const SectionParagraph = styled(Typography)(({ theme }) => ({
+  marginTop: "20px",
+  fontFamily: "Cambon Light",
+  fontSize: "20.5px",
+  lineHeight: "33px",
+  letterSpacing: "0.5px",
+  fontWeight: "400",
+  width: "fit-content",
+  color: theme.palette.text.primary,
+  "& a": {
+    textDecoration: "none",
+    color: theme.palette.secondary.main,
+    transition: "all 0.2s ease-in-out",
+    "&:hover": {
+      cursor: "pointer",
+      filter: "brightness(1.2)"
+    }
+  }
+}));
+
+export const Code = styled("code")(({ theme }) => ({
+  padding: "0.2em 0.4em",
+  margin: 0,
+  fontSize: "16.5px",
+  backgroundColor: "#c7f3ff",
+  borderRadius: "3px",
+  fontFamily: "'Courier New', monospace",
+  color: "#333"
+}));
+
+export const CodeWrapper = styled(Box)(({ theme }) => ({
+  display: "flex",
+  position: "relative"
+}));
+
+export const CopyCodeIcon = styled(ContentPasteTwoToneIcon)(({ theme }) => ({
+  position: "absolute",
+  right: "8px",
+  top: "22px",
+  fontSize: "20px",
+  color: "white",
+  cursor: "pointer"
+}));
+
+export const RowContainer = styled(Box)(({ theme }) => ({
+  display: "flex",
+  gap: "10px",
+  alignItems: "center"
+}));
+
+export const ColumnContainer = styled(Box)(({ theme }) => ({
+  display: "flex",
+  gap: "10px",
+  flexDirection: "column",
+  padding: "10px 0"
+}));
+
+export const InformationParagraph = styled(Typography)(({ theme }) => ({
+  fontSize: "18px",
+  lineHeight: "28px",
+  fontFamily: "Roboto",
+  color: theme.palette.text.primary,
+  opacity: "0.85"
+}));
+
+export const CustomUnorderedList = styled("ul")(({ theme }) => ({
+  listStyleType: "none",
+  margin: "10px 0 0 0"
+}));
+
+export const CustomListItem = styled("li")(({ theme }) => ({
+  fontFamily: "Cambon Light",
+  fontSize: "18px",
+  lineHeight: "33px",
+  letterSpacing: "0.5px",
+  fontWeight: "400",
+  margin: "5px 0"
+}));
+
+export const QortalIcon = styled(QortalSVG)(({ theme }) => ({
+  transform: "translateY(3px)",
+  marginRight: "15px"
+}));
+
+export const ServiceItem = styled(Box)(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  gap: "15px",
+  fontFamily: "Cambon Light",
+  fontSize: "20.5px",
+  lineHeight: "33px",
+  letterSpacing: "0.5px",
+  fontWeight: "400",
+  color: theme.palette.text.primary
+}));

@@ -1,5 +1,5 @@
-import React, { FC, useEffect } from 'react'
-import { SectionWrapper } from '../Common/SectionWrapper'
+import React, { FC, useEffect } from "react";
+import { SectionWrapper } from "../Common/SectionWrapper";
 import {
   Code,
   ColumnContainer,
@@ -9,17 +9,17 @@ import {
   SectionContainer,
   SectionParagraph,
   SubTitle
-} from '../Common/common-styles'
-import { DisplayCode } from '../Common/DisplayCode'
-import { DisplayCodeResponse } from '../Common/DisplayCodeResponse'
-import InfoIcon from '@mui/icons-material/Info'
-import { Box, Typography } from '@mui/material'
-import { InformationSection } from '../Common/InformationSection'
-import { LinkApi } from '../Common/LinkApi'
+} from "../Common/Common-styles";
+import { DisplayCode } from "../Common/DisplayCode";
+import { DisplayCodeResponse } from "../Common/DisplayCodeResponse";
+import InfoIcon from "@mui/icons-material/Info";
+import { Box, Typography } from "@mui/material";
+import { InformationSection } from "../Common/InformationSection";
+import { LinkApi } from "../Common/LinkApi";
 interface SectionProps {
-  title: string
-  setSelectedSection: (sectionId: string) => void
-  id: string
+  title: string;
+  setSelectedSection: (sectionId: string) => void;
+  id: string;
 }
 
 const codeBlock1 = `
@@ -37,7 +37,7 @@ const response = await qortalRequest({
   offset: 0,
   reverse: true
 });
-`.trim()
+`.trim();
 
 const codeBlockResponse = `
 [
@@ -69,7 +69,7 @@ const codeBlockResponse = `
   },
   ...
 ]
-`.trim()
+`.trim();
 
 export const SEARCH_CHAT_MESSAGES: FC<SectionProps> = ({
   title,
@@ -85,12 +85,12 @@ export const SEARCH_CHAT_MESSAGES: FC<SectionProps> = ({
       <SectionContainer>
         <ParagraphContainer
           sx={{
-            width: '100%'
+            width: "100%"
           }}
         >
           <InformationSection>
             <InformationParagraph>
-              Equivalent to:{' '}
+              Equivalent to:{" "}
               <LinkApi url="api-documentation/#/Chat/searchChat">
                 <Code>/chat/messages?</Code>
               </LinkApi>
@@ -108,5 +108,5 @@ export const SEARCH_CHAT_MESSAGES: FC<SectionProps> = ({
         </ParagraphContainer>
       </SectionContainer>
     </SectionWrapper>
-  )
-}
+  );
+};

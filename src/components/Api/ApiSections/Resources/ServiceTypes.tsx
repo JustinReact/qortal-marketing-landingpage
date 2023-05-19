@@ -1,21 +1,27 @@
-import React, { FC, useEffect } from 'react'
-import { SectionWrapper } from '../Common/SectionWrapper'
+import { FC } from "react";
+import { SectionWrapper } from "../Common/SectionWrapper";
 import {
   ParagraphContainer,
   SectionContainer,
   SectionParagraph,
-  SubTitle
-} from '../Common/common-styles'
+  SubTitle,
+  ServiceItem
+} from "../Common/Common-styles";
+import { Box, useTheme } from "@mui/material";
+import { QortalSVG } from "../../../Common/Icons/QortalSVG";
+
 interface SectionProps {
-  title: string
-  setSelectedSection: (sectionId: string) => void
-  id: string
+  title: string;
+  setSelectedSection: (sectionId: string) => void;
+  id: string;
 }
 export const ServiceTypes: FC<SectionProps> = ({
   title,
   setSelectedSection,
   id
 }) => {
+  const theme = useTheme();
+
   return (
     <SectionWrapper
       title={title}
@@ -29,16 +35,328 @@ export const ServiceTypes: FC<SectionProps> = ({
             The services below are intended to be used for publicly accessible
             data.
           </SectionParagraph>
-          <SectionParagraph>
-            IMAGE, THUMBNAIL, VIDEO, AUDIO, PODCAST, VOICE, ARBITRARY_DATA,
-            JSON, DOCUMENT, LIST, PLAYLIST, METADATA, BLOG, BLOG_POST,
-            BLOG_COMMENT, GIF_REPOSITORY, ATTACHMENT, FILE, FILES, CHAIN_DATA,
-            STORE, PRODUCT, OFFER, COUPON, CODE, PLUGIN, EXTENSION, GAME, ITEM,
-            NFT, DATABASE, SNAPSHOT, COMMENT, CHAIN_COMMENT, WEBSITE, APP,
-            QCHAT_ATTACHMENT, QCHAT_IMAGE, QCHAT_AUDIO, QCHAT_VOICE
-          </SectionParagraph>
-        </ParagraphContainer>
-        <ParagraphContainer>
+          <Box sx={{ margin: "20px 0" }}>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              IMAGE
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              THUMBNAIL
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              VIDEO
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              AUDIO
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              PODCAST
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              VOICE
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              ARBITRARY_DATA
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              JSON
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              DOCUMENT
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              LIST
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              PLAYLIST
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              METADATA
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              BLOG
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              BLOG_POST
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              BLOG_COMMENT
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              GIF_REPOSITORY
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              ATTACHMENT
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              FILE
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              FILES
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              CHAIN_DATA
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              STORE
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              PRODUCT
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              OFFER
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              COUPON
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              CODE
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              PLUGIN
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              EXTENSION
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              GAME
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              ITEM
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              NFT
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              DATABASE
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              SNAPSHOT
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              COMMENT
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              CHAIN_COMMENT
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              WEBSITE
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              APP
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              QCHAT_ATTACHMENT
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              QCHAT_IMAGE
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              QCHAT_AUDIO
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              QCHAT_VOICE
+            </ServiceItem>
+          </Box>
           <SubTitle>Private services</SubTitle>
           <SectionParagraph>
             For the services below, data is encrypted for a single recipient,
@@ -53,5 +371,5 @@ export const ServiceTypes: FC<SectionProps> = ({
         </ParagraphContainer>
       </SectionContainer>
     </SectionWrapper>
-  )
-}
+  );
+};

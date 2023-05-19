@@ -1,17 +1,17 @@
-import React, { FC, useEffect } from 'react'
-import { SectionWrapper } from '../Common/SectionWrapper'
+import React, { FC, useEffect } from "react";
+import { SectionWrapper } from "../Common/SectionWrapper";
 import {
   Code,
   ParagraphContainer,
   SectionContainer,
   SectionParagraph
-} from '../Common/common-styles'
-import { DisplayCode } from '../Common/DisplayCode'
+} from "../Common/Common-styles";
+import { DisplayCode } from "../Common/DisplayCode";
 
 interface SectionProps {
-  title: string
-  setSelectedSection: (sectionId: string) => void
-  id: string
+  title: string;
+  setSelectedSection: (sectionId: string) => void;
+  id: string;
 }
 
 export const IntegrationIntroduction: FC<SectionProps> = ({
@@ -28,7 +28,7 @@ export const IntegrationIntroduction: FC<SectionProps> = ({
       <SectionContainer>
         <ParagraphContainer
           sx={{
-            width: '100%'
+            width: "100%"
           }}
         >
           <SectionParagraph>
@@ -38,5 +38,5 @@ export const IntegrationIntroduction: FC<SectionProps> = ({
         </ParagraphContainer>
       </SectionContainer>
     </SectionWrapper>
-  )
-}
+  );
+};

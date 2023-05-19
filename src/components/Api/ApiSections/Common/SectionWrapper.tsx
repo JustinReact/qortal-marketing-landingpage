@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from "react";
-import { SectionTitleText } from "../Common/common-styles";
+import { MainBox, SectionTitleText } from "./Common-styles";
 import { useInView } from "react-intersection-observer";
 import { Box } from "@mui/material";
 interface SectionProps {
@@ -27,15 +27,9 @@ export const SectionWrapper: FC<SectionProps> = ({
       }
     }
   }, [inView]);
+
   return (
-    <Box
-      sx={{
-        position: "relative",
-        minHeight: "600px",
-        width: "100%"
-      }}
-      id={id}
-    >
+    <MainBox id={id}>
       <Box
         ref={ref}
         sx={{
@@ -51,6 +45,6 @@ export const SectionWrapper: FC<SectionProps> = ({
       >
         {children}
       </Box>
-    </Box>
+    </MainBox>
   );
 };

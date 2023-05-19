@@ -1,15 +1,15 @@
-import React, { FC, useEffect } from 'react'
-import { SectionWrapper } from '../Common/SectionWrapper'
+import React, { FC, useEffect } from "react";
+import { SectionWrapper } from "../Common/SectionWrapper";
 import {
   Code,
   ParagraphContainer,
   SectionContainer,
   SectionParagraph
-} from '../Common/common-styles'
+} from "../Common/Common-styles";
 interface SectionProps {
-  title: string
-  setSelectedSection: (sectionId: string) => void
-  id: string
+  title: string;
+  setSelectedSection: (sectionId: string) => void;
+  id: string;
 }
 export const Routing: FC<SectionProps> = ({
   title,
@@ -26,7 +26,7 @@ export const Routing: FC<SectionProps> = ({
         <ParagraphContainer>
           <SectionParagraph>
             If a non-existent <Code>filepath</Code> is accessed, the default
-            behaviour of QDN is to return a{' '}
+            behaviour of QDN is to return a{" "}
             <Code>404: File not found error</Code>. This includes anything
             published using the <Code>WEBSITE service</Code>.
           </SectionParagraph>
@@ -46,10 +46,7 @@ export const Routing: FC<SectionProps> = ({
             able to be routed.
           </SectionParagraph>
         </ParagraphContainer>
-        <ParagraphContainer>
-          <SectionParagraph>hello</SectionParagraph>
-        </ParagraphContainer>
       </SectionContainer>
     </SectionWrapper>
-  )
-}
+  );
+};

@@ -1,26 +1,26 @@
-import React, { FC, useEffect } from 'react'
-import { SectionWrapper } from '../Common/SectionWrapper'
+import React, { FC, useEffect } from "react";
+import { SectionWrapper } from "../Common/SectionWrapper";
 import {
   Code,
   ParagraphContainer,
   SectionContainer,
   SectionParagraph
-} from '../Common/common-styles'
-import { DisplayCode } from '../Common/DisplayCode'
+} from "../Common/Common-styles";
+import { DisplayCode } from "../Common/DisplayCode";
 
 interface SectionProps {
-  title: string
-  setSelectedSection: (sectionId: string) => void
-  id: string
+  title: string;
+  setSelectedSection: (sectionId: string) => void;
+  id: string;
 }
 
 const codeBlock1 = `
 <img src="qortal://THUMBNAIL/QortalDemo/qortal_avatar" />
-`.trim()
+`.trim();
 
 const codeBlock2 = `
 <img src="qortal://WEBSITE/AlphaX/assets/img/logo.png" />
-`.trim()
+`.trim();
 
 export const LinkingToImages: FC<SectionProps> = ({
   title,
@@ -36,7 +36,7 @@ export const LinkingToImages: FC<SectionProps> = ({
       <SectionContainer>
         <ParagraphContainer
           sx={{
-            width: '100%'
+            width: "100%"
           }}
         >
           <SectionParagraph>
@@ -52,5 +52,5 @@ export const LinkingToImages: FC<SectionProps> = ({
         </ParagraphContainer>
       </SectionContainer>
     </SectionWrapper>
-  )
-}
+  );
+};

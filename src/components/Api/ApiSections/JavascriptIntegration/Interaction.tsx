@@ -1,19 +1,19 @@
-import React, { FC, useEffect } from 'react'
-import { SectionWrapper } from '../Common/SectionWrapper'
+import { FC } from "react";
+import { SectionWrapper } from "../Common/SectionWrapper";
 import {
-  Code,
   ParagraphContainer,
   SectionContainer,
   SectionParagraph,
   SubTitle
-} from '../Common/common-styles'
-import { DisplayCode } from '../Common/DisplayCode'
-import { DisplayCodeResponse } from '../Common/DisplayCodeResponse'
+} from "../Common/Common-styles";
+import { Grid } from "@mui/material";
+import { DisplayCode } from "../Common/DisplayCode";
+import { DisplayCodeResponse } from "../Common/DisplayCodeResponse";
 
 interface SectionProps {
-  title: string
-  setSelectedSection: (sectionId: string) => void
-  id: string
+  title: string;
+  setSelectedSection: (sectionId: string) => void;
+  id: string;
 }
 
 const codeBlock1 = `
@@ -23,14 +23,14 @@ async function getNameInfo(name) {
   console.log("nameData: " + JSON.stringify(nameData));
 }
 const name = await getNameInfo("QortalDemo");
-`.trim()
+`.trim();
 
 const codeBlock2 = `
 const name = await qortalRequest({
   action: "GET_NAME_DATA",
   name: "QortalDemo"
 });
-`.trim()
+`.trim();
 
 const codeBlock3 = `
 {
@@ -41,7 +41,7 @@ const codeBlock3 = `
   "registered": 1628962032704,
   "isForSale": false
 }
-`.trim()
+`.trim();
 
 export const Interaction: FC<SectionProps> = ({
   title,
@@ -58,31 +58,44 @@ export const Interaction: FC<SectionProps> = ({
         <ParagraphContainer>
           <SubTitle>Direct API calls</SubTitle>
           <SectionParagraph>
-            The standard{' '}
+            The standard{" "}
             <a href="https://api.qortal.org/api-documentation/" target="_blank">
               Qortal Core API
-            </a>{' '}
+            </a>{" "}
             is available to websites and apps, and can be called directly using
             a standard AJAX request, such as:
           </SectionParagraph>
-
-          <DisplayCode codeBlock={codeBlock1} language="javascript" />
-          <DisplayCodeResponse codeBlock={codeBlock3} language="javascript" />
+          <Grid container spacing={3}>
+            <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+              <DisplayCode codeBlock={codeBlock1} language="javascript" />
+            </Grid>
+            <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+              <DisplayCodeResponse
+                codeBlock={codeBlock3}
+                language="javascript"
+              />
+            </Grid>
+          </Grid>
           <SectionParagraph>
             However, this only works for read-only data, such as looking up
             transactions, names, balances, etc. Also, since the address of the
             logged in account can't be retrieved from the core, apps can't show
             personalized data with this approach.
           </SectionParagraph>
-        </ParagraphContainer>
-        <ParagraphContainer>
-          <SubTitle>Via qortalRequest()</SubTitle>
-          <SectionParagraph></SectionParagraph>
-
-          <DisplayCode codeBlock={codeBlock2} language="javascript" />
-          <DisplayCodeResponse codeBlock={codeBlock3} language="javascript" />
+          <SubTitle sx={{ marginTop: "45px" }}>Via qortalRequest()</SubTitle>
+          <Grid container spacing={3}>
+            <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+              <DisplayCode codeBlock={codeBlock2} language="javascript" />
+            </Grid>
+            <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+              <DisplayCodeResponse
+                codeBlock={codeBlock3}
+                language="javascript"
+              />
+            </Grid>
+          </Grid>
         </ParagraphContainer>
       </SectionContainer>
     </SectionWrapper>
-  )
-}
+  );
+};

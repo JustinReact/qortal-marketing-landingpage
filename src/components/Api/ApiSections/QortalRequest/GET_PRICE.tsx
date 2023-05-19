@@ -1,5 +1,5 @@
-import React, { FC, useEffect } from 'react'
-import { SectionWrapper } from '../Common/SectionWrapper'
+import React, { FC, useEffect } from "react";
+import { SectionWrapper } from "../Common/SectionWrapper";
 import {
   Code,
   ColumnContainer,
@@ -9,19 +9,19 @@ import {
   SectionContainer,
   SectionParagraph,
   SubTitle
-} from '../Common/common-styles'
-import { Box, Button, Grid, Typography } from '@mui/material'
+} from "../Common/Common-styles";
+import { Box, Button, Grid, Typography } from "@mui/material";
 
-import { DisplayCode } from '../Common/DisplayCode'
-import { DisplayCodeResponse } from '../Common/DisplayCodeResponse'
-import InfoIcon from '@mui/icons-material/Info'
-import { InformationSection } from '../Common/InformationSection'
-import { LinkApi } from '../Common/LinkApi'
+import { DisplayCode } from "../Common/DisplayCode";
+import { DisplayCodeResponse } from "../Common/DisplayCodeResponse";
+import InfoIcon from "@mui/icons-material/Info";
+import { InformationSection } from "../Common/InformationSection";
+import { LinkApi } from "../Common/LinkApi";
 
 interface SectionProps {
-  title: string
-  setSelectedSection: (sectionId: string) => void
-  id: string
+  title: string;
+  setSelectedSection: (sectionId: string) => void;
+  id: string;
 }
 
 const codeBlock1 = `
@@ -31,11 +31,11 @@ const response = await qortalRequest({
   // maxtrades: 10,
   inverse: true //Display price in terms of foreign currency per unit QORT
 });
-`.trim()
+`.trim();
 
 const codeBlockResponse = `
 303366
-`.trim()
+`.trim();
 
 export const GET_PRICE: FC<SectionProps> = ({
   title,
@@ -51,12 +51,12 @@ export const GET_PRICE: FC<SectionProps> = ({
       <SectionContainer>
         <ParagraphContainer
           sx={{
-            width: '100%'
+            width: "100%"
           }}
         >
           <InformationSection>
             <InformationParagraph>
-              Equivalent to:{' '}
+              Equivalent to:{" "}
               <LinkApi url="api-documentation/#/Cross-Chain/getTradePriceEstimate">
                 <Code>{`/crosschain/price/{blockchain}`}</Code>
               </LinkApi>
@@ -77,5 +77,5 @@ export const GET_PRICE: FC<SectionProps> = ({
         </ParagraphContainer>
       </SectionContainer>
     </SectionWrapper>
-  )
-}
+  );
+};

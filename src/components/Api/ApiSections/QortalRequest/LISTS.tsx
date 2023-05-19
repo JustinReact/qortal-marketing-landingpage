@@ -1,5 +1,5 @@
-import React, { FC, useEffect } from 'react'
-import { SectionWrapper } from '../Common/SectionWrapper'
+import React, { FC, useEffect } from "react";
+import { SectionWrapper } from "../Common/SectionWrapper";
 import {
   Code,
   ColumnContainer,
@@ -9,16 +9,16 @@ import {
   SectionContainer,
   SectionParagraph,
   SubTitle
-} from '../Common/common-styles'
-import { DisplayCode } from '../Common/DisplayCode'
-import { DisplayCodeResponse } from '../Common/DisplayCodeResponse'
-import InfoIcon from '@mui/icons-material/Info'
-import { Box, Typography } from '@mui/material'
-import { InformationSection } from '../Common/InformationSection'
+} from "../Common/Common-styles";
+import { DisplayCode } from "../Common/DisplayCode";
+import { DisplayCodeResponse } from "../Common/DisplayCodeResponse";
+import InfoIcon from "@mui/icons-material/Info";
+import { Box, Typography } from "@mui/material";
+import { InformationSection } from "../Common/InformationSection";
 interface SectionProps {
-  title: string
-  setSelectedSection: (sectionId: string) => void
-  id: string
+  title: string;
+  setSelectedSection: (sectionId: string) => void;
+  id: string;
 }
 
 const codeBlock1 = `
@@ -26,11 +26,11 @@ const response = await qortalRequest({
   action: "GET_LIST_ITEMS",
   list_name: "blockedNames"
 });
-`.trim()
+`.trim();
 
 const codeBlockResponse = `
 [ 'Q-Blog', 'Q-Mail']
-`.trim()
+`.trim();
 
 const codeBlock2 = `
 const response = await qortalRequest({
@@ -40,11 +40,11 @@ const response = await qortalRequest({
 });
 
 // the list will become [ 'Q-Blog', 'Q-Mail', 'QortalDemo]
-`.trim()
+`.trim();
 
 const codeBlockResponse2 = `
 true
-`.trim()
+`.trim();
 const codeBlock3 = `
 const response = await await qortalRequest({
   action: "DELETE_LIST_ITEM",
@@ -52,11 +52,11 @@ const response = await await qortalRequest({
   item: "Q-MAIL"
 });
 // the list will become [ 'Q-Blog', 'QortalDemo]
-`.trim()
+`.trim();
 
 const codeBlockResponse3 = `
 true
-`.trim()
+`.trim();
 
 export const LISTS: FC<SectionProps> = ({ title, setSelectedSection, id }) => {
   return (
@@ -68,7 +68,7 @@ export const LISTS: FC<SectionProps> = ({ title, setSelectedSection, id }) => {
       <SectionContainer>
         <ParagraphContainer
           sx={{
-            width: '100%'
+            width: "100%"
           }}
         >
           <SubTitle>GET_LIST_ITEMS</SubTitle>
@@ -107,5 +107,5 @@ export const LISTS: FC<SectionProps> = ({ title, setSelectedSection, id }) => {
         </ParagraphContainer>
       </SectionContainer>
     </SectionWrapper>
-  )
-}
+  );
+};

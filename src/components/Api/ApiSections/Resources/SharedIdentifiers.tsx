@@ -1,15 +1,15 @@
-import React, { FC, useEffect } from 'react'
-import { SectionWrapper } from '../Common/SectionWrapper'
+import React, { FC, useEffect } from "react";
+import { SectionWrapper } from "../Common/SectionWrapper";
 import {
   Code,
   ParagraphContainer,
   SectionContainer,
   SectionParagraph
-} from '../Common/common-styles'
+} from "../Common/Common-styles";
 interface SectionProps {
-  title: string
-  setSelectedSection: (sectionId: string) => void
-  id: string
+  title: string;
+  setSelectedSection: (sectionId: string) => void;
+  id: string;
 }
 export const SharedIdentifiers: FC<SectionProps> = ({
   title,
@@ -31,14 +31,13 @@ export const SharedIdentifiers: FC<SectionProps> = ({
           </SectionParagraph>
           <SectionParagraph>
             An example of this is the user's avatar. This will always be
-            published with service <Code>THUMBNAIL</Code> and identifier
+            published with service <Code>THUMBNAIL</Code> and identifier{" "}
             <Code>qortal_avatar</Code>, along with the user's name. So, an app
             can display the avatar of a user just by specifying their name when
             requesting the data. The same applies when publishing data.
           </SectionParagraph>
         </ParagraphContainer>
-        <ParagraphContainer>helol</ParagraphContainer>
       </SectionContainer>
     </SectionWrapper>
-  )
-}
+  );
+};

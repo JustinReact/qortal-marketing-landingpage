@@ -1,5 +1,5 @@
-import React, { FC, useEffect } from 'react'
-import { SectionWrapper } from '../Common/SectionWrapper'
+import React, { FC, useEffect } from "react";
+import { SectionWrapper } from "../Common/SectionWrapper";
 import {
   Code,
   ColumnContainer,
@@ -9,16 +9,16 @@ import {
   SectionContainer,
   SectionParagraph,
   SubTitle
-} from '../Common/common-styles'
-import { DisplayCode } from '../Common/DisplayCode'
-import { DisplayCodeResponse } from '../Common/DisplayCodeResponse'
-import InfoIcon from '@mui/icons-material/Info'
-import { Box, Typography } from '@mui/material'
-import { InformationSection } from '../Common/InformationSection'
+} from "../Common/Common-styles";
+import { DisplayCode } from "../Common/DisplayCode";
+import { DisplayCodeResponse } from "../Common/DisplayCodeResponse";
+import InfoIcon from "@mui/icons-material/Info";
+import { Box, Typography } from "@mui/material";
+import { InformationSection } from "../Common/InformationSection";
 interface SectionProps {
-  title: string
-  setSelectedSection: (sectionId: string) => void
-  id: string
+  title: string;
+  setSelectedSection: (sectionId: string) => void;
+  id: string;
 }
 
 const codeBlock1 = `
@@ -28,7 +28,7 @@ const response = await qortalRequest({
   destinationAddress: "Qi3x7zVhN17mcYm9JTrEYaFihmETSZTzPD",
   amount: 1.00000000 // 1 QORT
 });
-`.trim()
+`.trim();
 
 const codeBlockResponse = `
 {
@@ -44,7 +44,7 @@ const codeBlockResponse = `
   txGroupId: 0
   type: 'PAYMENT'
 }
-`.trim()
+`.trim();
 
 const codeBlock2 = `
 const response = await qortalRequest({
@@ -53,7 +53,7 @@ const response = await qortalRequest({
   destinationAddress: "LSdTvMHRm8sScqwCi6x9wzYQae8JeZhx6y",
   amount: 1.00000000, // 1 LTC
 });
-`.trim()
+`.trim();
 
 export const SEND_COIN: FC<SectionProps> = ({
   title,
@@ -69,7 +69,7 @@ export const SEND_COIN: FC<SectionProps> = ({
       <SectionContainer>
         <ParagraphContainer
           sx={{
-            width: '100%'
+            width: "100%"
           }}
         >
           <SubTitle>Send QORT to address</SubTitle>
@@ -88,5 +88,5 @@ export const SEND_COIN: FC<SectionProps> = ({
         </ParagraphContainer>
       </SectionContainer>
     </SectionWrapper>
-  )
-}
+  );
+};

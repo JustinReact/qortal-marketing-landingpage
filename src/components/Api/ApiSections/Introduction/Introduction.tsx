@@ -1,15 +1,14 @@
-import React, { FC, useEffect } from 'react'
-import { SectionWrapper } from '../Common/SectionWrapper'
-import { Box, Typography } from '@mui/material'
+import { FC } from "react";
+import { SectionWrapper } from "../Common/SectionWrapper";
 import {
   ParagraphContainer,
   SectionContainer,
   SectionParagraph
-} from '../Common/common-styles'
+} from "../Common/Common-styles";
 interface SectionProps {
-  title: string
-  setSelectedSection: (sectionId: string) => void
-  id: string
+  title: string;
+  setSelectedSection: (sectionId: string) => void;
+  id: string;
 }
 export const Introduction: FC<SectionProps> = ({
   title,
@@ -23,15 +22,10 @@ export const Introduction: FC<SectionProps> = ({
       id={id}
     >
       <SectionContainer>
-        <ParagraphContainer>sup</ParagraphContainer>
-        <ParagraphContainer
-          sx={{
-            flexBasis: '50%'
-          }}
-        >
-          hello
+        <ParagraphContainer>
+          <SectionParagraph>hello</SectionParagraph>
         </ParagraphContainer>
       </SectionContainer>
     </SectionWrapper>
-  )
-}
+  );
+};

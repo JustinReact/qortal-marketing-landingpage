@@ -1,5 +1,5 @@
-import React, { FC, useEffect } from 'react'
-import { SectionWrapper } from '../Common/SectionWrapper'
+import React, { FC, useEffect } from "react";
+import { SectionWrapper } from "../Common/SectionWrapper";
 import {
   Code,
   ColumnContainer,
@@ -9,19 +9,19 @@ import {
   SectionContainer,
   SectionParagraph,
   SubTitle
-} from '../Common/common-styles'
-import { Box, Button, Grid, Typography } from '@mui/material'
+} from "../Common/Common-styles";
+import { Box, Button, Grid, Typography } from "@mui/material";
 
-import { DisplayCode } from '../Common/DisplayCode'
-import { DisplayCodeResponse } from '../Common/DisplayCodeResponse'
-import InfoIcon from '@mui/icons-material/Info'
-import { InformationSection } from '../Common/InformationSection'
-import { LinkApi } from '../Common/LinkApi'
+import { DisplayCode } from "../Common/DisplayCode";
+import { DisplayCodeResponse } from "../Common/DisplayCodeResponse";
+import InfoIcon from "@mui/icons-material/Info";
+import { InformationSection } from "../Common/InformationSection";
+import { LinkApi } from "../Common/LinkApi";
 
 interface SectionProps {
-  title: string
-  setSelectedSection: (sectionId: string) => void
-  id: string
+  title: string;
+  setSelectedSection: (sectionId: string) => void;
+  id: string;
 }
 
 const codeBlock1 = `
@@ -33,12 +33,12 @@ const response =  await qortalRequest({
   encoding: "base64", // Optional. If omitted, data is returned in raw form
   rebuild: false
 });
-`.trim()
+`.trim();
 
 const codeBlockResponse = `
 // base64 encoding returns a base64
 AAAAIGZ0eXBhdmlmAAAAAGF2aWZtaWYxbWlhZk1BMUIAAA1HbWV0YQAAAAAAAAAoaGRscgAAAAAAAAAAcGljdAAAAAAAAAAAAAAAAGxpYmF2aWYAAAAADnBpd...
-`.trim()
+`.trim();
 const codeBlock2 = `
 // In this example I'm requesting a json that was saved to QDN (this is just an example- this exact resource doesn't exist)
 const response =  await qortalRequest({
@@ -47,7 +47,7 @@ const response =  await qortalRequest({
   service: 'BLOG_POST',
   identifier: 'q-blog-tester-2-blog-post-test-HDUgPk'
 })
-`.trim()
+`.trim();
 
 const codeBlockResponse2 = `
 // If the encoding param is omitted the raw data is return. In this case a json.
@@ -84,7 +84,7 @@ const codeBlockResponse2 = `
       "blogPostType": "minimal"
   }
 }
-`.trim()
+`.trim();
 
 const codeBlock3 = `
 const response =  await qortalRequest({
@@ -95,7 +95,7 @@ const response =  await qortalRequest({
   filepath: "index.html", // Required only for resources containing more than one file
   rebuild: false
 });
-`.trim()
+`.trim();
 
 export const FETCH_QDN_RESOURCE: FC<SectionProps> = ({
   title,
@@ -111,14 +111,14 @@ export const FETCH_QDN_RESOURCE: FC<SectionProps> = ({
       <SectionContainer>
         <ParagraphContainer
           sx={{
-            width: '100%'
+            width: "100%"
           }}
         >
           <InformationSection>
             <InformationParagraph>
-              Equivalent to:{' '}
+              Equivalent to:{" "}
               <LinkApi url="api-documentation/#/Arbitrary/get">
-                <Code>{'/arbitrary/{service}/{name}/{identifier}'}</Code>
+                <Code>{"/arbitrary/{service}/{name}/{identifier}"}</Code>
               </LinkApi>
             </InformationParagraph>
           </InformationSection>
@@ -138,5 +138,5 @@ export const FETCH_QDN_RESOURCE: FC<SectionProps> = ({
         </ParagraphContainer>
       </SectionContainer>
     </SectionWrapper>
-  )
-}
+  );
+};

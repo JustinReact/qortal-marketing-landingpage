@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 
-import copy from 'copy-to-clipboard'
-import { ColumnContainer, RowContainer } from './common-styles'
-import InfoIcon from '@mui/icons-material/Info'
+import copy from "copy-to-clipboard";
+import { ColumnContainer, RowContainer } from "./Common-styles";
+import InfoIcon from "@mui/icons-material/Info";
 
 export const InformationSection = ({ children }: any) => {
   return (
@@ -10,5 +10,5 @@ export const InformationSection = ({ children }: any) => {
       <InfoIcon />
       <ColumnContainer>{children}</ColumnContainer>
     </RowContainer>
-  )
-}
+  );
+};

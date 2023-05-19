@@ -1,5 +1,5 @@
-import React, { FC, useEffect } from 'react'
-import { SectionWrapper } from '../Common/SectionWrapper'
+import React, { FC, useEffect } from "react";
+import { SectionWrapper } from "../Common/SectionWrapper";
 import {
   Code,
   ColumnContainer,
@@ -9,19 +9,19 @@ import {
   SectionContainer,
   SectionParagraph,
   SubTitle
-} from '../Common/common-styles'
-import { Box, Button, Grid, Typography } from '@mui/material'
+} from "../Common/Common-styles";
+import { Box, Button, Grid, Typography } from "@mui/material";
 
-import { DisplayCode } from '../Common/DisplayCode'
-import { DisplayCodeResponse } from '../Common/DisplayCodeResponse'
-import InfoIcon from '@mui/icons-material/Info'
-import { InformationSection } from '../Common/InformationSection'
-import { LinkApi } from '../Common/LinkApi'
+import { DisplayCode } from "../Common/DisplayCode";
+import { DisplayCodeResponse } from "../Common/DisplayCodeResponse";
+import InfoIcon from "@mui/icons-material/Info";
+import { InformationSection } from "../Common/InformationSection";
+import { LinkApi } from "../Common/LinkApi";
 
 interface SectionProps {
-  title: string
-  setSelectedSection: (sectionId: string) => void
-  id: string
+  title: string;
+  setSelectedSection: (sectionId: string) => void;
+  id: string;
 }
 
 const codeBlock1 = `
@@ -44,7 +44,7 @@ const handleLinkProgrammaticallyWithPath = async () => {
 
 handleLinkProgramatically()
 handleLinkProgrammaticallyWithPath()
-`.trim()
+`.trim();
 
 export const LINK_TO_QDN_RESOURCE: FC<SectionProps> = ({
   title,
@@ -60,15 +60,15 @@ export const LINK_TO_QDN_RESOURCE: FC<SectionProps> = ({
       <SectionContainer>
         <ParagraphContainer
           sx={{
-            width: '100%'
+            width: "100%"
           }}
         >
           <InformationSection>
             <InformationParagraph>
-              Note: an alternate method is to include{' '}
+              Note: an alternate method is to include{" "}
               <Code>
                 {'<a href="qortal://WEBSITE/QortalDemo">link text</a>'}
-              </Code>{' '}
+              </Code>{" "}
               within your HTML code.
             </InformationParagraph>
           </InformationSection>
@@ -77,5 +77,5 @@ export const LINK_TO_QDN_RESOURCE: FC<SectionProps> = ({
         </ParagraphContainer>
       </SectionContainer>
     </SectionWrapper>
-  )
-}
+  );
+};
