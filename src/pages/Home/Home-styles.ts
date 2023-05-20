@@ -10,7 +10,7 @@ export const Column = styled(Grid)({
 
 export const HeaderText = styled(Typography)(({ theme }) => ({
   fontFamily: 'Montserrat',
-  fontWeight: '600',
+  fontWeight: '550',
   letterSpacing: '1.5px',
   lineHeight: '60px',
   textAlign: 'center',
