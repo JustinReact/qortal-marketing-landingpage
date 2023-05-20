@@ -1,11 +1,13 @@
-import React, { useState } from "react";
-
+import { useState } from "react";
 import { Highlight, themes } from "prism-react-renderer";
 import copy from "copy-to-clipboard";
 import { Tooltip } from "@mui/material";
 import { CodeWrapper, CopyCodeIcon } from "./Common-styles";
+import { useTheme } from "@mui/material";
 
 export const DisplayCode = ({ codeBlock, language = "javascript" }: any) => {
+  const theme = useTheme();
+
   const [copyText, setCopyText] = useState("Copy");
 
   const handleCopy = () => {
@@ -23,7 +25,13 @@ export const DisplayCode = ({ codeBlock, language = "javascript" }: any) => {
       <Tooltip title={copyText} arrow placement="top">
         <CopyCodeIcon onClick={handleCopy} />
       </Tooltip>
-      <Highlight theme={themes.nightOwl} code={codeBlock} language="javascript">
+      <Highlight
+        theme={
+          theme.palette.mode === "light" ? themes.oceanicNext : themes.nightOwl
+        }
+        code={codeBlock}
+        language="javascript"
+      >
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
           <pre
             className={`${className} stripe-code-block`}
@@ -33,6 +41,7 @@ export const DisplayCode = ({ codeBlock, language = "javascript" }: any) => {
               overflowX: "auto",
               borderRadius: "7px",
               width: "100%",
+              maxHeight: "800px",
               whiteSpace: "normal",
               overflowWrap: "anywhere"
             }}

@@ -25,11 +25,29 @@ interface SectionProps {
 }
 
 const codeBlock1 = `
-const response =  await qortalRequest({
-  action: "GET_QDN_RESOURCE_METADATA",
-  name: "Q-Blog",
-  service: "BLOG_POST",
-  identifier: "q-blog-qblog-post-Publishing-Blog-s-SncAO3" // Optional
+let url = await qortalRequest({
+  action: "GET_QDN_RESOURCE_URL",
+  service: "THUMBNAIL",
+  name: "QortalDemo",
+  identifier: "qortal_avatar"
+  // path: "filename.jpg" // optional - not needed if resource contains only one file
+});
+Get URL to load a QDN website
+Note: this returns a "Resource does not exist" error if a non-existent resource is requested.
+
+let url = await qortalRequest({
+  action: "GET_QDN_RESOURCE_URL",
+  service: "WEBSITE",
+  name: "QortalDemo",
+});
+Get URL to load a specific file from a QDN website
+Note: this returns a "Resource does not exist" error if a non-existent resource is requested.
+
+let url = await qortalRequest({
+  action: "GET_QDN_RESOURCE_URL",
+  service: "WEBSITE",
+  name: "AlphaX",
+  path: "/assets/img/logo.png"
 });
 `.trim();
 
@@ -56,20 +74,21 @@ export const GET_QDN_RESOURCE_URL: FC<SectionProps> = ({
         >
           <InformationSection>
             <InformationParagraph>
-              Equivalent to:{" "}
-              <LinkApi url="api-documentation/#/Arbitrary/getMetadata">
-                <Code>
-                  {"/arbitrary/metadata/{service}/{name}/{identifier}"}
-                </Code>
-              </LinkApi>
+              Get URL to load a QDN resource. Note: this returns a "Resource
+              does not exist" error if a non-existent resource is requested.
             </InformationParagraph>
           </InformationSection>
-
-          <DisplayCode codeBlock={codeBlock1} language="javascript" />
-          <DisplayCodeResponse
-            codeBlock={codeBlockResponse}
-            language="javascript"
-          />
+          <Grid container spacing={3}>
+            <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+              <DisplayCode codeBlock={codeBlock1} language="javascript" />
+            </Grid>
+            <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+              <DisplayCodeResponse
+                codeBlock={codeBlockResponse}
+                language="javascript"
+              />
+            </Grid>
+          </Grid>
         </ParagraphContainer>
       </SectionContainer>
     </SectionWrapper>

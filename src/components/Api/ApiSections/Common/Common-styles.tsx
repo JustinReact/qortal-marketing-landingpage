@@ -2,6 +2,7 @@ import { styled } from "@mui/system";
 import { Box, Typography } from "@mui/material";
 import { QortalSVG } from "../../../Common/Icons/QortalSVG";
 import ContentPasteTwoToneIcon from "@mui/icons-material/ContentPasteTwoTone";
+import { DisplayCode } from "./DisplayCode";
 
 export const MainBox = styled(Box)(({ theme }) => ({
   position: "relative",
@@ -108,8 +109,7 @@ export const InformationParagraph = styled(Typography)(({ theme }) => ({
   fontSize: "18px",
   lineHeight: "28px",
   fontFamily: "Roboto",
-  color: theme.palette.text.primary,
-  opacity: "0.85"
+  color: theme.palette.mode === "light" ? "#425061" : "#bfc0c2"
 }));
 
 export const CustomUnorderedList = styled("ul")(({ theme }) => ({
@@ -141,4 +141,34 @@ export const ServiceItem = styled(Box)(({ theme }) => ({
   letterSpacing: "0.5px",
   fontWeight: "400",
   color: theme.palette.text.primary
+}));
+
+export const DisplayCodeResponsePre = styled("pre")(({ theme }) => ({
+  padding: "10px",
+  overflowX: "auto",
+  borderRadius: "7px",
+  maxHeight: "800px",
+  width: "100%",
+  whiteSpace: "normal",
+  overflowWrap: "anywhere",
+  "&::-webkit-scrollbar-track": {
+    backgroundColor: theme.palette.mode === "light" ? "#f6f8fa" : "#292d3e"
+  },
+  "&::-webkit-scrollbar-track:hover": {
+    backgroundColor: theme.palette.mode === "light" ? "#f6f8fa" : "#292d3e"
+  },
+  "&::-webkit-scrollbar": {
+    width: "16px",
+    height: "10px",
+    backgroundColor: theme.palette.mode === "light" ? "#f6f8fa" : "#292d3e"
+  },
+  "&::-webkit-scrollbar-thumb": {
+    backgroundColor: theme.palette.mode === "light" ? "#d3d9e1" : "#414763",
+    borderRadius: "8px",
+    backgroundClip: "content-box",
+    border: "4px solid transparent"
+  },
+  "&::-webkit-scrollbar-thumb:hover": {
+    backgroundColor: theme.palette.mode === "light" ? "#b7bcc4" : "#40455f"
+  }
 }));

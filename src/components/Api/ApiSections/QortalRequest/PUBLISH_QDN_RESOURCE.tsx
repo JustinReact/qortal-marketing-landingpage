@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from "react";
+import { FC, useEffect } from "react";
 import { SectionWrapper } from "../Common/SectionWrapper";
 import {
   Code,
@@ -11,7 +11,6 @@ import {
   SubTitle
 } from "../Common/Common-styles";
 import { Box, Button, Grid, Typography } from "@mui/material";
-
 import { DisplayCode } from "../Common/DisplayCode";
 import { DisplayCodeResponse } from "../Common/DisplayCodeResponse";
 import InfoIcon from "@mui/icons-material/Info";
@@ -31,7 +30,7 @@ const response = await qortalRequest({
   service: "IMAGE",
   identifier: "myapp-image1234" // Optional
   data64: "base64_encoded_data", // base64 string. Remove this param if you are putting in a file. see next param.
-  file: "file_object", // File Object. Remove this param if you are putting in a base64 strinng.
+  file: "file_object", // File Object. Remove this param if you are putting in a base64 string.
   // filename: "image.jpg", // Optional - to help apps determine the file's type
   // title: "Title", // Optional
   // description: "Description", // Optional
@@ -177,17 +176,29 @@ export const PUBLISH_QDN_RESOURCE: FC<SectionProps> = ({
               yet supported via a Q-App. It will be added in a future update.
             </InformationParagraph>
           </InformationSection>
-          <DisplayCode codeBlock={codeBlock1} language="javascript" />
-          <DisplayCodeResponse
-            codeBlock={codeBlockResponse}
-            language="javascript"
-          />
+          <Grid container spacing={3}>
+            <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+              <DisplayCode codeBlock={codeBlock1} language="javascript" />
+            </Grid>
+            <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+              <DisplayCodeResponse
+                codeBlock={codeBlockResponse}
+                language="javascript"
+              />
+            </Grid>
+          </Grid>
           <SubTitle>PUBLISH_MULTIPLE_QDN_RESOURCES</SubTitle>
-          <DisplayCode codeBlock={codeBlock2} language="javascript" />
-          <DisplayCodeResponse
-            codeBlock={codeBlockResponse2}
-            language="javascript"
-          />
+          <Grid container spacing={3}>
+            <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+              <DisplayCode codeBlock={codeBlock2} language="javascript" />
+            </Grid>
+            <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+              <DisplayCodeResponse
+                codeBlock={codeBlockResponse2}
+                language="javascript"
+              />
+            </Grid>
+          </Grid>
         </ParagraphContainer>
       </SectionContainer>
     </SectionWrapper>

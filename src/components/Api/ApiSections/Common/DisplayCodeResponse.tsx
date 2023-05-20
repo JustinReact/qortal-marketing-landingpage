@@ -1,47 +1,40 @@
 import { useState } from "react";
 import { Highlight, themes } from "prism-react-renderer";
-import { Typography, Box } from "@mui/material";
-import { CodeWrapper } from "./Common-styles";
+import { Typography, Box, useTheme } from "@mui/material";
+import { CodeWrapper, DisplayCodeResponsePre } from "./Common-styles";
 import copy from "copy-to-clipboard";
 
 export const DisplayCodeResponse = ({
   codeBlock,
   language = "javascript"
 }: any) => {
+  const theme = useTheme();
+
   const [copyText, setCopyText] = useState("Copy");
-  const handleCopy = () => {
-    try {
-      copy(codeBlock);
-      setCopyText("Copied!");
-      setTimeout(() => {
-        setCopyText("Copy!");
-      }, 3000);
-    } catch (error) {}
-  };
 
   return (
     <CodeWrapper>
-      <Highlight theme={themes.github} code={codeBlock} language="javascript">
+      <Highlight
+        theme={
+          theme.palette.mode === "light" ? themes.github : themes.palenight
+        }
+        code={codeBlock}
+        language="javascript"
+      >
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
-          <pre
+          <DisplayCodeResponsePre
             className={`${className} stripe-code-block`}
-            style={{
-              ...style,
-              padding: "10px",
-              overflowX: "auto",
-              borderRadius: "7px",
-              maxHeight: "300px",
-              width: "100%",
-              whiteSpace: "normal",
-              overflowWrap: "anywhere"
-            }}
+            style={{ ...style }}
           >
             <Box
               sx={{
                 padding: "5px",
-                backgroundColor: "#d3d9e1",
+                backgroundColor:
+                  theme.palette.mode === "dark" ? "#767ea0" : "#d3d9e1",
+                color: theme.palette.text.primary,
                 borderTopRightRadius: "7px",
-                borderTopLeftRadius: "7px"
+                borderTopLeftRadius: "7px",
+                marginBottom: "10px"
               }}
             >
               <Typography>RESPONSE</Typography>
@@ -64,14 +57,14 @@ export const DisplayCodeResponse = ({
                 >
                   {i + 1}
                 </span>
-                <span style={{ flex: 1, fontSize: "14px" }}>
+                <span style={{ flex: 1, fontSize: "18px" }}>
                   {line.map((token, key) => (
                     <span key={key} {...getTokenProps({ token, key })} />
                   ))}
                 </span>
               </div>
             ))}
-          </pre>
+          </DisplayCodeResponsePre>
         )}
       </Highlight>
     </CodeWrapper>

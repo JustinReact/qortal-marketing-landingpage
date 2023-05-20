@@ -7,7 +7,6 @@ import {
   SectionContainer
 } from "../Common/Common-styles";
 import { Grid } from "@mui/material";
-
 import { DisplayCode } from "../Common/DisplayCode";
 import { DisplayCodeResponse } from "../Common/DisplayCodeResponse";
 import { InformationSection } from "../Common/InformationSection";

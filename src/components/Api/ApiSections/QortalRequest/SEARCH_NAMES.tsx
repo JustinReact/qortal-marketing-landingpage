@@ -81,12 +81,17 @@ export const SEARCH_NAMES: FC<SectionProps> = ({
               </LinkApi>
             </InformationParagraph>
           </InformationSection>
-
-          <DisplayCode codeBlock={codeBlock1} language="javascript" />
-          <DisplayCodeResponse
-            codeBlock={codeBlockResponse}
-            language="javascript"
-          />
+          <Grid container spacing={3}>
+            <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+              <DisplayCode codeBlock={codeBlock1} language="javascript" />
+            </Grid>
+            <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+              <DisplayCodeResponse
+                codeBlock={codeBlockResponse}
+                language="javascript"
+              />
+            </Grid>
+          </Grid>
         </ParagraphContainer>
       </SectionContainer>
     </SectionWrapper>

@@ -1,19 +1,13 @@
-import React, { FC, useEffect } from "react";
+import { FC } from "react";
 import { SectionWrapper } from "../Common/SectionWrapper";
 import {
-  Code,
-  ColumnContainer,
   InformationParagraph,
   ParagraphContainer,
-  RowContainer,
-  SectionContainer,
-  SectionParagraph,
-  SubTitle
+  SectionContainer
 } from "../Common/Common-styles";
 import { DisplayCode } from "../Common/DisplayCode";
 import { DisplayCodeResponse } from "../Common/DisplayCodeResponse";
-import InfoIcon from "@mui/icons-material/Info";
-import { Box, Typography } from "@mui/material";
+import { Grid } from "@mui/material";
 import { InformationSection } from "../Common/InformationSection";
 interface SectionProps {
   title: string;
@@ -54,11 +48,17 @@ export const JOIN_GROUP: FC<SectionProps> = ({
               This action requires user approval
             </InformationParagraph>
           </InformationSection>
-          <DisplayCode codeBlock={codeBlock1} language="javascript" />
-          <DisplayCodeResponse
-            codeBlock={codeBlockResponse}
-            language="javascript"
-          />
+          <Grid container spacing={3}>
+            <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+              <DisplayCode codeBlock={codeBlock1} language="javascript" />
+            </Grid>
+            <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+              <DisplayCodeResponse
+                codeBlock={codeBlockResponse}
+                language="javascript"
+              />
+            </Grid>
+          </Grid>
         </ParagraphContainer>
       </SectionContainer>
     </SectionWrapper>

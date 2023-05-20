@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from "react";
+import { FC, useEffect } from "react";
 import { SectionWrapper } from "../Common/SectionWrapper";
 import {
   Code,
@@ -11,7 +11,6 @@ import {
   SubTitle
 } from "../Common/Common-styles";
 import { Box, Button, Grid, Typography } from "@mui/material";
-
 import { DisplayCode } from "../Common/DisplayCode";
 import { DisplayCodeResponse } from "../Common/DisplayCodeResponse";
 import InfoIcon from "@mui/icons-material/Info";
