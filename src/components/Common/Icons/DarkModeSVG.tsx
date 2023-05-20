@@ -5,7 +5,7 @@ export const DarkModeSVG: React.FC<IconTypes> = ({
   color,
   height,
   width,
-  onClickFunc,
+  onClickFunc
 }) => {
   return (
     <StyledIcon

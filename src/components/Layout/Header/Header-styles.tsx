@@ -100,6 +100,7 @@ export const Docs = styled(Typography)(({ theme }) => ({
   fontWeight: "400",
   transition: "all 0.3s ease-in-out",
   zIndex: 2,
+  userSelect: "none",
   "&:hover": {
     cursor: "pointer",
     filter: "brightness(0.9)"

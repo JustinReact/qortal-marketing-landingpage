@@ -3,5 +3,5 @@ export interface IconTypes {
   height: string;
   width: string;
   className?: string;
-  onClickFunc?: ((e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void) | (() => void);
+  onClickFunc?: () => void;
 }

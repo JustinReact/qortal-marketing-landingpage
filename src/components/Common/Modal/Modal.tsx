@@ -5,7 +5,7 @@ import {
   ChevronLeftIcon,
   ChevronRightIcon,
   CloseIcon,
-  Modalbody,
+  Modalbody
 } from "./Modal-styles";
 import { ModalScreenshot } from "../../TutorialSteps/Steps-styles";
 import { useTheme } from "@mui/material";
@@ -13,7 +13,7 @@ import { useTheme } from "@mui/material";
 interface ModalProps {
   openModal: boolean;
   onImageChangeFunc?: (image: string) => void;
-  onClickFunc: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
+  onClickFunc: (e?: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
   images: string[];
 }
 
@@ -21,7 +21,7 @@ const Modal: FC<ModalProps> = ({
   onClickFunc,
   onImageChangeFunc,
   openModal,
-  images,
+  images
 }) => {
   const theme = useTheme();
   const modalRef = useRef(null);
@@ -78,7 +78,7 @@ const Modal: FC<ModalProps> = ({
     },
     swipeDuration: 500,
     preventScrollOnSwipe: true,
-    trackMouse: true,
+    trackMouse: true
   });
 
   return (
@@ -125,8 +125,8 @@ const Modal: FC<ModalProps> = ({
           alt="modal-image"
         ></ModalScreenshot>
         <CloseIcon
-          onClickFunc={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-            onClickFunc(e);
+          onClickFunc={() => {
+            onClickFunc();
           }}
           color={theme.palette.text.primary}
           height={"32"}

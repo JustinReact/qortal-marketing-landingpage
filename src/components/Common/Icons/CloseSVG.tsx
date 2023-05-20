@@ -5,15 +5,10 @@ export const CloseSVG: React.FC<IconTypes> = ({
   height,
   width,
   onClickFunc,
-  className,
+  className
 }) => {
   return (
-    <div
-      className={className}
-      onClick={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) =>
-        onClickFunc?.(e)
-      }
-    >
+    <div className={className} onClick={onClickFunc}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         height={height}
