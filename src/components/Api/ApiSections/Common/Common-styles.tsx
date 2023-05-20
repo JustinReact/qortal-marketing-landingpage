@@ -85,8 +85,8 @@ export const CodeWrapper = styled(Box)(({ theme }) => ({
 
 export const CopyCodeIcon = styled(ContentPasteTwoToneIcon)(({ theme }) => ({
   position: "absolute",
-  right: "8px",
-  top: "22px",
+  right: "20px",
+  top: "25px",
   fontSize: "20px",
   color: "white",
   cursor: "pointer"
@@ -141,6 +141,36 @@ export const ServiceItem = styled(Box)(({ theme }) => ({
   letterSpacing: "0.5px",
   fontWeight: "400",
   color: theme.palette.text.primary
+}));
+
+export const DisplayCodePre = styled("pre")(({ theme }) => ({
+  padding: "30px 10px 20px 10px",
+  overflowX: "auto",
+  borderRadius: "7px",
+  width: "100%",
+  maxHeight: "800px",
+  whiteSpace: "normal",
+  overflowWrap: "anywhere",
+  "&::-webkit-scrollbar-track": {
+    backgroundColor: theme.palette.mode === "light" ? "#282c34" : "#011627"
+  },
+  "&::-webkit-scrollbar-track:hover": {
+    backgroundColor: theme.palette.mode === "light" ? "#282c34" : "#011627"
+  },
+  "&::-webkit-scrollbar": {
+    width: "16px",
+    height: "10px",
+    backgroundColor: theme.palette.mode === "light" ? "#282c34" : "#011627"
+  },
+  "&::-webkit-scrollbar-thumb": {
+    backgroundColor: theme.palette.mode === "light" ? "#545a64" : "#072f50",
+    borderRadius: "8px",
+    backgroundClip: "content-box",
+    border: "4px solid transparent"
+  },
+  "&::-webkit-scrollbar-thumb:hover": {
+    backgroundColor: theme.palette.mode === "light" ? "#4b5058" : "#06233b"
+  }
 }));
 
 export const DisplayCodeResponsePre = styled("pre")(({ theme }) => ({

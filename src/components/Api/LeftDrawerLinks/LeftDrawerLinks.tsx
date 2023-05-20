@@ -37,7 +37,7 @@ export const LeftDrawerLinks: FC<LeftDrawerLinksProps> = ({
   const [openIndex, setOpenIndex] = useState<null | number>(null);
   return (
     <CustomDrawer drawerwidth={drawerWidth} variant="permanent" anchor="left">
-      <ThemeSelectRow sx={{ paddingBottom: "15px", paddingLeft: "12px" }}>
+      <ThemeSelectRow sx={{ paddingBottom: "15px", paddingLeft: "15px" }}>
         {theme.palette.mode === "dark" ? (
           <LightModeSVG
             onClickFunc={() => setTheme("light")}

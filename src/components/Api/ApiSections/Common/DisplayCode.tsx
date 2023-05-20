@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Highlight, themes } from "prism-react-renderer";
 import copy from "copy-to-clipboard";
 import { Tooltip } from "@mui/material";
-import { CodeWrapper, CopyCodeIcon } from "./Common-styles";
+import { CodeWrapper, CopyCodeIcon, DisplayCodePre } from "./Common-styles";
 import { useTheme } from "@mui/material";
 
 export const DisplayCode = ({ codeBlock, language = "javascript" }: any) => {
@@ -33,18 +33,9 @@ export const DisplayCode = ({ codeBlock, language = "javascript" }: any) => {
         language="javascript"
       >
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
-          <pre
+          <DisplayCodePre
             className={`${className} stripe-code-block`}
-            style={{
-              ...style,
-              padding: "30px 10px 20px 10px",
-              overflowX: "auto",
-              borderRadius: "7px",
-              width: "100%",
-              maxHeight: "800px",
-              whiteSpace: "normal",
-              overflowWrap: "anywhere"
-            }}
+            style={{ ...style }}
           >
             {tokens.map((line, i) => (
               <div
@@ -71,7 +62,7 @@ export const DisplayCode = ({ codeBlock, language = "javascript" }: any) => {
                 </span>
               </div>
             ))}
-          </pre>
+          </DisplayCodePre>
         )}
       </Highlight>
     </CodeWrapper>
