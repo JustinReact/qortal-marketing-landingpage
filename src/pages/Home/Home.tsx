@@ -31,7 +31,10 @@ const Home: FC = () => {
         on the First {!isMobile && <br />}
         Fully Decentralized Blockchain Platform: Qortal
       </HeaderText>
-      <SubHeaderText variant="h2">using?</SubHeaderText>
+      <SubHeaderText variant="h2">
+        Fast installation, and faster app deployment! Firstly, which OS are you
+        using?
+      </SubHeaderText>
       <FooterRow container>
         {!operatingSystem ? (
           <>
