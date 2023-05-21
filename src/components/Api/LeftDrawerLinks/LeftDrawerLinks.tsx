@@ -1,6 +1,5 @@
 import { Fragment } from "react";
 import {
-  Drawer,
   List,
   ListItem,
   ListItemButton,
@@ -82,7 +81,10 @@ export const LeftDrawerLinks: FC<LeftDrawerLinksProps> = ({
                 <CustomDrawerButton
                   sx={{
                     backgroundColor:
-                      section?.id === selectedSection
+                      section?.id === selectedSection ||
+                      section?.subContent?.some(
+                        (subSection: any) => subSection?.id === selectedSection
+                      )
                         ? theme.palette.primary.dark
                         : ""
                   }}
@@ -96,7 +98,17 @@ export const LeftDrawerLinks: FC<LeftDrawerLinksProps> = ({
                   )}
                 </CustomDrawerButton>
               </ListItem>
-              <Collapse in={index === openIndex} timeout="auto" unmountOnExit>
+              <Collapse
+                in={
+                  index === openIndex ||
+                  section?.id === selectedSection ||
+                  section?.subContent?.some(
+                    (subSection: any) => subSection?.id === selectedSection
+                  )
+                }
+                timeout="auto"
+                unmountOnExit
+              >
                 <List component="div" disablePadding>
                   {section?.subContent?.map((subSection: any) => {
                     return (

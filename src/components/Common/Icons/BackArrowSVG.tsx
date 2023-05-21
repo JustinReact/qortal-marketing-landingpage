@@ -1,8 +1,14 @@
 import { IconTypes } from "./IconTypes";
 
-export const BackArrowSVG: React.FC<IconTypes> = ({ color, height, width }) => {
+export const BackArrowSVG: React.FC<IconTypes> = ({
+  color,
+  height,
+  width,
+  className
+}) => {
   return (
     <svg
+      className={className}
       fill={color}
       xmlns="http://www.w3.org/2000/svg"
       height={height}
