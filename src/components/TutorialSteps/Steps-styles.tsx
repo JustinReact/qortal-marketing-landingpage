@@ -333,9 +333,9 @@ export const ArrowDown = styled(ArrowDownwardIcon)({
   color: "black",
 });
 
-export const ProceedButton = styled(Button)({
-  backgroundColor: "#00c71b",
-  color: "black",
+export const ProceedButton = styled(Button)(({ theme }) => ({
+  backgroundColor: theme.palette.secondary.light,
+  color: theme.palette.text.primary,
   borderRadius: "5px",
   width: "auto",
   display: "flex",
@@ -345,11 +345,12 @@ export const ProceedButton = styled(Button)({
   fontFamily: "Roboto, sans-serif",
   fontWeight: 300,
   letterSpacing: "0.3px",
+  gap: '7px',
   "&:hover": {
-    backgroundColor: "#00c71b",
+    backgroundColor: theme.palette.secondary.light,
     cursor: "pointer",
   },
-});
+}));
 
 export const ProgressBar = styled(LinearProgress)(({ theme }) => ({
   height: "10px",

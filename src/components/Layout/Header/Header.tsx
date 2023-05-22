@@ -80,7 +80,7 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
               </Docs>
               <DiscordButton
                 onClick={() => {
-                  window.open("https://discord.gg/nNvqGAamjb", "_blank");
+                  window.open("https://discord.gg/DRyQ79xqhd", "_blank");
                 }}
               >
                 Join Discord

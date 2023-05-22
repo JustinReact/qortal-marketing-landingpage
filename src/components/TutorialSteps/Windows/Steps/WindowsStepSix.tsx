@@ -1,7 +1,6 @@
 import { FC, useState } from "react";
 import {
   MagnifyingGlass,
-  ModalScreenshot,
   Screenshot,
   ScreenshotContainer,
   StepCard,
@@ -13,6 +12,7 @@ import {
 import { Box, Grid, Typography } from "@mui/material";
 import Modal from "../../../Common/Modal/Modal";
 import StepSixImg from "../../../../images/Windows/WindowsStepSix.webp";
+import { DiscordSVG } from "../../../Common/Icons/DiscordSVG";
 
 interface WindowsStepSixProps {}
 
@@ -45,12 +45,11 @@ const WindowsStepSix: FC<WindowsStepSixProps> = () => {
             >
               <ProceedButton
                 variant="contained"
-                color="primary"
                 size="small"
-                onClick={() => console.log("clicked")}
+                onClick={() => window.open("https://discord.gg/DRyQ79xqhd", "_blank")}
               >
-                <ArrowDown />
-                Proceed
+                Join Discord 
+                <DiscordSVG color={"#ffffff"} height={"22"} width={"22"} />
               </ProceedButton>
             </Box>
           </StepColumn>

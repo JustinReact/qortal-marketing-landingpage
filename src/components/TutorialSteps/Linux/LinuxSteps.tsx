@@ -180,6 +180,7 @@ const LinuxSteps = () => {
             Previous
           </PreviousButton>
           <NextButton
+            sx={{ display: currentStep === steps.length ? "none" : "block" }}
             shiny={{ isOn: shinyButton ? true : false }}
             onClick={() => {
               setCurrentStep((prev) => prev + 1);
