@@ -90,16 +90,17 @@ export const LeftDrawerLinks: FC<LeftDrawerLinksProps> = ({
                   }}
                 >
                   <DrawerText primary={section.title} />
-                  {section?.subContent?.length > 0 &&
+                  {((section?.subContent?.length > 0 &&
                     (index !== openIndex &&
-                    !section?.subContent?.some(
-                      (subSection: any) => subSection?.id === selectedSection
-                    )) && <ExpandMoreIcon />}
-                  {section?.subContent?.length > 0 &&
-                    index === openIndex ||
-                    section?.subContent?.some(
-                      (subSection: any) => subSection?.id === selectedSection
-                    ) && <ExpandLessIcon />}
+                      !section?.subContent?.some(
+                        (subSection: any) => subSection?.id === selectedSection
+                      ))) && section?.id !== selectedSection) && <ExpandMoreIcon />}
+                  {((section?.subContent?.length > 0 &&
+                    (index === openIndex ||
+                      section?.subContent?.some(
+                        (subSection: any) => subSection?.id === selectedSection
+                      ) ||
+                      section?.id === selectedSection))) && <ExpandLessIcon />}
                 </CustomDrawerButton>
               </ListItem>
               <Collapse

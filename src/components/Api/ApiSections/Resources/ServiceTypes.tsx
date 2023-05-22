@@ -5,7 +5,10 @@ import {
   SectionContainer,
   SectionParagraph,
   SubTitle,
-  ServiceItem
+  ServiceItem,
+  CustomUnorderedList,
+  CustomListItem,
+  QortalIcon
 } from "../Common/Common-styles";
 import { Box, useTheme } from "@mui/material";
 import { QortalSVG } from "../../../Common/Icons/QortalSVG";
@@ -363,11 +366,88 @@ export const ServiceTypes: FC<SectionProps> = ({
             and can only be decrypted using the private key of the recipient's
             wallet.
           </SectionParagraph>
-          <SectionParagraph>
-            QCHAT_ATTACHMENT_PRIVATE, ATTACHMENT_PRIVATE, FILE_PRIVATE,
-            IMAGE_PRIVATE, VIDEO_PRIVATE, AUDIO_PRIVATE, VOICE_PRIVATE,
-            DOCUMENT_PRIVATE, MAIL_PRIVATE, MESSAGE_PRIVATE
-          </SectionParagraph>
+          <CustomUnorderedList>
+            <CustomListItem>
+              <QortalIcon
+                color={theme.palette.text.primary}
+                height={"20"}
+                width={"20"}
+              />
+              QCHAT_ATTACHMENT_PRIVATE
+            </CustomListItem>
+            <CustomListItem>
+              <QortalIcon
+                color={theme.palette.text.primary}
+                height={"20"}
+                width={"20"}
+              />
+              ATTACHMENT_PRIVATE
+            </CustomListItem>
+            <CustomListItem>
+              <QortalIcon
+                color={theme.palette.text.primary}
+                height={"20"}
+                width={"20"}
+              />
+              FILE_PRIVATE
+            </CustomListItem>
+            <CustomListItem>
+              <QortalIcon
+                color={theme.palette.text.primary}
+                height={"20"}
+                width={"20"}
+              />
+              IMAGE_PRIVATE
+            </CustomListItem>
+            <CustomListItem>
+              <QortalIcon
+                color={theme.palette.text.primary}
+                height={"20"}
+                width={"20"}
+              />
+              VIDEO_PRIVATE
+            </CustomListItem>
+            <CustomListItem>
+              <QortalIcon
+                color={theme.palette.text.primary}
+                height={"20"}
+                width={"20"}
+              />
+              AUDIO_PRIVATE
+            </CustomListItem>
+            <CustomListItem>
+              <QortalIcon
+                color={theme.palette.text.primary}
+                height={"20"}
+                width={"20"}
+              />
+              VOICE_PRIVATE
+            </CustomListItem>
+            <CustomListItem>
+              <QortalIcon
+                color={theme.palette.text.primary}
+                height={"20"}
+                width={"20"}
+              />
+              DOCUMENT_PRIVATE
+            </CustomListItem>
+            <CustomListItem>
+              <QortalIcon
+                color={theme.palette.text.primary}
+                height={"20"}
+                width={"20"}
+              />
+              MAIL_PRIVATE
+            </CustomListItem>
+            <CustomListItem>
+              <QortalIcon
+                color={theme.palette.text.primary}
+                height={"20"}
+                width={"20"}
+              />
+              MESSAGE_PRIVATE
+            </CustomListItem>
+          </CustomUnorderedList>
         </ParagraphContainer>
       </SectionContainer>
     </SectionWrapper>

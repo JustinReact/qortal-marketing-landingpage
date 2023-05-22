@@ -55,6 +55,7 @@ export const SectionParagraph = styled(Typography)(({ theme }) => ({
   lineHeight: "33px",
   letterSpacing: "0.5px",
   fontWeight: "400",
+  textIndent: "20px",
   width: "fit-content",
   color: theme.palette.text.primary,
   "& a": {
