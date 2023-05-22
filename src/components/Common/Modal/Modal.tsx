@@ -1,4 +1,4 @@
-import { FC, useEffect, useRef, useState, memo } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import { useSwipeable } from "react-swipeable";
 import {
   Backdrop,
@@ -82,7 +82,7 @@ const Modal: FC<ModalProps> = ({
   });
 
   return (
-    <div>
+    <>
       <Backdrop
         ref={modalRef}
         tabIndex={-1}
@@ -133,7 +133,7 @@ const Modal: FC<ModalProps> = ({
           width={"32"}
         />
       </Modalbody>
-    </div>
+    </>
   );
 };
 

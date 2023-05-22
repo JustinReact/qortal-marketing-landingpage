@@ -149,8 +149,9 @@ export const DisplayCodePre = styled("pre")(({ theme }) => ({
   borderRadius: "7px",
   width: "100%",
   maxHeight: "800px",
-  whiteSpace: "normal",
+  whiteSpace: "pre-wrap",
   overflowWrap: "anywhere",
+  textAlign: "left",
   "&::-webkit-scrollbar-track": {
     backgroundColor: theme.palette.mode === "light" ? "#282c34" : "#011627"
   },
@@ -179,8 +180,9 @@ export const DisplayCodeResponsePre = styled("pre")(({ theme }) => ({
   borderRadius: "7px",
   maxHeight: "800px",
   width: "100%",
-  whiteSpace: "normal",
+  whiteSpace: "pre-wrap",
   overflowWrap: "anywhere",
+  textAlign: "left",
   "&::-webkit-scrollbar-track": {
     backgroundColor: theme.palette.mode === "light" ? "#f6f8fa" : "#292d3e"
   },

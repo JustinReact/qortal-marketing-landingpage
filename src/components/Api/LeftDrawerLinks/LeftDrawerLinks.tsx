@@ -90,12 +90,16 @@ export const LeftDrawerLinks: FC<LeftDrawerLinksProps> = ({
                   }}
                 >
                   <DrawerText primary={section.title} />
-                  {section?.subContent?.length > 0 && index !== openIndex && (
-                    <ExpandMoreIcon />
-                  )}
-                  {section?.subContent?.length > 0 && index === openIndex && (
-                    <ExpandLessIcon />
-                  )}
+                  {section?.subContent?.length > 0 &&
+                    (index !== openIndex &&
+                    !section?.subContent?.some(
+                      (subSection: any) => subSection?.id === selectedSection
+                    )) && <ExpandMoreIcon />}
+                  {section?.subContent?.length > 0 &&
+                    index === openIndex ||
+                    section?.subContent?.some(
+                      (subSection: any) => subSection?.id === selectedSection
+                    ) && <ExpandLessIcon />}
                 </CustomDrawerButton>
               </ListItem>
               <Collapse
