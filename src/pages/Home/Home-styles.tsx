@@ -99,6 +99,7 @@ export const VideoRow = styled(Box)(({ theme }) => ({
     maxWidth: "600px",
     width: "50%",
     height: "100%",
+    border: "none",
   [theme.breakpoints.down("sm")]: {
     width: "100%",
   }
