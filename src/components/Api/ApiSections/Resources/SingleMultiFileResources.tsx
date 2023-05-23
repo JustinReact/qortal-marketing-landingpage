@@ -26,7 +26,7 @@ export const SingleMultiFileResources: FC<SectionProps> = ({
         <ParagraphContainer>
           <SectionParagraph>
             Some resources, such as those published with the <Code>IMAGE</Code>{" "}
-            or <Code>JSON</Code>
+            or <Code>JSON</Code>{" "}
             service, consist of a single file or piece of data (the image or the
             JSON string). This is the most common type of QDN resource,
             especially in the context of Q-Apps. These can be published by

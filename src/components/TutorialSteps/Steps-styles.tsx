@@ -333,7 +333,7 @@ export const ArrowDown = styled(ArrowDownwardIcon)({
   color: "black",
 });
 
-export const ProceedButton = styled(Button)(({ theme }) => ({
+export const DiscordButton = styled(Button)(({ theme }) => ({
   backgroundColor: theme.palette.secondary.light,
   color: theme.palette.text.primary,
   borderRadius: "5px",

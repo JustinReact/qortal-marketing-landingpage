@@ -1,5 +1,5 @@
-import { useState, Fragment } from "react";
-import { Grid, Typography, Box } from "@mui/material";
+import { useState } from "react";
+import { Grid, Box } from "@mui/material";
 import {
   Container,
   NextButton,
@@ -20,8 +20,10 @@ import {
   StepSubText,
   StepInformationContainer,
   StepNumberBubble,
+  DiscordButton
 } from "../Steps-styles";
 import { useTheme } from "@mui/material";
+import { DiscordSVG } from "../../Common/Icons/DiscordSVG";
 import MacStepOne from "./Steps/MacStepOne";
 import MacStepTwo from "./Steps/MacStepTwo";
 import MacStepThree from "./Steps/MacStepThree";
@@ -34,24 +36,24 @@ const MacSteps = () => {
   const [steps] = useState<{ step: number; name: string }[]>([
     {
       step: 1,
-      name: "Download & Install Qortal UI",
+      name: "Download & Install Qortal UI"
     },
     {
       step: 2,
-      name: "Make Sure Java is Installed",
+      name: "Make Sure Java is Installed"
     },
     {
       step: 3,
-      name: "Install Qortal Core",
+      name: "Install Qortal Core"
     },
     {
       step: 4,
-      name: "Make Sure Core is Running",
+      name: "Make Sure Core is Running"
     },
     {
       step: 5,
-      name: "Completed! 🎉",
-    },
+      name: "Completed! 🎉"
+    }
   ]);
 
   const [currentStep, setCurrentStep] = useState<number>(1);
@@ -93,7 +95,7 @@ const MacSteps = () => {
                         ? `linear-gradient(to right, ${theme.palette.secondary.light} 0%, ${theme.palette.secondary.light} 80%, #e4e2e2 80%, #e4e2e2 100%`
                         : currentStep === 4
                         ? `linear-gradient(to right, ${theme.palette.secondary.light} 0%, ${theme.palette.secondary.light} 100%)`
-                        : "linear-gradient(to right, #e4e2e2 0%, #e4e2e2 100%)",
+                        : "linear-gradient(to right, #e4e2e2 0%, #e4e2e2 100%)"
                   }}
                 >
                   {steps.map((step, index) => {
@@ -124,14 +126,14 @@ const MacSteps = () => {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "space-evenly",
-                  gap: "15px",
+                  gap: "15px"
                 }}
               >
                 <LeftArrow
                   style={{
                     opacity: currentStep === 1 ? 0.5 : 1,
                     pointerEvents: currentStep === 1 ? "none" : "all",
-                    cursor: currentStep === 1 ? "auto" : "pointer",
+                    cursor: currentStep === 1 ? "auto" : "pointer"
                   }}
                   onClick={() => setCurrentStep((prev) => prev - 1)}
                 />
@@ -144,7 +146,7 @@ const MacSteps = () => {
                     opacity: currentStep === steps.length ? 0.5 : 1,
                     pointerEvents:
                       currentStep === steps.length ? "none" : "all",
-                    cursor: currentStep === steps.length ? "auto" : "pointer",
+                    cursor: currentStep === steps.length ? "auto" : "pointer"
                   }}
                 />
               </Box>
@@ -162,14 +164,13 @@ const MacSteps = () => {
             <MacStepFour />
           ) : currentStep === 5 ? (
             <WindowsStepSix />
-          )
-          : null}
+          ) : null}
         </LinuxStepsContainer>
         <Box
           sx={{
             display: "flex",
             justifyContent: currentStep !== 1 ? "space-between" : "flex-end",
-            width: "100%",
+            width: "100%"
           }}
         >
           <PreviousButton
@@ -180,15 +181,29 @@ const MacSteps = () => {
           >
             Previous
           </PreviousButton>
-          <NextButton
-            sx={{ display: currentStep === steps.length ? "none" : "block" }}
-            shiny={{ isOn: shinyButton ? true : false }}
-            onClick={() => {
-              setCurrentStep((prev) => prev + 1);
-            }}
-          >
-            Next
-          </NextButton>
+          {currentStep === steps.length ? (
+            <DiscordButton
+              sx={{ display: currentStep !== steps.length ? "none" : "flex" }}
+              variant="contained"
+              size="small"
+              onClick={() =>
+                window.open("https://discord.gg/DRyQ79xqhd", "_blank")
+              }
+            >
+              Join Discord
+              <DiscordSVG color={"#ffffff"} height={"22"} width={"22"} />
+            </DiscordButton>
+          ) : (
+            <NextButton
+              sx={{ display: currentStep === steps.length ? "none" : "block" }}
+              shiny={{ isOn: shinyButton ? true : false }}
+              onClick={() => {
+                setCurrentStep((prev) => prev + 1);
+              }}
+            >
+              Next
+            </NextButton>
+          )}
         </Box>
       </StepInformationContainer>
     </Container>

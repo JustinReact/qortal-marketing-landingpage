@@ -20,8 +20,10 @@ import {
   StepSubText,
   StepInformationContainer,
   StepNumberBubble,
+  DiscordButton
 } from "../Steps-styles";
 import { useTheme } from "@mui/material";
+import { DiscordSVG } from "../../Common/Icons/DiscordSVG";
 import LinuxStepOne from "./Steps/LinuxStepOne";
 import WindowsStepFour from "../Windows/Steps/WindowsStepFour";
 import WindowsStepFive from "../Windows/Steps/WindowsStepFive";
@@ -179,15 +181,29 @@ const LinuxSteps = () => {
           >
             Previous
           </PreviousButton>
-          <NextButton
-            sx={{ display: currentStep === steps.length ? "none" : "block" }}
-            shiny={{ isOn: shinyButton ? true : false }}
-            onClick={() => {
-              setCurrentStep((prev) => prev + 1);
-            }}
-          >
-            Next
-          </NextButton>
+          {currentStep === steps.length ? (
+            <DiscordButton
+              sx={{ display: currentStep !== steps.length ? "none" : "flex" }}
+              variant="contained"
+              size="small"
+              onClick={() =>
+                window.open("https://discord.gg/DRyQ79xqhd", "_blank")
+              }
+            >
+              Join Discord
+              <DiscordSVG color={"#ffffff"} height={"22"} width={"22"} />
+            </DiscordButton>
+          ) : (
+            <NextButton
+              sx={{ display: currentStep === steps.length ? "none" : "block" }}
+              shiny={{ isOn: shinyButton ? true : false }}
+              onClick={() => {
+                setCurrentStep((prev) => prev + 1);
+              }}
+            >
+              Next
+            </NextButton>
+          )}
         </Box>
       </StepInformationContainer>
     </Container>

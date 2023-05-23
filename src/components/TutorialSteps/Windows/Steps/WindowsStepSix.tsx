@@ -5,14 +5,11 @@ import {
   ScreenshotContainer,
   StepCard,
   StepColumn,
-  ArrowDown,
-  ProceedButton,
   MuseoFont,
 } from "../../Steps-styles";
-import { Box, Grid, Typography } from "@mui/material";
+import { Grid } from "@mui/material";
 import Modal from "../../../Common/Modal/Modal";
 import StepSixImg from "../../../../images/Windows/WindowsStepSix.webp";
-import { DiscordSVG } from "../../../Common/Icons/DiscordSVG";
 
 interface WindowsStepSixProps {}
 
@@ -31,27 +28,8 @@ const WindowsStepSix: FC<WindowsStepSixProps> = () => {
               or upload your own.
             </MuseoFont>
             <MuseoFont variant="h3">
-              For more information on Q-Apps, proceed to the next section, where
-              you will find an explainer video, as well as a short PDF guide you
-              can download to learn more about Q-Apps.
+              For more information on Q-Apps, join our <strong>Discord server</strong> today to start chatting with the community, so we can all learn together on how to best create Q-Apps!
             </MuseoFont>
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                width: "100%",
-              }}
-            >
-              <ProceedButton
-                variant="contained"
-                size="small"
-                onClick={() => window.open("https://discord.gg/DRyQ79xqhd", "_blank")}
-              >
-                Join Discord 
-                <DiscordSVG color={"#ffffff"} height={"22"} width={"22"} />
-              </ProceedButton>
-            </Box>
           </StepColumn>
         </Grid>
         <Grid
