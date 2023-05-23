@@ -17,11 +17,12 @@ import { useMediaQuery, useTheme, Typography } from "@mui/material";
 import { LayoutProps } from "../Main/MainLayout";
 import { LightModeSVG } from "../../Common/Icons/LightModeSVG";
 import { DarkModeSVG } from "../../Common/Icons/DarkModeSVG";
-import QortalLogo from "../../../images/Logo/QortalLogo.png";
 import { MobileDrawer } from "./MobileDrawer";
 import { motion, AnimatePresence } from "framer-motion";
 import { DocsSVG } from "../../Common/Icons/DocsSVG";
 import { BackArrowSVG } from "../../Common/Icons/BackArrowSVG";
+import QortalLogo from "../../../images/Logo/QortalLogo.png";
+import QortalLogoDarkTheme from "../../../images/Logo/QortalLogoDarkTheme.webp";
 
 export const Header: FC<LayoutProps> = ({ setTheme }) => {
   const theme = useTheme();
@@ -53,7 +54,7 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
               />
             )}
             <QortalLogoContainer
-              src={QortalLogo}
+              src={theme.palette.mode === "light" ? QortalLogo : QortalLogoDarkTheme}
               alt="Qblog Logo"
               onClick={() => {
                 navigate(`/`);
