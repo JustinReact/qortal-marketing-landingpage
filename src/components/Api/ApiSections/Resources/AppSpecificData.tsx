@@ -56,9 +56,6 @@ export const AppSpecificData: FC<SectionProps> = ({
             assumptions.
           </SectionParagraph>
         </ParagraphContainer>
-        <ParagraphContainer>
-          <SectionParagraph>hello</SectionParagraph>
-        </ParagraphContainer>
       </SectionContainer>
     </SectionWrapper>
   );

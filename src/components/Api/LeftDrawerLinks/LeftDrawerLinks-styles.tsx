@@ -1,9 +1,6 @@
 import { styled } from "@mui/system";
 import {
-  Box,
-  Button,
   Drawer,
-  Grid,
   ListItemButton,
   ListItemText,
   Typography
@@ -69,10 +66,18 @@ export const CustomDrawerButton = styled(ListItemButton)<CustomDrawerProps>(
 );
 
 export const QAppsLogo = styled(Typography)(({ theme }) => ({
-  fontFamily: "Cairo",
-  fontSize: "20px",
+  fontFamily: "Lovelo",
+  fontSize: "23px",
   color: theme.palette.text.primary,
-  userSelect: "none"
+  transform: "translateY(3px)",
+  userSelect: "none",
+  "& span": {
+    padding: "8px 14px",
+    borderRadius: "8px",
+    marginLeft: "1px",
+    color: theme.palette.text.primary,
+    backgroundColor: theme.palette.secondary.light,
+  }
 }));
 
 export const DrawerText = styled(ListItemText)(({ theme }) => ({

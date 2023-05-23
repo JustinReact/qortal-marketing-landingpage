@@ -31,7 +31,7 @@ const commonThemeOptions = createTheme({
   },
   typography: {
     fontFamily:
-      "'Museo', 'Raleway', 'Montserrat', 'Cairo', 'Oxygen', 'Roboto', 'Helvetica', 'Arial', sans-serif",
+      "'Museo', 'Raleway', 'Montserrat', 'Cairo', 'Oxygen', 'Roboto', 'Lovelo', 'Helvetica', 'Arial', sans-serif",
     button: {
       textTransform: "none"
     },

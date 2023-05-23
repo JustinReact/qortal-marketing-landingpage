@@ -36,7 +36,7 @@ export const LeftDrawerLinks: FC<LeftDrawerLinksProps> = ({
   const [openIndex, setOpenIndex] = useState<null | number>(null);
   return (
     <CustomDrawer drawerwidth={drawerWidth} variant="permanent" anchor="left">
-      <ThemeSelectRow sx={{ paddingBottom: "15px", paddingLeft: "15px" }}>
+      <ThemeSelectRow sx={{ paddingBottom: "15px", paddingLeft: "15px", gap: "20px" }}>
         {theme.palette.mode === "dark" ? (
           <LightModeSVG
             onClickFunc={() => setTheme("light")}
@@ -52,7 +52,7 @@ export const LeftDrawerLinks: FC<LeftDrawerLinksProps> = ({
             width="22"
           />
         )}
-        <QAppsLogo>Q-Apps Docs</QAppsLogo>
+        <QAppsLogo>Q-Apps <span>API</span></QAppsLogo>
       </ThemeSelectRow>
       <List>
         {tableOfContents.map((section: any, index: number) => {
