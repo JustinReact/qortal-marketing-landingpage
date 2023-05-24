@@ -54,6 +54,9 @@ export const CustomDrawer = styled(Drawer)<CustomDrawerProps>(
             ? `${theme.palette.primary.dark}`
             : "#4e50a1"
       }
+    },
+    [theme.breakpoints.down("sm")]: {
+      position: "absolute"
     }
   })
 );
