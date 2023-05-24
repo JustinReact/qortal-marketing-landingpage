@@ -1,6 +1,7 @@
 import { styled } from "@mui/system";
 import { Box, Button, Grid, Typography } from "@mui/material";
 import { BackArrowSVG } from "../../../components/Common/Icons/BackArrowSVG";
+import { HamburgerSVG } from "../../../components/Common/Icons/HamburgerSVG";
 
 export const Wrapper = styled(Box)(({ theme }) => ({
   position: "relative",
@@ -149,7 +150,7 @@ export const TriangleIcon = styled("div")({
 
 export const TopOfPageRef = styled("div")({
   position: "absolute",
-  top: 0
+  top: '-90px'
 });
 
 export const ScrollToTopButton = styled("div")(({ theme }) => ({
@@ -172,4 +173,10 @@ export const ScrollToTopButton = styled("div")(({ theme }) => ({
 
 export const TopArrow = styled(BackArrowSVG)(({ theme }) => ({
   rotate: "90deg"
+}));
+
+export const DrawerMobileIcon = styled(HamburgerSVG)(({ theme }) => ({
+  position: "absolute",
+  top: "-52px",
+  left: 0
 }));

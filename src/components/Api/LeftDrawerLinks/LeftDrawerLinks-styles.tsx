@@ -5,6 +5,7 @@ import {
   ListItemText,
   Typography
 } from "@mui/material";
+import { HamburgerSVG } from "../../Common/Icons/HamburgerSVG";
 
 interface CustomDrawerProps {
   drawerwidth?: number;
@@ -76,7 +77,11 @@ export const QAppsLogo = styled(Typography)(({ theme }) => ({
     borderRadius: "8px",
     marginLeft: "1px",
     color: theme.palette.text.primary,
-    backgroundColor: theme.palette.secondary.light,
+    backgroundColor: theme.palette.secondary.light
+  },
+  [theme.breakpoints.down("sm")]: {
+    transform: "translateY(0)",
+    fontSize: "15px"
   }
 }));
 
@@ -92,4 +97,11 @@ export const DrawerSubText = styled(Typography)(({ theme }) => ({
   color: theme.palette.text.primary,
   fontFamily: "Catamaran",
   fontSize: "16px"
+}));
+
+export const HamburgerIcon = styled(HamburgerSVG)(({ theme }) => ({
+  rotate: "90deg",
+  [theme.breakpoints.up("sm")]: {
+    display: "none"
+  }
 }));

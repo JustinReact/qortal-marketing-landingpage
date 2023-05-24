@@ -4,7 +4,8 @@ import {
   ListItem,
   ListItemButton,
   useTheme,
-  Collapse
+  Collapse,
+  useMediaQuery
 } from "@mui/material";
 import { FC, useState } from "react";
 import {
@@ -12,7 +13,8 @@ import {
   QAppsLogo,
   DrawerText,
   DrawerSubText,
-  CustomDrawerButton
+  CustomDrawerButton,
+  HamburgerIcon
 } from "./LeftDrawerLinks-styles";
 import { tableOfContents } from "../../../data/QAppApi";
 import { ThemeSelectRow } from "../../../components/Layout/Header/Header-styles";
@@ -26,17 +28,40 @@ export const drawerWidth = 240;
 
 interface LeftDrawerLinksProps extends ApiProps {
   selectedSection: string;
+  openMobileDrawer: boolean;
+  setTheme: (val: string) => void;
+  setOpenMobileDrawer: () => void;
 }
 
 export const LeftDrawerLinks: FC<LeftDrawerLinksProps> = ({
   selectedSection,
-  setTheme
+  openMobileDrawer,
+  setTheme,
+  setOpenMobileDrawer
 }) => {
   const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
   const [openIndex, setOpenIndex] = useState<null | number>(null);
+
+  console.log({ openMobileDrawer });
   return (
-    <CustomDrawer drawerwidth={drawerWidth} variant="permanent" anchor="left">
-      <ThemeSelectRow sx={{ paddingBottom: "15px", paddingLeft: "15px", gap: "20px" }}>
+    <CustomDrawer
+      drawerwidth={
+        !isMobile
+          ? drawerWidth
+          : isMobile && openMobileDrawer
+          ? drawerWidth
+          : isMobile && !openMobileDrawer
+          ? 0
+          : drawerWidth
+      }
+      variant="permanent"
+      anchor="left"
+    >
+      <ThemeSelectRow
+        sx={{ paddingBottom: "15px", paddingLeft: "15px", gap: "20px" }}
+      >
         {theme.palette.mode === "dark" ? (
           <LightModeSVG
             onClickFunc={() => setTheme("light")}
@@ -52,7 +77,15 @@ export const LeftDrawerLinks: FC<LeftDrawerLinksProps> = ({
             width="22"
           />
         )}
-        <QAppsLogo>Q-Apps <span>API</span></QAppsLogo>
+        <QAppsLogo>
+          Q-Apps <span>API</span>
+        </QAppsLogo>
+        <HamburgerIcon
+          onClickFunc={() => setOpenMobileDrawer()}
+          color={theme.palette.text.primary}
+          height={"30"}
+          width={"30"}
+        />
       </ThemeSelectRow>
       <List>
         {tableOfContents.map((section: any, index: number) => {
@@ -68,6 +101,7 @@ export const LeftDrawerLinks: FC<LeftDrawerLinksProps> = ({
                       block: "start",
                       inline: "nearest"
                     });
+                    setOpenMobileDrawer();
                   }
                   if (section?.subContent?.length > 0) {
                     if (index === openIndex) {
@@ -90,17 +124,18 @@ export const LeftDrawerLinks: FC<LeftDrawerLinksProps> = ({
                   }}
                 >
                   <DrawerText primary={section.title} />
-                  {((section?.subContent?.length > 0 &&
-                    (index !== openIndex &&
-                      !section?.subContent?.some(
-                        (subSection: any) => subSection?.id === selectedSection
-                      ))) && section?.id !== selectedSection) && <ExpandMoreIcon />}
-                  {((section?.subContent?.length > 0 &&
+                  {section?.subContent?.length > 0 &&
+                    index !== openIndex &&
+                    !section?.subContent?.some(
+                      (subSection: any) => subSection?.id === selectedSection
+                    ) &&
+                    section?.id !== selectedSection && <ExpandMoreIcon />}
+                  {section?.subContent?.length > 0 &&
                     (index === openIndex ||
                       section?.subContent?.some(
                         (subSection: any) => subSection?.id === selectedSection
                       ) ||
-                      section?.id === selectedSection))) && <ExpandLessIcon />}
+                      section?.id === selectedSection) && <ExpandLessIcon />}
                 </CustomDrawerButton>
               </ListItem>
               <Collapse
@@ -130,6 +165,7 @@ export const LeftDrawerLinks: FC<LeftDrawerLinksProps> = ({
                               block: "start",
                               inline: "nearest"
                             });
+                            setOpenMobileDrawer();
                           }
                         }}
                       >

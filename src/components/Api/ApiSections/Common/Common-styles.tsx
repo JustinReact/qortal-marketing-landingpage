@@ -2,13 +2,15 @@ import { styled } from "@mui/system";
 import { Box, Typography } from "@mui/material";
 import { QortalSVG } from "../../../Common/Icons/QortalSVG";
 import ContentPasteTwoToneIcon from "@mui/icons-material/ContentPasteTwoTone";
-import { DisplayCode } from "./DisplayCode";
 
 export const MainBox = styled(Box)(({ theme }) => ({
   position: "relative",
   minHeight: "100px",
   width: "100%",
-  padding: "20px 35px"
+  padding: "20px 35px",
+  [theme.breakpoints.down("sm")]: {
+    padding: 0
+  }
 }));
 
 export const SectionContainer = styled(Box)(({ theme }) => ({
@@ -31,7 +33,8 @@ export const SectionTitleText = styled(Typography)(({ theme }) => ({
   [theme.breakpoints.down("sm")]: {
     textAlign: "center",
     lineHeight: "40px",
-    marginTop: "10px"
+    marginTop: "10px",
+    overflowWrap: "anywhere"
   }
 }));
 
@@ -44,7 +47,8 @@ export const SubTitle = styled(Typography)(({ theme }) => ({
   [theme.breakpoints.down("sm")]: {
     textAlign: "center",
     lineHeight: "40px",
-    marginTop: "10px"
+    marginTop: "10px",
+    overflowWrap: "anywhere"
   }
 }));
 
@@ -110,7 +114,10 @@ export const InformationParagraph = styled(Typography)(({ theme }) => ({
   fontSize: "18px",
   lineHeight: "28px",
   fontFamily: "Roboto",
-  color: theme.palette.mode === "light" ? "#425061" : "#bfc0c2"
+  color: theme.palette.mode === "light" ? "#425061" : "#bfc0c2",
+  [theme.breakpoints.down("sm")]: {
+    overflowWrap: "anywhere"
+  }
 }));
 
 export const CustomUnorderedList = styled("ul")(({ theme }) => ({

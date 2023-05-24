@@ -5,10 +5,12 @@ import {
   TopOfPageRef,
   Wrapper,
   ScrollToTopButton,
-  TopArrow
+  TopArrow,
+  DrawerMobileIcon
 } from "./Api-styles";
 import { tableOfContents } from "../../../data/QAppApi";
 import ReactGA from "react-ga4";
+import { motion, AnimatePresence } from "framer-motion";
 
 export interface ApiProps {
   setTheme: (val: string) => void;
@@ -18,6 +20,7 @@ const Api: FC<ApiProps> = ({ setTheme }) => {
   const theme = useTheme();
   const [selectedSection, setSelectedSection] = useState("");
   const [showButton, setShowButton] = useState(false);
+  const [openMobileDrawer, setOpenMobileDrawer] = useState(false);
 
   const topOfPageRef = useRef<HTMLDivElement | null>(null);
 
@@ -66,9 +69,75 @@ const Api: FC<ApiProps> = ({ setTheme }) => {
     }
   };
 
+  // Variants for the framer-motion transition
+
+  const mobileDrawerVariants = {
+    opened: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        type: "spring",
+        stiffness: 95
+      }
+    },
+    closed: {
+      opacity: 0.2,
+      x: -100,
+      transition: {
+        duration: 0.2
+      }
+    }
+  };
+
   return (
     <Wrapper>
-      <LeftDrawerLinks setTheme={setTheme} selectedSection={selectedSection} />
+      <TopOfPageRef ref={topOfPageRef} />
+      {!openMobileDrawer && (
+        <DrawerMobileIcon
+          color={theme.palette.text.primary}
+          height={"30"}
+          width={"30"}
+          onClickFunc={() => {
+            setOpenMobileDrawer(true);
+          }}
+        />
+      )}
+      <AnimatePresence>
+        {openMobileDrawer && (
+          <motion.div
+            animate={"opened"}
+            initial={"closed"}
+            exit={{ opacity: 0 }}
+            variants={mobileDrawerVariants}
+            style={{
+              top: "-90px",
+              position: "absolute",
+              left: "-15px",
+              right: "0",
+              width: "fit-content",
+              height: "100%",
+              zIndex: 5
+            }}
+          >
+            <LeftDrawerLinks
+              setTheme={setTheme}
+              selectedSection={selectedSection}
+              openMobileDrawer={openMobileDrawer}
+              setOpenMobileDrawer={() => {
+                setOpenMobileDrawer(false);
+              }}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
+      <LeftDrawerLinks
+        setTheme={setTheme}
+        selectedSection={selectedSection}
+        openMobileDrawer={openMobileDrawer}
+        setOpenMobileDrawer={() => {
+          setOpenMobileDrawer(false);
+        }}
+      />
       <Box
         sx={{
           position: "relative",
@@ -78,7 +147,6 @@ const Api: FC<ApiProps> = ({ setTheme }) => {
           textAlign: "justify"
         }}
       >
-        <TopOfPageRef ref={topOfPageRef} />
         <Box>
           {tableOfContents.map(({ Component, index, ...props }: any) => {
             if (!Component) return null;
