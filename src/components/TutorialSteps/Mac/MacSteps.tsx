@@ -186,9 +186,14 @@ const MacSteps = () => {
               sx={{ display: currentStep !== steps.length ? "none" : "flex" }}
               variant="contained"
               size="small"
-              onClick={() =>
-                window.open("https://discord.gg/DRyQ79xqhd", "_blank")
-              }
+              onClick={() => {
+                ReactGA.event({
+                  category: "User",
+                  action: "Clicked Discord Button Mac Steps",
+                  label: "Discord Mac Steps"
+                });
+                window.open("https://discord.gg/DRyQ79xqhd", "_blank");
+              }}
             >
               Join Discord
               <DiscordSVG color={"#ffffff"} height={"22"} width={"22"} />

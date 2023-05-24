@@ -1,3 +1,4 @@
+import ReactGA from 'react-ga';
 import { useState, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { ThemeProvider } from '@mui/material/styles'
@@ -8,6 +9,9 @@ import { NotFound } from './pages/NotFound/NotFound'
 import { ErrorElement } from './components/Common/Error/ErrorElement'
 import Api from './pages/Docs/Api/Api'
 import { MainLayoutRoute } from './components/Layout/Main/MainLayout'
+
+// Initialize Google Analytics
+ReactGA.initialize('G-E1BB62FVTN');
 
 function App() {
   const [theme, setTheme] = useState('dark')

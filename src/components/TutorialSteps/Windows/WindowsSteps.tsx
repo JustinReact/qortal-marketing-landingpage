@@ -1,5 +1,5 @@
-import { useState, Fragment } from "react";
-import { Grid, Typography, Box } from "@mui/material";
+import { useState } from "react";
+import { Grid, Box } from "@mui/material";
 import {
   Container,
   NextButton,
@@ -30,6 +30,7 @@ import WindowsStepFour from "./Steps/WindowsStepFour";
 import WindowsStepFive from "./Steps/WindowsStepFive";
 import WindowsStepSix from "./Steps/WindowsStepSix";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import ReactGA from "react-ga";
 
 const WindowsSteps = () => {
   const theme = useTheme();
@@ -38,28 +39,28 @@ const WindowsSteps = () => {
   const [steps] = useState<{ step: number; name: string }[]>([
     {
       step: 1,
-      name: "Download Qortal UI",
+      name: "Download Qortal UI"
     },
     {
       step: 2,
-      name: "Run Anyway Permission (Possibly Skippable)",
+      name: "Run Anyway Permission (Possibly Skippable)"
     },
     {
       step: 3,
-      name: "Install Qortal UI",
+      name: "Install Qortal UI"
     },
     {
       step: 4,
-      name: "Install Qortal Core",
+      name: "Install Qortal Core"
     },
     {
       step: 5,
-      name: "Make Sure Core is Running",
+      name: "Make Sure Core is Running"
     },
     {
       step: 6,
-      name: "Completed! 🎉",
-    },
+      name: "Completed! 🎉"
+    }
   ]);
 
   const [currentStep, setCurrentStep] = useState<number>(1);
@@ -105,7 +106,7 @@ const WindowsSteps = () => {
                         ? `linear-gradient(to right, ${theme.palette.secondary.light} 0%, ${theme.palette.secondary.light} 83.33%, #e4e2e2 83.33%, #e4e2e2 100%)`
                         : currentStep === 6
                         ? `linear-gradient(to right, ${theme.palette.secondary.light} 0%, ${theme.palette.secondary.light} 100%)`
-                        : "linear-gradient(to right, #e4e2e2 0%, #e4e2e2 100%)",
+                        : "linear-gradient(to right, #e4e2e2 0%, #e4e2e2 100%)"
                   }}
                 >
                   {steps.map((step, index) => {
@@ -136,7 +137,7 @@ const WindowsSteps = () => {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "space-evenly",
-                  gap: "15px",
+                  gap: "15px"
                 }}
               >
                 <LeftArrow
@@ -175,7 +176,7 @@ const WindowsSteps = () => {
           sx={{
             display: "flex",
             justifyContent: currentStep !== 1 ? "space-between" : "flex-end",
-            width: "100%",
+            width: "100%"
           }}
         >
           <PreviousButton
@@ -191,9 +192,14 @@ const WindowsSteps = () => {
               sx={{ display: currentStep !== steps.length ? "none" : "flex" }}
               variant="contained"
               size="small"
-              onClick={() =>
-                window.open("https://discord.gg/DRyQ79xqhd", "_blank")
-              }
+              onClick={() => {
+                ReactGA.event({
+                  category: "User",
+                  action: "Clicked Discord Button Windows Steps",
+                  label: "Discord Windows Steps"
+                });
+                window.open("https://discord.gg/DRyQ79xqhd", "_blank");
+              }}
             >
               Join Discord
               <DiscordSVG color={"#ffffff"} height={"22"} width={"22"} />

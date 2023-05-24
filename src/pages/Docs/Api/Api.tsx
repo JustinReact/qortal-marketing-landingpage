@@ -8,6 +8,7 @@ import {
   TopArrow
 } from "./Api-styles";
 import { tableOfContents } from "../../../data/QAppApi";
+import ReactGA from "react-ga";
 
 export interface ApiProps {
   setTheme: (val: string) => void;
@@ -41,6 +42,12 @@ const Api: FC<ApiProps> = ({ setTheme }) => {
     return () => {
       observer.disconnect();
     };
+  }, []);
+
+  // Tracking page view
+
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname);
   }, []);
 
   const scrollToTop = () => {

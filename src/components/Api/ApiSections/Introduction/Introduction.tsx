@@ -50,11 +50,17 @@ export const Introduction: FC<SectionProps> = ({
             for the different terminology involved in building Q-Apps.
           </SectionParagraph>
           <SectionParagraph>
-            You can also check out our React tutorial guide on Youtube to gain
-            practical knowledge on building a Q-App. The videos take you
-            step-by-step through the process of building a Q-App, from starting
-            up your React application, to deploying your Q-App to the Qortal
-            network.
+            You can also check out our{" "}
+            <a
+              href="https://www.youtube.com/playlist?list=PL-mMjj6eP0gg4S1eWCbi6zyIPrISwZk7m"
+              target="_blank"
+            >
+              React tutorial guide
+            </a>{" "}
+            on Youtube to gain practical knowledge on building a Q-App. The
+            videos take you step-by-step through the process of building a
+            Q-App, from starting up your React application, to deploying your
+            Q-App to the Qortal network.
           </SectionParagraph>
           <SectionParagraph>
             Join the growing community of Qortal developers and harness the

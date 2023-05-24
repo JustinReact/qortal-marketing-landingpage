@@ -35,20 +35,20 @@ const LinuxSteps = () => {
   const [steps] = useState<{ step: number; name: string }[]>([
     {
       step: 1,
-      name: "Download & Install Qortal UI",
+      name: "Download & Install Qortal UI"
     },
     {
       step: 2,
-      name: "Install Qortal Core",
+      name: "Install Qortal Core"
     },
     {
       step: 3,
-      name: "Make Sure Core is Running",
+      name: "Make Sure Core is Running"
     },
     {
       step: 4,
-      name: "Completed! 🎉",
-    },
+      name: "Completed! 🎉"
+    }
   ]);
 
   const [currentStep, setCurrentStep] = useState<number>(1);
@@ -91,7 +91,7 @@ const LinuxSteps = () => {
                         ? `linear-gradient(to right, ${theme.palette.secondary.light} 0%, ${theme.palette.secondary.light} 80%, #e4e2e2 80%, #e4e2e2 100%`
                         : currentStep === 4
                         ? `linear-gradient(to right, ${theme.palette.secondary.light} 0%, ${theme.palette.secondary.light} 100%)`
-                        : "linear-gradient(to right, #e4e2e2 0%, #e4e2e2 100%)",
+                        : "linear-gradient(to right, #e4e2e2 0%, #e4e2e2 100%)"
                   }}
                 >
                   {steps.map((step, index) => {
@@ -125,14 +125,14 @@ const LinuxSteps = () => {
                     currentStep === 1 && downloadOption === "terminal"
                       ? "flex-start"
                       : "space-evenly",
-                  gap: "15px",
+                  gap: "15px"
                 }}
               >
                 <LeftArrow
                   style={{
                     opacity: currentStep === 1 ? 0.5 : 1,
                     pointerEvents: currentStep === 1 ? "none" : "all",
-                    cursor: currentStep === 1 ? "auto" : "pointer",
+                    cursor: currentStep === 1 ? "auto" : "pointer"
                   }}
                   onClick={() => setCurrentStep((prev) => prev - 1)}
                 />
@@ -145,7 +145,7 @@ const LinuxSteps = () => {
                     opacity: currentStep === steps.length ? 0.5 : 1,
                     pointerEvents:
                       currentStep === steps.length ? "none" : "all",
-                    cursor: currentStep === steps.length ? "auto" : "pointer",
+                    cursor: currentStep === steps.length ? "auto" : "pointer"
                   }}
                 />
               </Box>
@@ -170,7 +170,7 @@ const LinuxSteps = () => {
           sx={{
             display: "flex",
             justifyContent: currentStep !== 1 ? "space-between" : "flex-end",
-            width: "100%",
+            width: "100%"
           }}
         >
           <PreviousButton
@@ -186,9 +186,14 @@ const LinuxSteps = () => {
               sx={{ display: currentStep !== steps.length ? "none" : "flex" }}
               variant="contained"
               size="small"
-              onClick={() =>
-                window.open("https://discord.gg/DRyQ79xqhd", "_blank")
-              }
+              onClick={() => {
+                ReactGA.event({
+                  category: "User",
+                  action: "Clicked Discord Button Linux Steps",
+                  label: "Discord Linux Steps"
+                });
+                window.open("https://discord.gg/DRyQ79xqhd", "_blank");
+              }}
             >
               Join Discord
               <DiscordSVG color={"#ffffff"} height={"22"} width={"22"} />
