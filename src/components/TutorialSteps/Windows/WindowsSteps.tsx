@@ -30,7 +30,7 @@ import WindowsStepFour from "./Steps/WindowsStepFour";
 import WindowsStepFive from "./Steps/WindowsStepFive";
 import WindowsStepSix from "./Steps/WindowsStepSix";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 
 const WindowsSteps = () => {
   const theme = useTheme();

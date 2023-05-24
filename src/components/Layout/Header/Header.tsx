@@ -1,4 +1,5 @@
 import { FC, useState } from "react";
+import ReactGA from "react-ga4";
 import { useLocation, useNavigate } from "react-router-dom";
 import {
   HeaderNav,
@@ -23,7 +24,6 @@ import { DocsSVG } from "../../Common/Icons/DocsSVG";
 import { BackArrowSVG } from "../../Common/Icons/BackArrowSVG";
 import QortalLogo from "../../../images/Logo/QortalLogo.png";
 import QortalLogoDarkTheme from "../../../images/Logo/QortalLogoDarkTheme.webp";
-import ReactGA from "react-ga";
 
 export const Header: FC<LayoutProps> = ({ setTheme }) => {
   const theme = useTheme();
@@ -55,7 +55,11 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
               />
             )}
             <QortalLogoContainer
-              src={theme.palette.mode === "light" ? QortalLogo : QortalLogoDarkTheme}
+              src={
+                theme.palette.mode === "light"
+                  ? QortalLogo
+                  : QortalLogoDarkTheme
+              }
               alt="Qblog Logo"
               onClick={() => {
                 navigate(`/`);
@@ -77,7 +81,7 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                   ReactGA.event({
                     category: "User",
                     action: "Clicked Docs Button",
-                    label: "Docs Button",
+                    label: "Docs Button"
                   });
                   navigate("/docs/api");
                 }}
@@ -90,7 +94,7 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                   ReactGA.event({
                     category: "User",
                     action: "Clicked Discord Button Header",
-                    label: "Discord Button Header",
+                    label: "Discord Button Header"
                   });
                   window.open("https://discord.gg/DRyQ79xqhd", "_blank");
                 }}

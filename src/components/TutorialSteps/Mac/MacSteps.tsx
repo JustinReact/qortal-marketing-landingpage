@@ -29,7 +29,7 @@ import MacStepTwo from "./Steps/MacStepTwo";
 import MacStepThree from "./Steps/MacStepThree";
 import MacStepFour from "./Steps/MacStepFour";
 import WindowsStepSix from "../Windows/Steps/WindowsStepSix";
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 
 const MacSteps = () => {
   const theme = useTheme();

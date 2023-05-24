@@ -8,7 +8,7 @@ import {
   TopArrow
 } from "./Api-styles";
 import { tableOfContents } from "../../../data/QAppApi";
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 
 export interface ApiProps {
   setTheme: (val: string) => void;
@@ -20,6 +20,18 @@ const Api: FC<ApiProps> = ({ setTheme }) => {
   const [showButton, setShowButton] = useState(false);
 
   const topOfPageRef = useRef<HTMLDivElement | null>(null);
+
+  // Tracking page view for Google Analytics
+
+  useEffect(() => {
+    ReactGA.send({
+      hitType: "pageview",
+      page: window.location.pathname,
+      title: "API"
+    });
+  }, []);
+
+  // Intersection observer to show scroll to top button
 
   useEffect(() => {
     const options = {
@@ -42,12 +54,6 @@ const Api: FC<ApiProps> = ({ setTheme }) => {
     return () => {
       observer.disconnect();
     };
-  }, []);
-
-  // Tracking page view
-
-  useEffect(() => {
-    ReactGA.pageview(window.location.pathname);
   }, []);
 
   const scrollToTop = () => {

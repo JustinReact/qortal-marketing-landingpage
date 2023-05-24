@@ -28,7 +28,7 @@ import LinuxStepOne from "./Steps/LinuxStepOne";
 import WindowsStepFour from "../Windows/Steps/WindowsStepFour";
 import WindowsStepFive from "../Windows/Steps/WindowsStepFive";
 import WindowsStepSix from "../Windows/Steps/WindowsStepSix";
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 
 const LinuxSteps = () => {
   const theme = useTheme();
