@@ -44,7 +44,6 @@ export const LeftDrawerLinks: FC<LeftDrawerLinksProps> = ({
 
   const [openIndex, setOpenIndex] = useState<null | number>(null);
 
-  console.log({ openMobileDrawer });
   return (
     <CustomDrawer
       drawerwidth={

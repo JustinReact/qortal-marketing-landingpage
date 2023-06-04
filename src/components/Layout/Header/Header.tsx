@@ -87,7 +87,18 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                 }}
               >
                 Documentation
-                <DocsSVG color={"#ffffff"} height={"22"} width={"22"} />
+              </Docs>
+              <Docs
+                onClick={() => {
+                  ReactGA.event({
+                    category: "User",
+                    action: "Clicked Blog Button",
+                    label: "Blog Button"
+                  });
+                  navigate("/blog");
+                }}
+              >
+                Blog
               </Docs>
               <DiscordButton
                 onClick={() => {
@@ -108,7 +119,7 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
           )}
         </HeaderNav>
       );
-    } else if (location.pathname === "/docs/api") {
+    } else {
       return (
         <DocsNavContainer>
           <BackHomeButton

@@ -9,6 +9,7 @@ import { NotFound } from "./pages/NotFound/NotFound";
 import { ErrorElement } from "./components/Common/Error/ErrorElement";
 import Api from "./pages/Docs/Api/Api";
 import { MainLayoutRoute } from "./components/Layout/Main/MainLayout";
+import { Blog } from "./pages/Blog/Blog";
 
 // Initialize Google Analytics
 ReactGA.initialize("G-E1BB62FVTN");
@@ -43,6 +44,10 @@ function App() {
             <Route
               path="/docs/api"
               element={<Api setTheme={(val: string) => setTheme(val)} />}
+            />
+            <Route
+              path="/blog"
+              element={<Blog setTheme={(val: string) => setTheme(val)} />}
             />
             <Route path="*" element={<NotFound />} />
           </Route>
