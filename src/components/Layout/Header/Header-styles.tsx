@@ -84,7 +84,7 @@ export const DocsNavContainer = styled(Box)(({ theme }) => ({
   flexDirection: "row",
   alignItems: "center",
   width: "100%",
-  justifyContent: "flex-end"
+  justifyContent: "flex-end",
 }));
 
 export const Docs = styled(Typography)(({ theme }) => ({

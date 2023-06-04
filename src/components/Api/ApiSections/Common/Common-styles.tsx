@@ -54,11 +54,11 @@ export const SubTitle = styled(Typography)(({ theme }) => ({
 
 export const SectionParagraph = styled(Typography)(({ theme }) => ({
   marginTop: "20px",
-  fontFamily: "Cambon Light",
+  fontFamily: "Inter",
   fontSize: "20.5px",
   lineHeight: "33px",
   letterSpacing: "0.5px",
-  fontWeight: "400",
+  fontWeight: "300",
   textIndent: "20px",
   width: "fit-content",
   color: theme.palette.text.primary,
@@ -126,7 +126,7 @@ export const CustomUnorderedList = styled("ul")(({ theme }) => ({
 }));
 
 export const CustomListItem = styled("li")(({ theme }) => ({
-  fontFamily: "Cambon Light",
+  fontFamily: "Inter",
   fontSize: "18px",
   lineHeight: "33px",
   letterSpacing: "0.5px",
@@ -143,7 +143,7 @@ export const ServiceItem = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   gap: "15px",
-  fontFamily: "Cambon Light",
+  fontFamily: "Inter",
   fontSize: "20.5px",
   lineHeight: "33px",
   letterSpacing: "0.5px",

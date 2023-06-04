@@ -6,7 +6,8 @@ import {
   Wrapper,
   ScrollToTopButton,
   TopArrow,
-  DrawerMobileIcon
+  DrawerMobileIcon,
+  ApiContainer
 } from "./Api-styles";
 import { tableOfContents } from "../../../data/QAppApi";
 import ReactGA from "react-ga4";
@@ -138,15 +139,7 @@ const Api: FC<ApiProps> = ({ setTheme }) => {
           setOpenMobileDrawer(false);
         }}
       />
-      <Box
-        sx={{
-          position: "relative",
-          width: "100%",
-          display: "flex",
-          flexDirection: "column",
-          textAlign: "justify"
-        }}
-      >
+      <ApiContainer>
         <Box>
           {tableOfContents.map(({ Component, index, ...props }: any) => {
             if (!Component) return null;
@@ -178,7 +171,7 @@ const Api: FC<ApiProps> = ({ setTheme }) => {
             />
           </ScrollToTopButton>
         )}
-      </Box>
+      </ApiContainer>
     </Wrapper>
   );
 };

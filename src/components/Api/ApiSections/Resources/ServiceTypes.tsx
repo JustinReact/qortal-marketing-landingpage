@@ -10,7 +10,7 @@ import {
   CustomListItem,
   QortalIcon
 } from "../Common/Common-styles";
-import { Box, useTheme } from "@mui/material";
+import { useTheme, Grid } from "@mui/material";
 import { QortalSVG } from "../../../Common/Icons/QortalSVG";
 
 interface SectionProps {
@@ -38,7 +38,8 @@ export const ServiceTypes: FC<SectionProps> = ({
             The services below are intended to be used for publicly accessible
             data.
           </SectionParagraph>
-          <Box sx={{ margin: "20px 0" }}>
+          <Grid container sx={{ margin: "20px 0" }}>
+            <Grid item xs={12} md={6}>
             <ServiceItem>
               <QortalSVG
                 color={theme.palette.text.primary}
@@ -199,6 +200,8 @@ export const ServiceTypes: FC<SectionProps> = ({
               />
               CHAIN_DATA
             </ServiceItem>
+            </Grid>
+            <Grid item xs={12} md={6}>
             <ServiceItem>
               <QortalSVG
                 color={theme.palette.text.primary}
@@ -359,7 +362,8 @@ export const ServiceTypes: FC<SectionProps> = ({
               />
               QCHAT_VOICE
             </ServiceItem>
-          </Box>
+            </Grid>
+          </Grid>
           <SubTitle>Private services</SubTitle>
           <SectionParagraph>
             For the services below, data is encrypted for a single recipient,

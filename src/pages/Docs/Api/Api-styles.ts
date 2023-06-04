@@ -180,3 +180,14 @@ export const DrawerMobileIcon = styled(HamburgerSVG)(({ theme }) => ({
   top: "-52px",
   left: 0
 }));
+
+export const ApiContainer = styled(Box)(({ theme }) => ({
+  position: "relative",
+  width: "100%",
+  display: "flex",
+  flexDirection: "column",
+  textAlign: "justify",
+  [theme.breakpoints.down("sm")]: {
+    textAlign: "left",
+  }
+}));
