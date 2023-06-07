@@ -26,11 +26,13 @@ import Modal from "../../../Common/Modal/Modal";
 interface LinuxStepOneProps {
   downloadOption: string;
   setDownloadOption: (option: string) => void;
+  setShinyButton: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const LinuxStepOne = ({
   downloadOption,
   setDownloadOption,
+  setShinyButton
 }: LinuxStepOneProps) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -147,8 +149,7 @@ const LinuxStepOne = ({
                     <DownloadButton
                       variant="contained"
                       onClick={() => {
-                        // setShinyButton(true);
-                        return;
+                        setShinyButton(true);
                         window.location.href =
                           "https://github.com/Qortal/qortal-ui/releases/latest/download/Qortal-Setup-amd64.AppImage";
                       }}

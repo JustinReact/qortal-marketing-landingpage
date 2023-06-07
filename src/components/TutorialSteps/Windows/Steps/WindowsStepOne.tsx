@@ -31,7 +31,6 @@ const WindowsStepOne = ({ setShinyButton }: WindowsStepOneProps) => {
               variant="contained"
               onClick={() => {
                 setShinyButton(true);
-                return;
                 window.location.href =
                   "https://github.com/Qortal/qortal-ui/releases/latest/download/Qortal-Setup-win64.exe";
               }}
