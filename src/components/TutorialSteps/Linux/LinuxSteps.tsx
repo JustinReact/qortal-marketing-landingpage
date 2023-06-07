@@ -158,6 +158,7 @@ const LinuxSteps = () => {
             <LinuxStepOne
               downloadOption={downloadOption}
               setDownloadOption={setDownloadOption}
+              setShinyButton={setShinyButton}
             />
           ) : currentStep === 2 ? (
             <WindowsStepFour />

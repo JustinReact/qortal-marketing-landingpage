@@ -26,11 +26,13 @@ import Modal from "../../../Common/Modal/Modal";
 interface LinuxStepOneProps {
   downloadOption: string;
   setDownloadOption: (option: string) => void;
+  setShinyButton: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const LinuxStepOne = ({
   downloadOption,
   setDownloadOption,
+  setShinyButton
 }: LinuxStepOneProps) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
