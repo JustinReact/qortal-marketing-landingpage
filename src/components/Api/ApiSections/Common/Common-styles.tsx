@@ -55,7 +55,7 @@ export const SubTitle = styled(Typography)(({ theme }) => ({
 export const SectionParagraph = styled(Typography)(({ theme }) => ({
   marginTop: "20px",
   fontFamily: "Inter",
-  fontSize: "20.5px",
+  fontSize: "19.5px",
   lineHeight: "33px",
   letterSpacing: "0.5px",
   fontWeight: "300",
@@ -144,7 +144,7 @@ export const ServiceItem = styled(Box)(({ theme }) => ({
   alignItems: "center",
   gap: "15px",
   fontFamily: "Inter",
-  fontSize: "20.5px",
+  fontSize: "19.5px",
   lineHeight: "33px",
   letterSpacing: "0.5px",
   fontWeight: "400",
