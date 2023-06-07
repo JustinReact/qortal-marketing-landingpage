@@ -147,8 +147,7 @@ const LinuxStepOne = ({
                     <DownloadButton
                       variant="contained"
                       onClick={() => {
-                        // setShinyButton(true);
-                        return;
+                        setShinyButton(true);
                         window.location.href =
                           "https://github.com/Qortal/qortal-ui/releases/latest/download/Qortal-Setup-amd64.AppImage";
                       }}
