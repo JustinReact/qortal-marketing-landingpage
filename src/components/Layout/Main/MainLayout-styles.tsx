@@ -34,11 +34,14 @@ export const Wrapper = styled("div")(({ theme }) => ({
         ? `url(${BlurryBGDarkMode})`
         : `url(${BlurryBGLightMode})`,
     backgroundRepeat: "no-repeat",
-    backgroundSize: "105%",
+    backgroundSize: "cover",
     backgroundPosition: "center center",
-  [theme.breakpoints.down("lg")]: {
-      backgroundImage: theme.palette.mode === "dark" ? `url(${BlurryBGDarkModeMobile})` : `url(${BlurryBGLightModeMobile})`,
-      backgroundSize: "cover",
-  }
+    [theme.breakpoints.down("lg")]: {
+      backgroundImage:
+        theme.palette.mode === "dark"
+          ? `url(${BlurryBGDarkModeMobile})`
+          : `url(${BlurryBGLightModeMobile})`,
+      backgroundSize: "cover"
+    }
   }
 }));
