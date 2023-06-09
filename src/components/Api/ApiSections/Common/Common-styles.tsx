@@ -57,7 +57,7 @@ export const SectionParagraph = styled(Typography)(({ theme }) => ({
   fontFamily: "Inter",
   fontSize: "19.5px",
   lineHeight: "33px",
-  letterSpacing: "0.5px",
+  letterSpacing: "0.2px",
   fontWeight: "300",
   textIndent: "20px",
   width: "fit-content",
@@ -129,7 +129,7 @@ export const CustomListItem = styled("li")(({ theme }) => ({
   fontFamily: "Inter",
   fontSize: "18px",
   lineHeight: "33px",
-  letterSpacing: "0.5px",
+  letterSpacing: "0.2px",
   fontWeight: "400",
   margin: "5px 0"
 }));
@@ -146,7 +146,7 @@ export const ServiceItem = styled(Box)(({ theme }) => ({
   fontFamily: "Inter",
   fontSize: "19.5px",
   lineHeight: "33px",
-  letterSpacing: "0.5px",
+  letterSpacing: "0.2px",
   fontWeight: "400",
   color: theme.palette.text.primary
 }));
