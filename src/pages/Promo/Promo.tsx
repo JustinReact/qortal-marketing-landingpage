@@ -66,7 +66,7 @@ export const Promo = () => {
           <IconContainer1>
             <OpenSourceSVG color={"#ffffff"} height="40" width="40" />
           </IconContainer1>
-          <SubHeader>Open-source</SubHeader>
+          <SubHeader>Open-Source</SubHeader>
           <FeatureText>
             Qortal's open-source code allows for full transparency and invites
             all developers to contribute, fostering trust and collective growth.
@@ -86,7 +86,7 @@ export const Promo = () => {
           <IconContainer3>
             <ConnectSVG color={"#ffffff"} height="40" width="40" />
           </IconContainer3>
-          <SubHeader>Peer-to-peer</SubHeader>
+          <SubHeader>Peer-To-Peer</SubHeader>
           <FeatureText>
             Qortal's P2P technology ensures that you have direct control over
             your transactions, eliminating intermediaries for greater
