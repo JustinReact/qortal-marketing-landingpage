@@ -15,39 +15,24 @@ ReactGA.initialize("G-E1BB62FVTN");
 
 function App() {
   const [theme, setTheme] = useState("dark");
-  const [error, setError] = useState<Error | null>(null);
-
-  useEffect(() => {
-    const errorHandler = (e: ErrorEvent): void => {
-      setError(e.error);
-    };
-    window.addEventListener("error", errorHandler);
-    return () => {
-      window.removeEventListener("error", errorHandler);
-    };
-  }, []);
 
   return (
     <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
       <CssBaseline />
-      {error?.message ? (
-        <ErrorElement message={error?.message} />
-      ) : (
-        <Routes>
+      <Routes>
+        <Route
+          element={
+            <MainLayoutRoute setTheme={(val: string) => setTheme(val)} />
+          }
+        >
+          <Route path="/" element={<Home />} />
           <Route
-            element={
-              <MainLayoutRoute setTheme={(val: string) => setTheme(val)} />
-            }
-          >
-            <Route path="/" element={<Home />} />
-            <Route
-              path="/docs/api"
-              element={<Api setTheme={(val: string) => setTheme(val)} />}
-            />
-            <Route path="*" element={<NotFound />} />
-          </Route>
-        </Routes>
-      )}
+            path="/docs/api"
+            element={<Api setTheme={(val: string) => setTheme(val)} />}
+          />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
     </ThemeProvider>
   );
 }
