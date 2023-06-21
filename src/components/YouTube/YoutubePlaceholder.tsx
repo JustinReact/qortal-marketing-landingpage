@@ -6,6 +6,7 @@ import {
   YoutubeThumbnailImg
 } from "./YoutubePlaceholder-styles";
 import YoutubeThumbnail from "../../images/Youtube/YoutubeThumbnail.webp";
+import { useMediaQuery, useTheme } from "@mui/material";
 
 interface YoutubePlaceholderProps {
   isModal: boolean;
@@ -16,9 +17,21 @@ export const YoutubePlaceholder: FC<YoutubePlaceholderProps> = ({
   isModal,
   onClick
 }) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
   return (
     <YoutubePlaceholderContainer
-      style={{ width: isModal ? "auto" : "600px" }}
+      style={{
+        width:
+          isModal && !isMobile
+            ? "auto"
+            : isModal && isMobile
+            ? "auto"
+            : !isModal && !isMobile
+            ? "600px"
+            : "auto"
+      }}
       onClick={onClick}
     >
       <YoutubeHeader>Introducing Qortal Q-Apps</YoutubeHeader>
