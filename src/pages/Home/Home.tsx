@@ -116,7 +116,7 @@ const Home: FC = () => {
         )}
       </FooterRow>
 
-      {!firstTimeVisitor && (
+      {firstTimeVisitor && (
         <CommonModal
           openModal={firstTimeVisitor}
           onClickFunc={() => {
