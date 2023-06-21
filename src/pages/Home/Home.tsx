@@ -16,12 +16,14 @@ import { WindowsSVG } from "../../components/Common/Icons/WindowsSVG";
 import { LinuxSVG } from "../../components/Common/Icons/LinuxSVG";
 import { AppleSVG } from "../../components/Common/Icons/AppleSVG";
 import { CommonModal } from "../../components/Common/CommonModal/CommonModal";
+import { YoutubePlaceholder } from "../../components/YouTube/YoutubePlaceholder";
 
 const Home: FC = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const [operatingSystem, setOperatingSystem] = useState<string>("");
   const [firstTimeVisitor, setFirstTimeVisitor] = useState<boolean>(false);
+  const [showVideoPlayer, setShowVideoPlayer] = useState<boolean>(false);
 
   useEffect(() => {
     const isFirstTimeVisitor = localStorage.getItem("isFirstTimeVisitor");
@@ -35,6 +37,10 @@ const Home: FC = () => {
       return;
     }
   }, []);
+
+  const handleVideoClick = () => {
+    setShowVideoPlayer((prevState) => !prevState);
+  };
 
   return (
     <>
@@ -81,12 +87,25 @@ const Home: FC = () => {
               <VideoTitle variant="h2">
                 Watch the Q-Apps Promotional Video!
               </VideoTitle>
-              <iframe
-                src="https://www.youtube.com/embed/X7l2R0LF_5U"
-                title="YouTube video player"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-              ></iframe>
+              {showVideoPlayer && !firstTimeVisitor ? (
+                <iframe
+                  src="https://www.youtube.com/embed/X7l2R0LF_5U?autoplay=1"
+                  loading="lazy"
+                  title="Introducing Qortal Q-Apps"
+                  allowFullScreen
+                  allow="autoplay"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    border: "none"
+                  }}
+                ></iframe>
+              ) : (
+                <YoutubePlaceholder
+                  isModal={false}
+                  onClick={handleVideoClick}
+                />
+              )}
             </VideoRow>
           </>
         ) : (
@@ -102,6 +121,7 @@ const Home: FC = () => {
           openModal={firstTimeVisitor}
           onClickFunc={() => {
             setFirstTimeVisitor(false);
+            handleVideoClick();
           }}
         >
           <Box
@@ -112,20 +132,26 @@ const Home: FC = () => {
               paddingBottom: "5px"
             }}
           >
-            <iframe
-              src="https://www.youtube.com/embed/X7l2R0LF_5U"
-              title="Q-Apps Youtube Video"
-              style={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                width: "100%",
-                height: "100%",
-                padding: "20px",
-                border: "none"
-              }}
-              allowFullScreen
-            ></iframe>
+            {showVideoPlayer ? (
+              <iframe
+                src="https://www.youtube.com/embed/X7l2R0LF_5U?autoplay=1"
+                loading="lazy"
+                title="Introducing Qortal Q-Apps"
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "100%",
+                  padding: "20px",
+                  border: "none"
+                }}
+                allowFullScreen
+                allow="autoplay"
+              ></iframe>
+            ) : (
+              <YoutubePlaceholder isModal={true} onClick={handleVideoClick} />
+            )}
           </Box>
         </CommonModal>
       )}

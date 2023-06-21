@@ -86,23 +86,23 @@ export const VideoRow = styled(Box)(({ theme }) => ({
   flexDirection: "column",
   gap: "25px",
   marginTop: "15px",
-  width: "100%",
+  minWidth: "100%",
+  width: "fill-available",
   height: "500px",
   padding: "25px 50px",
-  minWidth: "100%",
   maxWidth: "500px",
   zIndex: 1,
   [theme.breakpoints.down("sm")]: {
-    padding: "25px 0",
+    padding: "25px 0"
   },
   "& iframe": {
     maxWidth: "600px",
     width: "50%",
     height: "100%",
     border: "none",
-  [theme.breakpoints.down("sm")]: {
-    width: "100%",
-  }
+    [theme.breakpoints.down("sm")]: {
+      width: "100%"
+    }
   }
 }));
 
@@ -113,6 +113,6 @@ export const VideoTitle = styled(Typography)(({ theme }) => ({
   userSelect: "none",
   zIndex: 1,
   [theme.breakpoints.down("sm")]: {
-    textAlign: "center",
+    textAlign: "center"
   }
 }));
