@@ -24,7 +24,7 @@ export const Promo = () => {
   return (
     <>
       <Container container>
-        <Grid item sm={12} md={6}>
+        <Grid item xs={12} sm={12}>
           <Header>
             Earn up to{" "}
             <span>
@@ -48,7 +48,7 @@ export const Promo = () => {
             </DiscordButton>
           </ButtonRow>
         </Grid>
-        <Grid
+        {/* <Grid
           item
           sm={12}
           md={6}
@@ -59,7 +59,7 @@ export const Promo = () => {
           }}
         >
           PROMO VID GOES HERE
-        </Grid>
+        </Grid> */}
       </Container>
       <Features container>
         <FeatureContainer item sm={12} md={4}>
