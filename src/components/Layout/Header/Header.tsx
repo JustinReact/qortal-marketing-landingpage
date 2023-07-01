@@ -121,6 +121,64 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
           </BackHomeButton>
         </DocsNavContainer>
       );
+    } else if (location.pathname === "/promo") {
+      return (
+        <HeaderNav>
+          <ThemeSelectRow>
+            {theme.palette.mode === "dark" ? (
+              <LightModeSVG
+                onClickFunc={() => setTheme("light")}
+                color="white"
+                height="22"
+                width="22"
+              />
+            ) : (
+              <DarkModeSVG
+                onClickFunc={() => setTheme("dark")}
+                color="black"
+                height="22"
+                width="22"
+              />
+            )}
+            <QortalLogoContainer
+              src={
+                theme.palette.mode === "light"
+                  ? QortalLogo
+                  : QortalLogoDarkTheme
+              }
+              alt="Qblog Logo"
+              onClick={() => {
+                navigate(`/`);
+              }}
+            />
+          </ThemeSelectRow>
+          {isMobile ? (
+            <HamburgerIcon
+              color={theme.palette.text.primary}
+              height={"32"}
+              width={"32"}
+              onClickFunc={() => setOpenMobileDrawer(!openMobileDrawer)}
+              rotated={{ isOn: openMobileDrawer ? true : false }}
+            />
+          ) : (
+            <HeaderButtonsRow>
+              <Docs
+                onClick={() => {
+                  ReactGA.event({
+                    category: "User",
+                    action: "Clicked Docs Button",
+                    label: "Docs Button"
+                  });
+                  navigate("/docs/api");
+                }}
+              >
+                Documentation
+                <DocsSVG color={"#ffffff"} height={"22"} width={"22"} />
+              </Docs>
+            </HeaderButtonsRow>
+          )}
+        </HeaderNav>
+      );
     }
   };
 
