@@ -1,6 +1,26 @@
 import { styled } from "@mui/system";
 import { Box, Button, Grid, Typography } from "@mui/material";
 
+export const MainRow = styled(Grid)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "center",
+  alignItems: "flex-start",
+  padding: "55px 60px 10px 60px"
+}));
+
+export const MainCol = styled(Grid)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  gap: "15px"
+}));
+
+export const QortalWordLogo = styled("img")({
+  width: "auto",
+  height: "50px",
+  transform: "translateY(10px)"
+});
+
 export const Column = styled(Grid)({
   display: "flex",
   flexDirection: "column",
@@ -12,10 +32,8 @@ export const HeaderText = styled(Typography)(({ theme }) => ({
   fontFamily: "Montserrat",
   fontWeight: "550",
   letterSpacing: "1.5px",
-  lineHeight: "60px",
-  textAlign: "center",
+  lineHeight: "35px",
   color: theme.palette.text.primary,
-  marginTop: "25px",
   userSelect: "none",
   [theme.breakpoints.only("md")]: {
     padding: "0 15px"
@@ -50,7 +68,9 @@ export const FooterRow = styled(Grid)(({ theme }) => ({
 export const ButtonRow = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
-  justifyContent: "space-evenly",
+  justifyContent: "flex-start",
+  gap: "20px",
+  marginTop: "10px",
   width: "100%",
   zIndex: 2,
   [theme.breakpoints.down("sm")]: {

@@ -21,7 +21,7 @@ export const CustomDrawer = styled(Drawer)<CustomDrawerProps>(
       width: drawerwidth,
       boxSizing: "border-box",
       backgroundColor: theme.palette.background.default,
-      paddingBottom: "80px",
+      paddingBottom: "20px",
       overflowY: "auto",
       borderRight:
         theme.palette.mode === "dark"
@@ -30,10 +30,10 @@ export const CustomDrawer = styled(Drawer)<CustomDrawerProps>(
       "&::-webkit-scrollbar": {
         width: "16px",
         height: "10px",
-        backgroundColor: "transparent" // Hide scrollbar by default
+        backgroundColor: theme.palette.background.default // Hide scrollbar by default
       },
       "&::-webkit-scrollbar-track": {
-        backgroundColor: "transparent"
+        backgroundColor: theme.palette.background.default
       },
       "&::-webkit-scrollbar-thumb": {
         backgroundColor: "transparent", // Hide scrollbar thumb by default
@@ -53,6 +53,9 @@ export const CustomDrawer = styled(Drawer)<CustomDrawerProps>(
           theme.palette.mode === "light"
             ? `${theme.palette.primary.dark}`
             : "#4e50a1"
+      },
+      "&::-webkit-scrollbar-corner": {
+        backgroundColor: theme.palette.background.default
       }
     },
     [theme.breakpoints.down("sm")]: {

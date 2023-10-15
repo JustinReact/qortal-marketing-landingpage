@@ -9,8 +9,12 @@ import {
   FooterRow,
   ButtonRow,
   VideoRow,
-  VideoTitle
+  VideoTitle,
+  MainRow,
+  MainCol,
+  QortalWordLogo
 } from "./Home-styles";
+import QortalWordLogoImg from "../../images/Home/QortalWordLogo.svg";
 import OperatingSystem from "../../components/OperatingSystem/OperatingSystem";
 import { WindowsSVG } from "../../components/Common/Icons/WindowsSVG";
 import { LinuxSVG } from "../../components/Common/Icons/LinuxSVG";
@@ -45,44 +49,56 @@ const Home: FC = () => {
   return (
     <>
       <Lines />
-      <HeaderText variant="h1">
-        <span style={{ color: theme.palette.secondary.main }}>
-          Build Javascript Applications
-        </span>{" "}
-        on the First {!isMobile && <br />}
-        Fully Decentralized Blockchain Platform: Qortal
-      </HeaderText>
-      <SubHeaderText variant="h2">
-        Fast installation, and faster app deployment! Firstly, which OS are you
-        using?
-      </SubHeaderText>
+      <MainRow container>
+        <MainCol item xs={12} sm={7}>
+          <HeaderText variant="h1">
+            <span style={{ color: theme.palette.secondary.main }}>
+              The Future
+            </span>{" "}
+            of the Internet is Here:{" "}
+            <QortalWordLogo src={QortalWordLogoImg} alt="QortalWordLogoImg" />
+          </HeaderText>
+          <SubHeaderText variant="h2">
+            Join a Decentralized World Where You Have Complete Control
+          </SubHeaderText>
+          <ButtonRow>
+            <StyledButton
+              onClick={() => setOperatingSystem("windows")}
+              variant="contained"
+            >
+              <WindowsSVG color={"#ffffff"} height={"25"} width={"25"} />
+              Windows
+            </StyledButton>
+            <StyledButton
+              onClick={() => setOperatingSystem("mac")}
+              variant="contained"
+            >
+              <AppleSVG color={"#ffffff"} height={"25"} width={"25"} />
+              Mac
+            </StyledButton>
+            <StyledButton
+              onClick={() => setOperatingSystem("linux")}
+              variant="contained"
+            >
+              <LinuxSVG color={"#ffffff"} height={"25"} width={"25"} />
+              Linux
+            </StyledButton>
+          </ButtonRow>
+        </MainCol>
+        <MainCol
+          item
+          xs={12}
+          sm={5}
+          style={{
+            transform: !isMobile ? "translateY(-25px)" : "none"
+          }}
+        >
+          <QortalBigLogo />
+        </MainCol>
+      </MainRow>
       <FooterRow container>
         {!operatingSystem ? (
           <>
-            <QortalBigLogo />
-            <ButtonRow>
-              <StyledButton
-                onClick={() => setOperatingSystem("windows")}
-                variant="contained"
-              >
-                <WindowsSVG color={"#ffffff"} height={"25"} width={"25"} />
-                Windows
-              </StyledButton>
-              <StyledButton
-                onClick={() => setOperatingSystem("mac")}
-                variant="contained"
-              >
-                <AppleSVG color={"#ffffff"} height={"25"} width={"25"} />
-                Mac
-              </StyledButton>
-              <StyledButton
-                onClick={() => setOperatingSystem("linux")}
-                variant="contained"
-              >
-                <LinuxSVG color={"#ffffff"} height={"25"} width={"25"} />
-                Linux
-              </StyledButton>
-            </ButtonRow>
             <VideoRow>
               <VideoTitle variant="h2">
                 Watch the Q-Apps Promotional Video!

@@ -1,4 +1,3 @@
-import React from "react";
 import { Introduction } from "../components/Api/ApiSections/Introduction/Introduction";
 import { Resources } from "../components/Api/ApiSections/Resources/Resources";
 import { SharedIdentifiers } from "../components/Api/ApiSections/Resources/SharedIdentifiers";
@@ -40,6 +39,12 @@ import { SEARCH_TRANSACTIONS } from "../components/Api/ApiSections/QortalRequest
 import { GET_PRICE } from "../components/Api/ApiSections/QortalRequest/GET_PRICE";
 import { LISTS } from "../components/Api/ApiSections/QortalRequest/LISTS";
 import { AppSpecificData } from "../components/Api/ApiSections/Resources/AppSpecificData";
+import { OPEN_NEW_TAB } from "../components/Api/ApiSections/QortalRequest/OPEN_NEW_TAB";
+import { NOTIFICATIONS_PERMISSION } from "../components/Api/ApiSections/QortalRequest/NOTIFICATIONS_PERMISSION";
+import { SEND_LOCAL_NOTIFICATION } from "../components/Api/ApiSections/QortalRequest/SEND_LOCAL_NOTIFICATION";
+import { CREATE_POLL } from "../components/Api/ApiSections/QortalRequest/CREATE_POLL";
+import { DEPLOY_AT } from "../components/Api/ApiSections/QortalRequest/DEPLOY_AT";
+import { VOTE_ON_POLL } from "../components/Api/ApiSections/QortalRequest/VOTE_ON_POLL";
 
 export const tableOfContents = [
   {
@@ -120,9 +125,29 @@ export const tableOfContents = [
     id: "qortalRequestIntroduction",
     subContent: [
       {
-        title: "GET_USER_ACCOUNT",
-        Component: (props: any) => <GET_USER_ACCOUNT {...props} />,
-        id: "GET_USER_ACCOUNT"
+        title: "CREATE_POLL",
+        Component: (props: any) => <CREATE_POLL {...props} />,
+        id: "CREATE_POLL"
+      },
+      {
+        title: "DECRYPT_DATA",
+        Component: (props: any) => <DECRYPT_DATA {...props} />,
+        id: "DECRYPT_DATA"
+      },
+      {
+        title: "DEPLOY_AT",
+        Component: (props: any) => <DEPLOY_AT {...props} />,
+        id: "DEPLOY_AT"
+      },
+      {
+        title: "FETCH_BLOCK",
+        Component: (props: any) => <FETCH_BLOCK {...props} />,
+        id: "FETCH_BLOCK"
+      },
+      {
+        title: "FETCH_QDN_RESOURCE",
+        Component: (props: any) => <FETCH_QDN_RESOURCE {...props} />,
+        id: "FETCH_QDN_RESOURCE"
       },
       {
         title: "GET_ACCOUNT_DATA",
@@ -135,9 +160,9 @@ export const tableOfContents = [
         id: "GET_ACCOUNT_NAMES"
       },
       {
-        title: "SEARCH_NAMES",
-        Component: (props: any) => <SEARCH_NAMES {...props} />,
-        id: "SEARCH_NAMES"
+        title: "GET_BALANCE",
+        Component: (props: any) => <GET_BALANCE {...props} />,
+        id: "GET_BALANCE"
       },
       {
         title: "GET_NAME_DATA",
@@ -145,24 +170,9 @@ export const tableOfContents = [
         id: "GET_NAME_DATA"
       },
       {
-        title: "LIST_QDN_RESOURCES",
-        Component: (props: any) => <LIST_QDN_RESOURCES {...props} />,
-        id: "LIST_QDN_RESOURCES"
-      },
-      {
-        title: "SEARCH_QDN_RESOURCES",
-        Component: (props: any) => <SEARCH_QDN_RESOURCES {...props} />,
-        id: "SEARCH_QDN_RESOURCES"
-      },
-      {
-        title: "GET_QDN_RESOURCE_STATUS",
-        Component: (props: any) => <GET_QDN_RESOURCE_STATUS {...props} />,
-        id: "GET_QDN_RESOURCE_STATUS"
-      },
-      {
-        title: "GET_QDN_RESOURCE_PROPERTIES",
-        Component: (props: any) => <GET_QDN_RESOURCE_PROPERTIES {...props} />,
-        id: "GET_QDN_RESOURCE_PROPERTIES"
+        title: "GET_PRICE",
+        Component: (props: any) => <GET_PRICE {...props} />,
+        id: "GET_PRICE"
       },
       {
         title: "GET_QDN_RESOURCE_METADATA",
@@ -170,34 +180,24 @@ export const tableOfContents = [
         id: "GET_QDN_RESOURCE_METADATA"
       },
       {
+        title: "GET_QDN_RESOURCE_PROPERTIES",
+        Component: (props: any) => <GET_QDN_RESOURCE_PROPERTIES {...props} />,
+        id: "GET_QDN_RESOURCE_PROPERTIES"
+      },
+      {
+        title: "GET_QDN_RESOURCE_STATUS",
+        Component: (props: any) => <GET_QDN_RESOURCE_STATUS {...props} />,
+        id: "GET_QDN_RESOURCE_STATUS"
+      },
+      {
         title: "GET_QDN_RESOURCE_URL",
         Component: (props: any) => <GET_QDN_RESOURCE_URL {...props} />,
         id: "GET_QDN_RESOURCE_URL"
       },
       {
-        title: "LINK_TO_QDN_RESOURCE",
-        Component: (props: any) => <LINK_TO_QDN_RESOURCE {...props} />,
-        id: "LINK_TO_QDN_RESOURCE"
-      },
-      {
-        title: "FETCH_QDN_RESOURCE",
-        Component: (props: any) => <FETCH_QDN_RESOURCE {...props} />,
-        id: "FETCH_QDN_RESOURCE"
-      },
-      {
-        title: "PUBLISH_QDN_RESOURCE",
-        Component: (props: any) => <PUBLISH_QDN_RESOURCE {...props} />,
-        id: "PUBLISH_QDN_RESOURCE"
-      },
-      {
-        title: "DECRYPT_DATA",
-        Component: (props: any) => <DECRYPT_DATA {...props} />,
-        id: "DECRYPT_DATA"
-      },
-      {
-        title: "SAVE_FILE",
-        Component: (props: any) => <SAVE_FILE {...props} />,
-        id: "SAVE_FILE"
+        title: "GET_USER_ACCOUNT",
+        Component: (props: any) => <GET_USER_ACCOUNT {...props} />,
+        id: "GET_USER_ACCOUNT"
       },
       {
         title: "GET_WALLET_BALANCE",
@@ -205,24 +205,19 @@ export const tableOfContents = [
         id: "GET_WALLET_BALANCE"
       },
       {
-        title: "GET_BALANCE",
-        Component: (props: any) => <GET_BALANCE {...props} />,
-        id: "GET_BALANCE"
+        title: "JOIN_GROUP",
+        Component: (props: any) => <JOIN_GROUP {...props} />,
+        id: "JOIN_GROUP"
       },
       {
-        title: "SEND_COIN",
-        Component: (props: any) => <SEND_COIN {...props} />,
-        id: "SEND_COIN"
+        title: "LINK_TO_QDN_RESOURCE",
+        Component: (props: any) => <LINK_TO_QDN_RESOURCE {...props} />,
+        id: "LINK_TO_QDN_RESOURCE"
       },
       {
-        title: "SEARCH_CHAT_MESSAGES",
-        Component: (props: any) => <SEARCH_CHAT_MESSAGES {...props} />,
-        id: "SEARCH_CHAT_MESSAGES"
-      },
-      {
-        title: "SEND_CHAT_MESSAGE",
-        Component: (props: any) => <SEND_CHAT_MESSAGE {...props} />,
-        id: "SEND_CHAT_MESSAGE"
+        title: "LIST_QDN_RESOURCES",
+        Component: (props: any) => <LIST_QDN_RESOURCES {...props} />,
+        id: "LIST_QDN_RESOURCES"
       },
       {
         title: "LIST_GROUPS",
@@ -230,29 +225,70 @@ export const tableOfContents = [
         id: "LIST_GROUPS"
       },
       {
-        title: "JOIN_GROUP",
-        Component: (props: any) => <JOIN_GROUP {...props} />,
-        id: "JOIN_GROUP"
+        title: "LISTS",
+        Component: (props: any) => <LISTS {...props} />,
+        id: "LISTS"
       },
       {
-        title: "FETCH_BLOCK",
-        Component: (props: any) => <FETCH_BLOCK {...props} />,
-        id: "FETCH_BLOCK"
+        title: "NOTIFICATIONS_PERMISSION",
+        Component: (props: any) => <NOTIFICATIONS_PERMISSION {...props} />,
+        id: "NOTIFICATIONS_PERMISSION"
       },
+      {
+        title: "OPEN_NEW_TAB",
+        Component: (props: any) => <OPEN_NEW_TAB {...props} />,
+        id: "OPEN_NEW_TAB"
+      },
+      {
+        title: "PUBLISH_QDN_RESOURCE",
+        Component: (props: any) => <PUBLISH_QDN_RESOURCE {...props} />,
+        id: "PUBLISH_QDN_RESOURCE"
+      },
+      {
+        title: "SAVE_FILE",
+        Component: (props: any) => <SAVE_FILE {...props} />,
+        id: "SAVE_FILE"
+      },
+      {
+        title: "SEARCH_NAMES",
+        Component: (props: any) => <SEARCH_NAMES {...props} />,
+        id: "SEARCH_NAMES"
+      },
+      {
+        title: "SEARCH_QDN_RESOURCES",
+        Component: (props: any) => <SEARCH_QDN_RESOURCES {...props} />,
+        id: "SEARCH_QDN_RESOURCES"
+      },
+      {
+        title: "SEARCH_CHAT_MESSAGES",
+        Component: (props: any) => <SEARCH_CHAT_MESSAGES {...props} />,
+        id: "SEARCH_CHAT_MESSAGES"
+      },
+
       {
         title: "SEARCH_TRANSACTIONS",
         Component: (props: any) => <SEARCH_TRANSACTIONS {...props} />,
         id: "SEARCH_TRANSACTIONS"
       },
       {
-        title: "GET_PRICE",
-        Component: (props: any) => <GET_PRICE {...props} />,
-        id: "GET_PRICE"
+        title: "SEND_CHAT_MESSAGE",
+        Component: (props: any) => <SEND_CHAT_MESSAGE {...props} />,
+        id: "SEND_CHAT_MESSAGE"
       },
       {
-        title: "LISTS",
-        Component: (props: any) => <LISTS {...props} />,
-        id: "LISTS"
+        title: "SEND_COIN",
+        Component: (props: any) => <SEND_COIN {...props} />,
+        id: "SEND_COIN"
+      },
+      {
+        title: "SEND_LOCAL_NOTIFICATION",
+        Component: (props: any) => <SEND_LOCAL_NOTIFICATION {...props} />,
+        id: "SEND_LOCAL_NOTIFICATION"
+      },
+      {
+        title: "VOTE_ON_POLL",
+        Component: (props: any) => <VOTE_ON_POLL {...props} />,
+        id: "VOTE_ON_POLL"
       }
     ]
   }

@@ -86,7 +86,7 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                   navigate("/docs/api");
                 }}
               >
-                Documentation
+                Developer
                 <DocsSVG color={"#ffffff"} height={"22"} width={"22"} />
               </Docs>
               <DiscordButton
@@ -96,7 +96,7 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                     action: "Clicked Discord Button Header",
                     label: "Discord Button Header"
                   });
-                  window.open("https://discord.gg/DRyQ79xqhd", "_blank");
+                  window.open("https://discord.gg/9hgNdBj4aC", "_blank");
                 }}
               >
                 Join Discord
