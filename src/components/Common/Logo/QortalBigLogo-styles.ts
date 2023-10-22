@@ -28,7 +28,8 @@ export const QortalImg = styled("img")(({theme}) => ({
   objectFit: "cover",
   userSelect: "none",
   animation: `${floatAnimation} 3s ease-in-out infinite`,
-  filter: theme.palette.mode === "light" ? "drop-shadow(0px 350px 70px rgba(0, 0, 0, 0.2))" : "drop-shadow(0px 350px 70px #312e2e33)",
+  filter: theme.palette.mode === "light" ? "drop-shadow(0px 220px 70px rgba(0, 0, 0, 0.2))" : "drop-shadow(0px 220px 70px #312e2e33)",
+  overflow: "visible",
   [theme.breakpoints.down("sm")]: {
     width: "-webkit-fill-available",
     height: "300px",

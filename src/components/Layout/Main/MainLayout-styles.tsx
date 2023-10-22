@@ -21,10 +21,9 @@ export const Wrapper = styled("div")(({ theme }) => ({
         ? `url(${HexagonBG})`
         : `url(${HexagonBGLight})`,
     backgroundRepeat: "no-repeat",
-    backgroundSize: "80%",
-    backgroundPosition: "center center",
+    backgroundSize: "contain",
     "@media (max-width: 600px)": {
-      backgroundPosition: "20% center",
+      backgroundPosition: "top",
       backgroundSize: "auto"
     }
   },

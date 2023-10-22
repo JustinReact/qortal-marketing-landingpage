@@ -6,19 +6,25 @@ export const MainRow = styled(Grid)(({ theme }) => ({
   flexDirection: "row",
   justifyContent: "center",
   alignItems: "flex-start",
-  padding: "55px 60px 10px 60px"
+  padding: "55px 60px 10px 60px",
+  [theme.breakpoints.down("md")]: {
+    paddingBottom: "80px"
+  },
+  [theme.breakpoints.only("xs")]: {
+    padding: 0
+  }
 }));
 
-export const MainCol = styled(Grid)(({ theme }) => ({
+export const MainCol = styled(Grid)({
   display: "flex",
   flexDirection: "column",
   gap: "15px"
-}));
+});
 
 export const QortalWordLogo = styled("img")({
   width: "auto",
-  height: "50px",
-  transform: "translateY(10px)"
+  height: "45px",
+  transform: "translateY(13px)"
 });
 
 export const Column = styled(Grid)({
@@ -32,6 +38,7 @@ export const HeaderText = styled(Typography)(({ theme }) => ({
   fontFamily: "Montserrat",
   fontWeight: "550",
   letterSpacing: "1.5px",
+  fontSize: "34px",
   lineHeight: "35px",
   color: theme.palette.text.primary,
   userSelect: "none",
@@ -40,12 +47,16 @@ export const HeaderText = styled(Typography)(({ theme }) => ({
   },
   [theme.breakpoints.down("sm")]: {
     lineHeight: "55px"
+  },
+  [theme.breakpoints.only("xs")]: {
+    textAlign: "center"
   }
 }));
 
 export const SubHeaderText = styled(Typography)(({ theme }) => ({
   fontFamily: "Oxygen",
   fontWeight: "400",
+  fontSize: "28px",
   letterSpacing: "0.3px",
   userSelect: "none",
   [theme.breakpoints.only("md")]: {
@@ -82,9 +93,9 @@ export const ButtonRow = styled(Box)(({ theme }) => ({
 }));
 
 export const StyledButton = styled(Button)(({ theme }) => ({
-  fontSize: "25px",
+  fontSize: "20px",
   borderRadius: "35px",
-  padding: "7px 55px",
+  padding: "5px 35px",
   fontFamily: "Montserrat",
   color: "#ffffff",
   backgroundColor: "#115bc5",

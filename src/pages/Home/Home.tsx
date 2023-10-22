@@ -21,6 +21,7 @@ import { LinuxSVG } from "../../components/Common/Icons/LinuxSVG";
 import { AppleSVG } from "../../components/Common/Icons/AppleSVG";
 import { CommonModal } from "../../components/Common/CommonModal/CommonModal";
 import { YoutubePlaceholder } from "../../components/YouTube/YoutubePlaceholder";
+import { Showcase } from "../../components/Showcase/Showcase";
 
 const Home: FC = () => {
   const theme = useTheme();
@@ -48,18 +49,18 @@ const Home: FC = () => {
 
   return (
     <>
-      <Lines />
+      {/* <Lines /> */}
       <MainRow container>
         <MainCol item xs={12} sm={7}>
-          <HeaderText variant="h1">
+          <HeaderText>
             <span style={{ color: theme.palette.secondary.main }}>
-              The Future
-            </span>{" "}
-            of the Internet is Here:{" "}
+              The Future{" "}
+            </span>
+            <span>of the Internet is Here: </span>
             <QortalWordLogo src={QortalWordLogoImg} alt="QortalWordLogoImg" />
           </HeaderText>
-          <SubHeaderText variant="h2">
-            Join a Decentralized World Where You Have Complete Control
+          <SubHeaderText>
+            Join a Decentralized World Where You Have Complete Control!
           </SubHeaderText>
           <ButtonRow>
             <StyledButton
@@ -96,6 +97,7 @@ const Home: FC = () => {
           <QortalBigLogo />
         </MainCol>
       </MainRow>
+      <Showcase />
       <FooterRow container>
         {!operatingSystem ? (
           <>
