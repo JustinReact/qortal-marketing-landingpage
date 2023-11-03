@@ -103,7 +103,7 @@ const Home: FC = () => {
           <>
             <VideoRow>
               <VideoTitle variant="h2">
-                Watch the Q-Apps Promotional Video!
+                Watch the Q-Apps Intro Video!
               </VideoTitle>
               {showVideoPlayer && !firstTimeVisitor ? (
                 <iframe

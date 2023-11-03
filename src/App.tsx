@@ -6,16 +6,16 @@ import { CssBaseline } from "@mui/material";
 import { lightTheme, darkTheme } from "./styles/theme";
 import Home from "./pages/Home/Home";
 import { NotFound } from "./pages/NotFound/NotFound";
-import { ErrorElement } from "./components/Common/Error/ErrorElement";
 import Api from "./pages/Docs/Api/Api";
 import { MainLayoutRoute } from "./components/Layout/Main/MainLayout";
 import { Promo } from "./pages/Promo/Promo";
+import { Features } from "./pages/Features/Features";
 
 // Initialize Google Analytics
 ReactGA.initialize("G-E1BB62FVTN");
 
 function App() {
-  const [theme, setTheme] = useState("dark");
+  const [theme, setTheme] = useState<string>("dark");
 
   return (
     <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
@@ -32,6 +32,7 @@ function App() {
             element={<Api setTheme={(val: string) => setTheme(val)} />}
           />
           <Route path="/promo" element={<Promo />} />
+          <Route path="/features" element={<Features />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

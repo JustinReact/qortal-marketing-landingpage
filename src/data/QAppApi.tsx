@@ -45,6 +45,8 @@ import { SEND_LOCAL_NOTIFICATION } from "../components/Api/ApiSections/QortalReq
 import { CREATE_POLL } from "../components/Api/ApiSections/QortalRequest/CREATE_POLL";
 import { DEPLOY_AT } from "../components/Api/ApiSections/QortalRequest/DEPLOY_AT";
 import { VOTE_ON_POLL } from "../components/Api/ApiSections/QortalRequest/VOTE_ON_POLL";
+import { GET_DAY_SUMMARY } from "../components/Api/ApiSections/QortalRequest/GET_DAY_SUMMARY";
+import { GET_USER_WALLET } from "../components/Api/ApiSections/QortalRequest/GET_USER_WALLET";
 
 export const tableOfContents = [
   {
@@ -165,6 +167,11 @@ export const tableOfContents = [
         id: "GET_BALANCE"
       },
       {
+        title: "GET_DAY_SUMMARY",
+        Component: (props: any) => <GET_DAY_SUMMARY {...props} />,
+        id: "GET_DAY_SUMMARY"
+      },
+      {
         title: "GET_NAME_DATA",
         Component: (props: any) => <GET_NAME_DATA {...props} />,
         id: "GET_NAME_DATA"
@@ -198,6 +205,11 @@ export const tableOfContents = [
         title: "GET_USER_ACCOUNT",
         Component: (props: any) => <GET_USER_ACCOUNT {...props} />,
         id: "GET_USER_ACCOUNT"
+      },
+      {
+        title: "GET_USER_WALLET",
+        Component: (props: any) => <GET_USER_WALLET {...props} />,
+        id: "GET_USER_WALLET"
       },
       {
         title: "GET_WALLET_BALANCE",

@@ -121,7 +121,7 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
           </BackHomeButton>
         </DocsNavContainer>
       );
-    } else if (location.pathname === "/promo") {
+    } else {
       return (
         <HeaderNav>
           <ThemeSelectRow>
@@ -175,6 +175,21 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                 Documentation
                 <DocsSVG color={"#ffffff"} height={"22"} width={"22"} />
               </Docs>
+              <DiscordButton
+                onClick={() => {
+                  ReactGA.event({
+                    category: "User",
+                    action: "Clicked Discord Button Header",
+                    label: "Discord Button Header"
+                  });
+                  window.open("https://discord.gg/9hgNdBj4aC", "_blank");
+                }}
+              >
+                Join Discord
+                <TriangleContainer>
+                  <TriangleIcon />
+                </TriangleContainer>
+              </DiscordButton>
             </HeaderButtonsRow>
           )}
         </HeaderNav>

@@ -12,7 +12,7 @@ export const HeaderNav = styled(Box)(({ theme }) => ({
   justifyContent: "space-between",
   alignItems: "center",
   width: "100%",
-  padding: "0 100px",
+  padding: "0 30px",
   [theme.breakpoints.only("xs")]: {
     padding: "0"
   }
@@ -84,7 +84,7 @@ export const DocsNavContainer = styled(Box)(({ theme }) => ({
   flexDirection: "row",
   alignItems: "center",
   width: "100%",
-  justifyContent: "flex-end",
+  justifyContent: "flex-end"
 }));
 
 export const Docs = styled(Typography)(({ theme }) => ({

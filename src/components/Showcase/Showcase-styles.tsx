@@ -48,7 +48,7 @@ export const HorizontalLine = styled("div")(({ theme }) => ({
 }));
 
 export const VerticalLine = styled("div")(({ theme }) => ({
-  marginLeft: "50px",
+  marginLeft: "45px",
   width: "2px",
   height: "150px",
   backgroundColor: theme.palette.text.primary,

@@ -32,9 +32,11 @@ import { MoneyOffSVG } from "../Common/Icons/MoneyOffSVG";
 import QShopScreenshot from "../../images/Home/Q-ShopScreenshot.png";
 import QChatScreenshot from "../../images/Home/Q-ChatScreenshot.png";
 import { FeatureText } from "../../pages/Promo/Promo-styles";
+import { useNavigate } from "react-router-dom";
 
 export const Showcase = () => {
   const theme = useTheme();
+  const navigate = useNavigate();
 
   return (
     <ShowcaseContainer>
@@ -185,7 +187,13 @@ export const Showcase = () => {
                 <span>Integrated Wallet: </span>Experience seamless transactions
                 with an in-built, user-friendly digital wallet.
               </FeaturesText>
-              <FeaturesButton>Explore The Possibilities</FeaturesButton>
+              <FeaturesButton
+                onClick={() => {
+                  navigate("/features");
+                }}
+              >
+                Explore The Possibilities
+              </FeaturesButton>
             </FeaturesBody>
           </FeaturesColumn>
           <Grid item xs={12} lg={7}>
