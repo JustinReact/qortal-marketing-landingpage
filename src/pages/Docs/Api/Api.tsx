@@ -51,6 +51,7 @@ const Api: FC<ApiProps> = ({ setTheme }) => {
     };
 
     const observer = new IntersectionObserver(handleIntersect, options);
+
     if (topOfPageRef?.current) {
       observer.observe(topOfPageRef.current);
     }

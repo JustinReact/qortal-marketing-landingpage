@@ -1,7 +1,7 @@
 import { useState, FC, useEffect } from "react";
 import { Box, useMediaQuery, useTheme } from "@mui/material";
 import { QortalBigLogo } from "../../components/Common/Logo/QortalBigLogo";
-import { Lines } from "../../components/Common/Lines/Lines";
+// import { Lines } from "../../components/Common/Lines/Lines";
 import {
   StyledButton,
   HeaderText,

@@ -31,7 +31,6 @@ import { RadioButtonSVG } from "../Common/Icons/RadioButtonSVG";
 import { MoneyOffSVG } from "../Common/Icons/MoneyOffSVG";
 import QShopScreenshot from "../../images/Home/Q-ShopScreenshot.png";
 import QChatScreenshot from "../../images/Home/Q-ChatScreenshot.png";
-import { FeatureText } from "../../pages/Promo/Promo-styles";
 import { useNavigate } from "react-router-dom";
 
 export const Showcase = () => {

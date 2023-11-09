@@ -86,8 +86,54 @@ export const BGShape = styled(Box)(({ theme }) => ({
   width: "500px",
   height: "500px",
   position: "absolute",
-  top: 0,
-  right: "-16px"
+  top: "-30px",
+  right: "-16px",
+  zIndex: -1
+}));
+
+export const TriangleShape = styled(Box)(({ theme }) => ({
+  width: 0,
+  height: 0,
+  borderLeft: "300px solid transparent",
+  borderRight: "300px solid transparent",
+  borderBottom: "500px solid #4acff8",
+  position: "absolute",
+  top: "-45px",
+  right: "-16px",
+  zIndex: -1
+}));
+
+export const HexagonShape = styled(Box)(({ theme }) => ({
+  marginTop: "78px",
+  width: "540.8px",
+  height: "312px",
+  backgroundColor: theme.palette.secondary.light,
+  borderColor: theme.palette.secondary.light,
+  position: "absolute",
+  top: "-25px",
+  right: 0,
+  zIndex: -1,
+  "&:before": {
+    content: "''",
+    width: 0,
+    height: 0,
+    borderBottom: "156px solid",
+    borderColor: "inherit",
+    borderLeft: "270.4px solid transparent",
+    borderRight: "270.4px solid transparent",
+    position: "absolute",
+    top: "-156px"
+  },
+  "&:after": {
+    content: "''",
+    width: 0,
+    position: "absolute",
+    bottom: "-155px",
+    borderTop: "156px solid",
+    borderColor: "inherit",
+    borderLeft: "270.4px solid transparent",
+    borderRight: "270.4px solid transparent"
+  }
 }));
 
 export const FeaturesTextContainer = styled(Box)({
@@ -151,7 +197,8 @@ export const FeaturesImg = styled("img")({
   objectFit: "contain",
   zIndex: 1,
   borderRadius: "15px",
-  boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px"
+  boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
+  marginTop: "50px"
 });
 
 export const FeatureTabsRow = styled(Box)({
@@ -172,10 +219,12 @@ export const FeatureCard = styled(Box)(({ theme }) => ({
   width: "100%",
   height: "100%",
   minHeight: "300px",
+  maxHeight: "300px",
+  overflowY: "auto",
   borderRadius: "2px",
   padding: "15px 20px",
   gap: "15px",
-  transition: "all 0.6s ease-in-out",
+  transition: "all 0.5s ease-in-out",
   border:
     theme.palette.mode === "light"
       ? `1px solid #e4e4e7ed`
@@ -183,10 +232,47 @@ export const FeatureCard = styled(Box)(({ theme }) => ({
   userSelect: "none",
   "&:hover": {
     cursor: "pointer",
-    backgroundColor: "#7e7cf547"
+    backgroundColor: "#7e7cf547",
+    "&::-webkit-scrollbar-track": {
+      backgroundColor: "#7e7cf547"
+    }
   },
   "&.active": {
-    backgroundColor: "#7e7cf547"
+    backgroundColor: "#7e7cf547",
+    "&::-webkit-scrollbar-track": {
+      backgroundColor: "#7e7cf547"
+    }
+  },
+  "&::-webkit-scrollbar": {
+    width: "16px",
+    height: "10px",
+    backgroundColor: theme.palette.background.default // Hide scrollbar by default
+  },
+  "&::-webkit-scrollbar-track": {
+    transition: "all 0.6s ease-in-out",
+    backgroundColor: "transparent"
+  },
+  "&::-webkit-scrollbar-thumb": {
+    backgroundColor: "transparent", // Hide scrollbar thumb by default
+    borderRadius: "8px",
+    backgroundClip: "content-box",
+    border: "4px solid transparent"
+  },
+  "&:hover::-webkit-scrollbar-thumb": {
+    // Add this block
+    backgroundColor:
+      theme.palette.mode === "light"
+        ? `${theme.palette.primary.main}`
+        : `${theme.palette.secondary.light}`
+  },
+  "&::-webkit-scrollbar-thumb:hover": {
+    backgroundColor:
+      theme.palette.mode === "light"
+        ? `${theme.palette.primary.dark}`
+        : "#4e50a1"
+  },
+  "&::-webkit-scrollbar-corner": {
+    backgroundColor: theme.palette.background.default
   }
 }));
 
@@ -203,10 +289,12 @@ export const FeatureCardImg = styled("img")({
   height: "100%",
   objectFit: "contain",
   borderRadius: "2px",
-  boxShadow: " rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;"
+  boxShadow: " rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;",
+  userSelect: "none"
 });
 
 export const FeatureCardTitle = styled(Typography)(({ theme }) => ({
+  textAlign: "center",
   fontFamily: "Oxygen",
   fontWeight: "bold",
   letterSpacing: "1.3px",

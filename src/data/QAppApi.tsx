@@ -47,6 +47,9 @@ import { DEPLOY_AT } from "../components/Api/ApiSections/QortalRequest/DEPLOY_AT
 import { VOTE_ON_POLL } from "../components/Api/ApiSections/QortalRequest/VOTE_ON_POLL";
 import { GET_DAY_SUMMARY } from "../components/Api/ApiSections/QortalRequest/GET_DAY_SUMMARY";
 import { GET_USER_WALLET } from "../components/Api/ApiSections/QortalRequest/GET_USER_WALLET";
+import { OPEN_PROFILE } from "../components/Api/ApiSections/QortalRequest/OPEN_PROFILE";
+import { GET_PROFILE_DATA } from "../components/Api/ApiSections/QortalRequest/GET_PROFILE_DATA";
+import { SET_PROFILE_DATA } from "../components/Api/ApiSections/QortalRequest/SET_PROFILE_DATA";
 
 export const tableOfContents = [
   {
@@ -202,6 +205,11 @@ export const tableOfContents = [
         id: "GET_QDN_RESOURCE_URL"
       },
       {
+        title: "GET_PROFILE_DATA",
+        Component: (props: any) => <GET_PROFILE_DATA {...props} />,
+        id: "GET_PROFILE_DATA"
+      },
+      {
         title: "GET_USER_ACCOUNT",
         Component: (props: any) => <GET_USER_ACCOUNT {...props} />,
         id: "GET_USER_ACCOUNT"
@@ -252,6 +260,11 @@ export const tableOfContents = [
         id: "OPEN_NEW_TAB"
       },
       {
+        title: "OPEN_PROFILE",
+        Component: (props: any) => <OPEN_PROFILE {...props} />,
+        id: "OPEN_PROFILE"
+      },
+      {
         title: "PUBLISH_QDN_RESOURCE",
         Component: (props: any) => <PUBLISH_QDN_RESOURCE {...props} />,
         id: "PUBLISH_QDN_RESOURCE"
@@ -296,6 +309,11 @@ export const tableOfContents = [
         title: "SEND_LOCAL_NOTIFICATION",
         Component: (props: any) => <SEND_LOCAL_NOTIFICATION {...props} />,
         id: "SEND_LOCAL_NOTIFICATION"
+      },
+      {
+        title: "SET_PROFILE_DATA",
+        Component: (props: any) => <SET_PROFILE_DATA {...props} />,
+        id: "SET_PROFILE_DATA"
       },
       {
         title: "VOTE_ON_POLL",
