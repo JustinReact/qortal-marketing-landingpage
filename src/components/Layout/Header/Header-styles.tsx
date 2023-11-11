@@ -107,6 +107,26 @@ export const Docs = styled(Typography)(({ theme }) => ({
   }
 }));
 
+export const FeaturesButton = styled(Typography)(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  gap: "8px",
+  fontFamily: "Oxygen",
+  fontSize: "18px",
+  padding: "10px 15px",
+  borderRadius: "2px",
+  backgroundColor: theme.palette.secondary.main,
+  color: "#ffffff",
+  fontWeight: "400",
+  transition: "all 0.3s ease-in-out",
+  zIndex: 2,
+  userSelect: "none",
+  "&:hover": {
+    cursor: "pointer",
+    filter: "brightness(0.9)"
+  }
+}));
+
 export const TriangleContainer = styled(Box)({
   display: "flex",
   alignItems: "center",

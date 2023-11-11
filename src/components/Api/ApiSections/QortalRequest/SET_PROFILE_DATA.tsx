@@ -59,18 +59,24 @@ export const SET_PROFILE_DATA: FC<SectionProps> = ({
             width: "100%"
           }}
         >
-          <SubTitle>Set a normal custom property</SubTitle>
           <InformationSection>
+            <InformationParagraph>
+              This action requires user approval
+            </InformationParagraph>
             <InformationParagraph>
               Sets a custom property in the user's profile. The custom property
               will be a key-value pair object that will have a custom property
               name. There can be more than one key-value pair per object for
-              every custom property. We call this within a
-              qortalRequestWithTimeout function because we want to wait for the
-              user to navigate and check the auto-filled info in their profile
-              before updating their profile with the new data.
+              every custom property.
+            </InformationParagraph>
+            <InformationParagraph>
+              We call this within a qortalRequestWithTimeout function because we
+              want to wait for the user to navigate and check the auto-filled
+              info in their profile before updating their profile with the new
+              data.
             </InformationParagraph>
           </InformationSection>
+          <SubTitle>Set a normal custom property</SubTitle>
           <Grid container spacing={3}>
             <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
               <DisplayCode codeBlock={codeBlock1} language="javascript" />
@@ -86,7 +92,8 @@ export const SET_PROFILE_DATA: FC<SectionProps> = ({
             <InformationParagraph>
               The user can had a "-private" suffix to the property name to make
               it private. This will make the property encrypted, meaning that
-              Q-Apps will require user approval to access the property.
+              Q-Apps will require user approval to access that specific
+              property.
             </InformationParagraph>
           </InformationSection>
           <SubTitle>Set a private custom property</SubTitle>

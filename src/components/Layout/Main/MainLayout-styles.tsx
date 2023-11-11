@@ -5,6 +5,7 @@ import BlurryBGDarkMode from "../../../images/Promo/BlurryBGDarkMode.webp";
 import BlurryBGDarkModeMobile from "../../../images/Promo/BlurryBGDarkModeMobile.webp";
 import BlurryBGLightMode from "../../../images/Promo/BlurryBGLightMode.webp";
 import BlurryBGLightModeMobile from "../../../images/Promo/BlurryBGLightModeMobile.webp";
+import FeaturesHexagonBG from "../../../images/Features/FeaturesHexagonBG.png";
 
 export const Wrapper = styled("div")(({ theme }) => ({
   position: "relative",
@@ -20,7 +21,7 @@ export const Wrapper = styled("div")(({ theme }) => ({
       theme.palette.mode === "dark"
         ? `url(${HexagonBG})`
         : `url(${HexagonBGLight})`,
-    backgroundRepeat: "no-repeat",
+    backgroundRepeat: "repeat-y",
     backgroundSize: "contain",
     "@media (max-width: 600px)": {
       backgroundPosition: "top",
@@ -41,6 +42,22 @@ export const Wrapper = styled("div")(({ theme }) => ({
           ? `url(${BlurryBGDarkModeMobile})`
           : `url(${BlurryBGLightModeMobile})`,
       backgroundSize: "cover"
+    }
+  },
+  "&.BGImageFeatures": {
+    position: "relative",
+    zIndex: 1,
+    "&::before": {
+      content: "''",
+      position: "absolute",
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      backgroundImage: `url(${FeaturesHexagonBG})`,
+      backgroundRepeat: "no-repeat",
+      opacity: 0.1,
+      zIndex: -1
     }
   }
 }));

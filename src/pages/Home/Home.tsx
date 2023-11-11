@@ -22,10 +22,18 @@ import { AppleSVG } from "../../components/Common/Icons/AppleSVG";
 import { CommonModal } from "../../components/Common/CommonModal/CommonModal";
 import { YoutubePlaceholder } from "../../components/YouTube/YoutubePlaceholder";
 import { Showcase } from "../../components/Showcase/Showcase";
+import { RootState } from "../../state/store";
+import { useSelector, useDispatch } from "react-redux";
+import { setOS } from "../../state/features/osSlice";
 
 const Home: FC = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const dispatch = useDispatch();
+
+  // Props received from the features component to know which OS they're on
+  const os = useSelector((state: RootState) => state.OS.os);
+
   const [operatingSystem, setOperatingSystem] = useState<string>("");
   const [firstTimeVisitor, setFirstTimeVisitor] = useState<boolean>(false);
   const [showVideoPlayer, setShowVideoPlayer] = useState<boolean>(false);
@@ -42,6 +50,19 @@ const Home: FC = () => {
       return;
     }
   }, []);
+
+  // Clear the OS passed props on unmount
+
+  useEffect(() => {
+    if (os) {
+      setOperatingSystem(os);
+    }
+    return () => {
+      if (os) {
+        dispatch(setOS(""));
+      }
+    };
+  }, [os]);
 
   const handleVideoClick = () => {
     setShowVideoPlayer((prevState) => !prevState);
@@ -97,7 +118,7 @@ const Home: FC = () => {
           <QortalBigLogo />
         </MainCol>
       </MainRow>
-      <Showcase />
+      {!operatingSystem && <Showcase />}
       <FooterRow container>
         {!operatingSystem ? (
           <>

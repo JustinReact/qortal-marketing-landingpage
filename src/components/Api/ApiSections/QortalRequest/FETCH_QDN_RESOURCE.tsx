@@ -144,7 +144,11 @@ export const FETCH_QDN_RESOURCE: FC<SectionProps> = ({
             </Grid>
           </Grid>
           <SubTitle>Fetch file from multi file QDN resource</SubTitle>
-          Data is returned in the base64 format
+          <InformationSection>
+            <InformationParagraph>
+              Data is returned in the base64 format
+            </InformationParagraph>
+          </InformationSection>
           <DisplayCode codeBlock={codeBlock3} language="javascript" />
         </ParagraphContainer>
       </SectionContainer>

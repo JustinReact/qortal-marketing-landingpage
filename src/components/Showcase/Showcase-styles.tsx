@@ -61,12 +61,15 @@ export const VerticalLine = styled("div")(({ theme }) => ({
   }
 }));
 
-export const ShowcaseSubContainer = styled(Box)({
+export const ShowcaseSubContainer = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   gap: "60px",
-  padding: "10px 0 0 80px"
-});
+  padding: "10px 0 0 80px",
+  [theme.breakpoints.only("xs")]: {
+    padding: "10px 0 0 0"
+  }
+}));
 
 export const ColumnsContainer = styled(Grid)(({ theme }) => ({
   display: "flex",
@@ -240,7 +243,7 @@ export const FeaturesButton = styled(Button)(({ theme }) => ({
   padding: "8px 16px",
   borderRadius: "7px",
   fontFamily: "Montserrat",
-  fontSize: "18px",
+  fontSize: "19.5px",
   fontWeight: 500,
   textTransform: "none",
   transition: "all 0.3s ease-in-out",

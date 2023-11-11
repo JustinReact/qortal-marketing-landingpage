@@ -12,7 +12,8 @@ import {
   Docs,
   HamburgerIcon,
   BackHomeButton,
-  DocsNavContainer
+  DocsNavContainer,
+  FeaturesButton
 } from "./Header-styles";
 import { useMediaQuery, useTheme, Typography } from "@mui/material";
 import { LayoutProps } from "../Main/MainLayout";
@@ -24,6 +25,7 @@ import { DocsSVG } from "../../Common/Icons/DocsSVG";
 import { BackArrowSVG } from "../../Common/Icons/BackArrowSVG";
 import QortalLogo from "../../../images/Logo/QortalLogo.png";
 import QortalLogoDarkTheme from "../../../images/Logo/QortalLogoDarkTheme.webp";
+import { FeaturesSVG } from "../../Common/Icons/FeaturesSVG";
 
 export const Header: FC<LayoutProps> = ({ setTheme }) => {
   const theme = useTheme();
@@ -76,6 +78,19 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
             />
           ) : (
             <HeaderButtonsRow>
+              <FeaturesButton
+                onClick={() => {
+                  ReactGA.event({
+                    category: "User",
+                    action: "Clicked Features Button",
+                    label: "Features Button"
+                  });
+                  navigate("/features");
+                }}
+              >
+                Features
+                <FeaturesSVG color={"#ffffff"} height={"22"} width={"22"} />
+              </FeaturesButton>
               <Docs
                 onClick={() => {
                   ReactGA.event({
@@ -162,6 +177,19 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
             />
           ) : (
             <HeaderButtonsRow>
+              <FeaturesButton
+                onClick={() => {
+                  ReactGA.event({
+                    category: "User",
+                    action: "Clicked Features Button",
+                    label: "Features Button"
+                  });
+                  navigate("/features");
+                }}
+              >
+                Features
+                <FeaturesSVG color={"#ffffff"} height={"22"} width={"22"} />
+              </FeaturesButton>
               <Docs
                 onClick={() => {
                   ReactGA.event({

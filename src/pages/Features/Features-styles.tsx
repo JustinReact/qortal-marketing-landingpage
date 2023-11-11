@@ -1,15 +1,18 @@
 import { styled } from "@mui/system";
 import { Box, Button, Grid, Typography } from "@mui/material";
 
-export const Container = styled(Box)({
+export const Container = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
   flexDirection: "column",
   gap: "90px",
   padding: "25px 0",
-  width: "100%"
-});
+  width: "100%",
+  [theme.breakpoints.only("xs")]: {
+    gap: "40px"
+  }
+}));
 
 export const TabsRow = styled(Box)({
   display: "flex",
@@ -57,7 +60,14 @@ export const TabButton = styled(Button)(({ theme }) => ({
     color: theme.palette.mode === "light" ? "#186ba1" : "#6f82e4",
     borderRadius: "25px",
     padding: "0px 150px",
-    boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px"
+    boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
+    [theme.breakpoints.only("xs")]: {
+      padding: "0px 30px"
+    }
+  },
+  [theme.breakpoints.only("xs")]: {
+    fontSize: "14px",
+    padding: "5px 30px"
   }
 }));
 
@@ -86,9 +96,16 @@ export const BGShape = styled(Box)(({ theme }) => ({
   width: "500px",
   height: "500px",
   position: "absolute",
-  top: "-30px",
+  top: "-10px",
   right: "-16px",
-  zIndex: -1
+  zIndex: -1,
+  [theme.breakpoints.only("xs")]: {
+    width: "100%",
+    height: "270px",
+    position: "absolute",
+    top: "10px",
+    right: "-16px"
+  }
 }));
 
 export const TriangleShape = styled(Box)(({ theme }) => ({
@@ -98,9 +115,17 @@ export const TriangleShape = styled(Box)(({ theme }) => ({
   borderRight: "300px solid transparent",
   borderBottom: "500px solid #4acff8",
   position: "absolute",
-  top: "-45px",
+  top: "-15px",
   right: "-16px",
-  zIndex: -1
+  zIndex: -1,
+  [theme.breakpoints.only("xs")]: {
+    borderLeft: "150px solid transparent",
+    borderRight: "150px solid transparent",
+    borderBottom: "300px solid #4acff8",
+    position: "absolute",
+    top: "20px",
+    left: "50px"
+  }
 }));
 
 export const HexagonShape = styled(Box)(({ theme }) => ({
@@ -110,19 +135,31 @@ export const HexagonShape = styled(Box)(({ theme }) => ({
   backgroundColor: theme.palette.secondary.light,
   borderColor: theme.palette.secondary.light,
   position: "absolute",
-  top: "-25px",
+  top: "-5px",
   right: 0,
   zIndex: -1,
+  [theme.breakpoints.only("xs")]: {
+    width: "calc(540.8px / 2)",
+    height: "calc(312px / 2)",
+    top: "5px",
+    right: "40px"
+  },
   "&:before": {
     content: "''",
     width: 0,
     height: 0,
     borderBottom: "156px solid",
     borderColor: "inherit",
-    borderLeft: "270.4px solid transparent",
-    borderRight: "270.4px solid transparent",
+    borderLeft: `270.4px solid transparent`,
+    borderRight: `270.4px solid transparent`,
     position: "absolute",
-    top: "-156px"
+    top: "-156px",
+    [theme.breakpoints.only("xs")]: {
+      borderBottom: `calc(156px / 2) solid ${theme.palette.secondary.light}`,
+      borderLeft: `calc(270.4px / 2) solid transparent`,
+      borderRight: `calc(270.4px / 2) solid transparent`,
+      top: "calc(-156px / 2)"
+    }
   },
   "&:after": {
     content: "''",
@@ -132,7 +169,13 @@ export const HexagonShape = styled(Box)(({ theme }) => ({
     borderTop: "156px solid",
     borderColor: "inherit",
     borderLeft: "270.4px solid transparent",
-    borderRight: "270.4px solid transparent"
+    borderRight: "270.4px solid transparent",
+    [theme.breakpoints.only("xs")]: {
+      borderTop: `calc(156px / 2) solid ${theme.palette.secondary.light}`,
+      borderLeft: "calc(270.4px / 2) solid transparent",
+      borderRight: "calc(270.4px / 2) solid transparent",
+      bottom: "calc(-155px / 2)"
+    }
   }
 }));
 
@@ -187,8 +230,17 @@ export const FeaturesBodyText = styled(Typography)(({ theme }) => ({
   fontSize: "22.5px",
   color: theme.palette.text.primary,
   padding: "10px 30px 0 0",
-  lineHeight: "37px"
+  lineHeight: "37px",
+  [theme.breakpoints.only("xs")]: {
+    fontSize: "24px"
+  }
 }));
+
+export const FeaturesImgContainer = styled(Box)({
+  position: "relative",
+  display: "flex",
+  alignItems: "center"
+});
 
 export const FeaturesImg = styled("img")({
   width: "100%",
@@ -201,15 +253,19 @@ export const FeaturesImg = styled("img")({
   marginTop: "50px"
 });
 
-export const FeatureTabsRow = styled(Box)({
+export const FeatureTabsRow = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   flexDirection: "row",
   justifyContent: "space-evenly",
   width: "100%",
   padding: "0 20px",
-  gap: "30px"
-});
+  gap: "30px",
+  [theme.breakpoints.only("xs")]: {
+    flexDirection: "column",
+    marginTop: "50px"
+  }
+}));
 
 export const FeatureCard = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -310,4 +366,37 @@ export const FeatureCardBody = styled("ul")(({ theme }) => ({
   fontSize: "18px",
   color: theme.palette.text.primary,
   userSelect: "none"
+}));
+
+export const GatewayButton = styled(Button)({
+  color: "#fff",
+  padding: "11px 16px",
+  borderRadius: "7px",
+  fontFamily: "Oxygen",
+  fontSize: "19px",
+  fontWeight: 500,
+  textTransform: "none",
+  width: "200px",
+  transition: "all 0.3s ease-in-out",
+  "&:hover": {
+    cursor: "pointer",
+    filter: "brightness(0.9)"
+  }
+});
+
+export const InstallQortalButton = styled(Button)(({ theme }) => ({
+  backgroundColor: theme.palette.secondary.light,
+  color: "#fff",
+  padding: "5px 16px",
+  borderRadius: "7px",
+  width: "350px",
+  fontFamily: "Oxygen",
+  fontWeight: 400,
+  fontSize: "28px",
+  transition: "all 0.3s ease-in-out",
+  "&:hover": {
+    cursor: "pointer",
+    backgroundColor: theme.palette.secondary.light,
+    filter: "brightness(0.9)"
+  }
 }));

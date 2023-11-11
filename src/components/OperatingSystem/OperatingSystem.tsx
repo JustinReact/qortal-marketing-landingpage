@@ -8,7 +8,7 @@ import {
   DownArrowIcon,
   MainContainer,
   SubHeaderRow,
-  SubHeaderText,
+  SubHeaderText
 } from "./OperatingSystem-styles";
 import WindowsSteps from "../TutorialSteps/Windows/WindowsSteps";
 import LinuxSteps from "../TutorialSteps/Linux/LinuxSteps";
@@ -21,7 +21,7 @@ interface OperatingSystemOptions {
 
 const OperatingSystem: FC<OperatingSystemOptions> = ({
   operatingSystem,
-  setOperatingSystem,
+  setOperatingSystem
 }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -75,7 +75,7 @@ const OperatingSystem: FC<OperatingSystemOptions> = ({
           height: "1px",
           width: "95%",
           backgroundColor: "#e4dede73",
-          display: isMobile ? "none" : "block",
+          display: isMobile ? "none" : "block"
         }}
       />
       {operatingSystem === "windows" ? (
