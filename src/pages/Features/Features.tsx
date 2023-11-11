@@ -32,7 +32,7 @@ import QChatFeature2 from "../../images/Features/QChatFeature2.png";
 import QChatFeature3 from "../../images/Features/QChatFeature3.png";
 import QFundScreenshot from "../../images/Features/QFundScreenshot.png";
 import QShopScreenshot from "../../images/Home/Q-ShopScreenshot.png";
-import QBlogScreenshot from "../../images/Features/QBlogScreenshot.png";
+import QBlogScreenshot1 from "../../images/Features/QBlogScreenshot.png";
 import WalletScreenshot from "../../images/Features/WalletScreenshot.png";
 import TradePortalScreenshot from "../../images/Features/TradePortalScreenshot.png";
 import AutoBuyScreenshot from "../../images/Features/AutoBuyScreenshot.png";
@@ -150,7 +150,7 @@ export const Features = () => {
       feature3: {
         title: "Q-Blog: The Decentralized Canvas for Your Thoughts",
         text: "Discover the new era of blogging with Q-Blog, where freedom of expression meets the cutting edge of decentralization. Share your voice, unhindered and unfiltered, on a platform that champions absolute privacy and peer-to-peer interactions. Q-Blog isn't just another blogging site; you can also use it as a simple website builder to share with the Qortal community!",
-        image: QBlogScreenshot,
+        image: QBlogScreenshot1,
         smallTitle: "Q-Blog",
         smallText: (
           <FeatureCardBody>
