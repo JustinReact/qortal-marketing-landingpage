@@ -32,7 +32,7 @@ import QChatFeature2 from "../../images/Features/QChatFeature2.png";
 import QChatFeature3 from "../../images/Features/QChatFeature3.png";
 import QFundScreenshot from "../../images/Features/QFundScreenshot.png";
 import QShopScreenshot from "../../images/Home/Q-ShopScreenshot.png";
-import QBlogScreenshot from "../../images/Features/QBlogScreenshot.png";
+import QBlogScreenshot from "../../images/Features/BlogScreenshot.png";
 import WalletScreenshot from "../../images/Features/WalletScreenshot.png";
 import TradePortalScreenshot from "../../images/Features/TradePortalScreenshot.png";
 import AutoBuyScreenshot from "../../images/Features/AutoBuyScreenshot.png";
