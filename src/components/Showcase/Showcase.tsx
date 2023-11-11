@@ -1,3 +1,4 @@
+import { FC } from "react";
 import { Box, Grid, Typography, useTheme } from "@mui/material";
 import { QortalSVG } from "../Common/Icons/QortalSVG";
 import {
@@ -33,12 +34,16 @@ import QShopScreenshot from "../../images/Home/Q-ShopScreenshot.png";
 import QChatScreenshot from "../../images/Home/Q-ChatScreenshot.png";
 import { useNavigate } from "react-router-dom";
 
-export const Showcase = () => {
+interface ShowcaseProps {
+  osRef: React.RefObject<HTMLDivElement>;
+}
+
+export const Showcase: FC<ShowcaseProps> = ({ osRef }) => {
   const theme = useTheme();
   const navigate = useNavigate();
 
   return (
-    <ShowcaseContainer>
+    <ShowcaseContainer ref={osRef}>
       <HorizontalLine>
         <VerticalLine />
       </HorizontalLine>

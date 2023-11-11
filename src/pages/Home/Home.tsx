@@ -1,4 +1,4 @@
-import { useState, FC, useEffect } from "react";
+import { useState, FC, useEffect, useRef } from "react";
 import { Box, useMediaQuery, useTheme } from "@mui/material";
 import { QortalBigLogo } from "../../components/Common/Logo/QortalBigLogo";
 // import { Lines } from "../../components/Common/Lines/Lines";
@@ -31,6 +31,9 @@ const Home: FC = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const dispatch = useDispatch();
 
+  // Scroll into view when they come from features section
+  const osRef = useRef<HTMLDivElement>(null);
+
   // Props received from the features component to know which OS they're on
   const os = useSelector((state: RootState) => state.OS.os);
 
@@ -56,6 +59,9 @@ const Home: FC = () => {
   useEffect(() => {
     if (os) {
       setOperatingSystem(os);
+      if (osRef.current) {
+        osRef.current.scrollIntoView({ behavior: "smooth" });
+      }
     }
     return () => {
       if (os) {
@@ -118,7 +124,7 @@ const Home: FC = () => {
           <QortalBigLogo />
         </MainCol>
       </MainRow>
-      {!operatingSystem && <Showcase />}
+      {!operatingSystem && <Showcase osRef={osRef} />}
       <FooterRow container>
         {!operatingSystem ? (
           <>

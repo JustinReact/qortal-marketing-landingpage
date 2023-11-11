@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { UAParser } from "ua-parser-js";
 import { useDispatch } from "react-redux";
+import { setOS } from "../../state/features/osSlice";
 import { useNavigate } from "react-router-dom";
 import { Box } from "@mui/material";
 import {
@@ -36,7 +37,6 @@ import QBlogScreenshot from "../../images/Features/BlogScreenshot.png";
 import WalletScreenshot from "../../images/Features/WalletScreenshot.png";
 import TradePortalScreenshot from "../../images/Features/TradePortalScreenshot.png";
 import AutoBuyScreenshot from "../../images/Features/AutoBuyScreenshot.png";
-import { setOS } from "../../state/features/osSlice";
 
 interface FeatureInfo {
   title: string;
