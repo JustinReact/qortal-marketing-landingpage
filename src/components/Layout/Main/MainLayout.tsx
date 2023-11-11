@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import { Header } from "../Header/Header";
 import { Wrapper } from "./MainLayout-styles";
@@ -9,6 +9,10 @@ export interface LayoutProps {
 
 export const MainLayoutRoute: FC<LayoutProps> = ({ setTheme }) => {
   const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   return (
     <Wrapper

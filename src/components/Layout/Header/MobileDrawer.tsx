@@ -4,6 +4,7 @@ import { DiscordSVG } from "../../Common/Icons/DiscordSVG";
 import { Container, Divider, DrawerButton } from "./MobileDrawer-styles";
 import { useTheme } from "@mui/material";
 import { DocsSVG } from "../../Common/Icons/DocsSVG";
+import { FeaturesSVG } from "../../Common/Icons/FeaturesSVG";
 
 interface MobileDrawerProps {
   setOpenMobileDrawer: () => void;
@@ -39,6 +40,20 @@ export const MobileDrawer: FC<MobileDrawerProps> = ({
       >
         Documentation
         <DocsSVG
+          color={theme.palette.text.primary}
+          height={"25"}
+          width={"25"}
+        />
+      </DrawerButton>
+      <Divider />
+      <DrawerButton
+        onClick={() => {
+          setOpenMobileDrawer();
+          navigate("/features");
+        }}
+      >
+        Features
+        <FeaturesSVG
           color={theme.palette.text.primary}
           height={"25"}
           width={"25"}
