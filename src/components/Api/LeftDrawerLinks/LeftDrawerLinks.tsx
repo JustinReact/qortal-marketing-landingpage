@@ -20,9 +20,10 @@ import { tableOfContents } from "../../../data/QAppApi";
 import { ThemeSelectRow } from "../../../components/Layout/Header/Header-styles";
 import { LightModeSVG } from "../../../components/Common/Icons/LightModeSVG";
 import { DarkModeSVG } from "../../../components/Common/Icons/DarkModeSVG";
+import { ApiProps } from "../../../pages/Docs/Api/Api";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
-import { ApiProps } from "../../../pages/Docs/Api/Api";
+import QDocsLogo from "../../../images/Logo/QDocsLogo.png";
 
 export const drawerWidth = 240;
 
@@ -59,7 +60,7 @@ export const LeftDrawerLinks: FC<LeftDrawerLinksProps> = ({
       anchor="left"
     >
       <ThemeSelectRow
-        sx={{ paddingBottom: "15px", paddingLeft: "15px", gap: "20px" }}
+        sx={{ justifyContent: "space-between", padding: "5px 20px" }}
       >
         {theme.palette.mode === "dark" ? (
           <LightModeSVG
@@ -76,9 +77,7 @@ export const LeftDrawerLinks: FC<LeftDrawerLinksProps> = ({
             width="22"
           />
         )}
-        <QAppsLogo>
-          Q-Apps <span>API</span>
-        </QAppsLogo>
+        <QAppsLogo src={QDocsLogo} alt="q-docs-logo" />
         <HamburgerIcon
           onClickFunc={() => setOpenMobileDrawer()}
           color={theme.palette.text.primary}

@@ -17,7 +17,7 @@ export const CustomDrawer = styled(Drawer)<CustomDrawerProps>(
     flexShrink: 0,
     "& .MuiDrawer-paper": {
       top: "0",
-      padding: "22px 0 0 0",
+      padding: "0",
       width: drawerwidth,
       boxSizing: "border-box",
       backgroundColor: theme.palette.background.default,
@@ -72,23 +72,11 @@ export const CustomDrawerButton = styled(ListItemButton)<CustomDrawerProps>(
   })
 );
 
-export const QAppsLogo = styled(Typography)(({ theme }) => ({
-  fontFamily: "Lovelo",
-  fontSize: "23px",
-  color: theme.palette.text.primary,
-  transform: "translateY(3px)",
-  userSelect: "none",
-  "& span": {
-    padding: "8px 14px",
-    borderRadius: "8px",
-    marginLeft: "1px",
-    color: theme.palette.text.primary,
-    backgroundColor: theme.palette.secondary.light
-  },
-  [theme.breakpoints.down("sm")]: {
-    transform: "translateY(0)",
-    fontSize: "15px"
-  }
+export const QAppsLogo = styled("img")(({ theme }) => ({
+  width: "60px",
+  height: "auto",
+  objectFit: "contain",
+  userSelect: "none"
 }));
 
 export const DrawerText = styled(ListItemText)(({ theme }) => ({
