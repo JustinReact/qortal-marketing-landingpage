@@ -1,8 +1,8 @@
 import { FC, useEffect } from "react";
 import { Outlet } from "react-router-dom";
-import { Header } from "../Header/Header";
 import { Wrapper } from "./MainLayout-styles";
 import { useLocation } from "react-router-dom";
+import { Header } from "../../../pages/Promo/Promo-styles";
 export interface LayoutProps {
   setTheme: (val: string) => void;
 }
@@ -15,18 +15,8 @@ export const MainLayoutRoute: FC<LayoutProps> = ({ setTheme }) => {
   }, [location.pathname]);
 
   return (
-    <Wrapper
-      className={
-        location.pathname === "/"
-          ? "BGImageMain"
-          : location.pathname === "/promo"
-          ? "BGImagePromo"
-          : location.pathname === "/features"
-          ? "BGImageFeatures"
-          : ""
-      }
-    >
-      <Header setTheme={(val: string) => setTheme(val)} />
+    <Wrapper>
+      <Header />
       <Outlet />
     </Wrapper>
   );
