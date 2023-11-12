@@ -14,7 +14,7 @@ export const Wrapper = styled("div")(({ theme }) => ({
   alignItems: "center",
   justifyContent: "flex-start",
   minHeight: "100vh",
-  padding: "2rem 1rem",
+  padding: "3rem 1.3rem",
   gap: "20px",
   "&.BGImageMain": {
     backgroundImage:
