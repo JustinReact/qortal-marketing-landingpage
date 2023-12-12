@@ -51,6 +51,7 @@ import { OPEN_PROFILE } from "../components/Api/ApiSections/QortalRequest/OPEN_P
 import { GET_PROFILE_DATA } from "../components/Api/ApiSections/QortalRequest/GET_PROFILE_DATA";
 import { SET_PROFILE_DATA } from "../components/Api/ApiSections/QortalRequest/SET_PROFILE_DATA";
 import { GET_FRIENDS_LIST } from "../components/Api/ApiSections/QortalRequest/GET_FRIENDS_LIST";
+import { GET_USER_WALLET_INFO } from "../components/Api/ApiSections/QortalRequest/GET_USER_WALLET_INFO";
 
 export const tableOfContents = [
   {
@@ -224,6 +225,11 @@ export const tableOfContents = [
         title: "GET_USER_WALLET",
         Component: (props: any) => <GET_USER_WALLET {...props} />,
         id: "GET_USER_WALLET"
+      },
+      {
+        title: "GET_USER_WALLET_INFO",
+        Component: (props: any) => <GET_USER_WALLET_INFO {...props} />,
+        id: "GET_USER_WALLET_INFO"
       },
       {
         title: "GET_WALLET_BALANCE",
