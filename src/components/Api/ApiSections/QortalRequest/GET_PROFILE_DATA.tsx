@@ -60,14 +60,11 @@ export const GET_PROFILE_DATA: FC<SectionProps> = ({
             width: "100%"
           }}
         >
-          <SubTitle>Get a profile property</SubTitle>
-          <InformationSection>
-            <InformationParagraph>
-              Returns a user's profile property data based on inputted key. This
+          <SubTitle>Get a profile property. Returns a user's profile property data based on inputted key. This
               will return a string value if the property is any of the
               following: "tagline" or "bio". Both "wallets" and custom
-              properties will return an object.
-            </InformationParagraph>
+              properties will return an object.</SubTitle>
+          <InformationSection>
             <InformationParagraph>
               {`Custom properties are created by the user and can be any key-value pair. They are created by using the "SET_PROFILE_DATA" action. Trying to get a custom property that does not exist will return an error object {error: "Cannot find requested data"}`}
               .
