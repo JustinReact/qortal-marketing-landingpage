@@ -1,6 +1,3 @@
-import React, { useState } from "react";
-
-import copy from "copy-to-clipboard";
 import { ColumnContainer, RowContainer } from "./Common-styles";
 import InfoIcon from "@mui/icons-material/Info";
 
