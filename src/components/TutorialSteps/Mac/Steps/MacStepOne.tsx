@@ -96,9 +96,7 @@ const MacStepOne = ({ setShinyButton }: MacStepOneProps) => {
               variant="contained"
               onClick={() => {
                 setShinyButton(true);
-                return;
-                window.location.href =
-                  "https://github.com/Qortal/qortal-ui/releases/latest/download/Qortal-Setup-macOS.dmg";
+                window.location.href = "https://github.com/Qortal/qortal-ui/releases/latest/download/Qortal-Setup-macOS.dmg";
               }}
             >
               Download Qortal UI
