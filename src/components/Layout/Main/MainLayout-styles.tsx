@@ -17,15 +17,27 @@ export const Wrapper = styled("div")(({ theme }) => ({
   padding: "2rem 1rem",
   gap: "20px",
   "&.BGImageMain": {
-    backgroundImage:
-      theme.palette.mode === "dark"
-        ? `url(${HexagonBG})`
-        : `url(${HexagonBGLight})`,
-    backgroundRepeat: "repeat-y",
-    backgroundSize: "contain",
-    "@media (max-width: 600px)": {
-      backgroundPosition: "top",
-      backgroundSize: "auto"
+    position: "relative",
+    zIndex: 1,
+    "&::before": {
+      content: "''",
+      position: "absolute",
+      opacity: theme.palette.mode === "dark" ? 0.2 : 1,
+      zIndex: -1,
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      backgroundImage:
+        theme.palette.mode === "dark"
+          ? `url(${HexagonBG})`
+          : `url(${HexagonBGLight})`,
+      backgroundRepeat: "repeat-y",
+      backgroundSize: "contain",
+      "@media (max-width: 600px)": {
+        backgroundPosition: "top",
+        backgroundSize: "auto"
+      }
     }
   },
   "&.BGImagePromo": {
