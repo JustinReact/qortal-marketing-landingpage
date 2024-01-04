@@ -52,6 +52,7 @@ import { GET_PROFILE_DATA } from "../components/Api/ApiSections/QortalRequest/GE
 import { SET_PROFILE_DATA } from "../components/Api/ApiSections/QortalRequest/SET_PROFILE_DATA";
 import { GET_FRIENDS_LIST } from "../components/Api/ApiSections/QortalRequest/GET_FRIENDS_LIST";
 import { GET_USER_WALLET_INFO } from "../components/Api/ApiSections/QortalRequest/GET_USER_WALLET_INFO";
+import { ENCRYPT_DATA } from "../components/Api/ApiSections/QortalRequest/ENCRYPT_DATA";
 
 export const tableOfContents = [
   {
@@ -145,6 +146,11 @@ export const tableOfContents = [
         title: "DEPLOY_AT",
         Component: (props: any) => <DEPLOY_AT {...props} />,
         id: "DEPLOY_AT"
+      },
+      {
+        title: "ENCRYPT_DATA",
+        Component: (props: any) => <ENCRYPT_DATA {...props} />,
+        id: "ENCRYPT_DATA"
       },
       {
         title: "FETCH_BLOCK",
