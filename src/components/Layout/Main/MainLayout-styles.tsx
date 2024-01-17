@@ -71,5 +71,8 @@ export const Wrapper = styled("div")(({ theme }) => ({
       opacity: 0.1,
       zIndex: -1
     }
+  },
+  [theme.breakpoints.down("sm")]: {
+    padding: "1rem"
   }
 }));

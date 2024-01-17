@@ -16,9 +16,10 @@ export const MainText = styled(Box)({
   textAlign: "center",
   fontFamily: "Raleway",
   fontWeight: "500",
-  fontSize: "28px",
+  fontSize: "25px",
   letterSpacing: "0.3px",
   userSelect: "none",
+  lineHeight: "33px",
 });
 
 export const LogoContainer = styled(Box)({
