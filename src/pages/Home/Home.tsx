@@ -60,6 +60,7 @@ const Home: FC = () => {
     }
   }, []);
 
+  // Redirect to /welcome for mobile users
   useEffect(() => {
     const userOS = parser.getOS().name;
     if (userOS?.includes("Android" || "iOS")) {

@@ -8,7 +8,7 @@ export const MainContainer = styled(Box)({
   justifyContent: "center",
   alignItems: "center",
   width: "100%",
-  marginTop: "80px",
+  marginTop: "-20px",
   gap: "20px"
 });
 
