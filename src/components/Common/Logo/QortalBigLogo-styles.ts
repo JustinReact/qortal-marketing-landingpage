@@ -1,7 +1,7 @@
 import { styled, keyframes } from "@mui/system";
 import { Box } from "@mui/material";
 
-const floatAnimation = keyframes`
+export const floatAnimation = keyframes`
   0% {
     transform: translateY(0px);
   }

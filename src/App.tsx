@@ -12,6 +12,7 @@ import { MainLayoutRoute } from "./components/Layout/Main/MainLayout";
 import { store } from "./state/store";
 import { Promo } from "./pages/Promo/Promo";
 import { Features } from "./pages/Features/Features";
+import { MobileHome } from "./pages/MobileHome/MobileHome";
 
 // Initialize Google Analytics
 ReactGA.initialize("G-E1BB62FVTN");
@@ -30,6 +31,7 @@ function App() {
             }
           >
             <Route path="/" element={<Home />} />
+            <Route path="/welcome" element={<MobileHome />} />
             <Route
               path="/docs/api"
               element={<Api setTheme={(val: string) => setTheme(val)} />}

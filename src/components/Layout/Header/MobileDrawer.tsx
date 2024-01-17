@@ -5,6 +5,7 @@ import { Container, Divider, DrawerButton } from "./MobileDrawer-styles";
 import { useTheme } from "@mui/material";
 import { DocsSVG } from "../../Common/Icons/DocsSVG";
 import { FeaturesSVG } from "../../Common/Icons/FeaturesSVG";
+import { RedditSVG } from "../../Common/Icons/RedditSVG";
 
 interface MobileDrawerProps {
   setOpenMobileDrawer: () => void;
@@ -26,6 +27,20 @@ export const MobileDrawer: FC<MobileDrawerProps> = ({
       >
         Join Discord
         <DiscordSVG
+          color={theme.palette.text.primary}
+          height={"25"}
+          width={"25"}
+        />
+      </DrawerButton>
+      <Divider />
+      <DrawerButton
+        onClick={() => {
+          setOpenMobileDrawer();
+          window.open("https://www.reddit.com/r/QortalProject/", "_blank")
+        }}
+      >
+        Join Reddit
+        <RedditSVG
           color={theme.palette.text.primary}
           height={"25"}
           width={"25"}

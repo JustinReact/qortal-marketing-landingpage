@@ -25,11 +25,17 @@ import { Showcase } from "../../components/Showcase/Showcase";
 import { RootState } from "../../state/store";
 import { useSelector, useDispatch } from "react-redux";
 import { setOS } from "../../state/features/osSlice";
+import { UAParser } from "ua-parser-js";
+import { useNavigate } from "react-router-dom";
 
 const Home: FC = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  // Determine which OS they're on
+  const parser = new UAParser();
 
   // Scroll into view when they come from features section
   const osRef = useRef<HTMLDivElement>(null);
@@ -51,6 +57,13 @@ const Home: FC = () => {
       localStorage.setItem("isFirstTimeVisitor", "false");
     } else {
       return;
+    }
+  }, []);
+
+  useEffect(() => {
+    const userOS = parser.getOS().name;
+    if (userOS?.includes("Android" || "iOS")) {
+      navigate("/welcome");
     }
   }, []);
 
