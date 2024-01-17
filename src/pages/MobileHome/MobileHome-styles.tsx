@@ -39,8 +39,8 @@ export const QortalImg = styled("img")(({theme}) => ({
   filter: theme.palette.mode === "light" ? "drop-shadow(0px 65px 70px rgba(0, 0, 0, 0.2))" : "drop-shadow(0px 65px 70px #312e2e33)",
   overflow: "visible",
   [theme.breakpoints.down("sm")]: {
-    width: "-webkit-fill-available",
-    height: "300px",
+    width: "auto",
+    height: "150px",
     objectFit: "cover",
   }
 }));
