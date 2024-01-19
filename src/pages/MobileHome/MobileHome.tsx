@@ -3,6 +3,7 @@ import { ButtonCol, LogoContainer, MainContainer, MainText, QortalImg, SocialBut
 import QortalCartoonLogo from "../../images/Home/QortalCartoonLogo.webp";
 import { DiscordSVG } from '../../components/Common/Icons/DiscordSVG';
 import { RedditSVG } from '../../components/Common/Icons/RedditSVG';
+import ReactGA from "react-ga4";
 
 export const MobileHome = () => {
 
@@ -18,12 +19,22 @@ export const MobileHome = () => {
       </MainText>
       <ButtonCol>
         <SocialButton onClick={() => {
+          ReactGA.event({
+            category: "User",
+            action: "Clicked Discord Button (Mobile Welcome Page)",
+            label: "Features Button"
+          });
           window.open("https://discord.gg/9hgNdBj4aC", "_blank");
         }}>
           <DiscordSVG color={theme.palette.mode === "dark" ? "#1300af" : "#ffffff"} height={'35'} width={"35"} />
           Join On Discord
         </SocialButton>
         <SocialButton onClick={() => {
+          ReactGA.event({
+            category: "User",
+            action: "Clicked Reddit Button (Mobile Welcome Page)",
+            label: "Features Button"
+          });
           window.open("https://www.reddit.com/r/QortalProject/", "_blank")
         }}>
           <RedditSVG color={theme.palette.mode === "dark" ? "#1300af" : "#ffffff"} height={'35'} width={"35"} />
