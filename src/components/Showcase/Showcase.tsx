@@ -85,8 +85,10 @@ export const Showcase: FC<ShowcaseProps> = ({ osRef }) => {
                     color={theme.palette.text.primary}
                   />
                 </Box>
-                Only you control your data on Qortal, and Q-Apps must request
-                your permission to access it
+                <span>
+                  Only you control your data on Qortal, and Q-Apps must request
+                  your permission to access it
+                </span>
               </MainColumnText>
             </MainColumn>
             <MainColumn>
@@ -106,8 +108,10 @@ export const Showcase: FC<ShowcaseProps> = ({ osRef }) => {
                     color={theme.palette.text.primary}
                   />
                 </Box>
-                Qortal cannot be hacked or taken down, and all your data is tied
-                to your name which you control wholly
+                <span>
+                  Qortal cannot be hacked or taken down, and all your data is
+                  tied to your name which you control wholly
+                </span>
               </MainColumnText>
             </MainColumn>
             <MainColumn>
@@ -128,9 +132,11 @@ export const Showcase: FC<ShowcaseProps> = ({ osRef }) => {
                     color={theme.palette.text.primary}
                   />
                 </Box>
-                Experience true digital freedom on a decentralized network
-                designed for the user. Completely peer-to-peer with no
-                centralized intermediaries
+                <span>
+                  Experience true digital freedom on a decentralized network
+                  designed for the user. Completely peer-to-peer with no
+                  centralized intermediaries
+                </span>
               </MainColumnText>
             </MainColumn>
             <MainColumn>
@@ -152,7 +158,10 @@ export const Showcase: FC<ShowcaseProps> = ({ osRef }) => {
                     color={theme.palette.text.primary}
                   />
                 </Box>
-                On Qortal, you’re rewarded for your contributions and engagement
+                <span>
+                  On Qortal, you’re rewarded for your contributions and
+                  engagement
+                </span>
               </MainColumnText>
             </MainColumn>
           </ColumnsRow>
