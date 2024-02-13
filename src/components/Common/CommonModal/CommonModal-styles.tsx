@@ -50,7 +50,7 @@ export const Modalbody = styled(Box)(({ theme }) => ({
     theme.palette.mode === "light" ? "white" : theme.palette.secondary.dark,
   left: "50%",
   top: 0,
-  transform: "translate(-50%, 10%)",
+  transform: "translateX(-50%)",
   borderRadius: "12px",
   overflowY: "auto",
   animation: `1s cubic-bezier(0.22, 1, 0.36, 1) 0s 1 normal forwards running ${modal_transition}`,
@@ -58,7 +58,6 @@ export const Modalbody = styled(Box)(({ theme }) => ({
   zIndex: 60,
   [theme.breakpoints.down("sm")]: {
     display: "flex",
-    transform: "none",
     position: "fixed",
     width: "auto",
     height: "300px",
@@ -69,8 +68,6 @@ export const Modalbody = styled(Box)(({ theme }) => ({
     justifyContent: "center",
     overflow: "hidden",
     padding: "20px 15px 15px 15px",
-    backgroundColor: theme.palette.background.default,
-    left: 0,
     top: "20%",
     bottom: 0,
     right: 0,
@@ -83,8 +80,8 @@ export const Modalbody = styled(Box)(({ theme }) => ({
 
 export const CloseIcon = styled(CloseSVG)(({ theme }) => ({
   position: "absolute",
-  right: "20px",
-  top: "20px",
+  right: "15px",
+  top: "15px",
   transition: "all 0.1s ease-in-out",
   "&:hover": {
     cursor: "pointer",

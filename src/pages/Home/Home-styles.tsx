@@ -1,5 +1,6 @@
 import { styled } from "@mui/system";
 import { Box, Button, Grid, Typography } from "@mui/material";
+import QORTPromoImage from "../../images/Home/QORTPromoImage.webp";
 
 export const MainRow = styled(Grid)(({ theme }) => ({
   display: "flex",
@@ -146,4 +147,14 @@ export const VideoTitle = styled(Typography)(({ theme }) => ({
   [theme.breakpoints.down("sm")]: {
     textAlign: "center"
   }
+}));
+
+export const QORTPromoModal = styled(Box)(({ theme }) => ({
+  position: "relative",
+  width: "100%",
+  height: "100%",
+  backgroundImage: `url(${QORTPromoImage})`,
+  backgroundSize: "contain",
+  backgroundPosition: "center center",
+  backgroundRepeat: "no-repeat",
 }));

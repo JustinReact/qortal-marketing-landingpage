@@ -12,7 +12,8 @@ import {
   VideoTitle,
   MainRow,
   MainCol,
-  QortalWordLogo
+  QortalWordLogo,
+  QORTPromoModal
 } from "./Home-styles";
 import QortalWordLogoImg from "../../images/Home/QortalWordLogo.svg";
 import OperatingSystem from "../../components/OperatingSystem/OperatingSystem";
@@ -31,6 +32,7 @@ import { useNavigate } from "react-router-dom";
 const Home: FC = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -62,6 +64,10 @@ const Home: FC = () => {
 
   // Redirect to /welcome for mobile users
   useEffect(() => {
+    const isFirstTimeVisitor = localStorage.getItem("isFirstTimeVisitor");
+    if (isFirstTimeVisitor) {
+      return;
+    }
     const userOS = parser.getOS().name;
     if (userOS?.includes("Android" || "iOS")) {
       navigate("/welcome");
@@ -175,43 +181,25 @@ const Home: FC = () => {
         )}
       </FooterRow>
 
-      {firstTimeVisitor && (
+      {!firstTimeVisitor && (
         <CommonModal
           openModal={firstTimeVisitor}
           onClickFunc={() => {
             setFirstTimeVisitor(false);
-            handleVideoClick();
+            // handleVideoClick();
+          }}
+          customStyles={{
+            padding: 0,
+            top: "10%",
+            maxHeight: "500px",
+            minHeight: isSmallScreen ? "400px !important" : "500px",
+            height: "-webkit-fill-available",
+            width: isSmallScreen ? "90% !important" : "850px",
+            minWidth: "auto",
+            backgroundColor: "black",
           }}
         >
-          <Box
-            style={{
-              position: "relative",
-              width: "100%",
-              height: "100%",
-              paddingBottom: "5px"
-            }}
-          >
-            {showVideoPlayer ? (
-              <iframe
-                src="https://www.youtube.com/embed/X7l2R0LF_5U?autoplay=1"
-                loading="lazy"
-                title="Introducing Qortal Q-Apps"
-                style={{
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                  width: "100%",
-                  height: "100%",
-                  padding: "20px",
-                  border: "none"
-                }}
-                allowFullScreen
-                allow="autoplay"
-              ></iframe>
-            ) : (
-              <YoutubePlaceholder isModal={true} onClick={handleVideoClick} />
-            )}
-          </Box>
+          <QORTPromoModal>Hello world</QORTPromoModal>
         </CommonModal>
       )}
     </>
