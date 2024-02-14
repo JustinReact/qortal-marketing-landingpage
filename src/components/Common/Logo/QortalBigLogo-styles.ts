@@ -34,6 +34,10 @@ export const QortalImg = styled("img")(({theme}) => ({
     width: "-webkit-fill-available",
     height: "300px",
     objectFit: "cover",
-  }
+  },
+  [theme.breakpoints.only("xs")]: {
+    marginTop: "35px",
+
+  },
 }));
 

@@ -21,6 +21,19 @@ export const MainCol = styled(Grid)({
   gap: "15px"
 });
 
+export const JoinDiscordRow = styled(Grid)(({ theme }) => ({
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  flexDirection: "row",
+  [theme.breakpoints.down("xl")]: {
+    marginTop: "-15px"
+  },
+  [theme.breakpoints.down("sm")]: {
+    marginTop: "60px"
+  }
+}));
+
 export const QortalWordLogo = styled("img")({
   width: "auto",
   height: "45px",
@@ -145,5 +158,64 @@ export const VideoTitle = styled(Typography)(({ theme }) => ({
   zIndex: 1,
   [theme.breakpoints.down("sm")]: {
     textAlign: "center"
+  }
+}));
+
+// New Custom Discord Button
+
+export const CustomDiscordImg = styled("img")(({ theme }) => ({
+  cursor: "pointer",
+  transition: "all 0.4s ease-in-out",
+  [theme.breakpoints.only("xl")]: {
+    width: "20%",
+    height: "auto",
+    filter: theme.palette.mode === "light" ? "drop-shadow(0 0 10px rgba(0, 89, 255, 0.3))" : "drop-shadow(0 0 5px rgba(255, 255, 255, 0.3))" 
+  },
+  [theme.breakpoints.only("lg")]: {
+    width: "20%",
+    height: "auto",
+    filter: theme.palette.mode === "light" ? "drop-shadow(0 0 10px rgba(0, 89, 255, 0.3))" : "drop-shadow(0 0 5px rgba(255, 255, 255, 0.3))" 
+  },
+  [theme.breakpoints.only("md")]: {
+    width: "35%",
+    height: "auto",
+    filter: theme.palette.mode === "light" ? "drop-shadow(0 0 10px rgba(0, 89, 255, 0.3))" : "drop-shadow(0 0 5px rgba(255, 255, 255, 0.3))" 
+  },
+  [theme.breakpoints.only("sm")]: {
+    width: "55%",
+    height: "auto",
+    filter: theme.palette.mode === "light" ? "drop-shadow(0 0 10px rgba(0, 89, 255, 0.3))" : "drop-shadow(0 0 5px rgba(255, 255, 255, 0.3))" 
+  },
+  [theme.breakpoints.only("xs")]: {
+    width: "55%",
+    height: "auto",
+    filter: theme.palette.mode === "light" ? "drop-shadow(0 0 10px rgba(0, 89, 255, 0.3))" : "drop-shadow(0 0 5px rgba(255, 255, 255, 0.3))" 
+  },
+  "&:hover": {
+    filter: "drop-shadow(0 0 10px #19ffff) drop-shadow(0 0 5px #19ffff)" 
+  },
+}));
+
+export const CustomDiscordButton = styled(Button)(({ theme }) => ({
+  display: "flex",
+  justifyContent: "center",
+  border: "4px solid #0b71ff",
+  backgroundColor: "#8dc5ffba",
+  padding: "20px 0",
+  height: "150px",
+  width: "350px",
+  fontFamily: "Oxygen",
+  fontSize: "18px",
+  color: "white",
+  borderRadius: "25px",
+  transition: "all 0.4s ease-in-out",
+  zIndex: 2,
+  boxShadow:
+    theme.palette.mode === "dark"
+      ? "0px 8px 10px 1px hsla(0,0%,0%,0.14), 0px 3px 14px 2px hsla(0,0%,0%, 12), 0px 5px 5px -3px hsla(0,0%,0%,0.2)"
+      : "rgba(0, 0, 0, 0.1) 0px 4px 12px",
+  "&:hover": {
+    backgroundColor: "#8dc4fff6",
+    cursor: "pointer"
   }
 }));

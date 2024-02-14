@@ -41,7 +41,7 @@ export const Promo = () => {
           <ButtonRow>
             <DiscordButton
               onClick={() => {
-                window.open("https://discord.gg/DRyQ79xqhd", "_blank");
+                window.open("https://discord.gg/NqFNtRDm2t", "_blank");
               }}
             >
               JOIN DISCORD
