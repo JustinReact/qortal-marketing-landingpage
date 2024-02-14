@@ -13,7 +13,10 @@ import {
   MainRow,
   MainCol,
   QortalWordLogo,
-  QORTPromoModal
+  QORTPromoModal,
+  FlexRow,
+  CustomDiscordButton,
+  DiscordLogo
 } from "./Home-styles";
 import QortalWordLogoImg from "../../images/Home/QortalWordLogo.svg";
 import OperatingSystem from "../../components/OperatingSystem/OperatingSystem";
@@ -31,8 +34,8 @@ import { useNavigate } from "react-router-dom";
 
 const Home: FC = () => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
+  const isMobile = useMediaQuery(theme.breakpoints.only("xs"));
+  const isSmallToMediumScreen = useMediaQuery(theme.breakpoints.down("md"));
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -152,7 +155,7 @@ const Home: FC = () => {
               <VideoTitle variant="h2">
                 Watch the Q-Apps Intro Video!
               </VideoTitle>
-              {showVideoPlayer && !firstTimeVisitor ? (
+              {showVideoPlayer ? (
                 <iframe
                   src="https://www.youtube.com/embed/X7l2R0LF_5U?autoplay=1"
                   loading="lazy"
@@ -186,20 +189,24 @@ const Home: FC = () => {
           openModal={firstTimeVisitor}
           onClickFunc={() => {
             setFirstTimeVisitor(false);
-            // handleVideoClick();
           }}
           customStyles={{
             padding: 0,
             top: "10%",
             maxHeight: "500px",
-            minHeight: isSmallScreen ? "400px !important" : "500px",
+            minHeight: isMobile ? "300px !important" : isSmallToMediumScreen && !isMobile ? "400px !important" : "500px",
             height: "-webkit-fill-available",
-            width: isSmallScreen ? "90% !important" : "850px",
+            width: isSmallToMediumScreen ? "90% !important" : "850px",
             minWidth: "auto",
             backgroundColor: "black",
           }}
         >
-          <QORTPromoModal>Hello world</QORTPromoModal>
+          <QORTPromoModal />
+            <FlexRow>
+              <CustomDiscordButton>
+                <DiscordLogo />
+              </CustomDiscordButton>
+            </FlexRow>
         </CommonModal>
       )}
     </>

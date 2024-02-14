@@ -86,12 +86,5 @@ export const CloseIcon = styled(CloseSVG)(({ theme }) => ({
   "&:hover": {
     cursor: "pointer",
     scale: "1.1"
-  },
-  [theme.breakpoints.down("sm")]: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "flex-end",
-    top: 0,
-    right: "20px"
   }
 }));

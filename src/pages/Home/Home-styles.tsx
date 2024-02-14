@@ -158,3 +158,41 @@ export const QORTPromoModal = styled(Box)(({ theme }) => ({
   backgroundPosition: "center center",
   backgroundRepeat: "no-repeat",
 }));
+
+export const FlexRow = styled(Box)({
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  gap: "20px"
+});
+
+export const CustomDiscordButton = styled(Button)(({ theme }) => ({
+  display: "flex",
+  justifyContent: "center",
+  gap: "10px",
+  border: "4px solid #0b71ff",
+  backgroundColor: "#8dc5ffba",
+  padding: "20px 0",
+  height: "150px",
+  width: "90%",
+  fontFamily: "Oxygen",
+  fontSize: "18px",
+  color: "white",
+  borderRadius: "25px",
+  transition: "all 0.4s ease-in-out",
+  zIndex: 2,
+  boxShadow:
+    theme.palette.mode === "dark"
+      ? "0px 8px 10px 1px hsla(0,0%,0%,0.14), 0px 3px 14px 2px hsla(0,0%,0%, 12), 0px 5px 5px -3px hsla(0,0%,0%,0.2)"
+      : "rgba(0, 0, 0, 0.1) 0px 4px 12px",
+  "&:hover": {
+    backgroundColor: "#8dc4fff6",
+    cursor: "pointer"
+  }
+}));
+
+export const DiscordLogo = styled("img")(({ theme }) => ({
+  cursor: "pointer",
+  transition: "all 0.4s ease-in-out",
+  filter: "drop-shadow(0 0 10px #19ffff) drop-shadow(0 0 5px #19ffff)" 
+}));
