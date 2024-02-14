@@ -12,10 +12,14 @@ import {
   VideoTitle,
   MainRow,
   MainCol,
-  QortalWordLogo
+  QortalWordLogo,
+  JoinDiscordRow,
+  CustomDiscordButton,
+  CustomDiscordImg
 } from "./Home-styles";
 import QortalWordLogoImg from "../../images/Home/QortalWordLogo.svg";
 import OperatingSystem from "../../components/OperatingSystem/OperatingSystem";
+import ReactGA from "react-ga4";
 import { WindowsSVG } from "../../components/Common/Icons/WindowsSVG";
 import { LinuxSVG } from "../../components/Common/Icons/LinuxSVG";
 import { AppleSVG } from "../../components/Common/Icons/AppleSVG";
@@ -27,6 +31,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setOS } from "../../state/features/osSlice";
 import { UAParser } from "ua-parser-js";
 import { useNavigate } from "react-router-dom";
+import CustomDiscordLogo from "../../images/Home/JoinDiscordLogo.png"
 
 const Home: FC = () => {
   const theme = useTheme();
@@ -138,6 +143,31 @@ const Home: FC = () => {
           <QortalBigLogo />
         </MainCol>
       </MainRow>
+      <JoinDiscordRow>
+        {/* <CustomDiscordButton
+          onClick={() => {
+                ReactGA.event({
+                category: "User",
+                action: "Clicked Discord Button With Custom Logo",
+                label: "Discord Button With Custom Logo"
+              });
+              window.open("https://discord.gg/NqFNtRDm2t", "_blank");
+          }}
+        >
+        </CustomDiscordButton> */}
+          <CustomDiscordImg
+            onClick={() => {
+              ReactGA.event({
+                category: "User",
+                action: "Clicked Discord Button With Custom Logo",
+                label: "Discord Button With Custom Logo"
+              });
+              window.open("https://discord.gg/NqFNtRDm2t", "_blank");
+            }}
+            src={CustomDiscordLogo}
+            alt="Join Qortal Discord"
+          />
+      </JoinDiscordRow>
       {!operatingSystem && <Showcase osRef={osRef} />}
       <FooterRow container>
         {!operatingSystem ? (

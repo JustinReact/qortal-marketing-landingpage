@@ -194,7 +194,7 @@ const LinuxSteps = () => {
                   action: "Clicked Discord Button Linux Steps",
                   label: "Discord Linux Steps"
                 });
-                window.open("https://discord.gg/9hgNdBj4aC", "_blank");
+                window.open("https://discord.gg/NqFNtRDm2t", "_blank");
               }}
             >
               Join Discord

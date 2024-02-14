@@ -104,12 +104,12 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                 Developer
                 <DocsSVG color={"#ffffff"} height={"22"} width={"22"} />
               </Docs>
-              <DiscordButton
+              {/* <DiscordButton
                 onClick={() => {
                   ReactGA.event({
                     category: "User",
-                    action: "Clicked Discord Button Header",
-                    label: "Discord Button Header"
+                    action: "Clicked Discord Button With Custom Logo",
+                    label: "Discord Button With Custom Logo"
                   });
                   window.open("https://discord.gg/9hgNdBj4aC", "_blank");
                 }}
@@ -118,7 +118,7 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                 <TriangleContainer>
                   <TriangleIcon />
                 </TriangleContainer>
-              </DiscordButton>
+              </DiscordButton> */}
             </HeaderButtonsRow>
           )}
         </HeaderNav>
@@ -203,7 +203,7 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                 Documentation
                 <DocsSVG color={"#ffffff"} height={"22"} width={"22"} />
               </Docs>
-              <DiscordButton
+              {/* <DiscordButton
                 onClick={() => {
                   ReactGA.event({
                     category: "User",
@@ -217,7 +217,7 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                 <TriangleContainer>
                   <TriangleIcon />
                 </TriangleContainer>
-              </DiscordButton>
+              </DiscordButton> */}
             </HeaderButtonsRow>
           )}
         </HeaderNav>
