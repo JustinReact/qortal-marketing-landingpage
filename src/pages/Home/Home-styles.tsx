@@ -156,43 +156,53 @@ export const QORTPromoModal = styled(Box)(({ theme }) => ({
   backgroundImage: `url(${QORTPromoImage})`,
   backgroundSize: "contain",
   backgroundPosition: "center center",
-  backgroundRepeat: "no-repeat",
+  backgroundRepeat: "no-repeat"
 }));
 
-export const FlexRow = styled(Box)({
+export const FlexRow = styled(Box)(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  gap: "20px"
-});
+  margin: "15px 0",
+  [theme.breakpoints.only("xs")]: {
+    margin: "5px 0"
+  },
+}));
 
 export const CustomDiscordButton = styled(Button)(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
-  gap: "10px",
-  border: "4px solid #0b71ff",
-  backgroundColor: "#8dc5ffba",
-  padding: "20px 0",
-  height: "150px",
-  width: "90%",
-  fontFamily: "Oxygen",
-  fontSize: "18px",
+  gap: "30px",
+  border: "2px solid #0b71ff",
+  backgroundColor: "#000000",
+  padding: "5px 0",
+  height: "80px",
+  width: "50%",
+  fontFamily: "Montserrat",
+  fontSize: "30px",
   color: "white",
-  borderRadius: "25px",
-  transition: "all 0.4s ease-in-out",
+  fontWeight: 600,
+  borderRadius: "15px",
+  transition: "all 0.5s ease-in-out",
   zIndex: 2,
   boxShadow:
     theme.palette.mode === "dark"
       ? "0px 8px 10px 1px hsla(0,0%,0%,0.14), 0px 3px 14px 2px hsla(0,0%,0%, 12), 0px 5px 5px -3px hsla(0,0%,0%,0.2)"
       : "rgba(0, 0, 0, 0.1) 0px 4px 12px",
   "&:hover": {
-    backgroundColor: "#8dc4fff6",
+    backgroundColor: "#030d2df6",
     cursor: "pointer"
+  },
+  [theme.breakpoints.only("xs")]: {
+    height: "50px",
+    fontSize: "15px",
+
   }
 }));
 
 export const DiscordLogo = styled("img")(({ theme }) => ({
+  width: "17%",
   cursor: "pointer",
   transition: "all 0.4s ease-in-out",
-  filter: "drop-shadow(0 0 10px #19ffff) drop-shadow(0 0 5px #19ffff)" 
+  filter: "drop-shadow(0 0 10px #19ffff) drop-shadow(0 0 5px #19ffff)",
 }));

@@ -67,7 +67,6 @@ export const Modalbody = styled(Box)(({ theme }) => ({
     flexDirection: "column",
     justifyContent: "center",
     overflow: "hidden",
-    padding: "20px 15px 15px 15px",
     top: "20%",
     bottom: 0,
     right: 0,
@@ -86,5 +85,9 @@ export const CloseIcon = styled(CloseSVG)(({ theme }) => ({
   "&:hover": {
     cursor: "pointer",
     scale: "1.1"
+  },
+  [theme.breakpoints.only("xs")]: {
+    top: "2px",
+    right: "2px"
   }
 }));

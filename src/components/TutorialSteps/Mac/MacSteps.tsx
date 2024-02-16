@@ -193,7 +193,7 @@ const MacSteps = () => {
                   action: "Clicked Discord Button Mac Steps",
                   label: "Discord Mac Steps"
                 });
-                window.open("https://discord.gg/9hgNdBj4aC", "_blank");
+                window.open("https://discord.gg/NqFNtRDm2t", "_blank");
               }}
             >
               Join Discord

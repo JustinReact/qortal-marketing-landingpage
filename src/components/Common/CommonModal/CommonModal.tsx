@@ -1,6 +1,6 @@
 import { useEffect, FC } from "react";
 import { Backdrop, Modalbody, CloseIcon } from "./CommonModal-styles";
-import { useTheme } from "@mui/material";
+import { useTheme, useMediaQuery } from "@mui/material";
 
 interface CommonModalProps {
   openModal: boolean;
@@ -16,6 +16,7 @@ export const CommonModal: FC<CommonModalProps> = ({
   children
 }) => {
   const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.only("xs"));
 
   // useEffect to hide the body when the mobile side drawer is open
 
@@ -47,8 +48,8 @@ export const CommonModal: FC<CommonModalProps> = ({
             onClickFunc();
           }}
           color={theme.palette.text.primary}
-          height={"32"}
-          width={"32"}
+          height={isMobile ? "24" : "32" }
+          width={isMobile ? "24" : "32" }
         />
       </Modalbody>
     </>

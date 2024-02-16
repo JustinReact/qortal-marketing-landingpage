@@ -72,6 +72,9 @@ export const Wrapper = styled("div")(({ theme }) => ({
       zIndex: -1
     }
   },
+  "&.BGQORTPage": {
+    background: "radial-gradient(circle at 250px top, rgba(20,198,238,1) 0%, rgba(97,71,235,1) 29%, rgba(11,23,41,1) 69%)",
+  },
   [theme.breakpoints.down("sm")]: {
     padding: "1rem"
   }
