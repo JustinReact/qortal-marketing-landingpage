@@ -54,24 +54,19 @@ const Home: FC = () => {
 
   useEffect(() => {
     const isFirstTimeVisitor = localStorage.getItem("isFirstTimeVisitor");
+    const userOS = parser.getOS().name;
 
     if (!isFirstTimeVisitor) {
       // Perform actions for first-time visitors
       setFirstTimeVisitor(true);
       // Set the flag in localStorage
       localStorage.setItem("isFirstTimeVisitor", "false");
+      // Redirect to /welcome for mobile users
+      if (userOS?.includes("Android" || "iOS")) {
+        navigate("/welcome");
+      }
     } else {
       return;
-    }
-  }, []);
-
-  // Redirect to /welcome for mobile users
-  useEffect(() => {
-    const isFirstTimeVisitor = localStorage.getItem("isFirstTimeVisitor");
-    console.log({isFirstTimeVisitor})
-    const userOS = parser.getOS().name;
-    if (userOS?.includes("Android" || "iOS") && isFirstTimeVisitor !== "false") {
-      navigate("/welcome");
     }
   }, []);
 
