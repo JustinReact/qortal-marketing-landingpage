@@ -24,7 +24,7 @@ export const MobileHome = () => {
             action: "Clicked Discord Button (Mobile Welcome Page)",
             label: "Features Button"
           });
-          window.open("https://discord.gg/NqFNtRDm2t", "_blank");
+          window.open("https://discord.gg/9hgNdBj4aC", "_blank");
         }}>
           <DiscordSVG color={theme.palette.mode === "dark" ? "#1300af" : "#ffffff"} height={'35'} width={"35"} />
           Join On Discord

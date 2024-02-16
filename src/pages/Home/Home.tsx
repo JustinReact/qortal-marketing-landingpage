@@ -67,8 +67,10 @@ const Home: FC = () => {
 
   // Redirect to /welcome for mobile users
   useEffect(() => {
+    const isFirstTimeVisitor = localStorage.getItem("isFirstTimeVisitor");
+    console.log({isFirstTimeVisitor})
     const userOS = parser.getOS().name;
-    if (userOS?.includes("Android" || "iOS")) {
+    if (userOS?.includes("Android" || "iOS") && isFirstTimeVisitor !== "false") {
       navigate("/welcome");
     }
   }, []);
@@ -151,7 +153,7 @@ const Home: FC = () => {
                 action: "Clicked Discord Button With Custom Logo",
                 label: "Discord Button With Custom Logo"
               });
-              window.open("https://discord.gg/NqFNtRDm2t", "_blank");
+              window.open("https://discord.gg/9hgNdBj4aC", "_blank");
           }}
         >
         </CustomDiscordButton> */}
@@ -162,7 +164,7 @@ const Home: FC = () => {
                 action: "Clicked Discord Button With Custom Logo",
                 label: "Discord Button With Custom Logo"
               });
-              window.open("https://discord.gg/NqFNtRDm2t", "_blank");
+              window.open("https://discord.gg/9hgNdBj4aC", "_blank");
             }}
             src={CustomDiscordLogo}
             alt="Join Qortal Discord"
@@ -176,7 +178,7 @@ const Home: FC = () => {
               <VideoTitle variant="h2">
                 Watch the Q-Apps Intro Video!
               </VideoTitle>
-              {showVideoPlayer && !firstTimeVisitor ? (
+              {showVideoPlayer ? (
                 <iframe
                   src="https://www.youtube.com/embed/X7l2R0LF_5U?autoplay=1"
                   loading="lazy"
@@ -205,7 +207,7 @@ const Home: FC = () => {
         )}
       </FooterRow>
 
-      {firstTimeVisitor && (
+      {/* {firstTimeVisitor && (
         <CommonModal
           openModal={firstTimeVisitor}
           onClickFunc={() => {
@@ -243,7 +245,7 @@ const Home: FC = () => {
             )}
           </Box>
         </CommonModal>
-      )}
+      )} */}
     </>
   );
 };
