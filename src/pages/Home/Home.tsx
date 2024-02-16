@@ -31,6 +31,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setOS } from "../../state/features/osSlice";
 import { UAParser } from "ua-parser-js";
 import { useNavigate } from "react-router-dom";
+import JoinDiscordLogo from "../../images/Home/JoinDiscordLogo.png";
 
 const Home: FC = () => {
   const theme = useTheme();
@@ -184,7 +185,8 @@ const Home: FC = () => {
         )}
       </FooterRow>
 
-      {!firstTimeVisitor && (
+      {/* Change this boolean before pushing to PROD */}
+      {firstTimeVisitor && (
         <CommonModal
           openModal={firstTimeVisitor}
           onClickFunc={() => {
@@ -194,19 +196,26 @@ const Home: FC = () => {
             padding: 0,
             top: "10%",
             maxHeight: "500px",
-            minHeight: isMobile ? "300px !important" : isSmallToMediumScreen && !isMobile ? "400px !important" : "500px",
+            minHeight: isMobile
+              ? "300px !important"
+              : isSmallToMediumScreen && !isMobile
+              ? "400px !important"
+              : "500px",
             height: "-webkit-fill-available",
             width: isSmallToMediumScreen ? "90% !important" : "850px",
             minWidth: "auto",
-            backgroundColor: "black",
+            backgroundColor: "black"
           }}
         >
           <QORTPromoModal />
-            <FlexRow>
-              <CustomDiscordButton>
-                <DiscordLogo />
-              </CustomDiscordButton>
-            </FlexRow>
+          <FlexRow>
+            <CustomDiscordButton onClick={() => {
+              window.open("https://discord.gg/NqFNtRDm2t", "_blank");
+            }}>
+              <DiscordLogo src={JoinDiscordLogo} alt="Join Discord Logo" />
+              Join Discord
+            </CustomDiscordButton>
+          </FlexRow>
         </CommonModal>
       )}
     </>

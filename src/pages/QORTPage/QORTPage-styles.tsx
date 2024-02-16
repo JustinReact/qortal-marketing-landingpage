@@ -1,6 +1,14 @@
-import { styled } from "@mui/system";
-import { Box } from "@mui/material";
-import { floatAnimation } from "../../components/Common/Logo/QortalBigLogo-styles";
+import { styled, keyframes } from "@mui/system";
+import { Box, Typography } from "@mui/material";
+
+export const spinAnimation = keyframes`
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+`;
 
 export const MainContainer = styled(Box)({
   display: "flex",
@@ -8,8 +16,38 @@ export const MainContainer = styled(Box)({
   justifyContent: "center",
   alignItems: "center",
   width: "100%",
-  marginTop: "-20px",
-  gap: "20px"
+  gap: "20px",
+  marginTop: "150px",
+  marginLeft: "105px"
+});
+
+export const MainTitle = styled(Typography)(({ theme }) => ({
+  fontFamily: "Protest Strike",
+  lineHeight: "180px",
+  fontSize: "210px",
+  fontWeight: 700,
+  color: "#ffffff",
+  letterSpacing: "0px",
+  userSelect: "none",
+  transform: "translateX(-105px) translateY(-50px)",
+}));
+
+export const CoinImgRow = styled(Box)({
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "center",
+  alignItems: "flex-end",
+});
+
+export const CoinImg = styled("img")({
+  width: "400px",
+  height: "400px",
+  objectFit: "cover",
+  userSelect: "none",
+  animation: `${spinAnimation} 20s linear infinite`,
+  filter: "drop-shadow(0px 65px 70px rgba(0, 0, 0, 0.2))",
+  overflow: "visible",
+  zIndex: 1,
 });
 
 export const MainText = styled(Box)({
@@ -32,19 +70,6 @@ export const LogoContainer = styled(Box)({
   zIndex: 1,
 });
 
-export const QortalImg = styled("img")(({theme}) => ({
-  width: "70%",
-  objectFit: "cover",
-  userSelect: "none",
-  animation: `${floatAnimation} 3s ease-in-out infinite`,
-  filter: theme.palette.mode === "light" ? "drop-shadow(0px 65px 70px rgba(0, 0, 0, 0.2))" : "drop-shadow(0px 65px 70px #312e2e33)",
-  overflow: "visible",
-  [theme.breakpoints.down("sm")]: {
-    width: "auto",
-    height: "150px",
-    objectFit: "cover",
-  }
-}));
 
 export const SocialButton = styled("button")(({ theme }) => ({
   display: "flex",

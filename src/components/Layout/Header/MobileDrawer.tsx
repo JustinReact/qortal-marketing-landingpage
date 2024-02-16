@@ -22,7 +22,7 @@ export const MobileDrawer: FC<MobileDrawerProps> = ({
       <DrawerButton
         onClick={() => {
           setOpenMobileDrawer();
-          window.open("https://discord.gg/9hgNdBj4aC", "_blank");
+          window.open("https://discord.gg/NqFNtRDm2t", "_blank");
         }}
       >
         Join Discord

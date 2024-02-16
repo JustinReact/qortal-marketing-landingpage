@@ -111,7 +111,7 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                     action: "Clicked Discord Button Header",
                     label: "Discord Button Header"
                   });
-                  window.open("https://discord.gg/9hgNdBj4aC", "_blank");
+                  window.open("https://discord.gg/NqFNtRDm2t", "_blank");
                 }}
               >
                 Join Discord
@@ -210,7 +210,7 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                     action: "Clicked Discord Button Header",
                     label: "Discord Button Header"
                   });
-                  window.open("https://discord.gg/9hgNdBj4aC", "_blank");
+                  window.open("https://discord.gg/NqFNtRDm2t", "_blank");
                 }}
               >
                 Join Discord
