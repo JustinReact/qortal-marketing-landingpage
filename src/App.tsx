@@ -31,7 +31,7 @@ function App() {
             }
           >
             <Route path="/" element={<Home />} />
-            <Route path="/qort" element={<QORTPage />} />
+            <Route path="/qort" element={<QORTPage setTheme={(val: string) => setTheme(val)} />} />
             <Route
               path="/docs/api"
               element={<Api setTheme={(val: string) => setTheme(val)} />}
