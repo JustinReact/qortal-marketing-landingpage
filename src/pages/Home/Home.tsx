@@ -140,8 +140,8 @@ const Home: FC = () => {
           <QortalBigLogo />
         </MainCol>
       </MainRow>
-      <JoinDiscordRow>
-        {/* <CustomDiscordButton
+      {/* <JoinDiscordRow>
+        <CustomDiscordButton
           onClick={() => {
                 ReactGA.event({
                 category: "User",
@@ -151,7 +151,7 @@ const Home: FC = () => {
               window.open("https://discord.gg/9hgNdBj4aC", "_blank");
           }}
         >
-        </CustomDiscordButton> */}
+        </CustomDiscordButton>
           <CustomDiscordImg
             onClick={() => {
               ReactGA.event({
@@ -164,7 +164,7 @@ const Home: FC = () => {
             src={CustomDiscordLogo}
             alt="Join Qortal Discord"
           />
-      </JoinDiscordRow>
+      </JoinDiscordRow> */}
       {!operatingSystem && <Showcase osRef={osRef} />}
       <FooterRow container>
         {!operatingSystem ? (

@@ -30,7 +30,8 @@ export const ShowcaseTitle = styled(Box)(({ theme }) => ({
   letterSpacing: "1.5px",
   lineHeight: "35px",
   fontSize: "30px",
-  color: theme.palette.text.primary
+  color: theme.palette.text.primary,
+  userSelect: "none"
 }));
 
 export const HorizontalLine = styled("div")(({ theme }) => ({
@@ -204,7 +205,8 @@ export const BGImg = styled("img")(({ theme }) => ({
   boxShadow:
     theme.palette.mode === "dark"
       ? "0px 8px 10px 1px hsla(0,0%,0%,0.14), 0px 3px 14px 2px hsla(0,0%,0%,0.12), 0px 5px 5px -3px hsla(0,0%,0%,0.2)"
-      : "rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;"
+      : "rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;",
+  userSelect: "none"
 }));
 
 export const TopImg = styled("img")(({ theme }) => ({
@@ -217,6 +219,7 @@ export const TopImg = styled("img")(({ theme }) => ({
   objectFit: "contain",
   borderRadius: "8px",
   boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
+  userSelect: "none",
   [theme.breakpoints.only("xs")]: {
     left: "70px"
   }
