@@ -104,7 +104,7 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                 Developer
                 <DocsSVG color={"#ffffff"} height={"22"} width={"22"} />
               </Docs>
-              {/* <DiscordButton
+              <DiscordButton
                 onClick={() => {
                   ReactGA.event({
                     category: "User",
@@ -118,7 +118,7 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                 <TriangleContainer>
                   <TriangleIcon />
                 </TriangleContainer>
-              </DiscordButton> */}
+              </DiscordButton>
             </HeaderButtonsRow>
           )}
         </HeaderNav>
