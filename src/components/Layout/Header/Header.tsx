@@ -13,7 +13,8 @@ import {
   HamburgerIcon,
   BackHomeButton,
   DocsNavContainer,
-  FeaturesButton
+  FeaturesButton,
+  QORTButton
 } from "./Header-styles";
 import { useMediaQuery, useTheme, Typography } from "@mui/material";
 import { LayoutProps } from "../Main/MainLayout";
@@ -26,6 +27,7 @@ import { BackArrowSVG } from "../../Common/Icons/BackArrowSVG";
 import QortalLogo from "../../../images/Logo/QortalLogo.png";
 import QortalLogoDarkTheme from "../../../images/Logo/QortalLogoDarkTheme.webp";
 import { FeaturesSVG } from "../../Common/Icons/FeaturesSVG";
+import { QortalSVG } from "../../Common/Icons/QortalSVG";
 
 export const Header: FC<LayoutProps> = ({ setTheme }) => {
   const theme = useTheme();
@@ -78,6 +80,19 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
             />
           ) : (
             <HeaderButtonsRow>
+              <QORTButton
+                onClick={() => {
+                  ReactGA.event({
+                    category: "User",
+                    action: "Clicked QORT Button",
+                    label: "QORT Button"
+                  });
+                  navigate("/qort");
+                }}
+              >
+                QORT
+                <QortalSVG color={"#ffffff"} height={"22"} width={"22"} />
+              </QORTButton>
               <FeaturesButton
                 onClick={() => {
                   ReactGA.event({
@@ -136,6 +151,88 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
           </BackHomeButton>
         </DocsNavContainer>
       );
+    } else if (location.pathname === "/qort") {
+      return (
+        <HeaderNav>
+            <QortalLogoContainer
+              src={
+                theme.palette.mode === "light"
+                  ? QortalLogo
+                  : QortalLogoDarkTheme
+              }
+              alt="Qblog Logo"
+              onClick={() => {
+                navigate(`/`);
+              }}
+            />
+          {isMobile ? (
+            <HamburgerIcon
+              color={theme.palette.text.primary}
+              height={"32"}
+              width={"32"}
+              onClickFunc={() => setOpenMobileDrawer(!openMobileDrawer)}
+              rotated={{ isOn: openMobileDrawer ? true : false }}
+            />
+          ) : (
+            <HeaderButtonsRow>
+              <QORTButton
+                onClick={() => {
+                  ReactGA.event({
+                    category: "User",
+                    action: "Clicked QORT Button",
+                    label: "QORT Button"
+                  });
+                  navigate("/qort");
+                }}
+              >
+                QORT
+                <QortalSVG color={"#ffffff"} height={"22"} width={"22"} />
+              </QORTButton>
+              <FeaturesButton
+                onClick={() => {
+                  ReactGA.event({
+                    category: "User",
+                    action: "Clicked Features Button",
+                    label: "Features Button"
+                  });
+                  navigate("/features");
+                }}
+              >
+                Features
+                <FeaturesSVG color={"#ffffff"} height={"22"} width={"22"} />
+              </FeaturesButton>
+              <Docs
+                onClick={() => {
+                  ReactGA.event({
+                    category: "User",
+                    action: "Clicked Docs Button",
+                    label: "Docs Button"
+                  });
+                  navigate("/docs/api");
+                }}
+              >
+                Documentation
+                <DocsSVG color={"#ffffff"} height={"22"} width={"22"} />
+              </Docs>
+              <DiscordButton
+                onClick={() => {
+                  ReactGA.event({
+                    category: "User",
+                    action: "Clicked Discord Button Header",
+                    label: "Discord Button Header"
+                  });
+                  window.open("https://discord.gg/NqFNtRDm2t", "_blank");
+                }}
+              >
+                Join Discord
+                <TriangleContainer>
+                  <TriangleIcon />
+                </TriangleContainer>
+              </DiscordButton>
+            </HeaderButtonsRow>
+          )}
+        </HeaderNav>
+      );
     } else {
       return (
         <HeaderNav>
@@ -177,6 +274,19 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
             />
           ) : (
             <HeaderButtonsRow>
+              <QORTButton
+                onClick={() => {
+                  ReactGA.event({
+                    category: "User",
+                    action: "Clicked QORT Button",
+                    label: "QORT Button"
+                  });
+                  navigate("/qort");
+                }}
+              >
+                QORT
+                <QortalSVG color={"#ffffff"} height={"22"} width={"22"} />
+              </QORTButton>
               <FeaturesButton
                 onClick={() => {
                   ReactGA.event({
@@ -200,7 +310,7 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                   navigate("/docs/api");
                 }}
               >
-                Documentation
+                Developer
                 <DocsSVG color={"#ffffff"} height={"22"} width={"22"} />
               </Docs>
               <DiscordButton
