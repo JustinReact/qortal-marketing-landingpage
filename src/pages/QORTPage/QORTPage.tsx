@@ -35,11 +35,11 @@ import {
   Wrapper
 } from "./QORTPage-styles";
 import ReactGA from "react-ga4";
-import QORTCoin from "../../images/QORT/QORTCoin.png";
+import QORTCoin from "../../images/QORT/QORTCoin.webp";
 import QShopLogo from "../../images/QORT/Q-ShopLogo.png";
 import NamesMarket from "../../images/QORT/NamesMarket.png";
 import TradePortal from "../../images/QORT/TradePortal.png";
-import QORTOwlMascot from "../../images/QORT/QORTOwlMascot.png";
+import QORTOwlMascot from "../../images/QORT/QORTOwlMascot.webp";
 import { NorthEastSVG } from "../../components/Common/Icons/NorthEastSVG";
 import { SouthEastSVG } from "../../components/Common/Icons/SouthEastSVG";
 import { AnimatePresence, motion } from "framer-motion";

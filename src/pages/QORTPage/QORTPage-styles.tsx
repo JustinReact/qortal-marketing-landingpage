@@ -280,7 +280,7 @@ export const LogoContainer = styled(Box)({
 
 // Owl Mascot Chat Message Bubble
 
-export const ChatBubble = styled("div")({
+export const ChatBubble = styled("div")(({ theme }) => ({
   position: "absolute",
   top: "-120px",
   right: "-200px",
@@ -290,6 +290,9 @@ export const ChatBubble = styled("div")({
   height: "auto",
   backgroundColor: "white",
   transition: "all 0.3s ease-in-out",
+  [theme.breakpoints.only("xs")]: {
+    right: "-160px",
+  },
   "&:hover": {
     cursor: "pointer",
     filter: "drop-shadow(2px 4px 3px #3a3a3a)",
@@ -371,8 +374,8 @@ export const ChatBubble = styled("div")({
   },
   "&.round": {
     borderRadius: "30px"
-  }
-});
+  },
+}));
 
 // Arrows animation for scroll down
 
@@ -380,11 +383,18 @@ export const ArrowSVG = styled("svg")(({ theme }) => ({
   "&.arrows": {
     width: "60px",
     height: "72px",
-    [theme.breakpoints.down("md")]: {
-      width: "120px"
+    [theme.breakpoints.only("md")]: {
+      width: "120px",
+      height: "80px"
     },
-    [theme.breakpoints.down("sm")]: {
-      width: "140px"
+    [theme.breakpoints.only("sm")]: {
+      width: "140px",
+      height: "80px"
+      
+    },
+    [theme.breakpoints.only("xs")]: {
+      width: "180px",
+      height: "80px"
     }
   },
   "&.arrows path": {
