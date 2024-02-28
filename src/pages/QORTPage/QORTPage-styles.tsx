@@ -224,7 +224,8 @@ export const CoinImgRow = styled(Box)({
   display: "flex",
   flexDirection: "row",
   justifyContent: "center",
-  alignItems: "flex-end"
+  alignItems: "flex-end",
+  maxWidth: "100%",
 });
 
 export const CoinImg = styled("img")(({ theme }) => ({
@@ -246,14 +247,18 @@ export const CoinImg = styled("img")(({ theme }) => ({
   }
 }));
 
-export const SubTextRow = styled(Box)({
+export const SubTextRow = styled(Box)(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
   flexDirection: "row",
   textAlign: "center",
-  gap: "40px"
-});
+  gap: "40px",
+  [theme.breakpoints.only("xs")]: {
+    padding: "0 5px",
+    maxWidth: "100%",
+  }
+}));
 
 export const SubText = styled(Typography)(({ theme }) => ({
   fontFamily: "PT Sans",
