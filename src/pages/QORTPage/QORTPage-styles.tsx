@@ -36,6 +36,7 @@ export const Wrapper = styled(Box)({
 });
 
 export const MainContainer = styled(Box)(({ theme }) => ({
+  position: "relative",
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
@@ -46,6 +47,33 @@ export const MainContainer = styled(Box)(({ theme }) => ({
   [theme.breakpoints.down("sm")]: {
     marginTop: "50px"
   }
+}));
+
+export const OwlImageWrapper = styled(Box)(({ theme }) => ({
+  position: "absolute",
+  bottom: "-75px",
+  left: 0,
+  [theme.breakpoints.down("lg")]: {
+    bottom: "-300px",
+    left: "50%",
+    transform: "translateX(-80%)",
+  }
+}));
+
+export const OwlImageContainer = styled(Box)({
+  position: "relative"
+});
+
+export const OwlLogo = styled("img")(({ theme }) => ({
+  width: "200px",
+  height: "200px",
+  objectFit: "cover",
+  userSelect: "none",
+  [theme.breakpoints.down("sm")]: {
+    width: "200px",
+    height: "200px",
+    objectFit: "contain",
+  },
 }));
 
 export const SecondContainer = styled(Box)({
@@ -88,13 +116,13 @@ export const MainTitle = styled(Typography)(({ theme }) => ({
   }
 }));
 
-
 export const SubTitleRow = styled(Box)({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
   flexDirection: "column",
   textAlign: "center",
+  padding: "0 15px"
 });
 
 export const SubTitle = styled(Typography)({
@@ -146,7 +174,6 @@ export const UseCard = styled(Box)({
     "radial-gradient(circle at 0px top, rgba(20,198,238,1) 4%, rgba(97,71,235,1) 34%, rgba(11,23,41,1) 53%)"
 });
 
-
 export const UseColImg = styled("img")(({ theme }) => ({
   position: "absolute",
   top: "-65px",
@@ -156,10 +183,7 @@ export const UseColImg = styled("img")(({ theme }) => ({
   objectFit: "cover",
   userSelect: "none",
   filter: "drop-shadow(0px 18px 20px #cdcdcd)",
-  [theme.breakpoints.down("sm")]: {
-    width: "70px",
-    height: "70px"
-  }
+
 }));
 
 export const UseColRow = styled(Box)({
@@ -167,7 +191,7 @@ export const UseColRow = styled(Box)({
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "flex-start",
-  gap: "20px",
+  gap: "20px"
 });
 
 export const UseColTitle = styled(Typography)(({ theme }) => ({
@@ -254,44 +278,113 @@ export const LogoContainer = styled(Box)({
   zIndex: 1
 });
 
-export const SocialButton = styled("button")(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  borderRadius: "5px",
-  gap: "15px",
-  position: "relative",
-  width: "300px",
-  backgroundColor: theme.palette.mode === "dark" ? "#ffffff" : "#1300af",
-  color: theme.palette.mode === "dark" ? "#1300af" : "#ffffff",
-  fontFamily: "Montserrat",
-  padding: "18px 20px",
-  fontSize: "24px",
-  letterSpacing: "0.9px",
-  fontWeight: 500,
-  border: "none",
-  boxShadow:
-    theme.palette.mode === "dark"
-      ? "0px 4px 5px 0px hsla(0,0%,0%,0.14),  0px 1px 10px 0px hsla(0,0%,0%,0.12),  0px 2px 4px -1px hsla(0,0%,0%,0.2)"
-      : "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
+// Owl Mascot Chat Message Bubble
+
+export const ChatBubble = styled("div")({
+  position: "absolute",
+  top: "-120px",
+  right: "-200px",
+  margin: "40px",
+  display: "inline-block",
+  width: "auto",
+  height: "auto",
+  backgroundColor: "white",
   transition: "all 0.3s ease-in-out",
   "&:hover": {
     cursor: "pointer",
-    boxShadow:
-      theme.palette.mode === "dark"
-        ? "0px 8px 10px 1px hsla(0,0%,0%,0.14), 0px 3px 14px 2px hsla(0,0%,0%,0.12), 0px 5px 5px -3px hsla(0,0%,0%,0.2)"
-        : "rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;"
+    filter: "drop-shadow(2px 4px 3px #3a3a3a)",
+  },
+  "&.tri-right.border.left-in:before": {
+    content: "''",
+    position: "absolute",
+    width: 0,
+    height: 0,
+    left: "-40px",
+    right: "auto",
+    top: "30px",
+    bottom: "auto",
+    border: "20px solid",
+    borderColor: "#0091ff #0091ff transparent transparent"
+  },
+  "&.tri-right.left-in:after": {
+    content: "''",
+    position: "absolute",
+    width: 0,
+    height: 0,
+    left: "-20px",
+    right: "auto",
+    top: "38px",
+    bottom: "auto",
+    border: "12px solid",
+    borderColor: "white white transparent transparent"
+  },
+  "&.tri-right.border.btm-left:before": {
+    content: "''",
+    position: "absolute",
+    width: "0",
+    height: "0",
+    left: "-8px",
+    right: "auto",
+    top: "auto",
+    bottom: "-40px",
+    border: "32px solid",
+    borderColor: "transparent transparent transparent #0091ff"
+  },
+  "&.tri-right.btm-left:after": {
+    content: "''",
+    position: "absolute",
+    width: "0",
+    height: "0",
+    left: "0px",
+    right: "auto",
+    top: "auto",
+    bottom: "-20px",
+    border: "22px solid",
+    borderColor: "transparent transparent transparent white"
+  },
+  "&.tri-right.border.btm-left-in:before": {
+    content: "''",
+    position: "absolute",
+    width: "0",
+    height: "0",
+    left: "30px",
+    right: "auto",
+    top: "auto",
+    bottom: "-40px",
+    border: "20px solid",
+    borderColor: "#0091ff transparent transparent #0091ff"
+  },
+  "&.tri-right.btm-left-in:after": {
+    content: "''",
+    position: "absolute",
+    width: "0",
+    height: "0",
+    left: "38px",
+    right: "auto",
+    top: "auto",
+    bottom: "-20px",
+    border: "12px solid",
+    borderColor: "white transparent transparent white"
+  },
+  "&.border": {
+    border: "8px solid #0091ff"
+  },
+  "&.round": {
+    borderRadius: "30px"
   }
-}));
+});
+
+// Arrows animation for scroll down
 
 export const ArrowSVG = styled("svg")(({ theme }) => ({
   "&.arrows": {
     width: "60px",
     height: "72px",
     [theme.breakpoints.down("md")]: {
-      width: "120px",
+      width: "120px"
     },
     [theme.breakpoints.down("sm")]: {
-      width: "100px"
+      width: "140px"
     }
   },
   "&.arrows path": {
@@ -318,14 +411,38 @@ export const ArrowSVG = styled("svg")(({ theme }) => ({
   }
 }));
 
+// Social Button
+
+export const SocialButton = styled("button")(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  borderRadius: "30px",
+  padding: "15px",
+  gap: "15px",
+  position: "relative",
+  backgroundColor: theme.palette.mode === "dark" ? "#ffffff" : "#1300af",
+  color: theme.palette.mode === "dark" ? "#1300af" : "#ffffff",
+  fontFamily: "Montserrat",
+  fontSize: "22px",
+  letterSpacing: "0.9px",
+  fontWeight: 500,
+  border: "none",
+  transition: "all 0.3s ease-in-out",
+  "&:hover": {
+    cursor: "pointer",
+  }
+}))
+
+// FAQ Section
+
 export const FAQCardContainer = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
   width: "100%",
-  gap: "50px",
-  marginTop: "150px",
+  gap: "40px",
+  marginTop: "110px",
   marginBottom: "50px"
 }));
 
@@ -334,9 +451,12 @@ export const FAQCardContainerRow = styled(Box)(({ theme }) => ({
   flexDirection: "row",
   alignItems: "center",
   justifyContent: "center",
-  gap: '50px',
+  gap: "50px",
   width: "70%",
-}));  
+  [theme.breakpoints.down("md")]: {
+    width: "90%"
+  }  
+}));
 
 export const FAQNumberBubble = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -351,7 +471,11 @@ export const FAQNumberBubble = styled(Box)(({ theme }) => ({
   fontSize: "24px",
   fontWeight: 500,
   userSelect: "none",
-  boxShadow: "0px 4px 5px 0px hsla(0,0%,0%,0.14),  0px 1px 10px 0px hsla(0,0%,0%,0.12),  0px 2px 4px -1px hsla(0,0%,0%,0.2)"
+  boxShadow:
+    "0px 4px 5px 0px hsla(0,0%,0%,0.14),  0px 1px 10px 0px hsla(0,0%,0%,0.12),  0px 2px 4px -1px hsla(0,0%,0%,0.2)",
+    [theme.breakpoints.down("md")]: {
+      width: '60px'
+    },
 }));
 
 export const FAQCard = styled(Box)(({ theme }) => ({
@@ -367,7 +491,7 @@ export const FAQCard = styled(Box)(({ theme }) => ({
   "&:hover": {
     cursor: "pointer",
     backgroundColor: "#121549"
-  },
+  }
 }));
 
 export const FAQCardRow = styled(Box)(({ theme }) => ({
@@ -375,7 +499,7 @@ export const FAQCardRow = styled(Box)(({ theme }) => ({
   flexDirection: "row",
   justifyContent: "space-between",
   alignItems: "center",
-  width: "100%",
+  width: "100%"
 }));
 
 export const FAQCardRowText = styled(Box)(({ theme }) => ({
@@ -384,5 +508,50 @@ export const FAQCardRowText = styled(Box)(({ theme }) => ({
   color: "#ffffff",
   userSelect: "none",
   lineHeight: "32px",
-  fontWeight: 400,
+  fontWeight: 400
 }));
+
+export const FAQCardRowBody = styled(Box)({
+  marginTop: "15px",
+  fontFamily: "Raleway",
+  fontSize: "18px",
+  color: "#ffffff",
+  userSelect: "none",
+  letterSpacing: "0.4px",
+  lineHeight: "28px",
+  fontWeight: 400
+});
+
+export const InstallationWord = styled("span")({
+  marginTop: "15px",
+  fontFamily: "Raleway",
+  fontSize: "18px",
+  userSelect: "none",
+  letterSpacing: "0.4px",
+  lineHeight: "28px",
+  fontWeight: 400,
+  color: "#2eeff6",
+  textDecoration: "underline",
+  transition: "all 0.3s ease-in-out",
+  "&:hover": {
+    cursor: "pointer",
+    color: "#03969b",
+  }
+});
+
+export const URLWord = styled("a")({
+  marginTop: "15px",
+  fontFamily: "Raleway",
+  fontSize: "18px",
+  userSelect: "none",
+  letterSpacing: "0.4px",
+  lineHeight: "28px",
+  fontWeight: 400,
+  color: "#2eeff6",
+  textDecoration: "underline",
+  transition: "all 0.3s ease-in-out",
+  "&:hover": {
+    cursor: "pointer",
+    color: "#03969b",
+  }
+});
