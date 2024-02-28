@@ -13,7 +13,7 @@ export const floatAnimation = keyframes`
   }
 `;
 
-export const LogoContainer = styled(Box)({
+export const LogoContainer = styled(Box)(({theme}) => ({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
@@ -21,7 +21,10 @@ export const LogoContainer = styled(Box)({
   height: "350px",
   flexDirection: "column",
   zIndex: 1,
-});
+  [theme.breakpoints.only("xl")]: {
+    paddingTop: "50px"
+  }  
+}));
 
 export const QortalImg = styled("img")(({theme}) => ({
   width: "70%",

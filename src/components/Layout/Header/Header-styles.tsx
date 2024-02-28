@@ -54,7 +54,7 @@ export const BackHomeButton = styled(Button)(({ theme }) => ({
 export const HeaderButtonsRow = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
-  gap: "35px"
+  gap: "30px"
 }));
 
 export const DiscordButton = styled(Button)(({ theme }) => ({
@@ -90,8 +90,10 @@ export const DocsNavContainer = styled(Box)(({ theme }) => ({
 export const Docs = styled(Typography)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
+  justifyContent: "center",
   gap: "8px",
   fontFamily: "Oxygen",
+  minWidth: "140px",
   fontSize: "18px",
   padding: "10px 15px",
   borderRadius: "2px",
@@ -110,12 +112,36 @@ export const Docs = styled(Typography)(({ theme }) => ({
 export const FeaturesButton = styled(Typography)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
+  justifyContent: "center",
   gap: "8px",
   fontFamily: "Oxygen",
   fontSize: "18px",
   padding: "10px 15px",
   borderRadius: "2px",
   backgroundColor: theme.palette.secondary.main,
+  color: "#ffffff",
+  fontWeight: "400",
+  minWidth: "140px",
+  transition: "all 0.3s ease-in-out",
+  zIndex: 2,
+  userSelect: "none",
+  "&:hover": {
+    cursor: "pointer",
+    filter: "brightness(0.9)"
+  }
+}));
+
+export const QORTButton = styled(Typography)(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: "8px",
+  fontFamily: "Oxygen",
+  fontSize: "18px",
+  minWidth: "140px",
+  padding: "10px 15px",
+  borderRadius: "2px",
+  backgroundColor: "#0805be",
   color: "#ffffff",
   fontWeight: "400",
   transition: "all 0.3s ease-in-out",

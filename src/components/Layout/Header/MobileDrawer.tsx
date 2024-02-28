@@ -6,6 +6,7 @@ import { useTheme } from "@mui/material";
 import { DocsSVG } from "../../Common/Icons/DocsSVG";
 import { FeaturesSVG } from "../../Common/Icons/FeaturesSVG";
 import { RedditSVG } from "../../Common/Icons/RedditSVG";
+import { QortalSVG } from "../../Common/Icons/QortalSVG";
 
 interface MobileDrawerProps {
   setOpenMobileDrawer: () => void;
@@ -22,7 +23,7 @@ export const MobileDrawer: FC<MobileDrawerProps> = ({
       <DrawerButton
         onClick={() => {
           setOpenMobileDrawer();
-          window.open("https://discord.gg/9hgNdBj4aC", "_blank");
+          window.open("https://discord.gg/NqFNtRDm2t", "_blank");
         }}
       >
         Join Discord
@@ -50,11 +51,11 @@ export const MobileDrawer: FC<MobileDrawerProps> = ({
       <DrawerButton
         onClick={() => {
           setOpenMobileDrawer();
-          navigate("/docs/api");
+          navigate("/qort");
         }}
       >
-        Documentation
-        <DocsSVG
+        QORT
+        <QortalSVG
           color={theme.palette.text.primary}
           height={"25"}
           width={"25"}
@@ -69,6 +70,20 @@ export const MobileDrawer: FC<MobileDrawerProps> = ({
       >
         Features
         <FeaturesSVG
+          color={theme.palette.text.primary}
+          height={"25"}
+          width={"25"}
+        />
+      </DrawerButton>
+      <Divider />
+      <DrawerButton
+        onClick={() => {
+          setOpenMobileDrawer();
+          navigate("/docs/api");
+        }}
+      >
+        Documentation
+        <DocsSVG
           color={theme.palette.text.primary}
           height={"25"}
           width={"25"}

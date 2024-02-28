@@ -23,6 +23,8 @@ export const MainLayoutRoute: FC<LayoutProps> = ({ setTheme }) => {
           ? "BGImagePromo"
           : location.pathname === "/features"
           ? "BGImageFeatures"
+          : location.pathname === "/qort"
+          ? "BGQORTPage"
           : ""
       }
     >

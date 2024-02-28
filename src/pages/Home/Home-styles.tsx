@@ -1,5 +1,6 @@
 import { styled } from "@mui/system";
 import { Box, Button, Grid, Typography } from "@mui/material";
+import QORTPromoImage from "../../images/Home/QORTPromoImage.webp";
 
 export const MainRow = styled(Grid)(({ theme }) => ({
   display: "flex",
@@ -192,9 +193,16 @@ export const CustomDiscordImg = styled("img")(({ theme }) => ({
     filter: theme.palette.mode === "light" ? "drop-shadow(0 0 10px rgba(0, 89, 255, 0.3))" : "drop-shadow(0 0 5px rgba(255, 255, 255, 0.3))" 
   },
   "&:hover": {
-    filter: "drop-shadow(0 0 10px #19ffff) drop-shadow(0 0 5px #19ffff)" 
+    filter: "drop-shadow(0 0 10px #19ffff) drop-shadow(0 0 5px #19ffff)",
+    backgroundColor: "#030d2df6",
+    cursor: "pointer"
   },
-}));
+  [theme.breakpoints.only("xs")]: {
+    height: "50px",
+    fontSize: "15px",
+  }
+  }));
+    
 
 export const CustomDiscordButton = styled(Button)(({ theme }) => ({
   display: "flex",
@@ -209,6 +217,7 @@ export const CustomDiscordButton = styled(Button)(({ theme }) => ({
   color: "white",
   borderRadius: "25px",
   transition: "all 0.4s ease-in-out",
+  gap: "30px",
   zIndex: 2,
   boxShadow:
     theme.palette.mode === "dark"
@@ -218,4 +227,31 @@ export const CustomDiscordButton = styled(Button)(({ theme }) => ({
     backgroundColor: "#8dc4fff6",
     cursor: "pointer"
   }
+}));
+
+export const DiscordLogo = styled("img")(({ theme }) => ({
+  width: "17%",
+  cursor: "pointer",
+  transition: "all 0.4s ease-in-out",
+  filter: "drop-shadow(0 0 10px #19ffff) drop-shadow(0 0 5px #19ffff)",
+}));
+
+export const QORTPromoModal = styled(Box)(({ theme }) => ({
+  position: "relative",
+  width: "100%",
+  height: "100%",
+  backgroundImage: `url(${QORTPromoImage})`,
+  backgroundSize: "contain",
+  backgroundPosition: "center center",
+  backgroundRepeat: "no-repeat"
+}));
+
+export const FlexRow = styled(Box)(({ theme }) => ({
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  margin: "15px 0",
+  [theme.breakpoints.only("xs")]: {
+    margin: "5px 0"
+  },
 }));

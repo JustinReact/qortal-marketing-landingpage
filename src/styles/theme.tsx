@@ -8,6 +8,9 @@ const commonThemeOptions = createTheme({
           padding: "0px",
           margin: "0px",
           boxSizing: "border-box"
+        },
+        "html": {
+          scrollBehavior: "smooth"
         }
       }
     },
@@ -29,7 +32,7 @@ const commonThemeOptions = createTheme({
   },
   typography: {
     fontFamily:
-      "'Museo', 'Raleway', 'Montserrat', 'Inter', 'Cairo', 'Oxygen', 'Roboto', 'Nanum Gothic', 'Lovelo', 'Helvetica', 'Arial', 'Kadwa'",
+      "'Museo', 'Raleway', 'Montserrat', 'Inter', 'Cairo', 'Oxygen', 'Roboto', 'Nanum Gothic', 'Lovelo', 'Helvetica', 'Arial', 'Kadwa', 'Protest Strike', 'PT Sans'",
     button: {
       textTransform: "none"
     },
