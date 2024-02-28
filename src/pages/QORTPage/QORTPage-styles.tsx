@@ -96,7 +96,7 @@ export const ThirdContainer = styled(Box)({
 });
 
 export const MainTitle = styled(Typography)(({ theme }) => ({
-  fontFamily: "Protest Strike",
+  fontFamily: "Protest Strike, sans-serif",
   lineHeight: "180px",
   fontSize: "210px",
   fontWeight: 500,
@@ -126,7 +126,7 @@ export const SubTitleRow = styled(Box)({
 });
 
 export const SubTitle = styled(Typography)({
-  fontFamily: "Protest Strike",
+  fontFamily: "Protest Strike, sans-serif",
   fontSize: "80px",
   fontWeight: 500,
   color: "#ffffff",
@@ -136,7 +136,7 @@ export const SubTitle = styled(Typography)({
 });
 
 export const SubTitleDesc = styled(Typography)({
-  fontFamily: "PT Sans",
+  fontFamily: "PT Sans, sans-serif",
   fontSize: "35px",
   fontWeight: 400,
   color: "#ffffff",
@@ -195,7 +195,7 @@ export const UseColRow = styled(Box)({
 });
 
 export const UseColTitle = styled(Typography)(({ theme }) => ({
-  fontFamily: "Protest Strike",
+  fontFamily: "Protest Strike, sans-serif",
   fontSize: "40px",
   lineHeight: "60px",
   fontWeight: 500,
@@ -208,7 +208,7 @@ export const UseColTitle = styled(Typography)(({ theme }) => ({
 }));
 
 export const UseColDesc = styled(Typography)(({ theme }) => ({
-  fontFamily: "PT Sans",
+  fontFamily: "PT Sans, sans-serif",
   fontSize: "27px",
   lineHeight: "32px",
   fontWeight: 400,
@@ -261,7 +261,7 @@ export const SubTextRow = styled(Box)(({ theme }) => ({
 }));
 
 export const SubText = styled(Typography)(({ theme }) => ({
-  fontFamily: "PT Sans",
+  fontFamily: "PT Sans, sans-serif",
   fontWeight: "400",
   fontSize: "40px",
   userSelect: "none",
@@ -482,7 +482,7 @@ export const FAQNumberBubble = styled(Box)(({ theme }) => ({
   borderRadius: "50%",
   backgroundColor: "#101776",
   color: "#ffffff",
-  fontFamily: "PT Sans",
+  fontFamily: "PT Sans, sans-serif",
   fontSize: "24px",
   fontWeight: 500,
   userSelect: "none",
@@ -518,7 +518,7 @@ export const FAQCardRow = styled(Box)(({ theme }) => ({
 }));
 
 export const FAQCardRowText = styled(Box)(({ theme }) => ({
-  fontFamily: "PT Sans",
+  fontFamily: "PT Sans, sans-serif",
   fontSize: "24px",
   color: "#ffffff",
   userSelect: "none",
