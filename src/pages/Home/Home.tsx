@@ -15,7 +15,10 @@ import {
   QortalWordLogo,
   JoinDiscordRow,
   CustomDiscordButton,
-  CustomDiscordImg
+  CustomDiscordImg,
+  QORTPromoModal,
+  FlexRow,
+  DiscordLogo
 } from "./Home-styles";
 import QortalWordLogoImg from "../../images/Home/QortalWordLogo.svg";
 import OperatingSystem from "../../components/OperatingSystem/OperatingSystem";
@@ -32,10 +35,12 @@ import { setOS } from "../../state/features/osSlice";
 import { UAParser } from "ua-parser-js";
 import { useNavigate } from "react-router-dom";
 import CustomDiscordLogo from "../../images/Home/JoinDiscordLogo.png"
+import JoinDiscordLogo from "../../images/Home/JoinDiscordLogo.png";
 
 const Home: FC = () => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile = useMediaQuery(theme.breakpoints.only("xs"));
+  const isSmallToMediumScreen = useMediaQuery(theme.breakpoints.down("md"));
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -70,8 +75,26 @@ const Home: FC = () => {
     }
   }, []);
 
-  // Clear the OS passed props on unmount
+  // Redirect to /qort for mobile users
+  // useEffect(() => {
+  //   const isFirstTimeVisitor = localStorage.getItem("isFirstTimeVisitor");
+  //   const userOS = parser.getOS().name;
 
+  //   if (!isFirstTimeVisitor) {
+  //     // Perform actions for first-time visitors
+  //     setFirstTimeVisitor(true);
+  //     // Set the flag in localStorage
+  //     localStorage.setItem("isFirstTimeVisitor", "false");
+  //     // Redirect to /qort for mobile users
+  //     if (userOS?.includes("Android" || "iOS")) {
+  //       navigate("/qort");
+  //     }
+  //   } else {
+  //     return;
+  //   }
+  // }, []);
+
+  // Clear the OS passed props on unmount
   useEffect(() => {
     if (os) {
       setOperatingSystem(os);
@@ -202,43 +225,37 @@ const Home: FC = () => {
         )}
       </FooterRow>
 
+      {/* Change this boolean before pushing to PROD */}
       {/* {firstTimeVisitor && (
         <CommonModal
           openModal={firstTimeVisitor}
           onClickFunc={() => {
             setFirstTimeVisitor(false);
-            handleVideoClick();
+          }}
+          customStyles={{
+            padding: 0,
+            top: "10%",
+            maxHeight: "500px",
+            minHeight: isMobile
+              ? "300px !important"
+              : isSmallToMediumScreen && !isMobile
+              ? "400px !important"
+              : "500px",
+            height: "-webkit-fill-available",
+            width: isSmallToMediumScreen ? "90% !important" : "850px",
+            minWidth: "auto",
+            backgroundColor: "black"
           }}
         >
-          <Box
-            style={{
-              position: "relative",
-              width: "100%",
-              height: "100%",
-              paddingBottom: "5px"
-            }}
-          >
-            {showVideoPlayer ? (
-              <iframe
-                src="https://www.youtube.com/embed/X7l2R0LF_5U?autoplay=1"
-                loading="lazy"
-                title="Introducing Qortal Q-Apps"
-                style={{
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                  width: "100%",
-                  height: "100%",
-                  padding: "20px",
-                  border: "none"
-                }}
-                allowFullScreen
-                allow="autoplay"
-              ></iframe>
-            ) : (
-              <YoutubePlaceholder isModal={true} onClick={handleVideoClick} />
-            )}
-          </Box>
+          <QORTPromoModal />
+          <FlexRow>
+            <CustomDiscordButton onClick={() => {
+              window.open("https://discord.gg/NqFNtRDm2t", "_blank");
+            }}>
+              <DiscordLogo src={JoinDiscordLogo} alt="Join Discord Logo" />
+              Join Discord
+            </CustomDiscordButton>
+          </FlexRow>
         </CommonModal>
       )} */}
     </>

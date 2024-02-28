@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { UAParser } from "ua-parser-js";
 import { useDispatch } from "react-redux";
 import { setOS } from "../../state/features/osSlice";
@@ -37,6 +37,7 @@ import QBlogScreenshot from "../../images/Features/BlogScreenshot.png";
 import WalletScreenshot from "../../images/Features/WalletScreenshot.png";
 import TradePortalScreenshot from "../../images/Features/TradePortalScreenshot.png";
 import AutoBuyScreenshot from "../../images/Features/AutoBuyScreenshot.png";
+import ReactGA from "react-ga4";
 
 interface FeatureInfo {
   title: string;
@@ -304,6 +305,14 @@ export const Features = () => {
       }
     }
   });
+
+  useEffect(() => {
+    ReactGA.send({
+      hitType: "pageview",
+      page: window.location.pathname,
+      title: "API"
+    });
+  }, []);
 
   return (
     <Container ref={topPageRef}>
