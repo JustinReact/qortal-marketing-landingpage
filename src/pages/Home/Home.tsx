@@ -66,20 +66,26 @@ const Home: FC = () => {
     }
   }, []);
 
-  // Redirect to /welcome for mobile users
-  useEffect(() => {
-    const isFirstTimeVisitor = localStorage.getItem("isFirstTimeVisitor");
-    if (isFirstTimeVisitor) {
-      return;
-    }
-    const userOS = parser.getOS().name;
-    if (userOS?.includes("Android" || "iOS")) {
-      navigate("/welcome");
-    }
-  }, []);
+  // Redirect to /qort for mobile users
+  // useEffect(() => {
+  //   const isFirstTimeVisitor = localStorage.getItem("isFirstTimeVisitor");
+  //   const userOS = parser.getOS().name;
+
+  //   if (!isFirstTimeVisitor) {
+  //     // Perform actions for first-time visitors
+  //     setFirstTimeVisitor(true);
+  //     // Set the flag in localStorage
+  //     localStorage.setItem("isFirstTimeVisitor", "false");
+  //     // Redirect to /qort for mobile users
+  //     if (userOS?.includes("Android" || "iOS")) {
+  //       navigate("/qort");
+  //     }
+  //   } else {
+  //     return;
+  //   }
+  // }, []);
 
   // Clear the OS passed props on unmount
-
   useEffect(() => {
     if (os) {
       setOperatingSystem(os);
@@ -186,7 +192,7 @@ const Home: FC = () => {
       </FooterRow>
 
       {/* Change this boolean before pushing to PROD */}
-      {firstTimeVisitor && (
+      {/* {firstTimeVisitor && (
         <CommonModal
           openModal={firstTimeVisitor}
           onClickFunc={() => {
@@ -217,7 +223,7 @@ const Home: FC = () => {
             </CustomDiscordButton>
           </FlexRow>
         </CommonModal>
-      )}
+      )} */}
     </>
   );
 };
