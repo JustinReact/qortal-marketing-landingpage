@@ -1,5 +1,5 @@
 import { styled, keyframes } from "@mui/system";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 export const spinAnimation = keyframes`
   0% {
@@ -95,8 +95,8 @@ export const ThirdContainer = styled(Box)({
   height: "100%"
 });
 
-export const MainTitle = styled("p")(({ theme }) => ({
-  fontFamily: "Protest Strike, sans-serif",
+export const MainTitle = styled(Typography)(({ theme }) => ({
+  fontFamily: "Protest Strike, sans-serif !important",
   lineHeight: "180px",
   fontSize: "210px",
   fontWeight: 500,
@@ -104,7 +104,6 @@ export const MainTitle = styled("p")(({ theme }) => ({
   letterSpacing: "0px",
   userSelect: "none",
   transform: "translateX(-105px) translateY(-50px)",
-  margin: 0,
   [theme.breakpoints.down("md")]: {
     fontSize: "180px",
     lineHeight: "150px",
@@ -126,26 +125,24 @@ export const SubTitleRow = styled(Box)({
   padding: "0 15px"
 });
 
-export const SubTitle = styled("p")({
-  fontFamily: "Protest Strike, sans-serif",
+export const SubTitle = styled(Typography)({
+  fontFamily: "Protest Strike, sans-serif !important",
   fontSize: "80px",
   fontWeight: 500,
   color: "#ffffff",
   letterSpacing: "0px",
   userSelect: "none",
-  lineHeight: "100px",
-  margin: 0,
+  lineHeight: "100px"
 });
 
-export const SubTitleDesc = styled("p")({
-  fontFamily: "PT Sans, sans-serif",
+export const SubTitleDesc = styled(Typography)({
+  fontFamily: "PT Sans, sans-serif !important",
   fontSize: "35px",
   fontWeight: 400,
   color: "#ffffff",
   letterSpacing: "0px",
   userSelect: "none",
-  lineHeight: "50px",
-  margin: 0,
+  lineHeight: "50px"
 });
 
 export const UseCardRow = styled(Box)({
@@ -197,29 +194,27 @@ export const UseColRow = styled(Box)({
   gap: "20px"
 });
 
-export const UseColTitle = styled("p")(({ theme }) => ({
-  fontFamily: "Protest Strike, sans-serif",
+export const UseColTitle = styled(Typography)(({ theme }) => ({
+  fontFamily: "Protest Strike, sans-serif !important",
   fontSize: "40px",
   lineHeight: "60px",
   fontWeight: 500,
   color: "#ffffff",
   letterSpacing: "0px",
   userSelect: "none",
-  margin: 0,
   [theme.breakpoints.down("sm")]: {
     fontSize: "40px"
   }
 }));
 
-export const UseColDesc = styled("p")(({ theme }) => ({
-  fontFamily: "PT Sans, sans-serif",
+export const UseColDesc = styled(Typography)(({ theme }) => ({
+  fontFamily: "PT Sans, sans-serif !important",
   fontSize: "27px",
   lineHeight: "32px",
   fontWeight: 400,
   color: "#ffffff",
   letterSpacing: "0px",
   userSelect: "none",
-  margin: 0,
   [theme.breakpoints.down("sm")]: {
     fontSize: "20px"
   }
@@ -265,14 +260,13 @@ export const SubTextRow = styled(Box)(({ theme }) => ({
   }
 }));
 
-export const SubText = styled("p")(({ theme }) => ({
-  fontFamily: "PT Sans, sans-serif",
+export const SubText = styled(Typography)(({ theme }) => ({
+  fontFamily: "PT Sans, sans-serif !important",
   fontWeight: "400",
   fontSize: "40px",
   userSelect: "none",
   lineHeight: "48px",
   color: "#ffffff",
-  margin: 0,
   [theme.breakpoints.down("sm")]: {
     fontSize: "30px",
     lineHeight: "38px"
@@ -488,7 +482,7 @@ export const FAQNumberBubble = styled(Box)(({ theme }) => ({
   borderRadius: "50%",
   backgroundColor: "#101776",
   color: "#ffffff",
-  fontFamily: "PT Sans, sans-serif",
+  fontFamily: "PT Sans, sans-serif !important",
   fontSize: "24px",
   fontWeight: 500,
   userSelect: "none",
@@ -524,7 +518,7 @@ export const FAQCardRow = styled(Box)(({ theme }) => ({
 }));
 
 export const FAQCardRowText = styled(Box)(({ theme }) => ({
-  fontFamily: "PT Sans, sans-serif",
+  fontFamily: "PT Sans, sans-serif !important",
   fontSize: "24px",
   color: "#ffffff",
   userSelect: "none",
