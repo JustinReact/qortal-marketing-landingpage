@@ -76,7 +76,7 @@ export const QORTPage: FC<QORTPageProps> = ({ setTheme }) => {
   }, []);
 
   useEffect(() => {
-    // Set the scrollbar color for this page
+    // Set the theme color for this page
     setTheme("dark");
   }, []);
 
