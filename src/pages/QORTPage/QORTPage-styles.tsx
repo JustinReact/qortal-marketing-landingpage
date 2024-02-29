@@ -1,5 +1,5 @@
 import { styled, keyframes } from "@mui/system";
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 
 export const spinAnimation = keyframes`
   0% {
@@ -95,7 +95,7 @@ export const ThirdContainer = styled(Box)({
   height: "100%"
 });
 
-export const MainTitle = styled(Typography)(({ theme }) => ({
+export const MainTitle = styled("p")(({ theme }) => ({
   fontFamily: "Protest Strike, sans-serif",
   lineHeight: "180px",
   fontSize: "210px",
@@ -104,6 +104,7 @@ export const MainTitle = styled(Typography)(({ theme }) => ({
   letterSpacing: "0px",
   userSelect: "none",
   transform: "translateX(-105px) translateY(-50px)",
+  margin: 0,
   [theme.breakpoints.down("md")]: {
     fontSize: "180px",
     lineHeight: "150px",
@@ -125,24 +126,26 @@ export const SubTitleRow = styled(Box)({
   padding: "0 15px"
 });
 
-export const SubTitle = styled(Typography)({
+export const SubTitle = styled("p")({
   fontFamily: "Protest Strike, sans-serif",
   fontSize: "80px",
   fontWeight: 500,
   color: "#ffffff",
   letterSpacing: "0px",
   userSelect: "none",
-  lineHeight: "100px"
+  lineHeight: "100px",
+  margin: 0,
 });
 
-export const SubTitleDesc = styled(Typography)({
+export const SubTitleDesc = styled("p")({
   fontFamily: "PT Sans, sans-serif",
   fontSize: "35px",
   fontWeight: 400,
   color: "#ffffff",
   letterSpacing: "0px",
   userSelect: "none",
-  lineHeight: "50px"
+  lineHeight: "50px",
+  margin: 0,
 });
 
 export const UseCardRow = styled(Box)({
@@ -194,7 +197,7 @@ export const UseColRow = styled(Box)({
   gap: "20px"
 });
 
-export const UseColTitle = styled(Typography)(({ theme }) => ({
+export const UseColTitle = styled("p")(({ theme }) => ({
   fontFamily: "Protest Strike, sans-serif",
   fontSize: "40px",
   lineHeight: "60px",
@@ -202,12 +205,13 @@ export const UseColTitle = styled(Typography)(({ theme }) => ({
   color: "#ffffff",
   letterSpacing: "0px",
   userSelect: "none",
+  margin: 0,
   [theme.breakpoints.down("sm")]: {
     fontSize: "40px"
   }
 }));
 
-export const UseColDesc = styled(Typography)(({ theme }) => ({
+export const UseColDesc = styled("p")(({ theme }) => ({
   fontFamily: "PT Sans, sans-serif",
   fontSize: "27px",
   lineHeight: "32px",
@@ -215,6 +219,7 @@ export const UseColDesc = styled(Typography)(({ theme }) => ({
   color: "#ffffff",
   letterSpacing: "0px",
   userSelect: "none",
+  margin: 0,
   [theme.breakpoints.down("sm")]: {
     fontSize: "20px"
   }
@@ -260,13 +265,14 @@ export const SubTextRow = styled(Box)(({ theme }) => ({
   }
 }));
 
-export const SubText = styled(Typography)(({ theme }) => ({
+export const SubText = styled("p")(({ theme }) => ({
   fontFamily: "PT Sans, sans-serif",
   fontWeight: "400",
   fontSize: "40px",
   userSelect: "none",
   lineHeight: "48px",
   color: "#ffffff",
+  margin: 0,
   [theme.breakpoints.down("sm")]: {
     fontSize: "30px",
     lineHeight: "38px"
