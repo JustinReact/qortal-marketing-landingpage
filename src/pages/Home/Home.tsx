@@ -57,24 +57,6 @@ const Home: FC = () => {
   const [firstTimeVisitor, setFirstTimeVisitor] = useState<boolean>(false);
   const [showVideoPlayer, setShowVideoPlayer] = useState<boolean>(false);
 
-  useEffect(() => {
-    const isFirstTimeVisitor = localStorage.getItem("isFirstTimeVisitor");
-    const userOS = parser.getOS().name;
-
-    if (!isFirstTimeVisitor) {
-      // Perform actions for first-time visitors
-      setFirstTimeVisitor(true);
-      // Set the flag in localStorage
-      localStorage.setItem("isFirstTimeVisitor", "false");
-      // Redirect to /welcome for mobile users
-      if (userOS?.includes("Android" || "iOS")) {
-        navigate("/welcome");
-      }
-    } else {
-      return;
-    }
-  }, []);
-
   // Redirect to /qort for mobile users
   // useEffect(() => {
   //   const isFirstTimeVisitor = localStorage.getItem("isFirstTimeVisitor");
