@@ -59,6 +59,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { UAParser } from "ua-parser-js";
 import { setOS } from "../../state/features/osSlice";
+import { useMediaQuery, useTheme } from "@mui/material";
 
 export interface QORTPageProps {
   setTheme: (val: string) => void;
@@ -68,6 +69,8 @@ export const QORTPage: FC<QORTPageProps> = ({ setTheme }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const parser = new UAParser();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const [faqsOpen, setFaqsOpen] = useState({
     1: false,
@@ -138,7 +141,11 @@ export const QORTPage: FC<QORTPageProps> = ({ setTheme }) => {
               className="tri-right border round btm-left-in"
             >
               <SocialButton>
-                <DiscordSVG color={"#1300af"} height={"35"} width={"35"} />
+                <DiscordSVG
+                  color={"#1300af"}
+                  height={isMobile ? "30" : "35"}
+                  width={isMobile ? "30" : "35"}
+                />
                 Join Discord
               </SocialButton>
             </ChatBubble>

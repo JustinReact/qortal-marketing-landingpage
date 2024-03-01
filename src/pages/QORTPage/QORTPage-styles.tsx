@@ -77,6 +77,7 @@ export const MobileOwlImageContainer = styled(Box)(({ theme }) => ({
   justifyContent: "space-evenly",
   alignItems: "center",
   width: "100%",
+  gap: "10px",
   [theme.breakpoints.up("sm")]: {
     display: "none"
   }
@@ -471,6 +472,7 @@ export const SocialButton = styled("button")(({ theme }) => ({
   },
   [theme.breakpoints.down("sm")]: {
     borderRadius: "5px",
+    padding: "10px",
   },
 }));
 
@@ -605,7 +607,6 @@ export const CoinLogosRow = styled(Box)({
   display: "grid",
   gridTemplateColumns: "repeat(3, 1fr)",
   gap: "10px",
-  marginTop: "15px"
 });
 
 export const CoinLogo = styled("img")({
