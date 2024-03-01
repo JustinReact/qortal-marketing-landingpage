@@ -96,11 +96,11 @@ export const OwlLogo = styled("img")(({ theme }) => ({
 }));
 
 export const MobileOwlLogo = styled("img")(({ theme }) => ({
-  width: "100px",
-  height: "100px",
+  width: "80px",
+  height: "80px",
   transform: "rotate(-0.85deg)",
   objectFit: "cover",
-  userSelect: "none"
+  userSelect: "none",
 }));
 
 export const SecondContainer = styled(Box)({
