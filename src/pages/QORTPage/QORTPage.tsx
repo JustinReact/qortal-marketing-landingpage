@@ -4,6 +4,8 @@ import {
   ChatBubble,
   CoinImg,
   CoinImgRow,
+  CoinLogo,
+  CoinLogosRow,
   FAQCard,
   FAQCardContainer,
   FAQCardContainerRow,
@@ -14,6 +16,8 @@ import {
   InstallationWord,
   MainContainer,
   MainTitle,
+  MobileOwlImageContainer,
+  MobileOwlLogo,
   OwlImageContainer,
   OwlImageWrapper,
   OwlLogo,
@@ -40,10 +44,16 @@ import QShopLogo from "../../images/QORT/Q-ShopLogo.png";
 import NamesMarket from "../../images/QORT/NamesMarket.png";
 import TradePortal from "../../images/QORT/TradePortal.png";
 import QORTOwlMascot from "../../images/QORT/QORTOwlMascot.webp";
+import QORTOwlMascotHead from "../../images/QORT/QORTOwlMascotHead.webp";
+import BTCLogo from "../../images/QORT/btc.webp";
+import DOGELogo from "../../images/QORT/doge.webp";
+import LTCLogo from "../../images/QORT/ltc.webp";
+import DGBLogo from "../../images/QORT/dgb.webp";
+import ARRRLogo from "../../images/QORT/arrr.webp";
+import RVNLogo from "../../images/QORT/rvn.webp";
 import { NorthEastSVG } from "../../components/Common/Icons/NorthEastSVG";
 import { SouthEastSVG } from "../../components/Common/Icons/SouthEastSVG";
 import { AnimatePresence, motion } from "framer-motion";
-import { Typography } from "@mui/material";
 import { DiscordSVG } from "../../components/Common/Icons/DiscordSVG";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -144,6 +154,22 @@ export const QORTPage: FC<QORTPageProps> = ({ setTheme }) => {
             QORT
           </MainTitle>
         </CoinImgRow>
+        <MobileOwlImageContainer>
+          <MobileOwlLogo src={QORTOwlMascotHead} alt="QORT Owl Mascot Head" />
+          <SocialButton
+            onClick={() => {
+              ReactGA.event({
+                category: "User",
+                action: "Clicked Mobile Discord Owl",
+                label: "Discord Mobile Button Owl"
+              });
+              window.open("https://discord.gg/YKdxYUSqZR", "_blank");
+            }}
+          >
+            <DiscordSVG color={"#1300af"} height={"35"} width={"35"} />
+            Join Discord
+          </SocialButton>
+        </MobileOwlImageContainer>
         <SubTextRow>
           <SubText>
             QORT is way more than a coin!
@@ -206,6 +232,14 @@ export const QORTPage: FC<QORTPageProps> = ({ setTheme }) => {
                 </span>
               </UseColDesc>
             </UseColRow>
+            <CoinLogosRow>
+              <CoinLogo src={BTCLogo} alt="Bitcoin Logo" />
+              <CoinLogo src={LTCLogo} alt="Litecoin Logo" />
+              <CoinLogo src={DOGELogo} alt="Doge Logo" />
+              <CoinLogo src={DGBLogo} alt="DigiByte Logo" />
+              <CoinLogo src={RVNLogo} alt="Ravencoin Logo" />
+              <CoinLogo src={ARRRLogo} alt="Pirate Chain Logo" />
+            </CoinLogosRow>
           </UseCard>
         </UseCardRow>
       </SecondContainer>
@@ -219,7 +253,9 @@ export const QORTPage: FC<QORTPageProps> = ({ setTheme }) => {
         </SubTitleRow>
         <FAQCardContainer>
           <FAQCardContainerRow>
-            <FAQNumberBubble><span style={{padding: "5px"}}>1</span></FAQNumberBubble>
+            <FAQNumberBubble>
+              <span style={{ padding: "5px" }}>1</span>
+            </FAQNumberBubble>
             <FAQCard
               onClick={() => {
                 setFaqsOpen({ ...faqsOpen, 1: !faqsOpen[1] });

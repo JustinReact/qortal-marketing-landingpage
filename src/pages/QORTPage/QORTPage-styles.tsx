@@ -25,15 +25,18 @@ export const arrowAnimation = keyframes`
   }
 `;
 
-export const Wrapper = styled(Box)({
+export const Wrapper = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
   justifyContent: "flex-start",
   minHeight: "100vh",
   gap: "250px",
-  width: "100%"
-});
+  width: "100%",
+  [theme.breakpoints.down("sm")]: {
+    gap: "100px"
+  }
+}));
 
 export const MainContainer = styled(Box)(({ theme }) => ({
   position: "relative",
@@ -45,7 +48,8 @@ export const MainContainer = styled(Box)(({ theme }) => ({
   gap: "20px",
   marginTop: "150px",
   [theme.breakpoints.down("sm")]: {
-    marginTop: "50px"
+    marginTop: "20px",
+    gap: "10px"
   }
 }));
 
@@ -56,13 +60,27 @@ export const OwlImageWrapper = styled(Box)(({ theme }) => ({
   [theme.breakpoints.down("lg")]: {
     bottom: "-300px",
     left: "50%",
-    transform: "translateX(-80%)",
+    transform: "translateX(-80%)"
+  },
+  [theme.breakpoints.down("sm")]: {
+    display: "none"
   }
 }));
 
 export const OwlImageContainer = styled(Box)({
   position: "relative"
 });
+
+export const MobileOwlImageContainer = styled(Box)(({ theme }) => ({
+  position: "relative",
+  display: "flex",
+  justifyContent: "space-evenly",
+  alignItems: "center",
+  width: "100%",
+  [theme.breakpoints.up("sm")]: {
+    display: "none"
+  }
+}));
 
 export const OwlLogo = styled("img")(({ theme }) => ({
   width: "200px",
@@ -72,8 +90,16 @@ export const OwlLogo = styled("img")(({ theme }) => ({
   [theme.breakpoints.down("sm")]: {
     width: "200px",
     height: "200px",
-    objectFit: "contain",
-  },
+    objectFit: "contain"
+  }
+}));
+
+export const MobileOwlLogo = styled("img")(({ theme }) => ({
+  width: "100px",
+  height: "100px",
+  transform: "rotate(-0.85deg)",
+  objectFit: "cover",
+  userSelect: "none"
 }));
 
 export const SecondContainer = styled(Box)({
@@ -83,7 +109,6 @@ export const SecondContainer = styled(Box)({
   alignItems: "center",
   width: "100%",
   height: "100%"
-  // background: "radial-gradient(circle at 300px bottom, rgba(92,93,253,1) 0%, rgba(81,61,198,1) 18%, rgba(11,23,41,1) 80%)",
 });
 
 export const ThirdContainer = styled(Box)({
@@ -112,7 +137,7 @@ export const MainTitle = styled(Typography)(({ theme }) => ({
   [theme.breakpoints.down("sm")]: {
     fontSize: "80px",
     lineHeight: "80px",
-    transform: "translateX(-45px) translateY(-50px)"
+    transform: "translateX(-45px) translateY(-30px)"
   }
 }));
 
@@ -182,8 +207,7 @@ export const UseColImg = styled("img")(({ theme }) => ({
   height: "200px",
   objectFit: "cover",
   userSelect: "none",
-  filter: "drop-shadow(0px 18px 20px #cdcdcd)",
-
+  filter: "drop-shadow(0px 18px 20px #cdcdcd)"
 }));
 
 export const UseColRow = styled(Box)({
@@ -225,7 +249,7 @@ export const CoinImgRow = styled(Box)({
   flexDirection: "row",
   justifyContent: "center",
   alignItems: "flex-end",
-  maxWidth: "100%",
+  maxWidth: "100%"
 });
 
 export const CoinImg = styled("img")(({ theme }) => ({
@@ -256,7 +280,7 @@ export const SubTextRow = styled(Box)(({ theme }) => ({
   gap: "40px",
   [theme.breakpoints.only("xs")]: {
     padding: "0 5px",
-    maxWidth: "100%",
+    maxWidth: "100%"
   }
 }));
 
@@ -296,11 +320,11 @@ export const ChatBubble = styled("div")(({ theme }) => ({
   backgroundColor: "white",
   transition: "all 0.3s ease-in-out",
   [theme.breakpoints.only("xs")]: {
-    right: "-160px",
+    right: "-160px"
   },
   "&:hover": {
     cursor: "pointer",
-    filter: "drop-shadow(2px 4px 3px #3a3a3a)",
+    filter: "drop-shadow(2px 4px 3px #3a3a3a)"
   },
   "&.tri-right.border.left-in:before": {
     content: "''",
@@ -379,7 +403,7 @@ export const ChatBubble = styled("div")(({ theme }) => ({
   },
   "&.round": {
     borderRadius: "30px"
-  },
+  }
 }));
 
 // Arrows animation for scroll down
@@ -395,7 +419,6 @@ export const ArrowSVG = styled("svg")(({ theme }) => ({
     [theme.breakpoints.only("sm")]: {
       width: "140px",
       height: "80px"
-      
     },
     [theme.breakpoints.only("xs")]: {
       width: "180px",
@@ -444,9 +467,12 @@ export const SocialButton = styled("button")(({ theme }) => ({
   border: "none",
   transition: "all 0.3s ease-in-out",
   "&:hover": {
-    cursor: "pointer",
-  }
-}))
+    cursor: "pointer"
+  },
+  [theme.breakpoints.down("sm")]: {
+    borderRadius: "5px",
+  },
+}));
 
 // FAQ Section
 
@@ -458,7 +484,10 @@ export const FAQCardContainer = styled(Box)(({ theme }) => ({
   width: "100%",
   gap: "40px",
   marginTop: "110px",
-  marginBottom: "50px"
+  marginBottom: "50px",
+  [theme.breakpoints.down("sm")]: {
+    marginTop: "60px"
+  }
 }));
 
 export const FAQCardContainerRow = styled(Box)(({ theme }) => ({
@@ -469,8 +498,9 @@ export const FAQCardContainerRow = styled(Box)(({ theme }) => ({
   gap: "50px",
   width: "70%",
   [theme.breakpoints.down("md")]: {
-    width: "90%"
-  }  
+    width: "90%",
+    gap: "15px"
+  }
 }));
 
 export const FAQNumberBubble = styled(Box)(({ theme }) => ({
@@ -488,9 +518,9 @@ export const FAQNumberBubble = styled(Box)(({ theme }) => ({
   userSelect: "none",
   boxShadow:
     "0px 4px 5px 0px hsla(0,0%,0%,0.14),  0px 1px 10px 0px hsla(0,0%,0%,0.12),  0px 2px 4px -1px hsla(0,0%,0%,0.2)",
-    [theme.breakpoints.down("md")]: {
-      width: '60px'
-    },
+  [theme.breakpoints.down("md")]: {
+    width: "60px"
+  }
 }));
 
 export const FAQCard = styled(Box)(({ theme }) => ({
@@ -550,7 +580,7 @@ export const InstallationWord = styled("span")({
   transition: "all 0.3s ease-in-out",
   "&:hover": {
     cursor: "pointer",
-    color: "#03969b",
+    color: "#03969b"
   }
 });
 
@@ -567,6 +597,20 @@ export const URLWord = styled("a")({
   transition: "all 0.3s ease-in-out",
   "&:hover": {
     cursor: "pointer",
-    color: "#03969b",
+    color: "#03969b"
   }
+});
+
+export const CoinLogosRow = styled(Box)({
+  display: "grid",
+  gridTemplateColumns: "repeat(3, 1fr)",
+  gap: "10px",
+  marginTop: "15px"
+});
+
+export const CoinLogo = styled("img")({
+  width: "38px",
+  height: "38px",
+  objectFit: "cover",
+  userSelect: "none"
 });
