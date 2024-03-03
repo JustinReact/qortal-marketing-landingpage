@@ -541,13 +541,13 @@ export const FAQCard = styled(Box)(({ theme }) => ({
   }
 }));
 
-export const FAQCardRow = styled(Box)(({ theme }) => ({
+export const FAQCardRow = styled(Box)({
   display: "flex",
   flexDirection: "row",
   justifyContent: "space-between",
   alignItems: "center",
   width: "100%"
-}));
+});
 
 export const FAQCardRowText = styled(Box)(({ theme }) => ({
   fontFamily: "PT Sans, sans-serif !important",
@@ -555,7 +555,10 @@ export const FAQCardRowText = styled(Box)(({ theme }) => ({
   color: "#ffffff",
   userSelect: "none",
   lineHeight: "32px",
-  fontWeight: 400
+  fontWeight: 400,
+  [theme.breakpoints.down("sm")]: {
+    maxWidth: "80%"
+  }
 }));
 
 export const FAQCardRowBody = styled(Box)({

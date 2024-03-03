@@ -235,7 +235,7 @@ export const QORTPage: FC<QORTPageProps> = ({ setTheme }) => {
                 These are:
                 <br />
                 <span style={{ fontWeight: "bold" }}>
-                  BTC, ETH, LTC, DGB, RVN, ARRR and DOGE
+                  BTC, LTC, DGB, RVN, ARRR and DOGE
                 </span>
               </UseColDesc>
             </UseColRow>
@@ -271,9 +271,9 @@ export const QORTPage: FC<QORTPageProps> = ({ setTheme }) => {
               <FAQCardRow>
                 <FAQCardRowText>What is QORT?</FAQCardRowText>
                 {faqsOpen[1] ? (
-                  <SouthEastSVG color={"#ffffff"} height={"22"} width={"22"} />
+                  <SouthEastSVG color={"#ffffff"} height={isMobile ? "25" : "22"} width={isMobile ? "25" : "22"} />
                 ) : (
-                  <NorthEastSVG color={"#ffffff"} height={"22"} width={"22"} />
+                  <NorthEastSVG color={"#ffffff"} height={isMobile ? "25" : "22"} width={isMobile ? "25" : "22"} />
                 )}
               </FAQCardRow>
               <AnimatePresence>
@@ -314,9 +314,9 @@ export const QORTPage: FC<QORTPageProps> = ({ setTheme }) => {
                   Can I purchase some QORT at the moment?
                 </FAQCardRowText>
                 {faqsOpen[2] ? (
-                  <SouthEastSVG color={"#ffffff"} height={"22"} width={"22"} />
+                  <SouthEastSVG color={"#ffffff"} height={isMobile ? "25" : "22"} width={isMobile ? "25" : "22"} />
                 ) : (
-                  <NorthEastSVG color={"#ffffff"} height={"22"} width={"22"} />
+                  <NorthEastSVG color={"#ffffff"} height={isMobile ? "25" : "22"} width={isMobile ? "25" : "22"} />
                 )}
               </FAQCardRow>
               <AnimatePresence>
@@ -385,9 +385,9 @@ export const QORTPage: FC<QORTPageProps> = ({ setTheme }) => {
                   Why should I buy QORT? What are the benefits?
                 </FAQCardRowText>
                 {faqsOpen[3] ? (
-                  <SouthEastSVG color={"#ffffff"} height={"22"} width={"22"} />
+                  <SouthEastSVG color={"#ffffff"} height={isMobile ? "25" : "22"} width={isMobile ? "25" : "22"} />
                 ) : (
-                  <NorthEastSVG color={"#ffffff"} height={"22"} width={"22"} />
+                  <NorthEastSVG color={"#ffffff"} height={isMobile ? "25" : "22"} width={isMobile ? "25" : "22"} />
                 )}
               </FAQCardRow>
               <AnimatePresence>
@@ -436,9 +436,9 @@ export const QORTPage: FC<QORTPageProps> = ({ setTheme }) => {
                   Where can I learn more about QORT and Qortal?
                 </FAQCardRowText>
                 {faqsOpen[4] ? (
-                  <SouthEastSVG color={"#ffffff"} height={"22"} width={"22"} />
+                  <SouthEastSVG color={"#ffffff"} height={isMobile ? "25" : "22"} width={isMobile ? "25" : "22"} />
                 ) : (
-                  <NorthEastSVG color={"#ffffff"} height={"22"} width={"22"} />
+                  <NorthEastSVG color={"#ffffff"} height={isMobile ? "25" : "22"} width={isMobile ? "25" : "22"} />
                 )}
               </FAQCardRow>
               <AnimatePresence>
