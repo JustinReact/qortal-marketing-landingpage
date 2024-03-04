@@ -74,7 +74,8 @@ export const Wrapper = styled("div")(({ theme }) => ({
   },
   "&.BGQORTPage": {
     padding: "2rem 0 0 0",
-    background: "radial-gradient(circle at 250px top, rgba(20,198,238,1) 0%, rgba(97,71,235,1) 29%, rgba(11,23,41,1) 69%)",
+    // background: "radial-gradient(circle at 250px top, rgba(20,198,238,1) 0%, rgba(97,71,235,1) 29%, rgba(11,23,41,1) 69%)",
+    background: "linear-gradient(45deg, rgba(51,40,70,1) 0%, rgba(148,84,253,1) 50%, rgba(31,25,61,1) 100%)",
     [theme.breakpoints.down("sm")]: {
       padding: "1rem"
     }
