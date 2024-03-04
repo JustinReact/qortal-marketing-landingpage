@@ -1,10 +1,11 @@
 import { FC, useEffect, useRef, useState } from "react";
 import {
   ArrowSVG,
-  ChatBubble,
   CoinImg,
   CoinImgRow,
   CoinLogo,
+  CoinLogoCol,
+  CoinLogoName,
   CoinLogosRow,
   FAQCard,
   FAQCardContainer,
@@ -15,6 +16,7 @@ import {
   FAQNumberBubble,
   InstallationWord,
   MainContainer,
+  MainSubRow,
   MainTitle,
   MobileOwlImageContainer,
   MobileOwlLogo,
@@ -126,31 +128,6 @@ export const QORTPage: FC<QORTPageProps> = ({ setTheme }) => {
   return (
     <Wrapper>
       <MainContainer>
-        <OwlImageWrapper>
-          <OwlImageContainer>
-            <OwlLogo src={QORTOwlMascot} alt="QORT Owl Mascot" />
-            <ChatBubble
-              onClick={() => {
-                ReactGA.event({
-                  category: "User",
-                  action: "Clicked Discord Owl",
-                  label: "Discord Button Owl"
-                });
-                window.open("https://discord.gg/YKdxYUSqZR", "_blank");
-              }}
-              className="tri-right border round btm-left-in"
-            >
-              <SocialButton>
-                <DiscordSVG
-                  color={"#1300af"}
-                  height={isMobile ? "30" : "35"}
-                  width={isMobile ? "30" : "35"}
-                />
-                Join Discord
-              </SocialButton>
-            </ChatBubble>
-          </OwlImageContainer>
-        </OwlImageWrapper>
         <CoinImgRow>
           <CoinImg src={QORTCoin} alt="QORT Coin" />
           <MainTitle>
@@ -161,33 +138,57 @@ export const QORTPage: FC<QORTPageProps> = ({ setTheme }) => {
             QORT
           </MainTitle>
         </CoinImgRow>
-        <MobileOwlImageContainer>
-          <MobileOwlLogo src={QORTOwlMascotHead} alt="QORT Owl Mascot Head" />
-          <SocialButton
-            onClick={() => {
-              ReactGA.event({
-                category: "User",
-                action: "Clicked Mobile Discord Owl",
-                label: "Discord Mobile Button Owl"
-              });
-              window.open("https://discord.gg/YKdxYUSqZR", "_blank");
-            }}
-          >
-            <DiscordSVG color={"#1300af"} height={"35"} width={"35"} />
-            Join Discord
-          </SocialButton>
-        </MobileOwlImageContainer>
-        <SubTextRow>
-          <SubText>
-            QORT is way more than a coin!
-            <br /> Explore all the ways it powers the Qortal ecosystem.
-          </SubText>
-          <ArrowSVG className="arrows" onClick={scrollToFunc}>
-            <path className="a1" d="M0 0 L30 32 L60 0"></path>
-            <path className="a2" d="M0 20 L30 52 L60 20"></path>
-            <path className="a3" d="M0 40 L30 72 L60 40"></path>
-          </ArrowSVG>
-        </SubTextRow>
+        <MainSubRow>
+          <SubTextRow>
+            <SubText>
+              QORT is more than just a coin!
+              <br /> Learn how it powers the Qortal ecosystem.
+            </SubText>
+            <ArrowSVG className="arrows" onClick={scrollToFunc}>
+              <path className="a1" d="M0 0 L30 32 L60 0"></path>
+              <path className="a2" d="M0 20 L30 52 L60 20"></path>
+              <path className="a3" d="M0 40 L30 72 L60 40"></path>
+            </ArrowSVG>
+          </SubTextRow>
+          <OwlImageWrapper>
+            <OwlImageContainer>
+              <OwlLogo src={QORTOwlMascot} alt="QORT Owl Mascot" />
+              <SocialButton
+                onClick={() => {
+                  ReactGA.event({
+                    category: "User",
+                    action: "Clicked Discord Owl Desktop",
+                    label: "Discord Button Owl Desktop"
+                  });
+                  window.open("https://discord.gg/YKdxYUSqZR", "_blank");
+                }}
+              >
+                <DiscordSVG
+                  color={"#000000"}
+                  height={isMobile ? "30" : "35"}
+                  width={isMobile ? "30" : "35"}
+                />
+                Join Discord
+              </SocialButton>
+            </OwlImageContainer>
+          </OwlImageWrapper>
+          <MobileOwlImageContainer>
+            <MobileOwlLogo src={QORTOwlMascotHead} alt="QORT Owl Mascot Head" />
+            <SocialButton
+              onClick={() => {
+                ReactGA.event({
+                  category: "User",
+                  action: "Clicked Mobile Discord Owl",
+                  label: "Discord Mobile Button Owl"
+                });
+                window.open("https://discord.gg/YKdxYUSqZR", "_blank");
+              }}
+            >
+              <DiscordSVG color={"#000000"} height={"35"} width={"35"} />
+              Join Discord
+            </SocialButton>
+          </MobileOwlImageContainer>
+        </MainSubRow>
       </MainContainer>
       <SecondContainer>
         <SubTitleRow ref={useCasesRef}>
@@ -234,18 +235,33 @@ export const QORTPage: FC<QORTPageProps> = ({ setTheme }) => {
                 <br />
                 These are:
                 <br />
-                <span style={{ fontWeight: "bold" }}>
-                  BTC, LTC, DGB, RVN, ARRR and DOGE
-                </span>
               </UseColDesc>
             </UseColRow>
             <CoinLogosRow>
-              <CoinLogo src={BTCLogo} alt="Bitcoin Logo" />
-              <CoinLogo src={LTCLogo} alt="Litecoin Logo" />
-              <CoinLogo src={DOGELogo} alt="Doge Logo" />
-              <CoinLogo src={DGBLogo} alt="DigiByte Logo" />
-              <CoinLogo src={RVNLogo} alt="Ravencoin Logo" />
-              <CoinLogo src={ARRRLogo} alt="Pirate Chain Logo" />
+              <CoinLogoCol>
+                <CoinLogoName>BTC</CoinLogoName>
+                <CoinLogo src={BTCLogo} alt="Bitcoin Logo" />
+              </CoinLogoCol>
+              <CoinLogoCol>
+                <CoinLogoName>LTC</CoinLogoName>
+                <CoinLogo src={LTCLogo} alt="Litecoin Logo" />
+              </CoinLogoCol>
+              <CoinLogoCol>
+                <CoinLogoName>DOGE</CoinLogoName>
+                <CoinLogo src={DOGELogo} alt="Doge Logo" />
+              </CoinLogoCol>
+              <CoinLogoCol>
+                <CoinLogoName>DGB</CoinLogoName>
+                <CoinLogo src={DGBLogo} alt="DigiByte Logo" />
+              </CoinLogoCol>
+              <CoinLogoCol>
+                <CoinLogoName>RVN</CoinLogoName>
+                <CoinLogo src={RVNLogo} alt="Ravencoin Logo" />
+              </CoinLogoCol>
+              <CoinLogoCol>
+                <CoinLogoName>ARRR</CoinLogoName>
+                <CoinLogo src={ARRRLogo} alt="Pirate Chain Logo" />
+              </CoinLogoCol>
             </CoinLogosRow>
           </UseCard>
         </UseCardRow>
@@ -271,9 +287,17 @@ export const QORTPage: FC<QORTPageProps> = ({ setTheme }) => {
               <FAQCardRow>
                 <FAQCardRowText>What is QORT?</FAQCardRowText>
                 {faqsOpen[1] ? (
-                  <SouthEastSVG color={"#ffffff"} height={isMobile ? "25" : "22"} width={isMobile ? "25" : "22"} />
+                  <SouthEastSVG
+                    color={"#ffffff"}
+                    height={isMobile ? "25" : "22"}
+                    width={isMobile ? "25" : "22"}
+                  />
                 ) : (
-                  <NorthEastSVG color={"#ffffff"} height={isMobile ? "25" : "22"} width={isMobile ? "25" : "22"} />
+                  <NorthEastSVG
+                    color={"#ffffff"}
+                    height={isMobile ? "25" : "22"}
+                    width={isMobile ? "25" : "22"}
+                  />
                 )}
               </FAQCardRow>
               <AnimatePresence>
@@ -314,9 +338,17 @@ export const QORTPage: FC<QORTPageProps> = ({ setTheme }) => {
                   Can I purchase some QORT at the moment?
                 </FAQCardRowText>
                 {faqsOpen[2] ? (
-                  <SouthEastSVG color={"#ffffff"} height={isMobile ? "25" : "22"} width={isMobile ? "25" : "22"} />
+                  <SouthEastSVG
+                    color={"#ffffff"}
+                    height={isMobile ? "25" : "22"}
+                    width={isMobile ? "25" : "22"}
+                  />
                 ) : (
-                  <NorthEastSVG color={"#ffffff"} height={isMobile ? "25" : "22"} width={isMobile ? "25" : "22"} />
+                  <NorthEastSVG
+                    color={"#ffffff"}
+                    height={isMobile ? "25" : "22"}
+                    width={isMobile ? "25" : "22"}
+                  />
                 )}
               </FAQCardRow>
               <AnimatePresence>
@@ -385,9 +417,17 @@ export const QORTPage: FC<QORTPageProps> = ({ setTheme }) => {
                   Why should I buy QORT? What are the benefits?
                 </FAQCardRowText>
                 {faqsOpen[3] ? (
-                  <SouthEastSVG color={"#ffffff"} height={isMobile ? "25" : "22"} width={isMobile ? "25" : "22"} />
+                  <SouthEastSVG
+                    color={"#ffffff"}
+                    height={isMobile ? "25" : "22"}
+                    width={isMobile ? "25" : "22"}
+                  />
                 ) : (
-                  <NorthEastSVG color={"#ffffff"} height={isMobile ? "25" : "22"} width={isMobile ? "25" : "22"} />
+                  <NorthEastSVG
+                    color={"#ffffff"}
+                    height={isMobile ? "25" : "22"}
+                    width={isMobile ? "25" : "22"}
+                  />
                 )}
               </FAQCardRow>
               <AnimatePresence>
@@ -436,9 +476,17 @@ export const QORTPage: FC<QORTPageProps> = ({ setTheme }) => {
                   Where can I learn more about QORT and Qortal?
                 </FAQCardRowText>
                 {faqsOpen[4] ? (
-                  <SouthEastSVG color={"#ffffff"} height={isMobile ? "25" : "22"} width={isMobile ? "25" : "22"} />
+                  <SouthEastSVG
+                    color={"#ffffff"}
+                    height={isMobile ? "25" : "22"}
+                    width={isMobile ? "25" : "22"}
+                  />
                 ) : (
-                  <NorthEastSVG color={"#ffffff"} height={isMobile ? "25" : "22"} width={isMobile ? "25" : "22"} />
+                  <NorthEastSVG
+                    color={"#ffffff"}
+                    height={isMobile ? "25" : "22"}
+                    width={isMobile ? "25" : "22"}
+                  />
                 )}
               </FAQCardRow>
               <AnimatePresence>

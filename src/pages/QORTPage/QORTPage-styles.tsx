@@ -1,5 +1,5 @@
 import { styled, keyframes } from "@mui/system";
-import { Box, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 
 export const spinAnimation = keyframes`
   0% {
@@ -46,22 +46,31 @@ export const MainContainer = styled(Box)(({ theme }) => ({
   alignItems: "center",
   width: "100%",
   gap: "20px",
-  marginTop: "150px",
+  marginTop: "60px",
   [theme.breakpoints.down("sm")]: {
     marginTop: "20px",
     gap: "10px"
   }
 }));
 
-export const OwlImageWrapper = styled(Box)(({ theme }) => ({
-  position: "absolute",
-  bottom: "-75px",
-  left: 0,
-  [theme.breakpoints.down("lg")]: {
-    bottom: "-300px",
-    left: "50%",
-    transform: "translateX(-80%)"
+export const MainSubRow = styled(Box)(({ theme }) => ({
+  display: "flex",
+  justifyContent: "center",
+  gap: "20px",
+  alignItems: "center",
+  flexDirection: "row",
+  width: "100%",
+  "@media (max-width: 1470px)": {
+    flexDirection: "column",
+    gap: "80px",
   },
+  [theme.breakpoints.down("sm")]: {
+    flexDirection: "column",
+    gap: "30px"
+  }
+}));
+
+export const OwlImageWrapper = styled(Box)(({ theme }) => ({
   [theme.breakpoints.down("sm")]: {
     display: "none"
   }
@@ -77,7 +86,6 @@ export const MobileOwlImageContainer = styled(Box)(({ theme }) => ({
   justifyContent: "space-evenly",
   alignItems: "center",
   width: "100%",
-  gap: "10px",
   [theme.breakpoints.up("sm")]: {
     display: "none"
   }
@@ -85,7 +93,7 @@ export const MobileOwlImageContainer = styled(Box)(({ theme }) => ({
 
 export const OwlLogo = styled("img")(({ theme }) => ({
   width: "200px",
-  height: "200px",
+  height: "auto",
   objectFit: "cover",
   userSelect: "none",
   [theme.breakpoints.down("sm")]: {
@@ -97,7 +105,7 @@ export const OwlLogo = styled("img")(({ theme }) => ({
 
 export const MobileOwlLogo = styled("img")(({ theme }) => ({
   width: "80px",
-  height: "80px",
+  height: "auto",
   transform: "rotate(-0.85deg)",
   objectFit: "cover",
   userSelect: "none",
@@ -122,18 +130,18 @@ export const ThirdContainer = styled(Box)({
 });
 
 export const MainTitle = styled(Typography)(({ theme }) => ({
-  fontFamily: "Protest Strike, sans-serif !important",
-  lineHeight: "180px",
-  fontSize: "210px",
+  fontFamily: "Protest Strike, sans-serif",
+  lineHeight: "120px",
+  fontSize: "128px",
   fontWeight: 500,
   color: "#ffffff",
   letterSpacing: "0px",
   userSelect: "none",
-  transform: "translateX(-105px) translateY(-50px)",
+  transform: "translateX(-75px) translateY(-50px)",
   [theme.breakpoints.down("md")]: {
     fontSize: "180px",
     lineHeight: "150px",
-    transform: "translateX(-85px) translateY(-50px)"
+    transform: "translateX(-75px) translateY(-50px)"
   },
   [theme.breakpoints.down("sm")]: {
     fontSize: "80px",
@@ -152,7 +160,7 @@ export const SubTitleRow = styled(Box)({
 });
 
 export const SubTitle = styled(Typography)({
-  fontFamily: "Protest Strike, sans-serif !important",
+  fontFamily: "Spartan ",
   fontSize: "80px",
   fontWeight: 500,
   color: "#ffffff",
@@ -162,7 +170,7 @@ export const SubTitle = styled(Typography)({
 });
 
 export const SubTitleDesc = styled(Typography)({
-  fontFamily: "PT Sans, sans-serif !important",
+  fontFamily: "PT Sans, sans-serif ",
   fontSize: "35px",
   fontWeight: 400,
   color: "#ffffff",
@@ -191,7 +199,7 @@ export const UseCard = styled(Box)({
   flexDirection: "column",
   gap: "20px",
   width: "400px",
-  height: "600px",
+  height: "620px",
   padding: "180px 20px 20px 20px",
   borderRadius: "20px",
   borderBottom: "4px solid #01041a",
@@ -220,7 +228,7 @@ export const UseColRow = styled(Box)({
 });
 
 export const UseColTitle = styled(Typography)(({ theme }) => ({
-  fontFamily: "Protest Strike, sans-serif !important",
+  fontFamily: "Spartan",
   fontSize: "40px",
   lineHeight: "60px",
   fontWeight: 500,
@@ -233,7 +241,7 @@ export const UseColTitle = styled(Typography)(({ theme }) => ({
 }));
 
 export const UseColDesc = styled(Typography)(({ theme }) => ({
-  fontFamily: "PT Sans, sans-serif !important",
+  fontFamily: "PT Sans, sans-serif ",
   fontSize: "27px",
   lineHeight: "32px",
   fontWeight: 400,
@@ -254,8 +262,8 @@ export const CoinImgRow = styled(Box)({
 });
 
 export const CoinImg = styled("img")(({ theme }) => ({
-  width: "400px",
-  height: "400px",
+  width: "300px",
+  height: "300px",
   objectFit: "cover",
   userSelect: "none",
   animation: `${spinAnimation} 20s linear infinite`,
@@ -286,7 +294,7 @@ export const SubTextRow = styled(Box)(({ theme }) => ({
 }));
 
 export const SubText = styled(Typography)(({ theme }) => ({
-  fontFamily: "PT Sans, sans-serif !important",
+  fontFamily: "PT Sans, sans-serif ",
   fontWeight: "400",
   fontSize: "40px",
   userSelect: "none",
@@ -310,102 +318,102 @@ export const LogoContainer = styled(Box)({
 
 // Owl Mascot Chat Message Bubble
 
-export const ChatBubble = styled("div")(({ theme }) => ({
-  position: "absolute",
-  top: "-120px",
-  right: "-200px",
-  margin: "40px",
-  display: "inline-block",
-  width: "auto",
-  height: "auto",
-  backgroundColor: "white",
-  transition: "all 0.3s ease-in-out",
-  [theme.breakpoints.only("xs")]: {
-    right: "-160px"
-  },
-  "&:hover": {
-    cursor: "pointer",
-    filter: "drop-shadow(2px 4px 3px #3a3a3a)"
-  },
-  "&.tri-right.border.left-in:before": {
-    content: "''",
-    position: "absolute",
-    width: 0,
-    height: 0,
-    left: "-40px",
-    right: "auto",
-    top: "30px",
-    bottom: "auto",
-    border: "20px solid",
-    borderColor: "#0091ff #0091ff transparent transparent"
-  },
-  "&.tri-right.left-in:after": {
-    content: "''",
-    position: "absolute",
-    width: 0,
-    height: 0,
-    left: "-20px",
-    right: "auto",
-    top: "38px",
-    bottom: "auto",
-    border: "12px solid",
-    borderColor: "white white transparent transparent"
-  },
-  "&.tri-right.border.btm-left:before": {
-    content: "''",
-    position: "absolute",
-    width: "0",
-    height: "0",
-    left: "-8px",
-    right: "auto",
-    top: "auto",
-    bottom: "-40px",
-    border: "32px solid",
-    borderColor: "transparent transparent transparent #0091ff"
-  },
-  "&.tri-right.btm-left:after": {
-    content: "''",
-    position: "absolute",
-    width: "0",
-    height: "0",
-    left: "0px",
-    right: "auto",
-    top: "auto",
-    bottom: "-20px",
-    border: "22px solid",
-    borderColor: "transparent transparent transparent white"
-  },
-  "&.tri-right.border.btm-left-in:before": {
-    content: "''",
-    position: "absolute",
-    width: "0",
-    height: "0",
-    left: "30px",
-    right: "auto",
-    top: "auto",
-    bottom: "-40px",
-    border: "20px solid",
-    borderColor: "#0091ff transparent transparent #0091ff"
-  },
-  "&.tri-right.btm-left-in:after": {
-    content: "''",
-    position: "absolute",
-    width: "0",
-    height: "0",
-    left: "38px",
-    right: "auto",
-    top: "auto",
-    bottom: "-20px",
-    border: "12px solid",
-    borderColor: "white transparent transparent white"
-  },
-  "&.border": {
-    border: "8px solid #0091ff"
-  },
-  "&.round": {
-    borderRadius: "30px"
-  }
-}));
+// export const ChatBubble = styled("div")(({ theme }) => ({
+//   position: "absolute",
+//   top: "-120px",
+//   right: "-200px",
+//   margin: "40px",
+//   display: "inline-block",
+//   width: "auto",
+//   height: "auto",
+//   backgroundColor: "white",
+//   transition: "all 0.3s ease-in-out",
+//   [theme.breakpoints.only("xs")]: {
+//     right: "-160px"
+//   },
+//   "&:hover": {
+//     cursor: "pointer",
+//     filter: "drop-shadow(2px 4px 3px #3a3a3a)"
+//   },
+//   "&.tri-right.border.left-in:before": {
+//     content: "''",
+//     position: "absolute",
+//     width: 0,
+//     height: 0,
+//     left: "-40px",
+//     right: "auto",
+//     top: "30px",
+//     bottom: "auto",
+//     border: "20px solid",
+//     borderColor: "#0091ff #0091ff transparent transparent"
+//   },
+//   "&.tri-right.left-in:after": {
+//     content: "''",
+//     position: "absolute",
+//     width: 0,
+//     height: 0,
+//     left: "-20px",
+//     right: "auto",
+//     top: "38px",
+//     bottom: "auto",
+//     border: "12px solid",
+//     borderColor: "white white transparent transparent"
+//   },
+//   "&.tri-right.border.btm-left:before": {
+//     content: "''",
+//     position: "absolute",
+//     width: "0",
+//     height: "0",
+//     left: "-8px",
+//     right: "auto",
+//     top: "auto",
+//     bottom: "-40px",
+//     border: "32px solid",
+//     borderColor: "transparent transparent transparent #0091ff"
+//   },
+//   "&.tri-right.btm-left:after": {
+//     content: "''",
+//     position: "absolute",
+//     width: "0",
+//     height: "0",
+//     left: "0px",
+//     right: "auto",
+//     top: "auto",
+//     bottom: "-20px",
+//     border: "22px solid",
+//     borderColor: "transparent transparent transparent white"
+//   },
+//   "&.tri-right.border.btm-left-in:before": {
+//     content: "''",
+//     position: "absolute",
+//     width: "0",
+//     height: "0",
+//     left: "30px",
+//     right: "auto",
+//     top: "auto",
+//     bottom: "-40px",
+//     border: "20px solid",
+//     borderColor: "#0091ff transparent transparent #0091ff"
+//   },
+//   "&.tri-right.btm-left-in:after": {
+//     content: "''",
+//     position: "absolute",
+//     width: "0",
+//     height: "0",
+//     left: "38px",
+//     right: "auto",
+//     top: "auto",
+//     bottom: "-20px",
+//     border: "12px solid",
+//     borderColor: "white transparent transparent white"
+//   },
+//   "&.border": {
+//     border: "8px solid #0091ff"
+//   },
+//   "&.round": {
+//     borderRadius: "30px"
+//   }
+// }));
 
 // Arrows animation for scroll down
 
@@ -452,15 +460,17 @@ export const ArrowSVG = styled("svg")(({ theme }) => ({
 
 // Social Button
 
-export const SocialButton = styled("button")(({ theme }) => ({
+export const SocialButton = styled(Button)(({ theme }) => ({
+  position: "absolute",
+  top: "-50px",
+  right: "-200px",
   display: "flex",
   alignItems: "center",
-  borderRadius: "30px",
+  borderRadius: "5px",
   padding: "15px",
   gap: "15px",
-  position: "relative",
-  backgroundColor: theme.palette.mode === "dark" ? "#ffffff" : "#1300af",
-  color: theme.palette.mode === "dark" ? "#1300af" : "#ffffff",
+  backgroundColor: '#ffffff',
+  color: "#000000",
   fontFamily: "Montserrat",
   fontSize: "22px",
   letterSpacing: "0.9px",
@@ -468,11 +478,14 @@ export const SocialButton = styled("button")(({ theme }) => ({
   border: "none",
   transition: "all 0.3s ease-in-out",
   "&:hover": {
-    cursor: "pointer"
+    cursor: "pointer",
+    backgroundColor: "#ffffff !important",
+    filter: "brightness(0.8)"
   },
   [theme.breakpoints.down("sm")]: {
-    borderRadius: "5px",
-    padding: "10px",
+    position: "relative",
+    top: "auto",
+    right: "auto",
   },
 }));
 
@@ -612,9 +625,25 @@ export const CoinLogosRow = styled(Box)({
   gap: "10px",
 });
 
+export const CoinLogoCol = styled(Box)({
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  flexDirection: "column",
+  gap: "10px"
+});
+
 export const CoinLogo = styled("img")({
   width: "38px",
   height: "38px",
   objectFit: "cover",
+  userSelect: "none"
+});
+
+export const CoinLogoName = styled(Typography)({
+  fontFamily: "PT Sans, sans-serif",
+  fontSize: "16px",
+  fontWeight: 600,
+  color: "#ffffff",
   userSelect: "none"
 });

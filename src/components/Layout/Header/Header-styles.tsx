@@ -57,27 +57,42 @@ export const HeaderButtonsRow = styled(Box)(({ theme }) => ({
   gap: "30px"
 }));
 
-export const DiscordButton = styled(Button)(({ theme }) => ({
+export const DiscordButton = styled(Typography)({
+  position: "relative",
   display: "flex",
-  justifyContent: "space-between",
-  border: "2px solid #4a93f8",
-  backgroundColor: "#1e62c3",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: "8px",
+  backgroundColor: "transparent",
   fontFamily: "Oxygen",
   fontSize: "18px",
   color: "white",
   height: "48px",
   borderRadius: "2px",
-  padding: "0 0 0 20px",
+  padding: "10px 15px",
   transition: "all 0.3s ease-in-out",
   zIndex: 2,
+  "&::after": {
+    position: "absolute",
+    width: "0%",
+    height: "2px",
+    backgroundColor: "#ffffff",
+    content: "''",
+    bottom: "3px",
+    transition: "all 0.3s ease-in-out"
+  },
   "&:hover": {
-    backgroundColor: "#1e62c3",
-    boxShadow:
-      theme.palette.mode === "dark"
-        ? "0px 8px 10px 1px hsla(0,0%,0%,0.14), 0px 3px 14px 2px hsla(0,0%,0%, 12), 0px 5px 5px -3px hsla(0,0%,0%,0.2)"
-        : "rgba(0, 0, 0, 0.1) 0px 4px 12px"
+    cursor: "pointer",
+    "&::after": {
+      width: "100%",
+      backgroundColor: "#ffffff",
+      height: "2px",
+      position: "absolute",
+      content: "''",
+      bottom: "3px",
+    },
   }
-}));
+});
 
 export const DocsNavContainer = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -88,6 +103,7 @@ export const DocsNavContainer = styled(Box)(({ theme }) => ({
 }));
 
 export const Docs = styled(Typography)(({ theme }) => ({
+  position: "relative",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
@@ -97,19 +113,36 @@ export const Docs = styled(Typography)(({ theme }) => ({
   fontSize: "18px",
   padding: "10px 15px",
   borderRadius: "2px",
-  backgroundColor: "#7f7cf5",
+  backgroundColor: "transparent",
   color: "#ffffff",
   fontWeight: "400",
   transition: "all 0.3s ease-in-out",
   zIndex: 2,
   userSelect: "none",
+  "&::after": {
+    position: "absolute",
+    width: "0%",
+    height: "2px",
+    backgroundColor: "#ffffff",
+    content: "''",
+    bottom: "3px",
+    transition: "all 0.3s ease-in-out"
+  },
   "&:hover": {
     cursor: "pointer",
-    filter: "brightness(0.9)"
+    "&::after": {
+      width: "100%",
+      backgroundColor: "#ffffff",
+      height: "2px",
+      position: "absolute",
+      content: "''",
+      bottom: "3px",
+    },
   }
 }));
 
-export const FeaturesButton = styled(Typography)(({ theme }) => ({
+export const FeaturesButton = styled(Typography)({
+  position: "relative",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
@@ -118,20 +151,37 @@ export const FeaturesButton = styled(Typography)(({ theme }) => ({
   fontSize: "18px",
   padding: "10px 15px",
   borderRadius: "2px",
-  backgroundColor: theme.palette.secondary.main,
+  backgroundColor: "transparent",
   color: "#ffffff",
   fontWeight: "400",
   minWidth: "140px",
   transition: "all 0.3s ease-in-out",
   zIndex: 2,
   userSelect: "none",
+  "&::after": {
+    position: "absolute",
+    width: "0%",
+    height: "2px",
+    backgroundColor: "#ffffff",
+    content: "''",
+    bottom: "3px",
+    transition: "all 0.3s ease-in-out"
+  },
   "&:hover": {
     cursor: "pointer",
-    filter: "brightness(0.9)"
+    "&::after": {
+      width: "100%",
+      backgroundColor: "#ffffff",
+      height: "2px",
+      position: "absolute",
+      content: "''",
+      bottom: "3px",
+    },
   }
-}));
+});
 
 export const QORTButton = styled(Typography)(({ theme }) => ({
+  position: "relative",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
@@ -141,15 +191,30 @@ export const QORTButton = styled(Typography)(({ theme }) => ({
   minWidth: "140px",
   padding: "10px 15px",
   borderRadius: "2px",
-  backgroundColor: "#0805be",
+  backgroundColor: "transparent",
   color: "#ffffff",
   fontWeight: "400",
-  transition: "all 0.3s ease-in-out",
   zIndex: 2,
   userSelect: "none",
+  "&::after": {
+    position: "absolute",
+    width: "0%",
+    height: "2px",
+    backgroundColor: "#ffffff",
+    content: "''",
+    bottom: "3px",
+    transition: "all 0.3s ease-in-out"
+  },
   "&:hover": {
     cursor: "pointer",
-    filter: "brightness(0.9)"
+    "&::after": {
+      width: "100%",
+      backgroundColor: "#ffffff",
+      height: "2px",
+      position: "absolute",
+      content: "''",
+      bottom: "3px",
+    },
   }
 }));
 

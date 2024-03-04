@@ -28,6 +28,7 @@ import QortalLogo from "../../../images/Logo/QortalLogo.png";
 import QortalLogoDarkTheme from "../../../images/Logo/QortalLogoDarkTheme.webp";
 import { FeaturesSVG } from "../../Common/Icons/FeaturesSVG";
 import { QortalSVG } from "../../Common/Icons/QortalSVG";
+import { DiscordSVG } from "../../Common/Icons/DiscordSVG";
 
 export const Header: FC<LayoutProps> = ({ setTheme }) => {
   const theme = useTheme();
@@ -130,9 +131,7 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                 }}
               >
                 Join Discord
-                <TriangleContainer>
-                  <TriangleIcon />
-                </TriangleContainer>
+                <DiscordSVG color={"#ffffff"} height={"22"} width={"22"} />
               </DiscordButton>
             </HeaderButtonsRow>
           )}
@@ -225,9 +224,7 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                 }}
               >
                 Join Discord
-                <TriangleContainer>
-                  <TriangleIcon />
-                </TriangleContainer>
+                <DiscordSVG color={"#ffffff"} height={"22"} width={"22"} />
               </DiscordButton>
             </HeaderButtonsRow>
           )}
@@ -313,7 +310,7 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                 Developer
                 <DocsSVG color={"#ffffff"} height={"22"} width={"22"} />
               </Docs>
-              {/* <DiscordButton
+              <DiscordButton
                 onClick={() => {
                   ReactGA.event({
                     category: "User",
@@ -324,10 +321,8 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                 }}
               >
                 Join Discord
-                <TriangleContainer>
-                  <TriangleIcon />
-                </TriangleContainer>
-              </DiscordButton> */}
+                <DiscordSVG color={"#ffffff"} height={"22"} width={"22"} />
+              </DiscordButton>
             </HeaderButtonsRow>
           )}
         </HeaderNav>
