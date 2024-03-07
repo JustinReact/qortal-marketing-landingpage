@@ -57,7 +57,7 @@ export const HeaderButtonsRow = styled(Box)(({ theme }) => ({
   gap: "30px"
 }));
 
-export const DiscordButton = styled(Typography)({
+export const DiscordButton = styled(Typography)(({ theme }) => ({
   position: "relative",
   display: "flex",
   alignItems: "center",
@@ -66,7 +66,7 @@ export const DiscordButton = styled(Typography)({
   backgroundColor: "transparent",
   fontFamily: "Oxygen",
   fontSize: "18px",
-  color: "white",
+  color: theme.palette.text.primary,
   height: "48px",
   borderRadius: "2px",
   padding: "10px 15px",
@@ -76,7 +76,7 @@ export const DiscordButton = styled(Typography)({
     position: "absolute",
     width: "0%",
     height: "2px",
-    backgroundColor: "#ffffff",
+    backgroundColor: theme.palette.text.primary,
     content: "''",
     bottom: "3px",
     transition: "all 0.3s ease-in-out"
@@ -85,14 +85,14 @@ export const DiscordButton = styled(Typography)({
     cursor: "pointer",
     "&::after": {
       width: "100%",
-      backgroundColor: "#ffffff",
+      backgroundColor: theme.palette.text.primary,
       height: "2px",
       position: "absolute",
       content: "''",
       bottom: "3px",
     },
   }
-});
+}));
 
 export const DocsNavContainer = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -114,7 +114,7 @@ export const Docs = styled(Typography)(({ theme }) => ({
   padding: "10px 15px",
   borderRadius: "2px",
   backgroundColor: "transparent",
-  color: "#ffffff",
+  color: theme.palette.text.primary,
   fontWeight: "400",
   transition: "all 0.3s ease-in-out",
   zIndex: 2,
@@ -123,7 +123,7 @@ export const Docs = styled(Typography)(({ theme }) => ({
     position: "absolute",
     width: "0%",
     height: "2px",
-    backgroundColor: "#ffffff",
+    backgroundColor: theme.palette.text.primary,
     content: "''",
     bottom: "3px",
     transition: "all 0.3s ease-in-out"
@@ -132,7 +132,7 @@ export const Docs = styled(Typography)(({ theme }) => ({
     cursor: "pointer",
     "&::after": {
       width: "100%",
-      backgroundColor: "#ffffff",
+      backgroundColor: theme.palette.text.primary,
       height: "2px",
       position: "absolute",
       content: "''",
@@ -141,7 +141,7 @@ export const Docs = styled(Typography)(({ theme }) => ({
   }
 }));
 
-export const FeaturesButton = styled(Typography)({
+export const FeaturesButton = styled(Typography)(({ theme }) => ({
   position: "relative",
   display: "flex",
   alignItems: "center",
@@ -152,7 +152,7 @@ export const FeaturesButton = styled(Typography)({
   padding: "10px 15px",
   borderRadius: "2px",
   backgroundColor: "transparent",
-  color: "#ffffff",
+  color: theme.palette.text.primary,
   fontWeight: "400",
   minWidth: "140px",
   transition: "all 0.3s ease-in-out",
@@ -162,7 +162,7 @@ export const FeaturesButton = styled(Typography)({
     position: "absolute",
     width: "0%",
     height: "2px",
-    backgroundColor: "#ffffff",
+    backgroundColor: theme.palette.text.primary,
     content: "''",
     bottom: "3px",
     transition: "all 0.3s ease-in-out"
@@ -171,14 +171,14 @@ export const FeaturesButton = styled(Typography)({
     cursor: "pointer",
     "&::after": {
       width: "100%",
-      backgroundColor: "#ffffff",
+      backgroundColor: theme.palette.text.primary,
       height: "2px",
       position: "absolute",
       content: "''",
       bottom: "3px",
     },
   }
-});
+}));
 
 export const QORTButton = styled(Typography)(({ theme }) => ({
   position: "relative",
@@ -192,7 +192,7 @@ export const QORTButton = styled(Typography)(({ theme }) => ({
   padding: "10px 15px",
   borderRadius: "2px",
   backgroundColor: "transparent",
-  color: "#ffffff",
+  color: theme.palette.text.primary,
   fontWeight: "400",
   zIndex: 2,
   userSelect: "none",
@@ -200,7 +200,7 @@ export const QORTButton = styled(Typography)(({ theme }) => ({
     position: "absolute",
     width: "0%",
     height: "2px",
-    backgroundColor: "#ffffff",
+    backgroundColor: theme.palette.text.primary,
     content: "''",
     bottom: "3px",
     transition: "all 0.3s ease-in-out"
@@ -209,7 +209,7 @@ export const QORTButton = styled(Typography)(({ theme }) => ({
     cursor: "pointer",
     "&::after": {
       width: "100%",
-      backgroundColor: "#ffffff",
+      backgroundColor: theme.palette.text.primary,
       height: "2px",
       position: "absolute",
       content: "''",
