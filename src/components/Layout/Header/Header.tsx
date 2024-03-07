@@ -92,7 +92,7 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                 }}
               >
                 QORT
-                <QortalSVG color={"#ffffff"} height={"22"} width={"22"} />
+                <QortalSVG color={theme.palette.text.primary} height={"22"} width={"22"} />
               </QORTButton>
               <FeaturesButton
                 onClick={() => {
@@ -105,7 +105,7 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                 }}
               >
                 Features
-                <FeaturesSVG color={"#ffffff"} height={"22"} width={"22"} />
+                <FeaturesSVG color={theme.palette.text.primary} height={"22"} width={"22"} />
               </FeaturesButton>
               <Docs
                 onClick={() => {
@@ -118,7 +118,7 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                 }}
               >
                 Developer
-                <DocsSVG color={"#ffffff"} height={"22"} width={"22"} />
+                <DocsSVG color={theme.palette.text.primary} height={"22"} width={"22"} />
               </Docs>
               <DiscordButton
                 onClick={() => {
@@ -131,7 +131,7 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                 }}
               >
                 Join Discord
-                <DiscordSVG color={"#ffffff"} height={"22"} width={"22"} />
+                <DiscordSVG color={theme.palette.text.primary} height={"22"} width={"22"} />
               </DiscordButton>
             </HeaderButtonsRow>
           )}
@@ -185,7 +185,7 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                 }}
               >
                 QORT
-                <QortalSVG color={"#ffffff"} height={"22"} width={"22"} />
+                <QortalSVG color={theme.palette.text.primary} height={"22"} width={"22"} />
               </QORTButton>
               <FeaturesButton
                 onClick={() => {
@@ -198,7 +198,7 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                 }}
               >
                 Features
-                <FeaturesSVG color={"#ffffff"} height={"22"} width={"22"} />
+                <FeaturesSVG color={theme.palette.text.primary} height={"22"} width={"22"} />
               </FeaturesButton>
               <Docs
                 onClick={() => {
@@ -211,7 +211,7 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                 }}
               >
                 Documentation
-                <DocsSVG color={"#ffffff"} height={"22"} width={"22"} />
+                <DocsSVG color={theme.palette.text.primary} height={"22"} width={"22"} />
               </Docs>
               <DiscordButton
                 onClick={() => {
@@ -224,7 +224,7 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                 }}
               >
                 Join Discord
-                <DiscordSVG color={"#ffffff"} height={"22"} width={"22"} />
+                <DiscordSVG color={theme.palette.text.primary} height={"22"} width={"22"} />
               </DiscordButton>
             </HeaderButtonsRow>
           )}
@@ -282,7 +282,7 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                 }}
               >
                 QORT
-                <QortalSVG color={"#ffffff"} height={"22"} width={"22"} />
+                <QortalSVG color={theme.palette.text.primary} height={"22"} width={"22"} />
               </QORTButton>
               <FeaturesButton
                 onClick={() => {
@@ -295,7 +295,7 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                 }}
               >
                 Features
-                <FeaturesSVG color={"#ffffff"} height={"22"} width={"22"} />
+                <FeaturesSVG color={theme.palette.text.primary} height={"22"} width={"22"} />
               </FeaturesButton>
               <Docs
                 onClick={() => {
@@ -308,7 +308,7 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                 }}
               >
                 Developer
-                <DocsSVG color={"#ffffff"} height={"22"} width={"22"} />
+                <DocsSVG color={theme.palette.text.primary} height={"22"} width={"22"} />
               </Docs>
               <DiscordButton
                 onClick={() => {
@@ -321,7 +321,7 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                 }}
               >
                 Join Discord
-                <DiscordSVG color={"#ffffff"} height={"22"} width={"22"} />
+                <DiscordSVG color={theme.palette.text.primary} height={"22"} width={"22"} />
               </DiscordButton>
             </HeaderButtonsRow>
           )}
