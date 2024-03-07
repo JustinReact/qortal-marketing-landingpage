@@ -7,6 +7,7 @@ import { DocsSVG } from "../../Common/Icons/DocsSVG";
 import { FeaturesSVG } from "../../Common/Icons/FeaturesSVG";
 import { RedditSVG } from "../../Common/Icons/RedditSVG";
 import { QortalSVG } from "../../Common/Icons/QortalSVG";
+import ReactGA from "react-ga4";
 
 interface MobileDrawerProps {
   setOpenMobileDrawer: () => void;
