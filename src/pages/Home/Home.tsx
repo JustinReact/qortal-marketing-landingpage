@@ -1,7 +1,6 @@
 import { useState, FC, useEffect, useRef } from "react";
-import { Box, useMediaQuery, useTheme } from "@mui/material";
+import { Typography, useMediaQuery, useTheme } from "@mui/material";
 import { QortalBigLogo } from "../../components/Common/Logo/QortalBigLogo";
-// import { Lines } from "../../components/Common/Lines/Lines";
 import {
   StyledButton,
   HeaderText,
@@ -17,8 +16,12 @@ import {
   CustomDiscordButton,
   CustomDiscordImg,
   QORTPromoModal,
-  FlexRow,
-  DiscordLogo
+  FlexCol,
+  DiscordLogo,
+  CustomRedirectQORTButton,
+  CustomQORTSVG,
+  CustomDiscordSVG,
+  QORTPromoFont
 } from "./Home-styles";
 import QortalWordLogoImg from "../../images/Home/QortalWordLogo.svg";
 import OperatingSystem from "../../components/OperatingSystem/OperatingSystem";
@@ -34,7 +37,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { setOS } from "../../state/features/osSlice";
 import { UAParser } from "ua-parser-js";
 import { useNavigate } from "react-router-dom";
-import CustomDiscordLogo from "../../images/Home/JoinDiscordLogo.png"
 import JoinDiscordLogo from "../../images/Home/JoinDiscordLogo.png";
 
 const Home: FC = () => {
@@ -58,23 +60,23 @@ const Home: FC = () => {
   const [showVideoPlayer, setShowVideoPlayer] = useState<boolean>(false);
 
   // Redirect to /qort for mobile users
-  // useEffect(() => {
-  //   const isFirstTimeVisitor = localStorage.getItem("isFirstTimeVisitor");
-  //   const userOS = parser.getOS().name;
+  useEffect(() => {
+    const isFirstTimeVisitor = localStorage.getItem("isFirstTimeVisitor");
+    const userOS = parser.getOS().name;
 
-  //   if (!isFirstTimeVisitor) {
-  //     // Perform actions for first-time visitors
-  //     setFirstTimeVisitor(true);
-  //     // Set the flag in localStorage
-  //     localStorage.setItem("isFirstTimeVisitor", "false");
-  //     // Redirect to /qort for mobile users
-  //     if (userOS?.includes("Android" || "iOS")) {
-  //       navigate("/qort");
-  //     }
-  //   } else {
-  //     return;
-  //   }
-  // }, []);
+    if (!isFirstTimeVisitor) {
+      // Perform actions for first-time visitors
+      setFirstTimeVisitor(true);
+      // Set the flag in localStorage
+      localStorage.setItem("isFirstTimeVisitor", "false");
+      // Redirect to /qort for mobile users
+      if (userOS?.includes("Android" || "iOS")) {
+        navigate("/qort");
+      }
+    } else {
+      return;
+    }
+  }, []);
 
   // Clear the OS passed props on unmount
   useEffect(() => {
@@ -207,8 +209,7 @@ const Home: FC = () => {
         )}
       </FooterRow>
 
-      {/* Change this boolean before pushing to PROD */}
-      {/* {firstTimeVisitor && (
+      {firstTimeVisitor && (
         <CommonModal
           openModal={firstTimeVisitor}
           onClickFunc={() => {
@@ -230,16 +231,39 @@ const Home: FC = () => {
           }}
         >
           <QORTPromoModal />
-          <FlexRow>
-            <CustomDiscordButton onClick={() => {
-              window.open("https://discord.gg/NqFNtRDm2t", "_blank");
-            }}>
-              <DiscordLogo src={JoinDiscordLogo} alt="Join Discord Logo" />
-              Join Discord
+          <QORTPromoFont>
+            Get in on the coin taking the internet by storm!
+          </QORTPromoFont>
+          <FlexCol>
+            <CustomDiscordButton
+              onClick={() => {
+                ReactGA.event({
+                  category: "User",
+                  action: "Clicked Discord Button on homepage modal",
+                  label: "Clicked Discord Button on homepage modal"
+                });
+                window.open("https://discord.gg/YKdxYUSqZR", "_blank");
+              }}
+            >
+              <CustomDiscordSVG color={"#000000"} height={"62"} width={"62"} />
+              <span>Join Discord</span>
             </CustomDiscordButton>
-          </FlexRow>
+            <CustomRedirectQORTButton
+              onClick={() => {
+                ReactGA.event({
+                  category: "User",
+                  action: "Clicked Redirect to QORT Button on homepage modal",
+                  label: "Clicked Redirect to QORT Button on homepage modal"
+                });
+                navigate("/qort");
+              }}
+            >
+              <CustomQORTSVG color={"#000000"} height={"72"} width={"72"} />
+              <span>Learn More</span>
+            </CustomRedirectQORTButton>
+          </FlexCol>
         </CommonModal>
-      )} */}
+      )}
     </>
   );
 };

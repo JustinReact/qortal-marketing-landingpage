@@ -512,18 +512,31 @@ export const QORTPage: FC<QORTPageProps> = ({ setTheme }) => {
                       more about the project before doing so, you can join our
                       Discord{" "}
                       <URLWord
-                        href="https://discord.gg/YKdxYUSqZR"
-                        target="_blank"
-                        rel="noreferrer"
+                        onClick={() => {
+                          ReactGA.event({
+                            category: "User",
+                            action: "Clicked Discord Button FAQ",
+                            label: "Discord Button FAQ"
+                          });
+                          window.open(
+                            "https://discord.gg/YKdxYUSqZR",
+                            "_blank"
+                          );
+                        }}
                       >
                         here.
                       </URLWord>{" "}
                       and ask any questions you may have. We also have a Wiki
                       with all the technical specifications{" "}
                       <URLWord
-                        href="https://wiki.qortal.org"
-                        target="_blank"
-                        rel="noreferrer"
+                        onClick={() => {
+                          ReactGA.event({
+                            category: "User",
+                            action: "Clicked Wiki Button FAQ",
+                            label: "Discord Wiki FAQ"
+                          });
+                          window.open("https://wiki.qortal.org", "_blank");
+                        }}
                       >
                         here.
                       </URLWord>

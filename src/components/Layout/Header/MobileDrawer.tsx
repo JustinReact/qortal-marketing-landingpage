@@ -22,8 +22,13 @@ export const MobileDrawer: FC<MobileDrawerProps> = ({
     <Container>
       <DrawerButton
         onClick={() => {
+          ReactGA.event({
+            category: "User",
+            action: "Clicked Mobile Drawer Discord Link",
+            label: "Clicked Mobile Drawer Discord Link"
+          });
           setOpenMobileDrawer();
-          window.open("https://discord.gg/NqFNtRDm2t", "_blank");
+          window.open("https://discord.gg/YKdxYUSqZR", "_blank");
         }}
       >
         Join Discord
@@ -36,6 +41,11 @@ export const MobileDrawer: FC<MobileDrawerProps> = ({
       <Divider />
       <DrawerButton
         onClick={() => {
+          ReactGA.event({
+            category: "User",
+            action: "Clicked Mobile Drawer Reddit Link",
+            label: "Clicked Mobile Drawer Reddit Link"
+          });
           setOpenMobileDrawer();
           window.open("https://www.reddit.com/r/QortalProject/", "_blank")
         }}
