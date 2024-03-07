@@ -12,6 +12,7 @@ import {
   IconContainer3,
   FeatureText
 } from "./Promo-styles";
+import ReactGA from "react-ga4";
 import { Grid, Box, useTheme } from "@mui/material";
 import UnderlineScribble from "../../images/Promo/UnderlineScribble.webp";
 import Arrow from "../../images/Promo/Arrow.webp";
