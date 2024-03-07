@@ -198,7 +198,7 @@ const WindowsSteps = () => {
                   action: "Clicked Discord Button Windows Steps",
                   label: "Discord Windows Steps"
                 });
-                window.open("https://discord.gg/NqFNtRDm2t", "_blank");
+                window.open("https://discord.gg/YKdxYUSqZR", "_blank");
               }}
             >
               Join Discord

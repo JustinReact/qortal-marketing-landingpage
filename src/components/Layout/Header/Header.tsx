@@ -124,10 +124,10 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                 onClick={() => {
                   ReactGA.event({
                     category: "User",
-                    action: "Clicked Discord Button With Custom Logo",
-                    label: "Discord Button With Custom Logo"
+                    action: "Clicked Discord Button Header Desktop",
+                    label: "Discord Button Header Click Desktop"
                   });
-                  window.open("https://discord.gg/NqFNtRDm2t", "_blank");
+                  window.open("https://discord.gg/YKdxYUSqZR", "_blank");
                 }}
               >
                 Join Discord
@@ -217,10 +217,10 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                 onClick={() => {
                   ReactGA.event({
                     category: "User",
-                    action: "Clicked Discord Button Header",
-                    label: "Discord Button Header"
+                    action: "Clicked Discord Button Header from QORT page",
+                    label: "Discord Button Header from QORT page"
                   });
-                  window.open("https://discord.gg/NqFNtRDm2t", "_blank");
+                  window.open("https://discord.gg/YKdxYUSqZR", "_blank");
                 }}
               >
                 Join Discord
@@ -314,10 +314,10 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                 onClick={() => {
                   ReactGA.event({
                     category: "User",
-                    action: "Clicked Discord Button Header",
-                    label: "Discord Button Header"
+                    action: "Clicked Discord Button Header Desktop",
+                    label: "Discord Button Header Desktop"
                   });
-                  window.open("https://discord.gg/NqFNtRDm2t", "_blank");
+                  window.open("https://discord.gg/YKdxYUSqZR", "_blank");
                 }}
               >
                 Join Discord

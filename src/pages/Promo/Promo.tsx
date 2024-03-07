@@ -41,6 +41,11 @@ export const Promo = () => {
           <ButtonRow>
             <DiscordButton
               onClick={() => {
+                ReactGA.event({
+                  category: "User",
+                  action: "Clicked Discord Button on Promo page",
+                  label: "Clicked Discord Button on Promo page"
+                });
                 window.open("https://discord.gg/9hgNdBj4aC", "_blank");
               }}
             >

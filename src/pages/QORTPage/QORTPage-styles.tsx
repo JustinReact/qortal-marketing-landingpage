@@ -61,17 +61,27 @@ export const MainSubRow = styled(Box)(({ theme }) => ({
   flexDirection: "row",
   width: "100%",
   "@media (max-width: 1470px)": {
-    flexDirection: "column",
-    gap: "80px",
+    gap: 0,
   },
-  [theme.breakpoints.down("sm")]: {
+  [theme.breakpoints.down("lg")]: {
+    justifyContent: "flex-start",
+    paddingLeft: "80px",
+  },
+  "@media (max-width: 991px)": {
+    justifyContent: "flex-start",
+    paddingLeft: "50px",
+  },
+  [theme.breakpoints.down("md")]: {
     flexDirection: "column",
     gap: "30px"
+  },
+  [theme.breakpoints.only("xs")]: {
+    paddingLeft: "0",
   }
 }));
 
 export const OwlImageWrapper = styled(Box)(({ theme }) => ({
-  [theme.breakpoints.down("sm")]: {
+  [theme.breakpoints.down("md")]: {
     display: "none"
   }
 }));
@@ -83,10 +93,11 @@ export const OwlImageContainer = styled(Box)({
 export const MobileOwlImageContainer = styled(Box)(({ theme }) => ({
   position: "relative",
   display: "flex",
-  justifyContent: "space-evenly",
+  justifyContent: "center",
+  gap: "20px",
   alignItems: "center",
   width: "100%",
-  [theme.breakpoints.up("sm")]: {
+  [theme.breakpoints.up("md")]: {
     display: "none"
   }
 }));
@@ -96,11 +107,9 @@ export const OwlLogo = styled("img")(({ theme }) => ({
   height: "auto",
   objectFit: "cover",
   userSelect: "none",
-  [theme.breakpoints.down("sm")]: {
-    width: "200px",
-    height: "200px",
-    objectFit: "contain"
-  }
+  "@media (max-width: 1470px)": {
+    width: "180px",
+  },
 }));
 
 export const MobileOwlLogo = styled("img")(({ theme }) => ({
@@ -144,8 +153,8 @@ export const MainTitle = styled(Typography)(({ theme }) => ({
     transform: "translateX(-75px) translateY(-50px)"
   },
   [theme.breakpoints.down("sm")]: {
-    fontSize: "80px",
-    lineHeight: "80px",
+    fontSize: "75px",
+    lineHeight: "75px",
     transform: "translateX(-45px) translateY(-30px)"
   }
 }));
@@ -191,7 +200,7 @@ export const UseCardRow = styled(Box)({
   marginTop: "95px"
 });
 
-export const UseCard = styled(Box)({
+export const UseCard = styled(Box)(({ theme }) => ({
   position: "relative",
   display: "flex",
   justifyContent: "flex-start",
@@ -205,10 +214,13 @@ export const UseCard = styled(Box)({
   borderBottom: "4px solid #01041a",
   borderRight: "4px solid #01041a",
   background:
-    "radial-gradient(circle at 0px top, rgba(20,198,238,1) 4%, rgba(97,71,235,1) 34%, rgba(11,23,41,1) 53%)"
-});
+    "radial-gradient(circle at 0px top, rgba(20,198,238,1) 4%, rgba(97,71,235,1) 34%, rgba(11,23,41,1) 53%)",
+  [theme.breakpoints.only("xs")]: {
+  height: "auto",
+  },
+}));
 
-export const UseColImg = styled("img")(({ theme }) => ({
+export const UseColImg = styled("img")({
   position: "absolute",
   top: "-65px",
   left: "20px",
@@ -217,7 +229,7 @@ export const UseColImg = styled("img")(({ theme }) => ({
   objectFit: "cover",
   userSelect: "none",
   filter: "drop-shadow(0px 18px 20px #cdcdcd)"
-}));
+});
 
 export const UseColRow = styled(Box)({
   display: "flex",
@@ -300,9 +312,17 @@ export const SubText = styled(Typography)(({ theme }) => ({
   userSelect: "none",
   lineHeight: "48px",
   color: "#ffffff",
-  [theme.breakpoints.down("sm")]: {
+  "@media (max-width: 1470px)": {
     fontSize: "30px",
-    lineHeight: "38px"
+    lineHeight: "35px"
+  },
+  "@media (max-width: 1094px)": {
+    fontSize: "24px",
+    lineHeight: "35px"
+  },
+  [theme.breakpoints.down("sm")]: {
+    fontSize: "25px",
+    lineHeight: "26px"
   }
 }));
 
@@ -421,10 +441,6 @@ export const ArrowSVG = styled("svg")(({ theme }) => ({
   "&.arrows": {
     width: "60px",
     height: "72px",
-    [theme.breakpoints.only("md")]: {
-      width: "120px",
-      height: "80px"
-    },
     [theme.breakpoints.only("sm")]: {
       width: "140px",
       height: "80px"
@@ -482,7 +498,11 @@ export const SocialButton = styled(Button)(({ theme }) => ({
     backgroundColor: "#ffffff !important",
     filter: "brightness(0.8)"
   },
-  [theme.breakpoints.down("sm")]: {
+  "@media (max-width: 1470px)": {
+    fontSize: "18px",
+    padding: "10px",
+  },
+  [theme.breakpoints.down("md")]: {
     position: "relative",
     top: "auto",
     right: "auto",
@@ -525,7 +545,7 @@ export const FAQNumberBubble = styled(Box)(({ theme }) => ({
   width: "50px",
   height: "45px",
   borderRadius: "50%",
-  backgroundColor: "#101776",
+  backgroundColor: "#12154989",
   color: "#ffffff",
   fontFamily: "PT Sans, sans-serif !important",
   fontSize: "24px",
@@ -602,7 +622,7 @@ export const InstallationWord = styled("span")({
   }
 });
 
-export const URLWord = styled("a")({
+export const URLWord = styled("span")({
   marginTop: "15px",
   fontFamily: "Raleway",
   fontSize: "18px",
