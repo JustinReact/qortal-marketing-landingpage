@@ -142,12 +142,11 @@ export const QORTPage: FC<QORTPageProps> = ({ setTheme }) => {
           <YoutubeVideoContainer>
             {!lessThanMediumScreen && showVideoPlayer ? (
               <iframe
-                src="https://www.youtube.com/embed/TnDrrbpRCDk?autoplay=1"
+                src="https://www.youtube.com/embed/TnDrrbpRCDk?autoplay=1&rel=0"
                 loading="lazy"
                 title="Buy QORT Using Litecoin From A Centralized Exchange"
                 allowFullScreen
                 allow="autoplay"
-
               ></iframe>
             ) : !lessThanMediumScreen ? (
               <YoutubePlaceholder
@@ -223,7 +222,7 @@ export const QORTPage: FC<QORTPageProps> = ({ setTheme }) => {
         <YoutubeVideoContainer>
         {lessThanMediumScreen && showVideoPlayer ? (
             <iframe
-              src="https://www.youtube.com/embed/TnDrrbpRCDk?si=Oc2M-0eos-dsN2hH"
+              src="https://www.youtube.com/embed/TnDrrbpRCDk?autoplay=1&rel=0"
               loading="lazy"
               title="Buy QORT Using Litecoin From A Centralized Exchange"
               allowFullScreen
