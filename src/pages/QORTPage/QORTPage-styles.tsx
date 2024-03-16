@@ -45,7 +45,7 @@ export const MainContainer = styled(Box)(({ theme }) => ({
   justifyContent: "center",
   alignItems: "center",
   width: "100%",
-  gap: "20px",
+  gap: "50px",
   marginTop: "60px",
   [theme.breakpoints.down("sm")]: {
     marginTop: "20px",
@@ -61,22 +61,26 @@ export const MainSubRow = styled(Box)(({ theme }) => ({
   flexDirection: "row",
   width: "100%",
   "@media (max-width: 1470px)": {
-    gap: 0,
+    gap: 0
   },
   [theme.breakpoints.down("lg")]: {
     justifyContent: "flex-start",
-    paddingLeft: "80px",
+    paddingLeft: "80px"
   },
-  "@media (max-width: 991px)": {
+  "@media (max-width: 1013px)": {
     justifyContent: "flex-start",
-    paddingLeft: "50px",
+    paddingLeft: "40px"
+  },
+  "@media (max-width: 976px)": {
+    justifyContent: "flex-start",
+    paddingLeft: "20px"
   },
   [theme.breakpoints.down("md")]: {
     flexDirection: "column",
     gap: "30px"
   },
   [theme.breakpoints.only("xs")]: {
-    paddingLeft: "0",
+    paddingLeft: "0"
   }
 }));
 
@@ -108,8 +112,8 @@ export const OwlLogo = styled("img")(({ theme }) => ({
   objectFit: "cover",
   userSelect: "none",
   "@media (max-width: 1470px)": {
-    width: "180px",
-  },
+    width: "180px"
+  }
 }));
 
 export const MobileOwlLogo = styled("img")(({ theme }) => ({
@@ -117,7 +121,7 @@ export const MobileOwlLogo = styled("img")(({ theme }) => ({
   height: "auto",
   transform: "rotate(-0.85deg)",
   objectFit: "cover",
-  userSelect: "none",
+  userSelect: "none"
 }));
 
 export const SecondContainer = styled(Box)({
@@ -216,8 +220,8 @@ export const UseCard = styled(Box)(({ theme }) => ({
   background:
     "radial-gradient(circle at 0px top, rgba(20,198,238,1) 4%, rgba(97,71,235,1) 34%, rgba(11,23,41,1) 53%)",
   [theme.breakpoints.only("xs")]: {
-  height: "auto",
-  },
+    height: "auto"
+  }
 }));
 
 export const UseColImg = styled("img")({
@@ -316,7 +320,7 @@ export const SubText = styled(Typography)(({ theme }) => ({
     fontSize: "30px",
     lineHeight: "35px"
   },
-  "@media (max-width: 1094px)": {
+  "@media (max-width: 1123px)": {
     fontSize: "24px",
     lineHeight: "35px"
   },
@@ -440,7 +444,7 @@ export const LogoContainer = styled(Box)({
 export const ArrowSVG = styled("svg")(({ theme }) => ({
   "&.arrows": {
     width: "60px",
-    height: "72px",
+    height: "75px",
     [theme.breakpoints.only("sm")]: {
       width: "140px",
       height: "80px"
@@ -485,7 +489,7 @@ export const SocialButton = styled(Button)(({ theme }) => ({
   borderRadius: "5px",
   padding: "15px",
   gap: "15px",
-  backgroundColor: '#ffffff',
+  backgroundColor: "#ffffff",
   color: "#000000",
   fontFamily: "Montserrat",
   fontSize: "22px",
@@ -500,13 +504,13 @@ export const SocialButton = styled(Button)(({ theme }) => ({
   },
   "@media (max-width: 1470px)": {
     fontSize: "18px",
-    padding: "10px",
+    padding: "10px"
   },
   [theme.breakpoints.down("md")]: {
     position: "relative",
     top: "auto",
-    right: "auto",
-  },
+    right: "auto"
+  }
 }));
 
 // FAQ Section
@@ -518,7 +522,7 @@ export const FAQCardContainer = styled(Box)(({ theme }) => ({
   alignItems: "center",
   width: "100%",
   gap: "40px",
-  marginTop: "110px",
+  marginTop: "50px",
   marginBottom: "50px",
   [theme.breakpoints.down("sm")]: {
     marginTop: "60px"
@@ -642,7 +646,7 @@ export const URLWord = styled("span")({
 export const CoinLogosRow = styled(Box)({
   display: "grid",
   gridTemplateColumns: "repeat(3, 1fr)",
-  gap: "10px",
+  gap: "10px"
 });
 
 export const CoinLogoCol = styled(Box)({
@@ -667,3 +671,56 @@ export const CoinLogoName = styled(Typography)({
   color: "#ffffff",
   userSelect: "none"
 });
+
+export const MainRow = styled(Box)({
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  flexDirection: "row",
+  width: "100%",
+  height: "100%",
+  gap: "20px"
+});
+
+export const YoutubeVideoContainer = styled(Box)(({ theme }) => ({
+  "& iframe": {
+    width: "700px",
+    height: "500px",
+    border: "none",
+    "@media (max-width: 1331px)": {
+      width: "600px",
+      height: "500px",
+      border: "none",
+    },
+    [theme.breakpoints.down("lg")]: {
+      width: "500px",
+      height: "500px",
+      border: "none",
+    },
+    "@media (max-width: 1135px)": {
+      width: "450px",
+      height: "500px",
+      border: "none",
+    },
+    "@media (max-width: 1078px)": {
+      width: "325px",
+      height: "500px",
+      border: "none",
+    },
+    [theme.breakpoints.down("md")]: {
+      width: "700px",
+      height: "500px",
+      border: "none",
+    },
+    "@media (max-width: 750px)": {
+      width: "500px",
+      height: "500px",
+      border: "none",
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: "300px",
+      height: "500px",
+      border: "none",
+    }
+  }
+}));

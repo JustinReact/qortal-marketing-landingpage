@@ -37,6 +37,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setOS } from "../../state/features/osSlice";
 import { UAParser } from "ua-parser-js";
 import { useNavigate } from "react-router-dom";
+import YoutubeThumbnail from "../../images/Youtube/YoutubeThumbnail.webp";
 import JoinDiscordLogo from "../../images/Home/JoinDiscordLogo.png";
 
 const Home: FC = () => {
@@ -197,6 +198,8 @@ const Home: FC = () => {
                 <YoutubePlaceholder
                   isModal={false}
                   onClick={handleVideoClick}
+                  YoutubeThumbnail={YoutubeThumbnail}
+                  YoutubeTitle="Introducing Qortal Q-Apps"
                 />
               )}
             </VideoRow>

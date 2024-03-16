@@ -16,6 +16,7 @@ import {
   FAQNumberBubble,
   InstallationWord,
   MainContainer,
+  MainRow,
   MainSubRow,
   MainTitle,
   MobileOwlImageContainer,
@@ -38,7 +39,8 @@ import {
   UseColImg,
   UseColRow,
   UseColTitle,
-  Wrapper
+  Wrapper,
+  YoutubeVideoContainer
 } from "./QORTPage-styles";
 import ReactGA from "react-ga4";
 import QORTCoin from "../../images/QORT/QORTCoin.webp";
@@ -53,6 +55,7 @@ import LTCLogo from "../../images/QORT/ltc.webp";
 import DGBLogo from "../../images/QORT/dgb.webp";
 import ARRRLogo from "../../images/QORT/arrr.webp";
 import RVNLogo from "../../images/QORT/rvn.webp";
+import YoutubeThumbnail from "../../images/Youtube/TradeLTCForQORTThumbnail.png";
 import { NorthEastSVG } from "../../components/Common/Icons/NorthEastSVG";
 import { SouthEastSVG } from "../../components/Common/Icons/SouthEastSVG";
 import { AnimatePresence, motion } from "framer-motion";
@@ -61,7 +64,8 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { UAParser } from "ua-parser-js";
 import { setOS } from "../../state/features/osSlice";
-import { useMediaQuery, useTheme } from "@mui/material";
+import { Box, useMediaQuery, useTheme } from "@mui/material";
+import { YoutubePlaceholder } from "../../components/YouTube/YoutubePlaceholder";
 
 export interface QORTPageProps {
   setTheme: (val: string) => void;
@@ -73,7 +77,9 @@ export const QORTPage: FC<QORTPageProps> = ({ setTheme }) => {
   const parser = new UAParser();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const lessThanMediumScreen = useMediaQuery(theme.breakpoints.down("md"));
 
+  const [showVideoPlayer, setShowVideoPlayer] = useState<boolean>(false);
   const [faqsOpen, setFaqsOpen] = useState({
     1: false,
     2: false,
@@ -107,6 +113,10 @@ export const QORTPage: FC<QORTPageProps> = ({ setTheme }) => {
     }
   };
 
+  const handleVideoClick = () => {
+    setShowVideoPlayer((prevState) => !prevState);
+  };
+
   // FAQ Card Variants for animation
 
   const faqCardVariants = {
@@ -128,16 +138,37 @@ export const QORTPage: FC<QORTPageProps> = ({ setTheme }) => {
   return (
     <Wrapper>
       <MainContainer>
-        <CoinImgRow>
-          <CoinImg src={QORTCoin} alt="QORT Coin" />
-          <MainTitle>
-            get
-            <br />
-            some
-            <br />
-            QORT
-          </MainTitle>
-        </CoinImgRow>
+        <MainRow>
+          <YoutubeVideoContainer>
+            {!lessThanMediumScreen && showVideoPlayer ? (
+              <iframe
+                src="https://www.youtube.com/embed/TnDrrbpRCDk?autoplay=1"
+                loading="lazy"
+                title="Buy QORT Using Litecoin From A Centralized Exchange"
+                allowFullScreen
+                allow="autoplay"
+
+              ></iframe>
+            ) : !lessThanMediumScreen ? (
+              <YoutubePlaceholder
+                isModal={false}
+                onClick={handleVideoClick}
+                YoutubeThumbnail={YoutubeThumbnail}
+                YoutubeTitle="Buy QORT Using Litecoin From A Centralized Exchange"
+              />
+            ) : null}
+          </YoutubeVideoContainer>
+          <CoinImgRow>
+            <CoinImg src={QORTCoin} alt="QORT Coin" />
+            <MainTitle>
+              get
+              <br />
+              some
+              <br />
+              QORT
+            </MainTitle>
+          </CoinImgRow>
+        </MainRow>
         <MainSubRow>
           <SubTextRow>
             <SubText>
@@ -189,6 +220,24 @@ export const QORTPage: FC<QORTPageProps> = ({ setTheme }) => {
             </SocialButton>
           </MobileOwlImageContainer>
         </MainSubRow>
+        <YoutubeVideoContainer>
+        {lessThanMediumScreen && showVideoPlayer ? (
+            <iframe
+              src="https://www.youtube.com/embed/TnDrrbpRCDk?si=Oc2M-0eos-dsN2hH"
+              loading="lazy"
+              title="Buy QORT Using Litecoin From A Centralized Exchange"
+              allowFullScreen
+              allow="autoplay"
+            ></iframe>
+            ) : lessThanMediumScreen ? (
+            <YoutubePlaceholder
+              isModal={false}
+              onClick={handleVideoClick}
+              YoutubeThumbnail={YoutubeThumbnail}
+              YoutubeTitle="Buy QORT Using Litecoin From A Centralized Exchange"
+              />
+        ) : null}
+        </YoutubeVideoContainer>
       </MainContainer>
       <SecondContainer>
         <SubTitleRow ref={useCasesRef}>

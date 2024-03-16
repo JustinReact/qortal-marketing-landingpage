@@ -190,7 +190,7 @@ export const ImageContainer = styled(Box)(({ theme }) => ({
   justifyContent: "center",
   width: "100%",
   height: "auto",
-  [theme.breakpoints.only("xs")]: {
+  [theme.breakpoints.down("lg")]: {
     marginTop: "60px"
   }
 }));
