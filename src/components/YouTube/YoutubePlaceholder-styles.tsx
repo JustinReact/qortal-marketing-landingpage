@@ -21,11 +21,13 @@ export const YoutubeHeader = styled(Typography)(({ theme }) => ({
   position: "absolute",
   top: 0,
   left: 7,
-  fontFamily: "Montserrat",
+  fontFamily: "Raleway",
   fontWeight: 400,
   color: "#fff",
   userSelect: "none",
-  fontSize: "23px"
+  fontSize: "25px",
+  letterSpacing: "1.2px",
+  textShadow: "-1px -1px 0 #006eff,  1px -1px 0 #006eff,-1px  1px 0 #006eff, 1px  1px 0 #006eff"
 }));
 
 export const YoutubeThumbnailImg = styled("img")(({ theme }) => ({
