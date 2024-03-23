@@ -32,7 +32,6 @@ export const Variables: FC<SectionProps> = ({
     >
       <SectionContainer>
         <ParagraphContainer>
-          <SubTitle>Built in variables</SubTitle>
           <SectionParagraph>
             Q-Apps can access several variables that give information aboue the state of the app. These include:
           </SectionParagraph>
