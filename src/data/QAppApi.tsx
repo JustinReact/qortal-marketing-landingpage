@@ -53,6 +53,7 @@ import { SET_PROFILE_DATA } from "../components/Api/ApiSections/QortalRequest/SE
 import { GET_FRIENDS_LIST } from "../components/Api/ApiSections/QortalRequest/GET_FRIENDS_LIST";
 import { GET_USER_WALLET_INFO } from "../components/Api/ApiSections/QortalRequest/GET_USER_WALLET_INFO";
 import { ENCRYPT_DATA } from "../components/Api/ApiSections/QortalRequest/ENCRYPT_DATA";
+import { Variables } from "../components/Api/ApiSections/JavascriptIntegration/Variables";
 
 export const tableOfContents = [
   {
@@ -120,6 +121,11 @@ export const tableOfContents = [
     Component: (props: any) => <IntegrationIntroduction {...props} />,
     id: "integration",
     subContent: [
+      {
+        title: "Built in variables",
+        id: "variables",
+        Component: (props: any) => <Variables {...props} />
+      },
       {
         title: "Api Interaction",
         id: "apiInteraction",
