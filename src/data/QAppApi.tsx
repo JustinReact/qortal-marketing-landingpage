@@ -9,7 +9,6 @@ import { Routing } from "../components/Api/ApiSections/Routing/Routing";
 import { LinkingToResources } from "../components/Api/ApiSections/Routing/LinkingToResources";
 import { LinkingToImages } from "../components/Api/ApiSections/Routing/LinkingToImages";
 import { IntegrationIntroduction } from "../components/Api/ApiSections/JavascriptIntegration/IntegrationIntroduction";
-import { Variables } from "../components/Api/ApiSections/JavascriptIntegration/Variables";
 import { Interaction } from "../components/Api/ApiSections/JavascriptIntegration/Interaction";
 import { QortalRequestIntroduction } from "../components/Api/ApiSections/QortalRequest/QortalRequestIntroduction";
 import { GET_USER_ACCOUNT } from "../components/Api/ApiSections/QortalRequest/GET_USER_ACCOUNT";
@@ -121,11 +120,6 @@ export const tableOfContents = [
     Component: (props: any) => <IntegrationIntroduction {...props} />,
     id: "integration",
     subContent: [
-      {
-        title: "Built in variables",
-        id: "variables",
-        Component: (props: any) => <Variables {...props} />
-      },
       {
         title: "Api Interaction",
         id: "apiInteraction",
