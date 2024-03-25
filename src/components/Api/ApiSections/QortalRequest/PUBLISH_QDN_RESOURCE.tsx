@@ -171,9 +171,9 @@ export const PUBLISH_QDN_RESOURCE: FC<SectionProps> = ({
               This action requires user approval
             </InformationParagraph>
             <InformationParagraph>
-              Note: this publishes a single, base64-encoded file. Multi-file
-              resource publishing (such as a WEBSITE or GIF_REPOSITORY) is not
-              yet supported via a Q-App. It will be added in a future update.
+              Note: this publishes a single file object or base64-encoded file. Compressed
+              archive (zip) and multi-file resource publishing (such as a WEBSITE or GIF_REPOSITORY)
+              is not yet supported via a Q-App. It may be added in a future update.
             </InformationParagraph>
           </InformationSection>
           <Grid container spacing={3}>
