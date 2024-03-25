@@ -36,8 +36,10 @@ export const Resources: FC<SectionProps> = ({
             of files.
           </SectionParagraph>
           <SectionParagraph>
-            Resources are stored on-chain, however the data payload is generally
-            stored off-chain, and verified using an on-chain SHA-256 hash.
+            Resources are indexed on-chain, however the data payload is generally
+            stored off-chain, and verified using an on-chain SHA-256 hash. Resources
+            smaller than 240 bytes are fully on-chain, and the CHAIN_COMMENT service
+            can be used to ensure this result, allowing faster data retrieval.
           </SectionParagraph>
           <SectionParagraph>
             To publish a resource, a user must first register a name, and then
