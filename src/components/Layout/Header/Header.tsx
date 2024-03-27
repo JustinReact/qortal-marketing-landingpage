@@ -29,6 +29,7 @@ import QortalLogoDarkTheme from "../../../images/Logo/QortalLogoDarkTheme.webp";
 import { FeaturesSVG } from "../../Common/Icons/FeaturesSVG";
 import { QortalSVG } from "../../Common/Icons/QortalSVG";
 import { DiscordSVG } from "../../Common/Icons/DiscordSVG";
+import { HomeSVG } from "../../Common/Icons/HomeSVG";
 
 export const Header: FC<LayoutProps> = ({ setTheme }) => {
   const theme = useTheme();
@@ -38,6 +39,7 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
 
   const [openMobileDrawer, setOpenMobileDrawer] = useState<boolean>(false);
 
+  console.log(location)
   const renderHeader = () => {
     // Check the current path and render the corresponding header nav
     if (location.pathname === "/") {
@@ -82,6 +84,24 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
           ) : (
             <HeaderButtonsRow>
               <QORTButton
+                className="active"
+                onClick={() => {
+                  ReactGA.event({
+                    category: "User",
+                    action: "Clicked Home Button",
+                    label: "Home Button"
+                  });
+                  navigate("/");
+                }}
+              >
+                Home
+                <HomeSVG
+                  color={theme.palette.text.primary}
+                  height={"22"}
+                  width={"22"}
+                />
+              </QORTButton>
+              <QORTButton
                 onClick={() => {
                   ReactGA.event({
                     category: "User",
@@ -92,7 +112,11 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                 }}
               >
                 QORT
-                <QortalSVG color={theme.palette.text.primary} height={"22"} width={"22"} />
+                <QortalSVG
+                  color={theme.palette.text.primary}
+                  height={"22"}
+                  width={"22"}
+                />
               </QORTButton>
               <FeaturesButton
                 onClick={() => {
@@ -105,7 +129,11 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                 }}
               >
                 Features
-                <FeaturesSVG color={theme.palette.text.primary} height={"22"} width={"22"} />
+                <FeaturesSVG
+                  color={theme.palette.text.primary}
+                  height={"22"}
+                  width={"22"}
+                />
               </FeaturesButton>
               <Docs
                 onClick={() => {
@@ -118,7 +146,11 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                 }}
               >
                 Developer
-                <DocsSVG color={theme.palette.text.primary} height={"22"} width={"22"} />
+                <DocsSVG
+                  color={theme.palette.text.primary}
+                  height={"22"}
+                  width={"22"}
+                />
               </Docs>
               <DiscordButton
                 onClick={() => {
@@ -131,7 +163,11 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                 }}
               >
                 Join Discord
-                <DiscordSVG color={theme.palette.text.primary} height={"22"} width={"22"} />
+                <DiscordSVG
+                  color={theme.palette.text.primary}
+                  height={"22"}
+                  width={"22"}
+                />
               </DiscordButton>
             </HeaderButtonsRow>
           )}
@@ -153,17 +189,15 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
     } else if (location.pathname === "/qort") {
       return (
         <HeaderNav>
-            <QortalLogoContainer
-              src={
-                theme.palette.mode === "light"
-                  ? QortalLogo
-                  : QortalLogoDarkTheme
-              }
-              alt="Qblog Logo"
-              onClick={() => {
-                navigate(`/`);
-              }}
-            />
+          <QortalLogoContainer
+            src={
+              theme.palette.mode === "light" ? QortalLogo : QortalLogoDarkTheme
+            }
+            alt="Qblog Logo"
+            onClick={() => {
+              navigate(`/`);
+            }}
+          />
           {isMobile ? (
             <HamburgerIcon
               color={theme.palette.text.primary}
@@ -178,6 +212,24 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                 onClick={() => {
                   ReactGA.event({
                     category: "User",
+                    action: "Clicked Home Button",
+                    label: "Home Button"
+                  });
+                  navigate("/");
+                }}
+              >
+                Home
+                <HomeSVG
+                  color={theme.palette.text.primary}
+                  height={"22"}
+                  width={"22"}
+                />
+              </QORTButton>
+              <QORTButton
+              className="active"
+                onClick={() => {
+                  ReactGA.event({
+                    category: "User",
                     action: "Clicked QORT Button",
                     label: "QORT Button"
                   });
@@ -185,7 +237,11 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                 }}
               >
                 QORT
-                <QortalSVG color={theme.palette.text.primary} height={"22"} width={"22"} />
+                <QortalSVG
+                  color={theme.palette.text.primary}
+                  height={"22"}
+                  width={"22"}
+                />
               </QORTButton>
               <FeaturesButton
                 onClick={() => {
@@ -198,7 +254,11 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                 }}
               >
                 Features
-                <FeaturesSVG color={theme.palette.text.primary} height={"22"} width={"22"} />
+                <FeaturesSVG
+                  color={theme.palette.text.primary}
+                  height={"22"}
+                  width={"22"}
+                />
               </FeaturesButton>
               <Docs
                 onClick={() => {
@@ -211,7 +271,11 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                 }}
               >
                 Documentation
-                <DocsSVG color={theme.palette.text.primary} height={"22"} width={"22"} />
+                <DocsSVG
+                  color={theme.palette.text.primary}
+                  height={"22"}
+                  width={"22"}
+                />
               </Docs>
               <DiscordButton
                 onClick={() => {
@@ -224,7 +288,11 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                 }}
               >
                 Join Discord
-                <DiscordSVG color={theme.palette.text.primary} height={"22"} width={"22"} />
+                <DiscordSVG
+                  color={theme.palette.text.primary}
+                  height={"22"}
+                  width={"22"}
+                />
               </DiscordButton>
             </HeaderButtonsRow>
           )}
@@ -272,6 +340,25 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
           ) : (
             <HeaderButtonsRow>
               <QORTButton
+                className={location.pathname === "/" ? "active" : ""}
+                onClick={() => {
+                  ReactGA.event({
+                    category: "User",
+                    action: "Clicked Home Button",
+                    label: "Home Button"
+                  });
+                  navigate("/");
+                }}
+              >
+                Home
+                <HomeSVG
+                  color={theme.palette.text.primary}
+                  height={"22"}
+                  width={"22"}
+                />
+              </QORTButton>
+              <QORTButton
+                className={location.pathname === "/qort" ? "active" : ""}
                 onClick={() => {
                   ReactGA.event({
                     category: "User",
@@ -282,9 +369,14 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                 }}
               >
                 QORT
-                <QortalSVG color={theme.palette.text.primary} height={"22"} width={"22"} />
+                <QortalSVG
+                  color={theme.palette.text.primary}
+                  height={"22"}
+                  width={"22"}
+                />
               </QORTButton>
               <FeaturesButton
+                className={location.pathname === "/features" ? "active" : ""}
                 onClick={() => {
                   ReactGA.event({
                     category: "User",
@@ -295,9 +387,14 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                 }}
               >
                 Features
-                <FeaturesSVG color={theme.palette.text.primary} height={"22"} width={"22"} />
+                <FeaturesSVG
+                  color={theme.palette.text.primary}
+                  height={"22"}
+                  width={"22"}
+                />
               </FeaturesButton>
               <Docs
+                className={location.pathname === "/api/docs" ? "active" : ""}
                 onClick={() => {
                   ReactGA.event({
                     category: "User",
@@ -308,7 +405,11 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                 }}
               >
                 Developer
-                <DocsSVG color={theme.palette.text.primary} height={"22"} width={"22"} />
+                <DocsSVG
+                  color={theme.palette.text.primary}
+                  height={"22"}
+                  width={"22"}
+                />
               </Docs>
               <DiscordButton
                 onClick={() => {
@@ -321,7 +422,11 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                 }}
               >
                 Join Discord
-                <DiscordSVG color={theme.palette.text.primary} height={"22"} width={"22"} />
+                <DiscordSVG
+                  color={theme.palette.text.primary}
+                  height={"22"}
+                  width={"22"}
+                />
               </DiscordButton>
             </HeaderButtonsRow>
           )}

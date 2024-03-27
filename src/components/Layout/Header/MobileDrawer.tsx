@@ -8,6 +8,7 @@ import { FeaturesSVG } from "../../Common/Icons/FeaturesSVG";
 import { RedditSVG } from "../../Common/Icons/RedditSVG";
 import { QortalSVG } from "../../Common/Icons/QortalSVG";
 import ReactGA from "react-ga4";
+import { HomeSVG } from "../../Common/Icons/HomeSVG";
 
 interface MobileDrawerProps {
   setOpenMobileDrawer: () => void;
@@ -53,6 +54,20 @@ export const MobileDrawer: FC<MobileDrawerProps> = ({
       >
         Join Reddit
         <RedditSVG
+          color={theme.palette.text.primary}
+          height={"25"}
+          width={"25"}
+        />
+      </DrawerButton>
+      <Divider />
+      <DrawerButton
+        onClick={() => {
+          setOpenMobileDrawer();
+          navigate("/");
+        }}
+      >
+        Home
+        <HomeSVG
           color={theme.palette.text.primary}
           height={"25"}
           width={"25"}
