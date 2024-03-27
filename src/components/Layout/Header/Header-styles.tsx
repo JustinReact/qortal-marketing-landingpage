@@ -72,6 +72,16 @@ export const DiscordButton = styled(Typography)(({ theme }) => ({
   padding: "10px 15px",
   transition: "all 0.3s ease-in-out",
   zIndex: 2,
+  "&.active ": {
+    "&::after": {
+      width: "100%",
+      backgroundColor: theme.palette.text.primary,
+      height: "2px",
+      position: "absolute",
+      content: "''",
+      bottom: "3px",
+    }
+  },
   "&::after": {
     position: "absolute",
     width: "0%",
@@ -119,6 +129,16 @@ export const Docs = styled(Typography)(({ theme }) => ({
   transition: "all 0.3s ease-in-out",
   zIndex: 2,
   userSelect: "none",
+  "&.active ": {
+    "&::after": {
+      width: "100%",
+      backgroundColor: theme.palette.text.primary,
+      height: "2px",
+      position: "absolute",
+      content: "''",
+      bottom: "3px",
+    }
+  },
   "&::after": {
     position: "absolute",
     width: "0%",
@@ -158,6 +178,16 @@ export const FeaturesButton = styled(Typography)(({ theme }) => ({
   transition: "all 0.3s ease-in-out",
   zIndex: 2,
   userSelect: "none",
+  "&.active ": {
+    "&::after": {
+      width: "100%",
+      backgroundColor: theme.palette.text.primary,
+      height: "2px",
+      position: "absolute",
+      content: "''",
+      bottom: "3px",
+    }
+  },
   "&::after": {
     position: "absolute",
     width: "0%",
@@ -196,6 +226,16 @@ export const QORTButton = styled(Typography)(({ theme }) => ({
   fontWeight: "400",
   zIndex: 2,
   userSelect: "none",
+  "&.active ": {
+    "&::after": {
+      width: "100%",
+      backgroundColor: theme.palette.text.primary,
+      height: "2px",
+      position: "absolute",
+      content: "''",
+      bottom: "3px",
+    }
+  },
   "&::after": {
     position: "absolute",
     width: "0%",
