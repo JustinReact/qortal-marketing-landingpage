@@ -36,7 +36,7 @@ export const ServiceTypes: FC<SectionProps> = ({
           <SubTitle>Public services</SubTitle>
           <SectionParagraph>
             The services below are intended to be used for publicly accessible
-            data. The maximum file size is shown for each service that does not use the current general limit of 400 MB.
+            data. The maximum file size is shown for each service that does not use the current general limit of 500 MB.
           </SectionParagraph>
           <Grid container sx={{ margin: "20px 0" }}>
             <Grid item xs={12} md={6}>
