@@ -36,7 +36,7 @@ export const ServiceTypes: FC<SectionProps> = ({
           <SubTitle>Public services</SubTitle>
           <SectionParagraph>
             The services below are intended to be used for publicly accessible
-            data.
+            data. The maximum file size is shown for each service that does not use the current general limit of 500 MB.
           </SectionParagraph>
           <Grid container sx={{ margin: "20px 0" }}>
             <Grid item xs={12} md={6}>
@@ -46,7 +46,7 @@ export const ServiceTypes: FC<SectionProps> = ({
                 height={"18"}
                 width={"18"}
               />
-              IMAGE
+              IMAGE (10 MB)
             </ServiceItem>
             <ServiceItem>
               <QortalSVG
@@ -54,7 +54,7 @@ export const ServiceTypes: FC<SectionProps> = ({
                 height={"18"}
                 width={"18"}
               />
-              THUMBNAIL
+              THUMBNAIL (500 KB)
             </ServiceItem>
             <ServiceItem>
               <QortalSVG
@@ -86,7 +86,7 @@ export const ServiceTypes: FC<SectionProps> = ({
                 height={"18"}
                 width={"18"}
               />
-              VOICE
+              VOICE (10 MB)
             </ServiceItem>
             <ServiceItem>
               <QortalSVG
@@ -102,7 +102,7 @@ export const ServiceTypes: FC<SectionProps> = ({
                 height={"18"}
                 width={"18"}
               />
-              JSON
+              JSON (25 KB)
             </ServiceItem>
             <ServiceItem>
               <QortalSVG
@@ -158,7 +158,7 @@ export const ServiceTypes: FC<SectionProps> = ({
                 height={"18"}
                 width={"18"}
               />
-              BLOG_COMMENT
+              BLOG_COMMENT (500 KB)
             </ServiceItem>
             <ServiceItem>
               <QortalSVG
@@ -166,7 +166,7 @@ export const ServiceTypes: FC<SectionProps> = ({
                 height={"18"}
                 width={"18"}
               />
-              GIF_REPOSITORY
+              GIF_REPOSITORY (25 MB)
             </ServiceItem>
             <ServiceItem>
               <QortalSVG
@@ -174,7 +174,7 @@ export const ServiceTypes: FC<SectionProps> = ({
                 height={"18"}
                 width={"18"}
               />
-              ATTACHMENT
+              ATTACHMENT (50 MB)
             </ServiceItem>
             <ServiceItem>
               <QortalSVG
@@ -198,7 +198,7 @@ export const ServiceTypes: FC<SectionProps> = ({
                 height={"18"}
                 width={"18"}
               />
-              CHAIN_DATA
+              CHAIN_DATA (239 B)
             </ServiceItem>
             </Grid>
             <Grid item xs={12} md={6}>
@@ -304,7 +304,7 @@ export const ServiceTypes: FC<SectionProps> = ({
                 height={"18"}
                 width={"18"}
               />
-              COMMENT
+              COMMENT (500 KB)
             </ServiceItem>
             <ServiceItem>
               <QortalSVG
@@ -312,7 +312,7 @@ export const ServiceTypes: FC<SectionProps> = ({
                 height={"18"}
                 width={"18"}
               />
-              CHAIN_COMMENT
+              CHAIN_COMMENT (239 B)
             </ServiceItem>
             <ServiceItem>
               <QortalSVG
@@ -328,7 +328,7 @@ export const ServiceTypes: FC<SectionProps> = ({
                 height={"18"}
                 width={"18"}
               />
-              APP
+              APP (50 MB)
             </ServiceItem>
             <ServiceItem>
               <QortalSVG
@@ -336,7 +336,7 @@ export const ServiceTypes: FC<SectionProps> = ({
                 height={"18"}
                 width={"18"}
               />
-              QCHAT_ATTACHMENT
+              QCHAT_ATTACHMENT (1 MB)
             </ServiceItem>
             <ServiceItem>
               <QortalSVG
@@ -344,7 +344,7 @@ export const ServiceTypes: FC<SectionProps> = ({
                 height={"18"}
                 width={"18"}
               />
-              QCHAT_IMAGE
+              QCHAT_IMAGE (500 KB)
             </ServiceItem>
             <ServiceItem>
               <QortalSVG
@@ -352,7 +352,7 @@ export const ServiceTypes: FC<SectionProps> = ({
                 height={"18"}
                 width={"18"}
               />
-              QCHAT_AUDIO
+              QCHAT_AUDIO (10 MB)
             </ServiceItem>
             <ServiceItem>
               <QortalSVG
@@ -360,7 +360,7 @@ export const ServiceTypes: FC<SectionProps> = ({
                 height={"18"}
                 width={"18"}
               />
-              QCHAT_VOICE
+              QCHAT_VOICE (10 MB)
             </ServiceItem>
             </Grid>
           </Grid>
@@ -377,7 +377,7 @@ export const ServiceTypes: FC<SectionProps> = ({
                 height={"20"}
                 width={"20"}
               />
-              QCHAT_ATTACHMENT_PRIVATE
+              QCHAT_ATTACHMENT_PRIVATE (1 MB)
             </CustomListItem>
             <CustomListItem>
               <QortalIcon
@@ -385,7 +385,7 @@ export const ServiceTypes: FC<SectionProps> = ({
                 height={"20"}
                 width={"20"}
               />
-              ATTACHMENT_PRIVATE
+              ATTACHMENT_PRIVATE (50 MB)
             </CustomListItem>
             <CustomListItem>
               <QortalIcon
@@ -401,7 +401,7 @@ export const ServiceTypes: FC<SectionProps> = ({
                 height={"20"}
                 width={"20"}
               />
-              IMAGE_PRIVATE
+              IMAGE_PRIVATE (10 MB)
             </CustomListItem>
             <CustomListItem>
               <QortalIcon
@@ -425,7 +425,7 @@ export const ServiceTypes: FC<SectionProps> = ({
                 height={"20"}
                 width={"20"}
               />
-              VOICE_PRIVATE
+              VOICE_PRIVATE (10 MB)
             </CustomListItem>
             <CustomListItem>
               <QortalIcon
@@ -441,7 +441,7 @@ export const ServiceTypes: FC<SectionProps> = ({
                 height={"20"}
                 width={"20"}
               />
-              MAIL_PRIVATE
+              MAIL_PRIVATE (1 MB)
             </CustomListItem>
             <CustomListItem>
               <QortalIcon
@@ -449,7 +449,7 @@ export const ServiceTypes: FC<SectionProps> = ({
                 height={"20"}
                 width={"20"}
               />
-              MESSAGE_PRIVATE
+              MESSAGE_PRIVATE (1 MB)
             </CustomListItem>
           </CustomUnorderedList>
         </ParagraphContainer>
