@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom";
 import { Header } from "../Header/Header";
 import { Wrapper } from "./MainLayout-styles";
 import { useLocation } from "react-router-dom";
+import { Footer } from "../Footer/Footer";
 export interface LayoutProps {
   setTheme: (val: string) => void;
 }
@@ -30,6 +31,7 @@ export const MainLayoutRoute: FC<LayoutProps> = ({ setTheme }) => {
     >
       <Header setTheme={(val: string) => setTheme(val)} />
       <Outlet />
+      <Footer />
     </Wrapper>
   );
 };

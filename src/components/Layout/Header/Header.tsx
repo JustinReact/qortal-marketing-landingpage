@@ -39,7 +39,6 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
 
   const [openMobileDrawer, setOpenMobileDrawer] = useState<boolean>(false);
 
-  console.log(location)
   const renderHeader = () => {
     // Check the current path and render the corresponding header nav
     if (location.pathname === "/") {

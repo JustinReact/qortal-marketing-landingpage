@@ -13,6 +13,8 @@ import { store } from "./state/store";
 import { Promo } from "./pages/Promo/Promo";
 import { Features } from "./pages/Features/Features";
 import { QORTPage } from "./pages/QORTPage/QORTPage";
+import { Privacy } from "./pages/Privacy/Privacy";
+import { Support } from "./pages/Support/Support";
 
 // Initialize Google Analytics
 ReactGA.initialize("G-E1BB62FVTN");
@@ -38,6 +40,8 @@ function App() {
             />
             <Route path="/promo" element={<Promo />} />
             <Route path="/features" element={<Features />} />
+            <Route path="/support" element={<Support />} />
+            <Route path="/privacy" element={<Privacy />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
