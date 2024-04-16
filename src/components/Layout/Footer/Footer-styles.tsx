@@ -9,7 +9,11 @@ export const FooterContainer = styled(Box)(({ theme }) => ({
   width: "100%",
   padding: "15px 30px 0 30px",
   gap: "15px",
-  marginTop: 'auto'
+  marginTop: "auto",
+  [theme.breakpoints.down("sm")]: {
+    justifyContent: "center",
+    padding: "15px 0"
+  }
 }));
 
 export const FooterLink = styled(Typography)(({ theme }) => ({
@@ -25,6 +29,7 @@ export const FooterLink = styled(Typography)(({ theme }) => ({
   height: "48px",
   borderRadius: "2px",
   padding: "10px 15px",
+  userSelect: "none",
   transition: "all 0.3s ease-in-out",
   zIndex: 2,
   "&.active ": {
@@ -34,7 +39,7 @@ export const FooterLink = styled(Typography)(({ theme }) => ({
       height: "2px",
       position: "absolute",
       content: "''",
-      bottom: "3px",
+      bottom: "3px"
     }
   },
   "&::after": {
@@ -54,7 +59,7 @@ export const FooterLink = styled(Typography)(({ theme }) => ({
       height: "2px",
       position: "absolute",
       content: "''",
-      bottom: "3px",
-    },
+      bottom: "3px"
+    }
   }
 }));
