@@ -165,6 +165,7 @@ export const ScrollToTopButton = styled("div")(({ theme }) => ({
   alignItems: "center",
   justifyContent: "center",
   transition: "all 0.3s ease-in-out",
+  zIndex: 20,
   "&:hover": {
     cursor: "pointer",
     transform: "scale(1.05)"
