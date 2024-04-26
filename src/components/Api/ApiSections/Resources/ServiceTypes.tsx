@@ -46,54 +46,6 @@ export const ServiceTypes: FC<SectionProps> = ({
                 height={"18"}
                 width={"18"}
               />
-              400: IMAGE (10 MB)
-            </ServiceItem>
-            <ServiceItem>
-              <QortalSVG
-                color={theme.palette.text.primary}
-                height={"18"}
-                width={"18"}
-              />
-              410: THUMBNAIL (500 KB)
-            </ServiceItem>
-            <ServiceItem>
-              <QortalSVG
-                color={theme.palette.text.primary}
-                height={"18"}
-                width={"18"}
-              />
-              500: VIDEO
-            </ServiceItem>
-            <ServiceItem>
-              <QortalSVG
-                color={theme.palette.text.primary}
-                height={"18"}
-                width={"18"}
-              />
-              600: AUDIO
-            </ServiceItem>
-            <ServiceItem>
-              <QortalSVG
-                color={theme.palette.text.primary}
-                height={"18"}
-                width={"18"}
-              />
-              640: PODCAST
-            </ServiceItem>
-            <ServiceItem>
-              <QortalSVG
-                color={theme.palette.text.primary}
-                height={"18"}
-                width={"18"}
-              />
-              630: VOICE (10 MB)
-            </ServiceItem>
-            <ServiceItem>
-              <QortalSVG
-                color={theme.palette.text.primary}
-                height={"18"}
-                width={"18"}
-              />
               100: ARBITRARY_DATA
             </ServiceItem>
             <ServiceItem>
@@ -102,71 +54,7 @@ export const ServiceTypes: FC<SectionProps> = ({
                 height={"18"}
                 width={"18"}
               />
-              1110: JSON (25 KB)
-            </ServiceItem>
-            <ServiceItem>
-              <QortalSVG
-                color={theme.palette.text.primary}
-                height={"18"}
-                width={"18"}
-              />
-              800: DOCUMENT
-            </ServiceItem>
-            <ServiceItem>
-              <QortalSVG
-                color={theme.palette.text.primary}
-                height={"18"}
-                width={"18"}
-              />
-              900: LIST
-            </ServiceItem>
-            <ServiceItem>
-              <QortalSVG
-                color={theme.palette.text.primary}
-                height={"18"}
-                width={"18"}
-              />
-              910: PLAYLIST
-            </ServiceItem>
-            <ServiceItem>
-              <QortalSVG
-                color={theme.palette.text.primary}
-                height={"18"}
-                width={"18"}
-              />
-              1100: METADATA
-            </ServiceItem>
-            <ServiceItem>
-              <QortalSVG
-                color={theme.palette.text.primary}
-                height={"18"}
-                width={"18"}
-              />
-              700: BLOG
-            </ServiceItem>
-            <ServiceItem>
-              <QortalSVG
-                color={theme.palette.text.primary}
-                height={"18"}
-                width={"18"}
-              />
-              777: BLOG_POST
-            </ServiceItem>
-            <ServiceItem>
-              <QortalSVG
-                color={theme.palette.text.primary}
-                height={"18"}
-                width={"18"}
-              />
-              778: BLOG_COMMENT (500 KB)
-            </ServiceItem>
-            <ServiceItem>
-              <QortalSVG
-                color={theme.palette.text.primary}
-                height={"18"}
-                width={"18"}
-              />
-              1200: GIF_REPOSITORY (25 MB)
+              120: QCHAT_ATTACHMENT (1 MB)
             </ServiceItem>
             <ServiceItem>
               <QortalSVG
@@ -200,8 +88,168 @@ export const ServiceTypes: FC<SectionProps> = ({
               />
               160: CHAIN_DATA (239 B)
             </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              200: WEBSITE
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              400: IMAGE (10 MB)
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              410: THUMBNAIL (500 KB)
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              420: QCHAT_IMAGE (500 KB)
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              500: VIDEO
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              600: AUDIO
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              610: QCHAT_AUDIO (10 MB)
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              620: QCHAT_VOICE (10 MB)
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              630: VOICE (10 MB)
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              640: PODCAST
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              700: BLOG
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              777: BLOG_POST
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              778: BLOG_COMMENT (500 KB)
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              800: DOCUMENT
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              900: LIST
+            </ServiceItem>
             </Grid>
             <Grid item xs={12} md={6}>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              910: PLAYLIST
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              1000: APP (50 MB)
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              1100: METADATA
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              1110: JSON (25 KB)
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              1200: GIF_REPOSITORY (25 MB)
+            </ServiceItem>
             <ServiceItem>
               <QortalSVG
                 color={theme.palette.text.primary}
@@ -313,54 +361,6 @@ export const ServiceTypes: FC<SectionProps> = ({
                 width={"18"}
               />
               1810: CHAIN_COMMENT (239 B)
-            </ServiceItem>
-            <ServiceItem>
-              <QortalSVG
-                color={theme.palette.text.primary}
-                height={"18"}
-                width={"18"}
-              />
-              200: WEBSITE
-            </ServiceItem>
-            <ServiceItem>
-              <QortalSVG
-                color={theme.palette.text.primary}
-                height={"18"}
-                width={"18"}
-              />
-              1000: APP (50 MB)
-            </ServiceItem>
-            <ServiceItem>
-              <QortalSVG
-                color={theme.palette.text.primary}
-                height={"18"}
-                width={"18"}
-              />
-              120: QCHAT_ATTACHMENT (1 MB)
-            </ServiceItem>
-            <ServiceItem>
-              <QortalSVG
-                color={theme.palette.text.primary}
-                height={"18"}
-                width={"18"}
-              />
-              420: QCHAT_IMAGE (500 KB)
-            </ServiceItem>
-            <ServiceItem>
-              <QortalSVG
-                color={theme.palette.text.primary}
-                height={"18"}
-                width={"18"}
-              />
-              610: QCHAT_AUDIO (10 MB)
-            </ServiceItem>
-            <ServiceItem>
-              <QortalSVG
-                color={theme.palette.text.primary}
-                height={"18"}
-                width={"18"}
-              />
-              620: QCHAT_VOICE (10 MB)
             </ServiceItem>
             </Grid>
           </Grid>
