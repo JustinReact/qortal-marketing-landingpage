@@ -5,6 +5,7 @@ import {
   InformationParagraph,
   ParagraphContainer,
   SectionContainer,
+  SubTitle
 } from "../Common/Common-styles";
 import { DisplayCode } from "../Common/DisplayCode";
 import { DisplayCodeResponse } from "../Common/DisplayCodeResponse";
@@ -57,10 +58,8 @@ export const GET_AT: FC<SectionProps> = ({
             width: "100%"
           }}
         >
+          <SubTitle>Fetch info associated with AT address</SubTitle>
           <InformationSection>
-            <InformationParagraph>
-              Fetch info associated with AT address
-            </InformationParagraph>
             <InformationParagraph>
               Equivalent to:{" "}
               <LinkApi url="api-documentation/#/Automated%20Transactions/getByAddress">

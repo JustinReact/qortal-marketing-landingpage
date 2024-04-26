@@ -5,6 +5,7 @@ import {
   InformationParagraph,
   ParagraphContainer,
   SectionContainer,
+  SubTitle
 } from "../Common/Common-styles";
 import { DisplayCode } from "../Common/DisplayCode";
 import { DisplayCodeResponse } from "../Common/DisplayCodeResponse";
@@ -81,10 +82,8 @@ export const GET_CROSSCHAIN_SERVER_INFO: FC<SectionProps> = ({
             width: "100%"
           }}
         >
+          <SubTitle>Returns current foreign coin server configuration</SubTitle>
           <InformationSection>
-            <InformationParagraph>
-              Returns current foreign coin server configuration
-            </InformationParagraph>
             <InformationParagraph>
               Equivalent to:{" "}
               <LinkApi url="api-documentation/#/Cross-Chain%20(Bitcoin)/getServerConfiguration">

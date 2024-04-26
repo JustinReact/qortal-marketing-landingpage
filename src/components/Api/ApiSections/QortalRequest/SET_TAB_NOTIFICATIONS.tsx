@@ -1,14 +1,13 @@
 import { FC } from "react";
 import { SectionWrapper } from "../Common/SectionWrapper";
 import {
-  InformationParagraph,
   ParagraphContainer,
   SectionContainer,
+  SubTitle
 } from "../Common/Common-styles";
 import { DisplayCode } from "../Common/DisplayCode";
 import { DisplayCodeResponse } from "../Common/DisplayCodeResponse";
 import { Grid } from "@mui/material";
-import { InformationSection } from "../Common/InformationSection";
 interface SectionProps {
   title: string;
   setSelectedSection: (sectionId: string) => void;
@@ -43,11 +42,7 @@ export const SET_TAB_NOTIFICATIONS: FC<SectionProps> = ({
             width: "100%"
           }}
         >
-          <InformationSection>
-            <InformationParagraph>
-              Sets the notification count on the source tab of the request
-            </InformationParagraph>
-          </InformationSection>
+          <SubTitle>Sets the notification count on the source tab of the request</SubTitle>
           <Grid container spacing={3}>
             <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
               <DisplayCode codeBlock={codeBlock1} language="javascript" />

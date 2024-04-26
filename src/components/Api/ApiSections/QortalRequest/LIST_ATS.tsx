@@ -5,6 +5,7 @@ import {
   InformationParagraph,
   ParagraphContainer,
   SectionContainer,
+  SubTitle
 } from "../Common/Common-styles";
 import { DisplayCode } from "../Common/DisplayCode";
 import { DisplayCodeResponse } from "../Common/DisplayCodeResponse";
@@ -79,10 +80,8 @@ export const LIST_ATS: FC<SectionProps> = ({
             width: "100%"
           }}
         >
+          <SubTitle>Find Automated Transactions with functionality matching a given codehash</SubTitle>
           <InformationSection>
-            <InformationParagraph>
-              Find Automated Transactions with functionality matching a given codehash
-            </InformationParagraph>
             <InformationParagraph>
               Equivalent to:{" "}
               <LinkApi url="api-documentation/#/Automated%20Transactions/getByFunctionality">
