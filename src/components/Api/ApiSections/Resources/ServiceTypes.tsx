@@ -200,8 +200,6 @@ export const ServiceTypes: FC<SectionProps> = ({
               />
               800: DOCUMENT
             </ServiceItem>
-            </Grid>
-            <Grid item xs={12} md={6}>
             <ServiceItem>
               <QortalSVG
                 color={theme.palette.text.primary}
@@ -210,6 +208,8 @@ export const ServiceTypes: FC<SectionProps> = ({
               />
               900: LIST
             </ServiceItem>
+            </Grid>
+            <Grid item xs={12} md={6}>
             <ServiceItem>
               <QortalSVG
                 color={theme.palette.text.primary}
