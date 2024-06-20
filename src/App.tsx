@@ -15,6 +15,7 @@ import { Features } from "./pages/Features/Features";
 import { QORTPage } from "./pages/QORTPage/QORTPage";
 import { Privacy } from "./pages/Privacy/Privacy";
 import { Support } from "./pages/Support/Support";
+import { Extension } from "./pages/Extension/Extension";
 
 // Initialize Google Analytics
 ReactGA.initialize("G-E1BB62FVTN");
@@ -34,6 +35,7 @@ function App() {
           >
             <Route path="/" element={<Home />} />
             <Route path="/qort" element={<QORTPage setTheme={(val: string) => setTheme(val)} />} />
+            <Route path="/extension" element={<Extension setTheme={(val: string) => setTheme(val)} />} />
             <Route
               path="/docs/api"
               element={<Api setTheme={(val: string) => setTheme(val)} />}
