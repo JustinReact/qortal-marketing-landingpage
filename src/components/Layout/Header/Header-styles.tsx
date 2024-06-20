@@ -24,16 +24,20 @@ export const ThemeSelectRow = styled(Box)({
   gap: "25px"
 });
 
-export const QortalLogoContainer = styled("img")(({ theme }) => ({
-  width: "120px",
-  height: "auto",
+export const QortalLogoContainer = styled(Box)(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  gap: 0,
   userSelect: "none",
-  objectFit: "contain",
-  cursor: "pointer",
-  filter:
-    theme.palette.mode === "dark"
-      ? "drop-shadow(0px 4px 6px rgba(255, 255, 255, 0.1)) brightness(1.2)"
-      : "none"
+  cursor: "pointer"
+}));
+
+export const QortalText = styled(Typography)(({ theme }) => ({
+  fontFamily: "Magistral",
+  color: theme.palette.text.primary,
+  fontWeight: 400,
+  lineHeight: "27px",
+  fontSize: "40px"
 }));
 
 export const BackHomeButton = styled(Button)(({ theme }) => ({
@@ -79,7 +83,7 @@ export const DiscordButton = styled(Typography)(({ theme }) => ({
       height: "2px",
       position: "absolute",
       content: "''",
-      bottom: "3px",
+      bottom: "3px"
     }
   },
   "&::after": {
@@ -99,8 +103,8 @@ export const DiscordButton = styled(Typography)(({ theme }) => ({
       height: "2px",
       position: "absolute",
       content: "''",
-      bottom: "3px",
-    },
+      bottom: "3px"
+    }
   }
 }));
 
@@ -136,7 +140,7 @@ export const Docs = styled(Typography)(({ theme }) => ({
       height: "2px",
       position: "absolute",
       content: "''",
-      bottom: "3px",
+      bottom: "3px"
     }
   },
   "&::after": {
@@ -156,8 +160,8 @@ export const Docs = styled(Typography)(({ theme }) => ({
       height: "2px",
       position: "absolute",
       content: "''",
-      bottom: "3px",
-    },
+      bottom: "3px"
+    }
   }
 }));
 
@@ -185,7 +189,7 @@ export const FeaturesButton = styled(Typography)(({ theme }) => ({
       height: "2px",
       position: "absolute",
       content: "''",
-      bottom: "3px",
+      bottom: "3px"
     }
   },
   "&::after": {
@@ -205,8 +209,8 @@ export const FeaturesButton = styled(Typography)(({ theme }) => ({
       height: "2px",
       position: "absolute",
       content: "''",
-      bottom: "3px",
-    },
+      bottom: "3px"
+    }
   }
 }));
 
@@ -233,7 +237,7 @@ export const QORTButton = styled(Typography)(({ theme }) => ({
       height: "2px",
       position: "absolute",
       content: "''",
-      bottom: "3px",
+      bottom: "3px"
     }
   },
   "&::after": {
@@ -253,8 +257,8 @@ export const QORTButton = styled(Typography)(({ theme }) => ({
       height: "2px",
       position: "absolute",
       content: "''",
-      bottom: "3px",
-    },
+      bottom: "3px"
+    }
   }
 }));
 

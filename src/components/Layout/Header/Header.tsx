@@ -14,7 +14,8 @@ import {
   BackHomeButton,
   DocsNavContainer,
   FeaturesButton,
-  QORTButton
+  QORTButton,
+  QortalText
 } from "./Header-styles";
 import { useMediaQuery, useTheme, Typography } from "@mui/material";
 import { LayoutProps } from "../Main/MainLayout";
@@ -30,6 +31,9 @@ import { FeaturesSVG } from "../../Common/Icons/FeaturesSVG";
 import { QortalSVG } from "../../Common/Icons/QortalSVG";
 import { DiscordSVG } from "../../Common/Icons/DiscordSVG";
 import { HomeSVG } from "../../Common/Icons/HomeSVG";
+import { QortalWhiteLogoSVG } from "../../Common/Icons/QortalWhiteLogoSVG";
+import { QortalBlackLogoSVG } from "../../Common/Icons/QortalBlackLogoSVG";
+import { PuzzleSVG } from "../../Common/Icons/PuzzleSVG";
 
 export const Header: FC<LayoutProps> = ({ setTheme }) => {
   const theme = useTheme();
@@ -61,16 +65,22 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
               />
             )}
             <QortalLogoContainer
-              src={
-                theme.palette.mode === "light"
-                  ? QortalLogo
-                  : QortalLogoDarkTheme
-              }
-              alt="Qblog Logo"
               onClick={() => {
-                navigate(`/`);
+                navigate("/");
               }}
-            />
+            >
+              <>
+                {theme.palette.mode === "light" ? (
+                  <QortalBlackLogoSVG width="45" height="55" color="none" />
+                ) : (
+                  <QortalWhiteLogoSVG width="45" height="55" color="none" />
+                )}
+              </>{" "}
+              <QortalText>ortal</QortalText>
+              <QortalText style={{ marginTop: "10px", fontSize: "25px" }}>
+                .dev
+              </QortalText>
+            </QortalLogoContainer>
           </ThemeSelectRow>
           {isMobile ? (
             <HamburgerIcon
@@ -98,6 +108,23 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                   color={theme.palette.text.primary}
                   height={"22"}
                   width={"22"}
+                />
+              </QORTButton>
+              <QORTButton
+                onClick={() => {
+                  ReactGA.event({
+                    category: "User",
+                    action: "Clicked Extension Button",
+                    label: "Extensiokn Button"
+                  });
+                  navigate("/extension");
+                }}
+              >
+                Extension
+                <PuzzleSVG
+                  height="23"
+                  width="23"
+                  color={theme.palette.text.primary}
                 />
               </QORTButton>
               <QORTButton
@@ -161,7 +188,7 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                   window.open("https://discord.gg/YKdxYUSqZR", "_blank");
                 }}
               >
-                Join Discord
+                Join
                 <DiscordSVG
                   color={theme.palette.text.primary}
                   height={"22"}
@@ -189,14 +216,22 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
       return (
         <HeaderNav>
           <QortalLogoContainer
-            src={
-              theme.palette.mode === "light" ? QortalLogo : QortalLogoDarkTheme
-            }
-            alt="Qblog Logo"
             onClick={() => {
-              navigate(`/`);
+              navigate("/");
             }}
-          />
+          >
+            <>
+              {theme.palette.mode === "light" ? (
+                <QortalBlackLogoSVG width="45" height="55" color="none" />
+              ) : (
+                <QortalWhiteLogoSVG width="45" height="55" color="none" />
+              )}
+            </>
+            <QortalText>ortal</QortalText>
+            <QortalText style={{ marginTop: "10px", fontSize: "25px" }}>
+              .dev
+            </QortalText>
+          </QortalLogoContainer>
           {isMobile ? (
             <HamburgerIcon
               color={theme.palette.text.primary}
@@ -225,7 +260,24 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                 />
               </QORTButton>
               <QORTButton
-              className="active"
+                onClick={() => {
+                  ReactGA.event({
+                    category: "User",
+                    action: "Clicked Extension Button",
+                    label: "Extensiokn Button"
+                  });
+                  navigate("/extension");
+                }}
+              >
+                Extension
+                <PuzzleSVG
+                  height="23"
+                  width="23"
+                  color={theme.palette.text.primary}
+                />
+              </QORTButton>
+              <QORTButton
+                className="active"
                 onClick={() => {
                   ReactGA.event({
                     category: "User",
@@ -286,7 +338,7 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                   window.open("https://discord.gg/YKdxYUSqZR", "_blank");
                 }}
               >
-                Join Discord
+                Join
                 <DiscordSVG
                   color={theme.palette.text.primary}
                   height={"22"}
@@ -317,16 +369,22 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
               />
             )}
             <QortalLogoContainer
-              src={
-                theme.palette.mode === "light"
-                  ? QortalLogo
-                  : QortalLogoDarkTheme
-              }
-              alt="Qblog Logo"
               onClick={() => {
-                navigate(`/`);
+                navigate("/");
               }}
-            />
+            >
+              <>
+                {theme.palette.mode === "light" ? (
+                  <QortalBlackLogoSVG width="45" height="55" color="none" />
+                ) : (
+                  <QortalWhiteLogoSVG width="45" height="55" color="none" />
+                )}
+              </>{" "}
+              <QortalText>ortal</QortalText>
+              <QortalText style={{ marginTop: "10px", fontSize: "25px" }}>
+                .dev
+              </QortalText>
+            </QortalLogoContainer>
           </ThemeSelectRow>
           {isMobile ? (
             <HamburgerIcon
@@ -354,6 +412,24 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                   color={theme.palette.text.primary}
                   height={"22"}
                   width={"22"}
+                />
+              </QORTButton>
+              <QORTButton
+                className={location.pathname === "/extension" ? "active" : ""}
+                onClick={() => {
+                  ReactGA.event({
+                    category: "User",
+                    action: "Clicked Extension Button",
+                    label: "Extensiokn Button"
+                  });
+                  navigate("/extension");
+                }}
+              >
+                Extension
+                <PuzzleSVG
+                  height="23"
+                  width="23"
+                  color={theme.palette.text.primary}
                 />
               </QORTButton>
               <QORTButton
@@ -420,7 +496,7 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                   window.open("https://discord.gg/YKdxYUSqZR", "_blank");
                 }}
               >
-                Join Discord
+                Join
                 <DiscordSVG
                   color={theme.palette.text.primary}
                   height={"22"}

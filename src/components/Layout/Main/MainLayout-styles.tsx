@@ -6,6 +6,7 @@ import BlurryBGDarkModeMobile from "../../../images/Promo/BlurryBGDarkModeMobile
 import BlurryBGLightMode from "../../../images/Promo/BlurryBGLightMode.webp";
 import BlurryBGLightModeMobile from "../../../images/Promo/BlurryBGLightModeMobile.webp";
 import FeaturesHexagonBG from "../../../images/Features/FeaturesHexagonBG.png";
+import ExtensionBackground from "../../../images/Extension/ExtensionBackground.png";
 
 export const Wrapper = styled("div")(({ theme }) => ({
   position: "relative",
@@ -78,6 +79,24 @@ export const Wrapper = styled("div")(({ theme }) => ({
     background: "linear-gradient(45deg, rgba(51,40,70,1) 0%, rgba(148,84,253,1) 50%, rgba(31,25,61,1) 100%)",
     [theme.breakpoints.down("sm")]: {
       padding: "1rem"
+    }
+  },
+  "&.BGExtensionPage": {
+    position: "relative",
+    zIndex: 1,
+    "&::before": {
+      content: "''",
+      position: "absolute",
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      backgroundImage: `url(${ExtensionBackground})`,
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "45% auto",
+      filter: "grayscale(100%) opacity(35%)",
+      opacity: 0.1,
+      zIndex: -1
     }
   },
   [theme.breakpoints.down("sm")]: {
