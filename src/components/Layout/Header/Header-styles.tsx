@@ -58,7 +58,7 @@ export const BackHomeButton = styled(Button)(({ theme }) => ({
 export const HeaderButtonsRow = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
-  gap: "30px"
+  gap: "25px"
 }));
 
 export const DiscordButton = styled(Typography)(({ theme }) => ({

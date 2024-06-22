@@ -9,7 +9,7 @@ const commonThemeOptions = createTheme({
           margin: "0px",
           boxSizing: "border-box"
         },
-        "html": {
+        html: {
           scrollBehavior: "smooth"
         }
       }
@@ -32,7 +32,7 @@ const commonThemeOptions = createTheme({
   },
   typography: {
     fontFamily:
-      "'Museo', 'Raleway', 'Montserrat', 'Inter', 'Cairo', 'Oxygen', 'Roboto', 'Nanum Gothic', 'Lovelo', 'Helvetica', 'Arial', 'Kadwa', 'Protest Strike', 'PT Sans', 'Spartan', 'Magistral'",
+      "'Museo', 'Raleway', 'Montserrat', 'Inter', 'Cairo', 'Oxygen', 'Roboto', 'Nanum Gothic', 'Lovelo', 'Helvetica', 'Arial', 'Kadwa', 'Protest Strike', 'PT Sans', 'Spartan', 'Magistral', 'Monoton', 'Futura', 'Futura Light', 'Fredoka One'",
     button: {
       textTransform: "none"
     },

@@ -93,8 +93,9 @@ export const Wrapper = styled("div")(({ theme }) => ({
       bottom: 0,
       backgroundImage: `url(${ExtensionBackground})`,
       backgroundRepeat: "no-repeat",
-      backgroundSize: "45% auto",
-      filter: "grayscale(100%) opacity(35%)",
+      backgroundSize: "40% auto",
+      backgroundPosition: "top -100px left -100px",
+      filter: "grayscale(100%) opacity(45%)",
       opacity: 0.1,
       zIndex: -1
     }
