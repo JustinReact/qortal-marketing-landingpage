@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useRef, useState } from "react";
 import ReactGA from "react-ga4";
 import {
   BubbleBoard,
@@ -49,6 +49,8 @@ interface ExtensionProps {
 }
 
 export const Extension: FC<ExtensionProps> = ({ setTheme }) => {
+  const extensionExplanationRef = useRef<HTMLDivElement | null>(null);
+
   const [sliderValue, setSliderValue] = useState<number>(0);
 
   const handleSlideChange = async (event: any, value: number | number[]) => {
@@ -58,6 +60,16 @@ export const Extension: FC<ExtensionProps> = ({ setTheme }) => {
     } else {
       setSliderValue(newValue as number);
       window.open("https://www.qonnectfour.com", "_blank");
+    }
+  };
+
+  const scrollToExplanation = () => {
+    if (extensionExplanationRef?.current) {
+      extensionExplanationRef?.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "nearest"
+      });
     }
   };
 
@@ -77,7 +89,14 @@ export const Extension: FC<ExtensionProps> = ({ setTheme }) => {
             <SubHeader>WEB2 TO WEB3</SubHeader>
           </TopFoldRow>
           <TopFoldButtonRow>
-            <CTAButton1>LEARN HOW</CTAButton1>
+            <CTAButton1 onClick={() => {
+              ReactGA.event({
+                category: "User",
+                action: "Clicked Learn How Button",
+                label: "Learn How Button"
+              });
+              scrollToExplanation();
+            }}>LEARN HOW</CTAButton1>
             <CTAButton2
               onClick={() => {
                 ReactGA.event({
@@ -195,7 +214,7 @@ export const Extension: FC<ExtensionProps> = ({ setTheme }) => {
           </QonnectFourCol>
         </QonnectFourMainRow>
       </QonnectFourSection>
-      <QortalWalletSection>
+      <QortalWalletSection ref={extensionExplanationRef}>
         <QortalWalletHeader>
           <a
             href="https://bit.ly/qortal-chrome-extension"
