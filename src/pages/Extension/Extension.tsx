@@ -220,7 +220,7 @@ export const Extension: FC<ExtensionProps> = ({ setTheme }) => {
               alt="Second Qortal Extension Screenshot"
             />
           </QortalWalletCard>
-          <QortalWalletCard item xs={12} sm={12} sm={12} lg={4}>
+          <QortalWalletCard item xs={12} sm={12} md={12} lg={4}>
             <QortalWalletCardImage
               src={QortalExtensionScreenshot3}
               alt="Third Qortal Extension Screenshot"
@@ -269,7 +269,7 @@ export const Extension: FC<ExtensionProps> = ({ setTheme }) => {
               alt="Fifth Qortal Extension Screenshot"
             />
           </QortalWalletCard>
-          <QortalWalletCard item xs={12} sm={12} sm={12} lg={4}>
+          <QortalWalletCard item xs={12} sm={12} md={12} lg={4}>
             <QortalWalletCardImage
               src={QortalExtensionScreenshot6}
               alt="Sixth Qortal Extension Screenshot"
