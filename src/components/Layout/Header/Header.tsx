@@ -38,7 +38,7 @@ import { PuzzleSVG } from "../../Common/Icons/PuzzleSVG";
 export const Header: FC<LayoutProps> = ({ setTheme }) => {
   const theme = useTheme();
   const navigate = useNavigate();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const isMobile = useMediaQuery(theme.breakpoints.down("lg"));
   const location = useLocation();
 
   const [openMobileDrawer, setOpenMobileDrawer] = useState<boolean>(false);
