@@ -153,12 +153,12 @@ export const Extension: FC<ExtensionProps> = ({ setTheme }) => {
               <BubbleCard />
               <BubbleCard>Q</BubbleCard>
               <BubbleCardColored />
-              <BubbleCard>O</BubbleCard>
               <BubbleCard>N</BubbleCard>
               <BubbleCard>N</BubbleCard>
               <BubbleCard>E</BubbleCard>
               <BubbleCard>C</BubbleCard>
               <BubbleCard>T</BubbleCard>
+              <BubbleCard />
               {/* Row 3 */}
               <BubbleCard />
               <BubbleCard />
