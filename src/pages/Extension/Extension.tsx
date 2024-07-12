@@ -59,7 +59,12 @@ export const Extension: FC<ExtensionProps> = ({ setTheme }) => {
       setSliderValue(0);
     } else {
       setSliderValue(newValue as number);
-      window.open("https://www.qonnectfour.com", "_blank");
+      ReactGA.event({
+        category: "User",
+        action: "Slid Qonnect Four slider",
+        label: "Slid Qonnect Four slider"
+      })
+      window.open("https://www.qort.games", "_blank");
     }
   };
 
@@ -122,14 +127,14 @@ export const Extension: FC<ExtensionProps> = ({ setTheme }) => {
         <QonnectFourHeader>
           Play{" "}
           <a
-            href="https://www.qonnectfour.com"
-            aria-label="Visit QONNECT4 official website"
+            href="https://www.qort.games"
+            aria-label="Visit qort games official website"
             target="_blank"
             rel="noopener noreferrer"
           >
-            QONNECT4
+            QORT Games
           </a>
-          : The Ultimate Web2 and Web3 Fusion Game!
+          : The Ultimate Web2 and Web3 Fusion Games!
         </QonnectFourHeader>
         <QonnectFourMainRow>
           <QonnectFourMainCol>
