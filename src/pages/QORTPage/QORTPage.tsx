@@ -276,7 +276,7 @@ export const QORTPage: FC<QORTPageProps> = ({ setTheme }) => {
             </UseColDesc>
             <TradingPortalButton
               onClick={() => {
-                window.open("https://bit.ly/qortal-discord", "_blank");
+                window.open("https://bit.ly/qortal-chrome-extension", "_blank");
                 ReactGA.event({
                   category: "User",
                   action: "Clicked Download Extension Button on Extension Page",
