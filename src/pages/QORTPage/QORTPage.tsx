@@ -24,7 +24,7 @@ import {
   OwlImageContainer,
   OwlImageWrapper,
   OwlLogo,
-  SecondContainer,
+  UseCasesContainer,
   SocialButton,
   SubText,
   SubTextRow,
@@ -40,7 +40,14 @@ import {
   UseColRow,
   UseColTitle,
   Wrapper,
-  YoutubeVideoContainer
+  YoutubeVideoContainer,
+  TradingPortalContainer,
+  TradingPortalSubTitle,
+  TradingPortalTitle,
+  TradingPortalCol,
+  UseColNumber,
+  TradingPortalButton,
+  TradingPortalCard
 } from "./QORTPage-styles";
 import ReactGA from "react-ga4";
 import QORTCoin from "../../images/QORT/QORTCoin.webp";
@@ -101,9 +108,20 @@ export const QORTPage: FC<QORTPageProps> = ({ setTheme }) => {
     setTheme("dark");
   }, []);
 
+  const tradePortalRef = useRef<HTMLDivElement | null>(null);
   const useCasesRef = useRef<HTMLDivElement | null>(null);
 
-  const scrollToFunc = () => {
+  const scrollToTradePortalFunc = () => {
+    if (tradePortalRef?.current) {
+      tradePortalRef?.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "nearest"
+      });
+    }
+  };
+
+  const scrollToUseCasesFunc = () => {
     if (useCasesRef?.current) {
       useCasesRef?.current.scrollIntoView({
         behavior: "smooth",
@@ -157,7 +175,7 @@ export const QORTPage: FC<QORTPageProps> = ({ setTheme }) => {
               />
             ) : null}
           </YoutubeVideoContainer>
-          <CoinImgRow>
+          <CoinImgRow onClick={scrollToTradePortalFunc}>
             <CoinImg src={QORTCoin} alt="QORT Coin" />
             <MainTitle>
               get
@@ -174,7 +192,7 @@ export const QORTPage: FC<QORTPageProps> = ({ setTheme }) => {
               QORT is more than just a coin!
               <br /> Learn how it powers the Qortal ecosystem.
             </SubText>
-            <ArrowSVG className="arrows" onClick={scrollToFunc}>
+            <ArrowSVG className="arrows" onClick={scrollToUseCasesFunc}>
               <path className="a1" d="M0 0 L30 32 L60 0"></path>
               <path className="a2" d="M0 20 L30 52 L60 20"></path>
               <path className="a3" d="M0 40 L30 72 L60 40"></path>
@@ -220,7 +238,7 @@ export const QORTPage: FC<QORTPageProps> = ({ setTheme }) => {
           </MobileOwlImageContainer>
         </MainSubRow>
         <YoutubeVideoContainer>
-        {lessThanMediumScreen && showVideoPlayer ? (
+          {lessThanMediumScreen && showVideoPlayer ? (
             <iframe
               src="https://www.youtube.com/embed/TnDrrbpRCDk?autoplay=1&rel=0"
               loading="lazy"
@@ -228,17 +246,86 @@ export const QORTPage: FC<QORTPageProps> = ({ setTheme }) => {
               allowFullScreen
               allow="autoplay"
             ></iframe>
-            ) : lessThanMediumScreen ? (
+          ) : lessThanMediumScreen ? (
             <YoutubePlaceholder
               isModal={false}
               onClick={handleVideoClick}
               YoutubeThumbnail={YoutubeThumbnail}
               YoutubeTitle="Buy QORT Using Litecoin From A Centralized Exchange"
-              />
-        ) : null}
+            />
+          ) : null}
         </YoutubeVideoContainer>
       </MainContainer>
-      <SecondContainer>
+      <TradingPortalContainer ref={tradePortalRef}>
+        <SubTitle>Trade Portal</SubTitle>
+        <TradingPortalCol>
+          <TradingPortalTitle>OWN QORT IN MINUTES:</TradingPortalTitle>
+          <TradingPortalSubTitle>
+            With just the{" "}
+            <span style={{ fontStyle: "italic" }}>Qortal Extension</span>, start
+            trading QORT instantly and securely.
+          </TradingPortalSubTitle>
+        </TradingPortalCol>
+        <UseCardRow>
+          <TradingPortalCard>
+            <UseColNumber>1</UseColNumber>
+            <UseColTitle>Extension</UseColTitle>
+            <UseColDesc>
+              Install the Qortal Extension via qortal.dev/extension or on the
+              Google Chrome Store
+            </UseColDesc>
+            <TradingPortalButton
+              onClick={() => {
+                window.open("https://bit.ly/qortal-discord", "_blank");
+                ReactGA.event({
+                  category: "User",
+                  action: "Clicked Download Extension Button on Extension Page",
+                  label: "Clicked Download Extension Button on Extension Page"
+                });
+              }}
+            >
+              DOWNLOAD EXTENSION
+            </TradingPortalButton>
+          </TradingPortalCard>
+          <TradingPortalCard>
+            <UseColNumber>2</UseColNumber>
+            <UseColTitle>Trade Portal</UseColTitle>
+            <UseColDesc>Access our trading portal via qort.trade</UseColDesc>
+            <TradingPortalButton
+              onClick={() => {
+                window.open("https://bit.ly/qort-trade-portal", "_blank");
+                ReactGA.event({
+                  category: "User",
+                  action: "Clicked Visit Trade Portal Button on Extension Page",
+                  label: "Clicked Visit Trade Portal Button on Extension Page"
+                });
+              }}
+            >
+              VISIT TRADE PORTAL
+            </TradingPortalButton>
+          </TradingPortalCard>
+          <TradingPortalCard>
+            <UseColNumber>3</UseColNumber>
+            <UseColTitle>Buy QORT</UseColTitle>
+            <UseColDesc>
+              Buy and sell QORT directly from the Qortal blockchain!
+            </UseColDesc>
+            <TradingPortalButton
+              onClick={() => {
+                window.open("https://bit.ly/qort-trade-portal", "_blank");
+                ReactGA.event({
+                  category: "User",
+                  action: "Clicked Visit Buy QORT Button on Extension Page",
+                  label: "Clicked Visit Buy QORT Button on Extension Page"
+                });
+              }}
+            >
+              BUY QORT
+            </TradingPortalButton>
+          </TradingPortalCard>
+        </UseCardRow>
+      </TradingPortalContainer>
+      <UseCasesContainer>
         <SubTitleRow ref={useCasesRef}>
           <SubTitle>Use Cases</SubTitle>
           <SubTitleDesc>
@@ -313,7 +400,7 @@ export const QORTPage: FC<QORTPageProps> = ({ setTheme }) => {
             </CoinLogosRow>
           </UseCard>
         </UseCardRow>
-      </SecondContainer>
+      </UseCasesContainer>
       <ThirdContainer>
         <SubTitleRow>
           <SubTitle>FAQ</SubTitle>
@@ -417,36 +504,29 @@ export const QORTPage: FC<QORTPageProps> = ({ setTheme }) => {
                   >
                     <FAQCardRowBody>
                       Yes! It is already possible to buy QORT. You can do so by
-                      using the Qortal Trade Portal. Firstly, following the
-                      installation guide{" "}
-                      <InstallationWord
+                      installing the Qortal Browser Extension, and then visiting{" "}
+                      <URLWord
                         onClick={() => {
-                          const userOS = parser.getOS().name;
-                          if (userOS?.includes("Android" || "iOS")) {
-                            navigate("/");
-                            dispatch(setOS(""));
-                          } else if (userOS?.includes("Mac")) {
-                            navigate("/");
-                            dispatch(setOS("mac"));
-                          } else if (userOS?.includes("Windows")) {
-                            navigate("/");
-                            dispatch(setOS("windows"));
-                          } else if (userOS?.includes("Linux")) {
-                            navigate("/");
-                            dispatch(setOS("linux"));
-                          } else {
-                            navigate("/");
-                            dispatch(setOS(""));
-                          }
+                          ReactGA.event({
+                            category: "User",
+                            action:
+                              "Clicked Qort.trade button in Qort Page FAQ",
+                            label: "Clicked Qort.trade button in Qort Page FAQ"
+                          });
+                          window.open(
+                            "https://bit.ly/qort-trade-portal",
+                            "_blank"
+                          );
                         }}
                       >
-                        here
-                      </InstallationWord>{" "}
-                      to set up your Qortal node, then you can use the Trade
-                      Portal to buy QORT with BTC, LTC, DGB, RVN, ARRR and DOGE.
-                      The trading pair with the most volume is Litecoin at the
-                      moment, therefore is the most recommended to use to buy
-                      QORT.
+                        qort.trade
+                      </URLWord>.{" "}
+                      At this point, you'll need to create a new Qortal Account,
+                      which will automatically assign you a Litecoin (LTC)
+                      private wallet address. You can use any of the popular
+                      centralized exchanges to buy Litecoin, and send it to your new wallet. Once you have some
+                      Litecoin, you can use the Qort.trade to trade LTC for
+                      QORT, which will also be held in your new QORT wallet. This QORT wallet is also created automatically for you upon creating a new account in the extension.
                     </FAQCardRowBody>
                   </motion.div>
                 )}

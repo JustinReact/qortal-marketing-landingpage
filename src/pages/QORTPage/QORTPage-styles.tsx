@@ -124,7 +124,16 @@ export const MobileOwlLogo = styled("img")(({ theme }) => ({
   userSelect: "none"
 }));
 
-export const SecondContainer = styled(Box)({
+export const UseCasesContainer = styled(Box)({
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "flex-start",
+  alignItems: "center",
+  width: "100%",
+  height: "100%"
+});
+
+export const TradingPortalContainer = styled(Box)({
   display: "flex",
   flexDirection: "column",
   justifyContent: "flex-start",
@@ -172,15 +181,20 @@ export const SubTitleRow = styled(Box)({
   padding: "0 15px"
 });
 
-export const SubTitle = styled(Typography)({
+export const SubTitle = styled(Typography)(({ theme }) => ({
   fontFamily: "Spartan ",
   fontSize: "80px",
   fontWeight: 500,
   color: "#ffffff",
   letterSpacing: "0px",
   userSelect: "none",
-  lineHeight: "100px"
-});
+  lineHeight: "100px",
+  [theme.breakpoints.down("sm")]: {
+    fontSize: "70px",
+    textAlign: "center",
+    lineHeight: "90px"
+  }
+}));
 
 export const SubTitleDesc = styled(Typography)({
   fontFamily: "PT Sans, sans-serif ",
@@ -191,6 +205,60 @@ export const SubTitleDesc = styled(Typography)({
   userSelect: "none",
   lineHeight: "50px"
 });
+
+export const TradingPortalCol = styled(Box)({
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  flexDirection: "column",
+  gap: "40px",
+  width: "100%",
+  height: "100%",
+  marginTop: "50px"
+});
+
+export const TradingPortalTitle = styled(Typography)(({ theme }) => ({
+  fontFamily: "PT Sans",
+  fontSize: "40px",
+  fontWeight: 700,
+  lineHeight: "50px",
+  textAlign: "center"
+}));
+
+export const TradingPortalSubTitle = styled(Typography)(({ theme }) => ({
+  fontFamily: "PT Sans",
+  fontSize: "40px",
+  fontWeight: 400,
+  lineHeight: "50px",
+  textAlign: "center"
+}));
+
+export const TradingPortalButton = styled(Button)(({ theme }) => ({
+  position: "absolute",
+  bottom: "20px",
+  width: "auto",
+  minWidth: "286px",
+  height: "87px",
+  padding: "34px 59px",
+  borderRadius: "50px",
+  border: `1px solid ${theme.palette.text.primary}`,
+  color: theme.palette.text.primary,
+  fontFamily: "Fira Sans",
+  fontSize: "16px",
+  fontWeight: 400,
+  lineHeight: "19.2px",
+  alignSelf: "center",
+  transition: "all 0.3s ease-in-out",
+  "&:hover": {
+    backgroundColor: "#14C6EE",
+    color: "#000000",
+    cursor: "pointer"    
+  },
+  [theme.breakpoints.down("sm")]: {
+    position: "relative",
+    bottom: "0",
+  }
+}));
 
 export const UseCardRow = styled(Box)({
   display: "flex",
@@ -203,6 +271,26 @@ export const UseCardRow = styled(Box)({
   flexWrap: "wrap",
   marginTop: "95px"
 });
+
+export const TradingPortalCard = styled(Box)(({ theme }) => ({
+  position: "relative",
+  display: "flex",
+  justifyContent: "flex-start",
+  alignItems: "flex-start",
+  flexDirection: "column",
+  gap: "60px",
+  width: "400px",
+  height: "620px",
+  padding: "180px 20px 20px 20px",
+  borderRadius: "20px",
+  borderBottom: "4px solid #01041a",
+  borderRight: "4px solid #01041a",
+  background:
+    "radial-gradient(circle at 0px top, rgba(20,198,238,1) 4%, rgba(97,71,235,1) 34%, rgba(11,23,41,1) 53%)",
+  [theme.breakpoints.only("xs")]: {
+    height: "auto"
+  }
+}));
 
 export const UseCard = styled(Box)(({ theme }) => ({
   position: "relative",
@@ -222,6 +310,18 @@ export const UseCard = styled(Box)(({ theme }) => ({
   [theme.breakpoints.only("xs")]: {
     height: "auto"
   }
+}));
+
+export const UseColNumber = styled(Typography)(({ theme }) => ({
+  position: "absolute",
+  top: "0",
+  left: "20px",
+  color: theme.palette.text.primary,
+  fontFamily: "Spartan",
+  fontSize: "128px",
+  fontWeight: 800,
+  lineHeight: "60px",
+  textAlign: "left"
 }));
 
 export const UseColImg = styled("img")({
@@ -252,7 +352,7 @@ export const UseColTitle = styled(Typography)(({ theme }) => ({
   letterSpacing: "0px",
   userSelect: "none",
   [theme.breakpoints.down("sm")]: {
-    fontSize: "40px"
+    fontSize: "40px",
   }
 }));
 
@@ -274,7 +374,8 @@ export const CoinImgRow = styled(Box)({
   flexDirection: "row",
   justifyContent: "center",
   alignItems: "flex-end",
-  maxWidth: "100%"
+  maxWidth: "100%",
+  cursor: "pointer"
 });
 
 export const CoinImg = styled("img")(({ theme }) => ({
