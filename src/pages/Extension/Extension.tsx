@@ -205,8 +205,8 @@ export const Extension: FC<ExtensionProps> = ({ setTheme }) => {
             <QonnectFourRow>
               <QonnectFourText>
                 To <span style={{ fontWeight: "bold" }}>PLAY</span>, simply
-                connect to your Qortal Wallet to approve a 1 QORT payment. The
-                winner of a best-of-three match takes the total pot of 2 QORT.
+                connect to your Qortal Wallet to approve a 0.25 QORT payment. The
+                winner of a best-of-three match takes the total pot of 0.50 QORT.
               </QonnectFourText>
             </QonnectFourRow>
             <QonnectFourRow>
