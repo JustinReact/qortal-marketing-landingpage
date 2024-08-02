@@ -54,7 +54,12 @@ const StyledMenu = styled((props: MenuProps) => (
   },
 }));
 
-export default function Dropdown({setDocState, docState}) {
+interface PDropdown {
+  docState: DocState;
+  setDocState: (val: DocState)=> void;
+}
+
+export default function Dropdown({setDocState, docState}: PDropdown) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const navigate = useNavigate()
