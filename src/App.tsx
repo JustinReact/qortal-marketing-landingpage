@@ -37,7 +37,7 @@ function App() {
             <Route path="/qort" element={<QORTPage setTheme={(val: string) => setTheme(val)} />} />
             <Route path="/extension" element={<Extension setTheme={(val: string) => setTheme(val)} />} />
             <Route
-              path="/docs/api"
+              path="/docs/api/:type"
               element={<Api setTheme={(val: string) => setTheme(val)} />}
             />
             <Route path="/promo" element={<Promo />} />
