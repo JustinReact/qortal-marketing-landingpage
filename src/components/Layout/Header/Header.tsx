@@ -168,7 +168,7 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                     action: "Clicked Docs Button",
                     label: "Docs Button"
                   });
-                  navigate("/docs/api");
+                  navigate("/docs/api/q-app");
                 }}
               >
                 Developer
@@ -318,7 +318,7 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                     action: "Clicked Docs Button",
                     label: "Docs Button"
                   });
-                  navigate("/docs/api");
+                  navigate("/docs/api/q-app");
                 }}
               >
                 Documentation

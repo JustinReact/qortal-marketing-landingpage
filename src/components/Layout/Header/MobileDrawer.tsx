@@ -120,7 +120,7 @@ export const MobileDrawer: FC<MobileDrawerProps> = ({
       <DrawerButton
         onClick={() => {
           setOpenMobileDrawer();
-          navigate("/docs/api");
+          navigate("/docs/api/q-app");
         }}
       >
         Documentation

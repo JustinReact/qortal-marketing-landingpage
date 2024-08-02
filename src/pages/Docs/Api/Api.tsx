@@ -10,21 +10,37 @@ import {
   ApiContainer
 } from "./Api-styles";
 import { tableOfContents } from "../../../data/QAppApi";
+import { tableOfContents as tableOfContentsExtension } from "../../../data/ExtensionApi";
+
 import ReactGA from "react-ga4";
 import { motion, AnimatePresence } from "framer-motion";
+import { useParams } from "react-router-dom";
 
 export interface ApiProps {
   setTheme: (val: string) => void;
 }
 
+export enum DocState {
+  QAPP,
+  EXTENSION
+}
 const Api: FC<ApiProps> = ({ setTheme }) => {
   const theme = useTheme();
+  const { type } = useParams();
   const [selectedSection, setSelectedSection] = useState("");
   const [showButton, setShowButton] = useState(false);
   const [openMobileDrawer, setOpenMobileDrawer] = useState(false);
-
+  const [docState, setDocState] = useState<DocState>(DocState.QAPP);
   const topOfPageRef = useRef<HTMLDivElement | null>(null);
 
+
+  useEffect(()=> {
+    if(type === 'extension'){
+      setDocState(DocState.EXTENSION)
+    } else {
+      setDocState(DocState.QAPP)
+    }
+  }, [type])
   // Tracking page view for Google Analytics
 
   useEffect(() => {
@@ -128,6 +144,8 @@ const Api: FC<ApiProps> = ({ setTheme }) => {
               setOpenMobileDrawer={() => {
                 setOpenMobileDrawer(false);
               }}
+              setDocState={setDocState}
+              docState={docState}
             />
           </motion.div>
         )}
@@ -139,29 +157,66 @@ const Api: FC<ApiProps> = ({ setTheme }) => {
         setOpenMobileDrawer={() => {
           setOpenMobileDrawer(false);
         }}
+        setDocState={setDocState}
+        docState={docState}
       />
       <ApiContainer>
         <Box>
-          {tableOfContents.map(({ Component, index, ...props }: any) => {
-            if (!Component) return null;
-            return (
-              <Fragment key={index}>
-                <Component {...props} setSelectedSection={setSelectedSection} />
-                {props?.subContent?.map(
-                  ({ Component: Component2, index, ...props2 }: any) => {
-                    if (!Component2) return null;
-                    return (
-                      <Component2
-                        key={index}
-                        {...props2}
-                        setSelectedSection={setSelectedSection}
-                      />
-                    );
-                  }
-                )}
-              </Fragment>
-            );
-          })}
+          {docState === DocState.QAPP && (
+            <>
+              {tableOfContents.map(({ Component, index, ...props }: any) => {
+                if (!Component) return null;
+                return (
+                  <Fragment key={index}>
+                    <Component
+                      {...props}
+                      setSelectedSection={setSelectedSection}
+                    />
+                    {props?.subContent?.map(
+                      ({ Component: Component2, index, ...props2 }: any) => {
+                        if (!Component2) return null;
+                        return (
+                          <Component2
+                            key={index}
+                            {...props2}
+                            setSelectedSection={setSelectedSection}
+                          />
+                        );
+                      }
+                    )}
+                  </Fragment>
+                );
+              })}
+            </>
+          )}
+
+          {docState === DocState.EXTENSION && (
+            <>
+            {tableOfContentsExtension.map(({ Component, index, ...props }: any) => {
+                if (!Component) return null;
+                return (
+                  <Fragment key={index}>
+                    <Component
+                      {...props}
+                      setSelectedSection={setSelectedSection}
+                    />
+                    {props?.subContent?.map(
+                      ({ Component: Component2, index, ...props2 }: any) => {
+                        if (!Component2) return null;
+                        return (
+                          <Component2
+                            key={index}
+                            {...props2}
+                            setSelectedSection={setSelectedSection}
+                          />
+                        );
+                      }
+                    )}
+                  </Fragment>
+                );
+              })}
+            </>
+          )}
         </Box>
         {showButton && (
           <ScrollToTopButton onClick={scrollToTop}>
