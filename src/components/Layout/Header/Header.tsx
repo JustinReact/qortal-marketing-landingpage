@@ -199,7 +199,7 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
           )}
         </HeaderNav>
       );
-    } else if (location.pathname === "/docs/api") {
+    } else if (location.pathname === "/docs/api/extension" || location.pathname === "/docs/api/q-app") {
       return (
         <DocsNavContainer>
           <BackHomeButton
@@ -469,14 +469,14 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                 />
               </FeaturesButton>
               <Docs
-                className={location.pathname === "/api/docs" ? "active" : ""}
+                className={location.pathname === "/api/docs/extension" || location.pathname === "/api/docs/q-app" ? "active" : ""}
                 onClick={() => {
                   ReactGA.event({
                     category: "User",
                     action: "Clicked Docs Button",
                     label: "Docs Button"
                   });
-                  navigate("/docs/api");
+                  navigate("/docs/api/extension");
                 }}
               >
                 Developer
