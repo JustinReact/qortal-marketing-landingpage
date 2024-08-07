@@ -32,8 +32,11 @@ export const TopFold = styled(Grid)(({ theme }) => ({
   display: "flex",
   flexDirection: "row",
   alignItems: "center",
-  [theme.breakpoints.down("lg")]: {
-    gap: "30px"
+  flexWrap: "nowrap",
+  gap: "50px",
+  '@media (max-width: 1143px)': {
+    flexDirection: "column",
+    gap: "20px"
   }
 }));
 
@@ -62,6 +65,9 @@ export const TopFoldButtonRow = styled(Box)(({ theme }) => ({
   gap: "30px",
   [theme.breakpoints.down("lg")]: {
     justifyContent: "center"
+  },
+  [theme.breakpoints.down("sm")]: {
+    marginBottom: "30px"
   }
 }));
 
@@ -72,7 +78,6 @@ export const Header = styled(Typography)(({ theme }) => ({
   lineHeight: "73px",
   letterSpacing: "0.09em",
   color: theme.palette.text.primary,
-  whiteSpace: "nowrap",
   userSelect: "none",
   "@media (max-width: 1533px)": {
     whiteSpace: "normal"
@@ -183,7 +188,7 @@ export const QonnectFourHeader = styled(Typography)(({ theme }) => ({
   "& a": {
     cursor: "pointer",
     color: "#0085FF",
-    textDecoration: "none",
+    textDecoration: "none"
   },
   [theme.breakpoints.down("md")]: {
     fontSize: "35px",
@@ -218,7 +223,7 @@ export const QonnectFourMainRow = styled(Box)(({ theme }) => ({
   width: "100%",
   [theme.breakpoints.down("lg")]: {
     flexDirection: "column"
-  },
+  }
 }));
 
 export const QonnectFourRow = styled(Box)({
@@ -272,12 +277,12 @@ export const BubbleCard = styled(Box)(({ theme }) => ({
   [theme.breakpoints.down("md")]: {
     fontSize: "35px",
     width: "47px",
-    height: "47px",
+    height: "47px"
   },
   [theme.breakpoints.down("sm")]: {
     fontSize: "25px",
     width: "35px",
-    height: "35px",
+    height: "35px"
   }
 }));
 
@@ -289,11 +294,11 @@ export const BubbleCardColored = styled(Box)(({ theme }) => ({
   borderRadius: "50%",
   [theme.breakpoints.down("md")]: {
     width: "47px",
-    height: "47px",
+    height: "47px"
   },
   [theme.breakpoints.down("sm")]: {
     width: "35px",
-    height: "35px",
+    height: "35px"
   }
 }));
 
@@ -316,7 +321,7 @@ export const StyledSlider = styled(Slider)(({ theme }) => ({
     [theme.breakpoints.down("md")]: {
       width: "67px",
       height: "67px",
-      left: "5% !important",
+      left: "5% !important"
     }
   },
   "& .MuiSlider-rail": {
@@ -331,41 +336,47 @@ export const StyledSlider = styled(Slider)(({ theme }) => ({
   }
 }));
 
-export const DoubleCaretRightIcon = styled(DoubleCaretRightSVG)(({ theme }) => ({
-  position: "absolute",
-  top: "55px",
-  left: "60px",
-  userSelect: "none",
-  animation: `${doubleCaretRightAnimation} 6s infinite`,
-  animationDelay: "0s",
-  [theme.breakpoints.down("md")]: {
-    top: "65px"
-  }
-}));
+export const DoubleCaretRightIcon = styled(DoubleCaretRightSVG)(
+  ({ theme }) => ({
+    position: "absolute",
+    top: "55px",
+    left: "60px",
+    userSelect: "none",
+    animation: `${doubleCaretRightAnimation} 6s infinite`,
+    animationDelay: "0s",
+    [theme.breakpoints.down("md")]: {
+      top: "65px"
+    }
+  })
+);
 
-export const DoubleCaretRightIcon2 = styled(DoubleCaretRightSVG)(({ theme }) => ({
-  position: "absolute",
-  top: "55px",
-  left: "165px",
-  userSelect: "none",
-  animation: `${doubleCaretRightAnimation} 6s infinite`,
-  animationDelay: "2s",
-  [theme.breakpoints.down("md")]: {
-    top: "65px"
-  }
-}));
+export const DoubleCaretRightIcon2 = styled(DoubleCaretRightSVG)(
+  ({ theme }) => ({
+    position: "absolute",
+    top: "55px",
+    left: "165px",
+    userSelect: "none",
+    animation: `${doubleCaretRightAnimation} 6s infinite`,
+    animationDelay: "2s",
+    [theme.breakpoints.down("md")]: {
+      top: "65px"
+    }
+  })
+);
 
-export const DoubleCaretRightIcon3 = styled(DoubleCaretRightSVG)(({ theme }) => ({
-  position: "absolute",
-  top: "55px",
-  left: "270px",
-  userSelect: "none",
-  animation: `${doubleCaretRightAnimation} 6s infinite`,
-  animationDelay: "4s",
-  [theme.breakpoints.down("md")]: {
-    top: "65px"
-  }
-}));
+export const DoubleCaretRightIcon3 = styled(DoubleCaretRightSVG)(
+  ({ theme }) => ({
+    position: "absolute",
+    top: "55px",
+    left: "270px",
+    userSelect: "none",
+    animation: `${doubleCaretRightAnimation} 6s infinite`,
+    animationDelay: "4s",
+    [theme.breakpoints.down("md")]: {
+      top: "65px"
+    }
+  })
+);
 
 export const SliderText = styled(Typography)(({ theme }) => ({
   fontFamily: "Fredoka One",
@@ -397,7 +408,7 @@ export const QortalWalletHeader = styled(Typography)(({ theme }) => ({
   "& a": {
     cursor: "pointer",
     color: "#0085FF",
-    textDecoration: "none",
+    textDecoration: "none"
   },
   [theme.breakpoints.down("md")]: {
     fontSize: "35px",
@@ -411,7 +422,7 @@ export const QortalWalletCards = styled(Grid)({});
 export const QortalWalletCard = styled(Grid)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
-  justifyContent: "center",
+  justifyContent: "center"
 }));
 
 export const QortalWalletCardImage = styled("img")(({ theme }) => ({
@@ -419,11 +430,11 @@ export const QortalWalletCardImage = styled("img")(({ theme }) => ({
   height: "500px",
   [theme.breakpoints.down("md")]: {
     width: "250px",
-    height: "350px",
+    height: "350px"
   },
   [theme.breakpoints.down("sm")]: {
     width: "300px",
-    height: "400px",
+    height: "400px"
   }
 }));
 
@@ -465,6 +476,6 @@ export const QortalWalletText2 = styled(Typography)(({ theme }) => ({
   },
   [theme.breakpoints.down("sm")]: {
     fontSize: "25px",
-    lineHeight: "32.27px",
+    lineHeight: "32.27px"
   }
 }));
