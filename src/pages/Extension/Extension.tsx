@@ -43,6 +43,9 @@ import QortalExtensionScreenshot3 from "../../images/Extension/QortalExtensionSc
 import QortalExtensionScreenshot4 from "../../images/Extension/QortalExtensionScreenshot4.png";
 import QortalExtensionScreenshot5 from "../../images/Extension/QortalExtensionScreenshot5.png";
 import QortalExtensionScreenshot6 from "../../images/Extension/QortalExtensionScreenshot6.png";
+import YoutubeThumbnail from "../../images/Youtube/QortalBrowserExtensionThumbnail.png";
+import { YoutubeVideoContainer } from "../QORTPage/QORTPage-styles";
+import { YoutubePlaceholder } from "../../components/YouTube/YoutubePlaceholder";
 
 interface ExtensionProps {
   setTheme: (val: string) => void;
@@ -52,7 +55,8 @@ export const Extension: FC<ExtensionProps> = ({ setTheme }) => {
   const extensionExplanationRef = useRef<HTMLDivElement | null>(null);
 
   const [sliderValue, setSliderValue] = useState<number>(0);
-
+  const [showVideoPlayer, setShowVideoPlayer] = useState<boolean>(false);
+  
   const handleSlideChange = async (event: any, value: number | number[]) => {
     const newValue = typeof value === "number" ? value : value[0];
     if (sliderValue < 95) {
@@ -76,6 +80,10 @@ export const Extension: FC<ExtensionProps> = ({ setTheme }) => {
         inline: "nearest"
       });
     }
+  };
+
+  const handleVideoClick = () => {
+    setShowVideoPlayer((prevState) => !prevState);
   };
 
   return (
@@ -116,12 +124,24 @@ export const Extension: FC<ExtensionProps> = ({ setTheme }) => {
             </CTAButton2>
           </TopFoldButtonRow>
         </TopFoldCol>
-        <TopFoldCol item md={12} lg={5}>
-          <ExtensionDesignImage
-            src={ExtensionDesign}
-            alt="Extension Design Image"
-          />
-        </TopFoldCol>
+        <YoutubeVideoContainer>
+            {showVideoPlayer ? (
+              <iframe
+                src="https://www.youtube.com/embed/kSXApJcOqZU?autoplay=1&rel=0"
+                loading="lazy"
+                title="Introducing the Qortal Browser Extension"
+                allowFullScreen
+                allow="autoplay"
+              ></iframe>
+            ) : (
+              <YoutubePlaceholder
+                isModal={false}
+                onClick={handleVideoClick}
+                YoutubeThumbnail={YoutubeThumbnail}
+                YoutubeTitle="Introducing the Qortal Browser Extension"
+              />
+            )}
+          </YoutubeVideoContainer>
       </TopFold>
       <QonnectFourSection>
         <QonnectFourHeader>
