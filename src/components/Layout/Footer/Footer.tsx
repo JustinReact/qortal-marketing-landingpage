@@ -69,7 +69,7 @@ export const Footer = () => {
         }}
         className={location.pathname === "/privacy" ? "active" : ""}
       >
-        Open Extension
+        Open Extension2
       </FooterLink>
     </FooterContainer>
   );
