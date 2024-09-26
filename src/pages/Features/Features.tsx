@@ -28,15 +28,15 @@ import {
   InstallQortalButton
 } from "./Features-styles";
 import { FeatureTabs } from "./FeatureTabs";
-import QChatFeature1 from "../../images/Features/QChatFeature1.png";
-import QChatFeature2 from "../../images/Features/QChatFeature2.png";
-import QChatFeature3 from "../../images/Features/QChatFeature3.png";
-import QFundScreenshot from "../../images/Features/QFundScreenshot.png";
-import QShopScreenshot from "../../images/Home/Q-ShopScreenshot.png";
-import QBlogScreenshot from "../../images/Features/BlogScreenshot.png";
-import WalletScreenshot from "../../images/Features/WalletScreenshot.png";
-import TradePortalScreenshot from "../../images/Features/TradePortalScreenshot.png";
-import AutoBuyScreenshot from "../../images/Features/AutoBuyScreenshot.png";
+import QChatFeature1 from "../../../public/images/Features/QChatFeature1.png";
+import QChatFeature2 from "../../../public/images/Features/QChatFeature2.png";
+import QChatFeature3 from "../../../public/images/Features/QChatFeature3.png";
+import QFundScreenshot from "../../../public/images/Features/QFundScreenshot.png";
+import QShopScreenshot from "../../../public/images/Home/Q-ShopScreenshot.png";
+import QBlogScreenshot from "../../../public/images/Features/BlogScreenshot.png";
+import WalletScreenshot from "../../../public/images/Features/WalletScreenshot.png";
+import TradePortalScreenshot from "../../../public/images/Features/TradePortalScreenshot.png";
+import AutoBuyScreenshot from "../../../public/images/Features/AutoBuyScreenshot.png";
 import ReactGA from "react-ga4";
 
 interface FeatureInfo {

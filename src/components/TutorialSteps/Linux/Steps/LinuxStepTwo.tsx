@@ -15,7 +15,7 @@ import {
   StepCard,
   StepColumn,
 } from "../../Steps-styles";
-import LinuxDownloadImg from "../../../../images/Linux/LinuxDownload.png";
+import LinuxDownloadImg from "../../../../../public/images/Linux/LinuxDownload.png";
 import Modal from "../../../Common/Modal/Modal";
 
 // Not currently used

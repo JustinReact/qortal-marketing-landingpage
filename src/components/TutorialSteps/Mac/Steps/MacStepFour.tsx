@@ -12,7 +12,7 @@ import {
   StepColumn,
 } from "../../Steps-styles";
 import Modal from "../../../Common/Modal/Modal";
-import MacStep4 from "../../../../images/Mac/MacStep4.jpg";
+import MacStep4 from "../../../../../public/images/Mac/MacStep4.jpg";
 
 const MacStepFour = () => {
   const [openModal, setOpenModal] = useState<boolean>(false);

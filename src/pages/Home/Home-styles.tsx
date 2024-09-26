@@ -1,6 +1,6 @@
 import { styled } from "@mui/system";
 import { Box, Button, Grid, Typography } from "@mui/material";
-import QORTPromoDesign from "../../images/Home/QORTPromoDesign.webp";
+import QORTPromoDesign from "../../../public/images/Home/QORTPromoDesign.webp";
 import { DiscordSVG } from "../../components/Common/Icons/DiscordSVG";
 import { QortalSVG } from "../../components/Common/Icons/QortalSVG";
 

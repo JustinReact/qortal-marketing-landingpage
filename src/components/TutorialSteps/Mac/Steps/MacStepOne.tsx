@@ -14,10 +14,10 @@ import {
   StepColumn,
 } from "../../Steps-styles";
 import Modal from "../../../Common/Modal/Modal";
-import MacStepOne1 from "../../../../images/Mac/MacStep1-1.jpg";
-import MacStepOne2 from "../../../../images/Mac/MacStep1-2.jpg";
-import MacStepOne3 from "../../../../images/Mac/MacStep1-3.jpg";
-import MacStepOne4 from "../../../../images/Mac/MacStep1-4.jpg";
+import MacStepOne1 from "../../../../../public/images/Mac/MacStep1-1.jpg";
+import MacStepOne2 from "../../../../../public/images/Mac/MacStep1-2.jpg";
+import MacStepOne3 from "../../../../../public/images/Mac/MacStep1-3.jpg";
+import MacStepOne4 from "../../../../../public/images/Mac/MacStep1-4.jpg";
 
 interface MacStepOneProps {
   setShinyButton: React.Dispatch<React.SetStateAction<boolean>>;

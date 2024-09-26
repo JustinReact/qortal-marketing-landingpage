@@ -18,9 +18,9 @@ import {
   StepCardInnerContainer,
   StepColumn,
 } from "../../Steps-styles";
-import LinuxDownloadImg from "../../../../images/Linux/LinuxDownload.png";
-import LinuxAppPermissionImg from "../../../../images/Linux/LinuxAppPermission.png";
-import TerminalScreenshot from "../../../../images/Linux/LinuxTerminalScreenshot.png";
+import LinuxDownloadImg from "../../../../../public/images/Linux/LinuxDownload.png";
+import LinuxAppPermissionImg from "../../../../../public/images/Linux/LinuxAppPermission.png";
+import TerminalScreenshot from "../../../../../public/images/Linux/LinuxTerminalScreenshot.png";
 import Modal from "../../../Common/Modal/Modal";
 
 interface LinuxStepOneProps {

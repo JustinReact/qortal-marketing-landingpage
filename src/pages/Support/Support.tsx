@@ -1,6 +1,6 @@
 import ReactGA from "react-ga4";
 import { DiscordLogo, SupportContainer, SupportHeader } from "./Support-styles"
-import CustomDiscordLogo from "../../images/Home/JoinDiscordLogo.png"
+import CustomDiscordLogo from "../../../public/images/Home/JoinDiscordLogo.png"
 
 export const Support = () => {
   return (

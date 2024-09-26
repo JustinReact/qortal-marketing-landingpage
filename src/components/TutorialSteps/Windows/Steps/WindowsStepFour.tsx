@@ -9,7 +9,7 @@ import {
 } from "../../Steps-styles";
 import { Grid} from "@mui/material";
 import Modal from "../../../Common/Modal/Modal";
-import StepFourImg from "../../../../images/Windows/WindowsStepFour.webp";
+import StepFourImg from "../../../../../public/images/Windows/WindowsStepFour.webp";
 
 interface WindowsStepFourProps {}
 

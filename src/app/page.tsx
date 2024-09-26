@@ -1,6 +1,7 @@
+"use client";
 import { useState, FC, useEffect, useRef } from "react";
 import { Typography, useMediaQuery, useTheme } from "@mui/material";
-import { QortalBigLogo } from "../../components/Common/Logo/QortalBigLogo";
+import { QortalBigLogo } from "../components/Common/Logo/QortalBigLogo";
 import {
   StyledButton,
   HeaderText,
@@ -22,20 +23,20 @@ import {
   CustomQORTSVG,
   CustomDiscordSVG,
   QORTPromoFont
-} from "./Home-styles";
-import OperatingSystem from "../../components/OperatingSystem/OperatingSystem";
+} from "../pages/Home/Home-styles";
+import OperatingSystem from "../components/OperatingSystem/OperatingSystem";
 import ReactGA from "react-ga4";
-import { WindowsSVG } from "../../components/Common/Icons/WindowsSVG";
-import { LinuxSVG } from "../../components/Common/Icons/LinuxSVG";
-import { AppleSVG } from "../../components/Common/Icons/AppleSVG";
-import { CommonModal } from "../../components/Common/CommonModal/CommonModal";
-import { YoutubePlaceholder } from "../../components/YouTube/YoutubePlaceholder";
-import { Showcase } from "../../components/Showcase/Showcase";
-import { RootState } from "../../state/store";
+import { WindowsSVG } from "../components/Common/Icons/WindowsSVG";
+import { LinuxSVG } from "../components/Common/Icons/LinuxSVG";
+import { AppleSVG } from "../components/Common/Icons/AppleSVG";
+import { CommonModal } from "../components/Common/CommonModal/CommonModal";
+import { YoutubePlaceholder } from "../components/YouTube/YoutubePlaceholder";
+// import { Showcase } from "../components/Showcase/Showcase";
+import { RootState } from "../state/store";
 import { useSelector, useDispatch } from "react-redux";
-import { setOS } from "../../state/features/osSlice";
+import { setOS } from "../state/features/osSlice";
 import { UAParser } from "ua-parser-js";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import Image from "next/image";
 
 const Home: FC = () => {
@@ -43,7 +44,7 @@ const Home: FC = () => {
   const isMobile = useMediaQuery(theme.breakpoints.only("xs"));
   const isSmallToMediumScreen = useMediaQuery(theme.breakpoints.down("md"));
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   // Determine which OS they're on
   const parser = new UAParser();
@@ -70,7 +71,8 @@ const Home: FC = () => {
       localStorage.setItem("isFirstTimeVisitor", "false");
       // Redirect to /qort for mobile users
       if (userOS?.includes("Android" || "iOS")) {
-        navigate("/qort");
+        // navigate("/qort");
+        console.log("Redirect to /qort for mobile users");
       }
     } else {
       return;
@@ -106,7 +108,7 @@ const Home: FC = () => {
               The Future{" "}
             </span>
             <span>of the Internet is Here: </span>
-            <Image src={"/images/Home/QortalWordLogo.svg"} alt="QortalWordLogoImg" />
+            <Image src={"/images/Home/QortalWordLogo.svg"} alt="QortalWordLogoImg" width={200} height={200} />
           </HeaderText>
           <SubHeaderText>
             Join a Decentralized World Where You Have Complete Control!
@@ -171,7 +173,7 @@ const Home: FC = () => {
             alt="Join Qortal Discord"
           />
       </JoinDiscordRow> */}
-      {!operatingSystem && <Showcase osRef={osRef} />}
+      {/* {!operatingSystem && <Showcase osRef={osRef} />} */}
       <FooterRow container>
         {!operatingSystem ? (
           <>
@@ -256,7 +258,7 @@ const Home: FC = () => {
                   action: "Clicked Redirect to QORT Button on homepage modal",
                   label: "Clicked Redirect to QORT Button on homepage modal"
                 });
-                navigate("/qort");
+                // navigate("/qort");
               }}
             >
               <CustomQORTSVG color={"#000000"} height={"72"} width={"72"} />

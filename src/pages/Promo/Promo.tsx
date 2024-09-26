@@ -14,8 +14,8 @@ import {
 } from "./Promo-styles";
 import ReactGA from "react-ga4";
 import { Grid, Box, useTheme } from "@mui/material";
-import UnderlineScribble from "../../images/Promo/UnderlineScribble.webp";
-import Arrow from "../../images/Promo/Arrow.webp";
+import UnderlineScribble from "../../../public/images/Promo/UnderlineScribble.webp";
+import Arrow from "../../../public/images/Promo/Arrow.webp";
 import { OpenSourceSVG } from "../../components/Common/Icons/OpenSourceSVG";
 import { HiveSVG } from "../../components/Common/Icons/HiveSVG";
 import { ConnectSVG } from "../../components/Common/Icons/ConnectSVG";

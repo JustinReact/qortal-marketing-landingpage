@@ -1,5 +1,6 @@
 import { styled, keyframes } from "@mui/system";
 import { Box } from "@mui/material";
+import Image from "next/image";
 
 export const floatAnimation = keyframes`
   0% {
@@ -26,7 +27,7 @@ export const LogoContainer = styled(Box)(({theme}) => ({
   }  
 }));
 
-export const QortalImg = styled("img")(({theme}) => ({
+export const QortalImg = styled(Image)(({theme}) => ({
   width: "70%",
   objectFit: "cover",
   userSelect: "none",

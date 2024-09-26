@@ -30,8 +30,8 @@ import { VisibilityLockSVG } from "../Common/Icons/VisibilityLockSVG";
 import { VPNLockSVG } from "../Common/Icons/VPNLockSVG";
 import { RadioButtonSVG } from "../Common/Icons/RadioButtonSVG";
 import { MoneyOffSVG } from "../Common/Icons/MoneyOffSVG";
-import QShopScreenshot from "../../images/Home/Q-ShopScreenshot.png";
-import QChatScreenshot from "../../images/Home/Q-ChatScreenshot.png";
+import QShopScreenshot from "../../../public/images/Home/Q-ShopScreenshot.png";
+import QChatScreenshot from "../../../public/images/Home/Q-ChatScreenshot.png";
 import { useNavigate } from "react-router-dom";
 
 interface ShowcaseProps {
