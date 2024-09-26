@@ -23,7 +23,6 @@ import {
   CustomDiscordSVG,
   QORTPromoFont
 } from "./Home-styles";
-import QortalWordLogoImg from "../../images/Home/QortalWordLogo.svg";
 import OperatingSystem from "../../components/OperatingSystem/OperatingSystem";
 import ReactGA from "react-ga4";
 import { WindowsSVG } from "../../components/Common/Icons/WindowsSVG";
@@ -37,8 +36,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setOS } from "../../state/features/osSlice";
 import { UAParser } from "ua-parser-js";
 import { useNavigate } from "react-router-dom";
-import YoutubeThumbnail from "../../images/Youtube/YoutubeThumbnail.webp";
-import JoinDiscordLogo from "../../images/Home/JoinDiscordLogo.png";
+import Image from "next/image";
 
 const Home: FC = () => {
   const theme = useTheme();
@@ -108,7 +106,7 @@ const Home: FC = () => {
               The Future{" "}
             </span>
             <span>of the Internet is Here: </span>
-            <QortalWordLogo src={QortalWordLogoImg} alt="QortalWordLogoImg" />
+            <Image src={"/images/Home/QortalWordLogo.svg"} alt="QortalWordLogoImg" />
           </HeaderText>
           <SubHeaderText>
             Join a Decentralized World Where You Have Complete Control!
@@ -198,7 +196,7 @@ const Home: FC = () => {
                 <YoutubePlaceholder
                   isModal={false}
                   onClick={handleVideoClick}
-                  YoutubeThumbnail={YoutubeThumbnail}
+                  YoutubeThumbnail={"/images/Youtube/YoutubeThumbnail.webp"}
                   YoutubeTitle="Introducing Qortal Q-Apps"
                 />
               )}

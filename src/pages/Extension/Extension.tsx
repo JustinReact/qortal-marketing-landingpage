@@ -36,14 +36,14 @@ import {
   TopFoldCol,
   TopFoldRow
 } from "./Extension-styles";
-import ExtensionDesign from "../../images/Extension/ExtensionDesign.png";
-import QortalExtensionScreenshot1 from "../../images/Extension/QortalExtensionScreenshot1.png";
-import QortalExtensionScreenshot2 from "../../images/Extension/QortalExtensionScreenshot2.png";
-import QortalExtensionScreenshot3 from "../../images/Extension/QortalExtensionScreenshot3.png";
-import QortalExtensionScreenshot4 from "../../images/Extension/QortalExtensionScreenshot4.png";
-import QortalExtensionScreenshot5 from "../../images/Extension/QortalExtensionScreenshot5.png";
-import QortalExtensionScreenshot6 from "../../images/Extension/QortalExtensionScreenshot6.png";
-import YoutubeThumbnail from "../../images/Youtube/QortalBrowserExtensionThumbnail.png";
+import ExtensionDesign from "../../../public/images/Extension/ExtensionDesign.png";
+import QortalExtensionScreenshot1 from "../../../public/images/Extension/QortalExtensionScreenshot1.png";
+import QortalExtensionScreenshot2 from "../../../public/images/Extension/QortalExtensionScreenshot2.png";
+import QortalExtensionScreenshot3 from "../../../public/images/Extension/QortalExtensionScreenshot3.png";
+import QortalExtensionScreenshot4 from "../../../public/images/Extension/QortalExtensionScreenshot4.png";
+import QortalExtensionScreenshot5 from "../../../public/images/Extension/QortalExtensionScreenshot5.png";
+import QortalExtensionScreenshot6 from "../../../public/images/Extension/QortalExtensionScreenshot6.png";
+import YoutubeThumbnail from "../../../public/images/Youtube/QortalBrowserExtensionThumbnail.png";
 import { YoutubeVideoContainer } from "../QORTPage/QORTPage-styles";
 import { YoutubePlaceholder } from "../../components/YouTube/YoutubePlaceholder";
 

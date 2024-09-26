@@ -18,7 +18,7 @@ import {
 } from "../../Steps-styles";
 import { CheckmarkSVG } from "../../../Common/Icons/CheckmarkSVG";
 import Modal from "../../../Common/Modal/Modal";
-import TerminalScreenshot from "../../../../images/Linux/LinuxTerminalScreenshot.png";
+import TerminalScreenshot from "../../../../../public/images/Linux/LinuxTerminalScreenshot.png";
 
 interface TerminalProps {
   setOpenModal: () => void;

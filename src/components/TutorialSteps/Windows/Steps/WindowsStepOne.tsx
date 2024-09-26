@@ -9,7 +9,7 @@ import {
   StepCard,
   StepColumn,
 } from "../../Steps-styles";
-import StepOneImg from "../../../../images/Windows/WindowsStepOne.png";
+import StepOneImg from "../../../../../public/images/Windows/WindowsStepOne.png";
 import Modal from "../../../Common/Modal/Modal";
 
 interface WindowsStepOneProps {

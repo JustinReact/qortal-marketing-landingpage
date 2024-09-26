@@ -14,8 +14,8 @@ import {
   StepColumn,
 } from "../../Steps-styles";
 import Modal from "../../../Common/Modal/Modal";
-import MacStepTwo1 from "../../../../images/Mac/MacStep2-1.jpg";
-import MacStepTwo2 from "../../../../images/Mac/MacStep2-2.jpg";
+import MacStepTwo1 from "../../../../../public/images/Mac/MacStep2-1.jpg";
+import MacStepTwo2 from "../../../../../public/images/Mac/MacStep2-2.jpg";
 
 
 const MacStepTwo = () => {

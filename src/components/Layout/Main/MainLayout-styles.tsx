@@ -1,12 +1,12 @@
 import { styled } from "@mui/system";
-import HexagonBG from "../../../images/Home/HexagonBG.png";
-import HexagonBGLight from "../../../images/Home/HexagonBGLight.png";
-import BlurryBGDarkMode from "../../../images/Promo/BlurryBGDarkMode.webp";
-import BlurryBGDarkModeMobile from "../../../images/Promo/BlurryBGDarkModeMobile.webp";
-import BlurryBGLightMode from "../../../images/Promo/BlurryBGLightMode.webp";
-import BlurryBGLightModeMobile from "../../../images/Promo/BlurryBGLightModeMobile.webp";
-import FeaturesHexagonBG from "../../../images/Features/FeaturesHexagonBG.png";
-import ExtensionBackground from "../../../images/Extension/ExtensionBackground.png";
+import HexagonBG from "../../../../public/images/Home/HexagonBG.png";
+import HexagonBGLight from "../../../../public/images/Home/HexagonBGLight.png";
+import BlurryBGDarkMode from "../../../../public/images/Promo/BlurryBGDarkMode.webp";
+import BlurryBGDarkModeMobile from "../../../../public/images/Promo/BlurryBGDarkModeMobile.webp";
+import BlurryBGLightMode from "../../../../public/images/Promo/BlurryBGLightMode.webp";
+import BlurryBGLightModeMobile from "../../../../public/images/Promo/BlurryBGLightModeMobile.webp";
+import FeaturesHexagonBG from "../../../../public/images/Features/FeaturesHexagonBG.png";
+import ExtensionBackground from "../../../../public/images/Extension/ExtensionBackground.png";
 
 export const Wrapper = styled("div")(({ theme }) => ({
   position: "relative",

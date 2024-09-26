@@ -1,0 +1,119 @@
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[13].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[13].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[13].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[13].use[5]!./src/index.scss ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+html {
+  scroll-behavior: smooth;
+}
+
+@font-face {
+  font-family: "CambonLight";
+  src: url("/fonts/Cambon-Light.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/Inter.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Raleway";
+  src: url("/fonts/Raleway.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Catamaran";
+  src: url("/fonts/Catamaran.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Oxygen";
+  src: url("/fonts/Oxygen.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Work Sans";
+  src: url("/fonts/WorkSans.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Cairo";
+  src: url("/fonts/Cairo.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Museo";
+  src: url("/fonts/Museo.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("/fonts/Montserrat.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Lovelo";
+  src: url("/fonts/Lovelo.otf") format("opentype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Kadwa";
+  src: url("/fonts/Kadwa.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Fira Sans";
+  src: url("/fonts/Fira Sans Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Roboto";
+  src: url("/fonts/Roboto-Regular.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Nanum Gothic";
+  src: url("/fonts/NanumGothic-Regular.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Protest Strike";
+  src: url("/fonts/ProtestStrike-Regular.ttf") format("truetype"), url("/fonts/ProtestStrike-Regular.eot") format("embedded-opentype"), url("/fonts/ProtestStrike-Regular.woff") format("woff"), url("/fonts/ProtestStrike-Regular.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "PT Sans";
+  src: url("/fonts/PTSans-Regular.ttf") format("truetype"), url("/fonts/PTSans-Regular.eot") format("embedded-opentype"), url("/fonts/PTSans-Regular.woff") format("woff"), url("/fonts/PTSans-Regular.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Spartan";
+  src: url("/fonts/Spartan-Regular.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Magistral";
+  src: url("/fonts/Magistral.otf") format("opentype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Monoton";
+  src: url("/fonts/Monoton-Regular.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Futura";
+  src: url("/fonts/Futura.otf") format("opentype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Futura Light";
+  src: url("/fonts/Futura Light.otf") format("opentype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Fredoka One";
+  src: url("/fonts/Fredoka One.ttf") format("truetype");
+  font-display: swap;
+}

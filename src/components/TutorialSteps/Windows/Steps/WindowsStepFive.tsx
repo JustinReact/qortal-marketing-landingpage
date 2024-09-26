@@ -13,8 +13,8 @@ import {
 } from "../../Steps-styles";
 import { Grid, Typography } from "@mui/material";
 import Modal from "../../../Common/Modal/Modal";
-import StartQortalCore from "../../../../images/Windows/WindowsStepFive.webp";
-import ChangeStartQortalCoreDefault from "../../../../images/Windows/WindowsStepFive2.webp";
+import StartQortalCore from "../../../../../public/images/Windows/WindowsStepFive.webp";
+import ChangeStartQortalCoreDefault from "../../../../../public/images/Windows/WindowsStepFive2.webp";
 
 interface WindowsStepFiveProps {}
 

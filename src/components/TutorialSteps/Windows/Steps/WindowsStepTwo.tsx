@@ -10,7 +10,7 @@ import {
 } from "../../Steps-styles";
 import { Grid, Typography } from "@mui/material";
 import Modal from "../../../Common/Modal/Modal";
-import StepTwoImg from "../../../../images/Windows/WindowsStepTwo.webp";
+import StepTwoImg from "../../../../../public/images/Windows/WindowsStepTwo.webp";
 
 interface WindowsStepTwoProps {}
 

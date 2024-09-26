@@ -14,8 +14,8 @@ import {
   StepColumn,
 } from "../../Steps-styles";
 import Modal from "../../../Common/Modal/Modal";
-import MacStepThree1 from "../../../../images/Mac/MacStep3-1.jpg";
-import MacStepThree2 from "../../../../images/Mac/MacStep3-2.jpg";
+import MacStepThree1 from "../../../../../public/images/Mac/MacStep3-1.jpg";
+import MacStepThree2 from "../../../../../public/images/Mac/MacStep3-2.jpg";
 
 const MacStepThree = () => {
   const [openModal, setOpenModal] = useState<boolean>(false);
