@@ -1,8 +1,8 @@
+"use client";
 import { useState, useRef, useEffect } from "react";
 import { UAParser } from "ua-parser-js";
 import { useDispatch } from "react-redux";
 import { setOS } from "../../state/features/osSlice";
-import { useNavigate } from "react-router-dom";
 import { Box } from "@mui/material";
 import {
   BGShape,
@@ -26,18 +26,10 @@ import {
   GatewayButton,
   FeaturesImgContainer,
   InstallQortalButton
-} from "./Features-styles";
-import { FeatureTabs } from "./FeatureTabs";
-import QChatFeature1 from "../../../public/images/Features/QChatFeature1.png";
-import QChatFeature2 from "../../../public/images/Features/QChatFeature2.png";
-import QChatFeature3 from "../../../public/images/Features/QChatFeature3.png";
-import QFundScreenshot from "../../../public/images/Features/QFundScreenshot.png";
-import QShopScreenshot from "../../../public/images/Home/Q-ShopScreenshot.png";
-import QBlogScreenshot from "../../../public/images/Features/BlogScreenshot.png";
-import WalletScreenshot from "../../../public/images/Features/WalletScreenshot.png";
-import TradePortalScreenshot from "../../../public/images/Features/TradePortalScreenshot.png";
-import AutoBuyScreenshot from "../../../public/images/Features/AutoBuyScreenshot.png";
+} from "../../components/Features/Features-styles";
+import { FeatureTabs } from "../../components/Features/FeatureTabs";
 import ReactGA from "react-ga4";
+import { useRouter } from "next/navigation";
 
 interface FeatureInfo {
   title: string;
@@ -60,7 +52,7 @@ export const Features = () => {
 
   const dispatch = useDispatch();
 
-  const navigate = useNavigate();
+  const router = useRouter();
 
   // Enum for the three features
   enum FeaturesEnum {
@@ -83,7 +75,7 @@ export const Features = () => {
       feature1: {
         title: "Q-Fund: Transparent and Censorship-Resistant Crowdfunding",
         text: "Q-Fund allows your to crowdsource funds for your projects and ideas. In a world where financial control and transparency are more important than ever, Q-Fund offers a completely decentralized platform for crowdfunding. Say goodbye to middlemen and hello to 100% of your funds going directly to your cause. With every transaction recorded on Qortal's immutable Data Network, contributors have clear visibility into their donations, fostering an environment of trust and honesty. Whether it's for an innovative startup, a community project, or a personal cause, your fundraising on Qortal is resilient against any form of censorship, ensuring that your voice can't be silenced based on the nature of your campaign.",
-        image: QFundScreenshot,
+        image: "/images/Features/QFundScreenshot.png",
         smallTitle: "Q-Fund",
         smallText: (
           <FeatureCardBody>
@@ -115,7 +107,7 @@ export const Features = () => {
       feature2: {
         title: "Q-Shop: A Private, Secure, Decentralized Marketplace",
         text: "Welcome to Q-Shop, a marketplace revolution within the Qortal ecosystem, where the power of purchase and sale resides securely in your hands. In an era where privacy is a premium, Q-Shop stands out by ensuring every order is encrypted, every transaction is private, and every exchange is conducted on a trustless, decentralized platform. Whether you're buying home-grown produce or unique goods like Australian Natural Zeolite Powder, Q-Shop offers a seamless, safe, and completely private shopping experience. With Q-Shop, say goodbye to prying eyes and embrace a marketplace that respects your anonymity while providing a rich array of products and services.",
-        image: QShopScreenshot,
+        image: "/images/Home/Q-ShopScreenshot.png",
         smallTitle: "Q-Shop",
         smallText: (
           <FeatureCardBody>
@@ -151,7 +143,7 @@ export const Features = () => {
       feature3: {
         title: "Q-Blog: The Decentralized Canvas for Your Thoughts",
         text: "Discover the new era of blogging with Q-Blog, where freedom of expression meets the cutting edge of decentralization. Share your voice, unhindered and unfiltered, on a platform that champions absolute privacy and peer-to-peer interactions. Q-Blog isn't just another blogging site; you can also use it as a simple website builder to share with the Qortal community!",
-        image: QBlogScreenshot,
+        image: "/images/Features/BlogScreenshot.png",
         smallTitle: "Q-Blog",
         smallText: (
           <FeatureCardBody>
@@ -188,7 +180,7 @@ export const Features = () => {
         title:
           "Decentralized Chatting, Directly on the Blockchain: Experience Q-Chat",
         text: "Dive into a truly decentralized chat experience with Q-Chat, seamlessly integrated into the Qortal blockchain. Exchange messages that stay active for a day and enjoy the added security of encrypted private messages, ensuring they're only seen by the intended recipient.",
-        image: QChatFeature1,
+        image: "/images/Features/QChatFeature1.png",
         smallTitle: "Decentralized Chat",
         smallText: (
           <FeatureCardBody>
@@ -201,7 +193,7 @@ export const Features = () => {
       feature2: {
         title: "Join Niche Communities Tailored to Your Interests",
         text: "Discover like-minded individuals or create your own community within Qortal's Q-Chat. Whether you're an app developer or simply looking to connect with locals from a certain part of the world, there's a group waiting for you. Sending group invites by link is also very easy, allowing you to quickly grow your community!",
-        image: QChatFeature2,
+        image: "/images/Features/QChatFeature2.png",
         smallTitle: "Find Your Tribe",
         smallText: (
           <FeatureCardBody>
@@ -214,7 +206,7 @@ export const Features = () => {
       feature3: {
         title: "Instant Photo Sharing in Total Privacy",
         text: "Capture and share moments instantly within the Qortal network. With Q-Chat, you can swiftly send photos to friends or groups knowing there's no middle-man peering over. Your shared memories remain between you and your chosen recipients, thanks to the platform's direct peer-to-peer connection. Furthermore, you can also easily find pictures that have been sent previously by yourself or others using the image history feature.",
-        image: QChatFeature3,
+        image: "/images/Features/QChatFeature3.png",
         smallTitle: "Quick Photo Sharing: Privacy First",
         smallText: (
           <FeatureCardBody>
@@ -235,7 +227,7 @@ export const Features = () => {
       feature1: {
         title: "All-in-One Decentralized Wallet",
         text: "The Qortal wallet page is a one-stop solution for crypto enthusiasts who value decentralization. With Qortal, you can effortlessly manage and trade up to seven different cryptocurrencies, ensuring that your portfolio is as diverse as it is secure. Experience seamless transactions with our user-friendly interface designed for both beginners and seasoned traders.",
-        image: WalletScreenshot,
+        image: "/images/Features/WalletScreenshot.png",
         smallTitle: "Qortal Wallet",
         smallText: (
           <FeatureCardBody>
@@ -259,7 +251,7 @@ export const Features = () => {
       feature2: {
         title: "Trade Portal: A Decentralized Exchange for Qortal",
         text: "Dive into the future of trading with Qortal's Trade Portal, where you can seamlessly exchange between seven different cryptocurrencies in a completely decentralized marketplace. Our cutting-edge platform empowers you to automatically buy QORT with LTC, offering unparalleled control and security over your trades. Bid farewell to centralized exchanges and embrace the autonomy of Qortal's Trade Portal.",
-        image: TradePortalScreenshot,
+        image: "/images/Features/TradePortalScreenshot.png",
         smallTitle: "Trade Portal",
         smallText: (
           <FeatureCardBody>
@@ -282,7 +274,7 @@ export const Features = () => {
       feature3: {
         title: "Maximize Your Trading with Qortal's Auto Buy Feature",
         text: "Qortal introduces the Auto Buy feature, an innovative tool designed to enhance your trading strategy on the Trade Portal. This feature allows for the placement of private buy orders that remain visible only to you. Unlike public sell orders, Auto Buy orders are not recorded on the Qortal blockchain, ensuring your trading intentions stay discreet. Set your desired QORT amount and price, then let Auto Buy handle the rest - efficiently executing your trades, starting from the lowest price upwards, while you maintain full control.",
-        image: AutoBuyScreenshot,
+        image: "/images/Features/AutoBuyScreenshot.png",
         smallTitle: "Auto-Buy",
         smallText: (
           <FeatureCardBody>
@@ -399,6 +391,8 @@ export const Features = () => {
             <FeaturesImg
               src={currentFeatureText[currentFeature][activeTab].image}
               alt="feature-image"
+              width={500}
+              height={500}
             />
             {activeTab === "feature1" ? (
               <BGShape />
@@ -430,19 +424,19 @@ export const Features = () => {
           onClick={() => {
             const userOS = parser.getOS().name;
             if (userOS?.includes("Android" || "iOS")) {
-              navigate("/");
+              router.push("/");
               dispatch(setOS(""));
             } else if (userOS?.includes("Mac")) {
-              navigate("/");
+              router.push("/");
               dispatch(setOS("mac"));
             } else if (userOS?.includes("Windows")) {
-              navigate("/");
+              router.push("/");
               dispatch(setOS("windows"));
             } else if (userOS?.includes("Linux")) {
-              navigate("/");
+              router.push("/");
               dispatch(setOS("linux"));
             } else {
-              navigate("/");
+              router.push("/");
               dispatch(setOS(""));
             }
           }}
@@ -453,3 +447,5 @@ export const Features = () => {
     </Container>
   );
 };
+
+export default Features;

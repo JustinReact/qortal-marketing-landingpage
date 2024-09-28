@@ -1,5 +1,7 @@
 import { styled } from "@mui/system";
 import { Grid, Box, Typography, Button } from "@mui/material";
+import Link from "next/link";
+import Image from "next/image";
 
 export const ShowcaseContainer = styled(Grid)(({ theme }) => ({
   display: "flex",
@@ -134,7 +136,7 @@ export const MainColumnTitleFont = styled(Typography)(({ theme }) => ({
   userSelect: "none"
 }));
 
-export const MainColumnText = styled(Typography)(({ theme }) => ({
+export const MainColumnText = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   gap: "10px",
@@ -195,7 +197,7 @@ export const ImageContainer = styled(Box)(({ theme }) => ({
   }
 }));
 
-export const BGImg = styled("img")(({ theme }) => ({
+export const BGImg = styled(Image)(({ theme }) => ({
   display: "block",
   width: "100%",
   maxWidth: "700px",
@@ -209,7 +211,7 @@ export const BGImg = styled("img")(({ theme }) => ({
   userSelect: "none"
 }));
 
-export const TopImg = styled("img")(({ theme }) => ({
+export const TopImg = styled(Image)(({ theme }) => ({
   position: "absolute",
   top: "-20px",
   left: "130px",
@@ -237,7 +239,7 @@ export const FeaturesText = styled(Typography)(({ theme }) => ({
   }
 }));
 
-export const FeaturesButton = styled(Button)(({ theme }) => ({
+export const FeaturesButton = styled(Link)(({ theme }) => ({
   display: "flex",
   alignSelf: "center",
   marginTop: "30px",
@@ -250,6 +252,7 @@ export const FeaturesButton = styled(Button)(({ theme }) => ({
   fontWeight: 500,
   textTransform: "none",
   transition: "all 0.3s ease-in-out",
+  textDecoration: "none",
   "&:hover": {
     cursor: "pointer",
     backgroundColor: theme.palette.secondary.light,

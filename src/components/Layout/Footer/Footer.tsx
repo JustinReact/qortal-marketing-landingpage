@@ -1,25 +1,20 @@
-import { useLocation, useNavigate } from "react-router-dom";
 import { FooterContainer, FooterLink } from "./Footer-styles";
+import { usePathname } from "next/navigation";
 
 export const Footer = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
+  const location = usePathname();
 
   return (
     <FooterContainer>
       <FooterLink
-        onClick={() => {
-          navigate(`/support`);
-        }}
-        className={location.pathname === "/support" ? "active" : ""}
+        href={"/support"}
+        className={location === "/support" ? "active" : ""}
       >
         Support
       </FooterLink>
       <FooterLink
-        onClick={() => {
-          navigate(`/privacy`);
-        }}
-        className={location.pathname === "/privacy" ? "active" : ""}
+        href={"/privacy"}
+        className={location === "/privacy" ? "active" : ""}
       >
         Privacy Policy
       </FooterLink>

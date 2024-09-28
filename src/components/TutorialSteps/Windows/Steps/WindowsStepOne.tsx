@@ -9,7 +9,6 @@ import {
   StepCard,
   StepColumn,
 } from "../../Steps-styles";
-import StepOneImg from "../../../../../public/images/Windows/WindowsStepOne.png";
 import Modal from "../../../Common/Modal/Modal";
 
 interface WindowsStepOneProps {
@@ -52,14 +51,14 @@ const WindowsStepOne = ({ setShinyButton }: WindowsStepOneProps) => {
           }}
         >
           <ScreenshotContainer onClick={() => setOpenModal(true)}>
-            <Screenshot src={StepOneImg} alt="step1" />
+            <Screenshot src={"/images/Windows/WindowsStepOne.png"} alt="step1" width={500} height={500} />
             <MagnifyingGlass id="magnifying-glass" />
           </ScreenshotContainer>
         </Grid>
       </StepCard>
       {openModal && (
         <Modal
-          images={[StepOneImg]}
+          images={["/images/Windows/WindowsStepOne.png"]}
           openModal={openModal}
           onClickFunc={() => setOpenModal(false)}
         ></Modal>

@@ -32,7 +32,7 @@ import { RadioButtonSVG } from "../Common/Icons/RadioButtonSVG";
 import { MoneyOffSVG } from "../Common/Icons/MoneyOffSVG";
 import QShopScreenshot from "../../../public/images/Home/Q-ShopScreenshot.png";
 import QChatScreenshot from "../../../public/images/Home/Q-ChatScreenshot.png";
-import { useNavigate } from "react-router-dom";
+import Link from "next/link";
 
 interface ShowcaseProps {
   osRef: React.RefObject<HTMLDivElement>;
@@ -40,7 +40,6 @@ interface ShowcaseProps {
 
 export const Showcase: FC<ShowcaseProps> = ({ osRef }) => {
   const theme = useTheme();
-  const navigate = useNavigate();
 
   return (
     <ShowcaseContainer ref={osRef}>
@@ -200,11 +199,7 @@ export const Showcase: FC<ShowcaseProps> = ({ osRef }) => {
                 <span>Integrated Wallet: </span>Experience seamless transactions
                 with an in-built, user-friendly digital wallet.
               </FeaturesText>
-              <FeaturesButton
-                onClick={() => {
-                  navigate("/features");
-                }}
-              >
+              <FeaturesButton href={"/features"}>
                 Explore The Possibilities
               </FeaturesButton>
             </FeaturesBody>
@@ -212,8 +207,8 @@ export const Showcase: FC<ShowcaseProps> = ({ osRef }) => {
           <Grid item xs={12} lg={7}>
             <ImageContainer>
               <Box style={{ position: "relative" }}>
-                <BGImg src={QShopScreenshot} alt="QShopScreenshot" />
-                <TopImg src={QChatScreenshot} alt="QShopScreenshot" />
+                <BGImg src={QShopScreenshot} alt="QShopScreenshot" height={500} width={500} />
+                <TopImg src={QChatScreenshot} alt="QShopScreenshot" height={500} width={500} />
               </Box>
             </ImageContainer>
           </Grid>

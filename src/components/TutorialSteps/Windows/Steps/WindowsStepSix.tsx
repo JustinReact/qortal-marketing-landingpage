@@ -9,7 +9,6 @@ import {
 } from "../../Steps-styles";
 import { Grid } from "@mui/material";
 import Modal from "../../../Common/Modal/Modal";
-import StepSixImg from "../../../../../public/images/Windows/WindowsStepSix.webp";
 
 interface WindowsStepSixProps {}
 
@@ -47,9 +46,11 @@ const WindowsStepSix: FC<WindowsStepSixProps> = () => {
         >
           <ScreenshotContainer onClick={() => setOpenModal(true)}>
             <Screenshot
-              src={StepSixImg}
+              src={"/images/Windows/WindowsStepSix.webp"}
               alt="step1"
               sx={{ objectFit: "contain" }}
+              width={500}
+              height={500}
             />
             <MagnifyingGlass id="magnifying-glass" />
           </ScreenshotContainer>
@@ -57,7 +58,7 @@ const WindowsStepSix: FC<WindowsStepSixProps> = () => {
       </StepCard>
       {openModal && (
         <Modal
-          images={[StepSixImg]}
+          images={["/images/Windows/WindowsStepSix.webp"]}
           openModal={openModal}
           onClickFunc={() => setOpenModal(false)}
         ></Modal>

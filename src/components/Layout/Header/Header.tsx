@@ -1,6 +1,5 @@
 import { FC, useState } from "react";
 import ReactGA from "react-ga4";
-import { useLocation, useNavigate } from "react-router-dom";
 import {
   HeaderNav,
   DiscordButton,
@@ -17,7 +16,7 @@ import {
   QORTButton,
   QortalText
 } from "./Header-styles";
-import { useMediaQuery, useTheme, Typography } from "@mui/material";
+import { useMediaQuery, useTheme } from "@mui/material";
 import { LayoutProps } from "../Main/MainLayout";
 import { LightModeSVG } from "../../Common/Icons/LightModeSVG";
 import { DarkModeSVG } from "../../Common/Icons/DarkModeSVG";
@@ -34,18 +33,18 @@ import { HomeSVG } from "../../Common/Icons/HomeSVG";
 import { QortalWhiteLogoSVG } from "../../Common/Icons/QortalWhiteLogoSVG";
 import { QortalBlackLogoSVG } from "../../Common/Icons/QortalBlackLogoSVG";
 import { PuzzleSVG } from "../../Common/Icons/PuzzleSVG";
+import { usePathname } from "next/navigation";
 
 export const Header: FC<LayoutProps> = ({ setTheme }) => {
   const theme = useTheme();
-  const navigate = useNavigate();
   const isMobile = useMediaQuery(theme.breakpoints.down("lg"));
-  const location = useLocation();
+  const location = usePathname();
 
   const [openMobileDrawer, setOpenMobileDrawer] = useState<boolean>(false);
 
   const renderHeader = () => {
     // Check the current path and render the corresponding header nav
-    if (location.pathname === "/") {
+    if (location === "/") {
       return (
         <HeaderNav>
           <ThemeSelectRow>
@@ -64,11 +63,7 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                 width="22"
               />
             )}
-            <QortalLogoContainer
-              onClick={() => {
-                navigate("/");
-              }}
-            >
+            <QortalLogoContainer href="/">
               <>
                 {theme.palette.mode === "light" ? (
                   <QortalBlackLogoSVG width="45" height="55" color="none" />
@@ -100,8 +95,8 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                     action: "Clicked Home Button",
                     label: "Home Button"
                   });
-                  navigate("/");
                 }}
+                href="/"
               >
                 Home
                 <HomeSVG
@@ -117,8 +112,8 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                     action: "Clicked Extension Button",
                     label: "Extensiokn Button"
                   });
-                  navigate("/extension");
                 }}
+                href={"/extension"}
               >
                 Extension
                 <PuzzleSVG
@@ -134,8 +129,8 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                     action: "Clicked QORT Button",
                     label: "QORT Button"
                   });
-                  navigate("/qort");
                 }}
+                href={"/qort"}
               >
                 QORT
                 <QortalSVG
@@ -151,8 +146,8 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                     action: "Clicked Features Button",
                     label: "Features Button"
                   });
-                  navigate("/features");
                 }}
+                href={"/features"}
               >
                 Features
                 <FeaturesSVG
@@ -168,8 +163,8 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                     action: "Clicked Docs Button",
                     label: "Docs Button"
                   });
-                  navigate("/docs/api/q-app");
                 }}
+                href={"/docs/api/q-app"}
               >
                 Developer
                 <DocsSVG
@@ -199,27 +194,22 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
           )}
         </HeaderNav>
       );
-    } else if (location.pathname === "/docs/api/extension" || location.pathname === "/docs/api/q-app") {
+    } else if (
+      location === "/docs/api/extension" ||
+      location === "/docs/api/q-app"
+    ) {
       return (
         <DocsNavContainer>
-          <BackHomeButton
-            onClick={() => {
-              navigate("/");
-            }}
-          >
+          <BackHomeButton href={"/"}>
             <BackArrowSVG color={"#ffffff"} height={"22"} width={"22"} />
             Back Home
           </BackHomeButton>
         </DocsNavContainer>
       );
-    } else if (location.pathname === "/qort") {
+    } else if (location === "/qort") {
       return (
         <HeaderNav>
-          <QortalLogoContainer
-            onClick={() => {
-              navigate("/");
-            }}
-          >
+          <QortalLogoContainer href="/">
             <>
               {theme.palette.mode === "light" ? (
                 <QortalBlackLogoSVG width="45" height="55" color="none" />
@@ -249,8 +239,8 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                     action: "Clicked Home Button",
                     label: "Home Button"
                   });
-                  navigate("/");
                 }}
+                href={"/"}
               >
                 Home
                 <HomeSVG
@@ -266,8 +256,8 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                     action: "Clicked Extension Button",
                     label: "Extensiokn Button"
                   });
-                  navigate("/extension");
                 }}
+                href={"/extension"}
               >
                 Extension
                 <PuzzleSVG
@@ -284,8 +274,8 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                     action: "Clicked QORT Button",
                     label: "QORT Button"
                   });
-                  navigate("/qort");
                 }}
+                href={"/qort"}
               >
                 QORT
                 <QortalSVG
@@ -301,8 +291,8 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                     action: "Clicked Features Button",
                     label: "Features Button"
                   });
-                  navigate("/features");
                 }}
+                href={"/features"}
               >
                 Features
                 <FeaturesSVG
@@ -318,8 +308,8 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                     action: "Clicked Docs Button",
                     label: "Docs Button"
                   });
-                  navigate("/docs/api/q-app");
                 }}
+                href={"/docs/api/q-app"}
               >
                 Documentation
                 <DocsSVG
@@ -368,11 +358,7 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                 width="22"
               />
             )}
-            <QortalLogoContainer
-              onClick={() => {
-                navigate("/");
-              }}
-            >
+            <QortalLogoContainer href="/">
               <>
                 {theme.palette.mode === "light" ? (
                   <QortalBlackLogoSVG width="45" height="55" color="none" />
@@ -397,15 +383,15 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
           ) : (
             <HeaderButtonsRow>
               <QORTButton
-                className={location.pathname === "/" ? "active" : ""}
+                className={location === "/" ? "active" : ""}
                 onClick={() => {
                   ReactGA.event({
                     category: "User",
                     action: "Clicked Home Button",
                     label: "Home Button"
                   });
-                  navigate("/");
                 }}
+                href="/"
               >
                 Home
                 <HomeSVG
@@ -415,15 +401,15 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                 />
               </QORTButton>
               <QORTButton
-                className={location.pathname === "/extension" ? "active" : ""}
+                className={location === "/extension" ? "active" : ""}
                 onClick={() => {
                   ReactGA.event({
                     category: "User",
                     action: "Clicked Extension Button",
                     label: "Extensiokn Button"
                   });
-                  navigate("/extension");
                 }}
+                href={"/extension"}
               >
                 Extension
                 <PuzzleSVG
@@ -433,15 +419,15 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                 />
               </QORTButton>
               <QORTButton
-                className={location.pathname === "/qort" ? "active" : ""}
+                className={location === "/qort" ? "active" : ""}
                 onClick={() => {
                   ReactGA.event({
                     category: "User",
                     action: "Clicked QORT Button",
                     label: "QORT Button"
                   });
-                  navigate("/qort");
                 }}
+                href={"/qort"}
               >
                 QORT
                 <QortalSVG
@@ -451,15 +437,15 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                 />
               </QORTButton>
               <FeaturesButton
-                className={location.pathname === "/features" ? "active" : ""}
+                className={location === "/features" ? "active" : ""}
                 onClick={() => {
                   ReactGA.event({
                     category: "User",
                     action: "Clicked Features Button",
                     label: "Features Button"
                   });
-                  navigate("/features");
                 }}
+                href={"/features"}
               >
                 Features
                 <FeaturesSVG
@@ -469,15 +455,20 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                 />
               </FeaturesButton>
               <Docs
-                className={location.pathname === "/api/docs/extension" || location.pathname === "/api/docs/q-app" ? "active" : ""}
+                className={
+                  location === "/api/docs/extension" ||
+                  location === "/api/docs/q-app"
+                    ? "active"
+                    : ""
+                }
                 onClick={() => {
                   ReactGA.event({
                     category: "User",
                     action: "Clicked Docs Button",
                     label: "Docs Button"
                   });
-                  navigate("/docs/api/extension");
                 }}
+                href={"/docs/api/q-app"}
               >
                 Developer
                 <DocsSVG

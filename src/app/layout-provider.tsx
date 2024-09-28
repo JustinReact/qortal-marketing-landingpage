@@ -1,4 +1,4 @@
-"use client";  
+"use client";
 import ReactGA from "react-ga4";
 import { Provider } from "react-redux";
 import { useState, useEffect } from "react";
@@ -42,9 +42,9 @@ function LayoutProvider({ children }: { children: React.ReactNode }) {
               : ""
           }
         >
-          {/* <Header setTheme={(val: string) => setTheme(val)} /> */}
+          <Header setTheme={(val: string) => setTheme(val)} />
           {children}
-          {/* <Footer /> */}
+          <Footer />
         </Wrapper>
       </ThemeProvider>
     </Provider>

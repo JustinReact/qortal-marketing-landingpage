@@ -9,7 +9,6 @@ import {
 } from "../../Steps-styles";
 import { Grid} from "@mui/material";
 import Modal from "../../../Common/Modal/Modal";
-import StepFourImg from "../../../../../public/images/Windows/WindowsStepFour.webp";
 
 interface WindowsStepFourProps {}
 
@@ -53,14 +52,14 @@ const WindowsStepFour: FC<WindowsStepFourProps> = () => {
           }}
         >
           <ScreenshotContainer onClick={() => setOpenModal(true)}>
-            <Screenshot src={StepFourImg} alt="step1" />
+            <Screenshot src={"/images/Windows/WindowsStepFour.webp"} alt="step1" width={500} height={500} />
             <MagnifyingGlass id="magnifying-glass" />
           </ScreenshotContainer>
         </Grid>
       </StepCard>
       {openModal && (
         <Modal
-          images={[StepFourImg]}
+          images={["/images/Windows/WindowsStepFour.webp"]}
           openModal={openModal}
           onClickFunc={() => setOpenModal(false)}
         ></Modal>

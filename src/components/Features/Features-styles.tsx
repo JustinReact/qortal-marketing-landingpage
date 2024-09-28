@@ -1,5 +1,6 @@
 import { styled } from "@mui/system";
 import { Box, Button, Grid, Typography } from "@mui/material";
+import Image from "next/image";
 
 export const Container = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -242,7 +243,7 @@ export const FeaturesImgContainer = styled(Box)({
   alignItems: "center"
 });
 
-export const FeaturesImg = styled("img")({
+export const FeaturesImg = styled(Image)({
   width: "100%",
   maxWidth: "700px",
   height: "100%",
@@ -340,7 +341,7 @@ export const FeatureCardRow = styled(Box)({
   height: "100%"
 });
 
-export const FeatureCardImg = styled("img")({
+export const FeatureCardImg = styled(Image)({
   width: "100px",
   height: "100%",
   objectFit: "contain",

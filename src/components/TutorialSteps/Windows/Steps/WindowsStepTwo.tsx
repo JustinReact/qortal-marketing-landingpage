@@ -8,9 +8,8 @@ import {
   StepCard,
   StepColumn,
 } from "../../Steps-styles";
-import { Grid, Typography } from "@mui/material";
+import { Grid } from "@mui/material";
 import Modal from "../../../Common/Modal/Modal";
-import StepTwoImg from "../../../../../public/images/Windows/WindowsStepTwo.webp";
 
 interface WindowsStepTwoProps {}
 
@@ -54,14 +53,14 @@ const WindowsStepTwo: FC<WindowsStepTwoProps> = () => {
           }}
         >
           <ScreenshotContainer onClick={() => setOpenModal(true)}>
-            <Screenshot src={StepTwoImg} alt="step1" />
+            <Screenshot src={"/images/Windows/WindowsStepTwo.webp"} alt="step1" />
             <MagnifyingGlass id="magnifying-glass" />
           </ScreenshotContainer>
         </Grid>
       </StepCard>
       {openModal && (
         <Modal
-          images={[StepTwoImg]}
+          images={["/images/Windows/WindowsStepTwo.webp"]}
           openModal={openModal}
           onClickFunc={() => setOpenModal(false)}
         ></Modal>

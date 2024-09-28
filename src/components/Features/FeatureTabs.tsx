@@ -1,5 +1,6 @@
+"use client";
 import { FC } from "react";
-import { FeatureData } from "./Features";
+import { FeatureData } from "../../app/features/page";
 import {
   FeatureCard,
   FeatureCardImg,
@@ -31,6 +32,8 @@ export const FeatureTabs: FC<FeatureTabsProps> = ({
             <FeatureCardImg
               src={featureData[featureKey].image}
               alt="feature-small-image"
+              width={500}
+              height={500}
             />
           </FeatureCardRow>
           <FeatureCardTitle>

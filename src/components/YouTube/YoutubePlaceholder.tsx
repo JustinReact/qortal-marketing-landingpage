@@ -39,7 +39,12 @@ export const YoutubePlaceholder: FC<YoutubePlaceholderProps> = ({
       onClick={onClick}
     >
       <YoutubeHeader>{YoutubeTitle}</YoutubeHeader>
-      <Image src={YoutubeThumbnail} alt="Youtube Placeholder" width={500} height={500} />
+      <YoutubeThumbnailImg
+        src={YoutubeThumbnail}
+        alt="Youtube Placeholder"
+        width={500}
+        height={500}
+      />
       <PlayButton color={"#E52D27"} height={"80"} width={"80"} />
     </YoutubePlaceholderContainer>
   );

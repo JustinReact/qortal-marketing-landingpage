@@ -1,6 +1,4 @@
 import { styled } from "@mui/system";
-import HexagonBG from "../../../../public/images/Home/HexagonBG.png";
-import HexagonBGLight from "../../../../public/images/Home/HexagonBGLight.png";
 import BlurryBGDarkMode from "../../../../public/images/Promo/BlurryBGDarkMode.webp";
 import BlurryBGDarkModeMobile from "../../../../public/images/Promo/BlurryBGDarkModeMobile.webp";
 import BlurryBGLightMode from "../../../../public/images/Promo/BlurryBGLightMode.webp";
@@ -31,8 +29,8 @@ export const Wrapper = styled("div")(({ theme }) => ({
       bottom: 0,
       backgroundImage:
         theme.palette.mode === "dark"
-          ? `url(${HexagonBG})`
-          : `url(${HexagonBGLight})`,
+          ? `url(/images/Home/HexagonBG.png)`
+          : `url(/images/Home/HexagonBGLight.png)`,
       backgroundRepeat: "repeat-y",
       backgroundSize: "contain",
       "@media (max-width: 600px)": {

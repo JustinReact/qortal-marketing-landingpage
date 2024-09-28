@@ -13,24 +13,22 @@ import {
 } from "../../Steps-styles";
 import { Grid, Typography } from "@mui/material";
 import Modal from "../../../Common/Modal/Modal";
-import StartQortalCore from "../../../../../public/images/Windows/WindowsStepFive.webp";
-import ChangeStartQortalCoreDefault from "../../../../../public/images/Windows/WindowsStepFive2.webp";
 
 interface WindowsStepFiveProps {}
 
 const WindowsStepFive: FC<WindowsStepFiveProps> = () => {
   const [openModal, setOpenModal] = useState<boolean>(false);
-  const [selectedImage, setSelectedImage] = useState<string>(StartQortalCore);
+  const [selectedImage, setSelectedImage] = useState<string>("/images/Windows/WindowsStepFive.webp");
   const [modalImages, setModalImages] = useState<string[]>([]);
 
 
   const images = [
     {
-      src: StartQortalCore,
+      src: "/images/Windows/WindowsStepFive.webp",
       alt: "step1",
     },
     {
-      src: ChangeStartQortalCoreDefault,
+      src: "/images/Windows/WindowsStepFive2.webp",
       alt: "step2",
     },
   ];
@@ -123,6 +121,8 @@ const WindowsStepFive: FC<WindowsStepFiveProps> = () => {
                 sx={{ objectFit: "contain" }}
                 src={image.src}
                 alt={image.alt}
+                width={500}
+                height={500}
               />
               <MagnifyingGlass id="magnifying-glass" />
             </ScreenshotContainer>

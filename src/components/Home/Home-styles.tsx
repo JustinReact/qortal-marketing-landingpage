@@ -1,8 +1,9 @@
 import { styled } from "@mui/system";
 import { Box, Button, Grid, Typography } from "@mui/material";
 import QORTPromoDesign from "../../../public/images/Home/QORTPromoDesign.webp";
-import { DiscordSVG } from "../../components/Common/Icons/DiscordSVG";
-import { QortalSVG } from "../../components/Common/Icons/QortalSVG";
+import { DiscordSVG } from "../Common/Icons/DiscordSVG";
+import { QortalSVG } from "../Common/Icons/QortalSVG";
+import Image from "next/image";
 
 export const MainRow = styled(Grid)(({ theme }) => ({
   display: "flex",
@@ -37,7 +38,7 @@ export const JoinDiscordRow = styled(Grid)(({ theme }) => ({
   }
 }));
 
-export const QortalWordLogo = styled("img")({
+export const QortalWordLogo = styled(Image)({
   width: "auto",
   height: "45px",
   transform: "translateY(13px)"
