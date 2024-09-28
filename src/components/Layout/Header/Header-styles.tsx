@@ -1,6 +1,7 @@
 import { styled } from "@mui/system";
 import { Box, Button, Typography } from "@mui/material";
 import { HamburgerSVG } from "../../Common/Icons/HamburgerSVG";
+import Link from "next/link";
 
 interface HamburgerIconProps {
   rotated?: { isOn: boolean };
@@ -24,12 +25,13 @@ export const ThemeSelectRow = styled(Box)({
   gap: "25px"
 });
 
-export const QortalLogoContainer = styled(Box)(({ theme }) => ({
+export const QortalLogoContainer = styled(Link)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   gap: 0,
   userSelect: "none",
-  cursor: "pointer"
+  cursor: "pointer",
+  textDecoration: "none"
 }));
 
 export const QortalText = styled(Typography)(({ theme }) => ({
@@ -40,7 +42,7 @@ export const QortalText = styled(Typography)(({ theme }) => ({
   fontSize: "40px"
 }));
 
-export const BackHomeButton = styled(Button)(({ theme }) => ({
+export const BackHomeButton = styled(Link)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
@@ -50,6 +52,7 @@ export const BackHomeButton = styled(Button)(({ theme }) => ({
   padding: "5px 9px",
   backgroundColor: theme.palette.secondary.light,
   color: "white",
+  textDecoration: "none",
   "&:hover": {
     backgroundColor: theme.palette.secondary.light
   }
@@ -116,7 +119,7 @@ export const DocsNavContainer = styled(Box)(({ theme }) => ({
   justifyContent: "flex-end"
 }));
 
-export const Docs = styled(Typography)(({ theme }) => ({
+export const Docs = styled(Link)(({ theme }) => ({
   position: "relative",
   display: "flex",
   alignItems: "center",
@@ -133,6 +136,7 @@ export const Docs = styled(Typography)(({ theme }) => ({
   transition: "all 0.3s ease-in-out",
   zIndex: 2,
   userSelect: "none",
+  textDecoration: "none",
   "&.active ": {
     "&::after": {
       width: "100%",
@@ -165,7 +169,7 @@ export const Docs = styled(Typography)(({ theme }) => ({
   }
 }));
 
-export const FeaturesButton = styled(Typography)(({ theme }) => ({
+export const FeaturesButton = styled(Link)(({ theme }) => ({
   position: "relative",
   display: "flex",
   alignItems: "center",
@@ -182,6 +186,7 @@ export const FeaturesButton = styled(Typography)(({ theme }) => ({
   transition: "all 0.3s ease-in-out",
   zIndex: 2,
   userSelect: "none",
+  textDecoration: "none",
   "&.active ": {
     "&::after": {
       width: "100%",
@@ -214,7 +219,7 @@ export const FeaturesButton = styled(Typography)(({ theme }) => ({
   }
 }));
 
-export const QORTButton = styled(Typography)(({ theme }) => ({
+export const QORTButton = styled(Link)(({ theme }) => ({
   position: "relative",
   display: "flex",
   alignItems: "center",
@@ -230,6 +235,7 @@ export const QORTButton = styled(Typography)(({ theme }) => ({
   fontWeight: "400",
   zIndex: 2,
   userSelect: "none",
+  textDecoration: "none",
   "&.active ": {
     "&::after": {
       width: "100%",

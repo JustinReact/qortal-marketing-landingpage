@@ -1,5 +1,6 @@
 import { styled } from "@mui/system";
 import { Box, Typography } from "@mui/material";
+import Link from "next/link";
 
 export const FooterContainer = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -16,7 +17,7 @@ export const FooterContainer = styled(Box)(({ theme }) => ({
   }
 }));
 
-export const FooterLink = styled(Typography)(({ theme }) => ({
+export const FooterLink = styled(Link)(({ theme }) => ({
   position: "relative",
   display: "flex",
   alignItems: "center",
@@ -30,6 +31,7 @@ export const FooterLink = styled(Typography)(({ theme }) => ({
   borderRadius: "2px",
   padding: "10px 15px",
   userSelect: "none",
+  textDecoration: "none",
   transition: "all 0.3s ease-in-out",
   zIndex: 2,
   "&.active ": {

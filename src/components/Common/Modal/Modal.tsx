@@ -123,6 +123,8 @@ const Modal: FC<ModalProps> = ({
         <ModalScreenshot
           src={images[selectedImageIndex]}
           alt="modal-image"
+          width={500}
+          height={500}
         ></ModalScreenshot>
         <CloseIcon
           onClickFunc={() => {
