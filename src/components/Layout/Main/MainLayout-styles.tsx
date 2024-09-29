@@ -1,10 +1,4 @@
 import { styled } from "@mui/system";
-import BlurryBGDarkMode from "../../../../public/images/Promo/BlurryBGDarkMode.webp";
-import BlurryBGDarkModeMobile from "../../../../public/images/Promo/BlurryBGDarkModeMobile.webp";
-import BlurryBGLightMode from "../../../../public/images/Promo/BlurryBGLightMode.webp";
-import BlurryBGLightModeMobile from "../../../../public/images/Promo/BlurryBGLightModeMobile.webp";
-import FeaturesHexagonBG from "../../../../public/images/Features/FeaturesHexagonBG.png";
-import ExtensionBackground from "../../../../public/images/Extension/ExtensionBackground.png";
 
 export const Wrapper = styled("div")(({ theme }) => ({
   position: "relative",
@@ -42,16 +36,16 @@ export const Wrapper = styled("div")(({ theme }) => ({
   "&.BGImagePromo": {
     backgroundImage:
       theme.palette.mode === "dark"
-        ? `url(${BlurryBGDarkMode})`
-        : `url(${BlurryBGLightMode})`,
+        ? `url(${"/images/Promo/BlurryBGDarkMode.webp"})`
+        : `url(${"/images/Promo/BlurryBGLightMode.webp"})`,
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
     backgroundPosition: "center center",
     [theme.breakpoints.down("lg")]: {
       backgroundImage:
         theme.palette.mode === "dark"
-          ? `url(${BlurryBGDarkModeMobile})`
-          : `url(${BlurryBGLightModeMobile})`,
+          ? `url(${"/images/Promo/BlurryBGDarkModeMobile.webp"})`
+          : `url(${"/images/Promo/BlurryBGLightModeMobile.webp"})`,
       backgroundSize: "cover"
     }
   },
@@ -65,7 +59,7 @@ export const Wrapper = styled("div")(({ theme }) => ({
       left: 0,
       right: 0,
       bottom: 0,
-      backgroundImage: `url(${FeaturesHexagonBG})`,
+      backgroundImage: `url(${"/images/Features/FeaturesHexagonBG.png"})`,
       backgroundRepeat: "no-repeat",
       opacity: 0.1,
       zIndex: -1
@@ -74,7 +68,8 @@ export const Wrapper = styled("div")(({ theme }) => ({
   "&.BGQORTPage": {
     padding: "2rem 0 0 0",
     // background: "radial-gradient(circle at 250px top, rgba(20,198,238,1) 0%, rgba(97,71,235,1) 29%, rgba(11,23,41,1) 69%)",
-    background: "linear-gradient(45deg, rgba(51,40,70,1) 0%, rgba(148,84,253,1) 50%, rgba(31,25,61,1) 100%)",
+    background:
+      "linear-gradient(45deg, rgba(51,40,70,1) 0%, rgba(148,84,253,1) 50%, rgba(31,25,61,1) 100%)",
     [theme.breakpoints.down("sm")]: {
       padding: "1rem"
     }
@@ -89,7 +84,7 @@ export const Wrapper = styled("div")(({ theme }) => ({
       left: 0,
       right: 0,
       bottom: 0,
-      backgroundImage: `url(${ExtensionBackground})`,
+      backgroundImage: `url(${"/images/Extension/ExtensionBackground.png"})`,
       backgroundRepeat: "no-repeat",
       backgroundSize: "40% auto",
       backgroundPosition: "top -100px left -100px",

@@ -7,7 +7,8 @@ import {
   Typography,
   keyframes
 } from "@mui/material";
-import { DoubleCaretRightSVG } from "../../components/Common/Icons/DoubleCaretRightSVG";
+import { DoubleCaretRightSVG } from "../Common/Icons/DoubleCaretRightSVG";
+import Image from "next/image";
 
 const doubleCaretRightAnimation = keyframes`
     0%, 100% {
@@ -425,7 +426,7 @@ export const QortalWalletCard = styled(Grid)(({ theme }) => ({
   justifyContent: "center"
 }));
 
-export const QortalWalletCardImage = styled("img")(({ theme }) => ({
+export const QortalWalletCardImage = styled(Image)(({ theme }) => ({
   width: "400px",
   height: "500px",
   [theme.breakpoints.down("md")]: {

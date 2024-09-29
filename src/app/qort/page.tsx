@@ -1,4 +1,5 @@
-import { FC, useEffect, useRef, useState } from "react";
+"use client";
+import { useEffect, useRef, useState } from "react";
 import {
   ArrowSVG,
   CoinImg,
@@ -14,7 +15,6 @@ import {
   FAQCardRowBody,
   FAQCardRowText,
   FAQNumberBubble,
-  InstallationWord,
   MainContainer,
   MainRow,
   MainSubRow,
@@ -48,43 +48,21 @@ import {
   UseColNumber,
   TradingPortalButton,
   TradingPortalCard
-} from "./QORTPage-styles";
+} from "../../components/Qort/QORTPage-styles";
 import ReactGA from "react-ga4";
-import QORTCoin from "../../../public/images/QORT/QORTCoin.webp";
-import QShopLogo from "../../../public/images/QORT/Q-ShopLogo.png";
-import NamesMarket from "../../../public/images/QORT/NamesMarket.png";
-import TradePortal from "../../../public/images/QORT/TradePortal.png";
-import QORTOwlMascot from "../../../public/images/QORT/QORTOwlMascot.webp";
-import QORTOwlMascotHead from "../../../public/images/QORT/QORTOwlMascotHead.webp";
-import BTCLogo from "../../../public/images/QORT/btc.webp";
-import DOGELogo from "../../../public/images/QORT/doge.webp";
-import LTCLogo from "../../../public/images/QORT/ltc.webp";
-import DGBLogo from "../../../public/images/QORT/dgb.webp";
-import ARRRLogo from "../../../public/images/QORT/arrr.webp";
-import RVNLogo from "../../../public/images/QORT/rvn.webp";
-import YoutubeThumbnail from "../../../public/images/Youtube/TradeLTCForQORTThumbnail.png";
 import { NorthEastSVG } from "../../components/Common/Icons/NorthEastSVG";
 import { SouthEastSVG } from "../../components/Common/Icons/SouthEastSVG";
 import { AnimatePresence, motion } from "framer-motion";
 import { DiscordSVG } from "../../components/Common/Icons/DiscordSVG";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { UAParser } from "ua-parser-js";
-import { setOS } from "../../state/features/osSlice";
-import { Box, useMediaQuery, useTheme } from "@mui/material";
+import { useMediaQuery, useTheme } from "@mui/material";
 import { YoutubePlaceholder } from "../../components/YouTube/YoutubePlaceholder";
+import { useThemeProvider } from "../../state/useTheme";
 
-export interface QORTPageProps {
-  setTheme: (val: string) => void;
-}
-
-export const QORTPage: FC<QORTPageProps> = ({ setTheme }) => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const parser = new UAParser();
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-  const lessThanMediumScreen = useMediaQuery(theme.breakpoints.down("md"));
+export const QORTPage = () => {
+  const { setTheme } = useThemeProvider();
+  const muiTheme = useTheme();
+  const isMobile = useMediaQuery(muiTheme.breakpoints.down("sm"));
+  const lessThanMediumScreen = useMediaQuery(muiTheme.breakpoints.down("md"));
 
   const [showVideoPlayer, setShowVideoPlayer] = useState<boolean>(false);
   const [faqsOpen, setFaqsOpen] = useState({
@@ -170,13 +148,20 @@ export const QORTPage: FC<QORTPageProps> = ({ setTheme }) => {
               <YoutubePlaceholder
                 isModal={false}
                 onClick={handleVideoClick}
-                YoutubeThumbnail={YoutubeThumbnail}
+                YoutubeThumbnail={
+                  "/images/Youtube/TradeLTCForQORTThumbnail.png"
+                }
                 YoutubeTitle="Buy QORT Using Litecoin From A Centralized Exchange"
               />
             ) : null}
           </YoutubeVideoContainer>
           <CoinImgRow onClick={scrollToTradePortalFunc}>
-            <CoinImg src={QORTCoin} alt="QORT Coin" />
+            <CoinImg
+              src={"/images/QORT/QORTCoin.webp"}
+              alt="QORT Coin"
+              width={500}
+              height={500}
+            />
             <MainTitle>
               get
               <br />
@@ -200,7 +185,12 @@ export const QORTPage: FC<QORTPageProps> = ({ setTheme }) => {
           </SubTextRow>
           <OwlImageWrapper>
             <OwlImageContainer>
-              <OwlLogo src={QORTOwlMascot} alt="QORT Owl Mascot" />
+              <OwlLogo
+                src={"/images/QORT/QORTOwlMascot.webp"}
+                alt="QORT Owl Mascot"
+                width={500}
+                height={500}
+              />
               <SocialButton
                 onClick={() => {
                   ReactGA.event({
@@ -221,7 +211,12 @@ export const QORTPage: FC<QORTPageProps> = ({ setTheme }) => {
             </OwlImageContainer>
           </OwlImageWrapper>
           <MobileOwlImageContainer>
-            <MobileOwlLogo src={QORTOwlMascotHead} alt="QORT Owl Mascot Head" />
+            <MobileOwlLogo
+              src={"/images/QORT/QORTOwlMascotHead.webp"}
+              alt="QORT Owl Mascot Head"
+              width={500}
+              height={500}
+            />
             <SocialButton
               onClick={() => {
                 ReactGA.event({
@@ -250,7 +245,7 @@ export const QORTPage: FC<QORTPageProps> = ({ setTheme }) => {
             <YoutubePlaceholder
               isModal={false}
               onClick={handleVideoClick}
-              YoutubeThumbnail={YoutubeThumbnail}
+              YoutubeThumbnail={"/images/Youtube/TradeLTCForQORTThumbnail.png"}
               YoutubeTitle="Buy QORT Using Litecoin From A Centralized Exchange"
             />
           ) : null}
@@ -335,7 +330,12 @@ export const QORTPage: FC<QORTPageProps> = ({ setTheme }) => {
         </SubTitleRow>
         <UseCardRow>
           <UseCard>
-            <UseColImg src={QShopLogo} alt="Q-Shop Logo Design" />
+            <UseColImg
+              src={"/images/QORT/Q-ShopLogo.png"}
+              alt="Q-Shop Logo Design"
+              width={500}
+              height={500}
+            />
             <UseColRow>
               <UseColTitle>Q-Shop</UseColTitle>
               <UseColDesc>
@@ -345,7 +345,12 @@ export const QORTPage: FC<QORTPageProps> = ({ setTheme }) => {
             </UseColRow>
           </UseCard>
           <UseCard>
-            <UseColImg src={NamesMarket} alt="Names Market Design" />
+            <UseColImg
+              src={"/images/QORT/NamesMarket.png"}
+              alt="Names Market Design"
+              width={500}
+              height={500}
+            />
             <UseColRow>
               <UseColTitle>Names Market</UseColTitle>
               <UseColDesc>
@@ -360,7 +365,12 @@ export const QORTPage: FC<QORTPageProps> = ({ setTheme }) => {
             </UseColRow>
           </UseCard>
           <UseCard>
-            <UseColImg src={TradePortal} alt="Trade Portal Design" />
+            <UseColImg
+              src={"/images/QORT/TradePortal.png"}
+              alt="Trade Portal Design"
+              width={500}
+              height={500}
+            />
             <UseColRow>
               <UseColTitle>Trade Portal</UseColTitle>
               <UseColDesc>
@@ -375,27 +385,57 @@ export const QORTPage: FC<QORTPageProps> = ({ setTheme }) => {
             <CoinLogosRow>
               <CoinLogoCol>
                 <CoinLogoName>BTC</CoinLogoName>
-                <CoinLogo src={BTCLogo} alt="Bitcoin Logo" />
+                <CoinLogo
+                  src={"/images/QORT/btc.webp"}
+                  alt="Bitcoin Logo"
+                  width={500}
+                  height={500}
+                />
               </CoinLogoCol>
               <CoinLogoCol>
                 <CoinLogoName>LTC</CoinLogoName>
-                <CoinLogo src={LTCLogo} alt="Litecoin Logo" />
+                <CoinLogo
+                  src={"/images/QORT/ltc.webp"}
+                  alt="Litecoin Logo"
+                  width={500}
+                  height={500}
+                />
               </CoinLogoCol>
               <CoinLogoCol>
                 <CoinLogoName>DOGE</CoinLogoName>
-                <CoinLogo src={DOGELogo} alt="Doge Logo" />
+                <CoinLogo
+                  src={"/images/QORT/doge.webp"}
+                  alt="Doge Logo"
+                  width={500}
+                  height={500}
+                />
               </CoinLogoCol>
               <CoinLogoCol>
                 <CoinLogoName>DGB</CoinLogoName>
-                <CoinLogo src={DGBLogo} alt="DigiByte Logo" />
+                <CoinLogo
+                  src={"/images/QORT/dgb.webp"}
+                  alt="DigiByte Logo"
+                  width={500}
+                  height={500}
+                />
               </CoinLogoCol>
               <CoinLogoCol>
                 <CoinLogoName>RVN</CoinLogoName>
-                <CoinLogo src={RVNLogo} alt="Ravencoin Logo" />
+                <CoinLogo
+                  src={"/images/QORT/rvn.webp"}
+                  alt="Ravencoin Logo"
+                  width={500}
+                  height={500}
+                />
               </CoinLogoCol>
               <CoinLogoCol>
                 <CoinLogoName>ARRR</CoinLogoName>
-                <CoinLogo src={ARRRLogo} alt="Pirate Chain Logo" />
+                <CoinLogo
+                  src={"/images/QORT/arrr.webp"}
+                  alt="Pirate Chain Logo"
+                  width={500}
+                  height={500}
+                />
               </CoinLogoCol>
             </CoinLogosRow>
           </UseCard>
@@ -520,13 +560,16 @@ export const QORTPage: FC<QORTPageProps> = ({ setTheme }) => {
                         }}
                       >
                         qort.trade
-                      </URLWord>.{" "}
-                      At this point, you'll need to create a new Qortal Account,
-                      which will automatically assign you a Litecoin (LTC)
-                      private wallet address. You can use any of the popular
-                      centralized exchanges to buy Litecoin, and send it to your new wallet. Once you have some
-                      Litecoin, you can use the Qort.trade to trade LTC for
-                      QORT, which will also be held in your new QORT wallet. This QORT wallet is also created automatically for you upon creating a new account in the extension.
+                      </URLWord>
+                      . At this point, you'll need to create a new Qortal
+                      Account, which will automatically assign you a Litecoin
+                      (LTC) private wallet address. You can use any of the
+                      popular centralized exchanges to buy Litecoin, and send it
+                      to your new wallet. Once you have some Litecoin, you can
+                      use the Qort.trade to trade LTC for QORT, which will also
+                      be held in your new QORT wallet. This QORT wallet is also
+                      created automatically for you upon creating a new account
+                      in the extension.
                     </FAQCardRowBody>
                   </motion.div>
                 )}
@@ -679,3 +722,5 @@ export const QORTPage: FC<QORTPageProps> = ({ setTheme }) => {
     </Wrapper>
   );
 };
+
+export default QORTPage;

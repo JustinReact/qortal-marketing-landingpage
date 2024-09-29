@@ -1,3 +1,4 @@
+"use client";
 import {
   ArrowImg,
   Container,
@@ -10,15 +11,15 @@ import {
   IconContainer1,
   IconContainer2,
   IconContainer3,
-  FeatureText
-} from "./Promo-styles";
+  FeatureText,
+  UnderlineScribble
+} from "../../components/Promo/Promo-styles";
 import ReactGA from "react-ga4";
-import { Grid, Box, useTheme } from "@mui/material";
-import UnderlineScribble from "../../../public/images/Promo/UnderlineScribble.webp";
-import Arrow from "../../../public/images/Promo/Arrow.webp";
+import { Grid, useTheme } from "@mui/material";
 import { OpenSourceSVG } from "../../components/Common/Icons/OpenSourceSVG";
 import { HiveSVG } from "../../components/Common/Icons/HiveSVG";
 import { ConnectSVG } from "../../components/Common/Icons/ConnectSVG";
+import Image from "next/image";
 
 export const Promo = () => {
   const theme = useTheme();
@@ -30,14 +31,21 @@ export const Promo = () => {
             Earn up to{" "}
             <span>
               500 QORT{" "}
-              <img
-                src={UnderlineScribble}
+              <UnderlineScribble
+                src={"/images/Promo/UnderlineScribble.webp"}
                 alt="underline-scribble"
                 className="underline-scribble"
+                width={200}
+                height={150}
               />
             </span>{" "}
             by Building a Q-App on Qortal!
-            <ArrowImg src={Arrow} alt="arrow" />
+            <ArrowImg
+              src={"/images/Promo/Arrow.webp"}
+              alt="arrow"
+              width={500}
+              height={500}
+            />
           </Header>
           <ButtonRow>
             <DiscordButton
@@ -103,3 +111,5 @@ export const Promo = () => {
     </>
   );
 };
+
+export default Promo;

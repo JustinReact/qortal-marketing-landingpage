@@ -1,5 +1,6 @@
 import { styled, keyframes } from "@mui/system";
 import { Box, Button, Typography } from "@mui/material";
+import Image from "next/image";
 
 export const spinAnimation = keyframes`
   0% {
@@ -106,7 +107,7 @@ export const MobileOwlImageContainer = styled(Box)(({ theme }) => ({
   }
 }));
 
-export const OwlLogo = styled("img")(({ theme }) => ({
+export const OwlLogo = styled(Image)(({ theme }) => ({
   width: "200px",
   height: "auto",
   objectFit: "cover",
@@ -116,7 +117,7 @@ export const OwlLogo = styled("img")(({ theme }) => ({
   }
 }));
 
-export const MobileOwlLogo = styled("img")(({ theme }) => ({
+export const MobileOwlLogo = styled(Image)(({ theme }) => ({
   width: "80px",
   height: "auto",
   transform: "rotate(-0.85deg)",
@@ -324,7 +325,7 @@ export const UseColNumber = styled(Typography)(({ theme }) => ({
   textAlign: "left"
 }));
 
-export const UseColImg = styled("img")({
+export const UseColImg = styled(Image)({
   position: "absolute",
   top: "-65px",
   left: "20px",
@@ -378,7 +379,7 @@ export const CoinImgRow = styled(Box)({
   cursor: "pointer"
 });
 
-export const CoinImg = styled("img")(({ theme }) => ({
+export const CoinImg = styled(Image)(({ theme }) => ({
   width: "300px",
   height: "300px",
   objectFit: "cover",
@@ -758,7 +759,7 @@ export const CoinLogoCol = styled(Box)({
   gap: "10px"
 });
 
-export const CoinLogo = styled("img")({
+export const CoinLogo = styled(Image)({
   width: "38px",
   height: "38px",
   objectFit: "cover",

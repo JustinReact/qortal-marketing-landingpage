@@ -1,5 +1,6 @@
 import { styled } from "@mui/system";
 import { Grid, Typography, Box } from "@mui/material";
+import Image from "next/image";
 
 export const Container = styled(Grid)(({ theme }) => ({
   display: "flex",
@@ -75,16 +76,22 @@ export const Header = styled(Typography)(({ theme }) => ({
   }
 }));
 
-export const ArrowImg = styled("img")(({ theme }) => ({
+export const ArrowImg = styled(Image)(({ theme }) => ({
   position: "absolute",
   bottom: "-30px",
   right: "-100px",
   width: "100px",
+  height: "auto",
   transform: "rotateX(180deg)",
   rotate: "-40deg",
   [theme.breakpoints.down("md")]: {
     right: "-80px"
   }
+}));
+
+export const UnderlineScribble = styled(Image)(({ theme }) => ({
+  width: "100px",
+  height: "auto"
 }));
 
 export const ButtonRow = styled(Box)(({ theme }) => ({

@@ -1,7 +1,8 @@
 import { styled } from "@mui/system";
 import { Box, Button, Grid, Typography } from "@mui/material";
-import { BackArrowSVG } from "../../../components/Common/Icons/BackArrowSVG";
-import { HamburgerSVG } from "../../../components/Common/Icons/HamburgerSVG";
+import { BackArrowSVG } from "../Common/Icons/BackArrowSVG";
+import { HamburgerSVG } from "../Common/Icons/HamburgerSVG";
+import Image from "next/image";
 
 export const Wrapper = styled(Box)(({ theme }) => ({
   position: "relative",
@@ -29,7 +30,7 @@ export const HeaderNav = styled(Box)(({ theme }) => ({
   }
 }));
 
-export const QortalLogoContainer = styled("img")(({ theme }) => ({
+export const QortalLogoContainer = styled(Image)(({ theme }) => ({
   width: "120px",
   height: "auto",
   userSelect: "none",

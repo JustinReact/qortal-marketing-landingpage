@@ -1,3 +1,4 @@
+"use client";
 import { FC, useRef, useState } from "react";
 import ReactGA from "react-ga4";
 import {
@@ -35,16 +36,8 @@ import {
   TopFoldButtonRow,
   TopFoldCol,
   TopFoldRow
-} from "./Extension-styles";
-import ExtensionDesign from "../../../public/images/Extension/ExtensionDesign.png";
-import QortalExtensionScreenshot1 from "../../../public/images/Extension/QortalExtensionScreenshot1.png";
-import QortalExtensionScreenshot2 from "../../../public/images/Extension/QortalExtensionScreenshot2.png";
-import QortalExtensionScreenshot3 from "../../../public/images/Extension/QortalExtensionScreenshot3.png";
-import QortalExtensionScreenshot4 from "../../../public/images/Extension/QortalExtensionScreenshot4.png";
-import QortalExtensionScreenshot5 from "../../../public/images/Extension/QortalExtensionScreenshot5.png";
-import QortalExtensionScreenshot6 from "../../../public/images/Extension/QortalExtensionScreenshot6.png";
-import YoutubeThumbnail from "../../../public/images/Youtube/QortalBrowserExtensionThumbnail.png";
-import { YoutubeVideoContainer } from "../QORTPage/QORTPage-styles";
+} from "../../components/Extension/Extension-styles";
+import { YoutubeVideoContainer } from "../../components/Qort/QORTPage-styles";
 import { YoutubePlaceholder } from "../../components/YouTube/YoutubePlaceholder";
 
 interface ExtensionProps {
@@ -137,7 +130,7 @@ export const Extension: FC<ExtensionProps> = ({ setTheme }) => {
               <YoutubePlaceholder
                 isModal={false}
                 onClick={handleVideoClick}
-                YoutubeThumbnail={YoutubeThumbnail}
+                YoutubeThumbnail={"/images/Youtube/QortalBrowserExtensionThumbnail.png"}
                 YoutubeTitle="Introducing the Qortal Browser Extension"
               />
             )}
@@ -254,20 +247,26 @@ export const Extension: FC<ExtensionProps> = ({ setTheme }) => {
         <QortalWalletCards container spacing={5}>
           <QortalWalletCard item xs={12} sm={6} md={6} lg={4}>
             <QortalWalletCardImage
-              src={QortalExtensionScreenshot1}
+              src={"/images/Extension/QortalExtensionScreenshot1.png"}
               alt="Qortal Extension Screenshot"
+              width={500}
+              height={500}
             />
           </QortalWalletCard>
           <QortalWalletCard item xs={12} sm={6} md={6} lg={4}>
             <QortalWalletCardImage
-              src={QortalExtensionScreenshot2}
+              src={"/images/Extension/QortalExtensionScreenshot2.png"}
               alt="Second Qortal Extension Screenshot"
+              width={500}
+              height={500}
             />
           </QortalWalletCard>
           <QortalWalletCard item xs={12} sm={12} md={12} lg={4}>
             <QortalWalletCardImage
-              src={QortalExtensionScreenshot3}
+              src={"/images/Extension/QortalExtensionScreenshot3.png"}
               alt="Third Qortal Extension Screenshot"
+              width={500}
+              height={500}
             />
           </QortalWalletCard>
         </QortalWalletCards>
@@ -303,20 +302,26 @@ export const Extension: FC<ExtensionProps> = ({ setTheme }) => {
         <QortalWalletCards container spacing={5}>
           <QortalWalletCard item xs={12} sm={6} md={6} lg={4}>
             <QortalWalletCardImage
-              src={QortalExtensionScreenshot4}
+              src={"/images/Extension/QortalExtensionScreenshot4.png"}
               alt="Fourth Extension Screenshot"
+              width={500}
+              height={500}
             />
           </QortalWalletCard>
           <QortalWalletCard item xs={12} sm={6} md={6} lg={4}>
             <QortalWalletCardImage
-              src={QortalExtensionScreenshot5}
+              src={"/images/Extension/QortalExtensionScreenshot5.png"}
               alt="Fifth Qortal Extension Screenshot"
+              width={500}
+              height={500}
             />
           </QortalWalletCard>
           <QortalWalletCard item xs={12} sm={12} md={12} lg={4}>
             <QortalWalletCardImage
-              src={QortalExtensionScreenshot6}
+              src={"/images/Extension/QortalExtensionScreenshot6.png"}
               alt="Sixth Qortal Extension Screenshot"
+              width={500}
+              height={500}
             />
           </QortalWalletCard>
         </QortalWalletCards>
@@ -328,3 +333,5 @@ export const Extension: FC<ExtensionProps> = ({ setTheme }) => {
     </Container>
   );
 };
+
+export default Extension;
