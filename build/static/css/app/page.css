@@ -1,0 +1,21 @@
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[3].use[1]!./node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js??ruleSet[1].rules[13].oneOf[3].use[2]!./node_modules/next/font/local/target.css?{"path":"src\\app\\fonts.ts","import":"","arguments":[{"src":[{"path":"../../public/fonts/Montserrat.ttf","weight":"400","style":"normal"},{"path":"../../public/fonts/Montserrat.ttf","weight":"550","style":"normal"}],"display":"swap"}],"variableName":"montserrat"} ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+@font-face {
+font-family: '__montserrat_97b38c';
+src: url(/_next/static/media/a218f2a6443c646f-s.p.ttf) format('truetype');
+font-display: swap;
+font-weight: 400;
+font-style: normal;
+}
+
+@font-face {
+font-family: '__montserrat_97b38c';
+src: url(/_next/static/media/a218f2a6443c646f-s.p.ttf) format('truetype');
+font-display: swap;
+font-weight: 550;
+font-style: normal;
+}@font-face {font-family: '__montserrat_Fallback_97b38c';src: local("Arial");ascent-override: 87.81%;descent-override: 22.77%;line-gap-override: 0.00%;size-adjust: 110.23%
+}.__className_97b38c {font-family: '__montserrat_97b38c', '__montserrat_Fallback_97b38c'
+}
+
