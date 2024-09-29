@@ -42,7 +42,7 @@ export const QortalText = styled(Typography)(({ theme }) => ({
   fontSize: "40px"
 }));
 
-export const BackHomeButton = styled(Link)(({ theme }) => ({
+export const BackHomeButton = styled(Button)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
@@ -52,7 +52,6 @@ export const BackHomeButton = styled(Link)(({ theme }) => ({
   padding: "5px 9px",
   backgroundColor: theme.palette.secondary.light,
   color: "white",
-  textDecoration: "none",
   "&:hover": {
     backgroundColor: theme.palette.secondary.light
   }

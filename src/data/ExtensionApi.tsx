@@ -19,7 +19,7 @@ import { Setup } from "../components/Api/ApiSectionsExtension/Resources/Setup";
 
 export const tableOfContents = [
   {
-    title: "Extension api Introduction",
+    title: "Extension API Introduction",
     id: "introduction",
     Component: (props: any) => <Introduction {...props} />
   },

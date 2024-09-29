@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { useState } from "react";
 import ReactGA from "react-ga4";
 import {
   HeaderNav,
@@ -17,15 +17,12 @@ import {
   QortalText
 } from "./Header-styles";
 import { useMediaQuery, useTheme } from "@mui/material";
-import { LayoutProps } from "../Main/MainLayout";
 import { LightModeSVG } from "../../Common/Icons/LightModeSVG";
 import { DarkModeSVG } from "../../Common/Icons/DarkModeSVG";
 import { MobileDrawer } from "./MobileDrawer";
 import { motion, AnimatePresence } from "framer-motion";
 import { DocsSVG } from "../../Common/Icons/DocsSVG";
 import { BackArrowSVG } from "../../Common/Icons/BackArrowSVG";
-import QortalLogo from "../../../../public/images/Logo/QortalLogo.png";
-import QortalLogoDarkTheme from "../../../../public/images/Logo/QortalLogoDarkTheme.webp";
 import { FeaturesSVG } from "../../Common/Icons/FeaturesSVG";
 import { QortalSVG } from "../../Common/Icons/QortalSVG";
 import { DiscordSVG } from "../../Common/Icons/DiscordSVG";
@@ -34,11 +31,15 @@ import { QortalWhiteLogoSVG } from "../../Common/Icons/QortalWhiteLogoSVG";
 import { QortalBlackLogoSVG } from "../../Common/Icons/QortalBlackLogoSVG";
 import { PuzzleSVG } from "../../Common/Icons/PuzzleSVG";
 import { usePathname } from "next/navigation";
+import { useThemeProvider } from "../../../state/useTheme";
+import { useRouter } from "next/navigation";
 
-export const Header: FC<LayoutProps> = ({ setTheme }) => {
+export const Header= () => {
+  const { setTheme } = useThemeProvider();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("lg"));
   const location = usePathname();
+  const router = useRouter();
 
   const [openMobileDrawer, setOpenMobileDrawer] = useState<boolean>(false);
 
@@ -164,7 +165,7 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                     label: "Docs Button"
                   });
                 }}
-                href={"/docs/api/q-app"}
+                href={"/docs/q-apps"}
               >
                 Developer
                 <DocsSVG
@@ -195,12 +196,14 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
         </HeaderNav>
       );
     } else if (
-      location === "/docs/api/extension" ||
-      location === "/docs/api/q-app"
+      location === "/docs/extension" ||
+      location === "/docs/q-apps"
     ) {
       return (
         <DocsNavContainer>
-          <BackHomeButton href={"/"}>
+          <BackHomeButton onClick={() => {
+            router.push("/");
+          }}>
             <BackArrowSVG color={"#ffffff"} height={"22"} width={"22"} />
             Back Home
           </BackHomeButton>
@@ -309,7 +312,7 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                     label: "Docs Button"
                   });
                 }}
-                href={"/docs/api/q-app"}
+                href={"/docs/q-apps"}
               >
                 Documentation
                 <DocsSVG
@@ -468,7 +471,7 @@ export const Header: FC<LayoutProps> = ({ setTheme }) => {
                     label: "Docs Button"
                   });
                 }}
-                href={"/docs/api/q-app"}
+                href={"/docs/q-apps"}
               >
                 Developer
                 <DocsSVG

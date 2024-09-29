@@ -24,12 +24,12 @@ import { LightModeSVG } from "../../../components/Common/Icons/LightModeSVG";
 import { DarkModeSVG } from "../../../components/Common/Icons/DarkModeSVG";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
-import { ApiProps, DocState } from "../../../pages/Docs/Api/Api";
+import { DocState } from "../../../app/docs/[slug]/page";
 import Dropdown from "../Dropdown/Dropdown";
 
 export const drawerWidth = 240;
 
-interface LeftDrawerLinksProps extends ApiProps {
+interface LeftDrawerLinksProps {
   selectedSection: string;
   openMobileDrawer: boolean;
   setTheme: (val: string) => void;

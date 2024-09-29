@@ -9,7 +9,8 @@ import { RedditSVG } from "../../Common/Icons/RedditSVG";
 import { QortalSVG } from "../../Common/Icons/QortalSVG";
 import ReactGA from "react-ga4";
 import { HomeSVG } from "../../Common/Icons/HomeSVG";
-import { PuzzleSVG } from "../../Common/Icons/PuzzleSVG";
+  import { PuzzleSVG } from "../../Common/Icons/PuzzleSVG";
+import { useRouter } from "next/navigation";
 
 interface MobileDrawerProps {
   setOpenMobileDrawer: () => void;
@@ -19,7 +20,7 @@ export const MobileDrawer: FC<MobileDrawerProps> = ({
   setOpenMobileDrawer
 }) => {
   const theme = useTheme();
-  const navigate = useNavigate();
+  const router = useRouter();
 
   return (
     <Container>
@@ -64,7 +65,7 @@ export const MobileDrawer: FC<MobileDrawerProps> = ({
       <DrawerButton
         onClick={() => {
           setOpenMobileDrawer();
-          navigate("/");
+          router.push("/");
         }}
       >
         Home
@@ -78,7 +79,7 @@ export const MobileDrawer: FC<MobileDrawerProps> = ({
       <DrawerButton
         onClick={() => {
           setOpenMobileDrawer();
-          navigate("/extension");
+          router.push("/extension");
         }}
       >
         Extension
@@ -92,7 +93,7 @@ export const MobileDrawer: FC<MobileDrawerProps> = ({
       <DrawerButton
         onClick={() => {
           setOpenMobileDrawer();
-          navigate("/qort");
+          router.push("/qort");
         }}
       >
         QORT
@@ -106,7 +107,7 @@ export const MobileDrawer: FC<MobileDrawerProps> = ({
       <DrawerButton
         onClick={() => {
           setOpenMobileDrawer();
-          navigate("/features");
+          router.push("/features");
         }}
       >
         Features
@@ -120,7 +121,7 @@ export const MobileDrawer: FC<MobileDrawerProps> = ({
       <DrawerButton
         onClick={() => {
           setOpenMobileDrawer();
-          navigate("/docs/api/q-app");
+          router.push("/docs/api/q-app");
         }}
       >
         Documentation

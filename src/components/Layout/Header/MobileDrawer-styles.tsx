@@ -25,5 +25,11 @@ export const DrawerButton = styled(Box)(({ theme }) => ({
   gap: "35px",
   backgroundColor: theme.palette.primary.main,
   color: theme.palette.text.primary,
-  padding: "20px"
+  padding: "20px",
+  cursor: "pointer",
+  transition: "all 0.3s ease-in-out",
+  userSelect: "none",
+  "&:hover": {
+    backgroundColor: theme.palette.primary.dark,
+  }
 }));  
