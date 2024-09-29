@@ -1,5 +1,6 @@
 import { styled } from "@mui/system";
 import { Box, Typography } from "@mui/material";
+import Image from "next/image";
 
 export const SupportContainer = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -23,8 +24,9 @@ export const SupportHeader = styled(Typography)(({ theme }) => ({
   userSelect: "none",
 }));
 
-export const DiscordLogo = styled("img")(({ theme }) => ({
+export const DiscordLogo = styled(Image)(({ theme }) => ({
   width: "17%",
+  height: "auto",
   cursor: "pointer",
   transition: "all 0.4s ease-in-out",
   "&:hover": {

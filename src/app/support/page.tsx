@@ -1,6 +1,6 @@
+"use client";
 import ReactGA from "react-ga4";
-import { DiscordLogo, SupportContainer, SupportHeader } from "./Support-styles"
-import CustomDiscordLogo from "../../../public/images/Home/JoinDiscordLogo.png"
+import { DiscordLogo, SupportContainer, SupportHeader } from "../../components/Support/Support-styles"
 
 export const Support = () => {
   return (
@@ -17,9 +17,13 @@ export const Support = () => {
           });
           window.open("https://discord.gg/YKdxYUSqZR", "_blank");
         }}
-        src={CustomDiscordLogo}
+        src={"/images/Home/JoinDiscordLogo.png"}
         alt="Join Qortal Discord"
+        width={500}
+        height={500}
       />
     </SupportContainer>
   )
 }
+
+export default Support;

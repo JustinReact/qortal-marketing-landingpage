@@ -4,6 +4,7 @@ import QORTPromoDesign from "../../../public/images/Home/QORTPromoDesign.webp";
 import { DiscordSVG } from "../Common/Icons/DiscordSVG";
 import { QortalSVG } from "../Common/Icons/QortalSVG";
 import Image from "next/image";
+import { montserrat } from "../../app/fonts";
 
 export const MainRow = styled(Grid)(({ theme }) => ({
   display: "flex",
@@ -52,7 +53,7 @@ export const Column = styled(Grid)({
 });
 
 export const HeaderText = styled(Typography)(({ theme }) => ({
-  fontFamily: "Montserrat",
+  fontFamily: montserrat.style.fontFamily,
   fontWeight: "550",
   letterSpacing: "1.5px",
   fontSize: "34px",
@@ -113,7 +114,8 @@ export const StyledButton = styled(Button)(({ theme }) => ({
   fontSize: "20px",
   borderRadius: "35px",
   padding: "5px 35px",
-  fontFamily: "Montserrat",
+  fontFamily: montserrat.style.fontFamily,
+  fontWeight: 400,
   color: "#ffffff",
   backgroundColor: "#115bc5",
   transition: "all 0.3s ease-in-out",

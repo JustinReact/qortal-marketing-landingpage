@@ -1,5 +1,6 @@
 import { styled } from "@mui/system";
 import { Box, Button, Grid, Typography } from "@mui/material";
+import Link from "next/link";
 
 export const Container = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -22,7 +23,7 @@ export const HeaderText = styled(Typography)(({ theme }) => ({
   fontWeight: "400",
 }));
 
-export const BackButton = styled(Button)(({ theme }) => ({
+export const BackButton = styled(Link)(({ theme }) => ({
   backgroundColor: theme.palette.secondary.light,
   color: "#fff",
   padding: "8px 16px",
@@ -32,6 +33,7 @@ export const BackButton = styled(Button)(({ theme }) => ({
   fontWeight: 500,
   textTransform: "none",
   transition: "all 0.3s ease-in-out",
+  textDecoration: "none",
   "&:hover": {
     cursor: "pointer",
     backgroundColor: theme.palette.secondary.light,

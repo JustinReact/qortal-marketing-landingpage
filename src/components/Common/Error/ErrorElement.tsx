@@ -3,7 +3,7 @@ import {
   HeaderText,
   BackButton,
   HeaderRow,
-} from "../../../pages/NotFound/NotFound-styles";
+} from "../../NotFound/NotFound-styles";
 import { useTheme } from "@mui/material";
 import { WarningSVG } from "../Icons/WarningSVG";
 

@@ -1,5 +1,4 @@
 import { FC } from "react";
-import { useNavigate } from "react-router-dom";
 import { DiscordSVG } from "../../Common/Icons/DiscordSVG";
 import { Container, Divider, DrawerButton } from "./MobileDrawer-styles";
 import { useTheme } from "@mui/material";
