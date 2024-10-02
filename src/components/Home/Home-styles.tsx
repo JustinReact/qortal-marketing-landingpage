@@ -1,10 +1,9 @@
 import { styled } from "@mui/system";
 import { Box, Button, Grid, Typography } from "@mui/material";
-import QORTPromoDesign from "../../../public/images/Home/QORTPromoDesign.webp";
 import { DiscordSVG } from "../Common/Icons/DiscordSVG";
 import { QortalSVG } from "../Common/Icons/QortalSVG";
 import Image from "next/image";
-import { montserrat } from "../../app/fonts";
+import { magistral, montserrat, oxygen } from "../../app/fonts";
 
 export const MainRow = styled(Grid)(({ theme }) => ({
   display: "flex",
@@ -72,7 +71,7 @@ export const HeaderText = styled(Typography)(({ theme }) => ({
 }));
 
 export const SubHeaderText = styled(Typography)(({ theme }) => ({
-  fontFamily: "Oxygen",
+  fontFamily: oxygen.style.fontFamily,
   fontWeight: "400",
   fontSize: "28px",
   letterSpacing: "0.3px",
@@ -157,7 +156,7 @@ export const VideoRow = styled(Box)(({ theme }) => ({
 }));
 
 export const VideoTitle = styled(Typography)(({ theme }) => ({
-  fontFamily: "Oxygen",
+  fontFamily: oxygen.style.fontFamily,
   color: theme.palette.text.primary,
   fontWeight: "400",
   userSelect: "none",
@@ -233,7 +232,7 @@ export const CustomDiscordButton = styled(Button)(({ theme }) => ({
   color: "#ffffff",
   height: "auto",
   width: "250",
-  fontFamily: "Oxygen",
+  fontFamily: oxygen.style.fontFamily,
   fontSize: "22px",
   borderRadius: "15px",
   letterSpacing: "0.5px",
@@ -265,7 +264,7 @@ export const CustomRedirectQORTButton = styled(Button)(({ theme }) => ({
   color: "#ffffff",
   height: "auto",
   width: "250px",
-  fontFamily: "Oxygen",
+  fontFamily: oxygen.style.fontFamily,
   fontSize: "22px",
   borderRadius: "15px",
   letterSpacing: "0.5px",
@@ -313,7 +312,7 @@ export const QORTPromoModal = styled(Box)(({ theme }) => ({
   position: "relative",
   width: "100%",
   height: "100%",
-  backgroundImage: `url(${QORTPromoDesign})`,
+  backgroundImage: `url(${"/images/Home/QORTPromoDesign.webp"})`,
   backgroundSize: "contain",
   backgroundPosition: "center center",
   backgroundRepeat: "no-repeat"
@@ -322,7 +321,7 @@ export const QORTPromoModal = styled(Box)(({ theme }) => ({
 export const QORTPromoFont = styled(Typography)(({ theme }) => ({
   textAlign: "center",
   marginBottom: "15px",
-  fontFamily: "Magistral",
+  fontFamily: magistral.style.fontFamily,
   fontSize: "35px",
   color: "#ffffff",
   userSelect: "none",

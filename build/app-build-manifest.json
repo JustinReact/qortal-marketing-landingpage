@@ -1,10 +1,10 @@
 {
   "pages": {
-    "/page": [
+    "/extension/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/page.css",
-      "static/chunks/app/page.js"
+      "static/css/app/extension/page.css",
+      "static/chunks/app/extension/page.js"
     ],
     "/layout": [
       "static/chunks/webpack.js",
@@ -17,20 +17,28 @@
       "static/chunks/main-app.js",
       "static/chunks/app/not-found.js"
     ],
-    "/support/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/support/page.js"
-    ],
-    "/privacy/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/privacy/page.js"
-    ],
     "/_not-found/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/_not-found/page.js"
+    ],
+    "/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/page.css",
+      "static/chunks/app/page.js"
+    ],
+    "/privacy/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/privacy/page.css",
+      "static/chunks/app/privacy/page.js"
+    ],
+    "/qort/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/qort/page.css",
+      "static/chunks/app/qort/page.js"
     ]
   }
 }

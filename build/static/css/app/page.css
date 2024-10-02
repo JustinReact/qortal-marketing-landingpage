@@ -19,3 +19,288 @@ font-style: normal;
 }.__className_97b38c {font-family: '__montserrat_97b38c', '__montserrat_Fallback_97b38c'
 }
 
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[3].use[1]!./node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js??ruleSet[1].rules[13].oneOf[3].use[2]!./node_modules/next/font/local/target.css?{"path":"src\\app\\fonts.ts","import":"","arguments":[{"src":[{"path":"../../public/fonts/Roboto-Light.ttf","weight":"300","style":"normal"},{"path":"../../public/fonts/Roboto-Regular.ttf","weight":"400","style":"normal"}],"display":"swap"}],"variableName":"roboto"} ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+@font-face {
+font-family: '__roboto_c2d0bc';
+src: url(/_next/static/media/57c1b7d1f6f0e18b-s.p.ttf) format('truetype');
+font-display: swap;
+font-weight: 300;
+font-style: normal;
+}
+
+@font-face {
+font-family: '__roboto_c2d0bc';
+src: url(/_next/static/media/af1dafcfb9d93cb7-s.p.ttf) format('truetype');
+font-display: swap;
+font-weight: 400;
+font-style: normal;
+}@font-face {font-family: '__roboto_Fallback_c2d0bc';src: local("Arial");ascent-override: 92.49%;descent-override: 24.34%;line-gap-override: 0.00%;size-adjust: 100.30%
+}.__className_c2d0bc {font-family: '__roboto_c2d0bc', '__roboto_Fallback_c2d0bc'
+}
+
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[3].use[1]!./node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js??ruleSet[1].rules[13].oneOf[3].use[2]!./node_modules/next/font/local/target.css?{"path":"src\\app\\fonts.ts","import":"","arguments":[{"src":"../../public/fonts/Catamaran.ttf","weight":"400","style":"normal","display":"swap"}],"variableName":"catamaran"} ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+@font-face {
+font-family: '__catamaran_73fb90';
+src: url(/_next/static/media/a3bf5597efba659d-s.p.ttf) format('truetype');
+font-display: swap;
+font-weight: 400;
+font-style: normal;
+}@font-face {font-family: '__catamaran_Fallback_73fb90';src: local("Arial");ascent-override: 123.62%;descent-override: 60.69%;line-gap-override: 0.00%;size-adjust: 88.98%
+}.__className_73fb90 {font-family: '__catamaran_73fb90', '__catamaran_Fallback_73fb90';font-weight: 400;font-style: normal
+}
+
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[3].use[1]!./node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js??ruleSet[1].rules[13].oneOf[3].use[2]!./node_modules/next/font/local/target.css?{"path":"src\\app\\fonts.ts","import":"","arguments":[{"src":"../../public/fonts/Fredoka One.ttf","weight":"400","style":"normal","display":"swap"}],"variableName":"fredokaOne"} ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+@font-face {
+font-family: '__fredokaOne_400058';
+src: url(/_next/static/media/920cbad6754794d1-s.p.ttf) format('truetype');
+font-display: swap;
+font-weight: 400;
+font-style: normal;
+}@font-face {font-family: '__fredokaOne_Fallback_400058';src: local("Arial");ascent-override: 95.32%;descent-override: 23.10%;line-gap-override: 0.00%;size-adjust: 102.19%
+}.__className_400058 {font-family: '__fredokaOne_400058', '__fredokaOne_Fallback_400058';font-weight: 400;font-style: normal
+}
+
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[3].use[1]!./node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js??ruleSet[1].rules[13].oneOf[3].use[2]!./node_modules/next/font/local/target.css?{"path":"src\\app\\fonts.ts","import":"","arguments":[{"src":"../../public/fonts/Cairo.ttf","weight":"400","style":"normal","display":"swap"}],"variableName":"cairo"} ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+@font-face {
+font-family: '__cairo_697935';
+src: url(/_next/static/media/9d1ca2426f3a345a-s.p.ttf) format('truetype');
+font-display: swap;
+font-weight: 400;
+font-style: normal;
+}@font-face {font-family: '__cairo_Fallback_697935';src: local("Arial");ascent-override: 137.28%;descent-override: 60.16%;line-gap-override: 0.00%;size-adjust: 94.91%
+}.__className_697935 {font-family: '__cairo_697935', '__cairo_Fallback_697935';font-weight: 400;font-style: normal
+}
+
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[3].use[1]!./node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js??ruleSet[1].rules[13].oneOf[3].use[2]!./node_modules/next/font/local/target.css?{"path":"src\\app\\fonts.ts","import":"","arguments":[{"src":[{"path":"../../public/fonts/Futura Light.otf","weight":"300","style":"normal"},{"path":"../../public/fonts/Futura.otf","weight":"400","style":"normal"}]}],"variableName":"futura"} ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+@font-face {
+font-family: '__futura_b1c3df';
+src: url(/_next/static/media/4a1643441a9699fc-s.p.otf) format('opentype');
+font-display: swap;
+font-weight: 300;
+font-style: normal;
+}
+
+@font-face {
+font-family: '__futura_b1c3df';
+src: url(/_next/static/media/c31ef5f60ef55d3b-s.p.otf) format('opentype');
+font-display: swap;
+font-weight: 400;
+font-style: normal;
+}@font-face {font-family: '__futura_Fallback_b1c3df';src: local("Arial");ascent-override: 108.56%;descent-override: 33.17%;line-gap-override: 0.00%;size-adjust: 90.45%
+}.__className_b1c3df {font-family: '__futura_b1c3df', '__futura_Fallback_b1c3df'
+}
+
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[3].use[1]!./node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js??ruleSet[1].rules[13].oneOf[3].use[2]!./node_modules/next/font/local/target.css?{"path":"src\\app\\fonts.ts","import":"","arguments":[{"src":"../../public/fonts/Inter.ttf","weight":"400","style":"normal","display":"swap"}],"variableName":"inter"} ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+@font-face {
+font-family: '__inter_ae13a4';
+src: url(/_next/static/media/1cccc37b0c8d2802-s.p.ttf) format('truetype');
+font-display: swap;
+font-weight: 400;
+font-style: normal;
+}@font-face {font-family: '__inter_Fallback_ae13a4';src: local("Arial");ascent-override: 90.00%;descent-override: 22.43%;line-gap-override: 0.00%;size-adjust: 107.64%
+}.__className_ae13a4 {font-family: '__inter_ae13a4', '__inter_Fallback_ae13a4';font-weight: 400;font-style: normal
+}
+
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[3].use[1]!./node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js??ruleSet[1].rules[13].oneOf[3].use[2]!./node_modules/next/font/local/target.css?{"path":"src\\app\\fonts.ts","import":"","arguments":[{"src":"../../public/fonts/Kadwa.ttf","weight":"400","style":"normal","display":"swap"}],"variableName":"kadwa"} ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+@font-face {
+font-family: '__kadwa_ab2b3e';
+src: url(/_next/static/media/c99e9745189101bf-s.p.ttf) format('truetype');
+font-display: swap;
+font-weight: 400;
+font-style: normal;
+}@font-face {font-family: '__kadwa_Fallback_ab2b3e';src: local("Arial");ascent-override: 114.73%;descent-override: 60.58%;line-gap-override: 0.00%;size-adjust: 114.53%
+}.__className_ab2b3e {font-family: '__kadwa_ab2b3e', '__kadwa_Fallback_ab2b3e';font-weight: 400;font-style: normal
+}
+
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[3].use[1]!./node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js??ruleSet[1].rules[13].oneOf[3].use[2]!./node_modules/next/font/local/target.css?{"path":"src\\app\\fonts.ts","import":"","arguments":[{"src":"../../public/fonts/Lovelo.otf","weight":"400","style":"normal","display":"swap"}],"variableName":"lovelo"} ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+@font-face {
+font-family: '__lovelo_54c04a';
+src: url(/_next/static/media/c8073f842c5f2ea4-s.p.otf) format('opentype');
+font-display: swap;
+font-weight: 400;
+font-style: normal;
+}@font-face {font-family: '__lovelo_Fallback_54c04a';src: local("Arial");ascent-override: 60.42%;descent-override: 20.14%;line-gap-override: 0.00%;size-adjust: 124.13%
+}.__className_54c04a {font-family: '__lovelo_54c04a', '__lovelo_Fallback_54c04a';font-weight: 400;font-style: normal
+}
+
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[3].use[1]!./node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js??ruleSet[1].rules[13].oneOf[3].use[2]!./node_modules/next/font/local/target.css?{"path":"src\\app\\fonts.ts","import":"","arguments":[{"src":"../../public/fonts/Magistral.otf","weight":"400","style":"normal","display":"swap"}],"variableName":"magistral"} ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+@font-face {
+font-family: '__magistral_5ff422';
+src: url(/_next/static/media/5cabb2f07f653d60-s.p.otf) format('opentype');
+font-display: swap;
+font-weight: 400;
+font-style: normal;
+}@font-face {font-family: '__magistral_Fallback_5ff422';src: local("Arial");ascent-override: 98.45%;descent-override: 29.46%;line-gap-override: 5.52%;size-adjust: 101.48%
+}.__className_5ff422 {font-family: '__magistral_5ff422', '__magistral_Fallback_5ff422';font-weight: 400;font-style: normal
+}
+
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[3].use[1]!./node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js??ruleSet[1].rules[13].oneOf[3].use[2]!./node_modules/next/font/local/target.css?{"path":"src\\app\\fonts.ts","import":"","arguments":[{"src":"../../public/fonts/Monoton-Regular.ttf","weight":"400","style":"normal","display":"swap"}],"variableName":"monoton"} ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+@font-face {
+font-family: '__monoton_4945df';
+src: url(/_next/static/media/b1b519bf772818cd-s.p.ttf) format('truetype');
+font-display: swap;
+font-weight: 400;
+font-style: normal;
+}@font-face {font-family: '__monoton_Fallback_4945df';src: local("Arial");ascent-override: 80.82%;descent-override: 28.08%;line-gap-override: 0.00%;size-adjust: 142.94%
+}.__className_4945df {font-family: '__monoton_4945df', '__monoton_Fallback_4945df';font-weight: 400;font-style: normal
+}
+
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[3].use[1]!./node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js??ruleSet[1].rules[13].oneOf[3].use[2]!./node_modules/next/font/local/target.css?{"path":"src\\app\\fonts.ts","import":"","arguments":[{"src":[{"path":"../../public/fonts/Museo.ttf","weight":"300","style":"normal"},{"path":"../../public/fonts/Museo.ttf","weight":"400","style":"normal"}]}],"variableName":"museo"} ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+@font-face {
+font-family: '__museo_8e2a93';
+src: url(/_next/static/media/62afbf9e78b49f51-s.p.ttf) format('truetype');
+font-display: swap;
+font-weight: 300;
+font-style: normal;
+}
+
+@font-face {
+font-family: '__museo_8e2a93';
+src: url(/_next/static/media/62afbf9e78b49f51-s.p.ttf) format('truetype');
+font-display: swap;
+font-weight: 400;
+font-style: normal;
+}@font-face {font-family: '__museo_Fallback_8e2a93';src: local("Arial");ascent-override: 93.60%;descent-override: 25.89%;line-gap-override: 0.00%;size-adjust: 100.43%
+}.__className_8e2a93 {font-family: '__museo_8e2a93', '__museo_Fallback_8e2a93'
+}
+
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[3].use[1]!./node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js??ruleSet[1].rules[13].oneOf[3].use[2]!./node_modules/next/font/local/target.css?{"path":"src\\app\\fonts.ts","import":"","arguments":[{"src":"../../public/fonts/NanumGothic-Regular.ttf","weight":"500","style":"normal","display":"swap"}],"variableName":"nanumGothic"} ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+@font-face {
+font-family: '__nanumGothic_324853';
+src: url(/_next/static/media/125acea9e354eabc-s.p.ttf) format('truetype');
+font-display: swap;
+font-weight: 500;
+font-style: normal;
+}@font-face {font-family: '__nanumGothic_Fallback_324853';src: local("Arial");ascent-override: 87.97%;descent-override: 21.99%;line-gap-override: 0.00%;size-adjust: 104.59%
+}.__className_324853 {font-family: '__nanumGothic_324853', '__nanumGothic_Fallback_324853';font-weight: 500;font-style: normal
+}
+
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[3].use[1]!./node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js??ruleSet[1].rules[13].oneOf[3].use[2]!./node_modules/next/font/local/target.css?{"path":"src\\app\\fonts.ts","import":"","arguments":[{"src":[{"path":"../../public/fonts/Oxygen.ttf","weight":"400","style":"normal"},{"path":"../../public/fonts/Oxygen.ttf","weight":"500","style":"normal"}]}],"variableName":"oxygen"} ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+@font-face {
+font-family: '__oxygen_646a47';
+src: url(/_next/static/media/c40fb0a29ca52a44-s.p.ttf) format('truetype');
+font-display: swap;
+font-weight: 400;
+font-style: normal;
+}
+
+@font-face {
+font-family: '__oxygen_646a47';
+src: url(/_next/static/media/c40fb0a29ca52a44-s.p.ttf) format('truetype');
+font-display: swap;
+font-weight: 500;
+font-style: normal;
+}@font-face {font-family: '__oxygen_Fallback_646a47';src: local("Arial");ascent-override: 101.30%;descent-override: 23.27%;line-gap-override: 0.00%;size-adjust: 101.36%
+}.__className_646a47 {font-family: '__oxygen_646a47', '__oxygen_Fallback_646a47'
+}
+
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[3].use[1]!./node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js??ruleSet[1].rules[13].oneOf[3].use[2]!./node_modules/next/font/local/target.css?{"path":"src\\app\\fonts.ts","import":"","arguments":[{"src":"../../public/fonts/ProtestStrike-Regular.ttf","weight":"500","style":"normal","display":"swap"}],"variableName":"protestStrike"} ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+@font-face {
+font-family: '__protestStrike_7300af';
+src: url(/_next/static/media/c0be5dab54a91fce-s.p.ttf) format('truetype');
+font-display: swap;
+font-weight: 500;
+font-style: normal;
+}@font-face {font-family: '__protestStrike_Fallback_7300af';src: local("Arial");ascent-override: 98.97%;descent-override: 24.74%;line-gap-override: 0.00%;size-adjust: 97.00%
+}.__className_7300af {font-family: '__protestStrike_7300af', '__protestStrike_Fallback_7300af';font-weight: 500;font-style: normal
+}
+
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[3].use[1]!./node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js??ruleSet[1].rules[13].oneOf[3].use[2]!./node_modules/next/font/local/target.css?{"path":"src\\app\\fonts.ts","import":"","arguments":[{"src":[{"path":"../../public/fonts/PTSans-Regular.ttf","weight":"400","style":"normal"},{"path":"../../public/fonts/PTSans-bold.ttf","weight":"500","style":"normal"},{"path":"../../public/fonts/PTSans-bold.ttf","weight":"600","style":"normal"},{"path":"../../public/fonts/PTSans-bold.ttf","weight":"700","style":"normal"}]}],"variableName":"ptSans"} ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+@font-face {
+font-family: '__ptSans_f9d40e';
+src: url(/_next/static/media/5f8485f30eb4c309-s.p.ttf) format('truetype');
+font-display: swap;
+font-weight: 400;
+font-style: normal;
+}
+
+@font-face {
+font-family: '__ptSans_f9d40e';
+src: url(/_next/static/media/c395cda6b15332ad-s.p.ttf) format('truetype');
+font-display: swap;
+font-weight: 500;
+font-style: normal;
+}
+
+@font-face {
+font-family: '__ptSans_f9d40e';
+src: url(/_next/static/media/c395cda6b15332ad-s.p.ttf) format('truetype');
+font-display: swap;
+font-weight: 600;
+font-style: normal;
+}
+
+@font-face {
+font-family: '__ptSans_f9d40e';
+src: url(/_next/static/media/c395cda6b15332ad-s.p.ttf) format('truetype');
+font-display: swap;
+font-weight: 700;
+font-style: normal;
+}@font-face {font-family: '__ptSans_Fallback_f9d40e';src: local("Arial");ascent-override: 104.75%;descent-override: 28.40%;line-gap-override: 0.00%;size-adjust: 97.18%
+}.__className_f9d40e {font-family: '__ptSans_f9d40e', '__ptSans_Fallback_f9d40e'
+}
+
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[3].use[1]!./node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js??ruleSet[1].rules[13].oneOf[3].use[2]!./node_modules/next/font/local/target.css?{"path":"src\\app\\fonts.ts","import":"","arguments":[{"src":"../../public/fonts/Raleway.ttf","weight":"400","style":"normal","display":"swap"}],"variableName":"raleway"} ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+@font-face {
+font-family: '__raleway_dd1629';
+src: url(/_next/static/media/e1cc97cd4eb75334-s.p.ttf) format('truetype');
+font-display: swap;
+font-weight: 400;
+font-style: normal;
+}@font-face {font-family: '__raleway_Fallback_dd1629';src: local("Arial");ascent-override: 92.39%;descent-override: 23.00%;line-gap-override: 0.00%;size-adjust: 101.74%
+}.__className_dd1629 {font-family: '__raleway_dd1629', '__raleway_Fallback_dd1629';font-weight: 400;font-style: normal
+}
+
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[3].use[1]!./node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js??ruleSet[1].rules[13].oneOf[3].use[2]!./node_modules/next/font/local/target.css?{"path":"src\\app\\fonts.ts","import":"","arguments":[{"src":[{"path":"../../public/fonts/Spartan-Regular.ttf","weight":"500","style":"normal"},{"path":"../../public/fonts/Spartan-ExtraBold.ttf","weight":"800","style":"normal"}]}],"variableName":"spartan"} ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+@font-face {
+font-family: '__spartan_756302';
+src: url(/_next/static/media/271171c44a18a97e-s.p.ttf) format('truetype');
+font-display: swap;
+font-weight: 500;
+font-style: normal;
+}
+
+@font-face {
+font-family: '__spartan_756302';
+src: url(/_next/static/media/1bf0ca20d56490b8-s.p.ttf) format('truetype');
+font-display: swap;
+font-weight: 800;
+font-style: normal;
+}@font-face {font-family: '__spartan_Fallback_756302';src: local("Arial");ascent-override: 71.56%;descent-override: 21.63%;line-gap-override: 0.00%;size-adjust: 120.19%
+}.__className_756302 {font-family: '__spartan_756302', '__spartan_Fallback_756302'
+}
+

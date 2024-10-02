@@ -5,6 +5,7 @@ import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import Image from "next/image";
+import { museo, raleway, roboto } from "../../app/fonts";
 
 interface StepDivProps {
   selected?: boolean;
@@ -86,7 +87,7 @@ export const StepText = styled(Typography)({
 });
 
 export const StepSubText = styled(Typography)({
-  fontFamily: "Museo",
+  fontFamily: museo.style.fontFamily,
   fontWeight: "300",
   letterSpacing: "0.3px",
   fontSize: "17px",
@@ -109,7 +110,7 @@ export const StepName = styled(Grid)(({ theme }) => ({
 }));
 
 export const StepTitle = styled(Typography)(({ theme }) => ({
-  fontFamily: "Raleway",
+  fontFamily: raleway.style.fontFamily,
   fontSize: "18px",
   fontWeight: "normal",
   overflow: "hidden",
@@ -210,7 +211,8 @@ export const DownloadButton = styled(Button)(({ theme }) => ({
   color: "#fff",
   borderRadius: "50px",
   alignSelf: "center",
-  fontFamily: "Roboto, sans-serif",
+  fontFamily: roboto.style.fontFamily,
+  fontWeight: 300,
   fontSize: "18px",
   boxShadow: "none",
   transition: "all 0.3s ease-in-out",
@@ -250,7 +252,7 @@ export const PreviousButton = styled(Button)({
   backgroundColor: "#ffa53d",
   width: "auto",
   fontSize: "18px",
-  fontFamily: "Roboto, sans-serif",
+  fontFamily: roboto.style.fontFamily,
   fontWeight: 300,
   letterSpacing: "0.3px",
   boxShadow: "none",
@@ -270,7 +272,7 @@ export const NextButton = styled(Button)<StepDivProps>(({ shiny, theme }) => ({
   backgroundColor: "#00c71b",
   width: "70px",
   fontSize: "18px",
-  fontFamily: "Roboto, sans-serif",
+  fontFamily: roboto.style.fontFamily,
   fontWeight: 300,
   letterSpacing: "0.3px",
   transition: "all 0.3s ease-in-out",
@@ -343,7 +345,7 @@ export const DiscordButton = styled(Button)(({ theme }) => ({
   alignItems: "center",
   justifyContent: "space-evenly",
   fontSize: "18px",
-  fontFamily: "Roboto, sans-serif",
+  fontFamily: roboto.style.fontFamily,
   fontWeight: 300,
   letterSpacing: "0.3px",
   gap: '7px',
@@ -396,7 +398,7 @@ export const LeftArrow = styled(KeyboardArrowLeftIcon)<StepDivProps>(
 );
 
 export const StepNumberBubble = styled(Typography)(({ theme }) => ({
-  fontFamily: "Museo",
+  fontFamily: museo.style.fontFamily,
   width: "fit-content",
   backgroundColor: theme.palette.secondary.main,
   color: "white",
@@ -435,7 +437,7 @@ export const RightArrow = styled(KeyboardArrowRightIcon)<StepDivProps>(
 );
 
 export const MuseoFont = styled(Typography)({
-  fontFamily: "Museo",
+  fontFamily: museo.style.fontFamily,
   letterSpacing: "0.3px",
   lineHeight: "30px",
   userSelect: "none",
@@ -549,7 +551,7 @@ export const MobileStepRow = styled(Box)(({ theme }) => ({
 }));
 
 export const MobileStepLine = styled(Box)(({ theme }) => ({
-  fontFamily: "Museo",
+  fontFamily: museo.style.fontFamily,
   height: "1px",
   width: "100%",
   marginTop: "40px",

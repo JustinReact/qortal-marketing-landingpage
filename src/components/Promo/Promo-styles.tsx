@@ -1,6 +1,7 @@
 import { styled } from "@mui/system";
 import { Grid, Typography, Box } from "@mui/material";
 import Image from "next/image";
+import { kadwa, museo, oxygen } from "../../app/fonts";
 
 export const Container = styled(Grid)(({ theme }) => ({
   display: "flex",
@@ -18,7 +19,7 @@ export const Container = styled(Grid)(({ theme }) => ({
 
 export const Header = styled(Typography)(({ theme }) => ({
   position: "relative",
-  fontFamily: "Kadwa",
+  fontFamily: kadwa.style.fontFamily,
   fontSize: "60px",
   lineHeight: "1.33",
   color: theme.palette.text.primary,
@@ -141,7 +142,7 @@ export const FeatureContainer = styled(Grid)(({ theme }) => ({
 }));
 
 export const SubHeader = styled(Typography)(({ theme }) => ({
-  fontFamily: "Oxygen",
+  fontFamily: oxygen.style.fontFamily,
   fontSize: "30px",
   color: theme.palette.text.primary,
   letterSpacing: "0.5px",
@@ -179,7 +180,7 @@ export const IconContainer3 = styled(Box)(({ theme }) => ({
 }));
 
 export const FeatureText = styled(Typography)(({ theme }) => ({
-  fontFamily: "Museo",
+  fontFamily: museo.style.fontFamily,
   fontSize: "22px",
   color: theme.palette.text.primary,
   letterSpacing: "0.5px",

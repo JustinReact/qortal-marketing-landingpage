@@ -6,7 +6,7 @@ import {
   Screenshot,
   ScreenshotContainer,
   StepCard,
-  StepColumn,
+  StepColumn
 } from "../../Steps-styles";
 import { Grid } from "@mui/material";
 import Modal from "../../../Common/Modal/Modal";
@@ -21,9 +21,7 @@ const WindowsStepThree: FC<WindowsStepThreeProps> = () => {
       <StepCard container>
         <Grid item lg={6} md={12} sm={12} xs={12}>
           <StepColumn container direction="column">
-            <MuseoFont
-              variant="h3"
-            >
+            <MuseoFont variant="h3">
               Execute the Qortal installer located in your downloads folder.
               Click next next next finish through the install like any normal
               installation.
@@ -40,11 +38,16 @@ const WindowsStepThree: FC<WindowsStepThreeProps> = () => {
             objectFit: "contain",
             display: "flex",
             alignItems: "center",
-            justifyContent: "center",
+            justifyContent: "center"
           }}
         >
           <ScreenshotContainer onClick={() => setOpenModal(true)}>
-            <Screenshot src={"/Windows/WindowsStepThree.webp"} alt="step1" />
+            <Screenshot
+              src={"/Windows/WindowsStepThree.webp"}
+              alt="step3"
+              width={500}
+              height={500}
+            />
             <MagnifyingGlass id="magnifying-glass" />
           </ScreenshotContainer>
         </Grid>

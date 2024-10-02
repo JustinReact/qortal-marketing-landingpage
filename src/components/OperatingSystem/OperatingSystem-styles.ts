@@ -1,6 +1,7 @@
 import { Grid, Button, Box } from "@mui/material";
 import { styled } from "@mui/system";
 import { ReplySVG } from "../Common/Icons/ReplySVG";
+import { nanumGothic, oxygen } from "../../app/fonts";
 
 export const MainContainer = styled(Grid)(({ theme }) => ({
   padding: "20px 40px",
@@ -25,7 +26,7 @@ export const SubHeaderRow = styled(Grid)(({ theme }) => ({
 export const SubHeaderText = styled(Box)(({ theme }) => ({
   fontSize: "28px",
   margin: "0 auto",
-  fontFamily: "Oxygen",
+  fontFamily: oxygen.style.fontFamily,
   fontWeight: "400",
   letterSpacing: "0.3px",
   userSelect: "none",
@@ -47,7 +48,7 @@ export const BackButton = styled(Button)(({ theme }) => ({
   color: "#fff",
   padding: "8px 16px",
   borderRadius: "7px",
-  fontFamily: "Nanum Gothic, sans-serif",
+  fontFamily: nanumGothic.style.fontFamily,
   fontSize: "18px",
   fontWeight: 500,
   textTransform: "none",

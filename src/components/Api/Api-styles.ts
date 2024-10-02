@@ -3,6 +3,7 @@ import { Box, Button, Grid, Typography } from "@mui/material";
 import { BackArrowSVG } from "../Common/Icons/BackArrowSVG";
 import { HamburgerSVG } from "../Common/Icons/HamburgerSVG";
 import Image from "next/image";
+import { oxygen } from "../../app/fonts";
 
 export const Wrapper = styled(Box)(({ theme }) => ({
   position: "relative",
@@ -65,7 +66,7 @@ export const HeaderText = styled(Typography)(({ theme }) => ({
 }));
 
 export const SubHeaderText = styled(Typography)(({ theme }) => ({
-  fontFamily: "Oxygen",
+  fontFamily: oxygen.style.fontFamily,
   fontWeight: "400",
   letterSpacing: "0.3px",
   fontSize: "32px",
@@ -113,7 +114,7 @@ export const DiscordButton = styled(Button)(({ theme }) => ({
   justifyContent: "space-between",
   border: "2px solid #4a93f8",
   backgroundColor: "#1e62c3",
-  fontFamily: "Oxygen",
+  fontFamily: oxygen.style.fontFamily,
   fontSize: "16px",
   color: "white",
   height: "48px",
