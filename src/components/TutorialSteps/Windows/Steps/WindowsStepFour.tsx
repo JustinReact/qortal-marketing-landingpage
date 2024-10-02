@@ -5,9 +5,9 @@ import {
   Screenshot,
   ScreenshotContainer,
   StepCard,
-  StepColumn,
+  StepColumn
 } from "../../Steps-styles";
-import { Grid} from "@mui/material";
+import { Grid } from "@mui/material";
 import Modal from "../../../Common/Modal/Modal";
 
 interface WindowsStepFourProps {}
@@ -20,21 +20,16 @@ const WindowsStepFour: FC<WindowsStepFourProps> = () => {
       <StepCard container>
         <Grid item lg={6} md={12} sm={12} xs={12}>
           <StepColumn>
-            <MuseoFont
-              variant="h3"
-            >
+            <MuseoFont variant="h3">
               Upon launching the Qortal UI, you will be prompted to install the
               Qortal Core, which will connect you to the Qortal Blockchain.
-              Click <strong>DOWNLOAD QORTAL CORE</strong> to install
-              the Qortal Core.
+              Click <strong>DOWNLOAD QORTAL CORE</strong> to install the Qortal
+              Core.
             </MuseoFont>
-            <MuseoFont
-              variant="h3"
-            >
+            <MuseoFont variant="h3">
               Once launched, you will be able to create a{" "}
-              <strong>new account</strong>, or import
-              an existing account. You will then be able to start minting and
-              building Q-Apps.
+              <strong>new account</strong>, or import an existing account. You
+              will then be able to start minting and building Q-Apps.
             </MuseoFont>
           </StepColumn>
         </Grid>
@@ -48,11 +43,16 @@ const WindowsStepFour: FC<WindowsStepFourProps> = () => {
             objectFit: "contain",
             display: "flex",
             alignItems: "center",
-            justifyContent: "center",
+            justifyContent: "center"
           }}
         >
           <ScreenshotContainer onClick={() => setOpenModal(true)}>
-            <Screenshot src={"/images/Windows/WindowsStepFour.webp"} alt="step1" width={500} height={500} />
+            <Screenshot
+              src={"/images/Windows/WindowsStepFour.webp"}
+              alt="step1"
+              width={500}
+              height={500}
+            />
             <MagnifyingGlass id="magnifying-glass" />
           </ScreenshotContainer>
         </Grid>

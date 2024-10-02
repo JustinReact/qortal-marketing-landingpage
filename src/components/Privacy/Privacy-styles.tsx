@@ -1,5 +1,6 @@
 import { styled } from "@mui/system";
 import { Box, Typography } from "@mui/material";
+import { inter, oxygen } from "../../app/fonts";
 
 export const PrivacyContainer = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -23,7 +24,7 @@ export const PrivacySubContainer = styled(Box)(({ theme }) => ({
 }));
 
 export const PrivacyHeader = styled(Typography)(({ theme }) => ({
-  fontFamily: "Oxygen",
+  fontFamily: oxygen.style.fontFamily,
   fontWeight: "400",
   letterSpacing: "0.3px",
   fontSize: "32px",
@@ -33,7 +34,7 @@ export const PrivacyHeader = styled(Typography)(({ theme }) => ({
 }));
 
 export const PrivacySubTitle = styled(Typography)(({ theme }) => ({
-  fontFamily: "Oxygen",
+  fontFamily: oxygen.style.fontFamily,
   fontWeight: "400",
   letterSpacing: "0.3px",
   fontSize: "24px",
@@ -46,7 +47,7 @@ export const PrivacySubTitle = styled(Typography)(({ theme }) => ({
 }));
 
 export const PrivacyText = styled(Typography)(({ theme }) => ({
-    fontFamily: "Inter",
+    fontFamily: inter.style.fontFamily,
     fontSize: "19.5px",
     lineHeight: "33px",
     letterSpacing: "0.2px",

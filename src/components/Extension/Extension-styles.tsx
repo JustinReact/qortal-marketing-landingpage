@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import { DoubleCaretRightSVG } from "../Common/Icons/DoubleCaretRightSVG";
 import Image from "next/image";
+import { fredokaOne, futura, monoton } from "../../app/fonts";
 
 const doubleCaretRightAnimation = keyframes`
     0%, 100% {
@@ -73,7 +74,7 @@ export const TopFoldButtonRow = styled(Box)(({ theme }) => ({
 }));
 
 export const Header = styled(Typography)(({ theme }) => ({
-  fontFamily: "Monoton",
+  fontFamily: monoton.style.fontFamily,
   fontSize: "64px",
   fontWeight: 400,
   lineHeight: "73px",
@@ -94,7 +95,7 @@ export const Header = styled(Typography)(({ theme }) => ({
 }));
 
 export const SubHeader = styled(Typography)(({ theme }) => ({
-  fontFamily: "Futura",
+  fontFamily: futura.style.fontFamily,
   fontSize: "64px",
   fontWeight: 400,
   lineHeight: "73px",
@@ -111,7 +112,7 @@ export const SubHeader = styled(Typography)(({ theme }) => ({
 }));
 
 export const CTAButton1 = styled(Button)(({ theme }) => ({
-  fontFamily: "Futura",
+  fontFamily: futura.style.fontFamily,
   fontWeight: 500,
   fontSize: "16px",
   lineHeight: "21.3px",
@@ -134,7 +135,7 @@ export const CTAButton1 = styled(Button)(({ theme }) => ({
 }));
 
 export const CTAButton2 = styled(Button)(({ theme }) => ({
-  fontFamily: "Futura",
+  fontFamily: futura.style.fontFamily,
   fontWeight: 500,
   fontSize: "16px",
   lineHeight: "21.3px",
@@ -180,7 +181,7 @@ export const QonnectFourSection = styled(Box)(({ theme }) => ({
 }));
 
 export const QonnectFourHeader = styled(Typography)(({ theme }) => ({
-  fontFamily: "Futura",
+  fontFamily: futura.style.fontFamily,
   fontSize: "48px",
   fontWeight: 500,
   lineHeight: "63.91px",
@@ -235,7 +236,8 @@ export const QonnectFourRow = styled(Box)({
 });
 
 export const QonnectFourText = styled(Typography)(({ theme }) => ({
-  fontFamily: "Futura Light",
+  fontFamily: futura.style.fontFamily,
+  fontWeight: 300,
   fontSize: "32px",
   lineHeight: "41.39px",
   letterSpacing: "0.05em",
@@ -269,7 +271,7 @@ export const BubbleCard = styled(Box)(({ theme }) => ({
   width: "77px",
   background: theme.palette.mode === "dark" ? "#ffffff05" : "#D9D9D9",
   borderRadius: "50%",
-  fontFamily: "Fredoka One",
+  fontFamily: fredokaOne.style.fontFamily,
   fontWeight: 500,
   fontSize: "40px",
   lineHeight: "48.4px",
@@ -380,7 +382,7 @@ export const DoubleCaretRightIcon3 = styled(DoubleCaretRightSVG)(
 );
 
 export const SliderText = styled(Typography)(({ theme }) => ({
-  fontFamily: "Fredoka One",
+  fontFamily: fredokaOne.style.fontFamily,
   fontSize: "16px",
   fontWeight: "400",
   lineHeight: "19.36px",
@@ -399,7 +401,7 @@ export const QortalWalletSection = styled(Box)(({ theme }) => ({
 }));
 
 export const QortalWalletHeader = styled(Typography)(({ theme }) => ({
-  fontFamily: "Futura",
+  fontFamily: futura.style.fontFamily,
   fontSize: "48px",
   fontWeight: 500,
   lineHeight: "63.91px",
@@ -450,7 +452,8 @@ export const QortalWalletDescription = styled(Box)(({ theme }) => ({
 }));
 
 export const QortalWalletText = styled(Typography)(({ theme }) => ({
-  fontFamily: "Futura Light",
+  fontFamily: futura.style.fontFamily,
+  fontWeight: 300,
   fontSize: "32px",
   lineHeight: "42.27px",
   letterSpacing: "0.05em",
@@ -464,7 +467,7 @@ export const QortalWalletText = styled(Typography)(({ theme }) => ({
 }));
 
 export const QortalWalletText2 = styled(Typography)(({ theme }) => ({
-  fontFamily: "Futura",
+  fontFamily: futura.style.fontFamily,
   fontSize: "48px",
   lineHeight: "63.91px",
   letterSpacing: "0.042em",

@@ -1,6 +1,7 @@
 import { styled, keyframes } from "@mui/system";
 import { Box, Button, Typography } from "@mui/material";
 import Image from "next/image";
+import { protestStrike, ptSans, raleway, spartan } from "../../app/fonts";
 
 export const spinAnimation = keyframes`
   0% {
@@ -153,7 +154,7 @@ export const ThirdContainer = styled(Box)({
 });
 
 export const MainTitle = styled(Typography)(({ theme }) => ({
-  fontFamily: "Protest Strike, sans-serif",
+  fontFamily: protestStrike.style.fontFamily,
   lineHeight: "120px",
   fontSize: "128px",
   fontWeight: 500,
@@ -198,7 +199,7 @@ export const SubTitle = styled(Typography)(({ theme }) => ({
 }));
 
 export const SubTitleDesc = styled(Typography)({
-  fontFamily: "PT Sans, sans-serif ",
+  fontFamily: ptSans.style.fontFamily,
   fontSize: "35px",
   fontWeight: 400,
   color: "#ffffff",
@@ -219,7 +220,7 @@ export const TradingPortalCol = styled(Box)({
 });
 
 export const TradingPortalTitle = styled(Typography)(({ theme }) => ({
-  fontFamily: "PT Sans",
+  fontFamily: ptSans.style.fontFamily,
   fontSize: "40px",
   fontWeight: 700,
   lineHeight: "50px",
@@ -227,7 +228,7 @@ export const TradingPortalTitle = styled(Typography)(({ theme }) => ({
 }));
 
 export const TradingPortalSubTitle = styled(Typography)(({ theme }) => ({
-  fontFamily: "PT Sans",
+  fontFamily: ptSans.style.fontFamily,
   fontSize: "40px",
   fontWeight: 400,
   lineHeight: "50px",
@@ -318,7 +319,7 @@ export const UseColNumber = styled(Typography)(({ theme }) => ({
   top: "0",
   left: "20px",
   color: theme.palette.text.primary,
-  fontFamily: "Spartan",
+  fontFamily: spartan.style.fontFamily,
   fontSize: "128px",
   fontWeight: 800,
   lineHeight: "60px",
@@ -345,7 +346,7 @@ export const UseColRow = styled(Box)({
 });
 
 export const UseColTitle = styled(Typography)(({ theme }) => ({
-  fontFamily: "Spartan",
+  fontFamily: spartan.style.fontFamily,
   fontSize: "40px",
   lineHeight: "60px",
   fontWeight: 500,
@@ -358,7 +359,7 @@ export const UseColTitle = styled(Typography)(({ theme }) => ({
 }));
 
 export const UseColDesc = styled(Typography)(({ theme }) => ({
-  fontFamily: "PT Sans, sans-serif ",
+  fontFamily: ptSans.style.fontFamily,
   fontSize: "27px",
   lineHeight: "32px",
   fontWeight: 400,
@@ -412,7 +413,7 @@ export const SubTextRow = styled(Box)(({ theme }) => ({
 }));
 
 export const SubText = styled(Typography)(({ theme }) => ({
-  fontFamily: "PT Sans, sans-serif ",
+  fontFamily: ptSans.style.fontFamily,
   fontWeight: "400",
   fontSize: "40px",
   userSelect: "none",
@@ -653,7 +654,7 @@ export const FAQNumberBubble = styled(Box)(({ theme }) => ({
   borderRadius: "50%",
   backgroundColor: "#12154989",
   color: "#ffffff",
-  fontFamily: "PT Sans, sans-serif !important",
+  fontFamily: ptSans.style.fontFamily,
   fontSize: "24px",
   fontWeight: 500,
   userSelect: "none",
@@ -689,7 +690,7 @@ export const FAQCardRow = styled(Box)({
 });
 
 export const FAQCardRowText = styled(Box)(({ theme }) => ({
-  fontFamily: "PT Sans, sans-serif !important",
+  fontFamily: ptSans.style.fontFamily,
   fontSize: "24px",
   color: "#ffffff",
   userSelect: "none",
@@ -702,7 +703,7 @@ export const FAQCardRowText = styled(Box)(({ theme }) => ({
 
 export const FAQCardRowBody = styled(Box)({
   marginTop: "15px",
-  fontFamily: "Raleway",
+  fontFamily: raleway.style.fontFamily,
   fontSize: "18px",
   color: "#ffffff",
   userSelect: "none",
@@ -713,7 +714,7 @@ export const FAQCardRowBody = styled(Box)({
 
 export const InstallationWord = styled("span")({
   marginTop: "15px",
-  fontFamily: "Raleway",
+  fontFamily: raleway.style.fontFamily,
   fontSize: "18px",
   userSelect: "none",
   letterSpacing: "0.4px",
@@ -730,7 +731,7 @@ export const InstallationWord = styled("span")({
 
 export const URLWord = styled("span")({
   marginTop: "15px",
-  fontFamily: "Raleway",
+  fontFamily: raleway.style.fontFamily,
   fontSize: "18px",
   userSelect: "none",
   letterSpacing: "0.4px",
@@ -767,7 +768,7 @@ export const CoinLogo = styled(Image)({
 });
 
 export const CoinLogoName = styled(Typography)({
-  fontFamily: "PT Sans, sans-serif",
+  fontFamily: ptSans.style.fontFamily,
   fontSize: "16px",
   fontWeight: 600,
   color: "#ffffff",

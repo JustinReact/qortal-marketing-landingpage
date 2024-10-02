@@ -2,6 +2,7 @@ import { styled } from "@mui/system";
 import { Grid, Box, Typography, Button } from "@mui/material";
 import Link from "next/link";
 import Image from "next/image";
+import { cairo, museo } from "../../app/fonts";
 
 export const ShowcaseContainer = styled(Grid)(({ theme }) => ({
   display: "flex",
@@ -87,7 +88,7 @@ export const ColumnsContainer = styled(Grid)(({ theme }) => ({
 }));
 
 export const DidYouKnowText = styled(Typography)(({ theme }) => ({
-  fontFamily: "Cairo",
+  fontFamily: cairo.style.fontFamily,
   fontSize: "29px",
   color: theme.palette.text.primary,
   fontWeight: "400",
@@ -140,7 +141,7 @@ export const MainColumnText = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   gap: "10px",
-  fontFamily: "Museo",
+  fontFamily: museo.style.fontFamily,
   fontSize: "16.5px",
   color: theme.palette.text.primary,
   fontWeight: "300",
@@ -171,7 +172,7 @@ export const FeaturesColumn = styled(Grid)({
 });
 
 export const FeaturesTitle = styled(Typography)(({ theme }) => ({
-  fontFamily: "Cairo",
+  fontFamily: cairo.style.fontFamily,
   fontSize: "29px",
   color: theme.palette.text.primary,
   fontWeight: "400",
@@ -228,7 +229,7 @@ export const TopImg = styled(Image)(({ theme }) => ({
 }));
 
 export const FeaturesText = styled(Typography)(({ theme }) => ({
-  fontFamily: "Museo",
+  fontFamily: museo.style.fontFamily,
   fontSize: "16.5px",
   color: theme.palette.text.primary,
   fontWeight: "300",

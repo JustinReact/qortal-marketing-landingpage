@@ -2,6 +2,7 @@ import { styled } from "@mui/system";
 import { Box, Typography } from "@mui/material";
 import { QortalSVG } from "../../../Common/Icons/QortalSVG";
 import ContentPasteTwoToneIcon from "@mui/icons-material/ContentPasteTwoTone";
+import { inter, oxygen, roboto } from "../../../../app/fonts";
 
 export const MainBox = styled(Box)(({ theme }) => ({
   position: "relative",
@@ -26,7 +27,7 @@ export const ParagraphContainer = styled(Box)(({ theme }) => ({
 }));
 
 export const SectionTitleText = styled(Typography)(({ theme }) => ({
-  fontFamily: "Oxygen",
+  fontFamily: oxygen.style.fontFamily,
   fontWeight: "400",
   letterSpacing: "0.3px",
   fontSize: "32px",
@@ -39,7 +40,7 @@ export const SectionTitleText = styled(Typography)(({ theme }) => ({
 }));
 
 export const SubTitle = styled(Typography)(({ theme }) => ({
-  fontFamily: "Oxygen",
+  fontFamily: oxygen.style.fontFamily,
   fontWeight: "400",
   letterSpacing: "0.3px",
   fontSize: "24px",
@@ -54,7 +55,7 @@ export const SubTitle = styled(Typography)(({ theme }) => ({
 
 export const SectionParagraph = styled(Typography)(({ theme }) => ({
   marginTop: "20px",
-  fontFamily: "Inter",
+  fontFamily: inter.style.fontFamily,
   fontSize: "19.5px",
   lineHeight: "33px",
   letterSpacing: "0.2px",
@@ -113,7 +114,8 @@ export const ColumnContainer = styled(Box)(({ theme }) => ({
 export const InformationParagraph = styled(Typography)(({ theme }) => ({
   fontSize: "18px",
   lineHeight: "28px",
-  fontFamily: "Roboto",
+  fontFamily: roboto.style.fontFamily,
+  fontWeight: "400",
   color: theme.palette.mode === "light" ? "#425061" : "#bfc0c2",
   [theme.breakpoints.down("sm")]: {
     overflowWrap: "anywhere"
@@ -126,7 +128,7 @@ export const CustomUnorderedList = styled("ul")(({ theme }) => ({
 }));
 
 export const CustomListItem = styled("li")(({ theme }) => ({
-  fontFamily: "Inter",
+  fontFamily: inter.style.fontFamily,
   fontSize: "18px",
   lineHeight: "33px",
   letterSpacing: "0.2px",
@@ -143,7 +145,7 @@ export const ServiceItem = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   gap: "15px",
-  fontFamily: "Inter",
+  fontFamily: inter.style.fontFamily,
   fontSize: "19.5px",
   lineHeight: "33px",
   letterSpacing: "0.2px",

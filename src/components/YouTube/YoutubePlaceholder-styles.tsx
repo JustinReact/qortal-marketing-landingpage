@@ -2,6 +2,7 @@ import { Box, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 import { PlaySVG } from "../Common/Icons/PlaySVG";
 import Image from "next/image";
+import { raleway } from "../../app/fonts";
 
 export const YoutubePlaceholderContainer = styled(Box)({
   position: "relative",
@@ -22,7 +23,7 @@ export const YoutubeHeader = styled(Typography)({
   position: "absolute",
   top: 0,
   left: 7,
-  fontFamily: "Raleway",
+  fontFamily: raleway.style.fontFamily,
   fontWeight: 400,
   color: "#fff",
   userSelect: "none",

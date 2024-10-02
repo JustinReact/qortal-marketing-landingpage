@@ -6,6 +6,7 @@ import {
   Typography
 } from "@mui/material";
 import { HamburgerSVG } from "../../Common/Icons/HamburgerSVG";
+import { catamaran, lovelo } from "../../../app/fonts";
 
 interface CustomDrawerProps {
   drawerwidth?: number;
@@ -73,7 +74,7 @@ export const CustomDrawerButton = styled(ListItemButton)<CustomDrawerProps>(
 );
 
 export const QAppsLogo = styled(Typography)(({ theme }) => ({
-  fontFamily: "Lovelo",
+  fontFamily: lovelo.style.fontFamily,
   fontSize: "23px",
   color: theme.palette.text.primary,
   transform: "translateY(3px)",
@@ -94,14 +95,16 @@ export const QAppsLogo = styled(Typography)(({ theme }) => ({
 export const DrawerText = styled(ListItemText)(({ theme }) => ({
   "& .MuiTypography-root": {
     color: theme.palette.text.primary,
-    fontFamily: "Catamaran",
+    fontFamily: catamaran.style.fontFamily,
+    fontWeight: 400,
     fontSize: "20px"
   }
 }));
 
 export const DrawerSubText = styled(Typography)(({ theme }) => ({
   color: theme.palette.text.primary,
-  fontFamily: "Catamaran",
+  fontFamily: catamaran.style.fontFamily,
+  fontWeight: 400,
   fontSize: "16px"
 }));
 

@@ -1,6 +1,7 @@
 import { styled } from "@mui/system";
 import { Box, Button, Grid, Typography } from "@mui/material";
 import Image from "next/image";
+import { cairo, museo, oxygen } from "../../app/fonts";
 
 export const Container = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -190,7 +191,7 @@ export const FeaturesTextContainer = styled(Box)({
 });
 
 export const FeaturesTitleText = styled(Typography)(({ theme }) => ({
-  fontFamily: "Cairo",
+  fontFamily: cairo.style.fontFamily,
   letterSpacing: "0.6px",
   fontSize: "23px",
   color: theme.palette.text.primary,
@@ -206,7 +207,7 @@ export const Divider = styled(Box)(({ theme }) => ({
 }));
 
 export const MainFeaturesText = styled(Typography)(({ theme }) => ({
-  fontFamily: "Oxygen",
+  fontFamily: oxygen.style.fontFamily,
   fontWeight: "bold",
   letterSpacing: "1.3px",
   fontSize: "37px",
@@ -226,7 +227,7 @@ export const FeaturesBodyContainer = styled(Box)({
 });
 
 export const FeaturesBodyText = styled(Typography)(({ theme }) => ({
-  fontFamily: "Museo",
+  fontFamily: museo.style.fontFamily,
   letterSpacing: "0.3px",
   fontSize: "22.5px",
   color: theme.palette.text.primary,
@@ -352,7 +353,7 @@ export const FeatureCardImg = styled(Image)({
 
 export const FeatureCardTitle = styled(Typography)(({ theme }) => ({
   textAlign: "center",
-  fontFamily: "Oxygen",
+  fontFamily: oxygen.style.fontFamily,
   fontWeight: "bold",
   letterSpacing: "1.3px",
   fontSize: "20.5px",
@@ -362,7 +363,7 @@ export const FeatureCardTitle = styled(Typography)(({ theme }) => ({
 
 export const FeatureCardBody = styled("ul")(({ theme }) => ({
   margin: 0,
-  fontFamily: "Museo",
+  fontFamily: museo.style.fontFamily,
   letterSpacing: "0.3px",
   fontSize: "18px",
   color: theme.palette.text.primary,
@@ -373,7 +374,7 @@ export const GatewayButton = styled(Button)({
   color: "#fff",
   padding: "11px 16px",
   borderRadius: "7px",
-  fontFamily: "Oxygen",
+  fontFamily: oxygen.style.fontFamily,
   fontSize: "19px",
   fontWeight: 500,
   textTransform: "none",
@@ -391,7 +392,7 @@ export const InstallQortalButton = styled(Button)(({ theme }) => ({
   padding: "5px 16px",
   borderRadius: "7px",
   width: "350px",
-  fontFamily: "Oxygen",
+  fontFamily: oxygen.style.fontFamily,
   fontWeight: 400,
   fontSize: "28px",
   transition: "all 0.3s ease-in-out",

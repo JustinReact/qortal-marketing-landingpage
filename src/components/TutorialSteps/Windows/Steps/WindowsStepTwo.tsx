@@ -6,7 +6,7 @@ import {
   Screenshot,
   ScreenshotContainer,
   StepCard,
-  StepColumn,
+  StepColumn
 } from "../../Steps-styles";
 import { Grid } from "@mui/material";
 import Modal from "../../../Common/Modal/Modal";
@@ -49,11 +49,16 @@ const WindowsStepTwo: FC<WindowsStepTwoProps> = () => {
             objectFit: "contain",
             display: "flex",
             alignItems: "center",
-            justifyContent: "center",
+            justifyContent: "center"
           }}
         >
           <ScreenshotContainer onClick={() => setOpenModal(true)}>
-            <Screenshot src={"/images/Windows/WindowsStepTwo.webp"} alt="step1" />
+            <Screenshot
+              src={"/images/Windows/WindowsStepTwo.webp"}
+              alt="step1"
+              width={500}
+              height={500}
+            />
             <MagnifyingGlass id="magnifying-glass" />
           </ScreenshotContainer>
         </Grid>

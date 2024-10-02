@@ -1,6 +1,7 @@
 import { styled } from "@mui/system";
 import { Box, Typography } from "@mui/material";
 import Link from "next/link";
+import { oxygen } from "../../../app/fonts";
 
 export const FooterContainer = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -24,7 +25,7 @@ export const FooterLink = styled(Link)(({ theme }) => ({
   justifyContent: "center",
   gap: "8px",
   backgroundColor: "transparent",
-  fontFamily: "Oxygen",
+  fontFamily: oxygen.style.fontFamily,
   fontSize: "18px",
   color: theme.palette.text.primary,
   height: "48px",

@@ -1,6 +1,7 @@
 import { styled } from "@mui/system";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
+import { oxygen } from "../../app/fonts";
 
 export const SupportContainer = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -15,7 +16,7 @@ export const SupportContainer = styled(Box)(({ theme }) => ({
 }));
 
 export const SupportHeader = styled(Typography)(({ theme }) => ({
-  fontFamily: "Oxygen",
+  fontFamily: oxygen.style.fontFamily,
   fontWeight: "400",
   letterSpacing: "0.3px",
   fontSize: "32px",

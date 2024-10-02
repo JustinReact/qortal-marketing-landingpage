@@ -1,5 +1,6 @@
 import { styled } from "@mui/system";
 import { Box, Button } from "@mui/material";
+import { oxygen } from "../../../../app/fonts";
 
 export const ScriptCard = styled(Box)(({ theme }) => ({
   position: "relative", 
@@ -19,7 +20,7 @@ export const CopyButton = styled(Button)(({ theme }) => ({
   borderRadius: "4px",
   backgroundColor:
     theme.palette.mode === "light" ? "#6495ed" : theme.palette.secondary.dark,
-  fontFamily: "Oxygen",
+  fontFamily: oxygen.style.fontFamily,
   color: "white",
   display: "flex",
   alignItems: "center",

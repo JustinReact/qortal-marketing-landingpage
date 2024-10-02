@@ -18,7 +18,7 @@ export const HeaderRow = styled(Box)(({ theme }) => ({
 }));
 
 export const HeaderText = styled(Typography)(({ theme }) => ({
-  fontFamily: "Oxygen",
+  fontFamily: oxygen.style.fontFamily,
   color: theme.palette.text.primary,
   fontWeight: "400",
 }));
@@ -28,7 +28,7 @@ export const BackButton = styled(Link)(({ theme }) => ({
   color: "#fff",
   padding: "8px 16px",
   borderRadius: "7px",
-  fontFamily: "Oxygen",
+  fontFamily: oxygen.style.fontFamily,
   fontSize: "18px",
   fontWeight: 500,
   textTransform: "none",

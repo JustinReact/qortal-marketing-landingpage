@@ -2,6 +2,7 @@ import { styled } from "@mui/system";
 import { Box, Button, Typography } from "@mui/material";
 import { HamburgerSVG } from "../../Common/Icons/HamburgerSVG";
 import Link from "next/link";
+import { magistral, oxygen } from "../../../app/fonts";
 
 interface HamburgerIconProps {
   rotated?: { isOn: boolean };
@@ -35,7 +36,7 @@ export const QortalLogoContainer = styled(Link)(({ theme }) => ({
 }));
 
 export const QortalText = styled(Typography)(({ theme }) => ({
-  fontFamily: "Magistral",
+  fontFamily: magistral.style.fontFamily,
   color: theme.palette.text.primary,
   fontWeight: 400,
   lineHeight: "27px",
@@ -46,7 +47,7 @@ export const BackHomeButton = styled(Button)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  fontFamily: "Oxygen",
+  fontFamily: oxygen.style.fontFamily,
   fontSize: "16px",
   gap: "4px",
   padding: "5px 9px",
@@ -70,7 +71,7 @@ export const DiscordButton = styled(Typography)(({ theme }) => ({
   justifyContent: "center",
   gap: "8px",
   backgroundColor: "transparent",
-  fontFamily: "Oxygen",
+  fontFamily: oxygen.style.fontFamily,
   fontSize: "18px",
   color: theme.palette.text.primary,
   height: "48px",
@@ -124,7 +125,7 @@ export const Docs = styled(Link)(({ theme }) => ({
   alignItems: "center",
   justifyContent: "center",
   gap: "8px",
-  fontFamily: "Oxygen",
+  fontFamily: oxygen.style.fontFamily,
   minWidth: "140px",
   fontSize: "18px",
   padding: "10px 15px",
@@ -174,7 +175,7 @@ export const FeaturesButton = styled(Link)(({ theme }) => ({
   alignItems: "center",
   justifyContent: "center",
   gap: "8px",
-  fontFamily: "Oxygen",
+  fontFamily: oxygen.style.fontFamily,
   fontSize: "18px",
   padding: "10px 15px",
   borderRadius: "2px",
@@ -224,7 +225,7 @@ export const QORTButton = styled(Link)(({ theme }) => ({
   alignItems: "center",
   justifyContent: "center",
   gap: "8px",
-  fontFamily: "Oxygen",
+  fontFamily: oxygen.style.fontFamily,
   fontSize: "18px",
   minWidth: "140px",
   padding: "10px 15px",
