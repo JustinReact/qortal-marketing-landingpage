@@ -1,7 +1,5 @@
 {
-  "/extension/page": "app/extension/page.js",
   "/page": "app/page.js",
-  "/privacy/page": "app/privacy/page.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/qort/page": "app/qort/page.js"
+  "/docs/[slug]/page": "app/docs/[slug]/page.js",
+  "/new-blog/page": "app/new-blog/page.js"
 }

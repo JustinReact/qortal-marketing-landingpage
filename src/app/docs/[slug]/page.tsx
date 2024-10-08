@@ -187,6 +187,7 @@ export const Api = () => {
                   return (
                     <Fragment key={id}>
                       <Component
+                        id={id}
                         {...props}
                         setSelectedSection={setSelectedSection}
                       />
@@ -201,6 +202,7 @@ export const Api = () => {
                           return (
                             <Component2
                               key={id}
+                              id={id}
                               {...props2}
                               setSelectedSection={setSelectedSection}
                             />
