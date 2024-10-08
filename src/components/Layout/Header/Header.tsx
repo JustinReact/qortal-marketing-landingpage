@@ -459,8 +459,8 @@ export const Header= () => {
               </FeaturesButton>
               <Docs
                 className={
-                  location === "/api/docs/extension" ||
-                  location === "/api/docs/q-app"
+                  location === "/docs/extension" ||
+                  location === "/docs/q-apps"
                     ? "active"
                     : ""
                 }

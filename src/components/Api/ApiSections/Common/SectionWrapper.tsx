@@ -1,3 +1,4 @@
+'use client';
 import React, { FC, useEffect, useState } from "react";
 import { MainBox, SectionTitleText } from "./Common-styles";
 import { useInView } from "react-intersection-observer";
@@ -18,7 +19,6 @@ export const SectionWrapper: FC<SectionProps> = ({
     threshold: 0.7
   });
   const [isInView, setIsInView] = useState(false);
-
   useEffect(() => {
     if (inView) {
       if (setSelectedSection && id) {

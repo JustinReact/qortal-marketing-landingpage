@@ -1,6 +1,7 @@
 import { styled } from "@mui/system";
 import { Box, Button, Grid, Typography } from "@mui/material";
 import Link from "next/link";
+import { oxygen } from "../../app/fonts";
 
 export const Container = styled(Box)(({ theme }) => ({
   display: "flex",
