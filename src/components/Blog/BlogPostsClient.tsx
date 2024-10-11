@@ -1,7 +1,8 @@
 "use client";
 import React from "react";
 import {
-  BlogDateAndCategoryRow,
+  BlogCategoriesRow,
+  BlogDateAndCategoryCol,
   BlogPageTitle,
   BlogPostBody,
   BlogPostCard,
@@ -10,13 +11,13 @@ import {
   BlogPostImage,
   BlogPostsContainer,
   BlogPostTitle,
+  Divider,
   MainBlogWrapper,
   ReadMoreButton
 } from "./Blog-styles"; // MUI and styled-components here
 import { formatDateWithSuffix } from "../../utils/formatDateWithSuffix";
 import parse from "html-react-parser";
-
-interface BlogPost {
+export interface BlogPost {
   title: string;
   body: string;
   thumbnail: string;
@@ -44,17 +45,22 @@ const BlogPostsClient: React.FC<BlogPostsClientProps> = ({ blogs }) => {
                 width={500}
                 height={500}
               />
-              <BlogDateAndCategoryRow>
+              <BlogDateAndCategoryCol>
                 <BlogPostDate>
-                  {formatDateWithSuffix(blog.created)} |
+                  {formatDateWithSuffix(blog.created)}
                 </BlogPostDate>
-                {(blog?.categories || []).map((category: string) => (
-                  <BlogPostCategory key={category}>{category}</BlogPostCategory>
-                ))}
-              </BlogDateAndCategoryRow>
+                <Divider />
+                <BlogCategoriesRow>
+                  {(blog?.categories || []).map((category: string) => (
+                    <BlogPostCategory key={category}>
+                      {category}
+                    </BlogPostCategory>
+                  ))}
+                </BlogCategoriesRow>
+              </BlogDateAndCategoryCol>
               <BlogPostTitle>{blog.title}</BlogPostTitle>
               <BlogPostBody>{parse(blog.body)}</BlogPostBody>
-              <ReadMoreButton>Read More</ReadMoreButton>
+              <ReadMoreButton href={`/blog/${blog.identifier}`}>Read More</ReadMoreButton>
             </BlogPostCard>
           ))}
       </BlogPostsContainer>

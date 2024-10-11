@@ -1,20 +1,6 @@
 import React from "react";
 import { fetchAndEvaluateBlogs } from "../../utils/fetchAndEvaluateBlogs";
 import { groupApi } from "../../constants/endpoint";
-import {
-  BlogDateAndCategoryRow,
-  BlogPageTitle,
-  BlogPostBody,
-  BlogPostCard,
-  BlogPostCategory,
-  BlogPostDate,
-  BlogPostImage,
-  BlogPostsContainer,
-  BlogPostTitle,
-  MainBlogWrapper,
-  ReadMoreButton
-} from "../../components/Blog/Blog-styles";
-import { formatDateWithSuffix } from "../../utils/formatDateWithSuffix";
 import BlogPostsClient from "../../components/Blog/BlogPostsClient";
 
 interface BlogPost {

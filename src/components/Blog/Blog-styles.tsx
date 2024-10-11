@@ -8,10 +8,11 @@ import {
   Theme,
   Typography
 } from "@mui/material";
-import { cairo, montserrat, oxygen, raleway, spartan } from "../../app/fonts";
+import { cairo, fredokaOne, inter, montserrat, oxygen, ptSans, raleway, spartan } from "../../app/fonts";
 import Image from "next/image";
 import { CloseSVG } from "../Common/Icons/CloseSVG";
 import { AddPhotoSVG } from "../Common/Icons/AddPhotoSVG";
+import Link from "next/link";
 
 export const BlogContainer = styled(Box)({
   display: "flex",
@@ -237,14 +238,14 @@ export const BlogPageTitle = styled(Typography)(({ theme }) => ({
   fontWeight: "bold",
   fontSize: "40px",
   color: theme.palette.text.primary,
-  userSelect: "none"
+  userSelect: "none",
+  textAlign: "center"
 }));
 
 export const BlogPostsContainer = styled(Box)({
-  display: "flex",
-  flexDirection: "row",
-  alignItems: "center",
-  justifyContent: "center",
+  display: "grid",
+  gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
+  alignItems: "flex-start",
   flexWrap: "wrap",
   gap: "15px",
   padding: "25px 10px",
@@ -252,7 +253,8 @@ export const BlogPostsContainer = styled(Box)({
 });
 
 export const BlogPostCard = styled(Box)(({ theme }) => ({
-  backgroundColor: theme.palette.secondary.dark,
+  height: "600px",
+  backgroundColor: theme.palette.primary.light,
   borderRadius: "8px",
   boxShadow:
     theme.palette.mode === "dark"
@@ -264,7 +266,6 @@ export const BlogPostCard = styled(Box)(({ theme }) => ({
   gap: "5px",
   transition: "all 0.3s ease-in-out",
   ":hover": {
-    cursor: "pointer",
     boxShadow:
       theme.palette.mode === "dark"
         ? "0px 4px 5px 0px hsla(0,0%,0%,0.25), 0px 1px 10px 0px hsla(0,0%,0%,0.20), 0px 2px 4px -1px hsla(0,0%,0%,0.35)"
@@ -274,57 +275,99 @@ export const BlogPostCard = styled(Box)(({ theme }) => ({
 
 export const BlogPostImage = styled(Image)({
   width: "100%",
-  height: "300px",
+  height: "150px",
   objectFit: "contain",
   borderRadius: "8px",
   userSelect: "none"
 });
 
 export const BlogPostTitle = styled(Typography)(({ theme }) => ({
-  fontFamily: montserrat.style.fontFamily,
+  fontFamily: inter.style.fontFamily,
   fontWeight: "bold",
   fontSize: "30px",
+  lineHeight: "1.2",
   color: theme.palette.text.primary,
+  marginTop: "10px",
   userSelect: "none"
 }));
 
 export const BlogPostBody = styled(Box)(({ theme }) => ({
-  fontFamily: raleway.style.fontFamily,
+  fontFamily: ptSans.style.fontFamily,
   fontSize: "18px",
   color: theme.palette.text.primary,
-  userSelect: "none"
+  userSelect: "none",
+  maxHeight: "400px", /* This will limit the height of the content */
+  overflow: "hidden",  /* Hide the overflowing content */
+  display: "-webkit-box", /* Required for applying ellipsis on multiline content */
+  WebkitBoxOrient: "vertical", /* Set the box orientation */
+  WebkitLineClamp: "9", /* Adjust this value to the number of lines you want to display */
+  textOverflow: "ellipsis" /* Add ellipsis for overflowed content */,
 }));
 
-export const ReadMoreButton = styled(Typography)(({ theme }) => ({
+export const ReadMoreButton = styled(Link)(({ theme }) => ({
+  display: "inline-block",
+  width: "fit-content",
+  position: "relative",
   fontFamily: cairo.style.fontFamily,
   fontSize: "20px",
-  color: theme.palette.text.primary,
+  color: theme.palette.secondary.main,
+  fontWeight: "bold",
   transition: "all 0.3s ease-in-out",
+  textDecoration: "none",
+  "&::before": {
+    content: "''",
+    position: "absolute",
+    left: "0",
+    bottom: "0",
+    height: "2px",
+    width: "100%",
+    backgroundColor: theme.palette.secondary.main,
+    transform: "scaleX(0)",
+    transformOrigin: "left",
+    transition: "transform 0.3s ease"
+  },
   "&:hover": {
-    cursor: "pointer"
+    cursor: "pointer",
+    "&::before": {
+      transform: "scaleX(1)"
+    }
   }
 }));
 
-export const BlogDateAndCategoryRow = styled(Box)({
+export const BlogDateAndCategoryCol = styled(Box)({
   display: "flex",
-  alignItems: "center",
-  justifyContent: "space-between",
-  gap: "10px"
+  flexDirection: "column",
+  alignItems: "flex-start",
+  justifyContent: "center",
+  gap: "8px",
 });
+
+export const Divider = styled(Box)(({ theme }) => ({
+  width: "200px",
+  height: "1px",
+  backgroundColor: theme.palette.secondary.main,
+}));
 
 export const BlogPostDate = styled(Typography)(({ theme }) => ({
   fontFamily: raleway.style.fontFamily,
-  fontSize: "16px",
-  color: theme.palette.primary.main,
+  fontSize: "17px",
+  color: theme.palette.secondary.main,
   userSelect: "none"
 }));
 
+export const BlogCategoriesRow = styled(Box)({
+  display: "flex",
+  flexDirection: "row",
+  gap: "5px",
+  flexWrap: "wrap"
+});
+
 export const BlogPostCategory = styled(Typography)(({ theme }) => ({
   fontFamily: raleway.style.fontFamily,
-  fontSize: "16px",
+  fontSize: "14px",
   color: theme.palette.text.primary,
   backgroundColor: theme.palette.primary.dark,
-  padding: "5px 10px",
+  padding: "2px 15px",
   borderRadius: "15px",
   userSelect: "none"
 }));
