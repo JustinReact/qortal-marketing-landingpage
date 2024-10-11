@@ -21,7 +21,7 @@ import {
   ImagePreview,
   ImagePreviewRow,
   ProductImagesRow
-} from "../../components/Blog/Blog-styles";
+} from "../../components/Blog/BlogPostsClient-styles";
 import {
   Box,
   FormControl,
