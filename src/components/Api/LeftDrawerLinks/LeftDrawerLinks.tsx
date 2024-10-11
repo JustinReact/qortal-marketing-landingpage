@@ -25,30 +25,29 @@ import { LightModeSVG } from "../../../components/Common/Icons/LightModeSVG";
 import { DarkModeSVG } from "../../../components/Common/Icons/DarkModeSVG";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
-import { DocState } from "../../../app/docs/[slug]/page";
+import { DocState } from "../../../constants/enums";
 import Dropdown from "../Dropdown/Dropdown";
+import { setTheme } from "../../../state/theme/themeSlice";
+import { useDispatch } from "react-redux";
 
 export const drawerWidth = 240;
 
 interface LeftDrawerLinksProps {
   selectedSection: string;
   openMobileDrawer: boolean;
-  setTheme: (val: string) => void;
   setOpenMobileDrawer: () => void;
-  docState: DocState;
-  setDocState: (val: DocState) => void;
+  docState: string;
 }
 
 export const LeftDrawerLinks: FC<LeftDrawerLinksProps> = ({
   selectedSection,
   openMobileDrawer,
-  setTheme,
   setOpenMobileDrawer,
-  setDocState,
   docState
 }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const dispatch = useDispatch();
 
   const [openIndex, setOpenIndex] = useState<null | number>(null);
 
@@ -71,25 +70,25 @@ export const LeftDrawerLinks: FC<LeftDrawerLinksProps> = ({
       >
         {theme.palette.mode === "dark" ? (
           <LightModeSVG
-            onClickFunc={() => setTheme("light")}
+            onClickFunc={() => dispatch(setTheme("light"))}
             color="white"
             height="22"
             width="22"
           />
         ) : (
           <DarkModeSVG
-            onClickFunc={() => setTheme("dark")}
+            onClickFunc={() => dispatch(setTheme("dark"))}
             color="black"
             height="22"
             width="22"
           />
         )}
-        <Dropdown setDocState={setDocState} docState={docState} />
+        <Dropdown docState={docState} />
       </ThemeSelectRow>
       <ThemeSelectRow
         sx={{ paddingBottom: "15px", paddingLeft: "15px", gap: "20px" }}
       >
-        {docState === DocState.QAPP && (
+        {docState === DocState.Q_APPS && (
           <QAppsLogo>
             Q-Apps <span>API</span>
           </QAppsLogo>

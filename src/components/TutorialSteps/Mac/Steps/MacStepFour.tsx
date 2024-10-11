@@ -12,7 +12,6 @@ import {
   StepColumn,
 } from "../../Steps-styles";
 import Modal from "../../../Common/Modal/Modal";
-import MacStep4 from "../../../../../public/images/Mac/MacStep4.jpg";
 
 const MacStepFour = () => {
   const [openModal, setOpenModal] = useState<boolean>(false);
@@ -43,7 +42,7 @@ const MacStepFour = () => {
           >
             <Screenshot
               sx={{ objectFit: "contain" }}
-              src={MacStep4}
+              src={"/images/Mac/MacStep4.jpg"}
               alt="step1"
             />
             <MagnifyingGlass id="magnifying-glass" />
@@ -52,7 +51,7 @@ const MacStepFour = () => {
       </StepCard>
       {openModal && (
         <Modal
-          images={[MacStep4]}
+          images={["/images/Mac/MacStep4.jpg"]}
           openModal={openModal}
           onClickFunc={() => setOpenModal(false)}
         ></Modal>

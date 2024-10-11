@@ -1,3 +1,5 @@
+//@ts-nocheck
+"use client";
 import { useEffect, useRef, useState } from "react";
 import { EditorProvider, useCurrentEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
@@ -38,12 +40,11 @@ const MenuBar = ({ setEditorRef }: any) => {
 
   useEffect(() => {
     if (editor && setEditorRef) {
-      console.log("here12");
       setEditorRef(editor);
     }
   }, [editor, setEditorRef]);
 
-  const handleImageUpload = async (file) => {
+  const handleImageUpload = async (file: File) => {
     let compressedFile;
     await new Promise<void>((resolve) => {
       new Compressor(file, {
@@ -292,12 +293,12 @@ const TipTapChatBar = ({
   disableEnter,
   overrideMobile,
   customEditorHeight,
-}) => {
+}: any) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const extensionsFiltered = extensions;
   const editorRef = useRef(null);
-  const setEditorRefFunc = (editorInstance) => {
+  const setEditorRefFunc = (editorInstance: any) => {
     editorRef.current = editorInstance;
     setEditorRef(editorInstance);
   };
@@ -310,10 +311,6 @@ const TipTapChatBar = ({
   };
 
   return (
-    <>
-    <button onClick={() => {
-      console.log(editorRef.current.getHTML());
-    }}>Test</button>
     <EditorProvider
       immediatelyRender={false}
       slotBefore={
@@ -360,7 +357,6 @@ const TipTapChatBar = ({
         },
       }}
     />
-    </>
   );
 };
 

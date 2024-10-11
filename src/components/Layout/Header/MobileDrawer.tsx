@@ -1,3 +1,4 @@
+"use client";
 import { FC } from "react";
 import { DiscordSVG } from "../../Common/Icons/DiscordSVG";
 import { Container, Divider, DrawerButton } from "./MobileDrawer-styles";

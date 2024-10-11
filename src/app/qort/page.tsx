@@ -56,10 +56,12 @@ import { AnimatePresence, motion } from "framer-motion";
 import { DiscordSVG } from "../../components/Common/Icons/DiscordSVG";
 import { useMediaQuery, useTheme } from "@mui/material";
 import { YoutubePlaceholder } from "../../components/YouTube/YoutubePlaceholder";
-import { useThemeProvider } from "../../state/useTheme";
+import { setTheme } from "../../state/theme/themeSlice";
+import { useDispatch } from "react-redux";
+import LayoutProvider from "../layout-provider";
 
-export const QORTPage = () => {
-  const { setTheme } = useThemeProvider();
+const QORTPage = () => {
+  const dispatch = useDispatch();
   const muiTheme = useTheme();
   const isMobile = useMediaQuery(muiTheme.breakpoints.down("sm"));
   const lessThanMediumScreen = useMediaQuery(muiTheme.breakpoints.down("md"));
@@ -83,7 +85,7 @@ export const QORTPage = () => {
 
   useEffect(() => {
     // Set the theme color for this page
-    setTheme("dark");
+    dispatch(setTheme("dark"));
   }, []);
 
   const tradePortalRef = useRef<HTMLDivElement | null>(null);

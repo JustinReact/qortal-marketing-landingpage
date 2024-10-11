@@ -14,10 +14,6 @@ import {
   StepColumn,
 } from "../../Steps-styles";
 import Modal from "../../../Common/Modal/Modal";
-import MacStepOne1 from "../../../../../public/images/Mac/MacStep1-1.jpg";
-import MacStepOne2 from "../../../../../public/images/Mac/MacStep1-2.jpg";
-import MacStepOne3 from "../../../../../public/images/Mac/MacStep1-3.jpg";
-import MacStepOne4 from "../../../../../public/images/Mac/MacStep1-4.jpg";
 
 interface MacStepOneProps {
   setShinyButton: React.Dispatch<React.SetStateAction<boolean>>;
@@ -25,24 +21,24 @@ interface MacStepOneProps {
 
 const MacStepOne = ({ setShinyButton }: MacStepOneProps) => {
   const [openModal, setOpenModal] = useState<boolean>(false);
-  const [selectedImage, setSelectedImage] = useState<string>(MacStepOne1);
+  const [selectedImage, setSelectedImage] = useState<string>("/images/Mac/MacStep1-1.jpg");
   const [modalImages, setModalImages] = useState<string[]>([]);
 
   const images = [
     {
-      src: MacStepOne1,
+      src: "/images/Mac/MacStep1-1.jpg",
       alt: "step1",
     },
     {
-      src: MacStepOne2,
+      src: "/images/Mac/MacStep1-2.jpg",
       alt: "step2",
     },
     {
-      src: MacStepOne3,
+      src: "/images/Mac/MacStep1-3.jpg",
       alt: "step3",
     },
     {
-      src: MacStepOne4,
+      src: "/images/Mac/MacStep1-4.jpg",
       alt: "step4",
     },
   ];

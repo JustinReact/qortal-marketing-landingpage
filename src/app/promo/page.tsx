@@ -21,7 +21,7 @@ import { HiveSVG } from "../../components/Common/Icons/HiveSVG";
 import { ConnectSVG } from "../../components/Common/Icons/ConnectSVG";
 import Image from "next/image";
 
-export const Promo = () => {
+const Promo = () => {
   const theme = useTheme();
   return (
     <>

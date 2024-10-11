@@ -12,26 +12,21 @@ import {
 } from "../../../components/Api/Api-styles";
 import { tableOfContents } from "../../../data/QAppApi";
 import { tableOfContents as tableOfContentsExtension } from "../../../data/ExtensionApi";
-
 import ReactGA from "react-ga4";
 import { motion, AnimatePresence } from "framer-motion";
-import { useThemeProvider } from "../../../state/useTheme";
-import { useParams, useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
+import { DocState } from "../../../constants/enums";
+import LayoutProvider from "../../layout-provider";
 
-export enum DocState {
-  QAPP,
-  EXTENSION
-}
+type DocStateType = DocState.Q_APPS | DocState.EXTENSION;
 
-export const Api = () => {
+const Api = () => {
   const theme = useTheme();
-  const { setTheme } = useThemeProvider();
   const [selectedSection, setSelectedSection] = useState("");
   const [showButton, setShowButton] = useState(false);
   const [openMobileDrawer, setOpenMobileDrawer] = useState(false);
-  const [docState, setDocState] = useState<DocState>(DocState.QAPP);
+  const [docState, setDocState] = useState<DocStateType>(DocState.Q_APPS);
   const topOfPageRef = useRef<HTMLDivElement | null>(null);
-  const router = useRouter();
   const params = useParams<{ slug: string }>();
 
   const slug = params?.slug; // Extract 'slug' from the URL
@@ -56,7 +51,7 @@ export const Api = () => {
     if (slug === "extension") {
       setDocState(DocState.EXTENSION);
     } else {
-      setDocState(DocState.QAPP);
+      setDocState(DocState.Q_APPS);
     }
   }, [slug]);
 
@@ -155,31 +150,27 @@ export const Api = () => {
             }}
           >
             <LeftDrawerLinks
-              setTheme={setTheme}
               selectedSection={selectedSection}
               openMobileDrawer={openMobileDrawer}
               setOpenMobileDrawer={() => {
                 setOpenMobileDrawer(false);
               }}
-              setDocState={setDocState}
               docState={docState}
             />
           </motion.div>
         )}
       </AnimatePresence>
       <LeftDrawerLinks
-        setTheme={setTheme}
         selectedSection={selectedSection}
         openMobileDrawer={openMobileDrawer}
         setOpenMobileDrawer={() => {
           setOpenMobileDrawer(false);
         }}
-        setDocState={setDocState}
         docState={docState}
       />
       <ApiContainer>
         <Box>
-          {docState === DocState.QAPP && (
+          {docState === DocState.Q_APPS && (
             <>
               {tableOfContents.map(
                 ({ Component, id, index, ...props }: any) => {

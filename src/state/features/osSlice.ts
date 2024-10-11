@@ -9,7 +9,7 @@ const initialState: OSTypes = {
 }
 
 export const osSlice = createSlice({
-  name: "notifications",
+  name: "OS",
   initialState,
   reducers: {
     setOS: (

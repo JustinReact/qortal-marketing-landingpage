@@ -40,11 +40,7 @@ import {
 import { YoutubeVideoContainer } from "../../components/Qort/QORTPage-styles";
 import { YoutubePlaceholder } from "../../components/YouTube/YoutubePlaceholder";
 
-interface ExtensionProps {
-  setTheme: (val: string) => void;
-}
-
-export const Extension: FC<ExtensionProps> = ({ setTheme }) => {
+const Extension = () => {
   const extensionExplanationRef = useRef<HTMLDivElement | null>(null);
 
   const [sliderValue, setSliderValue] = useState<number>(0);

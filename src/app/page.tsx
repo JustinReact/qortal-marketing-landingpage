@@ -69,7 +69,7 @@ const Home: FC = () => {
       // Set the flag in localStorage
       localStorage.setItem("isFirstTimeVisitor", "false");
       // Redirect to /qort for mobile users
-      if (userOS?.includes("Android" || "iOS")) {
+      if (userOS?.includes("Android") || userOS?.includes("iOS")) {
         router.push("/qort");
       }
     } else {
