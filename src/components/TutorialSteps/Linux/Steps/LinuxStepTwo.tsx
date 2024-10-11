@@ -49,7 +49,7 @@ const LinuxStepTwo = () => {
                 <ScreenshotContainer onClick={() => setOpenModal(true)}>
                   <Screenshot
                     sx={{ objectFit: "contain" }}
-                    src={LinuxDownloadImg}
+                    src={"/images/Linux/LinuxDownload.png"}
                     alt="step2"
                   />
                   <MagnifyingGlass id="magnifying-glass" />
@@ -65,7 +65,7 @@ const LinuxStepTwo = () => {
           onClickFunc={() => {
             setOpenModal(false);
           }}
-          images={[LinuxDownloadImg]}
+          images={["/images/Linux/LinuxDownload.png"]}
         ></Modal>
       )}
     </>

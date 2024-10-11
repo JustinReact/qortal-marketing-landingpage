@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { useSwipeable } from "react-swipeable";
 import { Grid } from "@mui/material";
 import {
-  DownloadButton,
   ImageToggleDot,
   ImageToggleRow,
   MagnifyingGlass,
@@ -14,22 +13,19 @@ import {
   StepColumn,
 } from "../../Steps-styles";
 import Modal from "../../../Common/Modal/Modal";
-import MacStepTwo1 from "../../../../../public/images/Mac/MacStep2-1.jpg";
-import MacStepTwo2 from "../../../../../public/images/Mac/MacStep2-2.jpg";
-
 
 const MacStepTwo = () => {
   const [openModal, setOpenModal] = useState<boolean>(false);
-  const [selectedImage, setSelectedImage] = useState<string>(MacStepTwo1);
+  const [selectedImage, setSelectedImage] = useState<string>("/images/Mac/MacStep2-1.jpg");
   const [modalImages, setModalImages] = useState<string[]>([]);
 
   const images = [
     {
-      src: MacStepTwo1,
+      src: "/images/Mac/MacStep2-1.jpg",
       alt: "step1",
     },
     {
-      src: MacStepTwo2,
+      src: "/images/Mac/MacStep2-2.jpg",
       alt: "step2",
     },
   ];

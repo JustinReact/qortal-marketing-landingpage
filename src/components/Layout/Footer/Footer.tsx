@@ -1,3 +1,4 @@
+"use client";
 import { FooterContainer, FooterLink } from "./Footer-styles";
 import { usePathname } from "next/navigation";
 

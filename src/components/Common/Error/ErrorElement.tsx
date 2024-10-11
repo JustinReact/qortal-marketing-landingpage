@@ -1,3 +1,4 @@
+"use client";
 import {
   Container,
   HeaderText,
@@ -6,7 +7,6 @@ import {
 } from "../../NotFound/NotFound-styles";
 import { useTheme } from "@mui/material";
 import { WarningSVG } from "../Icons/WarningSVG";
-
 interface ErrorElementProps {
   message: string;
 }
@@ -28,9 +28,7 @@ export const ErrorElement: React.FC<ErrorElementProps> = ({ message }) => {
         Please return home or try refreshing the page!
       </HeaderText>
       <BackButton
-        onClick={() => {
-          window.location.reload();
-        }}
+        href="/"
       >
         Back Home
       </BackButton>

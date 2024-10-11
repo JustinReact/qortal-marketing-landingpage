@@ -14,21 +14,19 @@ import {
   StepColumn,
 } from "../../Steps-styles";
 import Modal from "../../../Common/Modal/Modal";
-import MacStepThree1 from "../../../../../public/images/Mac/MacStep3-1.jpg";
-import MacStepThree2 from "../../../../../public/images/Mac/MacStep3-2.jpg";
 
 const MacStepThree = () => {
   const [openModal, setOpenModal] = useState<boolean>(false);
-  const [selectedImage, setSelectedImage] = useState<string>(MacStepThree1);
+  const [selectedImage, setSelectedImage] = useState<string>("/images/Mac/MacStep3-1.jpg");
   const [modalImages, setModalImages] = useState<string[]>([]);
 
   const images = [
     {
-      src: MacStepThree1,
+      src: "/images/Mac/MacStep3-1.jpg",
       alt: "step1",
     },
     {
-      src: MacStepThree2,
+      src: "/images/Mac/MacStep3-2.jpg",
       alt: "step2",
     },
   ];

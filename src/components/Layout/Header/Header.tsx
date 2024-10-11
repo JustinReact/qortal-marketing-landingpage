@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 import ReactGA from "react-ga4";
 import {
@@ -31,11 +32,12 @@ import { QortalWhiteLogoSVG } from "../../Common/Icons/QortalWhiteLogoSVG";
 import { QortalBlackLogoSVG } from "../../Common/Icons/QortalBlackLogoSVG";
 import { PuzzleSVG } from "../../Common/Icons/PuzzleSVG";
 import { usePathname } from "next/navigation";
-import { useThemeProvider } from "../../../state/useTheme";
 import { useRouter } from "next/navigation";
+import { setTheme } from "../../../state/theme/themeSlice";
+import { useDispatch } from "react-redux";
 
-export const Header= () => {
-  const { setTheme } = useThemeProvider();
+export const Header = () => {
+  const dispatch = useDispatch();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("lg"));
   const location = usePathname();
@@ -51,14 +53,20 @@ export const Header= () => {
           <ThemeSelectRow>
             {theme.palette.mode === "dark" ? (
               <LightModeSVG
-                onClickFunc={() => setTheme("light")}
+                onClickFunc={() => {
+                  console.log("here11");
+                  dispatch(setTheme("light"));
+                }}
                 color="white"
                 height="22"
                 width="22"
               />
             ) : (
               <DarkModeSVG
-                onClickFunc={() => setTheme("dark")}
+                onClickFunc={() => {
+                  console.log("here12");
+                  dispatch(setTheme("dark"));
+                }}
                 color="black"
                 height="22"
                 width="22"
@@ -195,15 +203,14 @@ export const Header= () => {
           )}
         </HeaderNav>
       );
-    } else if (
-      location === "/docs/extension" ||
-      location === "/docs/q-apps"
-    ) {
+    } else if (location === "/docs/extension" || location === "/docs/q-apps") {
       return (
         <DocsNavContainer>
-          <BackHomeButton onClick={() => {
-            router.push("/");
-          }}>
+          <BackHomeButton
+            onClick={() => {
+              router.push("/");
+            }}
+          >
             <BackArrowSVG color={"#ffffff"} height={"22"} width={"22"} />
             Back Home
           </BackHomeButton>
@@ -348,14 +355,14 @@ export const Header= () => {
           <ThemeSelectRow>
             {theme.palette.mode === "dark" ? (
               <LightModeSVG
-                onClickFunc={() => setTheme("light")}
+                onClickFunc={() => dispatch(setTheme("light"))}
                 color="white"
                 height="22"
                 width="22"
               />
             ) : (
               <DarkModeSVG
-                onClickFunc={() => setTheme("dark")}
+                onClickFunc={() => dispatch(setTheme("dark"))}
                 color="black"
                 height="22"
                 width="22"
@@ -459,8 +466,7 @@ export const Header= () => {
               </FeaturesButton>
               <Docs
                 className={
-                  location === "/docs/extension" ||
-                  location === "/docs/q-apps"
+                  location === "/docs/extension" || location === "/docs/q-apps"
                     ? "active"
                     : ""
                 }

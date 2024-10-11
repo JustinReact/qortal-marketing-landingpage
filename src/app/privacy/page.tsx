@@ -7,7 +7,7 @@ import {
   PrivacyText
 } from "../../components/Privacy/Privacy-styles";
 
-export const Privacy = () => {
+const Privacy = () => {
   return (
     <PrivacyContainer>
       <PrivacyHeader>Privacy Policy for the Qortal Extension</PrivacyHeader>

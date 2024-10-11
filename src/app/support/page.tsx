@@ -2,7 +2,7 @@
 import ReactGA from "react-ga4";
 import { DiscordLogo, SupportContainer, SupportHeader } from "../../components/Support/Support-styles"
 
-export const Support = () => {
+const Support = () => {
   return (
     <SupportContainer>
       <SupportHeader>

@@ -1,15 +1,9 @@
 import * as React from "react";
 import { styled, alpha } from "@mui/material/styles";
-import Button from "@mui/material/Button";
 import Menu, { MenuProps } from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import EditIcon from "@mui/icons-material/Edit";
-import Divider from "@mui/material/Divider";
-import ArchiveIcon from "@mui/icons-material/Archive";
-import FileCopyIcon from "@mui/icons-material/FileCopy";
-import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import { DocState } from "../../../app/docs/[slug]/page";
+import { DocState } from "../../../constants/enums";
 import { BackHomeButton } from "../../Layout/Header/Header-styles";
 import { useRouter } from "next/navigation";
 
@@ -57,11 +51,10 @@ const StyledMenu = styled((props: MenuProps) => (
 }));
 
 interface PDropdown {
-  docState: DocState;
-  setDocState: (val: DocState) => void;
+  docState: string;
 }
 
-export default function Dropdown({ setDocState, docState }: PDropdown) {
+export default function Dropdown({ docState }: PDropdown) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const router = useRouter();
@@ -85,7 +78,7 @@ export default function Dropdown({ setDocState, docState }: PDropdown) {
         onClick={handleClick}
         endIcon={<KeyboardArrowDownIcon />}
       >
-        {docState === DocState.QAPP && "Q-Apps"}
+        {docState === DocState.Q_APPS && "Q-Apps"}
         {docState === DocState.EXTENSION && "Extension"}
       </BackHomeButton>
       <StyledMenu

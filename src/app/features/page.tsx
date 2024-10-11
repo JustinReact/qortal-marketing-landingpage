@@ -46,7 +46,7 @@ export interface FeatureData {
   [key: string]: FeatureInfo;
 }
 
-export const Features = () => {
+const Features = () => {
   // Determine which OS they're on
   const parser = new UAParser();
 
@@ -423,7 +423,7 @@ export const Features = () => {
         <InstallQortalButton
           onClick={() => {
             const userOS = parser.getOS().name;
-            if (userOS?.includes("Android" || "iOS")) {
+            if (userOS?.includes("Android") || userOS?.includes("iOS")) {
               router.push("/");
               dispatch(setOS(""));
             } else if (userOS?.includes("Mac")) {

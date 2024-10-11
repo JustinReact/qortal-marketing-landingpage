@@ -31,6 +31,7 @@ import {
 } from "@mui/material";
 import TipTapChatBar from "../../components/Blog/TipTap";
 import { Editor } from "@tiptap/core";
+import { AddPhotoSVG } from "../../components/Common/Icons/AddPhotoSVG";
 
 interface BlogData {
   title: string;
@@ -38,8 +39,7 @@ interface BlogData {
   body: string | null;
   categories: string[];
 }
-
-export const NewBlog = () => {
+const NewBlog = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
@@ -151,11 +151,10 @@ export const NewBlog = () => {
           <AddImageButton>
             Add Blog Thumbnail
             <AddImageIcon
-              sx={{
-                height: "25px",
-                width: "auto"
-              }}
-            ></AddImageIcon>
+              height="25px" 
+              width="auto"
+              color={theme.palette.text.primary}
+            />
           </AddImageButton>
         </ImageUploader>
       )}

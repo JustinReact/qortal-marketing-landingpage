@@ -18,9 +18,7 @@ import {
   StepCardInnerContainer,
   StepColumn,
 } from "../../Steps-styles";
-import LinuxDownloadImg from "../../../../../public/images/Linux/LinuxDownload.png";
-import LinuxAppPermissionImg from "../../../../../public/images/Linux/LinuxAppPermission.png";
-import TerminalScreenshot from "../../../../../public/images/Linux/LinuxTerminalScreenshot.png";
+"/images/Linux/LinuxDownload.png";
 import Modal from "../../../Common/Modal/Modal";
 
 interface LinuxStepOneProps {
@@ -38,17 +36,17 @@ const LinuxStepOne = ({
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const [openModal, setOpenModal] = useState<boolean>(false);
-  const [selectedImage, setSelectedImage] = useState<string>(LinuxDownloadImg);
+  const [selectedImage, setSelectedImage] = useState<string>("/images/Linux/LinuxDownload.png");
   const [modalImages, setModalImages] = useState<string[]>([]);
 
 
   const images = [
     {
-      src: LinuxDownloadImg,
+      src: "/images/Linux/LinuxDownload.png",
       alt: "step1",
     },
     {
-      src: LinuxAppPermissionImg,
+      src: "/images/Linux/LinuxAppPermission.png",
       alt: "step2",
     },
   ];
@@ -217,7 +215,7 @@ const LinuxStepOne = ({
           onClickFunc={() => {
             setOpenModal(false);
           }}
-          images={[TerminalScreenshot]}
+          images={["/images/Linux/LinuxTerminalScreenshot.png"]}
         ></Modal>
       ) : null}
     </>
