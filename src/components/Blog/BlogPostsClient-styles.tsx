@@ -277,7 +277,6 @@ export const BlogPostImage = styled(Image)({
   width: "100%",
   height: "150px",
   objectFit: "contain",
-  borderRadius: "8px",
   userSelect: "none"
 });
 
@@ -351,7 +350,7 @@ export const Divider = styled(Box)(({ theme }) => ({
 export const BlogPostDate = styled(Typography)(({ theme }) => ({
   fontFamily: raleway.style.fontFamily,
   fontSize: "17px",
-  color: theme.palette.secondary.main,
+  color: theme.palette.mode === "light" ? theme.palette.secondary.main : theme.palette.primary.light,
   userSelect: "none"
 }));
 

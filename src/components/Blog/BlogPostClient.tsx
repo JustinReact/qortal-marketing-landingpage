@@ -4,42 +4,50 @@ import {
   BlogCategoriesRow,
   BlogDateAndCategoryCol,
   BlogPostBody,
-  BlogPostCard,
   BlogPostCategory,
   BlogPostDate,
   BlogPostImage,
   BlogPostTitle,
   Divider
-} from "./Blog-styles";
+} from "./BlogPostsClient-styles";
 import { formatDateWithSuffix } from "../../utils/formatDateWithSuffix";
 import { BlogPost } from "./BlogPostsClient";
 import parse from "html-react-parser";
+import { BackToBlogButton, BlogDateAndCategoryRow, BlogMainImage, BlogPostContainer } from "./BlogPostClient-styles";
+import { BackArrowSVG } from "../Common/Icons/BackArrowSVG";
+import { useRouter } from "next/navigation";
 
 interface BlogPostClientProps {
   blog: BlogPost;
 }
 
 const BlogPostClient = ({ blog }: BlogPostClientProps) => {
+  const router = useRouter();
   return (
-    <BlogPostCard key={blog.identifier}>
-      <BlogPostImage
-        src={blog.thumbnail}
-        alt={blog.title}
-        width={500}
-        height={500}
-      />
-      <BlogDateAndCategoryCol>
+    <BlogPostContainer>
+      <BackToBlogButton onClick={() => {
+        router.push("/blog");
+      }}>
+        <BackArrowSVG height={"20"} width={"20"} color={"#ffffff"} />
+        All Blogs
+      </BackToBlogButton>
+      <BlogDateAndCategoryRow>
         <BlogPostDate>{formatDateWithSuffix(blog.created)}</BlogPostDate>
-        <Divider />
         <BlogCategoriesRow>
           {(blog?.categories || []).map((category: string) => (
             <BlogPostCategory key={category}>{category}</BlogPostCategory>
           ))}
         </BlogCategoriesRow>
-      </BlogDateAndCategoryCol>
+      </BlogDateAndCategoryRow>
+      <BlogMainImage
+        src={blog.thumbnail}
+        alt={blog.title}
+        width={500}
+        height={500}
+      />
       <BlogPostTitle>{blog.title}</BlogPostTitle>
       <BlogPostBody>{parse(blog.body)}</BlogPostBody>
-    </BlogPostCard>
+    </BlogPostContainer>
   );
 };
 

@@ -14,7 +14,7 @@ import {
   Divider,
   MainBlogWrapper,
   ReadMoreButton
-} from "./Blog-styles"; // MUI and styled-components here
+} from "./BlogPostsClient-styles";
 import { formatDateWithSuffix } from "../../utils/formatDateWithSuffix";
 import parse from "html-react-parser";
 export interface BlogPost {

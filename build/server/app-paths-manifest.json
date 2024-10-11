@@ -1,7 +1,8 @@
 {
   "/blog/page": "app/blog/page.js",
-  "/extension/page": "app/extension/page.js",
   "/blog/[slug]/page": "app/blog/[slug]/page.js",
+  "/extension/page": "app/extension/page.js",
+  "/qort/page": "app/qort/page.js",
   "/docs/[slug]/page": "app/docs/[slug]/page.js",
-  "/qort/page": "app/qort/page.js"
+  "/favicon.ico/route": "app/favicon.ico/route.js"
 }
