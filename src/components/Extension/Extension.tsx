@@ -272,8 +272,8 @@ const Extension = () => {
           </a>
           : Bridging WEB2 and WEB3
         </QortalWalletHeader>
-        <QortalWalletCards container spacing={5}>
-          <QortalWalletCard item xs={12} sm={6} md={6} lg={4}>
+        <QortalWalletCards >
+          <QortalWalletCard>
             <QortalWalletCardImage
               src={"/images/Extension/QortalExtensionScreenshot1.png"}
               alt="Qortal Extension Screenshot"
@@ -281,7 +281,7 @@ const Extension = () => {
               height={500}
             />
           </QortalWalletCard>
-          <QortalWalletCard item xs={12} sm={6} md={6} lg={4}>
+          <QortalWalletCard>
             <QortalWalletCardImage
               src={"/images/Extension/QortalExtensionScreenshot2.png"}
               alt="Second Qortal Extension Screenshot"
@@ -289,7 +289,7 @@ const Extension = () => {
               height={500}
             />
           </QortalWalletCard>
-          <QortalWalletCard item xs={12} sm={12} md={12} lg={4}>
+          <QortalWalletCard>
             <QortalWalletCardImage
               src={"/images/Extension/QortalExtensionScreenshot3.png"}
               alt="Third Qortal Extension Screenshot"
@@ -327,8 +327,8 @@ const Extension = () => {
             streamlining user access.
           </QortalWalletText>
         </QortalWalletDescription>
-        <QortalWalletCards container spacing={5}>
-          <QortalWalletCard item xs={12} sm={6} md={6} lg={4}>
+        <QortalWalletCards>
+          <QortalWalletCard>
             <QortalWalletCardImage
               src={"/images/Extension/QortalExtensionScreenshot4.png"}
               alt="Fourth Extension Screenshot"
@@ -336,7 +336,7 @@ const Extension = () => {
               height={500}
             />
           </QortalWalletCard>
-          <QortalWalletCard item xs={12} sm={6} md={6} lg={4}>
+          <QortalWalletCard>
             <QortalWalletCardImage
               src={"/images/Extension/QortalExtensionScreenshot5.png"}
               alt="Fifth Qortal Extension Screenshot"
@@ -344,7 +344,7 @@ const Extension = () => {
               height={500}
             />
           </QortalWalletCard>
-          <QortalWalletCard item xs={12} sm={12} md={12} lg={4}>
+          <QortalWalletCard>
             <QortalWalletCardImage
               src={"/images/Extension/QortalExtensionScreenshot6.png"}
               alt="Sixth Qortal Extension Screenshot"
