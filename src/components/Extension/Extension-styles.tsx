@@ -70,7 +70,7 @@ export const TopImageRow = styled(Box)(({ theme }) => ({
   alignItems: "center",
   justifyContent: "center",
   gap: "50px",
-  "@media(max-width: 1325px)": {
+  [theme.breakpoints.down("md")]: {
     flexDirection: "column",
     gap: "20px"
   }
@@ -79,10 +79,14 @@ export const TopImageRow = styled(Box)(({ theme }) => ({
 export const ExtensionScreenshotsImg = styled(Image)(({ theme }) => ({
   width: "100%",
   height: "100%",
-  [theme.breakpoints.down("md")]: {
-    width: "auto",
+  "@media(max-width: 1191px)": {
+    width: "50%",
     height: "auto"
-  }
+  },
+  [theme.breakpoints.down("md")]: {
+    width: "75%",
+    height: "auto"
+  },
 }));
 
 export const TopFoldButtonRow = styled(Box)(({ theme }) => ({
@@ -444,24 +448,35 @@ export const QortalWalletHeader = styled(Typography)(({ theme }) => ({
   }
 }));
 
-export const QortalWalletCards = styled(Grid)({});
+export const QortalWalletCards = styled(Box)(({ theme }) => ({
+  display: "grid",
+  gridGap: "10px",
+  gridTemplateColumns: "repeat(3, 1fr)",
+  [theme.breakpoints.down("md")]: {
+    gridTemplateColumns: "repeat(2, 1fr)",
+    gridGap: "5px"
+  },
+  [theme.breakpoints.down("sm")]: {
+    gridTemplateColumns: "repeat(1, 1fr)",
+    gridGap: "0"
+  }
+}));
 
-export const QortalWalletCard = styled(Grid)(({ theme }) => ({
+export const QortalWalletCard = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "center"
 }));
 
 export const QortalWalletCardImage = styled(Image)(({ theme }) => ({
-  width: "400px",
-  height: "500px",
-  [theme.breakpoints.down("md")]: {
+  width: "340px",
+  height: "auto",
+  objectFit: "contain",
+  [theme.breakpoints.down("lg")]: {
     width: "250px",
-    height: "350px"
   },
   [theme.breakpoints.down("sm")]: {
     width: "300px",
-    height: "400px"
   }
 }));
 

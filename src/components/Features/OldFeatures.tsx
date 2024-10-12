@@ -26,8 +26,8 @@ import {
   GatewayButton,
   FeaturesImgContainer,
   InstallQortalButton
-} from "../../components/Features/Features-styles";
-import { FeatureTabs } from "../../components/Features/FeatureTabs";
+} from "./Features-styles";
+import { FeatureTabs } from "./FeatureTabs";
 import ReactGA from "react-ga4";
 import { useRouter } from "next/navigation";
 

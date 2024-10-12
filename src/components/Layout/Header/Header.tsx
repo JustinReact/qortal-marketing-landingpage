@@ -118,23 +118,6 @@ export const Header = () => {
                 onClick={() => {
                   ReactGA.event({
                     category: "User",
-                    action: "Clicked Extension Button",
-                    label: "Extensiokn Button"
-                  });
-                }}
-                href={"/extension"}
-              >
-                Extension
-                <PuzzleSVG
-                  height="23"
-                  width="23"
-                  color={theme.palette.text.primary}
-                />
-              </QORTButton>
-              <QORTButton
-                onClick={() => {
-                  ReactGA.event({
-                    category: "User",
                     action: "Clicked QORT Button",
                     label: "QORT Button"
                   });
@@ -257,23 +240,6 @@ export const Header = () => {
                   color={theme.palette.text.primary}
                   height={"22"}
                   width={"22"}
-                />
-              </QORTButton>
-              <QORTButton
-                onClick={() => {
-                  ReactGA.event({
-                    category: "User",
-                    action: "Clicked Extension Button",
-                    label: "Extensiokn Button"
-                  });
-                }}
-                href={"/extension"}
-              >
-                Extension
-                <PuzzleSVG
-                  height="23"
-                  width="23"
-                  color={theme.palette.text.primary}
                 />
               </QORTButton>
               <QORTButton
@@ -408,24 +374,6 @@ export const Header = () => {
                   color={theme.palette.text.primary}
                   height={"22"}
                   width={"22"}
-                />
-              </QORTButton>
-              <QORTButton
-                className={location === "/extension" ? "active" : ""}
-                onClick={() => {
-                  ReactGA.event({
-                    category: "User",
-                    action: "Clicked Extension Button",
-                    label: "Extensiokn Button"
-                  });
-                }}
-                href={"/extension"}
-              >
-                Extension
-                <PuzzleSVG
-                  height="23"
-                  width="23"
-                  color={theme.palette.text.primary}
                 />
               </QORTButton>
               <QORTButton
