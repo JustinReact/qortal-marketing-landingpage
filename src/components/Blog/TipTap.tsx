@@ -8,6 +8,7 @@ import ListItem from "@tiptap/extension-list-item";
 import TextStyle from "@tiptap/extension-text-style";
 import Placeholder from "@tiptap/extension-placeholder";
 import Heading from "@tiptap/extension-heading";
+import Superscript from '@tiptap/extension-superscript'
 import IconButton from "@mui/material/IconButton";
 import FormatBoldIcon from "@mui/icons-material/FormatBold";
 import FormatItalicIcon from "@mui/icons-material/FormatItalic";
@@ -22,11 +23,13 @@ import UndoIcon from "@mui/icons-material/Undo";
 import RedoIcon from "@mui/icons-material/Redo";
 import FormatHeadingIcon from "@mui/icons-material/FormatSize";
 import DeveloperModeIcon from "@mui/icons-material/DeveloperMode";
+import SuperscriptIcon from "@mui/icons-material/Superscript";
 import ImageIcon from "@mui/icons-material/Image";
 import { useMediaQuery, useTheme } from "@mui/material";
 import "../../components/Blog/Tiptap-styles.css";
 import Compressor from "compressorjs";
-import ImageResize from "tiptap-extension-resize-image"; 
+import ImageResize from "tiptap-extension-resize-image";
+
 
 const MenuBar = ({ setEditorRef }: any) => {
   const theme = useTheme();
@@ -243,6 +246,13 @@ const MenuBar = ({ setEditorRef }: any) => {
         >
           <RedoIcon />
         </IconButton>
+        <IconButton
+          onClick={() => editor.chain().focus().toggleSuperscript().run()}
+          className={editor.isActive('superscript') ? 'is-active' : ''}
+          sx={{ color: "gray", padding: isMobile ? "5px" : "revert" }}
+        >
+          <SuperscriptIcon />
+        </IconButton>
         <>
         <IconButton
               onClick={triggerImageUpload}
@@ -277,12 +287,14 @@ const extensions = [
     orderedList: {
       keepMarks: true,
       keepAttributes: false,
+
     },
   }),
   Placeholder.configure({
     placeholder: "Start typing here...",
   }),
   ImageResize,
+  Superscript,
 ];
 
 const content = ``;

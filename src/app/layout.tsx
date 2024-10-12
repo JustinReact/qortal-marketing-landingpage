@@ -37,8 +37,6 @@ export default function RootLayout({
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
-
-        <title>Explore Qortal - A Web3 Platform for Everyone</title>
       </head>
       <body>
         <AppRouterCacheProvider options={{ enableCssLayer: true }}>

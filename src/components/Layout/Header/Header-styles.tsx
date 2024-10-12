@@ -64,7 +64,7 @@ export const HeaderButtonsRow = styled(Box)(({ theme }) => ({
   gap: "25px"
 }));
 
-export const DiscordButton = styled(Typography)(({ theme }) => ({
+export const ChromeStoreButton = styled(Typography)(({ theme }) => ({
   position: "relative",
   display: "flex",
   alignItems: "center",
@@ -169,7 +169,7 @@ export const Docs = styled(Link)(({ theme }) => ({
   }
 }));
 
-export const FeaturesButton = styled(Link)(({ theme }) => ({
+export const BlogButton = styled(Link)(({ theme }) => ({
   position: "relative",
   display: "flex",
   alignItems: "center",

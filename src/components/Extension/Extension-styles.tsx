@@ -24,7 +24,7 @@ export const Container = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   gap: "80px",
-  padding: "128px 80px 14px 80px",
+  padding: "50px 80px 14px 80px",
   [theme.breakpoints.down("lg")]: {
     padding: "50px 20px 14px 20px"
   }
@@ -32,10 +32,12 @@ export const Container = styled(Box)(({ theme }) => ({
 
 export const TopFold = styled(Grid)(({ theme }) => ({
   display: "flex",
-  flexDirection: "row",
+  flexDirection: "column",
   alignItems: "center",
+  justifyContent: "flex-start",
+  width: "100%",
   flexWrap: "nowrap",
-  gap: "50px",
+  gap: "30px",
   '@media (max-width: 1143px)': {
     flexDirection: "column",
     gap: "20px"
@@ -46,16 +48,40 @@ export const TopFoldCol = styled(Grid)({
   display: "flex",
   justifyContent: "center",
   flexDirection: "column",
+  alignItems: "center",
   gap: "10px",
   width: "100%"
 });
 
 export const TopFoldRow = styled(Box)(({ theme }) => ({
   display: "flex",
-  alignItems: "center",
   flexDirection: "row",
+  alignItems: "center",
+  justifyContent: "center",
+  textAlign: "center",
   [theme.breakpoints.down("lg")]: {
     justifyContent: "center"
+  }
+}));
+
+export const TopImageRow = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "row",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: "50px",
+  "@media(max-width: 1325px)": {
+    flexDirection: "column",
+    gap: "20px"
+  }
+}));
+
+export const ExtensionScreenshotsImg = styled(Image)(({ theme }) => ({
+  width: "100%",
+  height: "100%",
+  [theme.breakpoints.down("md")]: {
+    width: "auto",
+    height: "auto"
   }
 }));
 
@@ -75,20 +101,18 @@ export const TopFoldButtonRow = styled(Box)(({ theme }) => ({
 
 export const Header = styled(Typography)(({ theme }) => ({
   fontFamily: monoton.style.fontFamily,
-  fontSize: "64px",
+  fontSize: "50px",
   fontWeight: 400,
   lineHeight: "73px",
   letterSpacing: "0.09em",
-  color: theme.palette.text.primary,
+  color: "#0085FF",
   userSelect: "none",
-  "@media (max-width: 1533px)": {
-    whiteSpace: "normal"
-  },
-  [theme.breakpoints.down("lg")]: {
+  whiteSpace: "nowrap",
+  "@media(max-width: 1055px)": {
     textAlign: "center",
     whiteSpace: "normal"
   },
-  [theme.breakpoints.down("md")]: {
+  [theme.breakpoints.down("sm")]: {
     fontSize: "48px",
     lineHeight: "55px"
   }

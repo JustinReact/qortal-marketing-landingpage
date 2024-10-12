@@ -12,6 +12,11 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
+    "/loading": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/loading.js"
+    ],
     "/not-found": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -24,16 +29,17 @@
       "static/css/app/blog/[slug]/page.css",
       "static/chunks/app/blog/[slug]/page.js"
     ],
+    "/new-blog/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/new-blog/page.css",
+      "static/chunks/app/new-blog/page.js"
+    ],
     "/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/css/app/page.css",
       "static/chunks/app/page.js"
-    ],
-    "/loading": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/loading.js"
     ],
     "/extension/page": [
       "static/chunks/webpack.js",
@@ -41,17 +47,35 @@
       "static/css/app/extension/page.css",
       "static/chunks/app/extension/page.js"
     ],
+    "/docs/[slug]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/docs/[slug]/page.css",
+      "static/chunks/app/docs/[slug]/page.js"
+    ],
     "/qort/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/css/app/qort/page.css",
       "static/chunks/app/qort/page.js"
     ],
-    "/docs/[slug]/page": [
+    "/promo/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/docs/[slug]/page.css",
-      "static/chunks/app/docs/[slug]/page.js"
+      "static/css/app/promo/page.css",
+      "static/chunks/app/promo/page.js"
+    ],
+    "/support/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/support/page.css",
+      "static/chunks/app/support/page.js"
+    ],
+    "/privacy/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/privacy/page.css",
+      "static/chunks/app/privacy/page.js"
     ]
   }
 }

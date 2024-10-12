@@ -14,6 +14,11 @@ interface BlogPost {
   created: number;
 }
 
+export const metadata = {
+  title: 'Qortal Blog - Explore the Latest About Qortal, Web3, and Decentralization',
+  description: 'Explore the latest blog posts about Qortal, Web3, decentralization, and much more, on the Qortal Blog!',
+};
+
 type Blog = BlogPost[];
 
 const getBlogRawData = async (
@@ -37,7 +42,8 @@ const getBlogs = async () => {
       method: "GET",
       headers: {
         "Content-Type": "application/json"
-      }
+      },
+      next: { revalidate: 86400 } // Cache this data for 24 hours
     });
     const data = await response.json();
     let blogs: Blog = [];

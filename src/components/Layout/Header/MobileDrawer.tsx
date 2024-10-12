@@ -1,16 +1,16 @@
 "use client";
 import { FC } from "react";
-import { DiscordSVG } from "../../Common/Icons/DiscordSVG";
 import { Container, Divider, DrawerButton } from "./MobileDrawer-styles";
-import { useTheme } from "@mui/material";
+import { useMediaQuery, useTheme } from "@mui/material";
 import { DocsSVG } from "../../Common/Icons/DocsSVG";
 import { FeaturesSVG } from "../../Common/Icons/FeaturesSVG";
 import { RedditSVG } from "../../Common/Icons/RedditSVG";
 import { QortalSVG } from "../../Common/Icons/QortalSVG";
 import ReactGA from "react-ga4";
 import { HomeSVG } from "../../Common/Icons/HomeSVG";
-  import { PuzzleSVG } from "../../Common/Icons/PuzzleSVG";
+import { PuzzleSVG } from "../../Common/Icons/PuzzleSVG";
 import { useRouter } from "next/navigation";
+import { ChromeStoreSVG } from "../../Common/Icons/ChromeStoreSVG";
 
 interface MobileDrawerProps {
   setOpenMobileDrawer: () => void;
@@ -20,6 +20,7 @@ export const MobileDrawer: FC<MobileDrawerProps> = ({
   setOpenMobileDrawer
 }) => {
   const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const router = useRouter();
 
   return (
@@ -28,18 +29,18 @@ export const MobileDrawer: FC<MobileDrawerProps> = ({
         onClick={() => {
           ReactGA.event({
             category: "User",
-            action: "Clicked Mobile Drawer Discord Link",
-            label: "Clicked Mobile Drawer Discord Link"
+            action: "Clicked Mobile Drawer Chrome Store Link",
+            label: "Clicked Mobile Drawer Chrome Store Link"
           });
           setOpenMobileDrawer();
           window.open("https://discord.gg/YKdxYUSqZR", "_blank");
         }}
       >
-        Join Discord
-        <DiscordSVG
+        Install Qortal Browser Extension (Kiwi or Mises Browser)
+        <ChromeStoreSVG
           color={theme.palette.text.primary}
-          height={"25"}
-          width={"25"}
+          height={isMobile ? "75" : "25"}
+          width={isMobile ? "75" : "25"}
         />
       </DrawerButton>
       <Divider />

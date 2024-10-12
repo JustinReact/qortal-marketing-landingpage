@@ -65,14 +65,11 @@ const NewBlog = () => {
     editorRef.current = editorInstance;
   };
 
-  console.log(editorRef);
-
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setBlogTitle(event.target.value as string);
   };
 
   // Filtering by categories
-
   const handleChipSelect = (value: string[]) => {
     setBlogCategories(value);
   };
@@ -98,7 +95,6 @@ const NewBlog = () => {
       body: editorRef.current.getHTML(),
       categories: blogCategories
     };
-    console.log(blogData);
     const jsonString = JSON.stringify(blogData, null, 2); // Convert object to JSON string with 2-space indentation
     const blob = new Blob([jsonString], { type: "application/json" }); // Create a blob from the JSON string
     const url = URL.createObjectURL(blob); // Generate a URL for the blob

@@ -3,7 +3,7 @@ import { useState } from "react";
 import ReactGA from "react-ga4";
 import {
   HeaderNav,
-  DiscordButton,
+  ChromeStoreButton,
   TriangleIcon,
   TriangleContainer,
   ThemeSelectRow,
@@ -13,7 +13,7 @@ import {
   HamburgerIcon,
   BackHomeButton,
   DocsNavContainer,
-  FeaturesButton,
+  BlogButton,
   QORTButton,
   QortalText
 } from "./Header-styles";
@@ -24,9 +24,8 @@ import { MobileDrawer } from "./MobileDrawer";
 import { motion, AnimatePresence } from "framer-motion";
 import { DocsSVG } from "../../Common/Icons/DocsSVG";
 import { BackArrowSVG } from "../../Common/Icons/BackArrowSVG";
-import { FeaturesSVG } from "../../Common/Icons/FeaturesSVG";
+import { BlogSVG } from "../../Common/Icons/BlogSVG";
 import { QortalSVG } from "../../Common/Icons/QortalSVG";
-import { DiscordSVG } from "../../Common/Icons/DiscordSVG";
 import { HomeSVG } from "../../Common/Icons/HomeSVG";
 import { QortalWhiteLogoSVG } from "../../Common/Icons/QortalWhiteLogoSVG";
 import { QortalBlackLogoSVG } from "../../Common/Icons/QortalBlackLogoSVG";
@@ -35,6 +34,7 @@ import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { setTheme } from "../../../state/theme/themeSlice";
 import { useDispatch } from "react-redux";
+import { ChromeStoreSVG } from "../../Common/Icons/ChromeStoreSVG";
 
 export const Header = () => {
   const dispatch = useDispatch();
@@ -148,23 +148,23 @@ export const Header = () => {
                   width={"22"}
                 />
               </QORTButton>
-              <FeaturesButton
+              <BlogButton
                 onClick={() => {
                   ReactGA.event({
                     category: "User",
-                    action: "Clicked Features Button",
-                    label: "Features Button"
+                    action: "Clicked Blog Button",
+                    label: "Blog Button"
                   });
                 }}
-                href={"/features"}
+                href={"/blog"}
               >
-                Features
-                <FeaturesSVG
+                Blog
+                <BlogSVG
                   color={theme.palette.text.primary}
                   height={"22"}
                   width={"22"}
                 />
-              </FeaturesButton>
+              </BlogButton>
               <Docs
                 onClick={() => {
                   ReactGA.event({
@@ -175,30 +175,30 @@ export const Header = () => {
                 }}
                 href={"/docs/q-apps"}
               >
-                Developer
+                Documentation
                 <DocsSVG
                   color={theme.palette.text.primary}
                   height={"22"}
                   width={"22"}
                 />
               </Docs>
-              <DiscordButton
+              <ChromeStoreButton
                 onClick={() => {
                   ReactGA.event({
                     category: "User",
-                    action: "Clicked Discord Button Header Desktop",
-                    label: "Discord Button Header Click Desktop"
+                    action: "Clicked Install Qortal Header Desktop",
+                    label: "Clicked Install Qortal Header Desktop"
                   });
-                  window.open("https://discord.gg/YKdxYUSqZR", "_blank");
+                  window.open("https://bit.ly/qortal-chrome-extension", "_blank");
                 }}
               >
-                Join
-                <DiscordSVG
-                  color={theme.palette.text.primary}
-                  height={"22"}
-                  width={"22"}
+                Install
+                <ChromeStoreSVG
+                  color={"transparent"}
+                  height={"20"}
+                  width={"25"}
                 />
-              </DiscordButton>
+              </ChromeStoreButton>
             </HeaderButtonsRow>
           )}
         </HeaderNav>
@@ -294,23 +294,23 @@ export const Header = () => {
                   width={"22"}
                 />
               </QORTButton>
-              <FeaturesButton
+              <BlogButton
                 onClick={() => {
                   ReactGA.event({
                     category: "User",
-                    action: "Clicked Features Button",
-                    label: "Features Button"
+                    action: "Clicked Blog Button",
+                    label: "Blog Button"
                   });
                 }}
-                href={"/features"}
+                href={"/blog"}
               >
-                Features
-                <FeaturesSVG
+                Blog
+                <BlogSVG
                   color={theme.palette.text.primary}
                   height={"22"}
                   width={"22"}
                 />
-              </FeaturesButton>
+              </BlogButton>
               <Docs
                 onClick={() => {
                   ReactGA.event({
@@ -328,23 +328,23 @@ export const Header = () => {
                   width={"22"}
                 />
               </Docs>
-              <DiscordButton
+              <ChromeStoreButton
                 onClick={() => {
                   ReactGA.event({
                     category: "User",
-                    action: "Clicked Discord Button Header from QORT page",
-                    label: "Discord Button Header from QORT page"
+                    action: "Clicked Install Qortal Header from QORT page",
+                    label: "Clicked Install Qortal Header from QORT page"
                   });
-                  window.open("https://discord.gg/YKdxYUSqZR", "_blank");
+                  window.open("https://bit.ly/qortal-chrome-extension", "_blank");
                 }}
               >
-                Join
-                <DiscordSVG
-                  color={theme.palette.text.primary}
-                  height={"22"}
-                  width={"22"}
+                Install
+                <ChromeStoreSVG
+                  color={"transparent"}
+                  height={"20"}
+                  width={"25"}
                 />
-              </DiscordButton>
+              </ChromeStoreButton>
             </HeaderButtonsRow>
           )}
         </HeaderNav>
@@ -446,24 +446,24 @@ export const Header = () => {
                   width={"22"}
                 />
               </QORTButton>
-              <FeaturesButton
-                className={location === "/features" ? "active" : ""}
+              <BlogButton
+                className={location === "/Blog" ? "active" : ""}
                 onClick={() => {
                   ReactGA.event({
                     category: "User",
-                    action: "Clicked Features Button",
-                    label: "Features Button"
+                    action: "Clicked Blog Button",
+                    label: "Blog Button"
                   });
                 }}
-                href={"/features"}
+                href={"/blog"}
               >
-                Features
-                <FeaturesSVG
+                Blog
+                <BlogSVG
                   color={theme.palette.text.primary}
                   height={"22"}
                   width={"22"}
                 />
-              </FeaturesButton>
+              </BlogButton>
               <Docs
                 className={
                   location === "/docs/extension" || location === "/docs/q-apps"
@@ -479,30 +479,30 @@ export const Header = () => {
                 }}
                 href={"/docs/q-apps"}
               >
-                Developer
+                Documentation
                 <DocsSVG
                   color={theme.palette.text.primary}
                   height={"22"}
                   width={"22"}
                 />
               </Docs>
-              <DiscordButton
+              <ChromeStoreButton
                 onClick={() => {
                   ReactGA.event({
                     category: "User",
-                    action: "Clicked Discord Button Header Desktop",
-                    label: "Discord Button Header Desktop"
+                    action: "Clicked Install Qortal Header Desktop",
+                    label: "Clicked Install Qortal Header Desktop"
                   });
-                  window.open("https://discord.gg/YKdxYUSqZR", "_blank");
+                  window.open("https://bit.ly/qortal-chrome-extension", "_blank");
                 }}
               >
-                Join
-                <DiscordSVG
-                  color={theme.palette.text.primary}
-                  height={"22"}
-                  width={"22"}
+                Install
+                <ChromeStoreSVG
+                  color={"transparent"}
+                  height={"20"}
+                  width={"25"}
                 />
-              </DiscordButton>
+              </ChromeStoreButton>
             </HeaderButtonsRow>
           )}
         </HeaderNav>
