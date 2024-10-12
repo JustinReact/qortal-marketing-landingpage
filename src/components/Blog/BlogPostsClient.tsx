@@ -31,12 +31,14 @@ interface BlogPostsClientProps {
 }
 
 const BlogPostsClient: React.FC<BlogPostsClientProps> = ({ blogs }) => {
+  console.log({ blogs });
   return (
     <MainBlogWrapper>
       <BlogPageTitle>Qortal Blog</BlogPageTitle>
       <BlogPostsContainer>
         {blogs
           .filter((blog) => blog.thumbnail)
+          .sort((a, b) => b.created - a.created)
           .map((blog) => (
             <BlogPostCard key={blog.identifier}>
               <BlogPostImage

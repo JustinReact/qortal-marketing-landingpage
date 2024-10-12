@@ -1,259 +1,29 @@
-"use client";
-import { Fragment, useState, useRef, useEffect } from "react";
-import { Box, useTheme } from "@mui/material";
-import { LeftDrawerLinks } from "../../../components/Api/LeftDrawerLinks/LeftDrawerLinks";
-import {
-  TopOfPageRef,
-  Wrapper,
-  ScrollToTopButton,
-  TopArrow,
-  DrawerMobileIcon,
-  ApiContainer
-} from "../../../components/Api/Api-styles";
-import { tableOfContents } from "../../../data/QAppApi";
-import { tableOfContents as tableOfContentsExtension } from "../../../data/ExtensionApi";
-import ReactGA from "react-ga4";
-import { motion, AnimatePresence } from "framer-motion";
-import { useParams } from "next/navigation";
-import { DocState } from "../../../constants/enums";
-import LayoutProvider from "../../layout-provider";
+import React from "react";
+import Api from "../../../components/Api/Api";
 
-type DocStateType = DocState.Q_APPS | DocState.EXTENSION;
+export async function generateMetadata({
+  params
+}: {
+  params: { slug: string };
+}) {
+  let pageTitle: string;
 
-const Api = () => {
-  const theme = useTheme();
-  const [selectedSection, setSelectedSection] = useState("");
-  const [showButton, setShowButton] = useState(false);
-  const [openMobileDrawer, setOpenMobileDrawer] = useState(false);
-  const [docState, setDocState] = useState<DocStateType>(DocState.Q_APPS);
-  const topOfPageRef = useRef<HTMLDivElement | null>(null);
-  const params = useParams<{ slug: string }>();
-
-  const slug = params?.slug; // Extract 'slug' from the URL
-
-  // Define content or logic based on the slug
-  let pageTitle;
-  let pageContent;
-
-  if (slug === "q-apps") {
-    pageTitle = "Q-Apps";
-    pageContent = "This is the Q-Apps page with logic specific to Q-Apps.";
-  } else if (slug === "extension") {
-    pageTitle = "Extension";
-    pageContent =
-      "This is the Extension page with logic specific to Extension.";
+  if (params.slug === "q-apps") {
+    pageTitle = "Q-Apps Documentation";
+  } else if (params.slug === "extension") {
+    pageTitle = "Qortal Browser Extension Documentation";
   } else {
     pageTitle = "Unknown Page";
-    pageContent = "This page does not exist.";
   }
 
-  useEffect(() => {
-    if (slug === "extension") {
-      setDocState(DocState.EXTENSION);
-    } else {
-      setDocState(DocState.Q_APPS);
-    }
-  }, [slug]);
-
-  // Tracking page view for Google Analytics
-  useEffect(() => {
-    ReactGA.send({
-      hitType: "pageview",
-      page: window.location.pathname,
-      title: "API"
-    });
-  }, []);
-
-  // Intersection observer to show scroll to top button
-  useEffect(() => {
-    const options = {
-      root: null,
-      rootMargin: "0px",
-      threshold: 0.5
-    };
-
-    const handleIntersect: IntersectionObserverCallback = (entries) => {
-      entries.forEach((entry) => {
-        setShowButton(!entry.isIntersecting);
-      });
-    };
-
-    const observer = new IntersectionObserver(handleIntersect, options);
-
-    if (topOfPageRef?.current) {
-      observer.observe(topOfPageRef.current);
-    }
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
-
-  const scrollToTop = () => {
-    if (topOfPageRef?.current) {
-      topOfPageRef?.current.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-        inline: "nearest"
-      });
-    }
+  return {
+    title: `${pageTitle} | Qortal API`,
+    description: `This is the ${pageTitle} page to help developers build on the Qortal Blockchain.`
   };
+}
 
-  // Variants for the framer-motion transition
-
-  const mobileDrawerVariants = {
-    opened: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        type: "spring",
-        stiffness: 95
-      }
-    },
-    closed: {
-      opacity: 0.2,
-      x: -100,
-      transition: {
-        duration: 0.2
-      }
-    }
-  };
-
-  return (
-    <Wrapper>
-      <TopOfPageRef ref={topOfPageRef} />
-      {!openMobileDrawer && (
-        <DrawerMobileIcon
-          color={theme.palette.text.primary}
-          height={"30"}
-          width={"30"}
-          onClickFunc={() => {
-            setOpenMobileDrawer(true);
-          }}
-        />
-      )}
-      <AnimatePresence>
-        {openMobileDrawer && (
-          <motion.div
-            animate={"opened"}
-            initial={"closed"}
-            exit={{ opacity: 0 }}
-            variants={mobileDrawerVariants}
-            style={{
-              top: "-90px",
-              position: "absolute",
-              left: "-15px",
-              right: "0",
-              width: "fit-content",
-              height: "100%",
-              zIndex: 5
-            }}
-          >
-            <LeftDrawerLinks
-              selectedSection={selectedSection}
-              openMobileDrawer={openMobileDrawer}
-              setOpenMobileDrawer={() => {
-                setOpenMobileDrawer(false);
-              }}
-              docState={docState}
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
-      <LeftDrawerLinks
-        selectedSection={selectedSection}
-        openMobileDrawer={openMobileDrawer}
-        setOpenMobileDrawer={() => {
-          setOpenMobileDrawer(false);
-        }}
-        docState={docState}
-      />
-      <ApiContainer>
-        <Box>
-          {docState === DocState.Q_APPS && (
-            <>
-              {tableOfContents.map(
-                ({ Component, id, index, ...props }: any) => {
-                  if (!Component) return null;
-                  return (
-                    <Fragment key={id}>
-                      <Component
-                        id={id}
-                        {...props}
-                        setSelectedSection={setSelectedSection}
-                      />
-                      {props?.subContent?.map(
-                        ({
-                          Component: Component2,
-                          id,
-                          index,
-                          ...props2
-                        }: any) => {
-                          if (!Component2) return null;
-                          return (
-                            <Component2
-                              key={id}
-                              id={id}
-                              {...props2}
-                              setSelectedSection={setSelectedSection}
-                            />
-                          );
-                        }
-                      )}
-                    </Fragment>
-                  );
-                }
-              )}
-            </>
-          )}
-
-          {docState === DocState.EXTENSION && (
-            <>
-              {tableOfContentsExtension.map(
-                ({ Component, index, id, ...props }: any) => {
-                  if (!Component) return null;
-                  return (
-                    <Fragment key={id}>
-                      <Component
-                        {...props}
-                        setSelectedSection={setSelectedSection}
-                      />
-                      {props?.subContent?.map(
-                        ({
-                          Component: Component2,
-                          id,
-                          index,
-                          ...props2
-                        }: any) => {
-                          if (!Component2) return null;
-                          return (
-                            <Component2
-                              key={id}
-                              {...props2}
-                              setSelectedSection={setSelectedSection}
-                            />
-                          );
-                        }
-                      )}
-                    </Fragment>
-                  );
-                }
-              )}
-            </>
-          )}
-        </Box>
-        {showButton && (
-          <ScrollToTopButton onClick={scrollToTop}>
-            <TopArrow
-              color={theme.palette.text.primary}
-              height={"25"}
-              width={"25"}
-            />
-          </ScrollToTopButton>
-        )}
-      </ApiContainer>
-    </Wrapper>
-  );
+const DocsPage = () => {
+  return <Api />;
 };
 
-export default Api;
+export default DocsPage;

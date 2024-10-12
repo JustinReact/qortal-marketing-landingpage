@@ -1,29 +1,13 @@
-"use client";
-import ReactGA from "react-ga4";
-import { DiscordLogo, SupportContainer, SupportHeader } from "../../components/Support/Support-styles"
+import Support from "../../components/Support/Support";
 
-const Support = () => {
-  return (
-    <SupportContainer>
-      <SupportHeader>
-        Need support? Join our Discord server and we'll be glad to help you!
-      </SupportHeader>
-      <DiscordLogo
-        onClick={() => {
-          ReactGA.event({
-            category: "User",
-            action: "Clicked Discord Button Support Page",
-            label: "Discord Button Support Page"
-          });
-          window.open("https://discord.gg/YKdxYUSqZR", "_blank");
-        }}
-        src={"/images/Home/JoinDiscordLogo.png"}
-        alt="Join Qortal Discord"
-        width={500}
-        height={500}
-      />
-    </SupportContainer>
-  )
-}
+export const metadata = {
+  title: "Support - Get Help with Qortal Blockchain",
+  description:
+    "Need help with Qortal? Join our Discord server and get help from the community and the team."
+};
 
-export default Support;
+const SupportPage = () => {
+  return <Support />;
+};
+
+export default SupportPage;

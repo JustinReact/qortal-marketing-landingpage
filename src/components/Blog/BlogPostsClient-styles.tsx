@@ -8,19 +8,31 @@ import {
   Theme,
   Typography
 } from "@mui/material";
-import { cairo, fredokaOne, inter, montserrat, oxygen, ptSans, raleway, spartan } from "../../app/fonts";
+import {
+  cairo,
+  fredokaOne,
+  inter,
+  montserrat,
+  oxygen,
+  ptSans,
+  raleway,
+  spartan
+} from "../../app/fonts";
 import Image from "next/image";
 import { CloseSVG } from "../Common/Icons/CloseSVG";
 import { AddPhotoSVG } from "../Common/Icons/AddPhotoSVG";
 import Link from "next/link";
 
-export const BlogContainer = styled(Box)({
+export const BlogContainer = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   gap: "15px",
   padding: "25px 10px",
-  width: "100%"
-});
+  width: "100%",
+  [theme.breakpoints.down("sm")]: {
+    padding: "25px 0"
+  }
+}));
 
 export const ProductImagesRow = styled(Box)({
   display: "flex",
@@ -225,13 +237,16 @@ export const FilterSelectMenuItems = styled(TextField)(({ theme }) => ({
   }
 }));
 
-export const MainBlogWrapper = styled(Box)({
+export const MainBlogWrapper = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   gap: "15px",
   padding: "25px 10px",
-  width: "100%"
-});
+  width: "100%",
+  [theme.breakpoints.down("sm")]: {
+    padding: "25px 0"
+  }
+}));
 
 export const BlogPageTitle = styled(Typography)(({ theme }) => ({
   fontFamily: spartan.style.fontFamily,
@@ -295,12 +310,14 @@ export const BlogPostBody = styled(Box)(({ theme }) => ({
   fontSize: "18px",
   color: theme.palette.text.primary,
   userSelect: "none",
-  maxHeight: "400px", /* This will limit the height of the content */
-  overflow: "hidden",  /* Hide the overflowing content */
-  display: "-webkit-box", /* Required for applying ellipsis on multiline content */
-  WebkitBoxOrient: "vertical", /* Set the box orientation */
-  WebkitLineClamp: "9", /* Adjust this value to the number of lines you want to display */
-  textOverflow: "ellipsis" /* Add ellipsis for overflowed content */,
+  maxHeight: "400px" /* This will limit the height of the content */,
+  overflow: "hidden" /* Hide the overflowing content */,
+  display:
+    "-webkit-box" /* Required for applying ellipsis on multiline content */,
+  WebkitBoxOrient: "vertical" /* Set the box orientation */,
+  WebkitLineClamp:
+    "9" /* Adjust this value to the number of lines you want to display */,
+  textOverflow: "ellipsis" /* Add ellipsis for overflowed content */
 }));
 
 export const ReadMoreButton = styled(Link)(({ theme }) => ({
@@ -338,19 +355,20 @@ export const BlogDateAndCategoryCol = styled(Box)({
   flexDirection: "column",
   alignItems: "flex-start",
   justifyContent: "center",
-  gap: "8px",
+  gap: "8px"
 });
 
 export const Divider = styled(Box)(({ theme }) => ({
   width: "200px",
   height: "1px",
-  backgroundColor: theme.palette.secondary.main,
+  backgroundColor: theme.palette.secondary.main
 }));
 
 export const BlogPostDate = styled(Typography)(({ theme }) => ({
   fontFamily: raleway.style.fontFamily,
   fontSize: "17px",
-  color: theme.palette.mode === "light" ? theme.palette.secondary.main : theme.palette.primary.light,
+  color:
+    theme.palette.mode === "light" ? theme.palette.secondary.main : "#ffffff",
   userSelect: "none"
 }));
 

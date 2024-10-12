@@ -1,5 +1,12 @@
 import localFont from 'next/font/local';
 
+export const cambonLight = localFont({
+  src: '../../public/fonts/Cambon-Light.ttf',
+  weight: '300',
+  style: 'normal',
+  display: 'swap',
+});
+
 export const montserrat = localFont({
   src: [
     {

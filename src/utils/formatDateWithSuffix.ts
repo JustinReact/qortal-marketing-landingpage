@@ -5,10 +5,9 @@ function addOrdinalSuffix(day: number): string {
 }
 
 export function formatDateWithSuffix(unixTimestamp: number): string {
-  const date = new Date(unixTimestamp * 1000);
+  const date = new Date(unixTimestamp);
   const month = date.toLocaleString('default', { month: 'long' });
   const day = addOrdinalSuffix(date.getDate());
   const year = date.getFullYear();
-  
   return `${month} ${day}, ${year}`;
 }
