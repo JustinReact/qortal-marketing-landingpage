@@ -162,17 +162,17 @@ export const ptSans = localFont({
       style: 'normal',    
     },
     {
-      path: '../../public/fonts/PTSans-bold.ttf', 
+      path: '../../public/fonts/PTSans-Bold.ttf', 
       weight: '500',
       style: 'normal',    
     },
     {
-      path: '../../public/fonts/PTSans-bold.ttf', 
+      path: '../../public/fonts/PTSans-Bold.ttf', 
       weight: '600',
       style: 'normal',    
     },
     {
-      path: '../../public/fonts/PTSans-bold.ttf', 
+      path: '../../public/fonts/PTSans-Bold.ttf', 
       weight: '700',
       style: 'normal',    
     },
