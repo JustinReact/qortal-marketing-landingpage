@@ -1,7 +1,7 @@
 import { Button, Typography } from "@mui/material";
-import { Box, display, lineHeight, styled, textAlign } from "@mui/system";
+import { Box, styled } from "@mui/system";
 import Image from "next/image";
-import { cambonLight, ptSans, raleway } from "../../app/fonts";
+import { cambonLight, raleway } from "../../app/fonts";
 
 export const BlogPostContainer = styled(Box)(({ theme }) => ({
   position: "relative",

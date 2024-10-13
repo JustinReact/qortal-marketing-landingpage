@@ -307,6 +307,7 @@ export const BlogPostTitle = styled(Typography)(({ theme }) => ({
 
 export const BlogPostBody = styled(Box)(({ theme }) => ({
   fontFamily: ptSans.style.fontFamily,
+  fontWeight: "400",
   fontSize: "18px",
   color: theme.palette.text.primary,
   userSelect: "none",
