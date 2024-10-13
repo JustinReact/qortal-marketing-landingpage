@@ -1,14 +1,14 @@
 {
   "/blog/[slug]/page": "app/blog/[slug]/page.js",
   "/docs/[slug]/page": "app/docs/[slug]/page.js",
-  "/new-blog/page": "app/new-blog/page.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/new-blog/page": "app/new-blog/page.js",
   "/robots.txt/route": "app/robots.txt/route.js",
   "/_not-found/page": "app/_not-found/page.js",
   "/blog/page": "app/blog/page.js",
-  "/promo/page": "app/promo/page.js",
+  "/page": "app/page.js",
   "/qort/page": "app/qort/page.js",
   "/privacy/page": "app/privacy/page.js",
-  "/page": "app/page.js",
+  "/promo/page": "app/promo/page.js",
   "/support/page": "app/support/page.js"
 }

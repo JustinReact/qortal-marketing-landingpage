@@ -1,2 +1,6 @@
 [build]
+  command = "npm run build"
+  publish = "out" # This is the correct folder for Next.js static builds
+
+[context.production.environment]
   node_version = "18.17.0"
