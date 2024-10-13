@@ -1,11 +1,10 @@
 "use client";
 import ReactGA from "react-ga4";
-import { Provider, useSelector } from "react-redux";
+import { Provider } from "react-redux";
 import { useEffect } from "react";
-import { ThemeProvider } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
 import { Wrapper } from "../components/Layout/Main/MainLayout-styles";
-import { RootState, store } from "../state/store";
+import { store } from "../state/store";
 import { usePathname } from "next/navigation";
 import { Header } from "../components/Layout/Header/Header";
 import { Footer } from "../components/Layout/Footer/Footer";

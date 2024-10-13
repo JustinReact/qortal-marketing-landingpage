@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
+import ReactGA from "react-ga4";
 import {
   BlogCategoriesRow,
   BlogPostCategory,
@@ -67,6 +68,15 @@ const BlogPostClient = ({ blog }: BlogPostClientProps) => {
       };
     }
   }, [blog]); // Re-run the effect when content changes
+
+  // Google Analytics event tracking
+  useEffect(() => {
+    ReactGA.event({
+      category: "Blog Post Viewed",
+      action: `Viewed ${blog.title}`,
+      label: `Viewed ${blog.title}`
+    });
+  }, []);
 
   return (
     <BlogPostContainer>

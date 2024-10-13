@@ -27,6 +27,10 @@ export const Container = styled(Box)(({ theme }) => ({
   padding: "50px 80px 14px 80px",
   [theme.breakpoints.down("lg")]: {
     padding: "50px 20px 14px 20px"
+  },
+  [theme.breakpoints.down("sm")]: {
+    padding: "10px 20px",
+    width: "100%"
   }
 }));
 
@@ -44,14 +48,17 @@ export const TopFold = styled(Grid)(({ theme }) => ({
   }
 }));
 
-export const TopFoldCol = styled(Grid)({
+export const TopFoldCol = styled(Grid)(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
   flexDirection: "column",
   alignItems: "center",
   gap: "10px",
-  width: "100%"
-});
+  width: "100%",
+  [theme.breakpoints.down("sm")]: {
+    gap: "5px"
+  }
+}));
 
 export const TopFoldRow = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -84,7 +91,7 @@ export const ExtensionScreenshotsImg = styled(Image)(({ theme }) => ({
     height: "auto"
   },
   [theme.breakpoints.down("md")]: {
-    width: "75%",
+    width: "100%",
     height: "auto"
   },
 }));
@@ -99,7 +106,9 @@ export const TopFoldButtonRow = styled(Box)(({ theme }) => ({
     justifyContent: "center"
   },
   [theme.breakpoints.down("sm")]: {
-    marginBottom: "30px"
+    margin: "20px 0",
+    gap: '10px',
+    width: "100%",
   }
 }));
 
@@ -117,7 +126,7 @@ export const Header = styled(Typography)(({ theme }) => ({
     whiteSpace: "normal"
   },
   [theme.breakpoints.down("sm")]: {
-    fontSize: "48px",
+    fontSize: "43px",
     lineHeight: "55px"
   }
 }));
@@ -136,6 +145,10 @@ export const SubHeader = styled(Typography)(({ theme }) => ({
   [theme.breakpoints.down("md")]: {
     fontSize: "48px",
     lineHeight: "55px"
+  },
+  [theme.breakpoints.down("sm")]: {
+    fontSize: "40px",
+    lineHeight: "42px"
   }
 }));
 
@@ -159,7 +172,10 @@ export const CTAButton1 = styled(Button)(({ theme }) => ({
     backgroundColor: "#0085FF",
     border: `1px solid #0085FF`,
     color: "#ffffff"
-  }
+  },
+  [theme.breakpoints.down("sm")]: {
+    width: "-webkit-fill-available",
+  },
 }));
 
 export const CTAButton2 = styled(Button)(({ theme }) => ({
@@ -184,7 +200,10 @@ export const CTAButton2 = styled(Button)(({ theme }) => ({
     boxShadow:
       /* offset-x | offset-y | blur-radius | spread-radius | color */
       "0px 12px 17px 2px hsla(0,0%,0%,0.14), 0px 5px 22px 4px hsla(0,0%,0%,0.12), 0px 7px 8px -4px hsla(0,0%,0%,0.2)"
-  }
+  },
+  [theme.breakpoints.down("sm")]: {
+    width: "-webkit-fill-available",
+  },
 }));
 
 export const ExtensionDesignImage = styled("img")(({ theme }) => ({
@@ -287,7 +306,11 @@ export const BubbleBoard = styled(Box)(({ theme }) => ({
   height: "353px",
   [theme.breakpoints.down("md")]: {
     width: "auto",
-    gap: "10px"
+    gap: "10px",
+    height: "fit-content"
+  },
+  [theme.breakpoints.down("sm")]: {
+    gap: "5px"
   }
 }));
 
@@ -312,8 +335,8 @@ export const BubbleCard = styled(Box)(({ theme }) => ({
   },
   [theme.breakpoints.down("sm")]: {
     fontSize: "25px",
-    width: "35px",
-    height: "35px"
+    width: "30px",
+    height: "30px"
   }
 }));
 
@@ -328,20 +351,23 @@ export const BubbleCardColored = styled(Box)(({ theme }) => ({
     height: "47px"
   },
   [theme.breakpoints.down("sm")]: {
-    width: "35px",
-    height: "35px"
+    width: "30px",
+    height: "30px"
   }
 }));
 
-export const SliderContainer = styled(Box)({
+export const SliderContainer = styled(Box)(({ theme }) => ({
   position: "relative",
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
   justifyContent: "center",
   gap: "42px",
-  width: "378px"
-});
+  width: "378px",
+  [theme.breakpoints.down("sm")]: {
+    width: "250px"
+  }
+}));
 
 export const StyledSlider = styled(Slider)(({ theme }) => ({
   " & .MuiSlider-thumb": {
@@ -360,10 +386,16 @@ export const StyledSlider = styled(Slider)(({ theme }) => ({
     height: "87px",
     background: "#2B2B2B",
     borderRadius: "50px",
-    boxShadow: "0px 0px 12.8px -1px #1C5A93"
+    boxShadow: "0px 0px 12.8px -1px #1C5A93",
+    [theme.breakpoints.down("sm")]: {
+      width: "100%",
+    }
   },
   "& .MuiSlider-track": {
     display: "none"
+  },
+  [theme.breakpoints.down("sm")]: {
+    width: "100%",
   }
 }));
 
@@ -377,7 +409,7 @@ export const DoubleCaretRightIcon = styled(DoubleCaretRightSVG)(
     animationDelay: "0s",
     [theme.breakpoints.down("md")]: {
       top: "65px"
-    }
+    },
   })
 );
 
@@ -391,6 +423,9 @@ export const DoubleCaretRightIcon2 = styled(DoubleCaretRightSVG)(
     animationDelay: "2s",
     [theme.breakpoints.down("md")]: {
       top: "65px"
+    },
+    [theme.breakpoints.down("sm")]: {
+      left: "120px"
     }
   })
 );
@@ -405,6 +440,9 @@ export const DoubleCaretRightIcon3 = styled(DoubleCaretRightSVG)(
     animationDelay: "4s",
     [theme.breakpoints.down("md")]: {
       top: "65px"
+    },
+    [theme.breakpoints.down("sm")]: {
+      left: "180px"
     }
   })
 );
@@ -458,7 +496,7 @@ export const QortalWalletCards = styled(Box)(({ theme }) => ({
   },
   [theme.breakpoints.down("sm")]: {
     gridTemplateColumns: "repeat(1, 1fr)",
-    gridGap: "0"
+    gridGap: "10px"
   }
 }));
 
