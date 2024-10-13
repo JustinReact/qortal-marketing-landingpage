@@ -17,6 +17,7 @@ import {
 } from "./BlogPostsClient-styles";
 import { formatDateWithSuffix } from "../../utils/formatDateWithSuffix";
 import parse from "html-react-parser";
+import ReactGA from "react-ga4";
 export interface BlogPost {
   title: string;
   body: string;
@@ -31,7 +32,6 @@ interface BlogPostsClientProps {
 }
 
 const BlogPostsClient: React.FC<BlogPostsClientProps> = ({ blogs }) => {
-  console.log({ blogs });
   return (
     <MainBlogWrapper>
       <BlogPageTitle>Qortal Blog</BlogPageTitle>
@@ -62,7 +62,19 @@ const BlogPostsClient: React.FC<BlogPostsClientProps> = ({ blogs }) => {
               </BlogDateAndCategoryCol>
               <BlogPostTitle>{blog.title}</BlogPostTitle>
               <BlogPostBody>{parse(blog.body)}</BlogPostBody>
-              <ReadMoreButton href={`/blog/${blog.identifier}`}>Read More</ReadMoreButton>
+              <ReadMoreButton
+                onClick={() => {
+                  ReactGA.event({
+                    category: "User",
+                    action: `Clicked on blog post: ${blog.title} from blog page`,
+                    label: `Clicked on blog post: ${blog.title} from blog page`
+                  });
+                }}
+                href={`/blog/${blog.identifier}`}
+                passHref
+              >
+                Read More
+              </ReadMoreButton>
             </BlogPostCard>
           ))}
       </BlogPostsContainer>

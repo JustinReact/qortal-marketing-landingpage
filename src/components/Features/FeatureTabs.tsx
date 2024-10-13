@@ -1,6 +1,6 @@
 "use client";
 import { FC } from "react";
-import { FeatureData } from "../../app/features/page";
+import { FeatureData } from "./OldFeatures";
 import {
   FeatureCard,
   FeatureCardImg,

@@ -61,7 +61,7 @@ export const BackHomeButton = styled(Button)(({ theme }) => ({
 export const HeaderButtonsRow = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
-  gap: "25px"
+  gap: "10px"
 }));
 
 export const ChromeStoreButton = styled(Typography)(({ theme }) => ({

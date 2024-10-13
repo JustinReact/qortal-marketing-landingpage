@@ -39,7 +39,7 @@ import { ChromeStoreSVG } from "../../Common/Icons/ChromeStoreSVG";
 export const Header = () => {
   const dispatch = useDispatch();
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("lg"));
+  const isMobile = useMediaQuery('(max-width: 1096px)');
   const location = usePathname();
   const router = useRouter();
 

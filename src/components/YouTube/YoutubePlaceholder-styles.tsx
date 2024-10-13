@@ -35,7 +35,7 @@ export const YoutubeHeader = styled(Typography)({
 export const YoutubeThumbnailImg = styled(Image)({
   width: "100%",
   height: "100%",
-  objectFit: "cover"
+  objectFit: "cover",
 });
 
 export const PlayButton = styled(PlaySVG)({

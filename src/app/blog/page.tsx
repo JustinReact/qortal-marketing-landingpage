@@ -2,6 +2,7 @@ import React from "react";
 import { fetchAndEvaluateBlogs } from "../../utils/fetchAndEvaluateBlogs";
 import { groupApi } from "../../constants/endpoint";
 import BlogPostsClient from "../../components/Blog/BlogPostsClient";
+import { BLOG_BASE } from "../../constants/Identifiers";
 
 interface BlogPost {
   title: string;
@@ -37,7 +38,7 @@ const getBlogRawData = async (
 const getBlogs = async () => {
   try {
     // Fetch list of Bester's blogs resources from Qortal blockchain
-    const url = `${groupApi}/arbitrary/resources/searchsimple?service=BLOG&name=Bester&limit=20&mode=ALL&prefix=true&includemetadata=false&reverse=true`;
+    const url = `${groupApi}/arbitrary/resources/searchsimple?service=BLOG&name=Bester&identifier=${BLOG_BASE}-&limit=20&mode=ALL&prefix=true&includemetadata=false&reverse=true`;
     const response = await fetch(url, {
       method: "GET",
       headers: {
