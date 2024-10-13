@@ -1,6 +1,6 @@
 [build]
   command = "next build"
-  publish = ".next"
+  publish = "out"
 
 [context.production.environment]
   node_version = "18.17.0"
