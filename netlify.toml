@@ -1,6 +1,5 @@
 [build]
   command = "npm run build"
-  publish = ".next"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"  # Use the Netlify Next.js plugin to support SSR and dynamic routes
