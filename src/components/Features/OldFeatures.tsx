@@ -9,12 +9,10 @@ import {
   Container,
   FeaturesTextContainer,
   FeaturesTitleText,
-  FlexRow,
   MainFeaturesCol,
   MainFeaturesRow,
   MainFeaturesText,
   TabButton,
-  TabsButtonsRow,
   TabsRow,
   Divider,
   FeaturesBodyContainer,
@@ -46,7 +44,7 @@ export interface FeatureData {
   [key: string]: FeatureInfo;
 }
 
-const Features = () => {
+const OldFeatures = () => {
   // Determine which OS they're on
   const parser = new UAParser();
 
@@ -309,8 +307,6 @@ const Features = () => {
   return (
     <Container ref={topPageRef}>
       <TabsRow>
-        <TabsButtonsRow>
-          <FlexRow>
             <TabButton
               className={
                 currentFeature === FeaturesEnum.QChat ? "tabButtonActive" : ""
@@ -353,8 +349,6 @@ const Features = () => {
             >
               <p>Wallet</p>
             </TabButton>
-          </FlexRow>
-        </TabsButtonsRow>
       </TabsRow>
       <MainFeaturesRow container>
         <MainFeaturesCol xs={12} sm={6} style={{ padding: "0 20px 0 40px" }}>
@@ -448,4 +442,4 @@ const Features = () => {
   );
 };
 
-export default Features;
+export default OldFeatures;
