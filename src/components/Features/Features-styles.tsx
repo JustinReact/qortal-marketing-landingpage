@@ -1,4 +1,4 @@
-import { styled } from "@mui/system";
+import { styled, width } from "@mui/system";
 import { Box, Button, Grid, Typography } from "@mui/material";
 import Image from "next/image";
 import { cairo, museo, oxygen } from "../../app/fonts";
@@ -20,56 +20,65 @@ export const TabsRow = styled(Box)({
   display: "flex",
   flexDirection: "row",
   alignItems: "center",
-  justifyContent: "center"
+  justifyContent: "center",
+  gap: "15px",
+  "@media(max-width: 800px)": {
+    flexDirection: "column",
+    gap: "20px"
+  }
 });
 
-export const TabsButtonsRow = styled(Box)(({ theme }) => ({
-  backgroundColor:
-    theme.palette.mode === "light" ? theme.palette.primary.light : "#dfe3ff",
-  borderColor:
-    theme.palette.mode === "light" ? theme.palette.primary.light : "#dfe3ff",
-  borderRadius: "35px",
-  padding: "3px",
-  height: "52px"
-}));
-
-export const FlexRow = styled(Box)({
-  display: "flex",
-  flexDirection: "row",
-  height: "100%",
-  gap: "7px"
-});
 
 export const TabButton = styled(Button)(({ theme }) => ({
-  fontFamily: "Montserrat",
-  letterSpacing: "-0.2px",
+  height: "50px",
+  fontFamily: "Oxygen",
   fontWeight: "bold",
   fontSize: "18.5px",
-  color: theme.palette.mode === "light" ? "#2094e2" : "#8395ef",
-  borderRadius: "35px",
-  padding: "5px 150px",
+  whiteSpace: "nowrap",
+  width: "-webkit-fill-available",
+  color: theme.palette.mode === "light" ? "#ffffff" : "#0085FF",
+  backgroundColor: theme.palette.mode === "light" ? "#0085FF" : "#ffffff",
+  border: theme.palette.mode === "light" ? "1px solid #0085FF" : "1px solid #ffffff" ,
+  borderRadius: "5px",
+  padding: "5px 120px",
   transition: "all 0.3s ease-in-out",
   userSelect: "none",
   "&:hover": {
-    cursor: "pointer"
+    cursor: "pointer",
+    backgroundColor: theme.palette.mode === "light" ? "#0085FF" : "#ffffff",
+    filter: "brightness(0.85)",
   },
   "&.tabButtonActive": {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "white",
-    borderColor: "white",
-    color: theme.palette.mode === "light" ? "#186ba1" : "#6f82e4",
-    borderRadius: "25px",
-    padding: "0px 150px",
+    backgroundColor: theme.palette.primary.main,
+    borderColor: theme.palette.mode === "light" ? "#0085FF" : "#ffffff",
+    color: theme.palette.mode === "light" ? "#0085FF" : "#ffffff",
+    padding: "0px 120px",
     boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
+    "@media(max-width: 1158px)": {
+      padding: "5px 100px"
+    },
+    "@media(max-width: 1036px)": {
+      padding: "5px 60px"
+    },
     [theme.breakpoints.only("xs")]: {
-      padding: "0px 30px"
-    }
+      padding: "0px 100px"
+    },
+    "&:hover": {
+    filter: "brightness(1)"
+    },
+  },
+  "@media(max-width: 1158px)": {
+    padding: "5px 100px"
+  },
+  "@media(max-width: 1036px)": {
+    padding: "5px 60px"
   },
   [theme.breakpoints.only("xs")]: {
     fontSize: "14px",
-    padding: "5px 30px"
+    padding: "5px 100px"
   }
 }));
 
@@ -79,9 +88,10 @@ export const MainFeaturesRow = styled(Grid)(({ theme }) => ({
   flexDirection: "row",
   alignItems: "flex-start",
   justifyContent: "space-evenly",
-  [theme.breakpoints.up("md")]: {
-    minHeight: "500px"
-  }
+  "@media (max-width: 1150px)": {
+    flexDirection: "column",
+    gap: "50px"
+  },
 }));
 
 export const MainFeaturesCol = styled(Grid)({
@@ -91,6 +101,19 @@ export const MainFeaturesCol = styled(Grid)({
   justifyContent: "flex-start",
   width: "100%"
 });
+
+export const FeaturesImgCol = styled(Grid)(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  alignSelf: "center",
+  justifyContent: "flex-start",
+  width: "100%",
+  flexDirection: "row-reverse",
+  [theme.breakpoints.down("lg")]: {
+    flexDirection: "row",
+    justifyContent: "center"
+  }
+}))
 
 export const BGShape = styled(Box)(({ theme }) => ({
   backgroundColor: "#4a93f8",
@@ -238,22 +261,28 @@ export const FeaturesBodyText = styled(Typography)(({ theme }) => ({
   }
 }));
 
-export const FeaturesImgContainer = styled(Box)({
+export const FeaturesImgContainer = styled(Box)(({ theme }) => ({
   position: "relative",
   display: "flex",
-  alignItems: "center"
-});
+  alignItems: "center",
+  [theme.breakpoints.down("md")]: {
+    justifyContent: "center"
+  }
+}));
 
-export const FeaturesImg = styled(Image)({
+export const FeaturesImg = styled(Image)(({ theme }) => ({
   width: "100%",
   maxWidth: "700px",
   height: "100%",
   objectFit: "contain",
   zIndex: 1,
-  borderRadius: "15px",
+  borderRadius: "7px",
   boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
-  marginTop: "50px"
-});
+  marginTop: "50px",
+  "@media(max-width: 727px)": {
+    width: "80%",
+  }
+}));
 
 export const FeatureTabsRow = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -382,23 +411,23 @@ export const GatewayButton = styled(Button)({
   transition: "all 0.3s ease-in-out",
   "&:hover": {
     cursor: "pointer",
-    filter: "brightness(0.9)"
+    filter: "brightness(0.85)"
   }
 });
 
 export const InstallQortalButton = styled(Button)(({ theme }) => ({
-  backgroundColor: theme.palette.secondary.light,
-  color: "#fff",
+  backgroundColor: theme.palette.mode === "light" ? "#0085FF" : "#ffffff",
+  color: theme.palette.mode === "light" ? "#ffffff" : "#0085FF",
   padding: "5px 16px",
   borderRadius: "7px",
   width: "350px",
-  fontFamily: oxygen.style.fontFamily,
+  fontFamily: cairo.style.fontFamily,
   fontWeight: 400,
   fontSize: "28px",
   transition: "all 0.3s ease-in-out",
   "&:hover": {
     cursor: "pointer",
-    backgroundColor: theme.palette.secondary.light,
-    filter: "brightness(0.9)"
+    backgroundColor: theme.palette.mode === "light" ? "#0085FF" : "#ffffff",
+    filter: "brightness(0.85)",
   }
 }));

@@ -25,19 +25,7 @@ export const YoutubePlaceholder: FC<YoutubePlaceholderProps> = ({
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
-    <YoutubePlaceholderContainer
-      style={{
-        width:
-          isModal && !isMobile
-            ? "auto"
-            : isModal && isMobile
-            ? "auto"
-            : !isModal && !isMobile
-            ? "600px"
-            : "auto"
-      }}
-      onClick={onClick}
-    >
+    <YoutubePlaceholderContainer onClick={onClick}>
       <YoutubeHeader>{YoutubeTitle}</YoutubeHeader>
       <YoutubeThumbnailImg
         src={YoutubeThumbnail}
