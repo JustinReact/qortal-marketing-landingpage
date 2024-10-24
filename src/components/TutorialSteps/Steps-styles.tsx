@@ -5,7 +5,7 @@ import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import Image from "next/image";
-import { museo, raleway, roboto } from "../../app/fonts";
+import { montserrat, museo, raleway, roboto } from "../../app/fonts";
 
 interface StepDivProps {
   selected?: boolean;
@@ -80,7 +80,7 @@ export const StepDiv = styled(Grid)<StepDivProps>(({ selected, theme }) => ({
 }));
 
 export const StepText = styled(Typography)({
-  fontFamily: "Montserrat",
+  fontFamily: montserrat.style.fontFamily,
   fontWeight: "400",
   fontSize: "19.5px",
   userSelect: "none",

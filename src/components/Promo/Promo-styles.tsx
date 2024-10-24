@@ -1,7 +1,7 @@
 import { styled } from "@mui/system";
 import { Grid, Typography, Box } from "@mui/material";
 import Image from "next/image";
-import { kadwa, museo, oxygen } from "../../app/fonts";
+import { kadwa, montserrat, museo, oxygen } from "../../app/fonts";
 
 export const Container = styled(Grid)(({ theme }) => ({
   display: "flex",
@@ -106,7 +106,7 @@ export const DiscordButton = styled("button")(({ theme }) => ({
   width: "300px",
   backgroundColor: "#ffffff",
   color: "#6271F0",
-  fontFamily: "Montserrat",
+  fontFamily: montserrat.style.fontFamily,
   padding: "18px 40px",
   fontSize: "20px",
   letterSpacing: "0.9px",

@@ -138,7 +138,6 @@ const Features = () => {
           sm={12}
           md={12}
           lg={6}
-          style={{ padding: "0 20px 0 40px" }}
         >
           <FeaturesTextContainer>
             <FeaturesTitleText>

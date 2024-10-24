@@ -1,7 +1,7 @@
 import { styled, keyframes } from "@mui/system";
 import { Box, Button, Typography } from "@mui/material";
 import Image from "next/image";
-import { protestStrike, ptSans, raleway, spartan } from "../../app/fonts";
+import { montserrat, protestStrike, ptSans, raleway, spartan } from "../../app/fonts";
 
 export const spinAnimation = keyframes`
   0% {
@@ -184,7 +184,7 @@ export const SubTitleRow = styled(Box)({
 });
 
 export const SubTitle = styled(Typography)(({ theme }) => ({
-  fontFamily: "Spartan ",
+  fontFamily: spartan.style.fontFamily,
   fontSize: "80px",
   fontWeight: 500,
   color: "#ffffff",
@@ -594,7 +594,7 @@ export const SocialButton = styled(Button)(({ theme }) => ({
   gap: "15px",
   backgroundColor: "#ffffff",
   color: "#000000",
-  fontFamily: "Montserrat",
+  fontFamily: montserrat.style.fontFamily,
   fontSize: "22px",
   letterSpacing: "0.9px",
   fontWeight: 500,
