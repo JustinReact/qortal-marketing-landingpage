@@ -45,12 +45,17 @@
 
 .tiptap h3 {
   font-size: 1.1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .tiptap h4,
 .tiptap h5,
 .tiptap h6 {
-  font-size: 1rem;
+  font-weight: normal;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 /* Code and preformatted text styles */

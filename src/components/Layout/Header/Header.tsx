@@ -39,7 +39,7 @@ import { ChromeStoreSVG } from "../../Common/Icons/ChromeStoreSVG";
 export const Header = () => {
   const dispatch = useDispatch();
   const theme = useTheme();
-  const isMobile = useMediaQuery('(max-width: 1096px)');
+  const isMobile = useMediaQuery("(max-width: 1096px)");
   const location = usePathname();
   const router = useRouter();
 
@@ -79,11 +79,13 @@ export const Header = () => {
                 ) : (
                   <QortalWhiteLogoSVG width="45" height="55" color="none" />
                 )}
-              </>{" "}
-              <QortalText>ortal</QortalText>
-              <QortalText style={{ marginTop: "10px", fontSize: "25px" }}>
-                .dev
-              </QortalText>
+              </>
+              <>
+                <QortalText>ortal</QortalText>
+                <QortalText style={{ marginTop: "10px", fontSize: "25px" }}>
+                  .dev
+                </QortalText>
+              </>
             </QortalLogoContainer>
           </ThemeSelectRow>
           {isMobile ? (
@@ -172,7 +174,10 @@ export const Header = () => {
                     action: "Clicked Install Qortal Header Desktop",
                     label: "Clicked Install Qortal Header Desktop"
                   });
-                  window.open("https://bit.ly/qortal-chrome-extension", "_blank");
+                  window.open(
+                    "https://bit.ly/qortal-chrome-extension",
+                    "_blank"
+                  );
                 }}
               >
                 Install
@@ -210,10 +215,12 @@ export const Header = () => {
                 <QortalWhiteLogoSVG width="45" height="55" color="none" />
               )}
             </>
-            <QortalText>ortal</QortalText>
-            <QortalText style={{ marginTop: "10px", fontSize: "25px" }}>
-              .dev
-            </QortalText>
+            <>
+              <QortalText>ortal</QortalText>
+              <QortalText style={{ marginTop: "10px", fontSize: "25px" }}>
+                .dev
+              </QortalText>
+            </>
           </QortalLogoContainer>
           {isMobile ? (
             <HamburgerIcon
@@ -301,7 +308,10 @@ export const Header = () => {
                     action: "Clicked Install Qortal Header from QORT page",
                     label: "Clicked Install Qortal Header from QORT page"
                   });
-                  window.open("https://bit.ly/qortal-chrome-extension", "_blank");
+                  window.open(
+                    "https://bit.ly/qortal-chrome-extension",
+                    "_blank"
+                  );
                 }}
               >
                 Install
@@ -341,11 +351,13 @@ export const Header = () => {
                 ) : (
                   <QortalWhiteLogoSVG width="45" height="55" color="none" />
                 )}
-              </>{" "}
-              <QortalText>ortal</QortalText>
-              <QortalText style={{ marginTop: "10px", fontSize: "25px" }}>
-                .dev
-              </QortalText>
+              </>
+              <>
+                <QortalText>ortal</QortalText>
+                <QortalText style={{ marginTop: "10px", fontSize: "25px" }}>
+                  .dev
+                </QortalText>
+              </>
             </QortalLogoContainer>
           </ThemeSelectRow>
           {isMobile ? (
@@ -441,7 +453,10 @@ export const Header = () => {
                     action: "Clicked Install Qortal Header Desktop",
                     label: "Clicked Install Qortal Header Desktop"
                   });
-                  window.open("https://bit.ly/qortal-chrome-extension", "_blank");
+                  window.open(
+                    "https://bit.ly/qortal-chrome-extension",
+                    "_blank"
+                  );
                 }}
               >
                 Install

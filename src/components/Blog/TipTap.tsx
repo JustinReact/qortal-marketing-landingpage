@@ -1,14 +1,17 @@
 //@ts-nocheck
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { EditorProvider, useCurrentEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { Color } from "@tiptap/extension-color";
 import ListItem from "@tiptap/extension-list-item";
 import TextStyle from "@tiptap/extension-text-style";
+import TextAlign from "@tiptap/extension-text-align";
+import Link from "@tiptap/extension-link";
+import Underline from "@tiptap/extension-underline";
 import Placeholder from "@tiptap/extension-placeholder";
 import Heading from "@tiptap/extension-heading";
-import Superscript from '@tiptap/extension-superscript'
+import Superscript from "@tiptap/extension-superscript";
 import IconButton from "@mui/material/IconButton";
 import FormatBoldIcon from "@mui/icons-material/FormatBold";
 import FormatItalicIcon from "@mui/icons-material/FormatItalic";
@@ -24,12 +27,17 @@ import RedoIcon from "@mui/icons-material/Redo";
 import FormatHeadingIcon from "@mui/icons-material/FormatSize";
 import DeveloperModeIcon from "@mui/icons-material/DeveloperMode";
 import SuperscriptIcon from "@mui/icons-material/Superscript";
+import FormatAlignLeftIcon from "@mui/icons-material/FormatAlignLeft";
+import FormatAlignCenterIcon from "@mui/icons-material/FormatAlignCenter";
+import FormatAlignRightIcon from "@mui/icons-material/FormatAlignRight";
 import ImageIcon from "@mui/icons-material/Image";
+import InsertLinkIcon from "@mui/icons-material/InsertLink";
+import LinkOffIcon from "@mui/icons-material/LinkOff";
 import { useMediaQuery, useTheme } from "@mui/material";
 import "../../components/Blog/Tiptap-styles.css";
 import Compressor from "compressorjs";
 import ImageResize from "tiptap-extension-resize-image";
-
+import FormatUnderlinedIcon from "@mui/icons-material/FormatUnderlined";
 
 const MenuBar = ({ setEditorRef }: any) => {
   const theme = useTheme();
@@ -56,13 +64,13 @@ const MenuBar = ({ setEditorRef }: any) => {
         mimeType: "image/webp",
         success(result) {
           compressedFile = new File([result], "image.webp", {
-            type: "image/webp",
+            type: "image/webp"
           });
           resolve();
         },
         error(err) {
           console.error("Image compression error:", err);
-        },
+        }
       });
     });
 
@@ -107,6 +115,35 @@ const MenuBar = ({ setEditorRef }: any) => {
     }
   }, [editor]);
 
+  const setLink = useCallback(() => {
+    const previousUrl = editor.getAttributes("link").href;
+    let url = window.prompt("URL", previousUrl);
+
+    // cancelled
+    if (url === null) {
+      return;
+    }
+
+    // empty
+    if (url === "") {
+      editor.chain().focus().extendMarkRange("link").unsetLink().run();
+
+      return;
+    }
+
+    if (url && !/^https?:\/\//i.test(url)) {
+      url = `https://${url}`;
+    }
+
+    // update link
+    editor
+      .chain()
+      .focus()
+      .extendMarkRange("link")
+      .setLink({ href: url, target: "_blank" })
+      .run();
+  }, [editor]);
+
   return (
     <div className="control-group">
       <div className="button-group">
@@ -115,7 +152,7 @@ const MenuBar = ({ setEditorRef }: any) => {
           disabled={!editor.can().chain().focus().toggleBold().run()}
           sx={{
             color: editor.isActive("bold") ? "white" : "gray",
-            padding: isMobile ? "5px" : "revert",
+            padding: isMobile ? "5px" : "revert"
           }}
         >
           <FormatBoldIcon />
@@ -125,17 +162,27 @@ const MenuBar = ({ setEditorRef }: any) => {
           disabled={!editor.can().chain().focus().toggleItalic().run()}
           sx={{
             color: editor.isActive("italic") ? "white" : "gray",
-            padding: isMobile ? "5px" : "revert",
+            padding: isMobile ? "5px" : "revert"
           }}
         >
           <FormatItalicIcon />
+        </IconButton>
+        <IconButton
+          onClick={() => editor.chain().focus().toggleUnderline().run()}
+          disabled={!editor.can().chain().focus().toggleUnderline().run()}
+          sx={{
+            color: editor.isActive("underline") ? "white" : "gray",
+            padding: isMobile ? "5px" : "revert"
+          }}
+        >
+          <FormatUnderlinedIcon />
         </IconButton>
         <IconButton
           onClick={() => editor.chain().focus().toggleStrike().run()}
           disabled={!editor.can().chain().focus().toggleStrike().run()}
           sx={{
             color: editor.isActive("strike") ? "white" : "gray",
-            padding: isMobile ? "5px" : "revert",
+            padding: isMobile ? "5px" : "revert"
           }}
         >
           <StrikethroughSIcon />
@@ -145,7 +192,7 @@ const MenuBar = ({ setEditorRef }: any) => {
           disabled={!editor.can().chain().focus().toggleCode().run()}
           sx={{
             color: editor.isActive("code") ? "white" : "gray",
-            padding: isMobile ? "5px" : "revert",
+            padding: isMobile ? "5px" : "revert"
           }}
         >
           <CodeIcon />
@@ -160,7 +207,7 @@ const MenuBar = ({ setEditorRef }: any) => {
               editor.isActive("code")
                 ? "white"
                 : "gray",
-            padding: isMobile ? "5px" : "revert",
+            padding: isMobile ? "5px" : "revert"
           }}
         >
           <FormatClearIcon />
@@ -169,7 +216,7 @@ const MenuBar = ({ setEditorRef }: any) => {
           onClick={() => editor.chain().focus().toggleBulletList().run()}
           sx={{
             color: editor.isActive("bulletList") ? "white" : "gray",
-            padding: isMobile ? "5px" : "revert",
+            padding: isMobile ? "5px" : "revert"
           }}
         >
           <FormatListBulletedIcon />
@@ -178,7 +225,7 @@ const MenuBar = ({ setEditorRef }: any) => {
           onClick={() => editor.chain().focus().toggleOrderedList().run()}
           sx={{
             color: editor.isActive("orderedList") ? "white" : "gray",
-            padding: isMobile ? "5px" : "revert",
+            padding: isMobile ? "5px" : "revert"
           }}
         >
           <FormatListNumberedIcon />
@@ -187,7 +234,7 @@ const MenuBar = ({ setEditorRef }: any) => {
           onClick={() => editor.chain().focus().toggleCodeBlock().run()}
           sx={{
             color: editor.isActive("codeBlock") ? "white" : "gray",
-            padding: isMobile ? "5px" : "revert",
+            padding: isMobile ? "5px" : "revert"
           }}
         >
           <DeveloperModeIcon />
@@ -196,7 +243,7 @@ const MenuBar = ({ setEditorRef }: any) => {
           onClick={() => editor.chain().focus().toggleBlockquote().run()}
           sx={{
             color: editor.isActive("blockquote") ? "white" : "gray",
-            padding: isMobile ? "5px" : "revert",
+            padding: isMobile ? "5px" : "revert"
           }}
         >
           <FormatQuoteIcon />
@@ -233,6 +280,30 @@ const MenuBar = ({ setEditorRef }: any) => {
           <FormatHeadingIcon fontSize="small" /> H2
         </IconButton>
         <IconButton
+          onClick={() =>
+            editor.chain().focus().toggleHeading({ level: 3 }).run()
+          }
+          sx={{
+            color: editor.isActive("heading", { level: 3 }) ? "white" : "gray",
+            padding: isMobile ? "5px" : "revert",
+            fontSize: "14px"
+          }}
+        >
+          <FormatHeadingIcon fontSize="small" /> H3
+        </IconButton>
+        <IconButton
+          onClick={() =>
+            editor.chain().focus().toggleHeading({ level: 4 }).run()
+          }
+          sx={{
+            color: editor.isActive("heading", { level: 4 }) ? "white" : "gray",
+            padding: isMobile ? "5px" : "revert",
+            fontSize: "14px"
+          }}
+        >
+          <FormatHeadingIcon fontSize="small" /> H4
+        </IconButton>
+        <IconButton
           onClick={() => editor.chain().focus().undo().run()}
           disabled={!editor.can().chain().focus().undo().run()}
           sx={{ color: "gray", padding: isMobile ? "5px" : "revert" }}
@@ -247,27 +318,70 @@ const MenuBar = ({ setEditorRef }: any) => {
           <RedoIcon />
         </IconButton>
         <IconButton
+          onClick={() => editor.chain().focus().setTextAlign("left").run()}
+          className={
+            editor.isActive("textAlign", { align: "left" }) ? "is-active" : ""
+          }
+          sx={{ color: "gray", padding: isMobile ? "5px" : "revert" }}
+        >
+          <FormatAlignLeftIcon />
+        </IconButton>
+        <IconButton
+          onClick={() => editor.chain().focus().setTextAlign("center").run()}
+          className={
+            editor.isActive("textAlign", { align: "justify" })
+              ? "is-active"
+              : ""
+          }
+          sx={{ color: "gray", padding: isMobile ? "5px" : "revert" }}
+        >
+          <FormatAlignCenterIcon />
+        </IconButton>
+        <IconButton
+          onClick={() => editor.chain().focus().setTextAlign("right").run()}
+          className={
+            editor.isActive("textAlign", { align: "right" }) ? "is-active" : ""
+          }
+          sx={{ color: "gray", padding: isMobile ? "5px" : "revert" }}
+        >
+          <FormatAlignRightIcon />
+        </IconButton>
+        <IconButton
           onClick={() => editor.chain().focus().toggleSuperscript().run()}
-          className={editor.isActive('superscript') ? 'is-active' : ''}
+          className={editor.isActive("superscript") ? "is-active" : ""}
           sx={{ color: "gray", padding: isMobile ? "5px" : "revert" }}
         >
           <SuperscriptIcon />
         </IconButton>
-        <>
         <IconButton
-              onClick={triggerImageUpload}
-              sx={{ color: "gray", padding: isMobile ? "5px" : "revert" }}
-            >
-              <ImageIcon />
-            </IconButton>
-            <input
-              type="file"
-              ref={fileInputRef}
-              style={{ display: "none" }}
-              onChange={(event) => handleImageUpload(event.target.files[0])}
-              accept="image/*"
-            />
-          </>
+          onClick={setLink}
+          className={editor.isActive("link") ? "is-active" : ""}
+          sx={{ color: "gray", padding: isMobile ? "5px" : "revert" }}
+        >
+          <InsertLinkIcon />
+        </IconButton>
+        <IconButton
+          onClick={() => editor.chain().focus().unsetLink().run()}
+          disabled={!editor.isActive("link")}
+          sx={{ color: "gray", padding: isMobile ? "5px" : "revert" }}
+        >
+          <LinkOffIcon />
+        </IconButton>
+        <>
+          <IconButton
+            onClick={triggerImageUpload}
+            sx={{ color: "gray", padding: isMobile ? "5px" : "revert" }}
+          >
+            <ImageIcon />
+          </IconButton>
+          <input
+            type="file"
+            ref={fileInputRef}
+            style={{ display: "none" }}
+            onChange={(event) => handleImageUpload(event.target.files[0])}
+            accept="image/*"
+          />
+        </>
       </div>
     </div>
   );
@@ -275,26 +389,32 @@ const MenuBar = ({ setEditorRef }: any) => {
 
 const extensions = [
   Heading.configure({
-    levels: [1, 2],
+    levels: [1, 2]
   }),
   Color.configure({ types: [TextStyle.name, ListItem.name] }),
   TextStyle.configure({ types: [ListItem.name] }),
+  TextAlign.configure({
+    types: ["heading", "paragraph"]
+  }),
   StarterKit.configure({
     bulletList: {
       keepMarks: true,
-      keepAttributes: false,
+      keepAttributes: false
     },
     orderedList: {
       keepMarks: true,
-      keepAttributes: false,
-
-    },
+      keepAttributes: false
+    }
   }),
   Placeholder.configure({
-    placeholder: "Start typing here...",
+    placeholder: "Start typing here..."
   }),
   ImageResize,
   Superscript,
+  Underline,
+  Link.configure({
+    defaultProtocol: "https"
+  })
 ];
 
 const content = ``;
@@ -304,7 +424,7 @@ const TipTapChatBar = ({
   onEnter,
   disableEnter,
   overrideMobile,
-  customEditorHeight,
+  customEditorHeight
 }: any) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -336,8 +456,8 @@ const TipTapChatBar = ({
         editor.on("blur", handleBlur); // Listen for blur event
       }}
       onUpdate={({ editor }) => {
-      editor.on('blur', handleBlur);     // Ensure blur is updated
-    }}
+        editor.on("blur", handleBlur); // Ensure blur is updated
+      }}
       editorProps={{
         attributes: {
           class: "tiptap-prosemirror",
@@ -347,7 +467,7 @@ const TipTapChatBar = ({
           padding: 20px;          /* Optional: Add padding inside the container */
           border: 1px solid #ddd; /* Optional: Add a border for clarity */
           border-radius: 5px;
-        `,
+        `
         },
         handleKeyDown(view, event) {
           if (!disableEnter && event.key === "Enter") {
@@ -366,7 +486,7 @@ const TipTapChatBar = ({
             }
           }
           return false;
-        },
+        }
       }}
     />
   );

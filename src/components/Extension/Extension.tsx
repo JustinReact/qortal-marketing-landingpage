@@ -64,7 +64,7 @@ const Extension = () => {
           <ExtensionScreenshotsImg
             src="/images/Extension/ExtensionScreenshots.png"
             alt="Screenshots of the Qortal Browser Extension"
-            width={650}
+            width={700}
             height={1000}
           />
           <TopFoldCol>

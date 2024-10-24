@@ -73,8 +73,10 @@ export const TopImageRow = styled(Box)(({ theme }) => ({
 
 export const ExtensionScreenshotsImg = styled(Image)(({ theme }) => ({
   width: "100%",
-  maxWidth: "700px",
   height: "100%",
+  "@media(max-width: 1444px)": {
+    width: "80%"
+  },
   "@media(max-width: 1216px)": {
     width: "50%",
     height: "auto"

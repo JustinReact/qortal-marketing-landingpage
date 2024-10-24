@@ -32,7 +32,7 @@ export const TabsRow = styled(Box)({
 
 export const TabButton = styled(Button)(({ theme }) => ({
   height: "50px",
-  fontFamily: "Oxygen",
+  fontFamily: oxygen.style.fontFamily,
   fontWeight: "bold",
   fontSize: "18.5px",
   whiteSpace: "nowrap",
