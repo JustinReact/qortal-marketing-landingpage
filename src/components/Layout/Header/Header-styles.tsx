@@ -29,7 +29,7 @@ export const ThemeSelectRow = styled(Box)({
 export const QortalLogoContainer = styled(Link)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
-  gap: 0,
+  gap: "3px",
   userSelect: "none",
   cursor: "pointer",
   textDecoration: "none"

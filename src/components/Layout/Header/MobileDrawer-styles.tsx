@@ -1,6 +1,6 @@
 import { styled } from '@mui/system';
 import { Box, Button, Typography } from '@mui/material';
-import { montserrat } from '../../../app/fonts';
+import { inter, montserrat } from '../../../app/fonts';
 
 export const Container = styled(Box)(({ theme }) => ({
   display: 'flex',
@@ -34,3 +34,18 @@ export const DrawerButton = styled(Box)(({ theme }) => ({
     backgroundColor: theme.palette.primary.dark,
   }
 }));  
+
+export const DownloadButton = styled(Button)(({ theme }) => ({
+  fontFamily: inter.style.fontFamily,
+  fontSize: "16px",
+  backgroundColor: "#0091E1",
+  color: "#ffffff",
+  padding: "9px 0",
+  textAlign: "center",
+  width: "100%",
+  borderRadius: "25px",
+  "&:hover": {
+    cursor: "pointer",
+    backgroundColor: theme.palette.secondary.dark,
+  }
+}));
