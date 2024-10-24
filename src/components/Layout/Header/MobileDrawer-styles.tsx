@@ -1,5 +1,6 @@
 import { styled } from '@mui/system';
 import { Box, Button, Typography } from '@mui/material';
+import { montserrat } from '../../../app/fonts';
 
 export const Container = styled(Box)(({ theme }) => ({
   display: 'flex',
@@ -19,7 +20,7 @@ export const DrawerButton = styled(Box)(({ theme }) => ({
   display: 'flex',
   justifyContent: "flex-end",
   alignItems: 'center',
-  fontFamily: 'Montserrat',
+  fontFamily: montserrat.style.fontFamily,
   width: '100%',
   fontSize: "25px",
   gap: "35px",

@@ -1,7 +1,7 @@
 import { Button, Typography } from "@mui/material";
 import { Box, styled } from "@mui/system";
 import Image from "next/image";
-import { cambonLight, raleway } from "../../app/fonts";
+import { cambonLight, lovelo, raleway } from "../../app/fonts";
 
 export const BlogPostContainer = styled(Box)(({ theme }) => ({
   position: "relative",
@@ -33,7 +33,7 @@ export const BackToBlogButton = styled(Button)(({ theme }) => ({
 }));
 
 export const BlogPostTitle = styled("h1")({
-  fontFamily: "Lovelo",
+  fontFamily: lovelo.style.fontFamily,
   fontSize: "40px",
   fontWeight: 500,
   marginBottom: "20px",

@@ -1,4 +1,4 @@
-import { styled, width } from "@mui/system";
+import { lineHeight, styled, width } from "@mui/system";
 import { Box, Button, Grid, Typography } from "@mui/material";
 import Image from "next/image";
 import { cairo, museo, oxygen } from "../../app/fonts";
@@ -24,7 +24,8 @@ export const TabsRow = styled(Box)({
   gap: "15px",
   "@media(max-width: 800px)": {
     flexDirection: "column",
-    gap: "20px"
+    gap: "20px",
+    padding: "0 20px"
   }
 });
 
@@ -64,7 +65,7 @@ export const TabButton = styled(Button)(({ theme }) => ({
       padding: "5px 60px"
     },
     [theme.breakpoints.only("xs")]: {
-      padding: "0px 100px"
+      padding: "0px 80px"
     },
     "&:hover": {
     filter: "brightness(1)"
@@ -78,11 +79,11 @@ export const TabButton = styled(Button)(({ theme }) => ({
   },
   [theme.breakpoints.only("xs")]: {
     fontSize: "14px",
-    padding: "5px 100px"
+    padding: "5px 80px"
   }
 }));
 
-export const MainFeaturesRow = styled(Grid)(({ theme }) => ({
+export const MainFeaturesRow = styled(Grid)({
   position: "relative",
   display: "flex",
   flexDirection: "row",
@@ -92,9 +93,21 @@ export const MainFeaturesRow = styled(Grid)(({ theme }) => ({
     flexDirection: "column",
     gap: "50px"
   },
+});
+
+export const MainFeaturesCol = styled(Grid)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "flex-start",
+  padding: "0 20px 0 40px",
+  width: "100%",
+  [theme.breakpoints.only("xs")]: {
+    padding: 0
+  }
 }));
 
-export const MainFeaturesCol = styled(Grid)({
+export const OldMainFeaturesCol = styled(Grid)({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
@@ -237,7 +250,10 @@ export const MainFeaturesText = styled(Typography)(({ theme }) => ({
   color: theme.palette.text.primary,
   marginBottom: "20px",
   lineHeight: "45px",
-  userSelect: "none"
+  userSelect: "none",
+  [theme.breakpoints.only("xs")]: {
+    lineHeight: "42px",
+  }
 }));
 
 export const FeaturesBodyContainer = styled(Box)({
@@ -257,7 +273,9 @@ export const FeaturesBodyText = styled(Typography)(({ theme }) => ({
   padding: "10px 30px 0 0",
   lineHeight: "37px",
   [theme.breakpoints.only("xs")]: {
-    fontSize: "24px"
+    fontSize: "24px",
+    padding: "10px 0 0 0",
+    lineHeight: "32px",
   }
 }));
 

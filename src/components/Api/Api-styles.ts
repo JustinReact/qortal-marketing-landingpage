@@ -3,7 +3,7 @@ import { Box, Button, Grid, Typography } from "@mui/material";
 import { BackArrowSVG } from "../Common/Icons/BackArrowSVG";
 import { HamburgerSVG } from "../Common/Icons/HamburgerSVG";
 import Image from "next/image";
-import { oxygen } from "../../app/fonts";
+import { montserrat, oxygen } from "../../app/fonts";
 
 export const Wrapper = styled(Box)(({ theme }) => ({
   position: "relative",
@@ -52,7 +52,7 @@ export const Column = styled(Grid)({
 
 export const HeaderText = styled(Typography)(({ theme }) => ({
   fontSize: "42px",
-  fontFamily: "Montserrat",
+  fontFamily: montserrat.style.fontFamily,
   fontWeight: "600",
   letterSpacing: "1.5px",
   lineHeight: "60px",
@@ -96,7 +96,7 @@ export const StyledButton = styled(Button)(({ theme }) => ({
   fontSize: "25px",
   borderRadius: "35px",
   padding: "7px 55px",
-  fontFamily: "Montserrat",
+  fontFamily: montserrat.style.fontFamily,
   color: "#ffffff",
   backgroundColor: "#115bc5",
   transition: "all 0.3s ease-in-out",

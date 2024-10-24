@@ -17,8 +17,9 @@ import {
   StepCard,
   StepCardInnerContainer,
   StepColumn,
+  StepText
 } from "../../Steps-styles";
-"/images/Linux/LinuxDownload.png";
+("/images/Linux/LinuxDownload.png");
 import Modal from "../../../Common/Modal/Modal";
 
 interface LinuxStepOneProps {
@@ -36,22 +37,23 @@ const LinuxStepOne = ({
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const [openModal, setOpenModal] = useState<boolean>(false);
-  const [selectedImage, setSelectedImage] = useState<string>("/images/Linux/LinuxDownload.png");
+  const [selectedImage, setSelectedImage] = useState<string>(
+    "/images/Linux/LinuxDownload.png"
+  );
   const [modalImages, setModalImages] = useState<string[]>([]);
-
 
   const images = [
     {
       src: "/images/Linux/LinuxDownload.png",
-      alt: "step1",
+      alt: "step1"
     },
     {
       src: "/images/Linux/LinuxAppPermission.png",
-      alt: "step2",
-    },
+      alt: "step2"
+    }
   ];
 
-   // Only re-render the modal when the openModal state changes
+  // Only re-render the modal when the openModal state changes
 
   useEffect(() => {
     if (openModal) {
@@ -59,7 +61,7 @@ const LinuxStepOne = ({
         selectedImage,
         ...images
           .filter((img) => img.src !== selectedImage)
-          .map((img) => img.src),
+          .map((img) => img.src)
       ]);
     }
   }, [openModal]);
@@ -85,7 +87,7 @@ const LinuxStepOne = ({
       }),
     swipeDuration: 500,
     preventScrollOnSwipe: true,
-    trackMouse: true,
+    trackMouse: true
   });
 
   return (
@@ -93,7 +95,7 @@ const LinuxStepOne = ({
       <StepCard
         style={{
           padding: "18px 15px 15px 15px",
-          width: "100%",
+          width: "100%"
         }}
       >
         <LinuxStepColumnsContainer>
@@ -106,13 +108,9 @@ const LinuxStepOne = ({
                 downloadOption={downloadOption === "appImage"}
                 onClick={() => setDownloadOption("appImage")}
               >
-                <Typography
-                  variant="h4"
-                  fontFamily="Montserrat"
-                  fontWeight="400"
-                >
+                <StepText>
                   {isMobile ? "Appimage" : "Appimage Installer"}{" "}
-                </Typography>
+                </StepText>
               </DownloadOptionCard>
             </LinuxStepColumn>
             <LinuxStepColumn item sm={6} xs={12}>
@@ -120,13 +118,7 @@ const LinuxStepOne = ({
                 downloadOption={downloadOption === "terminal"}
                 onClick={() => setDownloadOption("terminal")}
               >
-                <Typography
-                  variant="h4"
-                  fontFamily="Montserrat"
-                  fontWeight="400"
-                >
-                  Terminal
-                </Typography>
+                <StepText>Terminal</StepText>
               </DownloadOptionCard>
             </LinuxStepColumn>
           </Grid>
@@ -172,7 +164,7 @@ const LinuxStepOne = ({
                         setSelectedImage(image.src);
                       }}
                       style={{
-                        display: image.src === selectedImage ? "block" : "none",
+                        display: image.src === selectedImage ? "block" : "none"
                       }}
                     >
                       <Screenshot

@@ -2,7 +2,7 @@ import { styled } from "@mui/system";
 import { Grid, Box, Typography, Button } from "@mui/material";
 import Link from "next/link";
 import Image from "next/image";
-import { cairo, museo } from "../../app/fonts";
+import { cairo, montserrat, museo } from "../../app/fonts";
 
 export const ShowcaseContainer = styled(Grid)(({ theme }) => ({
   display: "flex",
@@ -28,7 +28,7 @@ export const ShowcaseTitleRow = styled(Box)({
 });
 
 export const ShowcaseTitle = styled(Box)(({ theme }) => ({
-  fontFamily: "Montserrat",
+  fontFamily: montserrat.style.fontFamily,
   fontWeight: 550,
   letterSpacing: "1.5px",
   lineHeight: "35px",
@@ -130,7 +130,7 @@ export const MainColumnTitleRow = styled(Box)(({ theme }) => ({
 }));
 
 export const MainColumnTitleFont = styled(Typography)(({ theme }) => ({
-  fontFamily: "Montserrat",
+  fontFamily: montserrat.style.fontFamily,
   fontSize: "20px",
   color: theme.palette.text.primary,
   fontWeight: "400",
@@ -248,7 +248,7 @@ export const FeaturesButton = styled(Link)(({ theme }) => ({
   color: "#fff",
   padding: "8px 16px",
   borderRadius: "7px",
-  fontFamily: "Montserrat",
+  fontFamily: montserrat.style.fontFamily,
   fontSize: "19.5px",
   fontWeight: 500,
   textTransform: "none",

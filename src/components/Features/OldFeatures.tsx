@@ -9,7 +9,7 @@ import {
   Container,
   FeaturesTextContainer,
   FeaturesTitleText,
-  MainFeaturesCol,
+  OldMainFeaturesCol,
   MainFeaturesRow,
   MainFeaturesText,
   TabButton,
@@ -351,7 +351,7 @@ const OldFeatures = () => {
             </TabButton>
       </TabsRow>
       <MainFeaturesRow container>
-        <MainFeaturesCol xs={12} sm={6} style={{ padding: "0 20px 0 40px" }}>
+        <OldMainFeaturesCol xs={12} sm={6} style={{ padding: "0 20px 0 40px" }}>
           <FeaturesTextContainer>
             <FeaturesTitleText>
               {currentFeature === FeaturesEnum.QApps
@@ -370,8 +370,8 @@ const OldFeatures = () => {
               {currentFeatureText[currentFeature][activeTab].text}
             </FeaturesBodyText>
           </FeaturesBodyContainer>
-        </MainFeaturesCol>
-        <MainFeaturesCol
+        </OldMainFeaturesCol>
+        <OldMainFeaturesCol
           xs={12}
           sm={6}
           style={{ flexDirection: "row-reverse", alignSelf: "center" }}
@@ -401,7 +401,7 @@ const OldFeatures = () => {
               </>
             )}
           </FeaturesImgContainer>
-        </MainFeaturesCol>
+        </OldMainFeaturesCol>
       </MainFeaturesRow>
       <FeatureTabs
         featureData={currentFeatureText[currentFeature]}
