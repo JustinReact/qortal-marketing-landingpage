@@ -44,7 +44,7 @@ const getBlogs = async () => {
       headers: {
         "Content-Type": "application/json"
       },
-      next: { revalidate: 86400 } // Cache this data for 24 hours
+      next: { revalidate: 60 } // Cache this data for 24 hours
     });
     const data = await response.json();
     let blogs: Blog = [];
