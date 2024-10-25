@@ -7,8 +7,8 @@
   "/_not-found/page": "app/_not-found/page.js",
   "/blog/page": "app/blog/page.js",
   "/page": "app/page.js",
-  "/promo/page": "app/promo/page.js",
   "/privacy/page": "app/privacy/page.js",
+  "/promo/page": "app/promo/page.js",
   "/qort/page": "app/qort/page.js",
   "/support/page": "app/support/page.js"
 }
