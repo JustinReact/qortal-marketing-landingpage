@@ -73,6 +73,10 @@ export const BlogDate = styled(Typography)(({ theme }) => ({
 }));
 
 export const BlogBody = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  maxWidth: "100%",
+  wordWrap: "break-word",
   fontFamily: cambonLight.style.fontFamily,
   fontSize: "18px",
   fontWeight: 300,

@@ -20,13 +20,16 @@ import {
 } from "./BlogPostClient-styles";
 import { BackArrowSVG } from "../Common/Icons/BackArrowSVG";
 import { useRouter } from "next/navigation";
+import { useTheme, useMediaQuery } from "@mui/material";
 
 interface BlogPostClientProps {
   blog: BlogPost;
 }
 
 const BlogPostClient = ({ blog }: BlogPostClientProps) => {
+  const theme = useTheme();
   const router = useRouter();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   useEffect(() => {
     if (blog && blog.body) {
@@ -67,7 +70,7 @@ const BlogPostClient = ({ blog }: BlogPostClientProps) => {
         });
       };
     }
-  }, [blog]); // Re-run the effect when content changes or if the URL changes
+  }, [blog]);
 
   // Google Analytics event tracking
   useEffect(() => {
@@ -78,6 +81,8 @@ const BlogPostClient = ({ blog }: BlogPostClientProps) => {
     });
   }, []);
 
+  console.log(isMobile, 'isMobile');
+
   useEffect(() => {
     if (blog) {
       // Select all <img> elements with inline style containing 'margin: 0 auto'
@@ -86,9 +91,12 @@ const BlogPostClient = ({ blog }: BlogPostClientProps) => {
         if (image.getAttribute("style")?.includes("margin:0px auto") || image.getAttribute("style")?.includes("margin: 0px auto")) {
           image.style.display = "block"; // Set display to 'block' to ensure centering
         }
+        if (isMobile) {
+          image.style.maxWidth = "300px"; // Set max width for mobile
+        } 
       });
     }
-  }, [blog]);
+  }, [blog, isMobile]);
 
   return (
     <BlogPostContainer>
