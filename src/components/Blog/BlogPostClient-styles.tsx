@@ -12,7 +12,7 @@ export const BlogPostContainer = styled(Box)(({ theme }) => ({
   width: "100%",
   padding: "25px 50px",
   [theme.breakpoints.down("sm")]: {
-    padding: "10px"
+    padding: "10px 4px"
   }
 }));
 
@@ -84,9 +84,6 @@ export const BlogBody = styled(Box)(({ theme }) => ({
   color: theme.palette.text.primary,
   "& p": {
     lineHeight: "1.6"
-  },
-  [theme.breakpoints.down("sm")]: {
-    textAlign: "center"
   }
 }));
 
