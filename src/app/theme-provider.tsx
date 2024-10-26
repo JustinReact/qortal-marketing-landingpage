@@ -1,6 +1,6 @@
 "use client";
 import React, { FC } from "react";
-import { ThemeProvider, Global, css } from "@emotion/react";
+import { ThemeProvider } from "@emotion/react";
 import { RootState } from "../state/store";
 import { useSelector } from "react-redux";
 import { lightTheme, darkTheme } from "../styles/theme";
@@ -14,13 +14,6 @@ const ThemeProviderWrapper: FC<ThemeProviderWrapperProps> = ({ children }) => {
 
   return (
     <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
-      <Global
-        styles={css`
-          img[style*="margin: 0 auto"] {
-            display: block !important;
-          }
-        `}
-      />
       {children}
     </ThemeProvider>
   );
