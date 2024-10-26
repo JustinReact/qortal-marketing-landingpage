@@ -67,7 +67,7 @@ const BlogPostClient = ({ blog }: BlogPostClientProps) => {
         });
       };
     }
-  }, [blog]); // Re-run the effect when content changes
+  }, [blog]); // Re-run the effect when content changes or if the URL changes
 
   // Google Analytics event tracking
   useEffect(() => {
@@ -79,11 +79,11 @@ const BlogPostClient = ({ blog }: BlogPostClientProps) => {
   }, []);
 
   useEffect(() => {
-    if (blog && blog.body) {
+    if (blog) {
       // Select all <img> elements with inline style containing 'margin: 0 auto'
       const images = document.querySelectorAll("img");
       images.forEach((image) => {
-        if (image.getAttribute("style")?.includes("margin:0px auto")) {
+        if (image.getAttribute("style")?.includes("margin:0px auto") || image.getAttribute("style")?.includes("margin: 0px auto")) {
           image.style.display = "block"; // Set display to 'block' to ensure centering
         }
       });
