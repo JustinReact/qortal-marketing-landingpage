@@ -16,7 +16,6 @@ export const themeSlice = createSlice({
       state,
       action
     ) => {
-      console.log({ action });
       state.theme = action.payload;
     },
   },
