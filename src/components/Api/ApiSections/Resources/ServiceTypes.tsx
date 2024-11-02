@@ -441,7 +441,7 @@ export const ServiceTypes: FC<SectionProps> = ({
                 height={"20"}
                 width={"20"}
               />
-              MAIL_PRIVATE (1 MB)
+              MAIL_PRIVATE (5 MB)
             </CustomListItem>
             <CustomListItem>
               <QortalIcon
