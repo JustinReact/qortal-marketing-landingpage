@@ -20,7 +20,10 @@ export const metadata: Metadata = {
       }
     ],
     type: "website"
-  }
+  },
+  alternates: {
+    canonical: "https://qortal.dev"
+  },
 };
 
 export default function RootLayout({
