@@ -7,26 +7,24 @@ export const Wrapper = styled("div")(({ theme }) => ({
   alignItems: "center",
   justifyContent: "flex-start",
   minHeight: "100vh",
-  padding: "2rem 1rem",
-  gap: "20px",
+  padding: "0 16px 36px 16px",
   "&.BGImageMain": {
     position: "relative",
     zIndex: 1,
     "&::before": {
       content: "''",
       position: "absolute",
-      opacity: theme.palette.mode === "dark" ? 0.2 : 1,
-      zIndex: -1,
       top: 0,
       left: 0,
       right: 0,
       bottom: 0,
-      backgroundImage:
-        theme.palette.mode === "dark"
-          ? `url(/images/Home/HexagonBG.png)`
-          : `url(/images/Home/HexagonBGLight.png)`,
-      backgroundRepeat: "repeat-y",
-      backgroundSize: "contain",
+      backgroundImage: `url(${"/images/Extension/ExtensionBackground.png"})`,
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "40% auto",
+      backgroundPosition: "top -100px left -100px",
+      filter: "grayscale(100%) opacity(45%)",
+      opacity: 0.1,
+      zIndex: -1,
       "@media (max-width: 600px)": {
         backgroundPosition: "top",
         backgroundSize: "auto"
@@ -66,10 +64,6 @@ export const Wrapper = styled("div")(({ theme }) => ({
     }
   },
   "&.BGQORTPage": {
-    padding: "2rem 0 0 0",
-    // background: "radial-gradient(circle at 250px top, rgba(20,198,238,1) 0%, rgba(97,71,235,1) 29%, rgba(11,23,41,1) 69%)",
-    background:
-      "linear-gradient(45deg, rgba(51,40,70,1) 0%, rgba(148,84,253,1) 50%, rgba(31,25,61,1) 100%)",
     [theme.breakpoints.down("sm")]: {
       padding: "1rem"
     }
@@ -93,7 +87,4 @@ export const Wrapper = styled("div")(({ theme }) => ({
       zIndex: -1
     }
   },
-  [theme.breakpoints.down("sm")]: {
-    padding: "1rem"
-  }
 }));

@@ -9,15 +9,30 @@ interface HamburgerIconProps {
 }
 
 export const HeaderNav = styled(Box)(({ theme }) => ({
+  position: "relative",
   display: "flex",
   flexDirection: "row",
   justifyContent: "space-between",
   alignItems: "center",
   width: "100%",
   padding: "0 30px",
+  height: "125px",
   [theme.breakpoints.only("xs")]: {
+    height: "120px",
     padding: "0"
   }
+}));
+
+export const Divider = styled(Box)(({ theme }) => ({
+  position: "absolute",
+  bottom: 0,
+  left: 0,
+  right: 0, 
+  marginLeft: "-41.5px",
+  marginRight: "-16px",
+  width: "-webkit-fill-available",
+  height: "2px",
+  backgroundColor: theme.palette.text.primary,
 }));
 
 export const ThemeSelectRow = styled(Box)({
@@ -61,7 +76,7 @@ export const BackHomeButton = styled(Button)(({ theme }) => ({
 export const HeaderButtonsRow = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
-  gap: "10px"
+  gap: "5px"
 }));
 
 export const ChromeStoreButton = styled(Typography)(({ theme }) => ({

@@ -15,36 +15,22 @@ ReactGA.initialize("G-E1BB62FVTN");
 
 function LayoutProvider({ children }: { children: React.ReactNode }) {
   const location = usePathname();
-  
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
 
   return (
-      <Provider store={store}>
-        <ThemeProviderWrapper>
-          <CssBaseline />
-          <Wrapper
-            className={
-              location === "/"
-                ? "BGImageMain"
-                : location === "/promo"
-                ? "BGImagePromo"
-                : location === "/features"
-                ? "BGImageFeatures"
-                : location === "/qort"
-                ? "BGQORTPage"
-                : location === "/extension"
-                ? "BGExtensionPage"
-                : ""
-            }
-          >
-            <Header />
-            {children}
-            <Footer />
-          </Wrapper>
-        </ThemeProviderWrapper>
-      </Provider>
+    <Provider store={store}>
+      <ThemeProviderWrapper>
+        <CssBaseline />
+        <Wrapper className={!location.includes("/docs") ? "BGImageMain" : ""}>
+          <Header />
+          {children}
+          <Footer />
+        </Wrapper>
+      </ThemeProviderWrapper>
+    </Provider>
   );
 }
 
