@@ -153,6 +153,18 @@ export const ServiceItem = styled(Box)(({ theme }) => ({
   color: theme.palette.text.primary
 }));
 
+export const CategoryItem = styled(Box)(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  gap: "15px",
+  fontFamily: inter.style.fontFamily,
+  fontSize: "19.5px",
+  lineHeight: "33px",
+  letterSpacing: "0.2px",
+  fontWeight: "400",
+  color: theme.palette.text.primary
+}));
+
 export const DisplayCodePre = styled("pre")(({ theme }) => ({
   padding: "30px 10px 20px 10px",
   overflowX: "auto",
