@@ -1,8 +1,8 @@
 import Downloads from "../../components/Downloads/Downloads";
 
 export const metadata = {
-  title: "Qortal Privacy Policy",
-  description: "Privacy Policy for the Qortal Extension"
+  title: "Qortal Downloads",
+  description: "Download links for Qortal Go, Qortal Extension, and Qortal Hub"
 };
 
 const DownloadsPage = () => {

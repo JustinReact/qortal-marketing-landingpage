@@ -6,13 +6,13 @@ import { futura, redditSans } from "../../app/fonts";
 export const Container = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
-  padding: "106px 90px 232px 90px",
+  padding: "106px 90px 106px 90px",
   width: "100%",
   "@media(max-width: 1444px)": {
-    padding: "50px 20px 14px 20px"
+    padding: "50px 20px 34px 20px"
   },
   [theme.breakpoints.down("sm")]: {
-    padding: "10px 20px",
+    padding: "10px 20px 25px 20px",
     width: "100%"
   }
 }));
@@ -38,6 +38,7 @@ export const DownloadsGrid = styled(Box)(({ theme }) => ({
   gap: "20px",
   marginTop: "98px",
   "@media(max-width: 1127px)": {
+    gap: "20px",
     gridTemplateColumns: "repeat(2, 1fr)"
   },
   "@media(max-width: 731px)": {
@@ -58,7 +59,7 @@ export const DownloadCard = styled(Box)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "light" ? "#2F2F2F" : "#ffffff",
   padding: "15px",
   borderRadius: "5px",
-  width: "auto",
+  width: "100%",
   height: "87px",
   transition: "all 0.3s ease-in-out",
   "&:hover": {
@@ -67,6 +68,9 @@ export const DownloadCard = styled(Box)(({ theme }) => ({
       theme.palette.mode === "light"
         ? "0px 6px 10px 0px hsla(0,0%,0%,0.14), 0px 1px 18px 0px hsla(0,0%,0%,0.12), 0px 3px 5px -1px hsla(0,0%,0%,0.2)"
         : "0px 12px 17px 2px hsla(0, 0%, 100%, 0.08), 0px 5px 22px 4px hsla(0, 0%, 100%, 0.09), 0px 7px 8px -4px hsla(0, 0%, 100%, 0.2),  0px 0px 10px rgba(255, 255, 255, 0.1)"
+  },
+  [theme.breakpoints.down("md")]: {
+    width: "80%"
   }
 }));
 
@@ -92,7 +96,7 @@ export const DownloadText = styled(Typography)(({ theme }) => ({
   fontWeight: 300,
   fontSize: "30px",
   userSelect: "none",
-  "@media(max-width: 1243px)": {
+  "@media(max-width: 1276px)": {
     fontSize: "24px"
   },
   "@media(max-width: 1127px)": {
@@ -115,7 +119,7 @@ export const DownloadText2 = styled(Typography)(({ theme }) => ({
   fontSize: "24px",
   lineHeight: "10px",
   userSelect: "none",
-  "@media(max-width: 1272px)": {
+  "@media(max-width: 1294px)": {
     fontSize: "20px"
   },
   "@media(max-width: 1146px)": {
@@ -123,5 +127,58 @@ export const DownloadText2 = styled(Typography)(({ theme }) => ({
   },
   "@media(max-width: 1127px)": {
     fontSize: "28px"
+  },
+  "@media(max-width: 743px)": {
+    fontSize: "24px"
+  },
+  [theme.breakpoints.down("sm")]: {
+    fontSize: "28px"
   }
+}));
+
+export const ScreenshotContainer = styled(Grid)(({ theme }) => ({
+  marginTop: "180px",
+  alignItems: "center",
+  justifyContent: "center",
+  padding: "0 150px",
+  "@media(max-width: 1127px)": {
+    padding: "0 10px",
+    marginTop: "50px"
+  },
+}));
+
+export const ScreenshotCol = styled(Grid)(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+}));
+
+export const Screenshot1 = styled(Image)(({ theme }) => ({
+  objectFit: "contain",
+}));
+
+export const Screenshot2 = styled(Image)(({ theme }) => ({
+  objectFit: "contain",
+  transform: "translateY(50px)",
+  [theme.breakpoints.down("md")]: {
+    transform: "translateY(0px)"
+  }
+}));
+
+export const Screenshot3 = styled(Image)(({ theme }) => ({
+  objectFit: "contain",
+}));
+
+export const DownloadNowText = styled(Typography)(({ theme }) => ({
+  fontFamily: redditSans.style.fontFamily,
+  color: theme.palette.text.primary,
+  fontWeight: 400,
+  fontSize: "50px",
+  letterSpacing: "calc(0.09 * 65px)",
+  lineHeight: "73px",
+  marginTop: "200px",
+  textAlign: "center",
+  [theme.breakpoints.down("md")]: {
+    marginTop: "70px",
+  },
 }));

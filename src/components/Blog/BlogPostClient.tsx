@@ -21,6 +21,7 @@ import {
 import { BackArrowSVG } from "../Common/Icons/BackArrowSVG";
 import { useRouter } from "next/navigation";
 import { useTheme, useMediaQuery } from "@mui/material";
+import { CurlyBackArrowSVG } from "../Common/Icons/CurlyBackArrowSVG";
 
 interface BlogPostClientProps {
   blog: BlogPost;
@@ -105,8 +106,8 @@ const BlogPostClient = ({ blog }: BlogPostClientProps) => {
           router.push("/blog");
         }}
       >
-        <BackArrowSVG height={"20"} width={"20"} color={"#ffffff"} />
-        All Blogs
+        <CurlyBackArrowSVG height={"14"} width={"21"} color={"#000000"} />
+        Return to Blogs
       </BackToBlogButton>
       <BlogDateAndCategoryRow>
         <BlogDate>{formatDateWithSuffix(blog.created)}</BlogDate>

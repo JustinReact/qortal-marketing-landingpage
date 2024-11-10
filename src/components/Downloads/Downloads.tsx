@@ -4,19 +4,28 @@ import {
   Container,
   DownloadCard,
   DownloadCol,
+  DownloadNowText,
   DownloadsGrid,
   DownloadsTitle,
   DownloadText,
   DownloadText1,
   DownloadText2,
-  DownloadTextCol
+  DownloadTextCol,
+  Screenshot1,
+  Screenshot2,
+  Screenshot3,
+  ScreenshotCol,
+  ScreenshotContainer
 } from "./Downloads-styles";
 import { ChromeStoreSVG } from "../Common/Icons/ChromeStoreSVG";
 import Image from "next/image";
 import axios from "axios";
 import ReactGA from "react-ga4";
+import { useTheme } from "@mui/material";
 
 const Downloads = () => {
+  const theme = useTheme();
+
   const googlePlayRedirect = () => {
     // Change link to Bitly link once available
     window.open("https://play.google.com/store", "_blank");
@@ -28,15 +37,8 @@ const Downloads = () => {
 
   const windowsDesktopDownload = async () => {
     try {
-      const githubRepoInfo = await axios.get(
-        "https://api.github.com/repos/Qortal/Qortal-Hub/releases/latest",
-        {
-          headers: {
-            Authorization: `token ${process.env.NEXT_PUBLIC_GITHUB_API_KEY}`
-          }
-        }
-      );
-      const { data } = githubRepoInfo;
+      const response = await fetch("/api/github");
+      const data = await response.json();
       const windowsDownload = data.assets.find((asset: any) => {
         return asset.name.includes(".exe");
       }).browser_download_url;
@@ -48,15 +50,8 @@ const Downloads = () => {
 
   const linuxDesktopDownload = async () => {
     try {
-      const githubRepoInfo = await axios.get(
-        "https://api.github.com/repos/Qortal/Qortal-Hub/releases/latest",
-        {
-          headers: {
-            Authorization: `token ${process.env.NEXT_PUBLIC_GITHUB_API_KEY}`
-          }
-        }
-      );
-      const { data } = githubRepoInfo;
+      const response = await fetch("/api/github");
+      const data = await response.json();
       const windowsDownload = data.assets.find((asset: any) => {
         return asset.name.includes(".AppImage");
       }).browser_download_url;
@@ -114,7 +109,10 @@ const Downloads = () => {
             Qortal <span style={{ fontWeight: "bold" }}>Extension</span>
           </DownloadText>
           <DownloadCard
-            style={{ backgroundColor: "#56AEFF" }}
+            style={{
+              backgroundColor:
+                theme.palette.mode === "dark" ? "#56AEFF" : "#003E78"
+            }}
             aria-label="Redirect to the Chrome Web Store"
             tabIndex={0}
             onClick={() => {
@@ -220,6 +218,39 @@ const Downloads = () => {
           </DownloadCard>
         </DownloadCol>
       </DownloadsGrid>
+      <ScreenshotContainer container spacing={4}>
+        <ScreenshotCol item md={3} xs={12}>
+          <Screenshot2
+            src={"/images/Downloads/TrifectaScreenshot2.png"}
+            quality={100}
+            width={386}
+            height={803}
+            alt={"Qortal Screenshot 2"}
+          />
+        </ScreenshotCol>
+        <ScreenshotCol item md={9} xs={12}>
+          <Screenshot1
+            src={"/images/Downloads/TrifectaScreenshot1.png"}
+            quality={100}
+            width={1100}
+            height={642}
+            alt={"Qortal Screenshot 1"}
+          />
+        </ScreenshotCol>
+        <ScreenshotCol item md={12} xs={12}>
+          <Screenshot3
+            src={"/images/Downloads/TrifectaScreenshot3.png"}
+            quality={100}
+            width={1100}
+            height={642}
+            alt={"Qortal Screenshot 3"}
+          />
+        </ScreenshotCol>
+      </ScreenshotContainer>
+      <DownloadNowText>
+        <span style={{ color: "#0085FF" }}>Install</span> now and
+        <br /> start your <span style={{ color: "#0085FF" }}>Journey</span>
+      </DownloadNowText>
     </Container>
   );
 };

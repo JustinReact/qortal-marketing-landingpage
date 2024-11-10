@@ -16,21 +16,21 @@ export const BlogPostContainer = styled(Box)(({ theme }) => ({
   }
 }));
 
-export const BackToBlogButton = styled(Button)(({ theme }) => ({
+export const BackToBlogButton = styled(Button)({
   display: "flex",
   gap: "5px",
   position: "absolute",
   top: "10px",
   left: "10px",
-  backgroundColor: theme.palette.secondary.main,
+  backgroundColor: "#D2D2D2",
   color: "#fff",
   transition: "all 0.3s ease-in-out",
   "&:hover": {
     cursor: "pointer",
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: "#D2D2D2",
     filter: "brightness(1.3)"
   }
-}));
+});
 
 export const BlogPostTitle = styled("h1")({
   fontFamily: lovelo.style.fontFamily,

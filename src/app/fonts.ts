@@ -210,8 +210,20 @@ export const redditSans = localFont({
     },
     {
       path: '../../public/fonts/RedditSans.ttf',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../../public/fonts/RedditSans.ttf',
       weight: '500',
       style: 'normal',
     },
   ]
+});
+
+export const lucidaSans = localFont({
+  src: '../../public/fonts/Lucida Sans Unicode.ttf',
+  weight: '400',
+  style: 'normal',
+  display: 'swap',
 });

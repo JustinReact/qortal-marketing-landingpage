@@ -79,7 +79,7 @@ export const HeaderButtonsRow = styled(Box)(({ theme }) => ({
   gap: "5px"
 }));
 
-export const ChromeStoreButton = styled(Typography)(({ theme }) => ({
+export const NewsButton = styled(Link)(({ theme }) => ({
   position: "relative",
   display: "flex",
   alignItems: "center",
@@ -94,6 +94,7 @@ export const ChromeStoreButton = styled(Typography)(({ theme }) => ({
   padding: "10px 15px",
   transition: "all 0.3s ease-in-out",
   zIndex: 2,
+  textDecoration: "none",
   "&.active ": {
     "&::after": {
       width: "100%",

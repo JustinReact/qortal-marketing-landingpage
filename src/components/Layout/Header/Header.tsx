@@ -3,7 +3,7 @@ import { useState } from "react";
 import ReactGA from "react-ga4";
 import {
   HeaderNav,
-  ChromeStoreButton,
+  NewsButton,
   TriangleIcon,
   TriangleContainer,
   ThemeSelectRow,
@@ -34,7 +34,7 @@ import { useDispatch } from "react-redux";
 export const Header = () => {
   const dispatch = useDispatch();
   const theme = useTheme();
-  const isMobile = useMediaQuery("(max-width: 1096px)");
+  const isMobile = useMediaQuery("(max-width: 1116px)");
   const location = usePathname();
   const router = useRouter();
 
@@ -126,7 +126,8 @@ export const Header = () => {
               >
                 QORT
               </QORTButton>
-              <QORTButton className={location === "/downloads" ? "active" : ""}
+              <QORTButton
+                className={location === "/downloads" ? "active" : ""}
                 onClick={() => {
                   ReactGA.event({
                     category: "User",
@@ -138,19 +139,18 @@ export const Header = () => {
               >
                 Downloads
               </QORTButton>
-              <BlogButton
-                className={location === "/Blog" ? "active" : ""}
+              <NewsButton
                 onClick={() => {
                   ReactGA.event({
                     category: "User",
-                    action: "Clicked Blog Button",
-                    label: "Blog Button"
+                    action: "Clicked News Qortal Header Desktop",
+                    label: "Clicked News Qortal Header Desktop"
                   });
                 }}
-                href={"/blog"}
+                href={"/news"}
               >
-                Blog
-              </BlogButton>
+                News
+              </NewsButton>
               <Docs
                 className={
                   location === "/docs/extension" || location === "/docs/q-apps"
@@ -168,21 +168,19 @@ export const Header = () => {
               >
                 Documentation
               </Docs>
-              <ChromeStoreButton
+              <BlogButton
+                className={location === "/Blog" ? "active" : ""}
                 onClick={() => {
                   ReactGA.event({
                     category: "User",
-                    action: "Clicked Install Qortal Header Desktop",
-                    label: "Clicked Install Qortal Header Desktop"
+                    action: "Clicked Blog Button",
+                    label: "Blog Button"
                   });
-                  window.open(
-                    "https://bit.ly/qortal-chrome-extension",
-                    "_blank"
-                  );
                 }}
+                href={"/blog"}
               >
-                Install
-              </ChromeStoreButton>
+                Blog
+              </BlogButton>
             </HeaderButtonsRow>
           )}
         </HeaderNav>

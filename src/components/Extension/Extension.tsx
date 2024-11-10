@@ -66,6 +66,8 @@ const Extension = () => {
             alt="Screenshots of the Qortal Browser Extension"
             width={700}
             height={1000}
+            quality={100}
+            priority={true}
           />
           <TopFoldCol>
             <TopFoldRow>
