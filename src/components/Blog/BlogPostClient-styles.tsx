@@ -10,7 +10,13 @@ export const BlogPostContainer = styled(Box)(({ theme }) => ({
   alignItems: "center",
   justifyContent: "center",
   width: "100%",
-  padding: "25px 50px",
+  padding: "25px 300px",
+  "@media(max-width: 1300px)": {
+    padding: "25px 150px"
+  },
+  [theme.breakpoints.down("md")]: {
+    padding: "25px 100px"
+  },
   [theme.breakpoints.down("sm")]: {
     padding: "10px 4px"
   }
@@ -83,8 +89,18 @@ export const BlogBody = styled(Box)(({ theme }) => ({
   letterSpacing: "0.2px",
   color: theme.palette.text.primary,
   "& p": {
-    lineHeight: "1.6"
-  }
+    lineHeight: "1.6",
+    margin: "10px 0",
+    "& sup": {
+      color: `${theme.palette.secondary.main} !important`,  
+    }
+  },
+  "& a": {
+      color: `${theme.palette.secondary.main} !important`,  
+  },
+  "& em sup": {
+    color: `${theme.palette.secondary.main} !important`,  
+  },
 }));
 
 export const BlogDivider = styled(Box)(({ theme }) => ({
