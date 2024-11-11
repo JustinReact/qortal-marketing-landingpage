@@ -5,6 +5,7 @@ import { DefaultResources } from "../components/Api/ApiSections/Resources/Defaul
 import { ServiceTypes } from "../components/Api/ApiSections/Resources/ServiceTypes";
 import { SingleMultiFileResources } from "../components/Api/ApiSections/Resources/SingleMultiFileResources";
 import { UpdatingResources } from "../components/Api/ApiSections/Resources/UpdatingResources";
+import { Categories } from "../components/Api/ApiSections/Resources/Categories";
 import { Routing } from "../components/Api/ApiSections/Routing/Routing";
 import { LinkingToResources } from "../components/Api/ApiSections/Routing/LinkingToResources";
 import { LinkingToImages } from "../components/Api/ApiSections/Routing/LinkingToImages";
@@ -96,6 +97,11 @@ export const tableOfContents = [
         title: "Updating resources",
         id: "updatingResources",
         Component: (props: any) => <UpdatingResources {...props} />
+      },
+      {
+        title: "Categories",
+        id: "categories",
+        Component: (props: any) => <Categories {...props} />
       }
     ]
   },
