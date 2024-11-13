@@ -48,7 +48,7 @@ export const BlogPostTitle = styled("h1")({
   fontFamily: redditSans.style.fontFamily,
   fontSize: "40px",
   fontWeight: 500,
-  marginBottom: "20px",
+  marginBottom: 0,
   textAlign: "left",
   width: "100%",
   color: "#fff"
