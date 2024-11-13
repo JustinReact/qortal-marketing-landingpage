@@ -108,6 +108,13 @@ const BlogPostClient = ({ blog }: BlogPostClientProps) => {
         <BackArrowSVG height={"20"} width={"20"} color={"#ffffff"} />
         All Blogs
       </BackToBlogButton>
+      <BlogMainImage
+        src={blog.thumbnail}
+        alt={blog.title}
+        width={500}
+        height={500}
+      />
+      <BlogPostTitle>{blog.title}</BlogPostTitle>
       <BlogDateAndCategoryRow>
         <BlogDate>{formatDateWithSuffix(blog.created)}</BlogDate>
         <BlogDivider />
@@ -117,13 +124,6 @@ const BlogPostClient = ({ blog }: BlogPostClientProps) => {
           ))}
         </BlogCategoriesRow>
       </BlogDateAndCategoryRow>
-      <BlogMainImage
-        src={blog.thumbnail}
-        alt={blog.title}
-        width={500}
-        height={500}
-      />
-      <BlogPostTitle>{blog.title}</BlogPostTitle>
       <BlogBody>{parse(blog.body)}</BlogBody>
     </BlogPostContainer>
   );

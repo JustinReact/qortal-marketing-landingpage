@@ -1,7 +1,7 @@
 import { Button, Typography } from "@mui/material";
 import { Box, styled } from "@mui/system";
 import Image from "next/image";
-import { cambonLight, lovelo, raleway } from "../../app/fonts";
+import { redditSans } from "../../app/fonts";
 
 export const BlogPostContainer = styled(Box)(({ theme }) => ({
   position: "relative",
@@ -10,7 +10,13 @@ export const BlogPostContainer = styled(Box)(({ theme }) => ({
   alignItems: "center",
   justifyContent: "center",
   width: "100%",
-  padding: "25px 300px",
+  padding: "25px 600px",
+  "@media(max-width: 1700px)": {
+    padding: "25px 500px"
+  },
+  "@media(max-width: 1600px)": {
+    padding: "25px 400px"
+  },
   "@media(max-width: 1300px)": {
     padding: "25px 150px"
   },
@@ -39,11 +45,12 @@ export const BackToBlogButton = styled(Button)(({ theme }) => ({
 }));
 
 export const BlogPostTitle = styled("h1")({
-  fontFamily: lovelo.style.fontFamily,
+  fontFamily: redditSans.style.fontFamily,
   fontSize: "40px",
   fontWeight: 500,
   marginBottom: "20px",
-  textAlign: "center",
+  textAlign: "left",
+  width: "100%",
   color: "#fff"
 });
 
@@ -58,7 +65,8 @@ export const BlogDateAndCategoryRow = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "row",
   alignItems: "center",
-  justifyContent: "center",
+  width: "100%",
+  justifyContent: "flex-start",
   marginBottom: "20px",
   gap: "15px",
   [theme.breakpoints.down("sm")]: {
@@ -69,7 +77,7 @@ export const BlogDateAndCategoryRow = styled(Box)(({ theme }) => ({
 }));
 
 export const BlogDate = styled(Typography)(({ theme }) => ({
-  fontFamily: raleway.style.fontFamily,
+  fontFamily: redditSans.style.fontFamily,
   fontSize: "17px",
   color:
     theme.palette.mode === "light"
@@ -83,10 +91,10 @@ export const BlogBody = styled(Box)(({ theme }) => ({
   flexDirection: "column",
   maxWidth: "100%",
   wordWrap: "break-word",
-  fontFamily: cambonLight.style.fontFamily,
+  fontFamily: redditSans.style.fontFamily,
   fontSize: "18px",
-  fontWeight: 300,
-  letterSpacing: "0.2px",
+  fontWeight: 400,
+  letterSpacing: "calc(0.04*14px)",
   color: theme.palette.text.primary,
   "& p": {
     lineHeight: "1.6",

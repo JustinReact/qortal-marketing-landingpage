@@ -16,6 +16,7 @@ import {
   oxygen,
   ptSans,
   raleway,
+  redditSans,
   spartan
 } from "../../app/fonts";
 import Image from "next/image";
@@ -296,17 +297,18 @@ export const BlogPostImage = styled(Image)({
 });
 
 export const BlogPostTitle = styled(Typography)(({ theme }) => ({
-  fontFamily: inter.style.fontFamily,
+  fontFamily: redditSans.style.fontFamily,
   fontWeight: "bold",
   fontSize: "30px",
   lineHeight: "1.2",
   color: theme.palette.text.primary,
   marginTop: "10px",
+  marginBottom: "10px",
   userSelect: "none"
 }));
 
 export const BlogPostBody = styled(Box)(({ theme }) => ({
-  fontFamily: ptSans.style.fontFamily,
+  fontFamily: redditSans.style.fontFamily,
   fontWeight: "400",
   fontSize: "18px",
   color: theme.palette.text.primary,
@@ -366,7 +368,7 @@ export const Divider = styled(Box)(({ theme }) => ({
 }));
 
 export const BlogPostDate = styled(Typography)(({ theme }) => ({
-  fontFamily: raleway.style.fontFamily,
+  fontFamily: redditSans.style.fontFamily,
   fontSize: "17px",
   color:
     theme.palette.mode === "light" ? theme.palette.secondary.main : "#ffffff",
@@ -381,7 +383,7 @@ export const BlogCategoriesRow = styled(Box)({
 });
 
 export const BlogPostCategory = styled(Typography)(({ theme }) => ({
-  fontFamily: raleway.style.fontFamily,
+  fontFamily: redditSans.style.fontFamily,
   fontSize: "14px",
   color: theme.palette.text.primary,
   backgroundColor: theme.palette.primary.dark,

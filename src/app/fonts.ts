@@ -200,3 +200,23 @@ export const spartan = localFont({
     },
   ]
 });
+
+export const redditSans = localFont({
+  src: [
+    {
+      path: '../../public/fonts/RedditSans.ttf',
+      weight: '300',
+      style: 'normal',
+    },
+    {
+      path: '../../public/fonts/RedditSans.ttf',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../../public/fonts/RedditSans.ttf',
+      weight: '500',
+      style: 'normal',
+    }
+  ]
+});
