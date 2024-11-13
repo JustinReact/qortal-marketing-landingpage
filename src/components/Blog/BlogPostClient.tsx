@@ -4,12 +4,12 @@ import ReactGA from "react-ga4";
 import {
   BlogCategoriesRow,
   BlogPostCategory,
-  BlogPostTitle
 } from "./BlogPostsClient-styles";
 import { formatDateWithSuffix } from "../../utils/formatDateWithSuffix";
 import { BlogPost } from "./BlogPostsClient";
 import parse from "html-react-parser";
 import {
+  BlogPostTitle,
   BackToBlogButton,
   BlogBody,
   BlogDate,
