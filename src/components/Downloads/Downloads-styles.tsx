@@ -154,18 +154,25 @@ export const ScreenshotCol = styled(Grid)(({ theme }) => ({
 }));
 
 export const Screenshot1 = styled(Image)(({ theme }) => ({
+  width: "100%",
+  height: "auto",
   objectFit: "contain",
 }));
 
 export const Screenshot2 = styled(Image)(({ theme }) => ({
+  width: "100%",
+  height: "auto",
   objectFit: "contain",
   transform: "translateY(50px)",
   [theme.breakpoints.down("md")]: {
-    transform: "translateY(0px)"
-  }
+    transform: "translateY(0px)",
+    width: "50%",
+  },
 }));
 
 export const Screenshot3 = styled(Image)(({ theme }) => ({
+  width: "100%",
+  height: "auto",
   objectFit: "contain",
 }));
 

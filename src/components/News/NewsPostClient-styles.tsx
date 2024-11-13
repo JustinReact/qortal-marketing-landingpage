@@ -17,9 +17,7 @@ export const NewsPostContainer = styled(Box)(({ theme }) => ({
 export const BackToNewsButton = styled(Button)({
   display: "flex",
   gap: "5px",
-  position: "absolute",
-  top: "-35px",
-  left: "70px",
+  borderRadius: "8px",
   backgroundColor: "#D2D2D2",
   color: "#000000",
   transition: "all 0.3s ease-in-out",
@@ -29,6 +27,13 @@ export const BackToNewsButton = styled(Button)({
     filter: "brightness(0.9)"
   }
 });
+
+export const NewsTitleContainer = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "flex-start",
+  gap: "28px",
+}));
 
 export const NewsSubContainer = styled(Box)(({ theme }) => ({
   position: "relative",
@@ -46,5 +51,6 @@ export const NewsPostTitle = styled("h1")({
   letterSpacing: 0,
   marginBottom: "20px",
   textAlign: "center",
-  color: "#fff"
+  color: "#fff",
+  margin: 0,
 });

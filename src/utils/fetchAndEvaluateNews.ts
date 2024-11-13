@@ -1,8 +1,8 @@
 import { groupApi } from "../constants/endpoint";
-import { checkStructureBlog } from "./checkStructure";
+import { checkStructureNews } from "./checkStructure";
 
-export const fetchAndEvaluateBlogs = async (data: any) => {
-  const getBlogData = async () => {
+export const fetchAndEvaluateNews = async (data: any) => {
+  const getNewsData = async () => {
     const { name, identifier, content } = data;
     let obj: any = {
       ...content,
@@ -11,7 +11,7 @@ export const fetchAndEvaluateBlogs = async (data: any) => {
     if (!name || !identifier) return obj;
     // Fetch rawdata from QDN based on resource's location (need name, service type and identifier)
     try {
-      const url = `${groupApi}/arbitrary/BLOG/${name}/${identifier}`;
+      const url = `${groupApi}/arbitrary/DOCUMENT/${name}/${identifier}`;
       const response = await fetch(url, {
         method: "GET",
         headers: {
@@ -20,7 +20,8 @@ export const fetchAndEvaluateBlogs = async (data: any) => {
       });
 
       const responseData = await response.json();
-      if (checkStructureBlog(responseData)) {
+      console.log({ responseData });
+      if (checkStructureNews(responseData)) {
         obj = {
           ...content,
           ...responseData,
@@ -29,12 +30,13 @@ export const fetchAndEvaluateBlogs = async (data: any) => {
           isValid: true
         };
       }
+      console.log({ obj });
       return obj;
     } catch (error) {
       console.error(error);
     }
   };
 
-  const res = await getBlogData();
+  const res = await getNewsData();
   return res;
 };

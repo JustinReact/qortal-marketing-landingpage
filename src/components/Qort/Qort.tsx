@@ -82,11 +82,6 @@ const Qort = () => {
     });
   }, []);
 
-  useEffect(() => {
-    // Set the theme color for this page
-    dispatch(setTheme("dark"));
-  }, []);
-
   const tradePortalRef = useRef<HTMLDivElement | null>(null);
   const useCasesRef = useRef<HTMLDivElement | null>(null);
 

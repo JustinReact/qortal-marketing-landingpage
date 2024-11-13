@@ -4,7 +4,8 @@ import {
   BackToNewsButton,
   NewsPostContainer,
   NewsPostTitle,
-  NewsSubContainer
+  NewsSubContainer,
+  NewsTitleContainer
 } from "./NewsPostClient-styles";
 import { useRouter } from "next/navigation";
 import { CurlyBackArrowSVG } from "../Common/Icons/CurlyBackArrowSVG";
@@ -19,15 +20,17 @@ const NewsPostClient = ({ newsPost }: NewsPostClientProps) => {
   return (
     <NewsPostContainer>
       <NewsSubContainer>
+        <NewsTitleContainer>
         <BackToNewsButton
           onClick={() => {
-            router.push("/blog");
+            router.push("/news");
           }}
         >
           <CurlyBackArrowSVG height={"14"} width={"21"} color={"#000000"} />
           Return to News
         </BackToNewsButton>
         <NewsPostTitle>{newsPost.title}</NewsPostTitle>
+        </NewsTitleContainer>
       </NewsSubContainer>
     </NewsPostContainer>
   );
