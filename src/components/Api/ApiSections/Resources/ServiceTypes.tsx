@@ -200,8 +200,6 @@ export const ServiceTypes: FC<SectionProps> = ({
               />
               800: DOCUMENT
             </ServiceItem>
-            </Grid>
-            <Grid item xs={12} md={6}>
             <ServiceItem>
               <QortalSVG
                 color={theme.palette.text.primary}
@@ -210,6 +208,8 @@ export const ServiceTypes: FC<SectionProps> = ({
               />
               900: LIST
             </ServiceItem>
+            </Grid>
+            <Grid item xs={12} md={6}>
             <ServiceItem>
               <QortalSVG
                 color={theme.palette.text.primary}
@@ -361,6 +361,22 @@ export const ServiceTypes: FC<SectionProps> = ({
                 width={"18"}
               />
               1810: CHAIN_COMMENT (239 B)
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              1900: MAIL (1 MB)
+            </ServiceItem>
+            <ServiceItem>
+              <QortalSVG
+                color={theme.palette.text.primary}
+                height={"18"}
+                width={"18"}
+              />
+              1910: MESSAGE (1 MB)
             </ServiceItem>
             </Grid>
           </Grid>
