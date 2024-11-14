@@ -10,9 +10,9 @@ import {
 } from "@mui/material";
 import {
   cairo,
+  futura,
   oxygen,
-  redditSans,
-  spartan
+  redditSans
 } from "../../app/fonts";
 import Image from "next/image";
 import { CloseSVG } from "../Common/Icons/CloseSVG";
@@ -245,17 +245,19 @@ export const MainBlogWrapper = styled(Box)(({ theme }) => ({
 }));
 
 export const BlogPageTitle = styled(Typography)(({ theme }) => ({
-  fontFamily: spartan.style.fontFamily,
-  fontWeight: "bold",
-  fontSize: "40px",
+  fontFamily: futura.style.fontFamily,
+  fontWeight: "400",
+  fontSize: "55px",
+  letterSpacing: "calc(0.09*55px)",
   color: theme.palette.text.primary,
   userSelect: "none",
-  textAlign: "center"
+  textAlign: "center",
+  textShadow:  "0px 4px 4px rgba(0, 0, 0, 0.25)"
 }));
 
 export const BlogPostsContainer = styled(Box)({
   display: "grid",
-  gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
+  gridTemplateColumns: "repeat(auto-fill, minmax(368px, 1fr))",
   alignItems: "flex-start",
   flexWrap: "wrap",
   gap: "15px",
@@ -264,29 +266,32 @@ export const BlogPostsContainer = styled(Box)({
 });
 
 export const BlogPostCard = styled(Box)(({ theme }) => ({
+  width: "368px",
   height: "600px",
-  backgroundColor: theme.palette.primary.light,
-  borderRadius: "8px",
-  boxShadow:
-    theme.palette.mode === "dark"
-      ? "0px 4px 5px 0px hsla(0,0%,0%,0.14),  0px 1px 10px 0px hsla(0,0%,0%,0.12),  0px 2px 4px -1px hsla(0,0%,0%,0.2)"
-      : "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
-  padding: "15px",
+  borderRadius: 0,
   display: "flex",
   flexDirection: "column",
   gap: "5px",
   transition: "all 0.3s ease-in-out",
   ":hover": {
-    boxShadow:
-      theme.palette.mode === "dark"
-        ? "0px 4px 5px 0px hsla(0,0%,0%,0.25), 0px 1px 10px 0px hsla(0,0%,0%,0.20), 0px 2px 4px -1px hsla(0,0%,0%,0.35)"
-        : "rgba(99, 99, 99, 0.4) 0px 4px 12px 0px"
-  }
+    cursor: "pointer",
+    boxShadow: "0px 8px 10px 1px hsla(0,0%,0%,0.14), 0px 3px 14px 2px hsla(0,0%,0%,0.12), 0px 5px 5px -3px hsla(0,0%,0%,0.2)"
+  },
 }));
 
+export const BlogSubContainer = styled(Box)({
+  display: "flex",
+  flexDirection: "column",
+  gap: "5px",
+  padding: "10px",
+  "& p": {
+    margin: 0
+  }
+});
+
 export const BlogPostImage = styled(Image)({
-  width: "100%",
-  height: "150px",
+  width: "328px",
+  height: "220px",
   objectFit: "contain",
   userSelect: "none"
 });
@@ -308,7 +313,7 @@ export const BlogPostBody = styled(Box)(({ theme }) => ({
   fontSize: "18px",
   color: theme.palette.text.primary,
   userSelect: "none",
-  maxHeight: "400px" /* This will limit the height of the content */,
+  maxHeight: "170px" /* This will limit the height of the content */,
   overflow: "hidden" /* Hide the overflowing content */,
   display:
     "-webkit-box" /* Required for applying ellipsis on multiline content */,
@@ -353,7 +358,8 @@ export const BlogDateAndCategoryCol = styled(Box)({
   flexDirection: "column",
   alignItems: "flex-start",
   justifyContent: "center",
-  gap: "8px"
+  gap: "8px",
+  padding: "0 10px"
 });
 
 export const Divider = styled(Box)(({ theme }) => ({
