@@ -54,6 +54,11 @@ import { SET_PROFILE_DATA } from "../components/Api/ApiSections/QortalRequest/SE
 import { GET_FRIENDS_LIST } from "../components/Api/ApiSections/QortalRequest/GET_FRIENDS_LIST";
 import { GET_USER_WALLET_INFO } from "../components/Api/ApiSections/QortalRequest/GET_USER_WALLET_INFO";
 import { ENCRYPT_DATA } from "../components/Api/ApiSections/QortalRequest/ENCRYPT_DATA";
+import { GET_AT } from "../components/Api/ApiSections/QortalRequest/GET_AT";
+import { GET_AT_DATA } from "../components/Api/ApiSections/QortalRequest/GET_AT_DATA";
+import { LIST_ATS } from "../components/Api/ApiSections/QortalRequest/LIST_ATS";
+import { SET_TAB_NOTIFICATIONS } from "../components/Api/ApiSections/QortalRequest/SET_TAB_NOTIFICATIONS";
+import { GET_CROSSCHAIN_SERVER_INFO } from "../components/Api/ApiSections/QortalRequest/GET_CROSSCHAIN_SERVER_INFO";
 import { Variables } from "../components/Api/ApiSections/JavascriptIntegration/Variables";
 
 export const tableOfContents = [
@@ -185,9 +190,24 @@ export const tableOfContents = [
         id: "GET_ACCOUNT_NAMES"
       },
       {
+        title: "GET_AT",
+        Component: (props: any) => <GET_AT {...props} />,
+        id: "GET_AT"
+      },
+      {
+        title: "GET_AT_DATA",
+        Component: (props: any) => <GET_AT_DATA {...props} />,
+        id: "GET_AT_DATA"
+      },
+      {
         title: "GET_BALANCE",
         Component: (props: any) => <GET_BALANCE {...props} />,
         id: "GET_BALANCE"
+      },
+      {
+        title: "GET_CROSSCHAIN_SERVER_INFO",
+        Component: (props: any) => <GET_CROSSCHAIN_SERVER_INFO {...props} />,
+        id: "GET_CROSSCHAIN_SERVER_INFO"
       },
       {
         title: "GET_DAY_SUMMARY",
@@ -263,6 +283,11 @@ export const tableOfContents = [
         title: "LINK_TO_QDN_RESOURCE",
         Component: (props: any) => <LINK_TO_QDN_RESOURCE {...props} />,
         id: "LINK_TO_QDN_RESOURCE"
+      },
+      {
+        title: "LIST_ATS",
+        Component: (props: any) => <LIST_ATS {...props} />,
+        id: "LIST_ATS"
       },
       {
         title: "LIST_QDN_RESOURCES",
@@ -344,6 +369,11 @@ export const tableOfContents = [
         title: "SET_PROFILE_DATA",
         Component: (props: any) => <SET_PROFILE_DATA {...props} />,
         id: "SET_PROFILE_DATA"
+      },
+      {
+        title: "SET_TAB_NOTIFICATIONS",
+        Component: (props: any) => <SET_TAB_NOTIFICATIONS {...props} />,
+        id: "SET_TAB_NOTIFICATIONS"
       },
       {
         title: "VOTE_ON_POLL",
