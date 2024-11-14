@@ -102,4 +102,12 @@ export const NewsCardBody = styled(Typography)(({ theme }) => ({
   lineHeight: "22.4px",
   letterSpacing: 0,
   userSelect: "none",
+  maxHeight: "400px" /* This will limit the height of the content */,
+  overflow: "hidden" /* Hide the overflowing content */,
+  display:
+    "-webkit-box" /* Required for applying ellipsis on multiline content */,
+  WebkitBoxOrient: "vertical" /* Set the box orientation */,
+  WebkitLineClamp:
+    "9" /* Adjust this value to the number of lines you want to display */,
+  textOverflow: "ellipsis" /* Add ellipsis for overflowed content */
 }));

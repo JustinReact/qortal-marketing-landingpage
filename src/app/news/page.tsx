@@ -60,25 +60,14 @@ const getNews = async () => {
   }
 };
 
-
-const news = [
-  {
-    title: "Qortal Blog - Explore the Latest About Qortal, Web3, and Decentralization",
-    body: "Explore the latest blog posts about Qortal, Web3, decentralization, and much more, on the Qortal Blog!",
-    thumbnail: "/images/News/NewsCardPreview.png",
-    identifier: "newsPost1",
-    created: 1630512000000
-  }
-];
-
 const NewsPage = async (): Promise<JSX.Element> => {
-  // const news: News = (await getNews()) ?? []; // Default to an empty array if blogs is undefined
-  // console.log(news);
+  const news: News = (await getNews()) ?? []; // Default to an empty array if blogs is undefined
+  console.log(news);
 
-  // if (!news || news.length === 0) {
-  //   return <div>No news found</div>; // Fallback if no blogs are found
-  // }
-  
+  if (!news || news.length === 0) {
+    return <div>No news found</div>; // Fallback if no blogs are found
+  }
+
   return <NewsPostsClient news={news} />;
 };
 

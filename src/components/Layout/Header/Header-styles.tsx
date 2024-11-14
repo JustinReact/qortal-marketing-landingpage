@@ -91,6 +91,7 @@ export const NewsButton = styled(Link)(({ theme }) => ({
   color: theme.palette.text.primary,
   height: "48px",
   borderRadius: "2px",
+  width: "130px",
   padding: "10px 15px",
   transition: "all 0.3s ease-in-out",
   zIndex: 2,
@@ -142,7 +143,7 @@ export const Docs = styled(Link)(({ theme }) => ({
   justifyContent: "center",
   gap: "8px",
   fontFamily: oxygen.style.fontFamily,
-  minWidth: "140px",
+  width: "130px",
   fontSize: "18px",
   padding: "10px 15px",
   borderRadius: "2px",
@@ -198,7 +199,7 @@ export const BlogButton = styled(Link)(({ theme }) => ({
   backgroundColor: "transparent",
   color: theme.palette.text.primary,
   fontWeight: "400",
-  minWidth: "140px",
+  width: "130px",
   transition: "all 0.3s ease-in-out",
   zIndex: 2,
   userSelect: "none",
@@ -252,6 +253,7 @@ export const QORTButton = styled(Link)(({ theme }) => ({
   zIndex: 2,
   userSelect: "none",
   textDecoration: "none",
+  width: "130px",
   "&.active ": {
     "&::after": {
       width: "100%",
