@@ -10,12 +10,7 @@ import {
 } from "@mui/material";
 import {
   cairo,
-  fredokaOne,
-  inter,
-  montserrat,
   oxygen,
-  ptSans,
-  raleway,
   redditSans,
   spartan
 } from "../../app/fonts";
