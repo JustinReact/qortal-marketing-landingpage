@@ -73,7 +73,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         url: `https://qortal.dev/news/${slug}`,
         images: [
           {
-            url: newsRawData.thumbnail,
+            url: "https://res.cloudinary.com/unnamed/image/upload/v1731688727/Qortal_News_Thumnbail_ylromf.png",
             alt: newsRawData.title
           }
         ]
