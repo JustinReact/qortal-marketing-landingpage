@@ -8,9 +8,9 @@ import { Metadata } from "next";
 import { stripHtmlTags } from "../../../utils/stripHTMLTags";
 
 type Props = {
-  params: { slug: string }
-  searchParams: { [key: string]: string | string[] | undefined }
-}
+  params: { slug: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+};
 
 const getBlogPost = async (slug: string): Promise<BlogPostInterface | null> => {
   try {
@@ -74,8 +74,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         url: `https://qortal.dev/blog/${slug}`,
         images: [
           {
-            url:
-              blogRawData.thumbnail,
+            url: "https://res.cloudinary.com/unnamed/image/upload/v1731688727/Qortal_Blogs_Thumbnail_vyjbm7.png",
             alt: blogRawData.title
           }
         ]
@@ -84,9 +83,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         card: "summary_large_image",
         title: blogRawData.title,
         description: strippedDescription,
-        images: [
-          blogRawData.thumbnail
-        ]
+        images: [blogRawData.thumbnail]
       }
     };
   } catch (error) {
@@ -100,7 +97,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       }
     };
   }
-};
+}
 
 const BlogPost = async ({ params }: { params: { slug: string } }) => {
   const blogPost = await getBlogPost(params.slug);
