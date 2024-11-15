@@ -44,7 +44,7 @@ export const BackToBlogButton = styled(Button)(({ theme }) => ({
   }
 }));
 
-export const BlogPostTitle = styled("h1")({
+export const BlogPostTitle = styled("h1")(({ theme }) => ({
   fontFamily: redditSans.style.fontFamily,
   fontSize: "40px",
   lineHeight: "45px",
@@ -52,8 +52,8 @@ export const BlogPostTitle = styled("h1")({
   marginBottom: 0,
   textAlign: "left",
   width: "100%",
-  color: "#fff"
-});
+  color: theme.palette.text.primary,
+}));
 
 export const BlogMainImage = styled(Image)({
   width: "100%",
