@@ -30,7 +30,10 @@ const response = await qortalRequest({
 `.trim();
 
 const codeBlockResponse = `
-7.11
+{
+  "address": "QZLJV7wbaFyxaoZQsjm6rb9MWMiDzWsqM2",
+  "publicKey": "APLQ85zRbgRdrLTU7GgeTt35kvVhxmSjoCB4wX99HjYd",
+}
 `.trim();
 
 export const GET_USER_WALLET: FC<SectionProps> = ({
@@ -54,6 +57,9 @@ export const GET_USER_WALLET: FC<SectionProps> = ({
           <InformationSection>
             <InformationParagraph>
               This action requires user approval
+            </InformationParagraph>
+            <InformationParagraph>
+              ARRR only returns an address, with no publicKey
             </InformationParagraph>
           </InformationSection>
           <Grid container spacing={3}>
