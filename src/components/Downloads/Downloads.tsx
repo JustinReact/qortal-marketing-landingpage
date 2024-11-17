@@ -37,12 +37,14 @@ const Downloads = () => {
 
   const windowsDesktopDownload = async () => {
     try {
-      const response = await fetch("/api/github");
+      const response = await fetch("/api/github-windows");
       const data = await response.json();
-      const windowsDownload = data.assets.find((asset: any) => {
-        return asset.name.includes(".exe");
-      }).browser_download_url;
-      window.open(windowsDownload, "_blank");
+      console.log({ data });
+      if (data.tracking_url) {
+        window.open(data.tracking_url, "_blank"); // Open the Bitly tracking link
+      } else {
+        console.error("Tracking URL not available");
+      }
     } catch (error) {
       console.error("Error downloading Windows Desktop version: ", error);
     }
@@ -50,12 +52,13 @@ const Downloads = () => {
 
   const linuxDesktopDownload = async () => {
     try {
-      const response = await fetch("/api/github");
+      const response = await fetch("/api/github-linux");
       const data = await response.json();
-      const windowsDownload = data.assets.find((asset: any) => {
-        return asset.name.includes(".AppImage");
-      }).browser_download_url;
-      window.open(windowsDownload, "_blank");
+      if (data.tracking_url) {
+        window.open(data.tracking_url, "_blank"); // Open the Bitly tracking link
+      } else {
+        console.error("Tracking URL not available");
+      }
     } catch (error) {
       console.error("Error downloading Windows Desktop version: ", error);
     }
