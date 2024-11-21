@@ -12,7 +12,8 @@ import {
   cairo,
   futura,
   oxygen,
-  redditSans
+  redditSans,
+  segoeUI
 } from "../../app/fonts";
 import Image from "next/image";
 import { CloseSVG } from "../Common/Icons/CloseSVG";
@@ -236,7 +237,7 @@ export const FilterSelectMenuItems = styled(TextField)(({ theme }) => ({
 export const MainBlogWrapper = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
-  gap: "15px",
+  gap: "120px",
   padding: "25px 10px",
   width: "100%",
   [theme.breakpoints.down("sm")]: {
@@ -274,8 +275,7 @@ export const BlogPostCard = styled(Box)(({ theme }) => ({
   gap: "5px",
   transition: "all 0.3s ease-in-out",
   ":hover": {
-    cursor: "pointer",
-    boxShadow: "0px 8px 10px 1px hsla(0,0%,0%,0.14), 0px 3px 14px 2px hsla(0,0%,0%,0.12), 0px 5px 5px -3px hsla(0,0%,0%,0.2)"
+    cursor: "pointer"
   },
 }));
 
@@ -323,36 +323,6 @@ export const BlogPostBody = styled(Box)(({ theme }) => ({
   textOverflow: "ellipsis" /* Add ellipsis for overflowed content */
 }));
 
-export const ReadMoreButton = styled(Link)(({ theme }) => ({
-  display: "inline-block",
-  width: "fit-content",
-  position: "relative",
-  fontFamily: cairo.style.fontFamily,
-  fontSize: "20px",
-  color: theme.palette.secondary.main,
-  fontWeight: "bold",
-  transition: "all 0.3s ease-in-out",
-  textDecoration: "none",
-  "&::before": {
-    content: "''",
-    position: "absolute",
-    left: "0",
-    bottom: "0",
-    height: "2px",
-    width: "100%",
-    backgroundColor: theme.palette.secondary.main,
-    transform: "scaleX(0)",
-    transformOrigin: "left",
-    transition: "transform 0.3s ease"
-  },
-  "&:hover": {
-    cursor: "pointer",
-    "&::before": {
-      transform: "scaleX(1)"
-    }
-  }
-}));
-
 export const BlogDateAndCategoryCol = styled(Box)({
   display: "flex",
   flexDirection: "column",
@@ -384,11 +354,14 @@ export const BlogCategoriesRow = styled(Box)({
 });
 
 export const BlogPostCategory = styled(Typography)(({ theme }) => ({
-  fontFamily: redditSans.style.fontFamily,
+  textTransform: "uppercase",
+  fontFamily: segoeUI.style.fontFamily,
+  fontWeight: "400",
+  letterSpacing: "0.24px",  
   fontSize: "14px",
   color: theme.palette.text.primary,
   backgroundColor: theme.palette.primary.dark,
-  padding: "2px 15px",
-  borderRadius: "15px",
+  padding: "6px 20px",
+  borderRadius: "8px",
   userSelect: "none"
 }));

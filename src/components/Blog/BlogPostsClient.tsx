@@ -13,8 +13,7 @@ import {
   BlogPostTitle,
   BlogSubContainer,
   Divider,
-  MainBlogWrapper,
-  ReadMoreButton
+  MainBlogWrapper
 } from "./BlogPostsClient-styles";
 import { formatDateWithSuffix } from "../../utils/formatDateWithSuffix";
 import parse from "html-react-parser";
@@ -37,7 +36,7 @@ const BlogPostsClient: React.FC<BlogPostsClientProps> = ({ blogs }) => {
   const router = useRouter();
   return (
     <MainBlogWrapper>
-      <BlogPageTitle>QORTAL BLOG</BlogPageTitle>
+      <BlogPageTitle>BLOG</BlogPageTitle>
       <BlogPostsContainer>
         {blogs
           .filter((blog) => blog.thumbnail)
@@ -60,35 +59,9 @@ const BlogPostsClient: React.FC<BlogPostsClientProps> = ({ blogs }) => {
                 width={500}
                 height={500}
               />
-              <BlogDateAndCategoryCol>
-                <BlogPostDate>
-                  {formatDateWithSuffix(blog.created)}
-                </BlogPostDate>
-                <Divider />
-                <BlogCategoriesRow>
-                  {(blog?.categories || []).map((category: string) => (
-                    <BlogPostCategory key={category}>
-                      {category}
-                    </BlogPostCategory>
-                  ))}
-                </BlogCategoriesRow>
-              </BlogDateAndCategoryCol>
               <BlogSubContainer>
                 <BlogPostTitle>{blog.title}</BlogPostTitle>
                 <BlogPostBody>{parse(blog.body)}</BlogPostBody>
-                <ReadMoreButton
-                  onClick={() => {
-                    ReactGA.event({
-                      category: "User",
-                      action: `Clicked on blog post: ${blog.title} from blog page`,
-                      label: `Clicked on blog post: ${blog.title} from blog page`
-                    });
-                  }}
-                  href={`/blog/${blog.identifier}`}
-                  passHref
-                >
-                  Read More
-                </ReadMoreButton>
               </BlogSubContainer>
             </BlogPostCard>
           ))}

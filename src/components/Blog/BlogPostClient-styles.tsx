@@ -1,13 +1,13 @@
 import { Button, Typography } from "@mui/material";
 import { Box, styled } from "@mui/system";
 import Image from "next/image";
-import { redditSans } from "../../app/fonts";
+import { redditSans, roboto } from "../../app/fonts";
 
 export const BlogPostContainer = styled(Box)(({ theme }) => ({
   position: "relative",
   display: "flex",
   flexDirection: "column",
-  alignItems: "center",
+  alignItems: "flex-start",
   justifyContent: "center",
   width: "100%",
   padding: "25px 600px",
@@ -29,18 +29,24 @@ export const BlogPostContainer = styled(Box)(({ theme }) => ({
 }));
 
 export const BackToBlogButton = styled(Button)(({ theme }) => ({
+  fontFamily: roboto.style.fontFamily,
+  fontSize: "16px",
   display: "flex",
-  gap: "5px",
-  position: "absolute",
-  top: "10px",
-  left: "10px",
-  backgroundColor: theme.palette.secondary.main,
-  color: "#fff",
+  justifyContent: "flex-start",
+  gap: "18px",
+  borderRadius: "8px",
+  backgroundColor: theme.palette.mode === "dark" ? "#D2D2D2" : "#61757F",
+  border: theme.palette.mode === "dark" ? "none" : "1px solid #000000",
+  color: theme.palette.mode === "dark" ? "#000000" : "#ffffff",
   transition: "all 0.3s ease-in-out",
+  marginBottom: "23px",
+  padding: "7px 12",
+  width: "173px",
+  height: "30px",
   "&:hover": {
     cursor: "pointer",
-    backgroundColor: theme.palette.secondary.main,
-    filter: "brightness(1.3)"
+    backgroundColor: theme.palette.mode === "dark" ? "#D2D2D2" : "#61757F",
+    filter: "brightness(0.85)",
   }
 }));
 
@@ -49,7 +55,7 @@ export const BlogPostTitle = styled("h1")(({ theme }) => ({
   fontSize: "40px",
   lineHeight: "45px",
   fontWeight: 500,
-  marginBottom: 0,
+  margin: 0,
   textAlign: "left",
   width: "100%",
   color: theme.palette.text.primary,
@@ -68,12 +74,11 @@ export const BlogDateAndCategoryRow = styled(Box)(({ theme }) => ({
   alignItems: "center",
   width: "100%",
   justifyContent: "flex-start",
-  marginBottom: "20px",
+  margin: "10px 0 10px 0",
   gap: "15px",
   [theme.breakpoints.down("sm")]: {
     flexDirection: "column",
     gap: "10px",
-    marginTop: "55px"
   }
 }));
 
@@ -109,6 +114,9 @@ export const BlogBody = styled(Box)(({ theme }) => ({
   },
   "& em sup": {
     color: `${theme.palette.secondary.main} !important`,  
+  },
+  "& img": {
+    marginTop: "10px !important",
   },
 }));
 

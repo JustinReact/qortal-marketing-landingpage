@@ -4,7 +4,6 @@ export const cambonLight = localFont({
   src: '../../public/fonts/Cambon-Light.ttf',
   weight: '300',
   style: 'normal',
-  display: 'swap',
 });
 
 export const montserrat = localFont({
@@ -20,7 +19,6 @@ export const montserrat = localFont({
       style: 'normal',
     },
   ],
-  display: 'swap',
 });
 
 export const roboto = localFont({
@@ -36,28 +34,24 @@ export const roboto = localFont({
       style: 'normal',    
     },
   ],
-  display: 'swap',
 });
 
 export const catamaran = localFont({
   src: '../../public/fonts/Catamaran.ttf',
   weight: '400',
   style: 'normal',
-  display: 'swap',
 });
 
 export const fredokaOne = localFont({
   src: '../../public/fonts/Fredoka One.ttf',
   weight: '400',
   style: 'normal',
-  display: 'swap',
 });
 
 export const cairo = localFont({
   src: '../../public/fonts/Cairo.ttf',
   weight: '400',
   style: 'normal',
-  display: 'swap',
 });
 
 export const futura = localFont({
@@ -79,35 +73,30 @@ export const inter = localFont({
   src: '../../public/fonts/Inter.ttf',
   weight: '400',
   style: 'normal',
-  display: 'swap',
 });
 
 export const kadwa = localFont({
   src: '../../public/fonts/Kadwa.ttf',
   weight: '400',
   style: 'normal',
-  display: 'swap',
 });
 
 export const lovelo = localFont({
   src: '../../public/fonts/Lovelo.otf',
   weight: '400',
   style: 'normal',
-  display: 'swap',
 });
 
 export const magistral = localFont({
   src: '../../public/fonts/Magistral.otf',
   weight: '400',
   style: 'normal',
-  display: 'swap',
 });
 
 export const monoton = localFont({
   src: '../../public/fonts/Monoton-Regular.ttf',
   weight: '400',
   style: 'normal',
-  display: 'swap',
 });
 
 export const museo = localFont({
@@ -129,7 +118,6 @@ export const nanumGothic = localFont({
   src: '../../public/fonts/NanumGothic-Regular.ttf',
   weight: '500',
   style: 'normal',
-  display: 'swap',
 });
 
 export const oxygen = localFont({
@@ -151,7 +139,6 @@ export const protestStrike = localFont({
   src: '../../public/fonts/ProtestStrike-Regular.ttf',
   weight: '500',
   style: 'normal',
-  display: 'swap',
 });
 
 export const ptSans = localFont({
@@ -183,7 +170,6 @@ export const raleway = localFont({
   src: '../../public/fonts/Raleway.ttf',
   weight: '400',
   style: 'normal',
-  display: 'swap',
 });
 
 export const spartan = localFont({
@@ -219,4 +205,19 @@ export const redditSans = localFont({
       style: 'normal',
     }
   ]
+});
+
+export const segoeUI = localFont({
+  src: [
+    {
+      path: '../../public/fonts/Segoe UI.ttf',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../../public/fonts/Segoe UI Bold.ttf',
+      weight: '450',
+      style: 'normal',
+    }
+  ] 
 });

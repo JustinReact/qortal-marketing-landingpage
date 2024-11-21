@@ -33,7 +33,7 @@ const commonThemeOptions = createTheme({
   },
   typography: {
     fontFamily:
-      "'Museo', 'Raleway', 'Montserrat', 'Inter', 'Cairo', 'Oxygen', 'Roboto', 'Nanum Gothic', 'Lovelo', 'Helvetica', 'Arial', 'Kadwa', 'Protest Strike', 'PT Sans', 'Spartan', 'Magistral', 'Monoton', 'Futura', 'Futura Light', 'Fredoka One', 'Reddit Sans'",
+      "'Museo', 'Raleway', 'Montserrat', 'Inter', 'Cairo', 'Oxygen', 'Roboto', 'Nanum Gothic', 'Lovelo', 'Helvetica', 'Arial', 'Kadwa', 'Protest Strike', 'PT Sans', 'Spartan', 'Magistral', 'Monoton', 'Futura', 'Futura Light', 'Fredoka One', 'Reddit Sans', 'Segoe UI'",
     button: {
       textTransform: "none"
     },
