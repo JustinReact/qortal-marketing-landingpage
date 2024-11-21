@@ -1,6 +1,6 @@
 import { Box, Button } from "@mui/material";
 import { styled } from "@mui/system";
-import { lucidaSans, redditSans } from "../../app/fonts";
+import { lucidaSans, redditSans, roboto } from "../../app/fonts";
 import Image from "next/image";
 
 export const NewsPostContainer = styled(Box)(({ theme }) => ({
@@ -27,25 +27,30 @@ export const NewsPostContainer = styled(Box)(({ theme }) => ({
   }
 }));
 
-export const BackToNewsButton = styled(Button)({
+export const BackToNewsButton = styled(Button)(({ theme }) => ({
+  fontFamily: roboto.style.fontFamily,
+  fontSize: "16px",
   display: "flex",
-  gap: "5px",
+  gap: "18px",
   borderRadius: "8px",
-  backgroundColor: "#D2D2D2",
-  color: "#000000",
+  backgroundColor: theme.palette.mode === "dark" ? "#D2D2D2" : "#61757F",
+  border: theme.palette.mode === "dark" ? "none" : "1px solid #000000",
+  color: theme.palette.mode === "dark" ? "#000000" : "#ffffff",
   transition: "all 0.3s ease-in-out",
+  marginBottom: "23px",
+  padding: "7px 12",
+  height: "30px",
   "&:hover": {
     cursor: "pointer",
-    backgroundColor: "#D2D2D2",
-    filter: "brightness(0.9)"
+    backgroundColor: theme.palette.mode === "dark" ? "#D2D2D2" : "#61757F",
+    filter: "brightness(0.85)",
   }
-});
+}));
 
 export const NewsTitleContainer = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
-  alignItems: "flex-start",
-  gap: "28px",
+  alignItems: "flex-start"
 }));
 
 export const NewsPostMainImage = styled(Image)({
@@ -59,11 +64,10 @@ export const NewsSubContainer = styled(Box)(({ theme }) => ({
   position: "relative",
   display: "flex",
   flexDirection: "column",
-  gap: "20px",
-  width: "100%",
+  width: "100%"
 }));
 
-export const NewsPostTitle = styled("h1")({
+export const NewsPostTitle = styled("h1")(({ theme }) => ({
   fontFamily: lucidaSans.style.fontFamily,
   fontSize: "24px",
   fontWeight: 400,
@@ -71,9 +75,9 @@ export const NewsPostTitle = styled("h1")({
   letterSpacing: 0,
   marginBottom: "20px",
   textAlign: "center",
-  color: "#fff",
-  margin: 0,
-});
+  color: theme.palette.text.primary,
+  margin: "0 0 20px 0"
+}));
 
 export const NewsPostBody = styled(Box)(({ theme }) => ({
   display: "flex",

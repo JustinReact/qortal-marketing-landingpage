@@ -10,7 +10,7 @@ import Image from "next/image";
 export const MainNewsWrapper = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
-  gap: "15px",
+  gap: "120px",
   padding: "106px 50px 20px 50px",
   width: "100%",
   [theme.breakpoints.down("sm")]: {
@@ -52,10 +52,8 @@ export const NewsCard = styled(Box)(({ theme }) => ({
   width: "328px",
   height: "auto",
   margin: "0 auto",
-  transition: "all 0.3s ease-in-out",
   "&:hover": {
     cursor: "pointer",
-    boxShadow: "0px 8px 10px 1px hsla(0,0%,0%,0.14), 0px 3px 14px 2px hsla(0,0%,0%,0.12), 0px 5px 5px -3px hsla(0,0%,0%,0.2)",
     },
 }));
 
@@ -75,24 +73,27 @@ export const NewsCardTitle = styled(Typography)(({ theme }) => ({
   userSelect: "none",
 }));
 
-export const NewsCardWrapper = styled(Box)(({ theme }) => ({
+export const NewsCardWrapper = styled(Box)({
   display: "flex",
   flexDirection: "column",
   gap: "10px",
   width: "100%",
   margin: "0 auto",
   padding: "0 7px 7px 7px",
-}));
+  "& p": {
+    margin: 0,  
+  }
+});
 
-export const NewsCardDate = styled(Typography)(({ theme }) => ({
+export const NewsCardDate = styled(Typography)({
   fontFamily: redditSans.style.fontFamily,
-  color: theme.palette.mode === 'light' ? "#333333" : "#888888",
+  color:  "#888888",
   fontWeight: 400,
   fontSize: "12px",
   lineHeight: "19.2px",
   letterSpacing: 0,
   userSelect: "none",
-}));
+});
 
 export const NewsCardBody = styled(Typography)(({ theme }) => ({
   fontFamily: redditSans.style.fontFamily,
