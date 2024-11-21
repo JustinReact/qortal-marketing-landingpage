@@ -8,13 +8,7 @@ import {
   Theme,
   Typography
 } from "@mui/material";
-import {
-  cairo,
-  futura,
-  oxygen,
-  redditSans,
-  segoeUI
-} from "../../app/fonts";
+import { cairo, futura, oxygen, redditSans, segoeUI } from "../../app/fonts";
 import Image from "next/image";
 import { CloseSVG } from "../Common/Icons/CloseSVG";
 import { AddPhotoSVG } from "../Common/Icons/AddPhotoSVG";
@@ -253,7 +247,7 @@ export const BlogPageTitle = styled(Typography)(({ theme }) => ({
   color: theme.palette.text.primary,
   userSelect: "none",
   textAlign: "center",
-  textShadow:  "0px 4px 4px rgba(0, 0, 0, 0.25)"
+  textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)"
 }));
 
 export const BlogPostsContainer = styled(Box)({
@@ -267,16 +261,16 @@ export const BlogPostsContainer = styled(Box)({
 });
 
 export const BlogPostCard = styled(Box)(({ theme }) => ({
-  width: "368px",
-  height: "600px",
-  borderRadius: 0,
+  position: "relative",
   display: "flex",
   flexDirection: "column",
-  gap: "5px",
-  transition: "all 0.3s ease-in-out",
+  gap: "12px",
+  width: "368px",
+  height: "382px",
+  margin: "0 auto",
   ":hover": {
     cursor: "pointer"
-  },
+  }
 }));
 
 export const BlogSubContainer = styled(Box)({
@@ -296,31 +290,33 @@ export const BlogPostImage = styled(Image)({
   userSelect: "none"
 });
 
-export const BlogPostTitle = styled(Typography)(({ theme }) => ({
+export const BlogPostTitle = styled(Typography)({
+  textOverflow: "ellipsis",
+  overflow: "hidden",
+  whiteSpace: "nowrap",
   fontFamily: redditSans.style.fontFamily,
-  fontWeight: "bold",
-  fontSize: "30px",
-  lineHeight: "1.2",
-  color: theme.palette.text.primary,
-  marginTop: "10px",
-  marginBottom: "10px",
+  color: "#0088CC",
+  fontWeight: 400,
+  fontSize: "16px",
+  lineHeight: "25.6px",
+  letterSpacing: 0,
   userSelect: "none"
-}));
+});
 
 export const BlogPostBody = styled(Box)(({ theme }) => ({
   fontFamily: redditSans.style.fontFamily,
-  fontWeight: "400",
-  fontSize: "18px",
-  color: theme.palette.text.primary,
+  color: theme.palette.mode === "light" ? "#333333" : "#888888",
+  fontWeight: 400,
+  fontSize: "13px",
+  lineHeight: "22.4px",
+  letterSpacing: 0,
   userSelect: "none",
-  maxHeight: "170px" /* This will limit the height of the content */,
-  overflow: "hidden" /* Hide the overflowing content */,
   display:
-    "-webkit-box" /* Required for applying ellipsis on multiline content */,
-  WebkitBoxOrient: "vertical" /* Set the box orientation */,
-  WebkitLineClamp:
-    "9" /* Adjust this value to the number of lines you want to display */,
-  textOverflow: "ellipsis" /* Add ellipsis for overflowed content */
+    "-webkit-box" /* Ensures multiline content is treated as a block container */,
+  WebkitBoxOrient: "vertical" /* Required for clamping */,
+  WebkitLineClamp: 4 /* Adjust this number to the desired number of lines */,
+  overflow: "hidden" /* Hides the overflowing content */,
+  textOverflow: "ellipsis" /* Adds the ellipsis when content overflows */
 }));
 
 export const BlogDateAndCategoryCol = styled(Box)({
@@ -339,10 +335,15 @@ export const Divider = styled(Box)(({ theme }) => ({
 }));
 
 export const BlogPostDate = styled(Typography)(({ theme }) => ({
+  position: "absolute",
+  bottom: "5px",
+  left: "10px",
   fontFamily: redditSans.style.fontFamily,
-  fontSize: "17px",
-  color:
-    theme.palette.mode === "light" ? theme.palette.secondary.main : "#ffffff",
+  color: "#888888",
+  fontWeight: 400,
+  fontSize: "12px",
+  lineHeight: "19.2px",
+  letterSpacing: 0,
   userSelect: "none"
 }));
 
@@ -357,7 +358,7 @@ export const BlogPostCategory = styled(Typography)(({ theme }) => ({
   textTransform: "uppercase",
   fontFamily: segoeUI.style.fontFamily,
   fontWeight: "400",
-  letterSpacing: "0.24px",  
+  letterSpacing: "0.24px",
   fontSize: "14px",
   color: theme.palette.text.primary,
   backgroundColor: theme.palette.primary.dark,

@@ -63,6 +63,9 @@ const BlogPostsClient: React.FC<BlogPostsClientProps> = ({ blogs }) => {
                 <BlogPostTitle>{blog.title}</BlogPostTitle>
                 <BlogPostBody>{parse(blog.body)}</BlogPostBody>
               </BlogSubContainer>
+              <BlogPostDate>
+                {formatDateWithSuffix(blog.created)}
+              </BlogPostDate>
             </BlogPostCard>
           ))}
       </BlogPostsContainer>
