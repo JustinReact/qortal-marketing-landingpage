@@ -67,7 +67,8 @@ export const DownloadCard = styled(Box)(({ theme }) => ({
     boxShadow:
       theme.palette.mode === "light"
         ? "0px 6px 10px 0px hsla(0,0%,0%,0.14), 0px 1px 18px 0px hsla(0,0%,0%,0.12), 0px 3px 5px -1px hsla(0,0%,0%,0.2)"
-        : "0px 12px 17px 2px hsla(0, 0%, 100%, 0.08), 0px 5px 22px 4px hsla(0, 0%, 100%, 0.09), 0px 7px 8px -4px hsla(0, 0%, 100%, 0.2),  0px 0px 10px rgba(255, 255, 255, 0.1)"
+        : "0px 12px 17px 2px hsla(0, 0%, 100%, 0.08), 0px 5px 22px 4px hsla(0, 0%, 100%, 0.09), 0px 7px 8px -4px hsla(0, 0%, 100%, 0.2),  0px 0px 10px rgba(255, 255, 255, 0.1)",
+    backgroundColor: theme.palette.mode === "dark" ? "#56AEFF" : "#003E78"
   },
   [theme.breakpoints.down("md")]: {
     width: "80%"
@@ -101,7 +102,7 @@ export const DownloadText = styled(Typography)(({ theme }) => ({
   },
   "@media(max-width: 1127px)": {
     fontSize: "30px"
-  },
+  }
 }));
 
 export const DownloadText1 = styled(Typography)(({ theme }) => ({
@@ -144,19 +145,19 @@ export const ScreenshotContainer = styled(Grid)(({ theme }) => ({
   "@media(max-width: 1127px)": {
     padding: "0 10px",
     marginTop: "50px"
-  },
+  }
 }));
 
 export const ScreenshotCol = styled(Grid)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
-  justifyContent: "center",
+  justifyContent: "center"
 }));
 
 export const Screenshot1 = styled(Image)(({ theme }) => ({
   width: "100%",
   height: "auto",
-  objectFit: "contain",
+  objectFit: "contain"
 }));
 
 export const Screenshot2 = styled(Image)(({ theme }) => ({
@@ -166,14 +167,14 @@ export const Screenshot2 = styled(Image)(({ theme }) => ({
   transform: "translateY(50px)",
   [theme.breakpoints.down("md")]: {
     transform: "translateY(0px)",
-    width: "50%",
-  },
+    width: "50%"
+  }
 }));
 
 export const Screenshot3 = styled(Image)(({ theme }) => ({
   width: "100%",
   height: "auto",
-  objectFit: "contain",
+  objectFit: "contain"
 }));
 
 export const DownloadNowText = styled(Typography)(({ theme }) => ({
@@ -186,6 +187,6 @@ export const DownloadNowText = styled(Typography)(({ theme }) => ({
   marginTop: "200px",
   textAlign: "center",
   [theme.breakpoints.down("md")]: {
-    marginTop: "70px",
-  },
+    marginTop: "70px"
+  }
 }));

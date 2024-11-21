@@ -112,10 +112,6 @@ const Downloads = () => {
             Qortal <span style={{ fontWeight: "bold" }}>Extension</span>
           </DownloadText>
           <DownloadCard
-            style={{
-              backgroundColor:
-                theme.palette.mode === "dark" ? "#56AEFF" : "#003E78"
-            }}
             aria-label="Redirect to the Chrome Web Store"
             tabIndex={0}
             onClick={() => {
