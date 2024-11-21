@@ -22,7 +22,7 @@ export const Wrapper = styled("div")(({ theme }) => ({
       backgroundRepeat: "no-repeat",
       backgroundSize: "40% auto",
       backgroundPosition: "top -100px left -100px",
-      filter: "grayscale(100%) opacity(45%)",
+      filter: "grayscale(100%) opacity(26%)",
       opacity: 0.1,
       zIndex: -1,
       "@media (max-width: 600px)": {

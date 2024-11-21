@@ -17,6 +17,17 @@ export const HeaderNav = styled(Box)(({ theme }) => ({
   width: "100%",
   padding: "0 30px",
   height: "125px",
+  "&::before": {
+    content: "''",
+    backgroundColor: theme.palette.background.default,
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    zIndex: -1,
+    margin: "0 -16px"
+  },
   [theme.breakpoints.only("xs")]: {
     height: "120px",
     padding: "0"

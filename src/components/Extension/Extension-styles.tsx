@@ -77,7 +77,7 @@ export const ExtensionScreenshotsImg = styled(Image)(({ theme }) => ({
   "@media(max-width: 1444px)": {
     width: "80%"
   },
-  "@media(max-width: 1216px)": {
+  "@media(max-width: 1304px)": {
     width: "50%",
     height: "auto"
   },
