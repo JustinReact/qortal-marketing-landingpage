@@ -227,3 +227,18 @@ export const lucidaSans = localFont({
   style: 'normal',
   display: 'swap',
 });
+
+export const segoeUI = localFont({
+  src: [
+    {
+      path: '../../public/fonts/Segoe UI.ttf',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../../public/fonts/Segoe UI Bold.ttf',
+      weight: '450',
+      style: 'normal',
+    }
+  ] 
+});

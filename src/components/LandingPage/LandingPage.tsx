@@ -16,21 +16,34 @@ import {
   QortalWalletText,
   QortalWalletText2,
   SubHeader,
+  SubHeaderBox,
+  SubHeaderBoxImage,
+  TopCard1,
+  TopCard2,
+  TopCard3,
+  TopCardImage,
+  TopCardSubContainer,
+  TopCardSubTitle,
+  TopCardTitle,
   TopFold,
   TopFoldButtonRow,
   TopFoldCol,
   TopFoldRow,
-  TopImageRow
-} from "../../components/Extension/Extension-styles";
-import { YoutubeVideoContainer } from "../../components/Qort/QORTPage-styles";
-import { YoutubePlaceholder } from "../../components/YouTube/YoutubePlaceholder";
+  TopFoldWordCol,
+  TopCardRow,
+  VideoBox
+} from "../../components/LandingPage/LandingPage-styles";
+import { YoutubeVideoContainer } from "../Qort/QORTPage-styles";
+import { YoutubePlaceholder } from "../YouTube/YoutubePlaceholder";
 import { BridgeSVG } from "../Common/Icons/BridgeSVG";
-import { useTheme } from "@mui/material";
+import { Typography, useTheme } from "@mui/material";
 import QonnectFour from "../QonnectFour/QonnectFour";
 import Features from "../Features/Features";
+import { useRouter } from "next/navigation";
 
-const Extension = () => {
+const LandingPage = () => {
   const theme = useTheme();
+  const router = useRouter();
   const extensionExplanationRef = useRef<HTMLDivElement | null>(null);
 
   const [showVideoPlayer, setShowVideoPlayer] = useState<boolean>(false);
@@ -51,68 +64,122 @@ const Extension = () => {
 
   return (
     <Container>
-      <TopFold container>
-        <TopFoldCol item md={12} lg={7}>
+      <TopFold>
+        <TopFoldCol>
           <TopFoldRow>
-            <SubHeader>INTRODUCING THE</SubHeader>
+            <Header>QORTAL</Header>
           </TopFoldRow>
           <TopFoldRow>
-            <Header>QORTAL BROWSER EXTENSION</Header>
+            <Header style={{ color: "#0085FF" }}>ECOSYSTEM</Header>
           </TopFoldRow>
         </TopFoldCol>
-        <TopImageRow>
-          <ExtensionScreenshotsImg
-            src="/images/Extension/ExtensionScreenshots.png"
-            alt="Screenshots of the Qortal Browser Extension"
-            width={700}
-            height={1000}
+        <TopFoldWordCol>
+          <TopFoldRow>
+            <SubHeader>
+              <Typography>REDEFINING</Typography>
+              <SubHeaderBox>
+                THE REGULAR INTERNET
+                <SubHeaderBoxImage
+                  src={"/images/LandingPage/SpellingMistakeLine.png"}
+                  quality={100}
+                  width={594}
+                  height={43}
+                  alt={""}
+                />
+              </SubHeaderBox>
+            </SubHeader>
+          </TopFoldRow>
+          <TopFoldRow>
+            <SubHeader>
+              <Typography>PIONEERING</Typography>
+              <Typography style={{ fontWeight: "bold" }}>
+                THE NEW INTERNET
+              </Typography>
+            </SubHeader>
+          </TopFoldRow>
+        </TopFoldWordCol>
+      </TopFold>
+      <TopCardRow>
+        <TopCard1>
+          <TopCardSubContainer>
+            <TopCardTitle>COMMUNICATION</TopCardTitle>
+            <TopCardSubTitle>Group-Encrypted Chats</TopCardSubTitle>
+          </TopCardSubContainer>
+          <TopCardImage
+            src={"/images/Features/GroupEncryptedChats.png"}
+            alt="Qortal Group Encrypted Chat Screenshot"
+            width={1000}
+            height={600}
             quality={100}
-            priority={true}
           />
-          <TopFoldCol>
-            <TopFoldRow>
-              <SubHeader>ITS MISSION:</SubHeader>
-            </TopFoldRow>
-            <TopFoldRow style={{ gap: "5px" }}>
-              <SubHeader style={{ color: "#0085FF" }}>WEB2</SubHeader>
-              <BridgeSVG
-                height={"70"}
-                width={"70"}
-                color={theme.palette.text.primary}
-              />
-              <SubHeader style={{ color: "#0085FF" }}>WEB3</SubHeader>
-            </TopFoldRow>
-            <TopFoldButtonRow>
-              <CTAButton1
-                onClick={() => {
-                  ReactGA.event({
-                    category: "User",
-                    action: "Clicked Learn How Button",
-                    label: "Learn How Button"
-                  });
-                  scrollToExplanation();
-                }}
-              >
-                LEARN HOW
-              </CTAButton1>
-              <CTAButton2
-                onClick={() => {
-                  ReactGA.event({
-                    category: "User",
-                    action: "Clicked Download Extension Button",
-                    label: "Download Extension Button"
-                  });
-                  window.open(
-                    "https://bit.ly/qortal-chrome-extension",
-                    "_blank"
-                  );
-                }}
-              >
-                INSTALL
-              </CTAButton2>
-            </TopFoldButtonRow>
-          </TopFoldCol>
-        </TopImageRow>
+        </TopCard1>
+        <TopCard2>
+          <TopCardSubContainer>
+            <TopCardTitle>SOFTWARE DEVELOPMENT</TopCardTitle>
+            <TopCardSubTitle>Q-Apps</TopCardSubTitle>
+          </TopCardSubContainer>
+          <TopCardImage
+            src={"/images/Downloads/TrifectaScreenshot1.png"}
+            alt="Qortal Q-Apps Screenshot"
+            width={1000}
+            height={600}
+            quality={100}
+          />
+        </TopCard2>
+        <TopCard3>
+          <TopCardSubContainer>
+            <TopCardTitle>CRYPTO</TopCardTitle>
+            <TopCardSubTitle>Trading Platform & QORT</TopCardSubTitle>
+          </TopCardSubContainer>
+          <TopCardImage
+            src={"/images/Downloads/TrifectaScreenshot1.png"}
+            alt="Qortal Q-Apps Screenshot"
+            width={1000}
+            height={600}
+            quality={100}
+          />
+        </TopCard3>
+        <TopCard3>
+          <TopCardSubContainer>
+            <TopCardTitle>CRYPTO</TopCardTitle>
+            <TopCardSubTitle>Trading Platform & QORT</TopCardSubTitle>
+          </TopCardSubContainer>
+          <TopCardImage
+            src={"/images/Downloads/TrifectaScreenshot1.png"}
+            alt="Qortal Q-Apps Screenshot"
+            width={1000}
+            height={600}
+            quality={100}
+          />
+        </TopCard3>
+      </TopCardRow>
+      <TopFoldButtonRow>
+        <CTAButton1
+          onClick={() => {
+            ReactGA.event({
+              category: "User",
+              action: "Clicked Learn How Button",
+              label: "Learn How Button"
+            });
+            scrollToExplanation();
+          }}
+        >
+          LEARN HOW
+        </CTAButton1>
+        <CTAButton2
+          onClick={() => {
+            ReactGA.event({
+              category: "User",
+              action: "Clicked Download Extension Button",
+              label: "Download Extension Button"
+            });
+            router.push("/downloads");
+          }}
+        >
+          DOWNLOAD
+        </CTAButton2>
+      </TopFoldButtonRow>
+      <VideoBox>
         <YoutubeVideoContainer>
           {showVideoPlayer ? (
             <iframe
@@ -133,7 +200,7 @@ const Extension = () => {
             />
           )}
         </YoutubeVideoContainer>
-      </TopFold>
+      </VideoBox>
       {/* <QonnectFour /> */}
       <Features />
       <QortalWalletSection ref={extensionExplanationRef}>
@@ -148,10 +215,10 @@ const Extension = () => {
           </a>
           : Bridging WEB2 and WEB3
         </QortalWalletHeader>
-        <QortalWalletCards >
+        <QortalWalletCards>
           <QortalWalletCard>
             <QortalWalletCardImage
-              src={"/images/Extension/QortalExtensionScreenshot1.png"}
+              src={"/images/LandingPage/QortalExtensionScreenshot1.png"}
               alt="Qortal Extension Screenshot"
               width={500}
               height={500}
@@ -159,7 +226,7 @@ const Extension = () => {
           </QortalWalletCard>
           <QortalWalletCard>
             <QortalWalletCardImage
-              src={"/images/Extension/QortalExtensionScreenshot2.png"}
+              src={"/images/LandingPage/QortalExtensionScreenshot2.png"}
               alt="Second Qortal Extension Screenshot"
               width={500}
               height={500}
@@ -167,7 +234,7 @@ const Extension = () => {
           </QortalWalletCard>
           <QortalWalletCard>
             <QortalWalletCardImage
-              src={"/images/Extension/QortalExtensionScreenshot3.png"}
+              src={"/images/LandingPage/QortalExtensionScreenshot3.png"}
               alt="Third Qortal Extension Screenshot"
               width={500}
               height={500}
@@ -206,7 +273,7 @@ const Extension = () => {
         <QortalWalletCards>
           <QortalWalletCard>
             <QortalWalletCardImage
-              src={"/images/Extension/QortalExtensionScreenshot4.png"}
+              src={"/images/LandingPage/QortalExtensionScreenshot4.png"}
               alt="Fourth Extension Screenshot"
               width={500}
               height={500}
@@ -214,7 +281,7 @@ const Extension = () => {
           </QortalWalletCard>
           <QortalWalletCard>
             <QortalWalletCardImage
-              src={"/images/Extension/QortalExtensionScreenshot5.png"}
+              src={"/images/LandingPage/QortalExtensionScreenshot5.png"}
               alt="Fifth Qortal Extension Screenshot"
               width={500}
               height={500}
@@ -222,7 +289,7 @@ const Extension = () => {
           </QortalWalletCard>
           <QortalWalletCard>
             <QortalWalletCardImage
-              src={"/images/Extension/QortalExtensionScreenshot6.png"}
+              src={"/images/LandingPage/QortalExtensionScreenshot6.png"}
               alt="Sixth Qortal Extension Screenshot"
               width={500}
               height={500}
@@ -238,4 +305,4 @@ const Extension = () => {
   );
 };
 
-export default Extension;
+export default LandingPage;
