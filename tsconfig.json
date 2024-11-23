@@ -30,9 +30,10 @@
     "src",
     "./dist/types/**/*.ts",
     "./next-env.d.ts",
-    "./build/types/**/*.ts"
+    "./build/types/**/*.ts",
+    "./src/theme.d.ts"
   ],
   "exclude": [
     "./node_modules"
-  ]
+  ],
 }

@@ -12,7 +12,7 @@ const doubleCaretRightAnimation = keyframes`
       fill: #ffffff05;
     }
     50% {
-      fill: #0085ff;
+      fill: "#0085FF";
   }
 `;
 
@@ -36,7 +36,7 @@ export const QonnectFourHeader = styled(Typography)(({ theme }) => ({
   userSelect: "none",
   "& a": {
     cursor: "pointer",
-    color: "#0085FF",
+    color: theme.palette.customBlue.main,
     textDecoration: "none"
   },
   [theme.breakpoints.down("md")]: {
@@ -143,7 +143,7 @@ export const BubbleCard = styled(Box)(({ theme }) => ({
 export const BubbleCardColored = styled(Box)(({ theme }) => ({
   height: "77px",
   width: "77px",
-  background: "#0085FF",
+  background: theme.palette.customBlue.main,
   boxShadow: "0px 0px 25.8px -1px #1C5A93",
   borderRadius: "50%",
   [theme.breakpoints.down("md")]: {
@@ -174,7 +174,7 @@ export const StyledSlider = styled(Slider)(({ theme }) => ({
     width: "77px",
     height: "77px",
     zIndex: 2,
-    background: "#0085FF",
+    background: theme.palette.customBlue.main,
     [theme.breakpoints.down("md")]: {
       width: "67px",
       height: "67px",

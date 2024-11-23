@@ -1,18 +1,17 @@
 "use client";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ReactGA from "react-ga4";
 import {
   CTAButton1,
   CTAButton2,
   Container,
-  ExtensionScreenshotsImg,
   Header,
   QortalWalletCard,
   QortalWalletCardImage,
   QortalWalletCards,
   QortalWalletDescription,
   QortalWalletHeader,
-  QortalWalletSection,
+  QortalFeaturesSection,
   QortalWalletText,
   QortalWalletText2,
   SubHeader,
@@ -31,26 +30,30 @@ import {
   TopFoldRow,
   TopFoldWordCol,
   TopCardRow,
-  VideoBox
+  VideoBox,
+  TopOfPageRef,
+  MiddleOfPageRef,
+  ScrollToTopButton
 } from "../../components/LandingPage/LandingPage-styles";
 import { YoutubeVideoContainer } from "../Qort/QORTPage-styles";
 import { YoutubePlaceholder } from "../YouTube/YoutubePlaceholder";
-import { BridgeSVG } from "../Common/Icons/BridgeSVG";
 import { Typography, useTheme } from "@mui/material";
-import QonnectFour from "../QonnectFour/QonnectFour";
 import Features from "../Features/Features";
 import { useRouter } from "next/navigation";
 
 const LandingPage = () => {
   const theme = useTheme();
   const router = useRouter();
-  const extensionExplanationRef = useRef<HTMLDivElement | null>(null);
+  const qortalFeaturesRef = useRef<HTMLDivElement | null>(null);
+  const topOfPageRef = useRef<HTMLDivElement | null>(null); 
+  const middleOfPageRef = useRef<HTMLDivElement | null>(null);
 
   const [showVideoPlayer, setShowVideoPlayer] = useState<boolean>(false);
+  const [showButton, setShowButton] = useState(false);
 
   const scrollToExplanation = () => {
-    if (extensionExplanationRef?.current) {
-      extensionExplanationRef?.current.scrollIntoView({
+    if (qortalFeaturesRef?.current) {
+      qortalFeaturesRef?.current.scrollIntoView({
         behavior: "smooth",
         block: "start",
         inline: "nearest"
@@ -62,15 +65,47 @@ const LandingPage = () => {
     setShowVideoPlayer((prevState) => !prevState);
   };
 
+  // Intersection observer to show scroll to top button
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!middleOfPageRef.current) return;
+      const rect = middleOfPageRef.current?.getBoundingClientRect();
+      const isScrolledPast = rect && rect.top < 0; // Element is above the viewport
+      const notAtTop = window.scrollY > 0; // User is not at the top of the page
+
+      // Show button only if the user has scrolled past the element and is not at the top
+      setShowButton(isScrolledPast && notAtTop);
+    };
+
+    // Listen for scroll events
+    window.addEventListener("scroll", handleScroll);
+
+    // Run on mount to initialize state
+    handleScroll();
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const scrollToTop = () => {
+    if (topOfPageRef.current) {
+      topOfPageRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <Container>
+      <TopOfPageRef ref={topOfPageRef} />
       <TopFold>
         <TopFoldCol>
           <TopFoldRow>
             <Header>QORTAL</Header>
           </TopFoldRow>
           <TopFoldRow>
-            <Header style={{ color: "#0085FF" }}>ECOSYSTEM</Header>
+            <Header style={{ color: theme.palette.customBlue.main }}>
+              ECOSYSTEM
+            </Header>
           </TopFoldRow>
         </TopFoldCol>
         <TopFoldWordCol>
@@ -203,7 +238,8 @@ const LandingPage = () => {
       </VideoBox>
       {/* <QonnectFour /> */}
       <Features />
-      <QortalWalletSection ref={extensionExplanationRef}>
+      <QortalFeaturesSection ref={qortalFeaturesRef}>
+        <MiddleOfPageRef ref={middleOfPageRef} />
         <QortalWalletHeader>
           <a
             href="https://bit.ly/qortal-chrome-extension"
@@ -300,7 +336,12 @@ const LandingPage = () => {
           Experience the future of decentralized finance with Qortal Wallet
           <br /> Where the power of WEB3 meets the convenience of WEB2
         </QortalWalletText2>
-      </QortalWalletSection>
+      </QortalFeaturesSection>
+      {showButton && (
+        <ScrollToTopButton onClick={scrollToTop}>
+          BACK TO THE TOP
+        </ScrollToTopButton>
+      )}
     </Container>
   );
 };

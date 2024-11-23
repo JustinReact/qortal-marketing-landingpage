@@ -4,15 +4,11 @@ import ReactGA from "react-ga4";
 import {
   HeaderNav,
   NewsButton,
-  TriangleIcon,
-  TriangleContainer,
   ThemeSelectRow,
   QortalLogoContainer,
   HeaderButtonsRow,
   Docs,
   HamburgerIcon,
-  BackHomeButton,
-  DocsNavContainer,
   BlogButton,
   QORTButton,
   QortalText,
@@ -41,20 +37,7 @@ export const Header = () => {
   const [openMobileDrawer, setOpenMobileDrawer] = useState<boolean>(false);
 
   const renderHeader = () => {
-    if (location === "/docs/extension" || location === "/docs/q-apps") {
-      return (
-        <DocsNavContainer>
-          <BackHomeButton
-            onClick={() => {
-              router.push("/");
-            }}
-          >
-            <BackArrowSVG color={"#ffffff"} height={"22"} width={"22"} />
-            Back Home
-          </BackHomeButton>
-        </DocsNavContainer>
-      );
-    } else {
+    if (location !== "/docs/extension" && location !== "/docs/q-apps") {
       return (
         <HeaderNav>
           <Divider />

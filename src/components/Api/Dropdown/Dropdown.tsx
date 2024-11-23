@@ -4,8 +4,8 @@ import Menu, { MenuProps } from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { DocState } from "../../../constants/enums";
-import { BackHomeButton } from "../../Layout/Header/Header-styles";
 import { useRouter } from "next/navigation";
+import { DropdownButton } from "./Dropdown-styles";
 
 const StyledMenu = styled((props: MenuProps) => (
   <Menu
@@ -68,7 +68,7 @@ export default function Dropdown({ docState }: PDropdown) {
 
   return (
     <div>
-      <BackHomeButton
+      <DropdownButton
         id="demo-customized-button"
         aria-controls={open ? "demo-customized-menu" : undefined}
         aria-haspopup="true"
@@ -80,7 +80,7 @@ export default function Dropdown({ docState }: PDropdown) {
       >
         {docState === DocState.Q_APPS && "Q-Apps"}
         {docState === DocState.EXTENSION && "Extension"}
-      </BackHomeButton>
+      </DropdownButton>
       <StyledMenu
         id="demo-customized-menu"
         MenuListProps={{

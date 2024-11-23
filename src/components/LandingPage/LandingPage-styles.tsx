@@ -1,9 +1,10 @@
-import { lineHeight, styled } from "@mui/system";
+import { styled } from "@mui/system";
 import { Box, Button, Typography } from "@mui/material";
 import Image from "next/image";
 import { futura, segoeUI } from "../../app/fonts";
 
 export const Container = styled(Box)(({ theme }) => ({
+  position: "relative",
   display: "flex",
   flexDirection: "column",
   padding: "40px 60px 14px 60px",
@@ -184,22 +185,22 @@ export const TopCardRow = styled(Box)(({ theme }) => ({
     backgroundColor: `${theme.palette.background.default} !important`
   },
   "&::-webkit-scrollbar-track:hover": {
-        backgroundColor: `${theme.palette.background.default} !important`
+    backgroundColor: `${theme.palette.background.default} !important`
   },
   "&::-webkit-scrollbar": {
     width: "16px !important",
     height: "15px !important",
-        backgroundColor: `${theme.palette.background.default} !important`
+    backgroundColor: `${theme.palette.background.default} !important`
   },
   "&::-webkit-scrollbar-thumb": {
-    backgroundColor: "#115bc5 !important",
+    backgroundColor: `${theme.palette.customBlue.main} !important`,
     borderRadius: "8px !important",
     backgroundClip: "content-box !important",
     border: "4px solid transparent !important"
   },
   "&::-webkit-scrollbar-thumb:hover": {
-    backgroundColor: "#1153af !important"
-  },
+    backgroundColor: "#0478e4 !important"
+  }
 }));
 
 export const TopCard1 = styled(Box)(({ theme }) => ({
@@ -364,7 +365,7 @@ export const TopFoldButtonRow = styled(Box)(({ theme }) => ({
   justifyContent: "center",
   marginTop: "25px",
   gap: "30px",
-  marginBottom: "150px",  
+  marginBottom: "150px",
   [theme.breakpoints.down("lg")]: {
     justifyContent: "center"
   },
@@ -392,8 +393,8 @@ export const CTAButton1 = styled(Button)(({ theme }) => ({
   cursor: "pointer",
   transition: "all 0.3s ease-in-out",
   "&:hover": {
-    backgroundColor: "#0085FF",
-    border: `1px solid #0085FF`,
+    backgroundColor: theme.palette.customBlue.main,
+    border: `1px solid ${theme.palette.customBlue.main}`,
     color: "#ffffff"
   },
   [theme.breakpoints.down("sm")]: {
@@ -411,14 +412,14 @@ export const CTAButton2 = styled(Button)(({ theme }) => ({
   padding: "10px 30px 10px 30px",
   gap: "7px",
   borderRadius: "30px",
-  border: "1px solid #0085FF",
+  border: `1px solid ${theme.palette.customBlue.main}`,
   color: "#ffffff",
-  backgroundColor: "#0085FF",
+  backgroundColor: theme.palette.customBlue.main,
   cursor: "pointer",
   boxShadow: "1px 4px 10.5px 0px #0000004D",
   transition: "all 0.3s ease-in-out",
   "&:hover": {
-    backgroundColor: "#0085FF",
+    backgroundColor: theme.palette.customBlue.main,
     color: "#ffffff",
     boxShadow:
       /* offset-x | offset-y | blur-radius | spread-radius | color */
@@ -439,7 +440,8 @@ export const ExtensionDesignImage = styled("img")(({ theme }) => ({
   }
 }));
 
-export const QortalWalletSection = styled(Box)(({ theme }) => ({
+export const QortalFeaturesSection = styled(Box)(({ theme }) => ({
+  position: "relative",
   display: "flex",
   alignItems: "center",
   flexDirection: "column",
@@ -459,7 +461,7 @@ export const QortalWalletHeader = styled(Typography)(({ theme }) => ({
   userSelect: "none",
   "& a": {
     cursor: "pointer",
-    color: "#0085FF",
+    color: theme.palette.customBlue.main,
     textDecoration: "none"
   },
   [theme.breakpoints.down("md")]: {
@@ -543,3 +545,42 @@ export const QortalWalletText2 = styled(Typography)(({ theme }) => ({
     lineHeight: "32.27px"
   }
 }));
+
+export const ScrollToTopButton = styled(Box)(({ theme }) => ({
+  position: "fixed",
+  bottom: "20px",
+  right: "20px",
+  backgroundColor: theme.palette.background.default,
+  border: `1px solid ${theme.palette.text.primary}`,
+  width: "181px",
+  height: "43px",
+  borderRadius: "25px",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  fontFamily: futura.style.fontFamily,
+  fontSize: "16px",
+  fontWeight: "500",
+  lineHeight: "21.3px",
+  transition: "all 0.3s ease-in-out",
+  zIndex: 20,
+  "&:hover": {
+    cursor: "pointer",
+    filter: "brightness(0.85)"
+  },
+  [theme.breakpoints.down("sm")]: {
+    right: "60px"
+  }  
+}));
+
+export const TopOfPageRef = styled("div")({
+  position: "absolute",
+  top: "-125px",
+  height: "1px"
+});
+
+export const MiddleOfPageRef = styled("div")({
+  position: "absolute",
+  top: "0px",
+  height: "1px"
+});

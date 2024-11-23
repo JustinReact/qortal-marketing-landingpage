@@ -97,6 +97,9 @@ const lightTheme = createTheme({
     text: {
       primary: "#000000",
       secondary: "#525252"
+    },
+    customBlue: {
+      main: "#0085FF"
     }
   },
   components: {
@@ -114,13 +117,13 @@ const lightTheme = createTheme({
           backgroundColor: "#fcfbfd"
         },
         "body::-webkit-scrollbar-thumb": {
-          backgroundColor: "#115bc5",
+          backgroundColor: "#0085FF",
           borderRadius: "8px",
           backgroundClip: "content-box",
           border: "4px solid transparent"
         },
         "body::-webkit-scrollbar-thumb:hover": {
-          backgroundColor: "#1153af"
+          backgroundColor: "#0478e4"
         }
       }
     },
@@ -186,6 +189,9 @@ const darkTheme = createTheme({
     text: {
       primary: "#ffffff",
       secondary: "#525252"
+    },
+    customBlue: {
+      main: "#0085FF"
     }
   },
   components: {
@@ -203,13 +209,13 @@ const darkTheme = createTheme({
           backgroundColor: "#060a1e"
         },
         "body::-webkit-scrollbar-thumb": {
-          backgroundColor: "#5657b1",
+          backgroundColor: "#0085FF",
           borderRadius: "8px",
           backgroundClip: "content-box",
           border: "4px solid transparent"
         },
         "body::-webkit-scrollbar-thumb:hover": {
-          backgroundColor: "#4e50a1"
+          backgroundColor: "#0478e4"
         }
       }
     },

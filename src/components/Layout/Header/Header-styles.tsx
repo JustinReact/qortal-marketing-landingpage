@@ -69,21 +69,6 @@ export const QortalText = styled(Typography)(({ theme }) => ({
   fontSize: "40px"
 }));
 
-export const BackHomeButton = styled(Button)(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  fontFamily: oxygen.style.fontFamily,
-  fontSize: "16px",
-  gap: "4px",
-  padding: "5px 9px",
-  backgroundColor: theme.palette.secondary.light,
-  color: "white",
-  "&:hover": {
-    backgroundColor: theme.palette.secondary.light
-  }
-}));
-
 export const HeaderButtonsRow = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
@@ -137,14 +122,6 @@ export const NewsButton = styled(Link)(({ theme }) => ({
       bottom: "3px"
     }
   }
-}));
-
-export const DocsNavContainer = styled(Box)(({ theme }) => ({
-  display: "flex",
-  flexDirection: "row",
-  alignItems: "center",
-  width: "100%",
-  justifyContent: "flex-end"
 }));
 
 export const Docs = styled(Link)(({ theme }) => ({

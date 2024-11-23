@@ -247,8 +247,8 @@ const Downloads = () => {
         </ScreenshotCol>
       </ScreenshotContainer>
       <DownloadNowText>
-        <span style={{ color: "#0085FF" }}>Install</span> now and
-        <br /> start your <span style={{ color: "#0085FF" }}>Journey</span>
+        <span style={{ color: theme.palette.customBlue.main }}>Install</span> now and
+        <br /> start your <span style={{ color: theme.palette.customBlue.main }}>Journey</span>
       </DownloadNowText>
     </Container>
   );
