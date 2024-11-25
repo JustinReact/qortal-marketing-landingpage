@@ -5,13 +5,15 @@ import {
   LoadingContainer,
   LoadingQortalLogo
 } from "../components/Common/Loader/Loader-styles";
+import { useTheme } from "@mui/material";
 
 const LoadingSpinner = () => {
+  const theme = useTheme();
   return (
     <LoadingContainer>
       {[...Array(4)].map((_, i) => (
         <LoadingQortalLogo delay={i * 0.5} key={i}>
-          <QortalSVG color="#fff" height={"80"} width={"80"} />
+          <QortalSVG color={theme.palette.text.primary} height={"80"} width={"80"} />
         </LoadingQortalLogo>
       ))}
     </LoadingContainer>

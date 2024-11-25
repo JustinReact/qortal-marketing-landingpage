@@ -2,6 +2,7 @@ import { styled } from "@mui/system";
 import { Box, Button, Typography } from "@mui/material";
 import Image from "next/image";
 import { futura, segoeUI } from "../../app/fonts";
+import Link from "next/link";
 
 export const Container = styled(Box)(({ theme }) => ({
   position: "relative",
@@ -315,6 +316,43 @@ export const TopCard3 = styled(Box)(({ theme }) => ({
   }
 }));
 
+export const TopCard4 = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "flex-end",
+  position: "relative", // Needed for pseudo-element positioning
+  borderRadius: "22px",
+  width: "360px",
+  height: "496px",
+  border: "1px solid #424242",
+  cursor: "pointer",
+  overflow: "hidden", // Ensure no content spills out
+  background: "linear-gradient(90deg, #ffffff 0%, #ffffff 100%)", // Default gradient (solid white)
+  transition: "all 0.3s cubic-bezier(.22, .68, 0, 1.71)", // Fallback for unsupported pseudo-elements
+  zIndex: 1,
+  "&::before": {
+    content: '""',
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    background: `url('/images/LandingPage/RedCardBanner.png'), linear-gradient(90deg, #ffffff 0%, #FF9EA0 100%)`,
+    opacity: 0, // Hidden by default
+    transition: "opacity 0.3s ease-in-out", // Smooth fade-in
+    zIndex: -1, // Place it above the base background
+    backgroundSize: "contain",
+    backgroundPosition: "top right"
+  },
+  "&:hover::before": {
+    opacity: 1 // Make hover gradient visible
+  },
+  "&:hover": {
+    transform: "translateY(-20px)"
+  }
+}));
+
 export const TopCardSubContainer = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
@@ -446,104 +484,290 @@ export const QortalFeaturesSection = styled(Box)(({ theme }) => ({
   alignItems: "center",
   flexDirection: "column",
   gap: "100px",
-  [theme.breakpoints.down("lg")]: {
-    gap: "15px"
-  }
+  marginTop: "145px"
 }));
 
-export const QortalWalletHeader = styled(Typography)(({ theme }) => ({
-  fontFamily: futura.style.fontFamily,
-  fontSize: "48px",
-  fontWeight: 500,
-  lineHeight: "63.91px",
-  letterSpacing: "0.05em",
-  color: theme.palette.text.primary,
-  userSelect: "none",
-  "& a": {
-    cursor: "pointer",
-    color: theme.palette.customBlue.main,
-    textDecoration: "none"
-  },
-  [theme.breakpoints.down("md")]: {
-    fontSize: "35px",
-    lineHeight: "52.27px",
-    textAlign: "center"
-  }
-}));
-
-export const QortalWalletCards = styled(Box)(({ theme }) => ({
-  display: "grid",
-  gridGap: "10px",
-  gridTemplateColumns: "repeat(3, 1fr)",
-  [theme.breakpoints.down("md")]: {
-    gridTemplateColumns: "repeat(2, 1fr)",
-    gridGap: "5px"
-  },
-  [theme.breakpoints.down("sm")]: {
-    gridTemplateColumns: "repeat(1, 1fr)",
-    gridGap: "10px"
-  }
-}));
-
-export const QortalWalletCard = styled(Box)(({ theme }) => ({
+export const GroupSection = styled(Box)(({ theme }) => ({
+  position: "relative",
   display: "flex",
-  alignItems: "center",
-  justifyContent: "center"
-}));
-
-export const QortalWalletCardImage = styled(Image)(({ theme }) => ({
-  width: "340px",
-  height: "auto",
-  objectFit: "contain",
-  [theme.breakpoints.down("lg")]: {
-    width: "250px"
+  flexDirection: "row",
+  gap: "5px",
+  padding: "223px 100px 153px 100px",
+  alignItems: "flex-start",
+  "&::before": {
+    content: '""',
+    position: "absolute",
+    top: 0,
+    left: "50%",
+    transform: "translateX(-50%)",
+    width: "calc(100vw - 16px)",
+    height: "100%",
+    backgroundImage: `url('/images/LandingPage/GreenSectionBanner.png')`,
+    backgroundSize: "contain",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "top",
+    zIndex: -1
   },
-  [theme.breakpoints.down("sm")]: {
-    width: "300px"
-  }
 }));
 
-export const QortalWalletDescription = styled(Box)(({ theme }) => ({
+export const QAppsSection = styled(Box)(({ theme }) => ({
+  position: "relative",
   display: "flex",
   flexDirection: "column",
-  gap: "50px",
-  width: "100%",
-  [theme.breakpoints.down("lg")]: {
-    gap: "25px"
-  }
-}));
-
-export const QortalWalletText = styled(Typography)(({ theme }) => ({
-  fontFamily: futura.style.fontFamily,
-  fontWeight: 300,
-  fontSize: "32px",
-  lineHeight: "42.27px",
-  letterSpacing: "0.05em",
-  color: theme.palette.text.primary,
-  userSelect: "none",
-  [theme.breakpoints.down("md")]: {
-    fontSize: "25px",
-    lineHeight: "32.27px",
-    textAlign: "center"
-  }
-}));
-
-export const QortalWalletText2 = styled(Typography)(({ theme }) => ({
-  fontFamily: futura.style.fontFamily,
-  fontSize: "48px",
-  lineHeight: "63.91px",
-  letterSpacing: "0.042em",
-  color: theme.palette.text.primary,
-  userSelect: "none",
-  [theme.breakpoints.down("md")]: {
-    fontSize: "35px",
-    lineHeight: "52.27px",
-    textAlign: "center"
+  padding: "223px 100px 153px 100px",
+  alignItems: "flex-start",
+  "&::before": {
+    content: '""',
+    position: "absolute",
+    top: 0,
+    left: "50%",
+    transform: "translateX(-50%)",
+    width: "calc(100vw - 16px)",
+    height: "100%",
+    backgroundImage: `url('/images/LandingPage/BlueSectionBanner.png')`,
+    backgroundSize: "contain",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "top",
+    zIndex: -1
   },
-  [theme.breakpoints.down("sm")]: {
-    fontSize: "25px",
-    lineHeight: "32.27px"
+}));
+
+export const QTradeSection = styled(Box)(({ theme }) => ({
+  position: "relative",
+  display: "flex",
+  flexDirection: "column",
+  padding: "223px 100px 153px 100px",
+  alignItems: "flex-start",
+  "&::before": {
+    content: '""',
+    position: "absolute",
+    top: 0,
+    left: "50%",
+    transform: "translateX(-50%)",
+    width: "calc(100vw - 16px)",
+    height: "100%",
+    backgroundImage: `url('/images/LandingPage/YellowSectionBanner.png')`,
+    backgroundSize: "contain",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "top",
+    zIndex: -1
+  },
+}));
+
+export const QAppsSectionRow = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "row",
+  alignItems: "flex-start",
+  width: "100%"
+}));
+
+export const SectionCol = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  width: "100%",
+  alignItems: "center",
+  justifyContent: "flex-start"
+}));
+
+export const GroupSectionImgBox = styled(Box)({
+  position: "relative",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  padding: "20px", // Add padding to extend the box dimensions
+  marginBottom: "120px",
+  "&::before": {
+    content: '""',
+    position: "absolute",
+    top: "-10px", // Move the background up if needed
+    left: "-10px", // Move the background left if needed
+    right: "-10px", // Extend right side
+    bottom: "-10px", // Extend bottom side
+    backgroundImage: `url('/images/LandingPage/GreenStripesLeft.png')`,
+    backgroundSize: "contain",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
+    zIndex: 1
   }
+});
+
+export const GroupSectionImgBox2 = styled(Box)({
+  position: "relative",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  padding: "20px",
+  marginTop: "132px",
+  "&::before": {
+    content: '""',
+    position: "absolute",
+    top: "-5px", // Move the background up if needed
+    left: "-5px", // Move the background left if needed
+    right: "-5px", // Extend right side
+    bottom: "-5px", // Extend bottom side
+    backgroundImage: `url('/images/LandingPage/GreenStripesRight.png')`,
+    backgroundSize: "contain",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
+    zIndex: 1
+  }
+});
+
+export const QAppsSectionImgBox = styled(Box)({
+  position: "relative",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  padding: "20px", // Add padding to extend the box dimensions
+  marginBottom: "120px",
+  "&::before": {
+    content: '""',
+    position: "absolute",
+    top: "-10px", // Move the background up if needed
+    left: "-10px", // Move the background left if needed
+    right: "-10px", // Extend right side
+    bottom: "-10px", // Extend bottom side
+    backgroundImage: `url('/images/LandingPage/BlueStripes.png')`,
+    backgroundSize: "contain",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
+    zIndex: 1
+  }
+});
+
+export const QTradeSectionImgBox = styled(Box)({
+  position: "relative",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  padding: "20px", // Add padding to extend the box dimensions
+  marginBottom: "120px",
+  "&::before": {
+    content: '""',
+    position: "absolute",
+    top: "-10px", // Move the background up if needed
+    left: "-10px", // Move the background left if needed
+    right: "-10px", // Extend right side
+    bottom: "-10px", // Extend bottom side
+    backgroundImage: `url('/images/LandingPage/YellowStripesRight.png')`,
+    backgroundSize: "contain",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
+    zIndex: 1
+  }
+});
+
+export const SectionImg = styled(Image)(({ theme }) => ({
+  width: "100%",
+  height: "auto",
+  objectFit: "contain",
+  objectPosition: "center",
+  zIndex: 2,
+  userSelect: "none"
+}));
+
+export const SectionHeader = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "row",
+  alignItems: "center",
+  gap: "20px",
+  width: "100%",
+}));
+
+export const SectionHeaderCol = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "flex-start",
+  justifyContent: "flex-start",
+  gap: "10px"
+}));
+
+export const SectionHeaderTitle = styled(Typography)(({ theme }) => ({
+  fontFamily: segoeUI.style.fontFamily,
+  fontSize: "36px",
+  fontWeight: 500,
+  lineHeight: "30px",
+  letterSpacing: 0,
+  color: theme.palette.text.primary,
+  userSelect: "none"
+}));
+
+export const SectionHeaderSubtitle = styled(Typography)(({ theme }) => ({
+  fontFamily: segoeUI.style.fontFamily,
+  textTransform: "uppercase",
+  fontSize: "20px",
+  fontWeight: 400,
+  lineHeight: "16px",
+  letterSpacing: "0.24px",
+  color: theme.palette.text.primary,
+  userSelect: "none"
+}));
+
+export const SectionDescriptionCol = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  gap: "20px",
+  alignItems: "flex-start",
+  justifyContent: "flex-start",
+  marginTop: "98px"
+}));
+
+export const SectionDescriptionTitle = styled(Typography)(({ theme }) => ({
+  fontFamily: segoeUI.style.fontFamily,
+  fontSize: "36px",
+  fontWeight: 500,
+  lineHeight: "30px",
+  letterSpacing: 0,
+  color: theme.palette.text.primary,
+  userSelect: "none"
+}));
+
+export const SectionDescription = styled(Typography)(({ theme }) => ({
+  fontFamily: segoeUI.style.fontFamily,
+  fontSize: "20px",
+  fontWeight: 400,
+  lineHeight: "30px",
+  letterSpacing: "calc(0.04*20px)",
+  color: theme.palette.text.primary,
+  userSelect: "none"
+}));
+
+export const SectionDownloadLink = styled(Link)(({ theme }) => ({
+  fontFamily: segoeUI.style.fontFamily,
+  fontSize: "20px",
+  lineHeight: "30px",
+  letterSpacing: "calc(0.04*20px)",
+  color: theme.palette.customBlue.main,
+  textDecoration: "none",
+  transition: "all 0.3s ease-in-out",
+  "&:hover": {
+    filter: "brightness(0.85)",
+    cursor: "pointer"
+  }
+}));
+
+export const SectionLinesImg = styled(Image)({
+  objectFit: "contain",
+  objectPosition: "center",
+  userSelect: "none"
+});
+
+export const QAppsLogosRow = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "row",
+  alignItems: "center",
+  justifyContent: "space-evenly",
+  width: "100%",
+  margin: "221px 0 234px 0",
+  [theme.breakpoints.down("sm")]: {
+    flexDirection: "column",
+  }
+}));
+
+export const QAppsLogo = styled(Image)(({ theme }) => ({
+  objectFit: "contain",
+  objectPosition: "center",
+  userSelect: "none"
 }));
 
 export const ScrollToTopButton = styled(Box)(({ theme }) => ({
@@ -569,7 +793,7 @@ export const ScrollToTopButton = styled(Box)(({ theme }) => ({
     filter: "brightness(0.85)"
   },
   [theme.breakpoints.down("sm")]: {
-    right: "60px"
+    right: "20px"
   }  
 }));
 

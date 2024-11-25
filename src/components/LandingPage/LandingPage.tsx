@@ -6,14 +6,7 @@ import {
   CTAButton2,
   Container,
   Header,
-  QortalWalletCard,
-  QortalWalletCardImage,
-  QortalWalletCards,
-  QortalWalletDescription,
-  QortalWalletHeader,
   QortalFeaturesSection,
-  QortalWalletText,
-  QortalWalletText2,
   SubHeader,
   SubHeaderBox,
   SubHeaderBoxImage,
@@ -33,11 +26,33 @@ import {
   VideoBox,
   TopOfPageRef,
   MiddleOfPageRef,
-  ScrollToTopButton
+  ScrollToTopButton,
+  TopCard4,
+  GroupSection,
+  SectionCol,
+  GroupSectionImgBox,
+  SectionImg,
+  SectionHeader,
+  SectionHeaderCol,
+  SectionHeaderSubtitle,
+  SectionHeaderTitle,
+  SectionLinesImg,
+  SectionDescriptionCol,
+  SectionDescriptionTitle,
+  SectionDescription,
+  GroupSectionImgBox2,
+  QAppsSection,
+  QAppsSectionImgBox,
+  SectionDownloadLink,
+  QAppsLogosRow,
+  QAppsLogo,
+  QAppsSectionRow,
+  QTradeSection,
+  QTradeSectionImgBox
 } from "../../components/LandingPage/LandingPage-styles";
 import { YoutubeVideoContainer } from "../Qort/QORTPage-styles";
 import { YoutubePlaceholder } from "../YouTube/YoutubePlaceholder";
-import { Typography, useTheme } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 import Features from "../Features/Features";
 import { useRouter } from "next/navigation";
 
@@ -45,7 +60,7 @@ const LandingPage = () => {
   const theme = useTheme();
   const router = useRouter();
   const qortalFeaturesRef = useRef<HTMLDivElement | null>(null);
-  const topOfPageRef = useRef<HTMLDivElement | null>(null); 
+  const topOfPageRef = useRef<HTMLDivElement | null>(null);
   const middleOfPageRef = useRef<HTMLDivElement | null>(null);
 
   const [showVideoPlayer, setShowVideoPlayer] = useState<boolean>(false);
@@ -167,17 +182,17 @@ const LandingPage = () => {
             <TopCardSubTitle>Trading Platform & QORT</TopCardSubTitle>
           </TopCardSubContainer>
           <TopCardImage
-            src={"/images/Downloads/TrifectaScreenshot1.png"}
-            alt="Qortal Q-Apps Screenshot"
+            src={"/images/LandingPage/Q-TradeScreenshot.png"}
+            alt="Qortal Q-Trade Screenshot"
             width={1000}
             height={600}
             quality={100}
           />
         </TopCard3>
-        <TopCard3>
+        <TopCard4>
           <TopCardSubContainer>
-            <TopCardTitle>CRYPTO</TopCardTitle>
-            <TopCardSubTitle>Trading Platform & QORT</TopCardSubTitle>
+            <TopCardTitle>OPEN SOURCE</TopCardTitle>
+            <TopCardSubTitle>Open Source Codebase</TopCardSubTitle>
           </TopCardSubContainer>
           <TopCardImage
             src={"/images/Downloads/TrifectaScreenshot1.png"}
@@ -186,7 +201,7 @@ const LandingPage = () => {
             height={600}
             quality={100}
           />
-        </TopCard3>
+        </TopCard4>
       </TopCardRow>
       <TopFoldButtonRow>
         <CTAButton1
@@ -237,105 +252,160 @@ const LandingPage = () => {
         </YoutubeVideoContainer>
       </VideoBox>
       {/* <QonnectFour /> */}
-      <Features />
+      {/* <Features /> */}
+
       <QortalFeaturesSection ref={qortalFeaturesRef}>
         <MiddleOfPageRef ref={middleOfPageRef} />
-        <QortalWalletHeader>
-          <a
-            href="https://bit.ly/qortal-chrome-extension"
-            aria-label="Visit the Chrome Store to download the Qortal Extension"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Qortal Wallet
-          </a>
-          : Bridging WEB2 and WEB3
-        </QortalWalletHeader>
-        <QortalWalletCards>
-          <QortalWalletCard>
-            <QortalWalletCardImage
-              src={"/images/LandingPage/QortalExtensionScreenshot1.png"}
-              alt="Qortal Extension Screenshot"
-              width={500}
-              height={500}
+        <GroupSection>
+          <SectionCol>
+            <GroupSectionImgBox>
+              <SectionImg
+                src={"/images/LandingPage/Q-ChatScreenshot.png"}
+                alt="Qortal Group Encrypted Chat Screenshot"
+                width={1000}
+                height={600}
+                quality={100}
+              />
+            </GroupSectionImgBox>
+            <SectionHeader>
+              <SectionLinesImg
+                src={"/images/LandingPage/GreenLines.png"}
+                alt=""
+                width={40}
+                height={63}
+                quality={100}
+              />
+              <SectionHeaderCol>
+                <SectionHeaderSubtitle>COMMUNICATION</SectionHeaderSubtitle>
+                <SectionHeaderTitle>Group-Encrypted Mailing</SectionHeaderTitle>
+              </SectionHeaderCol>
+            </SectionHeader>
+            <SectionDescriptionCol style={{ margin: "98px 145px 0 49px" }}>
+              <SectionDescriptionTitle>Q-Mail</SectionDescriptionTitle>
+              <SectionDescription>
+                Say goodbye to snoopy inboxes. With Q-Mail, your messages are
+                fully private and stay between you and your recipient—no
+                middleman, no data mining, just you in control.
+              </SectionDescription>
+            </SectionDescriptionCol>
+          </SectionCol>
+          <SectionCol>
+            <SectionHeader style={{ justifyContent: "center" }}>
+              <SectionLinesImg
+                src={"/images/LandingPage/GreenLines.png"}
+                alt=""
+                width={40}
+                height={63}
+                quality={100}
+              />
+              <SectionHeaderCol>
+                <SectionHeaderSubtitle>COMMUNICATION</SectionHeaderSubtitle>
+                <SectionHeaderTitle>Group-Encrypted Chats</SectionHeaderTitle>
+              </SectionHeaderCol>
+            </SectionHeader>
+            <SectionDescriptionCol style={{ marginLeft: "193px" }}>
+              <SectionDescriptionTitle>Q-Chat</SectionDescriptionTitle>
+              <SectionDescription>
+                Fully encrypted, group-friendly, and built right into Qortal.
+                Stay connected without compromising your privacy.
+              </SectionDescription>
+              <SectionDownloadLink href="/downloads">
+                Download 🠪
+              </SectionDownloadLink>
+            </SectionDescriptionCol>
+            <GroupSectionImgBox2>
+              <SectionImg
+                src={"/images/LandingPage/Q-MailScreenshot.png"}
+                alt="Qortal Q-Mail Screenshot"
+                width={1000}
+                height={600}
+                quality={100}
+              />
+            </GroupSectionImgBox2>
+          </SectionCol>
+        </GroupSection>
+        <QAppsSection>
+          <QAppsSectionRow>
+            <SectionCol>
+              <QAppsSectionImgBox style={{ marginBottom: 0 }}>
+                <SectionImg
+                  src={"/images/Downloads/TrifectaScreenshot1.png"}
+                  alt="Qortal Q-Apps Screenshot"
+                  width={1000}
+                  height={600}
+                  quality={100}
+                />
+              </QAppsSectionImgBox>
+            </SectionCol>
+            <SectionCol>
+              <SectionHeader style={{ justifyContent: "center" }}>
+                <SectionLinesImg
+                  src={"/images/LandingPage/BlueLines.png"}
+                  alt=""
+                  width={40}
+                  height={63}
+                  quality={100}
+                />
+                <SectionHeaderCol>
+                  <SectionHeaderSubtitle>
+                    SOFTWARE DEVELOPMENT
+                  </SectionHeaderSubtitle>
+                  <SectionHeaderTitle>Q-Apps</SectionHeaderTitle>
+                </SectionHeaderCol>
+              </SectionHeader>
+              <SectionDescriptionCol style={{ marginLeft: "185px" }}>
+                <SectionDescription>
+                  Build, share, and run apps directly on the Qortal blockchain.
+                  Whether it’s tools, games, or new ideas, Q-Apps lets you go
+                  decentralized—with just a touch of JavaScript know-how.
+                </SectionDescription>
+                <SectionDownloadLink href="/downloads">
+                  Download 🠪
+                </SectionDownloadLink>
+              </SectionDescriptionCol>
+            </SectionCol>
+          </QAppsSectionRow>
+          <QAppsLogosRow>
+            <QAppsLogo
+              src={
+                theme.palette.mode === "dark"
+                  ? "/images/LandingPage/Q-TradeDark.png"
+                  : "/images/LandingPage/Q-TradeLight.png"
+              }
+              alt="Q-Trade Logo"
+              width={272}
+              height={80}
+              quality={100}
             />
-          </QortalWalletCard>
-          <QortalWalletCard>
-            <QortalWalletCardImage
-              src={"/images/LandingPage/QortalExtensionScreenshot2.png"}
-              alt="Second Qortal Extension Screenshot"
-              width={500}
-              height={500}
+            <QAppsLogo
+              src={theme.palette.mode === "dark" ? "/images/LandingPage/Q-AppsLibraryDark.png" : "/images/LandingPage/Q-AppsLibraryLight.png"}
+              alt="Q-Apps Library Logo"
+              width={272}
+              height={80}
+              quality={100}
             />
-          </QortalWalletCard>
-          <QortalWalletCard>
-            <QortalWalletCardImage
-              src={"/images/LandingPage/QortalExtensionScreenshot3.png"}
-              alt="Third Qortal Extension Screenshot"
-              width={500}
-              height={500}
+            <QAppsLogo
+              src={theme.palette.mode === "dark" ? "/images/LandingPage/Q-TubeDark.png" : "/images/LandingPage/Q-TubeLight.png"}
+              alt="Q-Tube Logo"
+              width={272}
+              height={80}
+              quality={100}
             />
-          </QortalWalletCard>
-        </QortalWalletCards>
-        <QortalWalletDescription>
-          <QortalWalletText>
-            Qortal Wallet is a cutting-edge Chromium-based extension designed to
-            seamlessly connect WEB2 and WEB3. It enables users to make payments
-            within the Qortal Blockchain directly through WEB2 applications.
-            Operating within the familiar WEB2 environment, Qortal Wallet
-            facilitates decentralized transactions on the Qortal Blockchain, a
-            true WEB3 ecosystem.
-          </QortalWalletText>
-          <QortalWalletText>
-            Current Main Feature:
-            <br />•{" "}
-            <span style={{ fontWeight: "bold" }}>
-              Use QORT as a Payment Method
-            </span>
-            : Easily integrate QORT payments on your own website, offering a
-            secure and decentralized payment solution
-          </QortalWalletText>
-          <QortalWalletText>
-            Upcoming Feature:
-            <br />•{" "}
-            <span style={{ fontWeight: "bold" }}>
-              Website Authentication/Log In
-            </span>
-            : Future updates will allow users to authenticate and log in to
-            websites using the Qortal Wallet extension, enhancing security and
-            streamlining user access.
-          </QortalWalletText>
-        </QortalWalletDescription>
-        <QortalWalletCards>
-          <QortalWalletCard>
-            <QortalWalletCardImage
-              src={"/images/LandingPage/QortalExtensionScreenshot4.png"}
-              alt="Fourth Extension Screenshot"
-              width={500}
-              height={500}
-            />
-          </QortalWalletCard>
-          <QortalWalletCard>
-            <QortalWalletCardImage
-              src={"/images/LandingPage/QortalExtensionScreenshot5.png"}
-              alt="Fifth Qortal Extension Screenshot"
-              width={500}
-              height={500}
-            />
-          </QortalWalletCard>
-          <QortalWalletCard>
-            <QortalWalletCardImage
-              src={"/images/LandingPage/QortalExtensionScreenshot6.png"}
-              alt="Sixth Qortal Extension Screenshot"
-              width={500}
-              height={500}
-            />
-          </QortalWalletCard>
-        </QortalWalletCards>
-        <QortalWalletText2>
-          Experience the future of decentralized finance with Qortal Wallet
-          <br /> Where the power of WEB3 meets the convenience of WEB2
-        </QortalWalletText2>
+          </QAppsLogosRow>
+        </QAppsSection>
+        <QTradeSection>
+          <SectionCol>
+            <QTradeSectionImgBox>
+              <SectionImg
+                src={"/images/LandingPage/Q-TradeScreenshot.png"}
+                alt="Qortal Q-Trade Screenshot"
+                width={1000}
+                height={600}
+                quality={100}
+              />
+            </QTradeSectionImgBox>
+          </SectionCol>
+        </QTradeSection>
       </QortalFeaturesSection>
       {showButton && (
         <ScrollToTopButton onClick={scrollToTop}>

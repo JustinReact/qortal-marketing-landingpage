@@ -92,7 +92,7 @@ const lightTheme = createTheme({
       dark: "#303047"
     },
     background: {
-      default: "#fcfbfd"
+      default: "#f5f5f5"
     },
     text: {
       primary: "#000000",
@@ -106,15 +106,15 @@ const lightTheme = createTheme({
     MuiCssBaseline: {
       styleOverrides: {
         "body::-webkit-scrollbar-track": {
-          backgroundColor: "#fcfbfd"
+          backgroundColor: "#f5f5f5"
         },
         "body::-webkit-scrollbar-track:hover": {
-          backgroundColor: "#fcfbfd"
+          backgroundColor: "#f5f5f5"
         },
         "body::-webkit-scrollbar": {
           width: "16px",
           height: "10px",
-          backgroundColor: "#fcfbfd"
+          backgroundColor: "#f5f5f5"
         },
         "body::-webkit-scrollbar-thumb": {
           backgroundColor: "#0085FF",
