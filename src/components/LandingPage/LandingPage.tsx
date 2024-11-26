@@ -48,13 +48,19 @@ import {
   QAppsLogo,
   QAppsSectionRow,
   QTradeSection,
-  QTradeSectionImgBox
+  QTradeSectionImgBox,
+  OpenSourceSection,
+  OpenSourceSectionImgBox,
+  OpenSourceBox,
+  OpenSourceImg
 } from "../../components/LandingPage/LandingPage-styles";
 import { YoutubeVideoContainer } from "../Qort/QORTPage-styles";
 import { YoutubePlaceholder } from "../YouTube/YoutubePlaceholder";
-import { Box, Typography, useTheme } from "@mui/material";
+import { Typography, useTheme } from "@mui/material";
 import Features from "../Features/Features";
 import { useRouter } from "next/navigation";
+import QonnectFour from "../QonnectFour/QonnectFour";
+import Modal from "../Common/Modal/Modal";
 
 const LandingPage = () => {
   const theme = useTheme();
@@ -65,6 +71,12 @@ const LandingPage = () => {
 
   const [showVideoPlayer, setShowVideoPlayer] = useState<boolean>(false);
   const [showButton, setShowButton] = useState(false);
+  const [openModal, setOpenModal] = useState<boolean>(false);
+  const [selectedImage, setSelectedImage] = useState<string>("");
+  const [locked, setLocked] = useState<boolean>(true);
+  const [showOpenSourceText, setShowOpenSourceText] = useState<boolean>(false);
+
+  console.log({ locked, showOpenSourceText });
 
   const scrollToExplanation = () => {
     if (qortalFeaturesRef?.current) {
@@ -251,7 +263,6 @@ const LandingPage = () => {
           )}
         </YoutubeVideoContainer>
       </VideoBox>
-      {/* <QonnectFour /> */}
       {/* <Features /> */}
 
       <QortalFeaturesSection ref={qortalFeaturesRef}>
@@ -265,6 +276,10 @@ const LandingPage = () => {
                 width={1000}
                 height={600}
                 quality={100}
+                onClick={() => {
+                  setOpenModal(true);
+                  setSelectedImage("/images/LandingPage/Q-ChatScreenshot.png");
+                }}
               />
             </GroupSectionImgBox>
             <SectionHeader>
@@ -320,6 +335,10 @@ const LandingPage = () => {
                 width={1000}
                 height={600}
                 quality={100}
+                onClick={() => {
+                  setOpenModal(true);
+                  setSelectedImage("/images/LandingPage/Q-MailScreenshot.png");
+                }}
               />
             </GroupSectionImgBox2>
           </SectionCol>
@@ -334,6 +353,12 @@ const LandingPage = () => {
                   width={1000}
                   height={600}
                   quality={100}
+                  onClick={() => {
+                    setOpenModal(true);
+                    setSelectedImage(
+                      "/images/Downloads/TrifectaScreenshot1.png"
+                    );
+                  }}
                 />
               </QAppsSectionImgBox>
             </SectionCol>
@@ -378,14 +403,22 @@ const LandingPage = () => {
               quality={100}
             />
             <QAppsLogo
-              src={theme.palette.mode === "dark" ? "/images/LandingPage/Q-AppsLibraryDark.png" : "/images/LandingPage/Q-AppsLibraryLight.png"}
+              src={
+                theme.palette.mode === "dark"
+                  ? "/images/LandingPage/Q-AppsLibraryDark.png"
+                  : "/images/LandingPage/Q-AppsLibraryLight.png"
+              }
               alt="Q-Apps Library Logo"
               width={272}
               height={80}
               quality={100}
             />
             <QAppsLogo
-              src={theme.palette.mode === "dark" ? "/images/LandingPage/Q-TubeDark.png" : "/images/LandingPage/Q-TubeLight.png"}
+              src={
+                theme.palette.mode === "dark"
+                  ? "/images/LandingPage/Q-TubeDark.png"
+                  : "/images/LandingPage/Q-TubeLight.png"
+              }
               alt="Q-Tube Logo"
               width={272}
               height={80}
@@ -395,6 +428,30 @@ const LandingPage = () => {
         </QAppsSection>
         <QTradeSection>
           <SectionCol>
+            <SectionHeader>
+              <SectionLinesImg
+                src={"/images/LandingPage/YellowLines.png"}
+                alt=""
+                width={40}
+                height={63}
+                quality={100}
+              />
+              <SectionHeaderCol>
+                <SectionHeaderSubtitle>CRYPTO</SectionHeaderSubtitle>
+                <SectionHeaderTitle>Trading Platform</SectionHeaderTitle>
+              </SectionHeaderCol>
+            </SectionHeader>
+            <SectionDescriptionCol style={{ margin: "98px 176px 134px 49px" }}>
+              <SectionDescriptionTitle>Q-Trade</SectionDescriptionTitle>
+              <SectionDescription>
+                Trade crypto the Qortal way—peer-to-peer, secure, and no
+                middlemen. Swap QORT and other supported coins directly on our
+                decentralized trading platform.
+              </SectionDescription>
+            </SectionDescriptionCol>
+            <QonnectFour />
+          </SectionCol>
+          <SectionCol>
             <QTradeSectionImgBox>
               <SectionImg
                 src={"/images/LandingPage/Q-TradeScreenshot.png"}
@@ -402,15 +459,114 @@ const LandingPage = () => {
                 width={1000}
                 height={600}
                 quality={100}
+                onClick={() => {
+                  setOpenModal(true);
+                  setSelectedImage("/images/LandingPage/Q-TradeScreenshot.png");
+                }}
               />
             </QTradeSectionImgBox>
+            <SectionHeader style={{ justifyContent: "center" }}>
+              <SectionLinesImg
+                src={"/images/LandingPage/YellowLines.png"}
+                alt=""
+                width={40}
+                height={63}
+                quality={100}
+              />
+              <SectionHeaderCol>
+                <SectionHeaderSubtitle>CRYPTO</SectionHeaderSubtitle>
+                <SectionHeaderTitle>Currency</SectionHeaderTitle>
+              </SectionHeaderCol>
+            </SectionHeader>
+            <SectionDescriptionCol style={{ margin: "90px 0 0 220px" }}>
+              <SectionDescriptionTitle>QORT</SectionDescriptionTitle>
+              <SectionDescription>
+                Fuel the Qortal ecosystem with QORT! Use it to trade, tip,
+                donate, and even bet in games. It’s more than a coin; it’s your
+                key to a decentralized world.
+              </SectionDescription>
+              <SectionDownloadLink
+                href="https://qort.trade"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Buy 🠪
+              </SectionDownloadLink>
+            </SectionDescriptionCol>
           </SectionCol>
         </QTradeSection>
+        <OpenSourceSection>
+          <SectionCol>
+            <OpenSourceSectionImgBox>
+              <OpenSourceBox
+                style={{ cursor: !showOpenSourceText ? "pointer" : "auto" }}
+                role="button"
+                tabIndex={0}
+                aria-label="Open Source Codebase"
+                onMouseEnter={() => setLocked(false)}
+                onMouseLeave={() => setLocked(true)}
+                onClick={() => {
+                  setShowOpenSourceText(true);
+                }}
+                showOpenSourceText={showOpenSourceText}
+              >
+                {!showOpenSourceText && (
+                  <OpenSourceImg
+                    src={
+                      locked
+                        ? "/images/LandingPage/Lock.png"
+                        : "/images/LandingPage/WhiteLock.png"
+                    }
+                    alt="Lock icon"
+                    width={70}
+                    height={90}
+                    quality={100}
+                    hovered={locked}
+                  />
+                )}
+                  <SectionCol style={{zIndex: 1, filter: !showOpenSourceText ? "blur(10px)" : "blur(0px)"}}>
+                    <SectionHeader>
+                      <SectionLinesImg
+                        src={"/images/LandingPage/RedLines.png"}
+                        alt=""
+                        width={40}
+                        height={63}
+                        quality={100}
+                      />
+                      <SectionHeaderCol>
+                        <SectionHeaderSubtitle>
+                          FULL TRANSPARENCY
+                        </SectionHeaderSubtitle>
+                        <SectionHeaderTitle>Open Source</SectionHeaderTitle>
+                      </SectionHeaderCol>
+                    </SectionHeader>
+                    <SectionDescriptionCol>
+                      <SectionDescription>
+                        Built on open-source code, Qortal ensures full
+                        transparency. No secrets, no hidden agendas. Just a
+                        blockchain you can trust.
+                      </SectionDescription>
+                    </SectionDescriptionCol>
+                  </SectionCol>
+              </OpenSourceBox>
+            </OpenSourceSectionImgBox>
+          </SectionCol>
+        </OpenSourceSection>
       </QortalFeaturesSection>
       {showButton && (
         <ScrollToTopButton onClick={scrollToTop}>
           BACK TO THE TOP
         </ScrollToTopButton>
+      )}
+      {openModal && (
+        <Modal
+          images={[selectedImage]}
+          openModal={openModal}
+          onClickFunc={() => {
+            setOpenModal(false);
+            setSelectedImage("");
+          }}
+        ></Modal>
       )}
     </Container>
   );

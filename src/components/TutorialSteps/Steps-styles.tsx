@@ -232,18 +232,6 @@ export const Screenshot = styled(Image)(({ theme }) => ({
   }
 }));
 
-export const ModalScreenshot = styled(Image)(({ theme }) => ({
-  width: "100%",
-  height: "100%",
-  borderRadius: "5px",
-  userSelect: "none",
-  objectFit: "contain",
-  maxHeight: "-webkit-fill-available",
-  [theme.breakpoints.down("sm")]: {
-    rotate: "90deg",
-  },
-}));
-
 export const PreviousButton = styled(Button)({
   position: "relative",
   padding: "5px 10px",

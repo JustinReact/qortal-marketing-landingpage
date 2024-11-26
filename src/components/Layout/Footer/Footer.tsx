@@ -6,7 +6,7 @@ export const Footer = () => {
   const location = usePathname();
 
   return (
-    <FooterContainer style={{paddingBottom: location === "/" ? "30px" : 0}}>
+    <FooterContainer style={{paddingBottom: location === "/" ? "40px" : 0}}>
       <FooterLink
         href={"/support"}
         className={location === "/support" ? "active" : ""}

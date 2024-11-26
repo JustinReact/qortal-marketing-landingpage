@@ -4,6 +4,14 @@ import Image from "next/image";
 import { futura, segoeUI } from "../../app/fonts";
 import Link from "next/link";
 
+type ShowOpenSourceText = {
+  showOpenSourceText: boolean;
+}
+
+type Hovered = {
+  hovered: boolean;
+};
+
 export const Container = styled(Box)(({ theme }) => ({
   position: "relative",
   display: "flex",
@@ -483,7 +491,7 @@ export const QortalFeaturesSection = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   flexDirection: "column",
-  gap: "100px",
+  gap: 0,
   marginTop: "145px"
 }));
 
@@ -535,8 +543,8 @@ export const QAppsSection = styled(Box)(({ theme }) => ({
 export const QTradeSection = styled(Box)(({ theme }) => ({
   position: "relative",
   display: "flex",
-  flexDirection: "column",
-  padding: "223px 100px 153px 100px",
+  flexDirection: "row",
+  padding: "223px 100px 167px 100px",
   alignItems: "flex-start",
   "&::before": {
     content: '""',
@@ -547,6 +555,28 @@ export const QTradeSection = styled(Box)(({ theme }) => ({
     width: "calc(100vw - 16px)",
     height: "100%",
     backgroundImage: `url('/images/LandingPage/YellowSectionBanner.png')`,
+    backgroundSize: "contain",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "top",
+    zIndex: -1
+  },
+}));
+
+export const OpenSourceSection = styled(Box)(({ theme }) => ({
+  position: "relative",
+  display: "flex",
+  flexDirection: "row",
+  padding: "348px 100px 167px 100px",
+  alignItems: "flex-start",
+  "&::before": {
+    content: '""',
+    position: "absolute",
+    top: 0,
+    left: "50%",
+    transform: "translateX(-50%)",
+    width: "calc(100vw - 16px)",
+    height: "100%",
+    backgroundImage: `url('/images/LandingPage/RedSectionBanner.png')`,
     backgroundSize: "contain",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "top",
@@ -649,7 +679,29 @@ export const QTradeSectionImgBox = styled(Box)({
     left: "-10px", // Move the background left if needed
     right: "-10px", // Extend right side
     bottom: "-10px", // Extend bottom side
-    backgroundImage: `url('/images/LandingPage/YellowStripesRight.png')`,
+    backgroundImage: `url('/images/LandingPage/YellowStripes.png')`,
+    backgroundSize: "contain",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
+    zIndex: 1
+  }
+});
+
+export const OpenSourceSectionImgBox = styled(Box)({
+  position: "relative",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  padding: "20px", // Add padding to extend the box dimensions
+  marginBottom: "120px",
+  "&::before": {
+    content: '""',
+    position: "absolute",
+    top: "-10px", // Move the background up if needed
+    left: "-10px", // Move the background left if needed
+    right: "-10px", // Extend right side
+    bottom: "-10px", // Extend bottom side
+    backgroundImage: `url('/images/LandingPage/RedStripes.png')`,
     backgroundSize: "contain",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
@@ -663,7 +715,12 @@ export const SectionImg = styled(Image)(({ theme }) => ({
   objectFit: "contain",
   objectPosition: "center",
   zIndex: 2,
-  userSelect: "none"
+  userSelect: "none",
+  transition: "all 0.3s cubic-bezier(0.46,0.03,0.52,0.96)",
+  "&:hover": {
+    cursor: "pointer",
+    transform: "scale(1.03)"
+  }
 }));
 
 export const SectionHeader = styled(Box)(({ theme }) => ({
@@ -672,6 +729,7 @@ export const SectionHeader = styled(Box)(({ theme }) => ({
   alignItems: "center",
   gap: "20px",
   width: "100%",
+  zIndex: 5
 }));
 
 export const SectionHeaderCol = styled(Box)(({ theme }) => ({
@@ -729,7 +787,8 @@ export const SectionDescription = styled(Typography)(({ theme }) => ({
   lineHeight: "30px",
   letterSpacing: "calc(0.04*20px)",
   color: theme.palette.text.primary,
-  userSelect: "none"
+  userSelect: "none",
+  zIndex: 5
 }));
 
 export const SectionDownloadLink = styled(Link)(({ theme }) => ({
@@ -758,7 +817,7 @@ export const QAppsLogosRow = styled(Box)(({ theme }) => ({
   alignItems: "center",
   justifyContent: "space-evenly",
   width: "100%",
-  margin: "221px 0 234px 0",
+  margin: "221px 0 0 0",
   [theme.breakpoints.down("sm")]: {
     flexDirection: "column",
   }
@@ -768,6 +827,47 @@ export const QAppsLogo = styled(Image)(({ theme }) => ({
   objectFit: "contain",
   objectPosition: "center",
   userSelect: "none"
+}));
+
+export const OpenSourceBox = styled(Box)<ShowOpenSourceText>(({ theme, showOpenSourceText }) => ({
+  position: "relative",
+  display: "flex",
+  flexDirection: "row",
+  alignItems: "center",
+  justifyContent: "center",
+  width: "706px",
+  height: "397px",
+  padding: "71px 137px 60px 137px",
+  backgroundColor: "#050817",
+  zIndex: 1,
+  "&::before": {
+    position: "absolute",
+    display: "block",
+    content: '""',
+    top: 0,
+    left: "50%",
+    width: "100%",
+    height: "100%",
+    transform: "translateX(-50%)",
+    backgroundImage: `url('/images/LandingPage/BlueRectangle.png')`,
+    opacity: !showOpenSourceText ? 0.5 : 0,
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
+    zIndex: 2
+  },
+}));
+
+export const OpenSourceImg = styled(Image)<Hovered>(({ theme, hovered }) => ({
+  position: "absolute",
+  width: "auto",
+  height: "auto",
+  objectFit: "contain",
+  objectPosition: "center",
+  zIndex: 25,
+  userSelect: "none",
+  transition: "all 0.2s ease-in-out",
+  transform: hovered ? "translateY(7px)" : "translateY(0)",
 }));
 
 export const ScrollToTopButton = styled(Box)(({ theme }) => ({

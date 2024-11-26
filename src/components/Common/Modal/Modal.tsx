@@ -5,9 +5,9 @@ import {
   ChevronLeftIcon,
   ChevronRightIcon,
   CloseIcon,
-  Modalbody
+  Modalbody,
+  ModalScreenshot
 } from "./Modal-styles";
-import { ModalScreenshot } from "../../TutorialSteps/Steps-styles";
 import { useTheme } from "@mui/material";
 
 interface ModalProps {
@@ -123,8 +123,9 @@ const Modal: FC<ModalProps> = ({
         <ModalScreenshot
           src={images[selectedImageIndex]}
           alt="modal-image"
-          width={500}
-          height={500}
+          width={1920}
+          height={1080}
+          quality={100}
         ></ModalScreenshot>
         <CloseIcon
           onClickFunc={() => {

@@ -12,7 +12,7 @@ const doubleCaretRightAnimation = keyframes`
       fill: #ffffff05;
     }
     50% {
-      fill: "#0085FF";
+      fill: #0085FF;
   }
 `;
 
@@ -102,8 +102,6 @@ export const BubbleBoard = styled(Box)(({ theme }) => ({
   gridTemplateColumns: "repeat(9, 1fr)",
   gridTemplateRows: "repeat(4, 1fr)",
   gap: "15px",
-  width: "815px",
-  height: "353px",
   [theme.breakpoints.down("md")]: {
     width: "auto",
     gap: "10px",
@@ -118,13 +116,13 @@ export const BubbleCard = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  height: "77px",
-  width: "77px",
+  height: "50px",
+  width: "50px",
   background: theme.palette.mode === "dark" ? "#ffffff05" : "#D9D9D9",
   borderRadius: "50%",
   fontFamily: fredokaOne.style.fontFamily,
   fontWeight: 500,
-  fontSize: "40px",
+  fontSize: "35px",
   lineHeight: "48.4px",
   textAlign: "center",
   color: theme.palette.text.primary,
@@ -141,8 +139,8 @@ export const BubbleCard = styled(Box)(({ theme }) => ({
 }));
 
 export const BubbleCardColored = styled(Box)(({ theme }) => ({
-  height: "77px",
-  width: "77px",
+  height: "50px",
+  width: "50px",
   background: theme.palette.customBlue.main,
   boxShadow: "0px 0px 25.8px -1px #1C5A93",
   borderRadius: "50%",
@@ -171,8 +169,8 @@ export const SliderContainer = styled(Box)(({ theme }) => ({
 
 export const StyledSlider = styled(Slider)(({ theme }) => ({
   " & .MuiSlider-thumb": {
-    width: "77px",
-    height: "77px",
+    width: "68px",
+    height: "68px",
     zIndex: 2,
     background: theme.palette.customBlue.main,
     [theme.breakpoints.down("md")]: {
@@ -183,7 +181,7 @@ export const StyledSlider = styled(Slider)(({ theme }) => ({
   },
   "& .MuiSlider-rail": {
     width: "378px",
-    height: "87px",
+    height: "67px",
     background: "#2B2B2B",
     borderRadius: "50px",
     boxShadow: "0px 0px 12.8px -1px #1C5A93",
