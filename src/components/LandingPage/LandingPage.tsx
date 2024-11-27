@@ -52,7 +52,8 @@ import {
   OpenSourceSection,
   OpenSourceSectionImgBox,
   OpenSourceBox,
-  OpenSourceImg
+  OpenSourceImg,
+  FinalText
 } from "../../components/LandingPage/LandingPage-styles";
 import { YoutubeVideoContainer } from "../Qort/QORTPage-styles";
 import { YoutubePlaceholder } from "../YouTube/YoutubePlaceholder";
@@ -295,7 +296,7 @@ const LandingPage = () => {
                 <SectionHeaderTitle>Group-Encrypted Mailing</SectionHeaderTitle>
               </SectionHeaderCol>
             </SectionHeader>
-            <SectionDescriptionCol style={{ margin: "98px 145px 0 49px" }}>
+            <SectionDescriptionCol style={{ margin: "98px 75px 0 49px" }}>
               <SectionDescriptionTitle>Q-Mail</SectionDescriptionTitle>
               <SectionDescription>
                 Say goodbye to snoopy inboxes. With Q-Mail, your messages are
@@ -318,7 +319,7 @@ const LandingPage = () => {
                 <SectionHeaderTitle>Group-Encrypted Chats</SectionHeaderTitle>
               </SectionHeaderCol>
             </SectionHeader>
-            <SectionDescriptionCol style={{ marginLeft: "193px" }}>
+            <SectionDescriptionCol>
               <SectionDescriptionTitle>Q-Chat</SectionDescriptionTitle>
               <SectionDescription>
                 Fully encrypted, group-friendly, and built right into Qortal.
@@ -378,7 +379,7 @@ const LandingPage = () => {
                   <SectionHeaderTitle>Q-Apps</SectionHeaderTitle>
                 </SectionHeaderCol>
               </SectionHeader>
-              <SectionDescriptionCol style={{ marginLeft: "185px" }}>
+              <SectionDescriptionCol  >
                 <SectionDescription>
                   Build, share, and run apps directly on the Qortal blockchain.
                   Whether it’s tools, games, or new ideas, Q-Apps lets you go
@@ -478,7 +479,7 @@ const LandingPage = () => {
                 <SectionHeaderTitle>Currency</SectionHeaderTitle>
               </SectionHeaderCol>
             </SectionHeader>
-            <SectionDescriptionCol style={{ margin: "90px 0 0 220px" }}>
+            <SectionDescriptionCol style={{ margin: "90px 0 0 20px" }}>
               <SectionDescriptionTitle>QORT</SectionDescriptionTitle>
               <SectionDescription>
                 Fuel the Qortal ecosystem with QORT! Use it to trade, tip,
@@ -524,32 +525,43 @@ const LandingPage = () => {
                     hovered={locked}
                   />
                 )}
-                  <SectionCol style={{zIndex: 1, filter: !showOpenSourceText ? "blur(10px)" : "blur(0px)"}}>
-                    <SectionHeader>
-                      <SectionLinesImg
-                        src={"/images/LandingPage/RedLines.png"}
-                        alt=""
-                        width={40}
-                        height={63}
-                        quality={100}
-                      />
-                      <SectionHeaderCol>
-                        <SectionHeaderSubtitle>
-                          FULL TRANSPARENCY
-                        </SectionHeaderSubtitle>
-                        <SectionHeaderTitle>Open Source</SectionHeaderTitle>
-                      </SectionHeaderCol>
-                    </SectionHeader>
-                    <SectionDescriptionCol>
-                      <SectionDescription>
-                        Built on open-source code, Qortal ensures full
-                        transparency. No secrets, no hidden agendas. Just a
-                        blockchain you can trust.
-                      </SectionDescription>
-                    </SectionDescriptionCol>
-                  </SectionCol>
+                <SectionCol
+                  style={{
+                    zIndex: 1,
+                    filter: !showOpenSourceText ? "blur(10px)" : "blur(0px)"
+                  }}
+                >
+                  <SectionHeader>
+                    <SectionLinesImg
+                      src={"/images/LandingPage/RedLines.png"}
+                      alt=""
+                      width={40}
+                      height={63}
+                      quality={100}
+                    />
+                    <SectionHeaderCol>
+                      <SectionHeaderSubtitle>
+                        FULL TRANSPARENCY
+                      </SectionHeaderSubtitle>
+                      <SectionHeaderTitle>Open Source</SectionHeaderTitle>
+                    </SectionHeaderCol>
+                  </SectionHeader>
+                  <SectionDescriptionCol>
+                    <SectionDescription>
+                      Built on open-source code, Qortal ensures full
+                      transparency. No secrets, no hidden agendas. Just a
+                      blockchain you can trust.
+                    </SectionDescription>
+                  </SectionDescriptionCol>
+                </SectionCol>
               </OpenSourceBox>
             </OpenSourceSectionImgBox>
+            <SectionHeader>
+              <FinalText>
+                Experience the future of decentralization with Qortal, where the
+                power of WEB3 meets the convenience of WEB2
+              </FinalText>
+            </SectionHeader>
           </SectionCol>
         </OpenSourceSection>
       </QortalFeaturesSection>
