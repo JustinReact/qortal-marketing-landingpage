@@ -53,7 +53,14 @@ import {
   OpenSourceSectionImgBox,
   OpenSourceBox,
   OpenSourceImg,
-  FinalText
+  FinalText,
+  GroupEncryptedHeader,
+  QMailDescriptionCol,
+  QMailDescriptionCol as QChatDescriptionCol,
+  QTradeDescriptionCol,
+  QORTDescriptionCol,
+  OpenSourceDescriptionCol,
+  TopCardLockIcon
 } from "../../components/LandingPage/LandingPage-styles";
 import { YoutubeVideoContainer } from "../Qort/QORTPage-styles";
 import { YoutubePlaceholder } from "../YouTube/YoutubePlaceholder";
@@ -66,7 +73,10 @@ import Modal from "../Common/Modal/Modal";
 const LandingPage = () => {
   const theme = useTheme();
   const router = useRouter();
-  const qortalFeaturesRef = useRef<HTMLDivElement | null>(null);
+  const topCard1Feature = useRef<HTMLDivElement | null>(null);
+  const topCard2Feature = useRef<HTMLDivElement | null>(null);
+  const topCard3Feature = useRef<HTMLDivElement | null>(null);
+  const topCard4Feature = useRef<HTMLDivElement | null>(null);
   const topOfPageRef = useRef<HTMLDivElement | null>(null);
   const middleOfPageRef = useRef<HTMLDivElement | null>(null);
 
@@ -74,14 +84,43 @@ const LandingPage = () => {
   const [showButton, setShowButton] = useState(false);
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [selectedImage, setSelectedImage] = useState<string>("");
+  const [lockedTop, setLockedTop] = useState<boolean>(true);
   const [locked, setLocked] = useState<boolean>(true);
   const [showOpenSourceText, setShowOpenSourceText] = useState<boolean>(false);
 
-  console.log({ locked, showOpenSourceText });
+  const scrollToTopCard1Feature = () => {
+    if (topCard1Feature?.current) {
+      topCard1Feature?.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "nearest"
+      });
+    }
+  };
 
-  const scrollToExplanation = () => {
-    if (qortalFeaturesRef?.current) {
-      qortalFeaturesRef?.current.scrollIntoView({
+  const scrollToTopCard2Feature = () => {
+    if (topCard2Feature?.current) {
+      topCard2Feature?.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "nearest"
+      });
+    }
+  };
+
+  const scrollToTopCard3Feature = () => {
+    if (topCard3Feature?.current) {
+      topCard3Feature?.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "nearest"
+      });
+    }
+  };
+
+  const scrollToTopCard4Feature = () => {
+    if (topCard4Feature?.current) {
+      topCard4Feature?.current.scrollIntoView({
         behavior: "smooth",
         block: "start",
         inline: "nearest"
@@ -163,7 +202,19 @@ const LandingPage = () => {
         </TopFoldWordCol>
       </TopFold>
       <TopCardRow>
-        <TopCard1>
+        <TopCard1
+          role="button"
+          aria-label="Group-Encrypted Chats - COMMUNICATION"
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              scrollToTopCard1Feature();
+            }
+          }}
+          onClick={() => {
+            scrollToTopCard1Feature();
+          }}
+        >
           <TopCardSubContainer>
             <TopCardTitle>COMMUNICATION</TopCardTitle>
             <TopCardSubTitle>Group-Encrypted Chats</TopCardSubTitle>
@@ -176,7 +227,19 @@ const LandingPage = () => {
             quality={100}
           />
         </TopCard1>
-        <TopCard2>
+        <TopCard2
+          role="button"
+          aria-label="Qortal Q-Apps - SOFTWARE DEVELOPMENT"
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              scrollToTopCard2Feature();
+            }
+          }}
+          onClick={() => {
+            scrollToTopCard2Feature();
+          }}
+        >
           <TopCardSubContainer>
             <TopCardTitle>SOFTWARE DEVELOPMENT</TopCardTitle>
             <TopCardSubTitle>Q-Apps</TopCardSubTitle>
@@ -189,7 +252,19 @@ const LandingPage = () => {
             quality={100}
           />
         </TopCard2>
-        <TopCard3>
+        <TopCard3
+          role="button"
+          aria-label="Trading Platform and QORT - CRYPTO"
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              scrollToTopCard3Feature();
+            }
+          }}
+          onClick={() => {
+            scrollToTopCard3Feature();
+          }}
+        >
           <TopCardSubContainer>
             <TopCardTitle>CRYPTO</TopCardTitle>
             <TopCardSubTitle>Trading Platform & QORT</TopCardSubTitle>
@@ -202,16 +277,45 @@ const LandingPage = () => {
             quality={100}
           />
         </TopCard3>
-        <TopCard4>
+        <TopCard4
+          role="button"
+          aria-label="Code Transparency - OPEN SOURCE"
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              scrollToTopCard4Feature();
+            }
+          }}
+          onClick={() => {
+            scrollToTopCard4Feature();
+          }}
+          onMouseEnter={() => {
+            setLockedTop(false);
+          }}
+          onMouseLeave={() => {
+            setLockedTop(true);
+          }}
+        >
           <TopCardSubContainer>
             <TopCardTitle>OPEN SOURCE</TopCardTitle>
             <TopCardSubTitle>Open Source Codebase</TopCardSubTitle>
           </TopCardSubContainer>
           <TopCardImage
-            src={"/images/Downloads/TrifectaScreenshot1.png"}
+            src={"/images/LandingPage/BlueRectangleTop.png"}
             alt="Qortal Q-Apps Screenshot"
             width={1000}
             height={600}
+            quality={100}
+          />
+          <TopCardLockIcon
+            src={
+              lockedTop
+                ? "/images/LandingPage/DarkRedLock.png"
+                : "/images/LandingPage/RedLockUnlocked.png"
+            }
+            alt=""
+            width={70}
+            height={90}
             quality={100}
           />
         </TopCard4>
@@ -224,7 +328,7 @@ const LandingPage = () => {
               action: "Clicked Learn How Button",
               label: "Learn How Button"
             });
-            scrollToExplanation();
+            scrollToTopCard1Feature();
           }}
         >
           LEARN HOW
@@ -266,9 +370,9 @@ const LandingPage = () => {
       </VideoBox>
       {/* <Features /> */}
 
-      <QortalFeaturesSection ref={qortalFeaturesRef}>
+      <QortalFeaturesSection>
         <MiddleOfPageRef ref={middleOfPageRef} />
-        <GroupSection>
+        <GroupSection ref={topCard1Feature}>
           <SectionCol>
             <GroupSectionImgBox>
               <SectionImg
@@ -296,17 +400,17 @@ const LandingPage = () => {
                 <SectionHeaderTitle>Group-Encrypted Mailing</SectionHeaderTitle>
               </SectionHeaderCol>
             </SectionHeader>
-            <SectionDescriptionCol style={{ margin: "98px 75px 0 49px" }}>
+            <QMailDescriptionCol>
               <SectionDescriptionTitle>Q-Mail</SectionDescriptionTitle>
               <SectionDescription>
                 Say goodbye to snoopy inboxes. With Q-Mail, your messages are
                 fully private and stay between you and your recipient—no
                 middleman, no data mining, just you in control.
               </SectionDescription>
-            </SectionDescriptionCol>
+            </QMailDescriptionCol>
           </SectionCol>
           <SectionCol>
-            <SectionHeader style={{ justifyContent: "center" }}>
+            <GroupEncryptedHeader>
               <SectionLinesImg
                 src={"/images/LandingPage/GreenLines.png"}
                 alt=""
@@ -318,8 +422,8 @@ const LandingPage = () => {
                 <SectionHeaderSubtitle>COMMUNICATION</SectionHeaderSubtitle>
                 <SectionHeaderTitle>Group-Encrypted Chats</SectionHeaderTitle>
               </SectionHeaderCol>
-            </SectionHeader>
-            <SectionDescriptionCol>
+            </GroupEncryptedHeader>
+            <QChatDescriptionCol>
               <SectionDescriptionTitle>Q-Chat</SectionDescriptionTitle>
               <SectionDescription>
                 Fully encrypted, group-friendly, and built right into Qortal.
@@ -328,7 +432,7 @@ const LandingPage = () => {
               <SectionDownloadLink href="/downloads">
                 Download 🠪
               </SectionDownloadLink>
-            </SectionDescriptionCol>
+            </QChatDescriptionCol>
             <GroupSectionImgBox2>
               <SectionImg
                 src={"/images/LandingPage/Q-MailScreenshot.png"}
@@ -344,7 +448,7 @@ const LandingPage = () => {
             </GroupSectionImgBox2>
           </SectionCol>
         </GroupSection>
-        <QAppsSection>
+        <QAppsSection ref={topCard2Feature}>
           <QAppsSectionRow>
             <SectionCol>
               <QAppsSectionImgBox style={{ marginBottom: 0 }}>
@@ -379,7 +483,7 @@ const LandingPage = () => {
                   <SectionHeaderTitle>Q-Apps</SectionHeaderTitle>
                 </SectionHeaderCol>
               </SectionHeader>
-              <SectionDescriptionCol  >
+              <SectionDescriptionCol>
                 <SectionDescription>
                   Build, share, and run apps directly on the Qortal blockchain.
                   Whether it’s tools, games, or new ideas, Q-Apps lets you go
@@ -427,7 +531,7 @@ const LandingPage = () => {
             />
           </QAppsLogosRow>
         </QAppsSection>
-        <QTradeSection>
+        <QTradeSection ref={topCard3Feature}>
           <SectionCol>
             <SectionHeader>
               <SectionLinesImg
@@ -442,14 +546,14 @@ const LandingPage = () => {
                 <SectionHeaderTitle>Trading Platform</SectionHeaderTitle>
               </SectionHeaderCol>
             </SectionHeader>
-            <SectionDescriptionCol style={{ margin: "98px 176px 134px 49px" }}>
+            <QTradeDescriptionCol>
               <SectionDescriptionTitle>Q-Trade</SectionDescriptionTitle>
               <SectionDescription>
                 Trade crypto the Qortal way—peer-to-peer, secure, and no
                 middlemen. Swap QORT and other supported coins directly on our
                 decentralized trading platform.
               </SectionDescription>
-            </SectionDescriptionCol>
+            </QTradeDescriptionCol>
             <QonnectFour />
           </SectionCol>
           <SectionCol>
@@ -479,7 +583,7 @@ const LandingPage = () => {
                 <SectionHeaderTitle>Currency</SectionHeaderTitle>
               </SectionHeaderCol>
             </SectionHeader>
-            <SectionDescriptionCol style={{ margin: "90px 0 0 20px" }}>
+            <QORTDescriptionCol>
               <SectionDescriptionTitle>QORT</SectionDescriptionTitle>
               <SectionDescription>
                 Fuel the Qortal ecosystem with QORT! Use it to trade, tip,
@@ -493,10 +597,10 @@ const LandingPage = () => {
               >
                 Buy 🠪
               </SectionDownloadLink>
-            </SectionDescriptionCol>
+            </QORTDescriptionCol>
           </SectionCol>
         </QTradeSection>
-        <OpenSourceSection>
+        <OpenSourceSection ref={topCard4Feature}>
           <SectionCol>
             <OpenSourceSectionImgBox>
               <OpenSourceBox
@@ -540,19 +644,21 @@ const LandingPage = () => {
                       quality={100}
                     />
                     <SectionHeaderCol>
-                      <SectionHeaderSubtitle>
+                      <SectionHeaderSubtitle style={{ color: "#ffffff" }}>
                         FULL TRANSPARENCY
                       </SectionHeaderSubtitle>
-                      <SectionHeaderTitle>Open Source</SectionHeaderTitle>
+                      <SectionHeaderTitle style={{ color: "#ffffff" }}>
+                        Open Source
+                      </SectionHeaderTitle>
                     </SectionHeaderCol>
                   </SectionHeader>
-                  <SectionDescriptionCol>
-                    <SectionDescription>
+                  <OpenSourceDescriptionCol>
+                    <SectionDescription style={{ color: "#ffffff" }}>
                       Built on open-source code, Qortal ensures full
                       transparency. No secrets, no hidden agendas. Just a
                       blockchain you can trust.
                     </SectionDescription>
-                  </SectionDescriptionCol>
+                  </OpenSourceDescriptionCol>
                 </SectionCol>
               </OpenSourceBox>
             </OpenSourceSectionImgBox>

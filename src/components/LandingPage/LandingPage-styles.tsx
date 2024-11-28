@@ -19,7 +19,7 @@ export const Container = styled(Box)(({ theme }) => ({
   padding: "40px 60px 14px 60px",
   width: "100%",
   [theme.breakpoints.down("lg")]: {
-    padding: "10px 20px 14px 20px"
+    padding: "40px 20px 14px 20px"
   },
   [theme.breakpoints.down("sm")]: {
     padding: "10px 0px",
@@ -172,8 +172,8 @@ export const SubHeader = styled(Box)(({ theme }) => ({
       letterSpacing: "calc(0.28*29px)"
     },
     "@media(max-width: 1399px)": {
-      fontSize: "26px",
-      letterSpacing: "calc(0.28*26px)"
+      fontSize: "27px",
+      letterSpacing: "calc(0.28*27px)"
     },
     "@media(max-width: 1160px)": {
       fontSize: "23px",
@@ -184,13 +184,13 @@ export const SubHeader = styled(Box)(({ theme }) => ({
       letterSpacing: "calc(0.28 * 18px)"
     },
     "@media(max-width: 566px)": {
-   fontSize: "16px",
+      fontSize: "16px",
       letterSpacing: "calc(0.28 * 16px)",
-      lineHeight: "35px",
+      lineHeight: "35px"
     },
     "@media(max-width: 513px)": {
-      letterSpacing: "calc(0.28 * 8px)",
-    },
+      letterSpacing: "calc(0.28 * 8px)"
+    }
   }
 }));
 
@@ -208,8 +208,8 @@ export const SubHeaderBoxImage = styled(Image)({
   top: "34px",
   left: "0",
   "@media(max-width: 566px)": {
-    top: "25px",
-     }
+    top: "25px"
+  }
 });
 
 export const TopCardRow = styled(Box)(({ theme }) => ({
@@ -250,7 +250,7 @@ export const TopCardRow = styled(Box)(({ theme }) => ({
   },
   [theme.breakpoints.down("sm")]: {
     maxWidth: "calc(100vw - 32px)"
-  },
+  }
 }));
 
 export const TopCard1 = styled(Box)(({ theme }) => ({
@@ -440,6 +440,18 @@ export const TopCardImage = styled(Image)(({ theme }) => ({
   userSelect: "none"
 }));
 
+export const TopCardLockIcon = styled(Image)(({ theme }) => ({
+  position: "absolute",
+  top: "55%",
+  left: "50%",
+  transform: "translateX(-50%)",
+  width: "auto",
+  height: "auto",
+  objectFit: "contain",
+  objectPosition: "center",
+  userSelect: "none"
+}));
+
 export const VideoBox = styled(Box)(({ theme }) => ({
   display: "flex",
   width: "100%",
@@ -468,6 +480,7 @@ export const CTAButton1 = styled(Button)(({ theme }) => ({
   fontWeight: 500,
   fontSize: "16px",
   lineHeight: "21.3px",
+  letterSpacing: 0,
   width: "181px",
   height: "43px",
   padding: "10px 30px 10px 30px",
@@ -476,13 +489,17 @@ export const CTAButton1 = styled(Button)(({ theme }) => ({
   border: `1px solid ${theme.palette.text.primary}`,
   color: theme.palette.text.primary,
   backgroundColor: "transparent",
-  boxShadow: "1px 4px 10.5px 0px #0000004D",
+  boxShadow: "none",
   cursor: "pointer",
-  transition: "all 0.3s ease-in-out",
+  transition: "all 0.2s ease-in-out",
   "&:hover": {
-    backgroundColor: theme.palette.customBlue.main,
-    border: `1px solid ${theme.palette.customBlue.main}`,
-    color: "#ffffff"
+    boxShadow: "1px 4px 10.5px 0px #0000004D",
+    backgroundColor: "#F3F3F3",
+    border:
+      theme.palette.mode === "dark"
+        ? `1px solid ${theme.palette.text.primary}`
+        : "1px solid #F3F3F3",
+    color: "#000000"
   },
   [theme.breakpoints.down("sm")]: {
     width: "-webkit-fill-available"
@@ -494,23 +511,22 @@ export const CTAButton2 = styled(Button)(({ theme }) => ({
   fontWeight: 500,
   fontSize: "16px",
   lineHeight: "21.3px",
+  letterSpacing: 0,
   width: "181px",
   height: "43px",
   padding: "10px 30px 10px 30px",
   gap: "7px",
   borderRadius: "30px",
   border: `1px solid ${theme.palette.customBlue.main}`,
-  color: "#ffffff",
+  color: "#000000",
   backgroundColor: theme.palette.customBlue.main,
   cursor: "pointer",
   boxShadow: "1px 4px 10.5px 0px #0000004D",
-  transition: "all 0.3s ease-in-out",
+  transition: "all 0.2s ease-in-out",
   "&:hover": {
-    backgroundColor: theme.palette.customBlue.main,
-    color: "#ffffff",
-    boxShadow:
-      /* offset-x | offset-y | blur-radius | spread-radius | color */
-      "0px 12px 17px 2px hsla(0,0%,0%,0.14), 0px 5px 22px 4px hsla(0,0%,0%,0.12), 0px 7px 8px -4px hsla(0,0%,0%,0.2)"
+    backgroundColor: "#F3F3F3",
+    color: "#000000",
+    border: "1px solid #F3F3F3"
   },
   [theme.breakpoints.down("sm")]: {
     width: "-webkit-fill-available"
@@ -560,11 +576,13 @@ export const GroupSection = styled(Box)(({ theme }) => ({
   },
   [theme.breakpoints.down("lg")]: {
     padding: "223px 50px 153px 50px",
-    gap: "30px",
+    gap: "30px"
   },
   "@media(max-width: 935px)": {
+    padding: "180px 0 153px 0",
     flexDirection: "column",
-  },
+    gap: 0
+  }
 }));
 
 export const QAppsSection = styled(Box)(({ theme }) => ({
@@ -588,7 +606,10 @@ export const QAppsSection = styled(Box)(({ theme }) => ({
     zIndex: -1
   },
   [theme.breakpoints.down("lg")]: {
-    padding: "223px 50px 153px 50px",
+    padding: "223px 50px 153px 50px"
+  },
+  "@media(max-width: 935px)": {
+    padding: "180px 0 153px 0"
   }
 }));
 
@@ -615,7 +636,12 @@ export const QTradeSection = styled(Box)(({ theme }) => ({
   },
   [theme.breakpoints.down("lg")]: {
     padding: "223px 50px 153px 50px",
-    gap: "30px",
+    gap: "30px"
+  },
+  "@media(max-width: 935px)": {
+    padding: "180px 0 153px 0",
+    flexDirection: "column",
+    gap: 0
   }
 }));
 
@@ -624,7 +650,7 @@ export const OpenSourceSection = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "row",
   gap: "55px",
-  padding: "348px 100px 167px 100px",
+  padding: "337px 100px 100px 100px",
   alignItems: "flex-start",
   "&::before": {
     content: '""',
@@ -642,7 +668,12 @@ export const OpenSourceSection = styled(Box)(({ theme }) => ({
   },
   [theme.breakpoints.down("lg")]: {
     padding: "223px 50px 153px 50px",
-    gap: "30px",
+    gap: "30px"
+  },
+  "@media(max-width: 935px)": {
+    padding: "180px 0 50px 0",
+    flexDirection: "column",
+    gap: 0
   }
 }));
 
@@ -652,9 +683,10 @@ export const QAppsSectionRow = styled(Box)(({ theme }) => ({
   alignItems: "flex-start",
   width: "100%",
   gap: "105px",
-  [theme.breakpoints.down("md")]: {
-    gap: "25px"
-  },
+  "@media(max-width: 935px)": {
+    flexDirection: "column",
+    gap: "100px"
+  }
 }));
 
 export const SectionCol = styled(Box)(({ theme }) => ({
@@ -706,6 +738,9 @@ export const GroupSectionImgBox2 = styled(Box)({
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
     zIndex: 1
+  },
+  "@media(max-width: 935px)": {
+    marginTop: "100px"
   }
 });
 
@@ -750,6 +785,9 @@ export const QTradeSectionImgBox = styled(Box)({
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
     zIndex: 1
+  },
+  "@media(max-width: 935px)": {
+    margin: "140px 0 100px 0"
   }
 });
 
@@ -795,7 +833,23 @@ export const SectionHeader = styled(Box)(({ theme }) => ({
   alignItems: "center",
   gap: "20px",
   width: "100%",
-  zIndex: 5
+  zIndex: 5,
+  "@media(max-width: 935px)": {
+    justifyContent: "center"
+  }
+}));
+
+export const GroupEncryptedHeader = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "row",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: "20px",
+  width: "100%",
+  zIndex: 5,
+  "@media(max-width: 935px)": {
+    marginTop: "120px"
+  }
 }));
 
 export const SectionHeaderCol = styled(Box)(({ theme }) => ({
@@ -833,7 +887,63 @@ export const SectionDescriptionCol = styled(Box)(({ theme }) => ({
   gap: "20px",
   alignItems: "flex-start",
   justifyContent: "flex-start",
-  marginTop: "98px"
+  marginTop: "98px",
+  "@media(max-width: 935px)": {
+    alignItems: "center"
+  }
+}));
+
+export const QMailDescriptionCol = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  gap: "20px",
+  alignItems: "flex-start",
+  justifyContent: "flex-start",
+  margin: "98px 75px 0 49px",
+  "@media(max-width: 935px)": {
+    margin: "120px 75px 0 49px",
+    alignItems: "center"
+  }
+}));
+
+export const QTradeDescriptionCol = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  gap: "20px",
+  alignItems: "flex-start",
+  justifyContent: "flex-start",
+  margin: "98px 176px 134px 49px",
+  "@media(max-width: 935px)": {
+    margin: "120px 0",
+    alignItems: "center"
+  }
+}));
+
+export const QORTDescriptionCol = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  gap: "20px",
+  alignItems: "flex-start",
+  justifyContent: "flex-start",
+  margin: "90px 0 0 20px",
+  "@media(max-width: 935px)": {
+    margin: "120px 0 0 0",
+    alignItems: "center"
+  }
+}));
+
+export const OpenSourceDescriptionCol = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  gap: "20px",
+  alignItems: "flex-start",
+  justifyContent: "flex-start",
+  marginTop: "88px",
+  marginLeft: "25px",
+  "@media(max-width: 935px)": {
+    alignItems: "center",
+    marginTop: "50px"
+  }
 }));
 
 export const SectionDescriptionTitle = styled(Typography)(({ theme }) => ({
@@ -884,8 +994,10 @@ export const QAppsLogosRow = styled(Box)(({ theme }) => ({
   justifyContent: "space-evenly",
   width: "100%",
   margin: "221px 0 0 0",
-  [theme.breakpoints.down("sm")]: {
-    flexDirection: "column"
+  "@media(max-width: 935px)": {
+    flexDirection: "column",
+    gap: "60px",
+    margin: "120px 0 0 0"
   }
 }));
 
@@ -904,7 +1016,7 @@ export const OpenSourceBox = styled(Box)<ShowOpenSourceText>(
     justifyContent: "center",
     width: "706px",
     height: "397px",
-    padding: "71px 137px 60px 137px",
+    padding: "71px 137px 60px 107px",
     backgroundColor: "#050817",
     zIndex: 1,
     "&::before": {
@@ -922,6 +1034,9 @@ export const OpenSourceBox = styled(Box)<ShowOpenSourceText>(
       backgroundRepeat: "no-repeat",
       backgroundPosition: "center",
       zIndex: 2
+    },
+    "@media(max-width: 935px)": {
+      width: "100%"
     }
   })
 );
@@ -947,7 +1062,12 @@ export const FinalText = styled(Typography)(({ theme }) => ({
   letterSpacing: "calc(0.042*40px)",
   color: theme.palette.text.primary,
   userSelect: "none",
-  zIndex: 5
+  zIndex: 5,
+  "@media(max-width: 935px)": {
+    fontSize: "30px",
+    lineHeight: "40px",
+    letterSpacing: "calc(0.042*30px)"
+  }
 }));
 
 export const ScrollToTopButton = styled(Box)(({ theme }) => ({

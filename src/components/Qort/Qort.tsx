@@ -56,11 +56,11 @@ import { AnimatePresence, motion } from "framer-motion";
 import { DiscordSVG } from "../Common/Icons/DiscordSVG";
 import { useMediaQuery, useTheme } from "@mui/material";
 import { YoutubePlaceholder } from "../YouTube/YoutubePlaceholder";
-import { setTheme } from "../../state/theme/themeSlice";
-import { useDispatch } from "react-redux";
+import { useRouter } from "next/navigation";
+import LoadingSpinner from "../../app/loading";
 
 const Qort = () => {
-  const dispatch = useDispatch();
+  const router = useRouter();
   const muiTheme = useTheme();
   const isMobile = useMediaQuery(muiTheme.breakpoints.down("sm"));
   const lessThanMediumScreen = useMediaQuery(muiTheme.breakpoints.down("md"));
@@ -73,6 +73,7 @@ const Qort = () => {
     4: false,
     5: false
   });
+  const [loading] = useState<boolean>(true);
 
   useEffect(() => {
     ReactGA.send({
@@ -126,6 +127,15 @@ const Qort = () => {
       }
     }
   };
+
+  // Temporarily redirect to home page, until the page is ready
+  useEffect(() => {
+    router.push("/");
+  }, []);
+
+  if (loading) {
+    return <LoadingSpinner />;
+  }
 
   return (
     <Wrapper>

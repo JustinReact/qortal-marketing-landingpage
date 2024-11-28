@@ -96,7 +96,7 @@ export const Header = () => {
               >
                 Home
               </QORTButton>
-              <QORTButton
+              {/* <QORTButton
                 className={location === "/qort" ? "active" : ""}
                 onClick={() => {
                   ReactGA.event({
@@ -108,7 +108,7 @@ export const Header = () => {
                 href={"/qort"}
               >
                 QORT
-              </QORTButton>
+              </QORTButton> */}
               <QORTButton
                 className={location === "/downloads" ? "active" : ""}
                 onClick={() => {

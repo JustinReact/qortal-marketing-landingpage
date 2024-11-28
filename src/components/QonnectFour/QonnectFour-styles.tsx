@@ -205,9 +205,6 @@ export const DoubleCaretRightIcon = styled(DoubleCaretRightSVG)(
     userSelect: "none",
     animation: `${doubleCaretRightAnimation} 6s infinite`,
     animationDelay: "0s",
-    [theme.breakpoints.down("md")]: {
-      top: "65px"
-    },
   })
 );
 
@@ -219,9 +216,6 @@ export const DoubleCaretRightIcon2 = styled(DoubleCaretRightSVG)(
     userSelect: "none",
     animation: `${doubleCaretRightAnimation} 6s infinite`,
     animationDelay: "2s",
-    [theme.breakpoints.down("md")]: {
-      top: "65px"
-    },
     [theme.breakpoints.down("sm")]: {
       left: "120px"
     }
@@ -236,9 +230,6 @@ export const DoubleCaretRightIcon3 = styled(DoubleCaretRightSVG)(
     userSelect: "none",
     animation: `${doubleCaretRightAnimation} 6s infinite`,
     animationDelay: "4s",
-    [theme.breakpoints.down("md")]: {
-      top: "65px"
-    },
     [theme.breakpoints.down("sm")]: {
       left: "180px"
     }
