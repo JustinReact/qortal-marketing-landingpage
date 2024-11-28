@@ -1,4 +1,4 @@
-import { styled } from "@mui/system";
+import { lineHeight, styled } from "@mui/system";
 import { Box, Button, Grid, Typography } from "@mui/material";
 import Image from "next/image";
 import { futura, redditSans } from "../../app/fonts";
@@ -88,7 +88,10 @@ export const DownloadTextCol = styled(Box)(({ theme }) => ({
   flexDirection: "column",
   alignItems: "center",
   justifyContent: "center",
-  gap: "5px"
+  gap: "5px",
+  [theme.breakpoints.down("sm")]: {
+    gap: 0
+  }
 }));
 
 export const DownloadText = styled(Typography)(({ theme }) => ({
@@ -133,7 +136,8 @@ export const DownloadText2 = styled(Typography)(({ theme }) => ({
     fontSize: "24px"
   },
   [theme.breakpoints.down("sm")]: {
-    fontSize: "28px"
+    fontSize: "28px",
+    lineHeight: "28px"
   }
 }));
 

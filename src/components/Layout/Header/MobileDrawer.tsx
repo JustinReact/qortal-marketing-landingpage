@@ -12,8 +12,8 @@ import { QortalSVG } from "../../Common/Icons/QortalSVG";
 import ReactGA from "react-ga4";
 import { HomeSVG } from "../../Common/Icons/HomeSVG";
 import { useRouter } from "next/navigation";
-import { ChromeStoreSVG } from "../../Common/Icons/ChromeStoreSVG";
 import { BlogSVG } from "../../Common/Icons/BlogSVG";
+import { DownloadSVG } from "../../Common/Icons/DownloadSVG";
 
 interface MobileDrawerProps {
   setOpenMobileDrawer: () => void;
@@ -23,7 +23,6 @@ export const MobileDrawer: FC<MobileDrawerProps> = ({
   setOpenMobileDrawer
 }) => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const router = useRouter();
 
   return (
@@ -32,14 +31,19 @@ export const MobileDrawer: FC<MobileDrawerProps> = ({
         onClick={() => {
           ReactGA.event({
             category: "User",
-            action: "Clicked Mobile Drawer Chrome Store Link",
-            label: "Clicked Mobile Drawer Chrome Store Link"
+            action: "Clicked Mobile Drawer Download Link",
+            label: "Clicked Mobile Drawer Download Link"
           });
           setOpenMobileDrawer();
-          window.open("https://bit.ly/qortal-chrome-extension", "_blank");
+          router.push("/downloads");
         }}
       >
         Download
+        <DownloadSVG
+          color={"#000000"}
+          height={"25"}
+          width={"25"}
+        />
       </DrawerButton>
       <Divider />
       <DrawerButton
@@ -50,7 +54,7 @@ export const MobileDrawer: FC<MobileDrawerProps> = ({
       >
         Home
         <HomeSVG
-          color={theme.palette.text.primary}
+          color={"#000000"}
           height={"25"}
           width={"25"}
         />
@@ -64,7 +68,7 @@ export const MobileDrawer: FC<MobileDrawerProps> = ({
       >
         QORT
         <QortalSVG
-          color={theme.palette.text.primary}
+          color={"#000000"}
           height={"25"}
           width={"25"}
         />
@@ -78,7 +82,7 @@ export const MobileDrawer: FC<MobileDrawerProps> = ({
       >
         Documentation
         <DocsSVG
-          color={theme.palette.text.primary}
+          color={"#000000"}
           height={"25"}
           width={"25"}
         />
@@ -97,7 +101,7 @@ export const MobileDrawer: FC<MobileDrawerProps> = ({
       >
         Blog
         <BlogSVG
-          color={theme.palette.text.primary}
+          color={"#000000"}
           height={"25"}
           width={"25"}
         />

@@ -193,7 +193,7 @@ export const SubHeader = styled(Box)(({ theme }) => ({
     }
   },
   "@media (max-width: 693px)": {
-    gap: "10px",
+    gap: "8px",
     width: "100%",
     justifyContent: "center"
   }
@@ -428,7 +428,23 @@ export const TopCardSubContainer = styled(Box)(({ theme }) => ({
   alignItems: "flex-start",
   width: "100%",
   gap: "9px",
-  padding: "30px 34px 40px 34px"
+  padding: "30px 34px 40px 34px",
+  "@media(max-width: 566px)": {
+    padding: "30px 10px 40px 10px",
+  }
+}));
+
+export const TopCardSubContainerCrypto = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "flex-start",
+  width: "100%",
+  gap: "9px",
+  padding: "30px 34px 40px 34px",
+  whiteSpace: "normal",
+  "@media(max-width: 566px)": {
+    padding: "30px 10px 20px 10px",
+  }
 }));
 
 export const TopCardTitle = styled(Typography)(({ theme }) => ({
@@ -438,7 +454,10 @@ export const TopCardTitle = styled(Typography)(({ theme }) => ({
   lineHeight: "16px",
   letterSpacing: "0.24px",
   color: "#101214",
-  userSelect: "none"
+  userSelect: "none",
+  "@media(max-width: 566px)": {
+    fontSize: "16px",
+  }
 }));
 
 export const TopCardSubTitle = styled(Typography)(({ theme }) => ({
@@ -469,7 +488,10 @@ export const TopCardLockIcon = styled(Image)(({ theme }) => ({
   height: "auto",
   objectFit: "contain",
   objectPosition: "center",
-  userSelect: "none"
+  userSelect: "none",
+  "@media(max-width: 566px)": {
+    width: "20%"
+  }
 }));
 
 export const VideoBox = styled(Box)(({ theme }) => ({
@@ -929,7 +951,7 @@ export const QMailDescriptionCol = styled(Box)(({ theme }) => ({
   justifyContent: "flex-start",
   margin: "98px 75px 0 49px",
   "@media(max-width: 935px)": {
-    margin: "120px 49px 0 49px",
+    margin: "120px 0 0 0",
     alignItems: "center"
   }
 }));
@@ -970,7 +992,9 @@ export const OpenSourceDescriptionCol = styled(Box)(({ theme }) => ({
   marginLeft: "25px",
   "@media(max-width: 935px)": {
     alignItems: "center",
-    marginTop: "50px"
+    marginTop: "50px",
+    marginLeft: 0,
+    width: "100%"
   }
 }));
 

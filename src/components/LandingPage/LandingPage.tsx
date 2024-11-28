@@ -60,7 +60,8 @@ import {
   QTradeDescriptionCol,
   QORTDescriptionCol,
   OpenSourceDescriptionCol,
-  TopCardLockIcon
+  TopCardLockIcon,
+  TopCardSubContainerCrypto
 } from "../../components/LandingPage/LandingPage-styles";
 import { YoutubeVideoContainer } from "../Qort/QORTPage-styles";
 import { YoutubePlaceholder } from "../YouTube/YoutubePlaceholder";
@@ -265,10 +266,10 @@ const LandingPage = () => {
             scrollToTopCard3Feature();
           }}
         >
-          <TopCardSubContainer>
+          <TopCardSubContainerCrypto>
             <TopCardTitle>CRYPTO</TopCardTitle>
             <TopCardSubTitle>Trading Platform & QORT</TopCardSubTitle>
-          </TopCardSubContainer>
+          </TopCardSubContainerCrypto>
           <TopCardImage
             src={"/images/LandingPage/Q-TradeScreenshot.png"}
             alt="Qortal Q-Trade Screenshot"
