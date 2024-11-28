@@ -1,13 +1,13 @@
 import { FC, useState } from "react";
 import {
   MagnifyingGlass,
-  ModalScreenshot,
   MuseoFont,
   Screenshot,
   ScreenshotContainer,
   StepCard,
   StepColumn
 } from "../../Steps-styles";
+import { ModalScreenshot } from "../../../Common/Modal/Modal-styles";
 import { Grid } from "@mui/material";
 import Modal from "../../../Common/Modal/Modal";
 
