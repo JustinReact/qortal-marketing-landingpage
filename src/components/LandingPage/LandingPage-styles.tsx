@@ -1,4 +1,4 @@
-import { letterSpacing, styled } from "@mui/system";
+import { letterSpacing, styled, width } from "@mui/system";
 import { Box, Button, Typography } from "@mui/material";
 import Image from "next/image";
 import { futura, segoeUI } from "../../app/fonts";
@@ -179,9 +179,9 @@ export const SubHeader = styled(Box)(({ theme }) => ({
       fontSize: "23px",
       letterSpacing: "calc(0.28*23px)"
     },
-    "@media(max-width: 628px)": {
+    "@media(max-width: 693px)": {
       fontSize: "18px",
-      letterSpacing: "calc(0.28 * 18px)"
+      letterSpacing: "calc(0.28 * 18px)",
     },
     "@media(max-width: 566px)": {
       fontSize: "16px",
@@ -191,6 +191,11 @@ export const SubHeader = styled(Box)(({ theme }) => ({
     "@media(max-width: 513px)": {
       letterSpacing: "calc(0.28 * 8px)"
     }
+  },
+  "@media (max-width: 693px)": {
+    gap: "10px",
+    width: "100%",
+    justifyContent: "center"
   }
 }));
 
@@ -250,6 +255,9 @@ export const TopCardRow = styled(Box)(({ theme }) => ({
   },
   [theme.breakpoints.down("sm")]: {
     maxWidth: "calc(100vw - 32px)"
+  },
+  [theme.breakpoints.down("sm")]: {
+    gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
   }
 }));
 
@@ -288,6 +296,9 @@ export const TopCard1 = styled(Box)(({ theme }) => ({
   },
   "&:hover": {
     transform: "translateY(-20px)"
+  },
+  [theme.breakpoints.down("sm")]: {
+    width: "300px",
   }
 }));
 
@@ -325,6 +336,9 @@ export const TopCard2 = styled(Box)(({ theme }) => ({
   },
   "&:hover": {
     transform: "translateY(-20px)"
+  },
+  [theme.breakpoints.down("sm")]: {
+    width: "300px",
   }
 }));
 
@@ -362,6 +376,9 @@ export const TopCard3 = styled(Box)(({ theme }) => ({
   },
   "&:hover": {
     transform: "translateY(-20px)"
+  },
+  [theme.breakpoints.down("sm")]: {
+    width: "300px",
   }
 }));
 
@@ -399,6 +416,9 @@ export const TopCard4 = styled(Box)(({ theme }) => ({
   },
   "&:hover": {
     transform: "translateY(-20px)"
+  },
+  [theme.breakpoints.down("sm")]: {
+    width: "300px",
   }
 }));
 
@@ -464,12 +484,11 @@ export const TopFoldButtonRow = styled(Box)(({ theme }) => ({
   justifyContent: "center",
   marginTop: "25px",
   gap: "30px",
-  marginBottom: "150px",
+  marginBottom: "120px",
   [theme.breakpoints.down("lg")]: {
     justifyContent: "center"
   },
   [theme.breakpoints.down("sm")]: {
-    margin: "20px 0",
     gap: "10px",
     width: "100%"
   }
@@ -809,7 +828,16 @@ export const OpenSourceSectionImgBox = styled(Box)({
     backgroundSize: "contain",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
-    zIndex: 1
+    zIndex: 1,
+    "@media(max-width: 935px)": {
+      top: "-5px",
+      left: "-5px",
+      right: "-5px",
+      bottom: "-5px"
+    }
+  },
+  "@media(max-width: 935px)": {
+    padding: "20px 0"
   }
 });
 
@@ -901,7 +929,7 @@ export const QMailDescriptionCol = styled(Box)(({ theme }) => ({
   justifyContent: "flex-start",
   margin: "98px 75px 0 49px",
   "@media(max-width: 935px)": {
-    margin: "120px 75px 0 49px",
+    margin: "120px 49px 0 49px",
     alignItems: "center"
   }
 }));
@@ -1036,8 +1064,9 @@ export const OpenSourceBox = styled(Box)<ShowOpenSourceText>(
       zIndex: 2
     },
     "@media(max-width: 935px)": {
-      width: "100%"
-    }
+      width: "100%",
+    padding: "71px 50px 60px 50px",
+    },
   })
 );
 

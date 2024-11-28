@@ -1,6 +1,11 @@
 "use client";
 import { FC } from "react";
-import { Container, Divider, DownloadButton, DrawerButton } from "./MobileDrawer-styles";
+import {
+  Container,
+  Divider,
+  DownloadButton,
+  DrawerButton
+} from "./MobileDrawer-styles";
 import { useMediaQuery, useTheme } from "@mui/material";
 import { DocsSVG } from "../../Common/Icons/DocsSVG";
 import { QortalSVG } from "../../Common/Icons/QortalSVG";
@@ -24,13 +29,6 @@ export const MobileDrawer: FC<MobileDrawerProps> = ({
   return (
     <Container>
       <DrawerButton
-        style={{
-          gap: "19px",
-          flexDirection: "column",
-          textAlign: "center",
-          lineHeight: "1.2",
-          padding: "20px 20px 25.5px 20px"
-        }}
         onClick={() => {
           ReactGA.event({
             category: "User",
@@ -41,15 +39,7 @@ export const MobileDrawer: FC<MobileDrawerProps> = ({
           window.open("https://bit.ly/qortal-chrome-extension", "_blank");
         }}
       >
-        Install Qortal Browser Extension (Kiwi or Mises Browser)
-        <DownloadButton
-          onClick={() => {
-            setOpenMobileDrawer();
-            window.open("https://bit.ly/qortal-chrome-extension", "_blank");
-          }}
-        >
-          Download
-        </DownloadButton>
+        Download
       </DrawerButton>
       <Divider />
       <DrawerButton
