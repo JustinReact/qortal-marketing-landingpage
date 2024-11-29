@@ -37,7 +37,7 @@ export const DownloadsGrid = styled(Box)(({ theme }) => ({
   gridTemplateColumns: "repeat(4, 1fr)",
   gap: "20px",
   marginTop: "98px",
-  "@media(max-width: 1127px)": {
+  "@media(max-width: 1161px)": {
     gap: "20px",
     gridTemplateColumns: "repeat(2, 1fr)"
   },
@@ -89,7 +89,7 @@ export const DownloadTextCol = styled(Box)(({ theme }) => ({
   alignItems: "center",
   justifyContent: "center",
   gap: "5px",
-  [theme.breakpoints.down("sm")]: {
+  [theme.breakpoints.down("md")]: {
     gap: 0
   }
 }));
@@ -131,6 +131,9 @@ export const DownloadText2 = styled(Typography)(({ theme }) => ({
   },
   "@media(max-width: 1127px)": {
     fontSize: "28px"
+  },
+  [theme.breakpoints.down("md")]: {
+    lineHeight: "25px"
   },
   "@media(max-width: 743px)": {
     fontSize: "24px"

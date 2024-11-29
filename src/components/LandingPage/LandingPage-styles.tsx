@@ -63,6 +63,9 @@ export const TopFoldCol = styled(Box)(({ theme }) => ({
     justifySelf: "center",
     width: "fit-content",
     gap: "15px"
+  },
+  "@media(max-width: 566px)": {
+    gap: "10px"
   }
 }));
 
@@ -145,9 +148,9 @@ export const Header = styled(Typography)(({ theme }) => ({
     letterSpacing: "calc(0.1 * 40px)"
   },
   "@media(max-width: 513px)": {
-    fontSize: "35px",
+    fontSize: "32px",
     lineHeight: "45px",
-    letterSpacing: "calc(0.1 * 35px)"
+    letterSpacing: "calc(0.1 * 32px)"
   }
 }));
 
@@ -181,7 +184,7 @@ export const SubHeader = styled(Box)(({ theme }) => ({
     },
     "@media(max-width: 693px)": {
       fontSize: "18px",
-      letterSpacing: "calc(0.28 * 18px)",
+      letterSpacing: "calc(0.28 * 18px)"
     },
     "@media(max-width: 566px)": {
       fontSize: "16px",
@@ -190,6 +193,9 @@ export const SubHeader = styled(Box)(({ theme }) => ({
     },
     "@media(max-width: 513px)": {
       letterSpacing: "calc(0.28 * 8px)"
+    },
+    "@media(max-width: 400px)": {
+      letterSpacing: "calc(0.28 * 6px)"
     }
   },
   "@media (max-width: 693px)": {
@@ -257,7 +263,10 @@ export const TopCardRow = styled(Box)(({ theme }) => ({
     maxWidth: "calc(100vw - 32px)"
   },
   [theme.breakpoints.down("sm")]: {
-    gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
+    gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))"
+  },
+  "@media(max-width: 400px)": {
+    gridTemplateColumns: "repeat(auto-fill, minmax(255px, 1fr))"
   }
 }));
 
@@ -266,7 +275,7 @@ export const TopCard1 = styled(Box)(({ theme }) => ({
   flexDirection: "column",
   alignItems: "center",
   justifyContent: "flex-end",
-  position: "relative", // Needed for pseudo-element positioning
+  position: "relative",
   borderRadius: "22px",
   paddingTop: "20px",
   width: "360px",
@@ -274,8 +283,8 @@ export const TopCard1 = styled(Box)(({ theme }) => ({
   border: "1px solid #424242",
   cursor: "pointer",
   overflow: "hidden", // Ensure no content spills out
-  background: "linear-gradient(90deg, #ffffff 0%, #ffffff 100%)", // Default gradient (solid white)
-  transition: "all 0.3s cubic-bezier(.22, .68, 0, 1.71)", // Fallback for unsupported pseudo-elements
+  background: "linear-gradient(90deg, #ffffff 0%, #ffffff 100%)",
+  transition: "all 0.3s cubic-bezier(.22, .68, 0, 1.71)",
   zIndex: 1,
   "&::before": {
     content: '""',
@@ -285,20 +294,27 @@ export const TopCard1 = styled(Box)(({ theme }) => ({
     width: "100%",
     height: "100%",
     background: `url('/images/LandingPage/GreenCardBanner.png'), linear-gradient(90deg, #ffffff 0%, #BBFFEC 100%)`,
-    opacity: 0, // Hidden by default
-    transition: "opacity 0.3s ease-in-out", // Smooth fade-in
-    zIndex: -1, // Place it above the base background
+    opacity: 0,
+    transition: "opacity 0.3s ease-in-out",
+    zIndex: -1,
     backgroundSize: "contain",
     backgroundPosition: "top right"
   },
   "&:hover::before": {
-    opacity: 1 // Make hover gradient visible
+    opacity: 1
   },
   "&:hover": {
     transform: "translateY(-20px)"
   },
+  "&:hover img": {
+    transform: "scale(1.3)",
+    filter: "brightness(0.6)"
+  },
   [theme.breakpoints.down("sm")]: {
-    width: "300px",
+    width: "300px"
+  },
+  "@media(max-width: 400px)": {
+    width: "255px"
   }
 }));
 
@@ -337,8 +353,15 @@ export const TopCard2 = styled(Box)(({ theme }) => ({
   "&:hover": {
     transform: "translateY(-20px)"
   },
+  "&:hover img": {
+    transform: "scale(1.3)",
+    filter: "brightness(0.6)"
+  },
   [theme.breakpoints.down("sm")]: {
-    width: "300px",
+    width: "300px"
+  },
+  "@media(max-width: 400px)": {
+    width: "255px"
   }
 }));
 
@@ -377,8 +400,15 @@ export const TopCard3 = styled(Box)(({ theme }) => ({
   "&:hover": {
     transform: "translateY(-20px)"
   },
+  "&:hover img": {
+    transform: "scale(1.3)",
+    filter: "brightness(0.6)"
+  },
   [theme.breakpoints.down("sm")]: {
-    width: "300px",
+    width: "300px"
+  },
+  "@media(max-width: 400px)": {
+    width: "255px"
   }
 }));
 
@@ -418,7 +448,10 @@ export const TopCard4 = styled(Box)(({ theme }) => ({
     transform: "translateY(-20px)"
   },
   [theme.breakpoints.down("sm")]: {
-    width: "300px",
+    width: "300px"
+  },
+  "@media(max-width: 400px)": {
+    width: "255px"
   }
 }));
 
@@ -430,7 +463,7 @@ export const TopCardSubContainer = styled(Box)(({ theme }) => ({
   gap: "9px",
   padding: "30px 34px 40px 34px",
   "@media(max-width: 566px)": {
-    padding: "30px 10px 40px 10px",
+    padding: "30px 10px 40px 10px"
   }
 }));
 
@@ -443,7 +476,7 @@ export const TopCardSubContainerCrypto = styled(Box)(({ theme }) => ({
   padding: "30px 34px 40px 34px",
   whiteSpace: "normal",
   "@media(max-width: 566px)": {
-    padding: "30px 10px 20px 10px",
+    padding: "30px 10px 20px 10px"
   }
 }));
 
@@ -456,7 +489,7 @@ export const TopCardTitle = styled(Typography)(({ theme }) => ({
   color: "#101214",
   userSelect: "none",
   "@media(max-width: 566px)": {
-    fontSize: "16px",
+    fontSize: "16px"
   }
 }));
 
@@ -476,6 +509,8 @@ export const TopCardImage = styled(Image)(({ theme }) => ({
   objectFit: "cover",
   objectPosition: "left",
   borderRadius: "0 0 22px 22px",
+  transform: "scale(1)",
+  transformOrigin: "left top", // Focus zoom on the left side of the image
   userSelect: "none"
 }));
 
@@ -1059,40 +1094,40 @@ export const QAppsLogo = styled(Image)(({ theme }) => ({
   userSelect: "none"
 }));
 
-export const OpenSourceBox = styled(Box)<ShowOpenSourceText>(
-  ({ theme, showOpenSourceText }) => ({
-    position: "relative",
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    width: "706px",
-    height: "397px",
-    padding: "71px 137px 60px 107px",
-    backgroundColor: "#050817",
-    zIndex: 1,
-    "&::before": {
-      position: "absolute",
-      display: "block",
-      content: '""',
-      top: 0,
-      left: "50%",
-      width: "100%",
-      height: "100%",
-      transform: "translateX(-50%)",
-      backgroundImage: `url('/images/LandingPage/BlueRectangle.png')`,
-      opacity: !showOpenSourceText ? 0.5 : 0,
-      backgroundSize: "cover",
-      backgroundRepeat: "no-repeat",
-      backgroundPosition: "center",
-      zIndex: 2
-    },
-    "@media(max-width: 935px)": {
-      width: "100%",
-    padding: "71px 50px 60px 50px",
-    },
-  })
-);
+export const OpenSourceBox = styled(Box, {
+  shouldForwardProp: (prop) => prop !== "showOpenSourceText"
+})<ShowOpenSourceText>(({ theme, showOpenSourceText }) => ({
+  position: "relative",
+  display: "flex",
+  flexDirection: "row",
+  alignItems: "center",
+  justifyContent: "center",
+  width: "706px",
+  height: "397px",
+  padding: "71px 137px 60px 107px",
+  backgroundColor: "#050817",
+  zIndex: 1,
+  "&::before": {
+    position: "absolute",
+    display: "block",
+    content: '""',
+    top: 0,
+    left: "50%",
+    width: "100%",
+    height: "100%",
+    transform: "translateX(-50%)",
+    backgroundImage: `url('/images/LandingPage/BlueRectangle.png')`,
+    opacity: !showOpenSourceText ? 0.5 : 0,
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
+    zIndex: 2
+  },
+  "@media(max-width: 935px)": {
+    width: "100%",
+    padding: "71px 50px 60px 50px"
+  }
+}));
 
 export const OpenSourceImg = styled(Image)<Hovered>(({ theme, hovered }) => ({
   position: "absolute",

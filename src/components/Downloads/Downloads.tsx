@@ -39,7 +39,6 @@ const Downloads = () => {
     try {
       const response = await fetch("/api/github-windows");
       const data = await response.json();
-      console.log({ data });
       if (data.tracking_url) {
         window.open(data.tracking_url, "_blank"); // Open the Bitly tracking link
       } else {
