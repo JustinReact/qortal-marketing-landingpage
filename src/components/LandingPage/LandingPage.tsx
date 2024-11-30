@@ -222,7 +222,7 @@ const LandingPage = () => {
             <TopCardSubTitle>Group-Encrypted Chats</TopCardSubTitle>
           </TopCardSubContainer>
           <TopCardImage
-            src={"/images/Features/GroupEncryptedChats.png"}
+            src={"/images/LandingPage/GroupEncryptedChats.webp"}
             alt="Qortal Group Encrypted Chat Screenshot"
             width={1000}
             height={600}
@@ -272,7 +272,7 @@ const LandingPage = () => {
             <TopCardSubTitle>Trading Platform & QORT</TopCardSubTitle>
           </TopCardSubContainerCrypto>
           <TopCardImage
-            src={"/images/LandingPage/Q-TradeScreenshot.png"}
+            src={"/images/LandingPage/Q-TradeScreenshot.webp"}
             alt="Qortal Q-Trade Screenshot"
             width={1000}
             height={600}

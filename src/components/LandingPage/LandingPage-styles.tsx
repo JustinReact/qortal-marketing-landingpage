@@ -219,8 +219,8 @@ export const SubHeader = styled(Box)(({ theme }) => ({
       letterSpacing: "calc(0.28 * 5px)"
     },
     "@media(max-width: 404px)": {
-      fontSize: "16px",
-      letterSpacing: "calc(0.28 * 5px)"
+      fontSize: "18px",
+      letterSpacing: "calc(0.28 * 2px)"
     }
   },
   "@media (max-width: 693px)": {
@@ -553,6 +553,7 @@ export const TopCardSubTitle = styled(Typography)(({ theme }) => ({
   fontSize: "24px",
   fontWeight: 500,
   lineHeight: "30px",
+  whiteSpace: "normal",
   letterSpacing: 0,
   color: "#101214",
   userSelect: "none"

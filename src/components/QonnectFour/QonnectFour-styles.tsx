@@ -166,7 +166,10 @@ export const SliderContainer = styled(Box)(({ theme }) => ({
   width: "378px",
   [theme.breakpoints.down("sm")]: {
     alignItems: "flex-start",
-    gap: "45px"
+    gap: "45px",
+  },
+  "@media(max-width: 415px)": {
+    width: "300px"
   }
 }));
 
@@ -198,7 +201,10 @@ export const StyledSlider = styled(Slider)(({ theme }) => ({
     height: "87px",
     background: "#2B2B2B",
     borderRadius: "50px",
-    transform: "translateY(-45px)"
+    transform: "translateY(-45px)",
+    "@media(max-width: 415px)": {
+      width: "300px"
+    }
   },
   "& .MuiSlider-track": {
     display: "none",
@@ -215,7 +221,7 @@ export const DoubleCaretRightIcon = styled(DoubleCaretRightSVG)(
     animationDelay: "0s",
     [theme.breakpoints.down("sm")]: {
       left: "100px",
-      top: "55px",
+      top: "60px",
     }
   })
 );
@@ -229,8 +235,11 @@ export const DoubleCaretRightIcon2 = styled(DoubleCaretRightSVG)(
     animation: `${doubleCaretRightAnimation} 6s infinite`,
     animationDelay: "2s",
     [theme.breakpoints.down("sm")]: {
-      top: "55px",
+      top: "60px",
       left: "200px"
+    },
+    "@media(max-width: 415px)": {
+      left: "170px"
     }
   })
 );
@@ -244,8 +253,11 @@ export const DoubleCaretRightIcon3 = styled(DoubleCaretRightSVG)(
     animation: `${doubleCaretRightAnimation} 6s infinite`,
     animationDelay: "4s",
     [theme.breakpoints.down("sm")]: {
-      top: "55px",
+      top: "60px",
       left: "300px"
+    },
+    "@media(max-width: 415px)": {
+      left: "250px"
     }
   })
 );
