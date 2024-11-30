@@ -224,8 +224,8 @@ const LandingPage = () => {
           <TopCardImage
             src={"/images/LandingPage/GroupEncryptedChats.webp"}
             alt="Qortal Group Encrypted Chat Screenshot"
-            width={1000}
-            height={600}
+            width={1920}
+            height={1080}
             quality={100}
           />
         </TopCard1>
@@ -249,8 +249,8 @@ const LandingPage = () => {
           <TopCardImage
             src={"/images/LandingPage/QAppsScreenshot.webp"}
             alt="Qortal Q-Apps Screenshot"
-            width={1000}
-            height={600}
+            width={1920}
+            height={1080}
             quality={100}
           />
         </TopCard2>
@@ -274,8 +274,8 @@ const LandingPage = () => {
           <TopCardImage
             src={"/images/LandingPage/Q-TradeScreenshot.webp"}
             alt="Qortal Q-Trade Screenshot"
-            width={1000}
-            height={600}
+            width={1920}
+            height={1080}
             quality={100}
           />
         </TopCard3>
@@ -305,8 +305,8 @@ const LandingPage = () => {
           <TopCardImage
             src={"/images/LandingPage/BlueRectangleTop.png"}
             alt="Qortal Q-Apps Screenshot"
-            width={1000}
-            height={600}
+            width={1920}
+            height={1080}
             quality={100}
           />
           <TopCardLockIcon
@@ -378,14 +378,14 @@ const LandingPage = () => {
           <SectionCol style={{alignItems: "flex-start"}}>
             <GroupSectionImgBox>
               <SectionImg
-                src={"/images/LandingPage/Q-ChatScreenshot.png"}
+                src={"/images/LandingPage/Q-ChatScreenshot.webp"}
                 alt="Qortal Group Encrypted Chat Screenshot"
-                width={1000}
-                height={600}
+                width={1920}
+                height={1080}
                 quality={100}
                 onClick={() => {
                   setOpenModal(true);
-                  setSelectedImage("/images/LandingPage/Q-ChatScreenshot.png");
+                  setSelectedImage("/images/LandingPage/Q-ChatScreenshot.webp");
                 }}
               />
             </GroupSectionImgBox>
@@ -457,8 +457,8 @@ const LandingPage = () => {
                 <SectionImg
                   src={"/images/LandingPage/QAppsScreenshot.webp"}
                   alt="Qortal Q-Apps Screenshot"
-                  width={1000}
-                  height={600}
+                  width={1920}
+                  height={1080}
                   quality={100}
                   onClick={() => {
                     setOpenModal(true);
@@ -561,14 +561,14 @@ const LandingPage = () => {
           <SectionCol style={{alignItems: "flex-start"}}>
             <QTradeSectionImgBox>
               <SectionImg
-                src={"/images/LandingPage/Q-TradeScreenshot.png"}
+                src={"/images/LandingPage/Q-TradeScreenshot.webp"}
                 alt="Qortal Q-Trade Screenshot"
-                width={1000}
-                height={600}
+                width={1920}
+                height={1080}
                 quality={100}
                 onClick={() => {
                   setOpenModal(true);
-                  setSelectedImage("/images/LandingPage/Q-TradeScreenshot.png");
+                  setSelectedImage("/images/LandingPage/Q-TradeScreenshot.webp");
                 }}
               />
             </QTradeSectionImgBox>
