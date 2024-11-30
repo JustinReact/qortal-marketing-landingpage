@@ -61,7 +61,8 @@ import {
   QORTDescriptionCol,
   OpenSourceDescriptionCol,
   TopCardLockIcon,
-  TopCardSubContainerCrypto
+  TopCardSubContainerCrypto,
+  QAppsDescriptionCol
 } from "../../components/LandingPage/LandingPage-styles";
 import { YoutubeVideoContainer } from "../Qort/QORTPage-styles";
 import { YoutubePlaceholder } from "../YouTube/YoutubePlaceholder";
@@ -179,7 +180,7 @@ const LandingPage = () => {
         <TopFoldWordCol>
           <TopFoldRow>
             <SubHeader>
-              <Typography>REDEFINING</Typography>
+              <Typography style={{ fontWeight: 300 }}>REDEFINING</Typography>
               <SubHeaderBox>
                 THE REGULAR INTERNET
                 <SubHeaderBoxImage
@@ -194,7 +195,7 @@ const LandingPage = () => {
           </TopFoldRow>
           <TopFoldRow>
             <SubHeader>
-              <Typography>PIONEERING</Typography>
+              <Typography style={{ fontWeight: 300 }}>PIONEERING</Typography>
               <Typography style={{ fontWeight: "bold" }}>
                 THE NEW INTERNET
               </Typography>
@@ -246,7 +247,7 @@ const LandingPage = () => {
             <TopCardSubTitle>Q-Apps</TopCardSubTitle>
           </TopCardSubContainer>
           <TopCardImage
-            src={"/images/Downloads/TrifectaScreenshot1.png"}
+            src={"/images/LandingPage/QAppsScreenshot.webp"}
             alt="Qortal Q-Apps Screenshot"
             width={1000}
             height={600}
@@ -374,7 +375,7 @@ const LandingPage = () => {
       <QortalFeaturesSection>
         <MiddleOfPageRef ref={middleOfPageRef} />
         <GroupSection ref={topCard1Feature}>
-          <SectionCol>
+          <SectionCol style={{alignItems: "flex-start"}}>
             <GroupSectionImgBox>
               <SectionImg
                 src={"/images/LandingPage/Q-ChatScreenshot.png"}
@@ -410,7 +411,7 @@ const LandingPage = () => {
               </SectionDescription>
             </QMailDescriptionCol>
           </SectionCol>
-          <SectionCol>
+          <SectionCol style={{alignItems: "flex-start"}}>
             <GroupEncryptedHeader>
               <SectionLinesImg
                 src={"/images/LandingPage/GreenLines.png"}
@@ -436,14 +437,14 @@ const LandingPage = () => {
             </QChatDescriptionCol>
             <GroupSectionImgBox2>
               <SectionImg
-                src={"/images/LandingPage/Q-MailScreenshot.png"}
+                src={"/images/LandingPage/QMailScreenshot.webp"}
                 alt="Qortal Q-Mail Screenshot"
-                width={1000}
-                height={600}
+                width={1920}
+                height={1080}
                 quality={100}
                 onClick={() => {
                   setOpenModal(true);
-                  setSelectedImage("/images/LandingPage/Q-MailScreenshot.png");
+                  setSelectedImage("/images/LandingPage/QMailScreenshot.webp");
                 }}
               />
             </GroupSectionImgBox2>
@@ -454,7 +455,7 @@ const LandingPage = () => {
             <SectionCol>
               <QAppsSectionImgBox style={{ marginBottom: 0 }}>
                 <SectionImg
-                  src={"/images/Downloads/TrifectaScreenshot1.png"}
+                  src={"/images/LandingPage/QAppsScreenshot.webp"}
                   alt="Qortal Q-Apps Screenshot"
                   width={1000}
                   height={600}
@@ -462,14 +463,14 @@ const LandingPage = () => {
                   onClick={() => {
                     setOpenModal(true);
                     setSelectedImage(
-                      "/images/Downloads/TrifectaScreenshot1.png"
+                      "/images/LandingPage/QAppsScreenshot.webp"
                     );
                   }}
                 />
               </QAppsSectionImgBox>
             </SectionCol>
-            <SectionCol>
-              <SectionHeader style={{ justifyContent: "center" }}>
+            <SectionCol style={{alignItems: "flex-start"}}>
+              <SectionHeader>
                 <SectionLinesImg
                   src={"/images/LandingPage/BlueLines.png"}
                   alt=""
@@ -484,7 +485,7 @@ const LandingPage = () => {
                   <SectionHeaderTitle>Q-Apps</SectionHeaderTitle>
                 </SectionHeaderCol>
               </SectionHeader>
-              <SectionDescriptionCol>
+              <QAppsDescriptionCol>
                 <SectionDescription>
                   Build, share, and run apps directly on the Qortal blockchain.
                   Whether it’s tools, games, or new ideas, Q-Apps lets you go
@@ -493,7 +494,7 @@ const LandingPage = () => {
                 <SectionDownloadLink href="/downloads">
                   Download 🠪
                 </SectionDownloadLink>
-              </SectionDescriptionCol>
+              </QAppsDescriptionCol>
             </SectionCol>
           </QAppsSectionRow>
           <QAppsLogosRow>
@@ -533,7 +534,7 @@ const LandingPage = () => {
           </QAppsLogosRow>
         </QAppsSection>
         <QTradeSection ref={topCard3Feature}>
-          <SectionCol>
+          <SectionCol style={{alignItems: "flex-start"}}>
             <SectionHeader>
               <SectionLinesImg
                 src={"/images/LandingPage/YellowLines.png"}
@@ -557,7 +558,7 @@ const LandingPage = () => {
             </QTradeDescriptionCol>
             <QonnectFour />
           </SectionCol>
-          <SectionCol>
+          <SectionCol style={{alignItems: "flex-start"}}>
             <QTradeSectionImgBox>
               <SectionImg
                 src={"/images/LandingPage/Q-TradeScreenshot.png"}
@@ -571,7 +572,7 @@ const LandingPage = () => {
                 }}
               />
             </QTradeSectionImgBox>
-            <SectionHeader style={{ justifyContent: "center" }}>
+            <SectionHeader>
               <SectionLinesImg
                 src={"/images/LandingPage/YellowLines.png"}
                 alt=""
@@ -632,7 +633,7 @@ const LandingPage = () => {
                 )}
                 <SectionCol
                   style={{
-                    zIndex: 1,
+                    zIndex:  !showOpenSourceText ? 1 : 10,
                     filter: !showOpenSourceText ? "blur(10px)" : "blur(0px)"
                   }}
                 >
@@ -659,6 +660,9 @@ const LandingPage = () => {
                       transparency. No secrets, no hidden agendas. Just a
                       blockchain you can trust.
                     </SectionDescription>
+                    <SectionDownloadLink href="https://github.com/Qortal" target="_blank" rel="noopener noreferrer">
+                      GitHub 🠪
+                    </SectionDownloadLink>
                   </OpenSourceDescriptionCol>
                 </SectionCol>
               </OpenSourceBox>

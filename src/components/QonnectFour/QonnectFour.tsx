@@ -93,9 +93,9 @@ const QonnectFour = () => {
               onChangeCommitted={handleSlideChange}
               aria-labelledby="continuous-slider"
             />
-            <DoubleCaretRightIcon height="38px" width="38px" color="none" />
-            <DoubleCaretRightIcon2 height="38px" width="38px" color="none" />
-            <DoubleCaretRightIcon3 height="38px" width="38px" color="none" />
+            <DoubleCaretRightIcon height="38px" width="38px" color={"#454545"} />
+            <DoubleCaretRightIcon2 height="38px" width="38px" color={"#454545"} />
+            <DoubleCaretRightIcon3 height="38px" width="38px" color={"#454545"} />
           </SliderContainer>
         </QonnectFourMainCol>
       </QonnectFourMainRow>

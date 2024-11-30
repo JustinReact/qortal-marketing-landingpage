@@ -4,18 +4,25 @@ export const DoubleCaretRightSVG: React.FC<IconTypes> = ({
   color,
   height,
   width,
-  className,
+  className
 }) => {
   return (
     <svg
       className={className}
-      fill={color}
-      xmlns="http://www.w3.org/2000/svg"
-      height={height}
-      viewBox="0 -960 960 960"
       width={width}
+      height={height}
+      viewBox="0 0 38 29"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
     >
-      <path d="M383-480 200-664l56-56 240 240-240 240-56-56 183-184Zm264 0L464-664l56-56 240 240-240 240-56-56 183-184Z" />
+      <path
+        d="M8.76923 0H0V2.61L10.8951 14.5L0 26.39V29H8.76923L22.0559 14.5L8.76923 0Z"
+        fill={color}
+      />
+      <path
+        d="M24.7133 0H15.9441V2.61L26.8392 14.5L15.9441 26.39V29H24.7133L38 14.5L24.7133 0Z"
+        fill={color}
+      />
     </svg>
   );
 };

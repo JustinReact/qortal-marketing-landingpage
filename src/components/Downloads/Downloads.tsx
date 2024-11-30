@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import {
+  ChromeStoreLogo,
   Container,
   DownloadCard,
   DownloadCol,
@@ -17,9 +18,7 @@ import {
   ScreenshotCol,
   ScreenshotContainer
 } from "./Downloads-styles";
-import { ChromeStoreSVG } from "../Common/Icons/ChromeStoreSVG";
 import Image from "next/image";
-import axios from "axios";
 import ReactGA from "react-ga4";
 import { useTheme } from "@mui/material";
 
@@ -99,43 +98,11 @@ const Downloads = () => {
               width={40}
               height={40}
               alt={"Google Play Logo"}
+              style={{marginRight: "28px"}}
             />
             <DownloadTextCol>
               <DownloadText1>Available on</DownloadText1>
               <DownloadText2>Google Play</DownloadText2>
-            </DownloadTextCol>
-          </DownloadCard>
-        </DownloadCol>
-        <DownloadCol>
-          <DownloadText>
-            Qortal <span style={{ fontWeight: "bold" }}>Extension</span>
-          </DownloadText>
-          <DownloadCard
-            aria-label="Redirect to the Chrome Web Store"
-            tabIndex={0}
-            onClick={() => {
-              ReactGA.event({
-                category: "User",
-                action: "Clicked Chrome Web Store Download Button",
-                label: "Clicked Chrome Web Store Download Button"
-              });
-              chromeWebStoreRedirect();
-            }}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                ReactGA.event({
-                  category: "User",
-                  action: "Clicked Chrome Web Store Download Button",
-                  label: "Clicked Chrome Web Store Download Button"
-                });
-                chromeWebStoreRedirect();
-              }
-            }}
-          >
-            <ChromeStoreSVG width="39" height="39" color="transparent" />
-            <DownloadTextCol>
-              <DownloadText1>Available on</DownloadText1>
-              <DownloadText2>Chome Web Store</DownloadText2>
             </DownloadTextCol>
           </DownloadCard>
         </DownloadCol>
@@ -170,6 +137,7 @@ const Downloads = () => {
               width={40}
               height={40}
               alt={"Windows Logo"}
+              style={{marginRight: "25px"}}
             />
             <DownloadTextCol>
               <DownloadText1>Available on</DownloadText1>
@@ -208,10 +176,44 @@ const Downloads = () => {
               width={40}
               height={40}
               alt={"Linux Logo"}
+              style={{marginRight: "25px"}}
             />
             <DownloadTextCol>
               <DownloadText1>Available on</DownloadText1>
               <DownloadText2>Linux Desktop</DownloadText2>
+            </DownloadTextCol>
+          </DownloadCard>
+        </DownloadCol>
+        <DownloadCol>
+          <DownloadText>
+            Qortal <span style={{ fontWeight: "bold" }}>Extension</span>
+          </DownloadText>
+          <DownloadCard
+            aria-label="Redirect to the Chrome Web Store"
+            tabIndex={0}
+            onClick={() => {
+              ReactGA.event({
+                category: "User",
+                action: "Clicked Chrome Web Store Download Button",
+                label: "Clicked Chrome Web Store Download Button"
+              });
+              chromeWebStoreRedirect();
+            }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                ReactGA.event({
+                  category: "User",
+                  action: "Clicked Chrome Web Store Download Button",
+                  label: "Clicked Chrome Web Store Download Button"
+                });
+                chromeWebStoreRedirect();
+              }
+            }}
+          >
+            <ChromeStoreLogo width="39" height="39" color="transparent" />
+            <DownloadTextCol>
+              <DownloadText1>Available on</DownloadText1>
+              <DownloadText2>Chome Web Store</DownloadText2>
             </DownloadTextCol>
           </DownloadCard>
         </DownloadCol>

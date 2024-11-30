@@ -3,6 +3,10 @@ import { Box, Button, Typography } from "@mui/material";
 import { HamburgerSVG } from "../../Common/Icons/HamburgerSVG";
 import Link from "next/link";
 import { magistral, oxygen } from "../../../app/fonts";
+import { QortalBlackLogoSVG } from "../../Common/Icons/QortalBlackLogoSVG";
+import { QortalWhiteLogoSVG } from "../../Common/Icons/QortalWhiteLogoSVG";
+import { LightModeSVG } from "../../Common/Icons/LightModeSVG";
+import { DarkModeSVG } from "../../Common/Icons/DarkModeSVG";
 
 interface HamburgerIconProps {
   rotated?: { isOn: boolean };
@@ -15,7 +19,7 @@ export const HeaderNav = styled(Box)(({ theme }) => ({
   justifyContent: "space-between",
   alignItems: "center",
   width: "100%",
-  padding: "0 30px",
+  padding: "0 180px 0 59px",
   height: "125px",
   "&::before": {
     content: "''",
@@ -36,21 +40,27 @@ export const HeaderNav = styled(Box)(({ theme }) => ({
 
 export const Divider = styled(Box)(({ theme }) => ({
   position: "absolute",
-  bottom: 0,
+  bottom: -9,
   left: 0,
   right: 0, 
   marginLeft: "-41.5px",
   marginRight: "-16px",
   width: "-webkit-fill-available",
-  height: "2px",
+  height: "1px",
   backgroundColor: theme.palette.text.primary,
+  [theme.breakpoints.down("sm")]: {
+    bottom: -5
+  }
 }));
 
-export const ThemeSelectRow = styled(Box)({
+export const ThemeSelectRow = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
-  gap: "25px"
-});
+  gap: "80px",
+  [theme.breakpoints.down("sm")]: {
+    gap: "20px"
+  }
+}));
 
 export const QortalLogoContainer = styled(Link)(({ theme }) => ({
   display: "flex",
@@ -58,7 +68,38 @@ export const QortalLogoContainer = styled(Link)(({ theme }) => ({
   gap: "3px",
   userSelect: "none",
   cursor: "pointer",
-  textDecoration: "none"
+  textDecoration: "none",
+  padding: "25px 0"
+}));
+
+export const LightModeIcon = styled(LightModeSVG)(({ theme }) => ({
+  [theme.breakpoints.down("sm")]: {
+    width: "30px",
+    height: "30px"
+  }
+}));
+
+export const DarkModeIcon = styled(DarkModeSVG)(({ theme }) => ({
+  [theme.breakpoints.down("sm")]: {
+    width: "30px",
+    height: "30px"
+  }
+}));
+
+export const QortalQBlack = styled(QortalBlackLogoSVG)(({ theme }) => ({
+   marginRight: "2px",
+  [theme.breakpoints.down("sm")]: {
+    width: "59px",
+    height: "70px"
+  }
+}));
+
+export const QortalQWhite = styled(QortalWhiteLogoSVG)(({ theme }) => ({
+   marginRight: "2px",
+   [theme.breakpoints.down("sm")]: {
+    width: "59px",
+    height: "70px"
+  }
 }));
 
 export const QortalText = styled(Typography)(({ theme }) => ({
@@ -66,7 +107,22 @@ export const QortalText = styled(Typography)(({ theme }) => ({
   color: theme.palette.text.primary,
   fontWeight: 400,
   lineHeight: "27px",
-  fontSize: "40px"
+  fontSize: "64px",
+  [theme.breakpoints.down("sm")]: {
+    fontSize: "50px"
+  }
+}));
+
+export const QortalSmallerText = styled(Typography)(({ theme }) => ({
+  fontFamily: magistral.style.fontFamily,
+  color: theme.palette.text.primary,
+  fontWeight: 400,
+  lineHeight: "27px",
+  marginTop: "20px", 
+  fontSize: "36px",
+  [theme.breakpoints.down("sm")]: {
+    fontSize: "28px"
+  }
 }));
 
 export const HeaderButtonsRow = styled(Box)(({ theme }) => ({
@@ -85,7 +141,7 @@ export const NewsButton = styled(Link)(({ theme }) => ({
   fontFamily: oxygen.style.fontFamily,
   fontSize: "18px",
   color: theme.palette.text.primary,
-  height: "48px",
+  height: "44px",
   borderRadius: "2px",
   width: "130px",
   padding: "10px 15px",
@@ -99,7 +155,7 @@ export const NewsButton = styled(Link)(({ theme }) => ({
       height: "2px",
       position: "absolute",
       content: "''",
-      bottom: "3px"
+      bottom: "-4px"
     }
   },
   "&::after": {
@@ -108,7 +164,7 @@ export const NewsButton = styled(Link)(({ theme }) => ({
     height: "2px",
     backgroundColor: theme.palette.text.primary,
     content: "''",
-    bottom: "3px",
+    bottom: "-4px",
     transition: "all 0.3s ease-in-out"
   },
   "&:hover": {
@@ -119,7 +175,7 @@ export const NewsButton = styled(Link)(({ theme }) => ({
       height: "2px",
       position: "absolute",
       content: "''",
-      bottom: "3px"
+      bottom: "-4px"
     }
   }
 }));
@@ -132,6 +188,7 @@ export const Docs = styled(Link)(({ theme }) => ({
   gap: "8px",
   fontFamily: oxygen.style.fontFamily,
   width: "130px",
+  height: "44px",
   fontSize: "18px",
   padding: "10px 15px",
   borderRadius: "2px",
@@ -149,7 +206,7 @@ export const Docs = styled(Link)(({ theme }) => ({
       height: "2px",
       position: "absolute",
       content: "''",
-      bottom: "3px"
+      bottom: "-4px"
     }
   },
   "&::after": {
@@ -158,7 +215,7 @@ export const Docs = styled(Link)(({ theme }) => ({
     height: "2px",
     backgroundColor: theme.palette.text.primary,
     content: "''",
-    bottom: "3px",
+    bottom: "-4px",
     transition: "all 0.3s ease-in-out"
   },
   "&:hover": {
@@ -169,7 +226,7 @@ export const Docs = styled(Link)(({ theme }) => ({
       height: "2px",
       position: "absolute",
       content: "''",
-      bottom: "3px"
+      bottom: "-4px"
     }
   }
 }));
@@ -188,6 +245,7 @@ export const BlogButton = styled(Link)(({ theme }) => ({
   color: theme.palette.text.primary,
   fontWeight: "400",
   width: "130px",
+  height: "44px",
   transition: "all 0.3s ease-in-out",
   zIndex: 2,
   userSelect: "none",
@@ -199,7 +257,7 @@ export const BlogButton = styled(Link)(({ theme }) => ({
       height: "2px",
       position: "absolute",
       content: "''",
-      bottom: "3px"
+      bottom: "-4px"
     }
   },
   "&::after": {
@@ -208,7 +266,7 @@ export const BlogButton = styled(Link)(({ theme }) => ({
     height: "2px",
     backgroundColor: theme.palette.text.primary,
     content: "''",
-    bottom: "3px",
+    bottom: "-4px",
     transition: "all 0.3s ease-in-out"
   },
   "&:hover": {
@@ -219,7 +277,7 @@ export const BlogButton = styled(Link)(({ theme }) => ({
       height: "2px",
       position: "absolute",
       content: "''",
-      bottom: "3px"
+      bottom: "-4px"
     }
   }
 }));
@@ -242,6 +300,7 @@ export const QORTButton = styled(Link)(({ theme }) => ({
   userSelect: "none",
   textDecoration: "none",
   width: "130px",
+  height: "44px",
   "&.active ": {
     "&::after": {
       width: "100%",
@@ -249,7 +308,7 @@ export const QORTButton = styled(Link)(({ theme }) => ({
       height: "2px",
       position: "absolute",
       content: "''",
-      bottom: "3px"
+      bottom: "-4px"
     }
   },
   "&::after": {
@@ -258,7 +317,7 @@ export const QORTButton = styled(Link)(({ theme }) => ({
     height: "2px",
     backgroundColor: theme.palette.text.primary,
     content: "''",
-    bottom: "3px",
+    bottom: "-4px",
     transition: "all 0.3s ease-in-out"
   },
   "&:hover": {
@@ -269,7 +328,7 @@ export const QORTButton = styled(Link)(({ theme }) => ({
       height: "2px",
       position: "absolute",
       content: "''",
-      bottom: "3px"
+      bottom: "-4px"
     }
   }
 }));
@@ -297,6 +356,6 @@ export const TriangleIcon = styled("div")({
 export const HamburgerIcon = styled(HamburgerSVG)<HamburgerIconProps>(
   ({ rotated, theme }) => ({
     transition: "all 0.3s ease-in-out",
-    transform: rotated?.isOn ? "rotate(90deg)" : "rotate(0deg)"
+    transform: rotated?.isOn ? "rotate(90deg)" : "rotate(0deg)",
   })
 );

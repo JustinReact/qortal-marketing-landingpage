@@ -12,16 +12,16 @@ import {
   BlogButton,
   QORTButton,
   QortalText,
-  Divider
+  Divider,
+  QortalQBlack,
+  QortalQWhite,
+  QortalSmallerText,
+  LightModeIcon,
+  DarkModeIcon
 } from "./Header-styles";
 import { useMediaQuery, useTheme } from "@mui/material";
-import { LightModeSVG } from "../../Common/Icons/LightModeSVG";
-import { DarkModeSVG } from "../../Common/Icons/DarkModeSVG";
 import { MobileDrawer } from "./MobileDrawer";
 import { motion, AnimatePresence } from "framer-motion";
-import { BackArrowSVG } from "../../Common/Icons/BackArrowSVG";
-import { QortalWhiteLogoSVG } from "../../Common/Icons/QortalWhiteLogoSVG";
-import { QortalBlackLogoSVG } from "../../Common/Icons/QortalBlackLogoSVG";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { setTheme } from "../../../state/theme/themeSlice";
@@ -43,33 +43,33 @@ export const Header = () => {
           <Divider />
           <ThemeSelectRow>
             {theme.palette.mode === "dark" ? (
-              <LightModeSVG
+              <LightModeIcon
                 onClickFunc={() => dispatch(setTheme("light"))}
                 color="white"
-                height="22"
-                width="22"
+                height="41"
+                width="40"
               />
             ) : (
-              <DarkModeSVG
+              <DarkModeIcon
                 onClickFunc={() => dispatch(setTheme("dark"))}
                 color="black"
-                height="22"
-                width="22"
+                height="41"
+                width="40"
               />
             )}
             <QortalLogoContainer href="/">
               <>
                 {theme.palette.mode === "light" ? (
-                  <QortalBlackLogoSVG width="45" height="55" color="none" />
+                  <QortalQBlack width="79" height="90" color="none" />
                 ) : (
-                  <QortalWhiteLogoSVG width="45" height="55" color="none" />
+                  <QortalQWhite width="79" height="90" color="none" />
                 )}
               </>
               <>
                 <QortalText>ortal</QortalText>
-                <QortalText style={{ marginTop: "10px", fontSize: "25px" }}>
+                <QortalSmallerText>
                   .dev
-                </QortalText>
+                </QortalSmallerText>
               </>
             </QortalLogoContainer>
           </ThemeSelectRow>

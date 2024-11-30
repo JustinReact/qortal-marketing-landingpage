@@ -19,7 +19,7 @@ function LayoutProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
-  console.log(location);
+  
   return (
     <Provider store={store}>
       <ThemeProviderWrapper>

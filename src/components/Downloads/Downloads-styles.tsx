@@ -2,6 +2,7 @@ import { lineHeight, styled } from "@mui/system";
 import { Box, Button, Grid, Typography } from "@mui/material";
 import Image from "next/image";
 import { futura, redditSans } from "../../app/fonts";
+import { ChromeStoreSVG } from "../Common/Icons/ChromeStoreSVG";
 
 export const Container = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -55,18 +56,20 @@ export const DownloadCard = styled(Box)(({ theme }) => ({
   flexDirection: "row",
   alignItems: "center",
   justifyContent: "flex-start",
-  gap: "21px",
   backgroundColor: theme.palette.mode === "light" ? "#2F2F2F" : "#ffffff",
-  padding: "15px",
+  padding: "15px 15px 20px 24px",
   borderRadius: "5px",
   width: "100%",
   height: "87px",
   transition: "all 0.3s ease-in-out",
+  "& img, & svg": {
+    marginTop: "10px"
+  },  
   "&:hover": {
     cursor: "pointer",
     boxShadow:
       theme.palette.mode === "light"
-        ? "0px 6px 10px 0px hsla(0,0%,0%,0.14), 0px 1px 18px 0px hsla(0,0%,0%,0.12), 0px 3px 5px -1px hsla(0,0%,0%,0.2)"
+        ? "none"
         : "0px 12px 17px 2px hsla(0, 0%, 100%, 0.08), 0px 5px 22px 4px hsla(0, 0%, 100%, 0.09), 0px 7px 8px -4px hsla(0, 0%, 100%, 0.2),  0px 0px 10px rgba(255, 255, 255, 0.1)",
     backgroundColor: theme.palette.mode === "dark" ? "#56AEFF" : "#003E78"
   },
@@ -86,9 +89,9 @@ export const DownloadCol = styled(Box)(({ theme }) => ({
 export const DownloadTextCol = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
-  alignItems: "center",
+  alignItems: "flex-start",
   justifyContent: "center",
-  gap: "5px",
+  gap: "8px",
   [theme.breakpoints.down("md")]: {
     gap: 0
   }
@@ -113,6 +116,7 @@ export const DownloadText1 = styled(Typography)(({ theme }) => ({
   color: theme.palette.mode === "light" ? "#ffffff" : "#000000",
   fontWeight: 300,
   fontSize: "20px",
+  lineHeight: "22px",
   userSelect: "none"
 }));
 
@@ -121,7 +125,7 @@ export const DownloadText2 = styled(Typography)(({ theme }) => ({
   color: theme.palette.mode === "light" ? "#ffffff" : "#000000",
   fontWeight: 500,
   fontSize: "24px",
-  lineHeight: "10px",
+  lineHeight: "18px",
   userSelect: "none",
   "@media(max-width: 1294px)": {
     fontSize: "20px"
@@ -197,3 +201,7 @@ export const DownloadNowText = styled(Typography)(({ theme }) => ({
     marginTop: "70px"
   }
 }));
+
+export const ChromeStoreLogo = styled(ChromeStoreSVG)({
+  marginRight: "21px"
+})
