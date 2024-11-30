@@ -152,9 +152,14 @@ export const ScreenshotContainer = styled(Grid)(({ theme }) => ({
   marginTop: "180px",
   alignItems: "center",
   justifyContent: "center",
-  padding: "0 150px",
+  "@media(min-width: 1700px)": {
+    padding: "0 150px",
+  },
+  "@media(max-width: 1699px)": {
+    padding: "0 100px",
+  },
   "@media(max-width: 1127px)": {
-    padding: "0 10px",
+    padding: "0 30px",
     marginTop: "50px"
   }
 }));
@@ -166,13 +171,13 @@ export const ScreenshotCol = styled(Grid)(({ theme }) => ({
 }));
 
 export const Screenshot1 = styled(Image)(({ theme }) => ({
-  width: "100%",
+  width: "-webkit-fill-available",
   height: "auto",
   objectFit: "contain"
 }));
 
 export const Screenshot2 = styled(Image)(({ theme }) => ({
-  width: "100%",
+  width: "-webkit-fill-available",
   height: "auto",
   objectFit: "contain",
   transform: "translateY(50px)",
@@ -183,7 +188,7 @@ export const Screenshot2 = styled(Image)(({ theme }) => ({
 }));
 
 export const Screenshot3 = styled(Image)(({ theme }) => ({
-  width: "100%",
+  width: "-webkit-fill-available",
   height: "auto",
   objectFit: "contain"
 }));

@@ -239,7 +239,7 @@ const Downloads = () => {
         </ScreenshotCol>
         <ScreenshotCol item md={12} xs={12}>
           <Screenshot3
-            src={"/images/Downloads/TrifectaScreenshot3.png"}
+            src={"/images/Downloads/ThreadsScreenshot.webp"}
             quality={100}
             width={1100}
             height={642}
