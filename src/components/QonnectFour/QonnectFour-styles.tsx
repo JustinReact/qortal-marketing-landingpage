@@ -1,4 +1,4 @@
-import { keyframes, styled } from "@mui/system";
+import { display, keyframes, styled } from "@mui/system";
 import {
   Box,
   Slider,
@@ -165,11 +165,15 @@ export const SliderContainer = styled(Box)(({ theme }) => ({
   gap: "35px",
   width: "378px",
   [theme.breakpoints.down("sm")]: {
-    width: "250px"
+    alignItems: "flex-start",
+    gap: "45px"
   }
 }));
 
 export const StyledSlider = styled(Slider)(({ theme }) => ({
+  " &.MuiSlider-root": {
+    width: "80% !important",
+  },
   " & .MuiSlider-thumb": {
     width: "77px",
     height: "77px",
@@ -184,6 +188,9 @@ export const StyledSlider = styled(Slider)(({ theme }) => ({
     },
     "&.Mui-focusVisible": {
       boxShadow: "none !important"
+    },
+    "&.mui-18ue8vk-MuiSlider-root": {
+      width: "80%",
     }
   },
   "& .MuiSlider-rail": {
@@ -191,26 +198,25 @@ export const StyledSlider = styled(Slider)(({ theme }) => ({
     height: "87px",
     background: "#2B2B2B",
     borderRadius: "50px",
-    [theme.breakpoints.down("sm")]: {
-      width: "100%",
-    }
+    transform: "translateY(-45px)"
   },
   "& .MuiSlider-track": {
-    display: "none"
+    display: "none",
   },
-  [theme.breakpoints.down("sm")]: {
-    width: "100%",
-  }
 }));
 
 export const DoubleCaretRightIcon = styled(DoubleCaretRightSVG)(
   ({ theme }) => ({
     position: "absolute",
     top: "50px",
-    left: "120px",
+    left: "140px",
     userSelect: "none",
     animation: `${doubleCaretRightAnimation} 6s infinite`,
     animationDelay: "0s",
+    [theme.breakpoints.down("sm")]: {
+      left: "100px",
+      top: "55px",
+    }
   })
 );
 
@@ -218,12 +224,13 @@ export const DoubleCaretRightIcon2 = styled(DoubleCaretRightSVG)(
   ({ theme }) => ({
     position: "absolute",
     top: "50px",
-    left: "205px",
+    left: "240px",
     userSelect: "none",
     animation: `${doubleCaretRightAnimation} 6s infinite`,
     animationDelay: "2s",
     [theme.breakpoints.down("sm")]: {
-      left: "120px"
+      top: "55px",
+      left: "200px"
     }
   })
 );
@@ -232,12 +239,13 @@ export const DoubleCaretRightIcon3 = styled(DoubleCaretRightSVG)(
   ({ theme }) => ({
     position: "absolute",
     top: "50px",
-    left: "290px",
+    left: "340px",
     userSelect: "none",
     animation: `${doubleCaretRightAnimation} 6s infinite`,
     animationDelay: "4s",
     [theme.breakpoints.down("sm")]: {
-      left: "180px"
+      top: "55px",
+      left: "300px"
     }
   })
 );
@@ -248,5 +256,11 @@ export const SliderText = styled(Typography)(({ theme }) => ({
   fontWeight: "400",
   lineHeight: "19.36px",
   textAlign: "left",
-  color: theme.palette.text.primary
+  color: theme.palette.text.primary,
+  marginLeft: "85px",
+  [theme.breakpoints.down("sm")]: {
+    width: "100%",
+    textAlign: "center",
+    marginLeft: "0"
+  }
 }));

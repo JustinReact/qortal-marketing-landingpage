@@ -299,7 +299,7 @@ const LandingPage = () => {
           }}
         >
           <TopCardSubContainer>
-            <TopCardTitle>OPEN SOURCE</TopCardTitle>
+            <TopCardTitle>FULL TRANSPARENCY</TopCardTitle>
             <TopCardSubTitle>Open Source Codebase</TopCardSubTitle>
           </TopCardSubContainer>
           <TopCardImage

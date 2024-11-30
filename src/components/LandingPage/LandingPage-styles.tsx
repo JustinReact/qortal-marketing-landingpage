@@ -56,6 +56,9 @@ export const TopFold = styled(Box)(({ theme }) => ({
     gridTemplateColumns: "auto",
     gap: "0",
     justifyContent: "center"
+  },
+  [theme.breakpoints.down("sm")]: {
+    marginTop: "20px",
   }
 }));
 
@@ -285,14 +288,8 @@ export const TopCardRow = styled(Box)(({ theme }) => ({
     maxWidth: "calc(100vw - 72px)"
   },
   [theme.breakpoints.down("sm")]: {
-    maxWidth: "calc(100vw - 32px)"
+    maxWidth: "100vw"
   },
-  [theme.breakpoints.down("sm")]: {
-    gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))"
-  },
-  "@media(max-width: 400px)": {
-    gridTemplateColumns: "repeat(auto-fill, minmax(255px, 1fr))"
-  }
 }));
 
 export const TopCard1 = styled(Box)(({ theme }) => ({
@@ -326,14 +323,24 @@ export const TopCard1 = styled(Box)(({ theme }) => ({
     backgroundPosition: "top right"
   },
   "&:hover::before": {
-    opacity: 1
+    opacity: 1,
+    [theme.breakpoints.down("sm")]: {
+      opacity: 0
+    }
   },
   "&:hover": {
-    transform: "translateY(-20px)"
+    transform: "translateY(-20px)",
+    [theme.breakpoints.down("sm")]: {
+      transform: "translateY(0px)"
+    }
   },
   "&:hover img": {
     transform: "scale(1.3)",
-    filter: "brightness(0.3)"
+    filter: "brightness(0.3)",
+    [theme.breakpoints.down("sm")]: {
+      transform: "scale(1.0)",
+      filter: "brightness(1.0)"
+    }  
   },
   [theme.breakpoints.down("sm")]: {
     width: "300px"
@@ -373,14 +380,24 @@ export const TopCard2 = styled(Box)(({ theme }) => ({
     backgroundPosition: "top right"
   },
   "&:hover::before": {
-    opacity: 1 // Make hover gradient visible
+    opacity: 1,
+    [theme.breakpoints.down("sm")]: {
+      opacity: 0
+    }
   },
   "&:hover": {
-    transform: "translateY(-20px)"
+    transform: "translateY(-20px)",
+    [theme.breakpoints.down("sm")]: {
+      transform: "translateY(0px)"
+    }
   },
   "&:hover img": {
     transform: "scale(1.3)",
-    filter: "brightness(0.3)"
+    filter: "brightness(0.3)",
+    [theme.breakpoints.down("sm")]: {
+      transform: "scale(1.0)",
+      filter: "brightness(1.0)"
+    }  
   },
   [theme.breakpoints.down("sm")]: {
     width: "300px"
@@ -420,14 +437,24 @@ export const TopCard3 = styled(Box)(({ theme }) => ({
     backgroundPosition: "top right"
   },
   "&:hover::before": {
-    opacity: 1 // Make hover gradient visible
+    opacity: 1,
+    [theme.breakpoints.down("sm")]: {
+      opacity: 0
+    }
   },
   "&:hover": {
-    transform: "translateY(-20px)"
+    transform: "translateY(-20px)",
+    [theme.breakpoints.down("sm")]: {
+      transform: "translateY(0px)"
+    }
   },
   "&:hover img": {
     transform: "scale(1.3)",
-    filter: "brightness(0.3)"
+    filter: "brightness(0.3)",
+    [theme.breakpoints.down("sm")]: {
+      transform: "scale(1.0)",
+      filter: "brightness(1.0)"
+    }  
   },
   [theme.breakpoints.down("sm")]: {
     width: "300px"
@@ -467,7 +494,10 @@ export const TopCard4 = styled(Box)(({ theme }) => ({
     backgroundPosition: "top right"
   },
   "&:hover::before": {
-    opacity: 1 // Make hover gradient visible
+    opacity: 1,
+    [theme.breakpoints.down("sm")]: {
+      opacity: 0
+    }
   },
   "&:hover": {
     transform: "translateY(-20px)"
@@ -572,7 +602,8 @@ export const TopFoldButtonRow = styled(Box)(({ theme }) => ({
   },
   [theme.breakpoints.down("sm")]: {
     gap: "10px",
-    width: "100%"
+    width: "100%",
+    marginBottom: "100px"
   }
 }));
 
@@ -650,7 +681,10 @@ export const QortalFeaturesSection = styled(Box)(({ theme }) => ({
   alignItems: "center",
   flexDirection: "column",
   gap: 0,
-  marginTop: "145px"
+  marginTop: "145px",
+  [theme.breakpoints.down("sm")]: {
+    marginTop: "100px"
+  }
 }));
 
 export const GroupSection = styled(Box)(({ theme }) => ({
@@ -683,7 +717,9 @@ export const GroupSection = styled(Box)(({ theme }) => ({
     padding: "180px 0 153px 0",
     flexDirection: "column",
     gap: 0
-  }
+  },
+  [theme.breakpoints.down("sm")]: {
+    padding: "100px 0 100px 0"  }
 }));
 
 export const QAppsSection = styled(Box)(({ theme }) => ({
@@ -714,6 +750,9 @@ export const QAppsSection = styled(Box)(({ theme }) => ({
   },
   "@media(max-width: 935px)": {
     padding: "180px 0 153px 0"
+  },
+  [theme.breakpoints.down("sm")]: {
+    padding: "100px 0 100px 0"
   }
 }));
 
@@ -746,6 +785,9 @@ export const QTradeSection = styled(Box)(({ theme }) => ({
     padding: "180px 0 153px 0",
     flexDirection: "column",
     gap: 0
+  },
+  [theme.breakpoints.down("sm")]: {
+    padding: "100px 0 100px 0"
   }
 }));
 
@@ -778,6 +820,9 @@ export const OpenSourceSection = styled(Box)(({ theme }) => ({
     padding: "180px 0 50px 0",
     flexDirection: "column",
     gap: 0
+  },
+  [theme.breakpoints.down("sm")]: {
+    padding: "100px 0 50px 0"
   }
 }));
 
@@ -804,7 +849,7 @@ export const SectionCol = styled(Box)(({ theme }) => ({
   }
 }));
 
-export const GroupSectionImgBox = styled(Box)({
+export const GroupSectionImgBox = styled(Box)(({ theme }) => ({
   position: "relative",
   display: "flex",
   justifyContent: "center",
@@ -823,8 +868,11 @@ export const GroupSectionImgBox = styled(Box)({
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
     zIndex: 1
+  },
+  [theme.breakpoints.down("sm")]: {
+    marginBottom: "75px"
   }
-});
+}));
 
 export const GroupSectionImgBox2 = styled(Box)(({ theme }) => ({
   position: "relative",
@@ -977,6 +1025,9 @@ export const GroupEncryptedHeader = styled(Box)(({ theme }) => ({
   zIndex: 5,
   "@media(max-width: 935px)": {
     marginTop: "120px"
+  },
+  [theme.breakpoints.down("sm")]: {
+    marginTop: "75px"
   }
 }));
 
@@ -1035,6 +1086,9 @@ export const QMailDescriptionCol = styled(Box)(({ theme }) => ({
   "@media(max-width: 935px)": {
     margin: "120px 0 0 0",
     alignItems: "center"
+  },
+  [theme.breakpoints.down("sm")]: {
+    marginTop: "75px"
   }
 }));
 
@@ -1093,7 +1147,7 @@ export const OpenSourceDescriptionCol = styled(Box)(({ theme }) => ({
   gap: "24px",
   alignItems: "flex-start",
   justifyContent: "flex-start",
-  marginTop: "88px",
+  marginTop: "60px",
   marginLeft: "25px",
   "@media(max-width: 935px)": {
     alignItems: "center",
@@ -1156,6 +1210,9 @@ export const QAppsLogosRow = styled(Box)(({ theme }) => ({
     flexDirection: "column",
     gap: "60px",
     margin: "120px 0 0 0"
+  },
+  [theme.breakpoints.down("sm")]: {
+    margin: "75px 0 0 0"
   }
 }));
 
