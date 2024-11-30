@@ -62,7 +62,8 @@ import {
   OpenSourceDescriptionCol,
   TopCardLockIcon,
   TopCardSubContainerCrypto,
-  QAppsDescriptionCol
+  QAppsDescriptionCol,
+  RightArrow
 } from "../../components/LandingPage/LandingPage-styles";
 import { YoutubeVideoContainer } from "../Qort/QORTPage-styles";
 import { YoutubePlaceholder } from "../YouTube/YoutubePlaceholder";
@@ -375,7 +376,7 @@ const LandingPage = () => {
       <QortalFeaturesSection>
         <MiddleOfPageRef ref={middleOfPageRef} />
         <GroupSection ref={topCard1Feature}>
-          <SectionCol style={{alignItems: "flex-start"}}>
+          <SectionCol style={{ alignItems: "flex-start" }}>
             <GroupSectionImgBox>
               <SectionImg
                 src={"/images/LandingPage/Q-ChatScreenshot.webp"}
@@ -411,7 +412,7 @@ const LandingPage = () => {
               </SectionDescription>
             </QMailDescriptionCol>
           </SectionCol>
-          <SectionCol style={{alignItems: "flex-start"}}>
+          <SectionCol style={{ alignItems: "flex-start" }}>
             <GroupEncryptedHeader>
               <SectionLinesImg
                 src={"/images/LandingPage/GreenLines.png"}
@@ -432,7 +433,12 @@ const LandingPage = () => {
                 Stay connected without compromising your privacy.
               </SectionDescription>
               <SectionDownloadLink href="/downloads">
-                Download 🠪
+                Download{" "}
+                <RightArrow
+                  height={"20"}
+                  width="20"
+                  color={theme.palette.customBlue.main}
+                />
               </SectionDownloadLink>
             </QChatDescriptionCol>
             <GroupSectionImgBox2>
@@ -469,7 +475,7 @@ const LandingPage = () => {
                 />
               </QAppsSectionImgBox>
             </SectionCol>
-            <SectionCol style={{alignItems: "flex-start"}}>
+            <SectionCol style={{ alignItems: "flex-start" }}>
               <SectionHeader>
                 <SectionLinesImg
                   src={"/images/LandingPage/BlueLines.png"}
@@ -492,7 +498,12 @@ const LandingPage = () => {
                   decentralized—with just a touch of JavaScript know-how.
                 </SectionDescription>
                 <SectionDownloadLink href="/downloads">
-                  Download 🠪
+                  Download{" "}
+                  <RightArrow
+                    height={"20"}
+                    width="20"
+                    color={theme.palette.customBlue.main}
+                  />
                 </SectionDownloadLink>
               </QAppsDescriptionCol>
             </SectionCol>
@@ -534,7 +545,7 @@ const LandingPage = () => {
           </QAppsLogosRow>
         </QAppsSection>
         <QTradeSection ref={topCard3Feature}>
-          <SectionCol style={{alignItems: "flex-start"}}>
+          <SectionCol style={{ alignItems: "flex-start" }}>
             <SectionHeader>
               <SectionLinesImg
                 src={"/images/LandingPage/YellowLines.png"}
@@ -558,7 +569,7 @@ const LandingPage = () => {
             </QTradeDescriptionCol>
             <QonnectFour />
           </SectionCol>
-          <SectionCol style={{alignItems: "flex-start"}}>
+          <SectionCol style={{ alignItems: "flex-start" }}>
             <QTradeSectionImgBox>
               <SectionImg
                 src={"/images/LandingPage/Q-TradeScreenshot.webp"}
@@ -568,7 +579,9 @@ const LandingPage = () => {
                 quality={100}
                 onClick={() => {
                   setOpenModal(true);
-                  setSelectedImage("/images/LandingPage/Q-TradeScreenshot.webp");
+                  setSelectedImage(
+                    "/images/LandingPage/Q-TradeScreenshot.webp"
+                  );
                 }}
               />
             </QTradeSectionImgBox>
@@ -597,7 +610,12 @@ const LandingPage = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Buy 🠪
+                Buy{" "}
+                <RightArrow
+                  height={"20"}
+                  width="20"
+                  color={theme.palette.customBlue.main}
+                />
               </SectionDownloadLink>
             </QORTDescriptionCol>
           </SectionCol>
@@ -633,7 +651,7 @@ const LandingPage = () => {
                 )}
                 <SectionCol
                   style={{
-                    zIndex:  !showOpenSourceText ? 1 : 10,
+                    zIndex: !showOpenSourceText ? 1 : 10,
                     filter: !showOpenSourceText ? "blur(10px)" : "blur(0px)"
                   }}
                 >
@@ -660,8 +678,17 @@ const LandingPage = () => {
                       transparency. No secrets, no hidden agendas. Just a
                       blockchain you can trust.
                     </SectionDescription>
-                    <SectionDownloadLink href="https://github.com/Qortal" target="_blank" rel="noopener noreferrer">
-                      GitHub 🠪
+                    <SectionDownloadLink
+                      href="https://github.com/Qortal"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      GitHub{" "}
+                      <RightArrow
+                        height={"20"}
+                        width="20"
+                        color={theme.palette.customBlue.main}
+                      />
                     </SectionDownloadLink>
                   </OpenSourceDescriptionCol>
                 </SectionCol>

@@ -3,6 +3,8 @@ import { Box, Button, Typography } from "@mui/material";
 import Image from "next/image";
 import { futura, segoeUI } from "../../app/fonts";
 import Link from "next/link";
+import { LeftLongArrowSVG } from "../Common/Icons/LeftLongArrowSVG";
+import { transform } from "next/dist/build/swc";
 
 type ShowOpenSourceText = {
   showOpenSourceText: boolean;
@@ -500,7 +502,10 @@ export const TopCard4 = styled(Box)(({ theme }) => ({
     }
   },
   "&:hover": {
-    transform: "translateY(-20px)"
+    transform: "translateY(-20px)",
+    [theme.breakpoints.down("sm")]: {
+      transform : "translateY(0px)"
+    }
   },
   [theme.breakpoints.down("sm")]: {
     width: "300px"
@@ -1180,6 +1185,9 @@ export const SectionDescription = styled(Typography)(({ theme }) => ({
 }));
 
 export const SectionDownloadLink = styled(Link)(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  gap: "5px",
   fontFamily: segoeUI.style.fontFamily,
   fontSize: "20px",
   lineHeight: "30px",
@@ -1337,4 +1345,8 @@ export const MiddleOfPageRef = styled("div")({
   position: "absolute",
   top: "0px",
   height: "1px"
+});
+
+export const RightArrow = styled(LeftLongArrowSVG)({
+  transform: "rotate(180deg)",
 });
