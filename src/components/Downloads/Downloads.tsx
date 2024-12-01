@@ -232,8 +232,8 @@ const Downloads = () => {
           <Screenshot1
             src={"/images/Downloads/TrifectaScreenshot1.png"}
             quality={100}
-            width={1100}
-            height={642}
+            width={1920}
+            height={1080}
             alt={"Qortal Screenshot 1"}
           />
         </ScreenshotCol>
@@ -241,8 +241,8 @@ const Downloads = () => {
           <Screenshot3
             src={"/images/Downloads/ThreadsScreenshot.webp"}
             quality={100}
-            width={1100}
-            height={642}
+            width={1920}
+            height={1080}
             alt={"Qortal Screenshot 3"}
           />
         </ScreenshotCol>

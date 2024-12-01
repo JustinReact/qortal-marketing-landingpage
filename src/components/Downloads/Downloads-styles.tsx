@@ -27,6 +27,7 @@ export const DownloadsTitle = styled(Typography)(({ theme }) => ({
   lineHeight: "73px",
   letterSpacing: "calc(0.09 * 55px)",
   textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+  userSelect: "none",
   [theme.breakpoints.down("sm")]: {
     fontSize: "30px",
     lineHeight: "35px"
@@ -202,6 +203,7 @@ export const DownloadNowText = styled(Typography)(({ theme }) => ({
   lineHeight: "73px",
   marginTop: "200px",
   textAlign: "center",
+  userSelect: "none",
   [theme.breakpoints.down("md")]: {
     marginTop: "70px"
   }
