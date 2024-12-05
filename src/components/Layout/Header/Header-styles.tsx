@@ -121,6 +121,7 @@ export const QortalSmallerText = styled(Typography)(({ theme }) => ({
   marginTop: "20px", 
   fontSize: "36px",
   [theme.breakpoints.down("sm")]: {
+    marginTop: "17px", 
     fontSize: "28px"
   }
 }));
@@ -355,7 +356,11 @@ export const TriangleIcon = styled("div")({
 
 export const HamburgerIcon = styled(HamburgerSVG)<HamburgerIconProps>(
   ({ rotated, theme }) => ({
+    position: "absolute",
+    right: 0,
+    top: "51px",
     transition: "all 0.3s ease-in-out",
     transform: rotated?.isOn ? "rotate(90deg)" : "rotate(0deg)",
+    cursor: "pointer",
   })
 );
