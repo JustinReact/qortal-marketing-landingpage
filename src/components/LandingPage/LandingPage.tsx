@@ -76,7 +76,6 @@ import {
 import { YoutubeVideoContainer } from "../Qort/QORTPage-styles";
 import { YoutubePlaceholder } from "../YouTube/YoutubePlaceholder";
 import { Typography, useMediaQuery, useTheme } from "@mui/material";
-import Features from "../Features/Features";
 import { useRouter } from "next/navigation";
 import QonnectFour from "../QonnectFour/QonnectFour";
 import Modal from "../Common/Modal/Modal";
@@ -431,10 +430,11 @@ const LandingPage = () => {
           )}
         </YoutubeVideoContainer>
       </VideoBox>
-      {/* <Features /> */}
-
       <QortalFeaturesSection>
         <MiddleOfPageRef ref={middleOfPageRef} />
+
+        {/* Groups Section */}
+
         <GroupSection ref={topCard1Feature}>
           <SectionCol style={{ alignItems: "flex-start" }}>
             <SectionMobileHeader>Q-Mail</SectionMobileHeader>
@@ -442,7 +442,7 @@ const LandingPage = () => {
               <SectionImg
                 src={
                   isMobile
-                    ? "/images/LandingPage/QMailScreenshot.webp"
+                    ? "/images/LandingPage/QMailScreenshotMobile.webp"
                     : "/images/LandingPage/Q-ChatScreenshot.webp"
                 }
                 alt={
@@ -551,17 +551,40 @@ const LandingPage = () => {
             </SectionHeaderMobile>
           </QChatSectionCol>
         </GroupSection>
+
+        {/* Q-Apps Section */}
+
         <QAppsSection ref={topCard2Feature}>
+          <SectionHeaderMobile>
+            <SectionHeaderCol>
+              <SectionHeaderSubtitle>
+                SOFTWARE DEVELOPMENT
+              </SectionHeaderSubtitle>
+              <SectionLinesImg
+                src={"/images/LandingPage/BlueStripesMobile.png"}
+                alt=""
+                width={174}
+                height={4}
+                quality={100}
+              />
+            </SectionHeaderCol>
+          </SectionHeaderMobile>
           <QAppsSectionRow>
+            <SectionMobileHeader>Q-Apps</SectionMobileHeader>
             <SectionCol>
-              <QAppsSectionImgBox style={{ marginBottom: 0 }}>
+              <QAppsSectionImgBox>
                 <SectionImg
-                  src={"/images/LandingPage/QAppsScreenshot.webp"}
+                  src={
+                    isMobile
+                      ? "/images/LandingPage/QAppsScreenshotMobile.webp"
+                      : "/images/LandingPage/QAppsScreenshot.webp"
+                  }
                   alt="Qortal Q-Apps Screenshot"
-                  width={1920}
-                  height={1080}
+                  width={isMobile ? 440 : 1920}
+                  height={isMobile ? 214 : 1080}
                   quality={100}
                   onClick={() => {
+                    if (isMobile) return;
                     setOpenModal(true);
                     setSelectedImage(
                       "/images/LandingPage/QAppsScreenshot.webp"
@@ -588,7 +611,8 @@ const LandingPage = () => {
               </SectionHeader>
               <QAppsDescriptionCol>
                 <SectionDescription>
-                  Build, share, and run apps directly on the Qortal blockchain.
+                  Build, share, and run apps directly on the{" "}
+                  <span style={{ fontWeight: "bold" }}>Qortal blockchain</span>.
                   Whether it’s tools, games, or new ideas, Q-Apps lets you go
                   decentralized—with just a touch of JavaScript know-how.
                 </SectionDescription>
@@ -605,6 +629,7 @@ const LandingPage = () => {
           </QAppsSectionRow>
           <QAppsLogosRow>
             <QAppsLogo
+              style={{ display: isMobile ? "none" : "block" }}
               src={
                 theme.palette.mode === "dark"
                   ? "/images/LandingPage/Q-TradeDark.png"
@@ -616,6 +641,7 @@ const LandingPage = () => {
               quality={100}
             />
             <QAppsLogo
+              style={{ opacity: isMobile ? "0.5" : "1" }}
               src={
                 theme.palette.mode === "dark"
                   ? "/images/LandingPage/Q-AppsLibraryDark.png"
@@ -627,6 +653,7 @@ const LandingPage = () => {
               quality={100}
             />
             <QAppsLogo
+              style={{ display: isMobile ? "none" : "block" }}
               src={
                 theme.palette.mode === "dark"
                   ? "/images/LandingPage/Q-TubeDark.png"
@@ -639,6 +666,9 @@ const LandingPage = () => {
             />
           </QAppsLogosRow>
         </QAppsSection>
+
+        {/* Q-Trade Section */}
+
         <QTradeSection ref={topCard3Feature}>
           <SectionCol style={{ alignItems: "flex-start" }}>
             <SectionHeader>
@@ -654,17 +684,41 @@ const LandingPage = () => {
                 <SectionHeaderTitle>Trading Platform</SectionHeaderTitle>
               </SectionHeaderCol>
             </SectionHeader>
-            <QTradeDescriptionCol>
-              <SectionDescriptionTitle>Q-Trade</SectionDescriptionTitle>
-              <SectionDescription>
-                Trade crypto the Qortal way—peer-to-peer, secure, and no
-                middlemen. Swap QORT and other supported coins directly on our
-                decentralized trading platform.
-              </SectionDescription>
-            </QTradeDescriptionCol>
-            <QonnectFour />
+            {isMobile ? (
+              <QORTDescriptionCol>
+                <SectionDescriptionTitle>QORT</SectionDescriptionTitle>
+                <SectionDescription>
+                  Fuel the Qortal ecosystem with QORT! Use it to trade, tip,
+                  donate, and even bet in games. It’s more than a coin; it’s
+                  your key to a decentralized world.
+                </SectionDescription>
+                <SectionDownloadLink
+                  href="https://qort.trade"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Buy{" "}
+                  <RightArrow
+                    height={"20"}
+                    width="20"
+                    color={theme.palette.customBlue.main}
+                  />
+                </SectionDownloadLink>
+              </QORTDescriptionCol>
+            ) : (
+              <QTradeDescriptionCol>
+                <SectionDescriptionTitle>Q-Trade</SectionDescriptionTitle>
+                <SectionDescription>
+                  Trade crypto the Qortal way—peer-to-peer, secure, and no
+                  middlemen. Swap QORT and other supported coins directly on our
+                  decentralized trading platform.
+                </SectionDescription>
+              </QTradeDescriptionCol>
+            )}
+            {!isMobile && <QonnectFour />}
           </SectionCol>
           <SectionCol style={{ alignItems: "flex-start" }}>
+            <SectionMobileHeader>Trading Platform</SectionMobileHeader>
             <QTradeSectionImgBox>
               <SectionImg
                 src={"/images/LandingPage/Q-TradeScreenshot.webp"}
@@ -673,6 +727,7 @@ const LandingPage = () => {
                 height={1080}
                 quality={100}
                 onClick={() => {
+                  if (isMobile) return;
                   setOpenModal(true);
                   setSelectedImage(
                     "/images/LandingPage/Q-TradeScreenshot.webp"
@@ -693,27 +748,53 @@ const LandingPage = () => {
                 <SectionHeaderTitle>Currency</SectionHeaderTitle>
               </SectionHeaderCol>
             </SectionHeader>
-            <QORTDescriptionCol>
-              <SectionDescriptionTitle>QORT</SectionDescriptionTitle>
-              <SectionDescription>
-                Fuel the Qortal ecosystem with QORT! Use it to trade, tip,
-                donate, and even bet in games. It’s more than a coin; it’s your
-                key to a decentralized world.
-              </SectionDescription>
-              <SectionDownloadLink
-                href="https://qort.trade"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Buy{" "}
-                <RightArrow
-                  height={"20"}
-                  width="20"
-                  color={theme.palette.customBlue.main}
-                />
-              </SectionDownloadLink>
-            </QORTDescriptionCol>
+            {!isMobile ? (
+              <QORTDescriptionCol>
+                <SectionDescriptionTitle>QORT</SectionDescriptionTitle>
+                <SectionDescription>
+                  Fuel the Qortal ecosystem with QORT! Use it to trade, tip,
+                  donate, and even bet in games. It’s more than a coin; it’s
+                  your key to a decentralized world.
+                </SectionDescription>
+                <SectionDownloadLink
+                  href="https://qort.trade"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Buy{" "}
+                  <RightArrow
+                    height={"20"}
+                    width="20"
+                    color={theme.palette.customBlue.main}
+                  />
+                </SectionDownloadLink>
+              </QORTDescriptionCol>
+            ) : (
+              <QTradeDescriptionCol>
+                <SectionDescriptionTitle>Q-Trade</SectionDescriptionTitle>
+                <SectionDescription>
+                  Trade crypto the Qortal way—peer-to-peer, secure, and no
+                  middlemen. Swap QORT and other supported coins directly on our
+                  decentralized trading platform.
+                </SectionDescription>
+              </QTradeDescriptionCol>
+            )}
           </SectionCol>
+          <SectionHeaderMobile>
+            <SectionHeaderCol>
+              <SectionMobileRow>
+                <SectionHeaderSubtitle>CRYPTO</SectionHeaderSubtitle>
+                <SectionLinesImg
+                  src={"/images/LandingPage/YellowStripesMobile.png"}
+                  alt=""
+                  width={217}
+                  height={10}
+                  quality={100}
+                />
+              </SectionMobileRow>
+              <SectionHeaderTitle>Trading & Currency</SectionHeaderTitle>
+            </SectionHeaderCol>
+          </SectionHeaderMobile>
         </QTradeSection>
         <OpenSourceSection ref={topCard4Feature}>
           <SectionCol>
