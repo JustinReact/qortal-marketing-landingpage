@@ -63,11 +63,19 @@ import {
   TopCardLockIcon,
   TopCardSubContainerCrypto,
   QAppsDescriptionCol,
-  RightArrow
+  RightArrow,
+  RadioButtons,
+  TopFoldMainCol,
+  Header2,
+  SubHeader2,
+  SectionHeaderMobile,
+  SectionMobileRow,
+  SectionMobileHeader,
+  QChatSectionCol
 } from "../../components/LandingPage/LandingPage-styles";
 import { YoutubeVideoContainer } from "../Qort/QORTPage-styles";
 import { YoutubePlaceholder } from "../YouTube/YoutubePlaceholder";
-import { Typography, useTheme } from "@mui/material";
+import { Typography, useMediaQuery, useTheme } from "@mui/material";
 import Features from "../Features/Features";
 import { useRouter } from "next/navigation";
 import QonnectFour from "../QonnectFour/QonnectFour";
@@ -75,6 +83,7 @@ import Modal from "../Common/Modal/Modal";
 
 const LandingPage = () => {
   const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const router = useRouter();
   const topCard1Feature = useRef<HTMLDivElement | null>(null);
   const topCard2Feature = useRef<HTMLDivElement | null>(null);
@@ -90,6 +99,8 @@ const LandingPage = () => {
   const [lockedTop, setLockedTop] = useState<boolean>(true);
   const [locked, setLocked] = useState<boolean>(true);
   const [showOpenSourceText, setShowOpenSourceText] = useState<boolean>(false);
+  const [activeCard, setActiveCard] = useState(0);
+  const cardRefs = [useRef(null), useRef(null), useRef(null), useRef(null)];
 
   const scrollToTopCard1Feature = () => {
     if (topCard1Feature?.current) {
@@ -164,6 +175,39 @@ const LandingPage = () => {
     }
   };
 
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.5
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const index = cardRefs.findIndex(
+            (ref) => ref.current === entry.target
+          );
+          setActiveCard(index);
+        }
+      });
+    }, observerOptions);
+
+    cardRefs.forEach((ref) => {
+      if (ref.current) {
+        observer.observe(ref.current);
+      }
+    });
+
+    return () => {
+      cardRefs.forEach((ref) => {
+        if (ref.current) {
+          observer.unobserve(ref.current);
+        }
+      });
+    };
+  }, [cardRefs]);
+
   return (
     <Container>
       <TopOfPageRef ref={topOfPageRef} />
@@ -173,9 +217,7 @@ const LandingPage = () => {
             <Header>QORTAL</Header>
           </TopFoldRow>
           <TopFoldRow>
-            <Header style={{ color: theme.palette.customBlue.main }}>
-              ECOSYSTEM
-            </Header>
+            <Header2 style={{}}>ECOSYSTEM</Header2>
           </TopFoldRow>
         </TopFoldCol>
         <TopFoldWordCol>
@@ -195,134 +237,152 @@ const LandingPage = () => {
             </SubHeader>
           </TopFoldRow>
           <TopFoldRow>
-            <SubHeader>
+            <SubHeader2>
               <Typography style={{ fontWeight: 300 }}>PIONEERING</Typography>
               <Typography style={{ fontWeight: "bold" }}>
                 THE NEW INTERNET
               </Typography>
-            </SubHeader>
+            </SubHeader2>
           </TopFoldRow>
         </TopFoldWordCol>
       </TopFold>
-      <TopCardRow>
-        <TopCard1
-          role="button"
-          aria-label="Group-Encrypted Chats - COMMUNICATION"
-          tabIndex={0}
-          onKeyDown={(e) => {
-            if (e.key === "Enter" || e.key === " ") {
+      <TopFoldMainCol>
+        <TopCardRow>
+          <TopCard1
+            ref={cardRefs[0]}
+            role="button"
+            aria-label="Group-Encrypted Chats - COMMUNICATION"
+            tabIndex={0}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                scrollToTopCard1Feature();
+              }
+            }}
+            onClick={() => {
               scrollToTopCard1Feature();
-            }
-          }}
-          onClick={() => {
-            scrollToTopCard1Feature();
-          }}
-        >
-          <TopCardSubContainer>
-            <TopCardTitle>COMMUNICATION</TopCardTitle>
-            <TopCardSubTitle>Group-Encrypted Chats</TopCardSubTitle>
-          </TopCardSubContainer>
-          <TopCardImage
-            src={"/images/LandingPage/GroupEncryptedChats.webp"}
-            alt="Qortal Group Encrypted Chat Screenshot"
-            width={1920}
-            height={1080}
-            quality={100}
-          />
-        </TopCard1>
-        <TopCard2
-          role="button"
-          aria-label="Qortal Q-Apps - SOFTWARE DEVELOPMENT"
-          tabIndex={0}
-          onKeyDown={(e) => {
-            if (e.key === "Enter" || e.key === " ") {
+            }}
+          >
+            <TopCardSubContainer>
+              <TopCardTitle>COMMUNICATION</TopCardTitle>
+              <TopCardSubTitle>Group-Encrypted Chats</TopCardSubTitle>
+            </TopCardSubContainer>
+            <TopCardImage
+              src={"/images/LandingPage/GroupEncryptedChats.webp"}
+              alt="Qortal Group Encrypted Chat Screenshot"
+              width={1920}
+              height={1080}
+              quality={100}
+            />
+          </TopCard1>
+          <TopCard2
+            ref={cardRefs[1]}
+            role="button"
+            aria-label="Qortal Q-Apps - SOFTWARE DEVELOPMENT"
+            tabIndex={0}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                scrollToTopCard2Feature();
+              }
+            }}
+            onClick={() => {
               scrollToTopCard2Feature();
-            }
-          }}
-          onClick={() => {
-            scrollToTopCard2Feature();
-          }}
-        >
-          <TopCardSubContainer>
-            <TopCardTitle>SOFTWARE DEVELOPMENT</TopCardTitle>
-            <TopCardSubTitle>Q-Apps</TopCardSubTitle>
-          </TopCardSubContainer>
-          <TopCardImage
-            src={"/images/LandingPage/QAppsScreenshot.webp"}
-            alt="Qortal Q-Apps Screenshot"
-            width={1920}
-            height={1080}
-            quality={100}
-          />
-        </TopCard2>
-        <TopCard3
-          role="button"
-          aria-label="Trading Platform and QORT - CRYPTO"
-          tabIndex={0}
-          onKeyDown={(e) => {
-            if (e.key === "Enter" || e.key === " ") {
+            }}
+          >
+            <TopCardSubContainer>
+              <TopCardTitle>SOFTWARE DEVELOPMENT</TopCardTitle>
+              <TopCardSubTitle>Q-Apps</TopCardSubTitle>
+            </TopCardSubContainer>
+            <TopCardImage
+              src={"/images/LandingPage/QAppsScreenshot.webp"}
+              alt="Qortal Q-Apps Screenshot"
+              width={1920}
+              height={1080}
+              quality={100}
+            />
+          </TopCard2>
+          <TopCard3
+            ref={cardRefs[2]}
+            role="button"
+            aria-label="Trading Platform and QORT - CRYPTO"
+            tabIndex={0}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                scrollToTopCard3Feature();
+              }
+            }}
+            onClick={() => {
               scrollToTopCard3Feature();
-            }
-          }}
-          onClick={() => {
-            scrollToTopCard3Feature();
-          }}
-        >
-          <TopCardSubContainerCrypto>
-            <TopCardTitle>CRYPTO</TopCardTitle>
-            <TopCardSubTitle>Trading Platform & QORT</TopCardSubTitle>
-          </TopCardSubContainerCrypto>
-          <TopCardImage
-            src={"/images/LandingPage/Q-TradeScreenshot.webp"}
-            alt="Qortal Q-Trade Screenshot"
-            width={1920}
-            height={1080}
-            quality={100}
-          />
-        </TopCard3>
-        <TopCard4
-          role="button"
-          aria-label="Code Transparency - OPEN SOURCE"
-          tabIndex={0}
-          onKeyDown={(e) => {
-            if (e.key === "Enter" || e.key === " ") {
+            }}
+          >
+            <TopCardSubContainerCrypto>
+              <TopCardTitle>CRYPTO</TopCardTitle>
+              <TopCardSubTitle>Trading Platform & QORT</TopCardSubTitle>
+            </TopCardSubContainerCrypto>
+            <TopCardImage
+              src={"/images/LandingPage/Q-TradeScreenshot.webp"}
+              alt="Qortal Q-Trade Screenshot"
+              width={1920}
+              height={1080}
+              quality={100}
+            />
+          </TopCard3>
+          <TopCard4
+            ref={cardRefs[3]}
+            role="button"
+            aria-label="Code Transparency - OPEN SOURCE"
+            tabIndex={0}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                scrollToTopCard4Feature();
+              }
+            }}
+            onClick={() => {
               scrollToTopCard4Feature();
-            }
-          }}
-          onClick={() => {
-            scrollToTopCard4Feature();
-          }}
-          onMouseEnter={() => {
-            setLockedTop(false);
-          }}
-          onMouseLeave={() => {
-            setLockedTop(true);
-          }}
-        >
-          <TopCardSubContainer>
-            <TopCardTitle>FULL TRANSPARENCY</TopCardTitle>
-            <TopCardSubTitle>Open Source Codebase</TopCardSubTitle>
-          </TopCardSubContainer>
-          <TopCardImage
-            src={"/images/LandingPage/BlueRectangleTop.png"}
-            alt="Qortal Q-Apps Screenshot"
-            width={1920}
-            height={1080}
-            quality={100}
-          />
-          <TopCardLockIcon
-            src={
-              lockedTop
-                ? "/images/LandingPage/DarkRedLock.png"
-                : "/images/LandingPage/RedLockUnlocked.png"
-            }
-            alt=""
-            width={70}
-            height={90}
-            quality={100}
-          />
-        </TopCard4>
-      </TopCardRow>
+            }}
+            onMouseEnter={() => {
+              setLockedTop(false);
+            }}
+            onMouseLeave={() => {
+              setLockedTop(true);
+            }}
+          >
+            <TopCardSubContainer>
+              <TopCardTitle>FULL TRANSPARENCY</TopCardTitle>
+              <TopCardSubTitle>Open Source Codebase</TopCardSubTitle>
+            </TopCardSubContainer>
+            <TopCardImage
+              src={"/images/LandingPage/BlueRectangleTop.png"}
+              alt="Qortal Q-Apps Screenshot"
+              width={1920}
+              height={1080}
+              quality={100}
+            />
+            <TopCardLockIcon
+              src={
+                lockedTop
+                  ? "/images/LandingPage/DarkRedLock.png"
+                  : "/images/LandingPage/RedLockUnlocked.png"
+              }
+              alt=""
+              width={70}
+              height={90}
+              quality={100}
+            />
+          </TopCard4>
+        </TopCardRow>
+        <RadioButtons>
+          {[0, 1, 2, 3].map((index) => (
+            <input
+              key={index}
+              type="radio"
+              name="topCard"
+              checked={activeCard === index}
+              readOnly
+              aria-label={`Card ${index + 1}`}
+            />
+          ))}
+        </RadioButtons>
+      </TopFoldMainCol>
       <TopFoldButtonRow>
         <CTAButton1
           onClick={() => {
@@ -377,14 +437,24 @@ const LandingPage = () => {
         <MiddleOfPageRef ref={middleOfPageRef} />
         <GroupSection ref={topCard1Feature}>
           <SectionCol style={{ alignItems: "flex-start" }}>
+            <SectionMobileHeader>Q-Mail</SectionMobileHeader>
             <GroupSectionImgBox>
               <SectionImg
-                src={"/images/LandingPage/Q-ChatScreenshot.webp"}
-                alt="Qortal Group Encrypted Chat Screenshot"
+                src={
+                  isMobile
+                    ? "/images/LandingPage/QMailScreenshot.webp"
+                    : "/images/LandingPage/Q-ChatScreenshot.webp"
+                }
+                alt={
+                  isMobile
+                    ? "Qortal Q-Mail Screenshot"
+                    : "Qortal Group Encrypted Chat Screenshot"
+                }
                 width={1920}
                 height={1080}
                 quality={100}
                 onClick={() => {
+                  if (isMobile) return;
                   setOpenModal(true);
                   setSelectedImage("/images/LandingPage/Q-ChatScreenshot.webp");
                 }}
@@ -412,7 +482,7 @@ const LandingPage = () => {
               </SectionDescription>
             </QMailDescriptionCol>
           </SectionCol>
-          <SectionCol style={{ alignItems: "flex-start" }}>
+          <QChatSectionCol>
             <GroupEncryptedHeader>
               <SectionLinesImg
                 src={"/images/LandingPage/GreenLines.png"}
@@ -443,18 +513,43 @@ const LandingPage = () => {
             </QChatDescriptionCol>
             <GroupSectionImgBox2>
               <SectionImg
-                src={"/images/LandingPage/QMailScreenshot.webp"}
-                alt="Qortal Q-Mail Screenshot"
+                src={
+                  isMobile
+                    ? "/images/LandingPage/Q-ChatScreenshot.webp"
+                    : "/images/LandingPage/QMailScreenshot.webp"
+                }
+                alt={
+                  isMobile
+                    ? "Qortal Group Encrypted Chat Screenshot"
+                    : "Qortal Q-Mail Screenshot"
+                }
                 width={1920}
                 height={1080}
                 quality={100}
                 onClick={() => {
+                  if (isMobile) return;
                   setOpenModal(true);
                   setSelectedImage("/images/LandingPage/QMailScreenshot.webp");
                 }}
               />
             </GroupSectionImgBox2>
-          </SectionCol>
+            <SectionMobileHeader>Q-Chat</SectionMobileHeader>
+            <SectionHeaderMobile>
+              <SectionHeaderCol>
+                <SectionMobileRow>
+                  <SectionHeaderSubtitle>COMMUNICATION</SectionHeaderSubtitle>
+                  <SectionLinesImg
+                    src={"/images/LandingPage/GreenStripesMobile.png"}
+                    alt=""
+                    width={217}
+                    height={10}
+                    quality={100}
+                  />
+                </SectionMobileRow>
+                <SectionHeaderTitle>Group-Encrypted Chats</SectionHeaderTitle>
+              </SectionHeaderCol>
+            </SectionHeaderMobile>
+          </QChatSectionCol>
         </GroupSection>
         <QAppsSection ref={topCard2Feature}>
           <QAppsSectionRow>

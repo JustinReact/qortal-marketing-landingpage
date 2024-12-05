@@ -76,8 +76,8 @@ export const Header = () => {
           {isMobile ? (
             <HamburgerIcon
               color={theme.palette.text.primary}
-              height={"32"}
-              width={"32"}
+              height={"18"}
+              width={"27"}
               onClickFunc={() => setOpenMobileDrawer(!openMobileDrawer)}
               rotated={{ isOn: openMobileDrawer ? true : false }}
             />

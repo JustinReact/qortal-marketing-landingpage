@@ -1,4 +1,4 @@
-import { IconTypes } from './IconTypes';
+import { IconTypes } from "./IconTypes";
 
 export const HamburgerSVG: React.FC<IconTypes> = ({
   color,
@@ -8,16 +8,33 @@ export const HamburgerSVG: React.FC<IconTypes> = ({
   onClickFunc
 }) => {
   return (
-    <div onClick={onClickFunc} className={className}>
-      <svg
-        fill={color}
-        xmlns="http://www.w3.org/2000/svg"
-        height={height}
-        viewBox="0 96 960 960"
-        width={width}
-      >
-        <path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z" />
-      </svg>
-    </div>
+    <svg
+      onClick={onClickFunc}
+      className={className}
+      width={width}
+      height={height}
+      viewBox="0 0 27 18"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M2 2H25"
+        stroke={color}
+        stroke-width="3"
+        stroke-linecap="round"
+      />
+      <path
+        d="M2 9H25"
+        stroke={color}
+        stroke-width="3"
+        stroke-linecap="round"
+      />
+      <path
+        d="M2 16H25"
+        stroke={color}
+        stroke-width="3"
+        stroke-linecap="round"
+      />
+    </svg>
   );
 };

@@ -49,7 +49,7 @@ export const Divider = styled(Box)(({ theme }) => ({
   height: "1px",
   backgroundColor: theme.palette.text.primary,
   [theme.breakpoints.down("sm")]: {
-    bottom: -5
+    display: "none"
   }
 }));
 
@@ -58,7 +58,7 @@ export const ThemeSelectRow = styled(Box)(({ theme }) => ({
   alignItems: "center",
   gap: "80px",
   [theme.breakpoints.down("sm")]: {
-    gap: "20px"
+    gap: "16px"
   }
 }));
 
@@ -74,23 +74,23 @@ export const QortalLogoContainer = styled(Link)(({ theme }) => ({
 
 export const LightModeIcon = styled(LightModeSVG)(({ theme }) => ({
   [theme.breakpoints.down("sm")]: {
-    width: "30px",
-    height: "30px"
+    width: "20px",
+    height: "20px"
   }
 }));
 
 export const DarkModeIcon = styled(DarkModeSVG)(({ theme }) => ({
   [theme.breakpoints.down("sm")]: {
-    width: "30px",
-    height: "30px"
+    width: "20px",
+    height: "20px"
   }
 }));
 
 export const QortalQBlack = styled(QortalBlackLogoSVG)(({ theme }) => ({
    marginRight: "2px",
   [theme.breakpoints.down("sm")]: {
-    width: "59px",
-    height: "70px"
+    width: "41px",
+    height: "59px"
   }
 }));
 
@@ -109,7 +109,7 @@ export const QortalText = styled(Typography)(({ theme }) => ({
   lineHeight: "27px",
   fontSize: "64px",
   [theme.breakpoints.down("sm")]: {
-    fontSize: "50px"
+    fontSize: "36px"
   }
 }));
 
@@ -121,8 +121,8 @@ export const QortalSmallerText = styled(Typography)(({ theme }) => ({
   marginTop: "20px", 
   fontSize: "36px",
   [theme.breakpoints.down("sm")]: {
-    marginTop: "17px", 
-    fontSize: "28px"
+    marginTop: "7px", 
+    fontSize: "24px"
   }
 }));
 

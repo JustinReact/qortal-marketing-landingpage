@@ -84,6 +84,11 @@ export const futura = localFont({
       path: "../../public/fonts/Futura.otf", // Normal weight
       weight: "400",
       style: "normal"
+    },
+    {
+      path: "../../public/fonts/Futura.otf", // Bold weight
+      weight: "500",
+      style: "normal"
     }
   ]
 });

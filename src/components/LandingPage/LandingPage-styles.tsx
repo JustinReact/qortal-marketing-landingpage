@@ -1,10 +1,9 @@
-import { letterSpacing, styled, width } from "@mui/system";
+import { fontSize, fontWeight, styled } from "@mui/system";
 import { Box, Button, Typography } from "@mui/material";
 import Image from "next/image";
 import { futura, segoeUI } from "../../app/fonts";
 import Link from "next/link";
 import { LeftLongArrowSVG } from "../Common/Icons/LeftLongArrowSVG";
-import { transform } from "next/dist/build/swc";
 
 type ShowOpenSourceText = {
   showOpenSourceText: boolean;
@@ -60,7 +59,7 @@ export const TopFold = styled(Box)(({ theme }) => ({
     justifyContent: "center"
   },
   [theme.breakpoints.down("sm")]: {
-    marginTop: "20px",
+    marginTop: "20px"
   }
 }));
 
@@ -76,8 +75,9 @@ export const TopFoldCol = styled(Box)(({ theme }) => ({
     width: "fit-content",
     gap: "15px"
   },
-  "@media(max-width: 566px)": {
-    gap: "10px"
+  [theme.breakpoints.down("sm")]: {
+    flexDirection: "column",
+    gap: "15px"
   }
 }));
 
@@ -102,13 +102,16 @@ export const TopFoldWordCol = styled(Box)(({ theme }) => ({
   }
 }));
 
-export const TopFoldRow = styled(Box)({
+export const TopFoldRow = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "row",
   alignItems: "center",
   justifyContent: "flex-start",
-  width: "100%"
-});
+  width: "100%",
+  [theme.breakpoints.down("sm")]: {
+    justifyContent: "center"
+  }
+}));
 
 export const ExtensionScreenshotsImg = styled(Image)(({ theme }) => ({
   width: "100%",
@@ -155,15 +158,47 @@ export const Header = styled(Typography)(({ theme }) => ({
   "@media(max-width: 914px)": {
     fontSize: "50px"
   },
-  "@media(max-width: 612px)": {
-    fontSize: "40px",
-    lineHeight: "50px",
-    letterSpacing: "calc(0.1 * 40px)"
+  [theme.breakpoints.down("sm")]: {
+    fontSize: "65px",
+    lineHeight: "40px",
+    letterSpacing: "calc(0.1 * 70px)"
+  }
+}));
+
+export const Header2 = styled(Typography)(({ theme }) => ({
+  fontFamily: futura.style.fontFamily,
+  fontSize: "64px",
+  fontWeight: 400,
+  lineHeight: "63px",
+  letterSpacing: "calc(0.1 * 64px)",
+  color: theme.palette.customBlue.main,
+  userSelect: "none",
+  whiteSpace: "nowrap",
+  "@media(max-width: 1643px)": {
+    fontSize: "59px",
+    letterSpacing: "calc(0.1 * 59px)"
   },
-  "@media(max-width: 513px)": {
-    fontSize: "32px",
-    lineHeight: "45px",
-    letterSpacing: "calc(0.1 * 32px)"
+  "@media(max-width: 1495px)": {
+    fontSize: "53px",
+    letterSpacing: "calc(0.1 * 53px)"
+  },
+  "@media(max-width: 1399px)": {
+    fontSize: "45px",
+    letterSpacing: "calc(0.1 * 45px)"
+  },
+  "@media(max-width: 1146px)": {
+    fontSize: "55px",
+    lineHeight: "63px",
+    letterSpacing: "calc(0.1 * 55px)"
+  },
+  "@media(max-width: 914px)": {
+    fontSize: "50px"
+  },
+  [theme.breakpoints.down("sm")]: {
+    fontSize: "40px",
+    fontWeight: "600",
+    lineHeight: "40px",
+    letterSpacing: "calc(0.1 * 40px)"
   }
 }));
 
@@ -229,6 +264,85 @@ export const SubHeader = styled(Box)(({ theme }) => ({
     gap: "8px",
     width: "100%",
     justifyContent: "center"
+  },
+  [theme.breakpoints.down("sm")]: {
+    display: "none"
+  }
+}));
+
+export const SubHeader2 = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "row",
+  gap: "14px",
+  "& p": {
+    color: theme.palette.text.primary,
+    fontFamily: segoeUI.style.fontFamily,
+    fontSize: "36px",
+    fontWeight: 400,
+    lineHeight: "48px",
+    letterSpacing: "calc(0.28*36px)",
+    userSelect: "none",
+    "@media(max-width: 1643px)": {
+      fontSize: "35px",
+      letterSpacing: "calc(0.28*35px)"
+    },
+    "@media(max-width: 1274px)": {
+      fontSize: "31px",
+      letterSpacing: "calc(0.28*31px)"
+    },
+    "@media(max-width: 893px)": {
+      fontSize: "28px",
+      letterSpacing: "calc(0.28*28px)"
+    },
+    "@media(max-width: 813px)": {
+      fontSize: "26px",
+      letterSpacing: "calc(0.28*26px)"
+    },
+    "@media(max-width: 763px)": {
+      fontSize: "24px",
+      letterSpacing: "calc(0.28*24px)"
+    },
+    "@media(max-width: 713px)": {
+      fontSize: "22px",
+      letterSpacing: "calc(0.28 * 22px)"
+    },
+    "@media(max-width: 655px)": {
+      fontSize: "20px",
+      letterSpacing: "calc(0.28 * 20px)",
+      lineHeight: "35px"
+    },
+    "@media(max-width: 566px)": {
+      fontSize: "18px",
+      letterSpacing: "calc(0.28 * 18px)"
+    },
+    "@media(max-width: 516px)": {
+      fontSize: "16px",
+      letterSpacing: "calc(0.28 * 16px)"
+    },
+    "@media(max-width: 471px)": {
+      fontSize: "18px",
+      letterSpacing: "calc(0.28 * 5px)"
+    },
+    "@media(max-width: 404px)": {
+      fontSize: "18px",
+      letterSpacing: "calc(0.28 * 2px)"
+    }
+  },
+  "@media (max-width: 693px)": {
+    gap: "8px",
+    width: "100%",
+    justifyContent: "center",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "16px",
+      lineHeight: "24px",
+      letterSpacing: "calc(0.28 * 16px)"
+    }
+  },
+  [theme.breakpoints.down("sm")]: {
+    flexDirection: "column",
+    alignItems: "center",
+    gap: 0,
+    marginTop: "60px"
   }
 }));
 
@@ -249,6 +363,14 @@ export const SubHeaderBoxImage = styled(Image)({
     top: "25px"
   }
 });
+
+export const TopFoldMainCol = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: "5px"
+}));
 
 export const TopCardRow = styled(Box)(({ theme }) => ({
   display: "grid",
@@ -272,7 +394,10 @@ export const TopCardRow = styled(Box)(({ theme }) => ({
   "&::-webkit-scrollbar": {
     width: "16px !important",
     height: "15px !important",
-    backgroundColor: `${theme.palette.background.default} !important`
+    backgroundColor: `${theme.palette.background.default} !important`,
+    [theme.breakpoints.down("sm")]: {
+      display: "none"
+    }
   },
   "&::-webkit-scrollbar-thumb": {
     backgroundColor: `${theme.palette.customBlue.main} !important`,
@@ -291,7 +416,7 @@ export const TopCardRow = styled(Box)(({ theme }) => ({
   },
   [theme.breakpoints.down("sm")]: {
     maxWidth: "100vw"
-  },
+  }
 }));
 
 export const TopCard1 = styled(Box)(({ theme }) => ({
@@ -342,7 +467,7 @@ export const TopCard1 = styled(Box)(({ theme }) => ({
     [theme.breakpoints.down("sm")]: {
       transform: "scale(1.0)",
       filter: "brightness(1.0)"
-    }  
+    }
   },
   [theme.breakpoints.down("sm")]: {
     width: "300px"
@@ -399,7 +524,7 @@ export const TopCard2 = styled(Box)(({ theme }) => ({
     [theme.breakpoints.down("sm")]: {
       transform: "scale(1.0)",
       filter: "brightness(1.0)"
-    }  
+    }
   },
   [theme.breakpoints.down("sm")]: {
     width: "300px"
@@ -456,7 +581,7 @@ export const TopCard3 = styled(Box)(({ theme }) => ({
     [theme.breakpoints.down("sm")]: {
       transform: "scale(1.0)",
       filter: "brightness(1.0)"
-    }  
+    }
   },
   [theme.breakpoints.down("sm")]: {
     width: "300px"
@@ -504,7 +629,7 @@ export const TopCard4 = styled(Box)(({ theme }) => ({
   "&:hover": {
     transform: "translateY(-20px)",
     [theme.breakpoints.down("sm")]: {
-      transform : "translateY(0px)"
+      transform: "translateY(0px)"
     }
   },
   [theme.breakpoints.down("sm")]: {
@@ -607,9 +732,10 @@ export const TopFoldButtonRow = styled(Box)(({ theme }) => ({
     justifyContent: "center"
   },
   [theme.breakpoints.down("sm")]: {
+    marginTop: "30px",
     gap: "10px",
     width: "100%",
-    marginBottom: "100px"
+    marginBottom: "70px"
   }
 }));
 
@@ -689,7 +815,7 @@ export const QortalFeaturesSection = styled(Box)(({ theme }) => ({
   gap: 0,
   marginTop: "145px",
   [theme.breakpoints.down("sm")]: {
-    marginTop: "100px"
+    marginTop: "56px"
   }
 }));
 
@@ -713,7 +839,11 @@ export const GroupSection = styled(Box)(({ theme }) => ({
     backgroundSize: "contain",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "top",
-    zIndex: -1
+    zIndex: -1,
+    [theme.breakpoints.down("sm")]: {
+      backgroundImage: `url('/images/LandingPage/GreenSectionBannerMobile.svg')`,
+      width: "100vw"
+    }
   },
   [theme.breakpoints.down("lg")]: {
     padding: "223px 50px 153px 50px",
@@ -725,7 +855,9 @@ export const GroupSection = styled(Box)(({ theme }) => ({
     gap: 0
   },
   [theme.breakpoints.down("sm")]: {
-    padding: "100px 0 100px 0"  }
+    flexDirection: "column-reverse",
+    padding: "83px 0 40px 0"
+  }
 }));
 
 export const QAppsSection = styled(Box)(({ theme }) => ({
@@ -855,12 +987,26 @@ export const SectionCol = styled(Box)(({ theme }) => ({
   }
 }));
 
+export const QChatSectionCol = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  width: "100%",
+  alignItems: "flex-start",
+  justifyContent: "flex-start",
+  [theme.breakpoints.up("xl")]: {
+    marginTop: "75px"
+  },
+  [theme.breakpoints.down("sm")]: {
+    flexDirection: "column-reverse"
+  }
+}));
+
 export const GroupSectionImgBox = styled(Box)(({ theme }) => ({
   position: "relative",
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  padding: "20px", // Add padding to extend the box dimensions
+  padding: "20px",
   marginBottom: "120px",
   "&::before": {
     content: '""',
@@ -873,10 +1019,15 @@ export const GroupSectionImgBox = styled(Box)(({ theme }) => ({
     backgroundSize: "contain",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
-    zIndex: 1
+    zIndex: 1,
+    [theme.breakpoints.down("sm")]: {
+      backgroundImage: "none"
+    }
   },
   [theme.breakpoints.down("sm")]: {
-    marginBottom: "75px"
+    padding: 0,
+    marginTop: "30px",
+    marginBottom: "30px"
   }
 }));
 
@@ -894,9 +1045,9 @@ export const GroupSectionImgBox2 = styled(Box)(({ theme }) => ({
     content: '""',
     position: "absolute",
     top: "-5px",
-    left: "-5px", 
-    right: "-5px", 
-    bottom: "-5px", 
+    left: "-5px",
+    right: "-5px",
+    bottom: "-5px",
     backgroundImage: `url('/images/LandingPage/GreenStripesRight.png')`,
     backgroundSize: "contain",
     backgroundRepeat: "no-repeat",
@@ -904,13 +1055,20 @@ export const GroupSectionImgBox2 = styled(Box)(({ theme }) => ({
     zIndex: 1,
     [theme.breakpoints.up("xl")]: {
       top: "-10px",
-      left: "-10px", 
-      right: "-10px", 
-      bottom: "-10px", 
+      left: "-10px",
+      right: "-10px",
+      bottom: "-10px"
+    },
+    [theme.breakpoints.down("sm")]: {
+      backgroundImage: "none"
     }
   },
   "@media(max-width: 935px)": {
     marginTop: "100px"
+  },
+  [theme.breakpoints.down("sm")]: {
+    padding: 0,
+    margin: "30px 0"
   }
 }));
 
@@ -1018,6 +1176,21 @@ export const SectionHeader = styled(Box)(({ theme }) => ({
   zIndex: 5,
   "@media(max-width: 935px)": {
     justifyContent: "center"
+  },
+  [theme.breakpoints.down("sm")]: {
+    display: "none"
+  }
+}));
+
+export const SectionHeaderMobile = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "flex-start",
+  gap: "6px",
+  marginBottom: "50px",
+  [theme.breakpoints.up("sm")]: {
+    display: "none"
   }
 }));
 
@@ -1033,7 +1206,7 @@ export const GroupEncryptedHeader = styled(Box)(({ theme }) => ({
     marginTop: "120px"
   },
   [theme.breakpoints.down("sm")]: {
-    marginTop: "75px"
+    display: "none"
   }
 }));
 
@@ -1042,7 +1215,17 @@ export const SectionHeaderCol = styled(Box)(({ theme }) => ({
   flexDirection: "column",
   alignItems: "flex-start",
   justifyContent: "flex-start",
-  gap: "10px"
+  gap: "10px",
+  [theme.breakpoints.down("sm")]: {
+    gap: "6px"
+  }
+}));
+
+export const SectionMobileRow = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "row",
+  alignItems: "center",
+  gap: "11px"
 }));
 
 export const SectionHeaderTitle = styled(Typography)(({ theme }) => ({
@@ -1052,7 +1235,11 @@ export const SectionHeaderTitle = styled(Typography)(({ theme }) => ({
   lineHeight: "40px",
   letterSpacing: 0,
   color: theme.palette.text.primary,
-  userSelect: "none"
+  userSelect: "none",
+  [theme.breakpoints.down("sm")]: {
+    fontSize: "20px",
+    lineHeight: "30px"
+  }
 }));
 
 export const SectionHeaderSubtitle = styled(Typography)(({ theme }) => ({
@@ -1063,7 +1250,23 @@ export const SectionHeaderSubtitle = styled(Typography)(({ theme }) => ({
   lineHeight: "16px",
   letterSpacing: "0.24px",
   color: theme.palette.text.primary,
-  userSelect: "none"
+  userSelect: "none",
+  [theme.breakpoints.down("sm")]: {
+    fontSize: "14px"
+  }
+}));
+
+export const SectionMobileHeader = styled(Typography)(({ theme }) => ({
+  fontFamily: segoeUI.style.fontFamily,
+  fontSize: "36px",
+  lineHeight: "30px",
+  fontWeight: 500,
+  alignSelf: "center",
+  color: theme.palette.text.primary,
+  userSelect: "none",
+  [theme.breakpoints.up("sm")]: {
+    display: "none"
+  }
 }));
 
 export const SectionDescriptionCol = styled(Box)(({ theme }) => ({
@@ -1087,14 +1290,15 @@ export const QMailDescriptionCol = styled(Box)(({ theme }) => ({
   margin: "98px 75px 0 49px",
   maxWidth: "496px",
   [theme.breakpoints.up("xl")]: {
-    marginLeft: "60px",
+    marginLeft: "60px"
   },
   "@media(max-width: 935px)": {
     margin: "120px 0 0 0",
     alignItems: "center"
   },
   [theme.breakpoints.down("sm")]: {
-    marginTop: "75px"
+    marginTop: "0",
+    marginBottom: "45px"
   }
 }));
 
@@ -1139,7 +1343,7 @@ export const QORTDescriptionCol = styled(Box)(({ theme }) => ({
   margin: "90px 0 0 20px",
   maxWidth: "496px",
   [theme.breakpoints.up("xl")]: {
-    marginLeft: "60px",
+    marginLeft: "60px"
   },
   "@media(max-width: 935px)": {
     margin: "120px 0 0 0",
@@ -1170,7 +1374,10 @@ export const SectionDescriptionTitle = styled(Typography)(({ theme }) => ({
   lineHeight: "30px",
   letterSpacing: 0,
   color: theme.palette.text.primary,
-  userSelect: "none"
+  userSelect: "none",
+  [theme.breakpoints.down("sm")]: {
+    display: "none"
+  }
 }));
 
 export const SectionDescription = styled(Typography)(({ theme }) => ({
@@ -1181,7 +1388,13 @@ export const SectionDescription = styled(Typography)(({ theme }) => ({
   letterSpacing: "calc(0.04*20px)",
   color: theme.palette.text.primary,
   userSelect: "none",
-  zIndex: 5
+  zIndex: 5,
+  [theme.breakpoints.down("sm")]: {
+    fontWeight: 300,
+    fontSize: "15px",
+    letterSpacing: "calc(0.04*15px)",
+    textAlign: "center"
+  }
 }));
 
 export const SectionDownloadLink = styled(Link)(({ theme }) => ({
@@ -1199,6 +1412,12 @@ export const SectionDownloadLink = styled(Link)(({ theme }) => ({
   "&:hover": {
     filter: "brightness(0.85)",
     cursor: "pointer"
+  },
+  [theme.breakpoints.down("sm")]: {
+    fontSize: "15px",
+    lineHeight: "30px",
+    letterSpacing: "calc(0.04*15px)",
+    fontWeight: 300
   }
 }));
 
@@ -1308,9 +1527,7 @@ export const ScrollToTopButton = styled(Box)(({ theme }) => ({
       ? `1px solid ${theme.palette.text.primary}`
       : "1px solid #C0C0C059",
   color:
-    theme.palette.mode === "light"
-      ? theme.palette.text.primary
-      : "#C0C0C059",
+    theme.palette.mode === "light" ? theme.palette.text.primary : "#C0C0C059",
   width: "181px",
   height: "43px",
   borderRadius: "25px",
@@ -1325,10 +1542,12 @@ export const ScrollToTopButton = styled(Box)(({ theme }) => ({
   zIndex: 20,
   "&:hover": {
     cursor: "pointer",
-    color: theme.palette.mode === "light" ? theme.palette.text.primary : "#f5f5f5",
+    color:
+      theme.palette.mode === "light" ? theme.palette.text.primary : "#f5f5f5",
     border: "1px solid #f5f5f5",
     backgroundColor: theme.palette.mode === "light" ? "#f5f5f5" : "transparent",
-    boxShadow: theme.palette.mode === "light" ? "1px 4px 10.5px 0px #0000004D" : "none",
+    boxShadow:
+      theme.palette.mode === "light" ? "1px 4px 10.5px 0px #0000004D" : "none"
   },
   [theme.breakpoints.down("sm")]: {
     right: "20px"
@@ -1347,6 +1566,33 @@ export const MiddleOfPageRef = styled("div")({
   height: "1px"
 });
 
-export const RightArrow = styled(LeftLongArrowSVG)({
+export const RightArrow = styled(LeftLongArrowSVG)(({ theme }) => ({
   transform: "rotate(180deg)",
-});
+  [theme.breakpoints.down("sm")]: {
+    height: "15px",
+    width: "15px",
+    marginTop: "5px"
+  }
+}));
+
+export const RadioButtons = styled(Box)(({ theme }) => ({
+  display: "flex",
+  justifyContent: "center",
+  gap: "3px",
+  "& input[type='radio']": {
+    appearance: "none",
+    width: "6px",
+    height: "6px",
+    borderRadius: "50%",
+    background: "#666666",
+    cursor: "pointer",
+    margin: 0
+  },
+  "& input[type='radio']:checked": {
+    background: theme.palette.mode === "dark" ? "#ffffff" : "#000000",
+    borderColor: "#0478e4"
+  },
+  [theme.breakpoints.up("sm")]: {
+    display: "none"
+  }
+}));
