@@ -1402,10 +1402,11 @@ export const QORTDescriptionCol = styled(Box)(({ theme }) => ({
 export const OpenSourceDescriptionCol = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
-  gap: "24px",
+  gap: "25px",
   alignItems: "flex-start",
   justifyContent: "flex-start",
-  marginLeft: "25px",
+  marginTop: "60px",
+  marginLeft: "60px",
   "@media(max-width: 935px)": {
     alignItems: "center",
     marginLeft: 0,
