@@ -110,7 +110,7 @@ export const BubbleBoard = styled(Box)(({ theme }) => ({
     height: "fit-content"
   },
   [theme.breakpoints.down("sm")]: {
-    gap: "5px"
+    display: "none"
   }
 }));
 

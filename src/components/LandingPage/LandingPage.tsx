@@ -71,11 +71,15 @@ import {
   SectionHeaderMobile,
   SectionMobileRow,
   SectionMobileHeader,
-  QChatSectionCol
+  QChatSectionCol,
+  QTradeSectionCol,
+  QonnectFourMobileCol,
+  FinalTextContainer,
+  OpenSourceMobileSection
 } from "../../components/LandingPage/LandingPage-styles";
 import { YoutubeVideoContainer } from "../Qort/QORTPage-styles";
 import { YoutubePlaceholder } from "../YouTube/YoutubePlaceholder";
-import { Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { useRouter } from "next/navigation";
 import QonnectFour from "../QonnectFour/QonnectFour";
 import Modal from "../Common/Modal/Modal";
@@ -515,7 +519,7 @@ const LandingPage = () => {
               <SectionImg
                 src={
                   isMobile
-                    ? "/images/LandingPage/Q-ChatScreenshot.webp"
+                    ? "/images/LandingPage/Q-ChatScreenshotMobile.webp"
                     : "/images/LandingPage/QMailScreenshot.webp"
                 }
                 alt={
@@ -670,7 +674,7 @@ const LandingPage = () => {
         {/* Q-Trade Section */}
 
         <QTradeSection ref={topCard3Feature}>
-          <SectionCol style={{ alignItems: "flex-start" }}>
+          <QTradeSectionCol>
             <SectionHeader>
               <SectionLinesImg
                 src={"/images/LandingPage/YellowLines.png"}
@@ -715,13 +719,20 @@ const LandingPage = () => {
                 </SectionDescription>
               </QTradeDescriptionCol>
             )}
-            {!isMobile && <QonnectFour />}
-          </SectionCol>
+            <QonnectFourMobileCol>
+              <SectionMobileHeader>QORT</SectionMobileHeader>
+              <QonnectFour />
+            </QonnectFourMobileCol>
+          </QTradeSectionCol>
           <SectionCol style={{ alignItems: "flex-start" }}>
             <SectionMobileHeader>Trading Platform</SectionMobileHeader>
             <QTradeSectionImgBox>
               <SectionImg
-                src={"/images/LandingPage/Q-TradeScreenshot.webp"}
+                src={
+                  isMobile
+                    ? "/images/LandingPage/Q-TradeScreenshotMobile.webp"
+                    : "/images/LandingPage/Q-TradeScreenshot.webp"
+                }
                 alt="Qortal Q-Trade Screenshot"
                 width={1920}
                 height={1080}
@@ -796,8 +807,24 @@ const LandingPage = () => {
             </SectionHeaderCol>
           </SectionHeaderMobile>
         </QTradeSection>
+
+        {/* Open Source Section */}
+
         <OpenSourceSection ref={topCard4Feature}>
           <SectionCol>
+            <SectionHeaderMobile>
+              <SectionHeaderCol>
+                <SectionHeaderSubtitle>FULL TRANSPARENCY</SectionHeaderSubtitle>
+                <SectionLinesImg
+                  src={"/images/LandingPage/RedStripesMobile.png"}
+                  alt=""
+                  width={141}
+                  height={4}
+                  quality={100}
+                />
+              </SectionHeaderCol>
+            </SectionHeaderMobile>
+            <SectionMobileHeader>Open Source</SectionMobileHeader>
             <OpenSourceSectionImgBox>
               <OpenSourceBox
                 style={{ cursor: !showOpenSourceText ? "pointer" : "auto" }}
@@ -870,12 +897,33 @@ const LandingPage = () => {
                 </SectionCol>
               </OpenSourceBox>
             </OpenSourceSectionImgBox>
-            <SectionHeader>
+            <OpenSourceMobileSection>
+              <OpenSourceDescriptionCol>
+                <SectionDescription style={{ color: "#ffffff" }}>
+                  Built on open-source code, Qortal ensures full transparency.
+                  No secrets, no hidden agendas. Just a blockchain you can
+                  trust.
+                </SectionDescription>
+                <SectionDownloadLink
+                  href="https://github.com/Qortal"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  GitHub{" "}
+                  <RightArrow
+                    height={"20"}
+                    width="20"
+                    color={theme.palette.customBlue.main}
+                  />
+                </SectionDownloadLink>
+              </OpenSourceDescriptionCol>
+            </OpenSourceMobileSection>
+            <FinalTextContainer>
               <FinalText>
                 Experience the future of decentralization with Qortal, where the
                 power of WEB3 meets the convenience of WEB2
               </FinalText>
-            </SectionHeader>
+            </FinalTextContainer>
           </SectionCol>
         </OpenSourceSection>
       </QortalFeaturesSection>

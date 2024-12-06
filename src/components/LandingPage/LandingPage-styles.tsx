@@ -1,4 +1,4 @@
-import { fontSize, fontWeight, styled } from "@mui/system";
+import { fontSize, fontWeight, styled, width } from "@mui/system";
 import { Box, Button, Typography } from "@mui/material";
 import Image from "next/image";
 import { futura, segoeUI } from "../../app/fonts";
@@ -76,7 +76,7 @@ export const TopFoldCol = styled(Box)(({ theme }) => ({
   },
   [theme.breakpoints.down("sm")]: {
     flexDirection: "column",
-    gap: "15px"
+    gap: 0
   }
 }));
 
@@ -158,9 +158,9 @@ export const Header = styled(Typography)(({ theme }) => ({
     fontSize: "50px"
   },
   [theme.breakpoints.down("sm")]: {
-    fontSize: "65px",
+    fontSize: "40px",
     lineHeight: "40px",
-    letterSpacing: "calc(0.1 * 70px)"
+    letterSpacing: "calc(0.1 * 40px)"
   }
 }));
 
@@ -194,10 +194,10 @@ export const Header2 = styled(Typography)(({ theme }) => ({
     fontSize: "50px"
   },
   [theme.breakpoints.down("sm")]: {
-    fontSize: "40px",
+    fontSize: "25px",
     fontWeight: "600",
-    lineHeight: "40px",
-    letterSpacing: "calc(0.1 * 40px)"
+    lineHeight: "28px",
+    letterSpacing: "calc(0.1 * 25px)"
   }
 }));
 
@@ -933,7 +933,7 @@ export const QTradeSection = styled(Box)(({ theme }) => ({
     gap: 0
   },
   [theme.breakpoints.down("sm")]: {
-    padding: "66px 0 100px 0",
+    padding: "66px 0 50px 0",
     flexDirection: "column-reverse"
   }
 }));
@@ -957,7 +957,11 @@ export const OpenSourceSection = styled(Box)(({ theme }) => ({
     backgroundSize: "contain",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "top",
-    zIndex: -1
+    zIndex: -1,
+    [theme.breakpoints.down("sm")]: {
+      backgroundImage: `url('/images/LandingPage/RedSectionBannerMobile.svg')`,
+      width: "100vw"
+    }
   },
   [theme.breakpoints.down("lg")]: {
     padding: "223px 50px 153px 50px",
@@ -969,7 +973,7 @@ export const OpenSourceSection = styled(Box)(({ theme }) => ({
     gap: 0
   },
   [theme.breakpoints.down("sm")]: {
-    padding: "100px 0 50px 0"
+    padding: "51px 0 50px 0"
   }
 }));
 
@@ -1004,8 +1008,17 @@ export const QChatSectionCol = styled(Box)(({ theme }) => ({
   width: "100%",
   alignItems: "flex-start",
   justifyContent: "flex-start",
-  [theme.breakpoints.up("xl")]: {
-  },
+  [theme.breakpoints.down("sm")]: {
+    flexDirection: "column-reverse"
+  }
+}));
+
+export const QTradeSectionCol = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  width: "100%",
+  alignItems: "flex-start",
+  justifyContent: "flex-start",
   [theme.breakpoints.down("sm")]: {
     flexDirection: "column-reverse"
   }
@@ -1078,7 +1091,8 @@ export const GroupSectionImgBox2 = styled(Box)(({ theme }) => ({
   },
   [theme.breakpoints.down("sm")]: {
     padding: 0,
-    margin: "30px 0"
+    margin: "30px 0",
+    width: "100%"
   }
 }));
 
@@ -1139,8 +1153,9 @@ export const QTradeSectionImgBox = styled(Box)(({ theme }) => ({
     margin: "140px 0 100px 0"
   },
   [theme.breakpoints.down("sm")]: {
-    margin: "30px 0",
-    padding: 0
+    margin: "30px 0 0 0",
+    padding: 0,
+    width: "100%"
   }
 }));
 
@@ -1174,7 +1189,7 @@ export const OpenSourceSectionImgBox = styled(Box)(({ theme }) => ({
     padding: "20px 0"
   },
   [theme.breakpoints.down("sm")]: {
-    marginBottom: "50px"
+    display: "none"
   }
 }));
 
@@ -1189,7 +1204,7 @@ export const SectionImg = styled(Image)(({ theme }) => ({
   "&:hover": {
     cursor: "pointer",
     transform: "scale(1.03)"
-  }
+  },
 }));
 
 export const SectionHeader = styled(Box)(({ theme }) => ({
@@ -1322,7 +1337,7 @@ export const QMailDescriptionCol = styled(Box)(({ theme }) => ({
   },
   [theme.breakpoints.down("sm")]: {
     marginTop: 0,
-    marginBottom: "45px"
+    marginBottom: "50px"
   }
 }));
 
@@ -1378,6 +1393,9 @@ export const QORTDescriptionCol = styled(Box)(({ theme }) => ({
   "@media(max-width: 935px)": {
     margin: "120px 0 0 0",
     alignItems: "center"
+  },
+  [theme.breakpoints.down("sm")]: {
+    margin: "70px 0 0 0"
   }
 }));
 
@@ -1527,6 +1545,29 @@ export const OpenSourceImg = styled(Image, {
   transform: hovered ? "translateY(7px)" : "translateY(0)"
 }));
 
+export const OpenSourceMobileSection = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+  margin: "60px 0 105px 0",
+  [theme.breakpoints.up("sm")]: {
+    display: "none"
+  }
+}));
+
+export const FinalTextContainer = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "row",
+  alignItems: "center",
+  gap: "20px",
+  width: "100%",
+  zIndex: 5,
+  "@media(max-width: 935px)": {
+    justifyContent: "center"
+  },
+}));
+
 export const FinalText = styled(Typography)(({ theme }) => ({
   fontFamily: segoeUI.style.fontFamily,
   fontSize: "40px",
@@ -1542,6 +1583,11 @@ export const FinalText = styled(Typography)(({ theme }) => ({
     fontSize: "30px",
     lineHeight: "40px",
     letterSpacing: "calc(0.042*30px)"
+  },
+  [theme.breakpoints.down("sm")]: {
+    fontSize: "20px",
+    lineHeight: "35px",
+    letterSpacing: "calc(0.042*20px)"
   }
 }));
 
@@ -1623,4 +1669,12 @@ export const RadioButtons = styled(Box)(({ theme }) => ({
   [theme.breakpoints.up("sm")]: {
     display: "none"
   }
+}));
+
+export const QonnectFourMobileCol = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  gap: "50px",
+  alignItems: "center",
+  width: "100%",
 }));
