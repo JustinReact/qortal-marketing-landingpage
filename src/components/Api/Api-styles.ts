@@ -74,7 +74,7 @@ export const SubHeaderText = styled(Typography)(({ theme }) => ({
   [theme.breakpoints.down("sm")]: {
     textAlign: "center",
     lineHeight: "40px",
-    marginTop: "10px"
+    marginTop: "20px"
   }
 }));
 
@@ -152,14 +152,15 @@ export const TriangleIcon = styled("div")({
 
 export const TopOfPageRef = styled("div")({
   position: "absolute",
-  top: '-90px'
+  top: "0px",
+  height: "1px"
 });
 
 export const ScrollToTopButton = styled("div")(({ theme }) => ({
   position: "fixed",
   bottom: "20px",
   right: "20px",
-  backgroundColor: theme.palette.primary.dark,
+  backgroundColor: theme.palette.customBlue.main,
   width: "45px",
   height: "45px",
   borderRadius: "50%",
@@ -181,7 +182,11 @@ export const TopArrow = styled(BackArrowSVG)(({ theme }) => ({
 export const DrawerMobileIcon = styled(HamburgerSVG)(({ theme }) => ({
   position: "absolute",
   top: "-52px",
-  left: 0
+  left: 0,
+  zIndex: 10,
+  [theme.breakpoints.down("sm")]: {
+    top: "30px"
+  },
 }));
 
 export const ApiContainer = styled(Box)(({ theme }) => ({
@@ -192,5 +197,32 @@ export const ApiContainer = styled(Box)(({ theme }) => ({
   textAlign: "justify",
   [theme.breakpoints.down("sm")]: {
     textAlign: "left",
+  }
+}));
+
+export const DocsNavContainer = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "row",
+  alignItems: "center",
+  width: "100%",
+  justifyContent: "flex-end"
+}));
+
+export const BackHomeButton = styled(Button)(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  fontFamily: oxygen.style.fontFamily,
+  fontSize: "16px",
+  gap: "8px",
+  width: "150px",
+  padding: "5px 9px",
+  backgroundColor: theme.palette.customBlue.main,
+  color: "white",
+  marginTop: "25px",
+  transition: "all 0.3s ease-in-out",
+  "&:hover": {
+    backgroundColor: theme.palette.customBlue.main,
+    filter: "brightness(0.85)"
   }
 }));

@@ -158,7 +158,7 @@ export const MainTitle = styled(Typography)(({ theme }) => ({
   lineHeight: "120px",
   fontSize: "128px",
   fontWeight: 500,
-  color: "#ffffff",
+  color: theme.palette.mode === "dark" ? "#ffffff" : theme.palette.secondary.light,
   letterSpacing: "0px",
   userSelect: "none",
   transform: "translateX(-75px) translateY(-50px)",
@@ -187,7 +187,7 @@ export const SubTitle = styled(Typography)(({ theme }) => ({
   fontFamily: spartan.style.fontFamily,
   fontSize: "80px",
   fontWeight: 500,
-  color: "#ffffff",
+  color: theme.palette.text.primary,
   letterSpacing: "0px",
   userSelect: "none",
   lineHeight: "100px",
@@ -243,8 +243,8 @@ export const TradingPortalButton = styled(Button)(({ theme }) => ({
   height: "87px",
   padding: "34px 59px",
   borderRadius: "50px",
-  border: `1px solid ${theme.palette.text.primary}`,
-  color: theme.palette.text.primary,
+  border: `1px solid #ffffff`,
+  color: "#ffffff",
   fontFamily: "Fira Sans",
   fontSize: "16px",
   fontWeight: 400,
@@ -314,17 +314,18 @@ export const UseCard = styled(Box)(({ theme }) => ({
   }
 }));
 
-export const UseColNumber = styled(Typography)(({ theme }) => ({
+export const UseColNumber = styled(Typography)({
   position: "absolute",
   top: "0",
   left: "20px",
-  color: theme.palette.text.primary,
+  color: "#ffffff",
   fontFamily: spartan.style.fontFamily,
   fontSize: "128px",
   fontWeight: 800,
   lineHeight: "60px",
-  textAlign: "left"
-}));
+  textAlign: "left",
+  textShadow: "-1px -1px 0 black,   1px -1px 0 black,  -1px  1px 0 black,  1px  1px 0 black", /* Shadow color */
+});
 
 export const UseColImg = styled(Image)({
   position: "absolute",
@@ -418,7 +419,7 @@ export const SubText = styled(Typography)(({ theme }) => ({
   fontSize: "40px",
   userSelect: "none",
   lineHeight: "48px",
-  color: "#ffffff",
+  color: theme.palette.text.primary,
   "@media (max-width: 1470px)": {
     fontSize: "30px",
     lineHeight: "35px"
@@ -652,7 +653,7 @@ export const FAQNumberBubble = styled(Box)(({ theme }) => ({
   width: "50px",
   height: "45px",
   borderRadius: "50%",
-  backgroundColor: "#12154989",
+  backgroundColor: theme.palette.mode === "dark" ? "#12154989" : theme.palette.secondary.light,
   color: "#ffffff",
   fontFamily: ptSans.style.fontFamily,
   fontSize: "24px",
@@ -672,7 +673,7 @@ export const FAQCard = styled(Box)(({ theme }) => ({
   width: "100%",
   borderRadius: "10px",
   border: "1px solid #030242",
-  backgroundColor: "#12154989",
+  backgroundColor: theme.palette.mode === "dark" ? "#12154989" : theme.palette.secondary.light,
   padding: "15px 20px",
   transition: "all 0.3s ease-in-out",
   "&:hover": {

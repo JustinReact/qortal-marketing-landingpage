@@ -21,6 +21,8 @@ import {
 import { BackArrowSVG } from "../Common/Icons/BackArrowSVG";
 import { useRouter } from "next/navigation";
 import { useTheme, useMediaQuery } from "@mui/material";
+import { CurlyBackArrowSVG } from "../Common/Icons/CurlyBackArrowSVG";
+import { BlogCategoryColors } from "../../constants/enums";
 
 interface BlogPostClientProps {
   blog: BlogPost;
@@ -81,22 +83,33 @@ const BlogPostClient = ({ blog }: BlogPostClientProps) => {
     });
   }, []);
 
-  console.log(isMobile, 'isMobile');
-
   useEffect(() => {
     if (blog) {
       // Select all <img> elements with inline style containing 'margin: 0 auto'
       const images = document.querySelectorAll("img");
       images.forEach((image) => {
-        if (image.getAttribute("style")?.includes("margin:0px auto") || image.getAttribute("style")?.includes("margin: 0px auto")) {
+        if (
+          image.getAttribute("style")?.includes("margin:0px auto") ||
+          image.getAttribute("style")?.includes("margin: 0px auto")
+        ) {
           image.style.display = "block"; // Set display to 'block' to ensure centering
         }
         if (isMobile) {
           image.style.maxWidth = "300px"; // Set max width for mobile
-        } 
+        }
       });
     }
   }, [blog, isMobile]);
+
+  const getCategoryColor = (category: string): string => {
+    // Convert the category to the format used in the enum keys
+    const key = category
+      .toUpperCase()
+      .replace(/ /g, "_") as keyof typeof BlogCategoryColors;
+
+    // Return the color or a default fallback
+    return BlogCategoryColors[key] || "#FFFFFF";
+  };
 
   return (
     <BlogPostContainer>
@@ -105,16 +118,24 @@ const BlogPostClient = ({ blog }: BlogPostClientProps) => {
           router.push("/blog");
         }}
       >
-        <BackArrowSVG height={"20"} width={"20"} color={"#ffffff"} />
-       Back to List
+        <CurlyBackArrowSVG height={"14"} width={"21"} color={"#000000"} />
+        Return to Blogs
       </BackToBlogButton>
       <BlogPostTitle>{blog.title}</BlogPostTitle>
       <BlogDateAndCategoryRow>
         <BlogDate>{formatDateWithSuffix(blog.created)}</BlogDate>
         <BlogCategoriesRow>
-          {(blog?.categories || []).map((category: string) => (
-            <BlogPostCategory key={category}>{category}</BlogPostCategory>
-          ))}
+          {(blog?.categories || []).map((category: string) => {
+            const color = getCategoryColor(category);
+            return (
+              <BlogPostCategory
+                key={category}
+                style={{ backgroundColor: color }}
+              >
+                {category}
+              </BlogPostCategory>
+            );
+          })}
         </BlogCategoriesRow>
       </BlogDateAndCategoryRow>
       <BlogMainImage

@@ -33,7 +33,7 @@ const commonThemeOptions = createTheme({
   },
   typography: {
     fontFamily:
-      "'Museo', 'Raleway', 'Montserrat', 'Inter', 'Cairo', 'Oxygen', 'Roboto', 'Nanum Gothic', 'Lovelo', 'Helvetica', 'Arial', 'Kadwa', 'Protest Strike', 'PT Sans', 'Spartan', 'Magistral', 'Monoton', 'Futura', 'Futura Light', 'Fredoka One', 'Reddit Sans', 'Segoe UI'",
+      "'Museo', 'Raleway', 'Montserrat', 'Inter', 'Cairo', 'Oxygen', 'Roboto', 'Nanum Gothic', 'Lovelo', 'Helvetica', 'Arial', 'Kadwa', 'Protest Strike', 'PT Sans', 'Spartan', 'Magistral', 'Monoton', 'Futura', 'Futura Light', 'Fredoka One', 'Reddit Sans', 'Segoe UI', 'Lucida Sans Unicode'",
     button: {
       textTransform: "none"
     },
@@ -56,10 +56,10 @@ const commonThemeOptions = createTheme({
       fontSize: "14px"
     },
     body1: {
-      fontSize: "1rem"
+      fontSize: "16px"
     },
     body2: {
-      fontSize: "0.875rem"
+      fontSize: "14px"
     }
   },
   spacing: 8, // Customize the base spacing unit (default is 8)
@@ -72,7 +72,7 @@ const commonThemeOptions = createTheme({
       sm: 600,
       md: 960,
       lg: 1280,
-      xl: 1920
+      xl: 1921
     }
   }
 });
@@ -92,26 +92,29 @@ const lightTheme = createTheme({
       dark: "#303047"
     },
     background: {
-      default: "#fcfbfd"
+      default: "#f5f5f5"
     },
     text: {
       primary: "#000000",
       secondary: "#525252"
+    },
+    customBlue: {
+      main: "#0085FF"
     }
   },
   components: {
     MuiCssBaseline: {
       styleOverrides: {
         "body::-webkit-scrollbar-track": {
-          backgroundColor: "#fcfbfd"
+          backgroundColor: "#f5f5f5"
         },
         "body::-webkit-scrollbar-track:hover": {
-          backgroundColor: "#fcfbfd"
+          backgroundColor: "#f5f5f5"
         },
         "body::-webkit-scrollbar": {
           width: "16px",
           height: "10px",
-          backgroundColor: "#fcfbfd"
+          backgroundColor: "#f5f5f5"
         },
         "body::-webkit-scrollbar-thumb": {
           backgroundColor: "#0085FF",
@@ -120,7 +123,7 @@ const lightTheme = createTheme({
           border: "4px solid transparent"
         },
         "body::-webkit-scrollbar-thumb:hover": {
-          backgroundColor: "#027cee"
+          backgroundColor: "#0478e4"
         }
       }
     },
@@ -186,6 +189,9 @@ const darkTheme = createTheme({
     text: {
       primary: "#ffffff",
       secondary: "#525252"
+    },
+    customBlue: {
+      main: "#0085FF"
     }
   },
   components: {
@@ -209,7 +215,7 @@ const darkTheme = createTheme({
           border: "4px solid transparent"
         },
         "body::-webkit-scrollbar-thumb:hover": {
-          backgroundColor: "#027cee"
+          backgroundColor: "#0478e4"
         }
       }
     },

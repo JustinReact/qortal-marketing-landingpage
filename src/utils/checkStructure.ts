@@ -8,3 +8,10 @@ export const checkStructureBlog = (content: any) => {
   return isValid;
 };
 
+export const checkStructureNews = (content: any) => {
+  let isValid = true;
+  if (!content?.title) isValid = false;
+  if (!content?.thumbnail) isValid = false;
+  if (!content?.body) isValid = false;
+  return isValid;
+};

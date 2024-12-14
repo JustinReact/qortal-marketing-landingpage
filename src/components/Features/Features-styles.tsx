@@ -37,16 +37,16 @@ export const TabButton = styled(Button)(({ theme }) => ({
   fontSize: "18.5px",
   whiteSpace: "nowrap",
   width: "-webkit-fill-available",
-  color: theme.palette.mode === "light" ? "#ffffff" : "#0085FF",
-  backgroundColor: theme.palette.mode === "light" ? "#0085FF" : "#ffffff",
-  border: theme.palette.mode === "light" ? "1px solid #0085FF" : "1px solid #ffffff" ,
+  color: theme.palette.mode === "light" ? "#ffffff" : theme.palette.customBlue.main,
+  backgroundColor: theme.palette.mode === "light" ? theme.palette.customBlue.main : "#ffffff",
+  border: theme.palette.mode === "light" ? `1px solid ${theme.palette.customBlue.main}` : "1px solid #ffffff" ,
   borderRadius: "5px",
   padding: "5px 120px",
   transition: "all 0.3s ease-in-out",
   userSelect: "none",
   "&:hover": {
     cursor: "pointer",
-    backgroundColor: theme.palette.mode === "light" ? "#0085FF" : "#ffffff",
+    backgroundColor: theme.palette.mode === "light" ? theme.palette.customBlue.main : "#ffffff",
     filter: "brightness(0.85)",
   },
   "&.tabButtonActive": {
@@ -54,8 +54,8 @@ export const TabButton = styled(Button)(({ theme }) => ({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: theme.palette.primary.main,
-    borderColor: theme.palette.mode === "light" ? "#0085FF" : "#ffffff",
-    color: theme.palette.mode === "light" ? "#0085FF" : "#ffffff",
+    borderColor: theme.palette.mode === "light" ? theme.palette.customBlue.main : "#ffffff",
+    color: theme.palette.mode === "light" ? theme.palette.customBlue.main : "#ffffff",
     padding: "0px 120px",
     boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
     "@media(max-width: 1158px)": {
@@ -434,8 +434,8 @@ export const GatewayButton = styled(Button)({
 });
 
 export const InstallQortalButton = styled(Button)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === "light" ? "#0085FF" : "#ffffff",
-  color: theme.palette.mode === "light" ? "#ffffff" : "#0085FF",
+  backgroundColor: theme.palette.mode === "light" ? theme.palette.customBlue.main : "#ffffff",
+  color: theme.palette.mode === "light" ? "#ffffff" : theme.palette.customBlue.main,
   padding: "5px 16px",
   borderRadius: "7px",
   width: "350px",
@@ -445,7 +445,7 @@ export const InstallQortalButton = styled(Button)(({ theme }) => ({
   transition: "all 0.3s ease-in-out",
   "&:hover": {
     cursor: "pointer",
-    backgroundColor: theme.palette.mode === "light" ? "#0085FF" : "#ffffff",
+    backgroundColor: theme.palette.mode === "light" ? theme.palette.customBlue.main : "#ffffff",
     filter: "brightness(0.85)",
   }
 }));

@@ -1,14 +1,14 @@
 import React from 'react'
-import Extension from '../components/Extension/Extension';
+import LandingPage from '../components/LandingPage/LandingPage';
 
 // Metadata
 export const metadata = {
-  title: 'Qortal Browser Extension - Seamlessly Connect WEB2 and WEB3',
-  description: 'Introducing the Qortal Browser Extension, a Chromium-based extension that bridges WEB2 and WEB3, enabling seamless transactions within the Qortal Blockchain.',
+  title: 'Qortal Hub, Qortal Go, and the Qortal Browser Extension: The Most User-Friendly and Accessible Blockchain Ecosystem',
+  description: 'Introducing the Qortal Trifecta: Qortal Hub, Qortal Go, and the Qortal Browser Extension. The most user-friendly and accessible blockchain ecosystem. Begin your journey with Qortal today, on your favorite device.',
 }
 
 const HomePage = () => {
-  return <Extension />
+  return <LandingPage />
 }
 
 export default HomePage;

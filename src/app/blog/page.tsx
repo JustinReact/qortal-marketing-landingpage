@@ -22,6 +22,30 @@ export const metadata = {
 
 type Blog = BlogPost[];
 
+// Utility function to fetch data with retries and delay
+const fetchWithRetry = async (
+  url: string,
+  options: RequestInit,
+  retries = 5,
+  delay = 5000
+): Promise<any> => {
+  for (let i = 0; i < retries; i++) {
+    try {
+      const response = await fetch(url, options);
+      if (!response.ok) throw new Error("Failed to fetch");
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      if (i === retries - 1) {
+        console.error("Failed to fetch blogs after multiple attempts:", error);
+        throw error; // Throw error if all retries fail
+      }
+      console.warn(`Retrying fetch... Attempt ${i + 1}`);
+      await new Promise((resolve) => setTimeout(resolve, delay)); // Wait before next retry
+    }
+  }
+};
+
 const getBlogRawData = async (
   name: string,
   identifier: string,
@@ -39,14 +63,18 @@ const getBlogs = async () => {
   try {
     // Fetch list of Bester's blogs resources from Qortal blockchain
     const url = `${groupApi}/arbitrary/resources/searchsimple?service=BLOG&name=Bester&identifier=${BLOG_BASE}-&limit=20&mode=ALL&prefix=true&includemetadata=false&reverse=true`;
-    const response = await fetch(url, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json"
+    const data = await fetchWithRetry(
+      url,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        next: { revalidate: 3600 },
       },
-      next: { revalidate: 60 } // Cache this data for 24 hours
-    });
-    const data = await response.json();
+      5,    // Retry up to 5 times
+      2000  // 2-second delay between retries
+    );
     let blogs: Blog = [];
     for (const content of data) {
       if (content.name && content.identifier) {
@@ -66,7 +94,6 @@ const getBlogs = async () => {
 
 const BlogPage = async (): Promise<JSX.Element> => {
   const blogs: Blog = (await getBlogs()) ?? []; // Default to an empty array if blogs is undefined
-  console.log(blogs);
 
   if (!blogs || blogs.length === 0) {
     return <div>No blogs found</div>; // Fallback if no blogs are found

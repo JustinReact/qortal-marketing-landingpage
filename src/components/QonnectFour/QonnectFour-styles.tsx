@@ -1,4 +1,4 @@
-import { keyframes, styled } from "@mui/system";
+import { display, keyframes, styled } from "@mui/system";
 import {
   Box,
   Slider,
@@ -12,7 +12,7 @@ const doubleCaretRightAnimation = keyframes`
       fill: #ffffff05;
     }
     50% {
-      fill: #0085ff;
+      fill: #0085FF;
   }
 `;
 
@@ -24,7 +24,9 @@ export const QonnectFourSection = styled(Box)(({ theme }) => ({
   [theme.breakpoints.down("lg")]: {
     gap: "15px"
   },
-  [theme.breakpoints.down("md")]: {}
+  [theme.breakpoints.down("sm")]: {
+    width: "100%",
+  }
 }));
 
 export const QonnectFourHeader = styled(Typography)(({ theme }) => ({
@@ -36,7 +38,7 @@ export const QonnectFourHeader = styled(Typography)(({ theme }) => ({
   userSelect: "none",
   "& a": {
     cursor: "pointer",
-    color: "#0085FF",
+    color: theme.palette.customBlue.main,
     textDecoration: "none"
   },
   [theme.breakpoints.down("md")]: {
@@ -102,15 +104,13 @@ export const BubbleBoard = styled(Box)(({ theme }) => ({
   gridTemplateColumns: "repeat(9, 1fr)",
   gridTemplateRows: "repeat(4, 1fr)",
   gap: "15px",
-  width: "815px",
-  height: "353px",
   [theme.breakpoints.down("md")]: {
     width: "auto",
     gap: "10px",
     height: "fit-content"
   },
   [theme.breakpoints.down("sm")]: {
-    gap: "5px"
+    display: "none"
   }
 }));
 
@@ -118,16 +118,16 @@ export const BubbleCard = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  height: "77px",
-  width: "77px",
+  height: "50px",
+  width: "50px",
   background: theme.palette.mode === "dark" ? "#ffffff05" : "#D9D9D9",
   borderRadius: "50%",
   fontFamily: fredokaOne.style.fontFamily,
   fontWeight: 500,
-  fontSize: "40px",
+  fontSize: "35px",
   lineHeight: "48.4px",
   textAlign: "center",
-  color: theme.palette.text.primary,
+  color: "#FCA6A6",
   [theme.breakpoints.down("md")]: {
     fontSize: "35px",
     width: "47px",
@@ -141,10 +141,10 @@ export const BubbleCard = styled(Box)(({ theme }) => ({
 }));
 
 export const BubbleCardColored = styled(Box)(({ theme }) => ({
-  height: "77px",
-  width: "77px",
-  background: "#0085FF",
-  boxShadow: "0px 0px 25.8px -1px #1C5A93",
+  height: "50px",
+  width: "50px",
+  background: "#FCA6A6",
+  boxShadow: "0px 0px 25.8px -1px #F29999",
   borderRadius: "50%",
   [theme.breakpoints.down("md")]: {
     width: "47px",
@@ -162,23 +162,38 @@ export const SliderContainer = styled(Box)(({ theme }) => ({
   flexDirection: "column",
   alignItems: "center",
   justifyContent: "center",
-  gap: "42px",
+  gap: "35px",
   width: "378px",
   [theme.breakpoints.down("sm")]: {
-    width: "250px"
+    alignItems: "flex-start",
+    gap: "45px",
+  },
+  "@media(max-width: 415px)": {
+    width: "300px"
   }
 }));
 
 export const StyledSlider = styled(Slider)(({ theme }) => ({
+  " &.MuiSlider-root": {
+    width: "80% !important",
+  },
   " & .MuiSlider-thumb": {
     width: "77px",
     height: "77px",
+    transform: 'translateX(5px) translateY(-40px)',
     zIndex: 2,
-    background: "#0085FF",
-    [theme.breakpoints.down("md")]: {
-      width: "67px",
-      height: "67px",
-      left: "5% !important"
+    background: "#E19A00",
+    "&:hover": {
+      boxShadow: "none !important"
+    },
+    "&.Mui-active": {
+      boxShadow: "none !important"
+    },
+    "&.Mui-focusVisible": {
+      boxShadow: "none !important"
+    },
+    "&.mui-18ue8vk-MuiSlider-root": {
+      width: "80%",
     }
   },
   "& .MuiSlider-rail": {
@@ -186,46 +201,45 @@ export const StyledSlider = styled(Slider)(({ theme }) => ({
     height: "87px",
     background: "#2B2B2B",
     borderRadius: "50px",
-    boxShadow: "0px 0px 12.8px -1px #1C5A93",
-    [theme.breakpoints.down("sm")]: {
-      width: "100%",
+    transform: "translateY(-45px)",
+    "@media(max-width: 415px)": {
+      width: "300px"
     }
   },
   "& .MuiSlider-track": {
-    display: "none"
+    display: "none",
   },
-  [theme.breakpoints.down("sm")]: {
-    width: "100%",
-  }
 }));
 
 export const DoubleCaretRightIcon = styled(DoubleCaretRightSVG)(
   ({ theme }) => ({
     position: "absolute",
-    top: "55px",
-    left: "60px",
+    top: "50px",
+    left: "140px",
     userSelect: "none",
     animation: `${doubleCaretRightAnimation} 6s infinite`,
     animationDelay: "0s",
-    [theme.breakpoints.down("md")]: {
-      top: "65px"
-    },
+    [theme.breakpoints.down("sm")]: {
+      left: "100px",
+      top: "60px",
+    }
   })
 );
 
 export const DoubleCaretRightIcon2 = styled(DoubleCaretRightSVG)(
   ({ theme }) => ({
     position: "absolute",
-    top: "55px",
-    left: "165px",
+    top: "50px",
+    left: "240px",
     userSelect: "none",
     animation: `${doubleCaretRightAnimation} 6s infinite`,
     animationDelay: "2s",
-    [theme.breakpoints.down("md")]: {
-      top: "65px"
-    },
     [theme.breakpoints.down("sm")]: {
-      left: "120px"
+      top: "60px",
+      left: "200px"
+    },
+    "@media(max-width: 415px)": {
+      left: "170px"
     }
   })
 );
@@ -233,16 +247,17 @@ export const DoubleCaretRightIcon2 = styled(DoubleCaretRightSVG)(
 export const DoubleCaretRightIcon3 = styled(DoubleCaretRightSVG)(
   ({ theme }) => ({
     position: "absolute",
-    top: "55px",
-    left: "270px",
+    top: "50px",
+    left: "340px",
     userSelect: "none",
     animation: `${doubleCaretRightAnimation} 6s infinite`,
     animationDelay: "4s",
-    [theme.breakpoints.down("md")]: {
-      top: "65px"
-    },
     [theme.breakpoints.down("sm")]: {
-      left: "180px"
+      top: "60px",
+      left: "300px"
+    },
+    "@media(max-width: 415px)": {
+      left: "250px"
     }
   })
 );
@@ -253,5 +268,11 @@ export const SliderText = styled(Typography)(({ theme }) => ({
   fontWeight: "400",
   lineHeight: "19.36px",
   textAlign: "left",
-  color: theme.palette.text.primary
+  color: theme.palette.text.primary,
+  marginLeft: "85px",
+  [theme.breakpoints.down("sm")]: {
+    width: "100%",
+    textAlign: "center",
+    marginLeft: "0"
+  }
 }));

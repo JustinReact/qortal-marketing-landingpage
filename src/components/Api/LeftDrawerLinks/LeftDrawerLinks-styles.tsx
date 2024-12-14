@@ -1,4 +1,4 @@
-import { styled } from "@mui/system";
+import { Box, styled } from "@mui/system";
 import {
   Drawer,
   ListItemButton,
@@ -65,6 +65,20 @@ export const CustomDrawer = styled(Drawer)<CustomDrawerProps>(
   })
 );
 
+export const ThemeSelectRow = styled(Box)({
+  display: "flex",
+  alignItems: "center",
+  paddingBottom: "30px",
+  paddingLeft: "15px",
+  gap: "20px"
+});
+
+export const TitleRow = styled(Box)(({ theme }) => ({
+  paddingBottom: "15px",
+  paddingLeft: "15px",
+  gap: "20px"
+}));
+
 export const CustomDrawerButton = styled(ListItemButton)<CustomDrawerProps>(
   ({ theme }) => ({
     "&:hover": {
@@ -84,7 +98,7 @@ export const QAppsLogo = styled(Typography)(({ theme }) => ({
     borderRadius: "8px",
     marginLeft: "1px",
     color: theme.palette.text.primary,
-    backgroundColor: theme.palette.secondary.light
+    backgroundColor: theme.palette.customBlue.main
   },
   [theme.breakpoints.down("sm")]: {
     transform: "translateY(0)",

@@ -20,7 +20,6 @@ export const fetchAndEvaluateBlogs = async (data: any) => {
       });
 
       const responseData = await response.json();
-      console.log({ responseData });
       if (checkStructureBlog(responseData)) {
         obj = {
           ...content,
@@ -30,7 +29,6 @@ export const fetchAndEvaluateBlogs = async (data: any) => {
           isValid: true
         };
       }
-      console.log({ obj });
       return obj;
     } catch (error) {
       console.error(error);

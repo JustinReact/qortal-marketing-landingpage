@@ -3,6 +3,7 @@ import { Box } from "@mui/material";
 import { ChevronLeftSVG } from "../Icons/ChevronLeftSVG";
 import { ChevronRightSVG } from "../Icons/ChevronRightSVG";
 import { CloseSVG } from "../Icons/CloseSVG";
+import Image from "next/image";
 
 const backdrop_blur = keyframes`
 0% { 
@@ -35,7 +36,7 @@ export const Backdrop = styled(Box)({
   background: "rgb(186 186 186 / 26%)",
   overflow: "hidden",
   animation: `${backdrop_blur} cubic-bezier(0.22, 1, 0.36, 1) 1s forwards`,
-  zIndex: 5
+  zIndex: 21
 });
 
 export const Modalbody = styled(Box)(({ theme }) => ({
@@ -81,6 +82,19 @@ export const Modalbody = styled(Box)(({ theme }) => ({
     zIndex: "60"
   }
 }));
+
+export const ModalScreenshot = styled(Image)(({ theme }) => ({
+  width: "100%",
+  height: "100%",
+  borderRadius: "5px",
+  userSelect: "none",
+  objectFit: "contain",
+  maxHeight: "-webkit-fill-available",
+  [theme.breakpoints.down("sm")]: {
+    rotate: "90deg",
+  },
+}));
+
 
 export const ChevronLeftIcon = styled(ChevronLeftSVG)({
   position: "absolute",

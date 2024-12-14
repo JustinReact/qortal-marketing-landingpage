@@ -10,12 +10,12 @@ import {
 import { CopySVG } from "../../../Common/Icons/CopySVG";
 import {
   MagnifyingGlass,
-  ModalScreenshot,
   MuseoFont,
   Screenshot,
   ScreenshotContainer,
   StepColumn,
 } from "../../Steps-styles";
+import { ModalScreenshot } from "../../../Common/Modal/Modal-styles";
 import { CheckmarkSVG } from "../../../Common/Icons/CheckmarkSVG";
 import Modal from "../../../Common/Modal/Modal";
 import TerminalScreenshot from "../../../../../public/images/Linux/LinuxTerminalScreenshot.png";

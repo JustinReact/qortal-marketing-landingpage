@@ -39,18 +39,6 @@ const QonnectFour = () => {
 
   return (
     <QonnectFourSection>
-      <QonnectFourHeader>
-        Play{" "}
-        <a
-          href="https://www.qort.games"
-          aria-label="Visit qort games official website"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          QORT Games
-        </a>
-        : The Ultimate Web2 and Web3 Fusion Games!
-      </QonnectFourHeader>
       <QonnectFourMainRow>
         <QonnectFourMainCol>
           <BubbleBoard>
@@ -105,33 +93,11 @@ const QonnectFour = () => {
               onChangeCommitted={handleSlideChange}
               aria-labelledby="continuous-slider"
             />
-            <DoubleCaretRightIcon height="38px" width="38px" color="none" />
-            <DoubleCaretRightIcon2 height="38px" width="38px" color="none" />
-            <DoubleCaretRightIcon3 height="38px" width="38px" color="none" />
+            <DoubleCaretRightIcon height="38px" width="38px" color={"#454545"} />
+            <DoubleCaretRightIcon2 height="38px" width="38px" color={"#454545"} />
+            <DoubleCaretRightIcon3 height="38px" width="38px" color={"#454545"} />
           </SliderContainer>
         </QonnectFourMainCol>
-        <QonnectFourCol>
-          <QonnectFourRow>
-            <QonnectFourText>
-              Dive into <span style={{ fontWeight: "bold" }}>QONNECT4</span>, a
-              thrilling Connect Four game crafted from scratch by our team.
-            </QonnectFourText>
-          </QonnectFourRow>
-          <QonnectFourRow>
-            <QonnectFourText>
-              To <span style={{ fontWeight: "bold" }}>PLAY</span>, simply
-              connect to your Qortal Wallet to approve a 0.25 QORT payment. The
-              winner of a best-of-three match takes the total pot of 0.50 QORT.
-            </QonnectFourText>
-          </QonnectFourRow>
-          <QonnectFourRow>
-            <QonnectFourText>
-              Experience the seamless integration of Web2 entertainment and Web3
-              innovation, all powered by the{" "}
-              <span style={{ fontStyle: "italic" }}>Qortal Blockchain</span>.
-            </QonnectFourText>
-          </QonnectFourRow>
-        </QonnectFourCol>
       </QonnectFourMainRow>
     </QonnectFourSection>
   );

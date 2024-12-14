@@ -8,19 +8,24 @@ import {
   ScrollToTopButton,
   TopArrow,
   DrawerMobileIcon,
-  ApiContainer
+  ApiContainer,
+  DocsNavContainer,
+  BackHomeButton
 } from "./Api-styles";
 import { tableOfContents } from "../../data/QAppApi";
 import { tableOfContents as tableOfContentsExtension } from "../../data/ExtensionApi";
 import ReactGA from "react-ga4";
 import { motion, AnimatePresence } from "framer-motion";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { DocState } from "../../constants/enums";
+import { CurlyBackArrowSVG } from "../Common/Icons/CurlyBackArrowSVG";
 
 type DocStateType = DocState.Q_APPS | DocState.EXTENSION;
 
 const Api = () => {
   const theme = useTheme();
+  const router = useRouter();
+
   const [selectedSection, setSelectedSection] = useState("");
   const [showButton, setShowButton] = useState(false);
   const [openMobileDrawer, setOpenMobileDrawer] = useState(false);
@@ -65,36 +70,25 @@ const Api = () => {
 
   // Intersection observer to show scroll to top button
   useEffect(() => {
-    const options = {
-      root: null,
-      rootMargin: "0px",
-      threshold: 0.5
-    };
-
-    const handleIntersect: IntersectionObserverCallback = (entries) => {
-      entries.forEach((entry) => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
         setShowButton(!entry.isIntersecting);
-      });
-    };
+      },
+      { threshold: 0.1 }
+    );
 
-    const observer = new IntersectionObserver(handleIntersect, options);
-
-    if (topOfPageRef?.current) {
+    if (topOfPageRef.current) {
       observer.observe(topOfPageRef.current);
     }
 
     return () => {
-      observer.disconnect();
+      if (topOfPageRef.current) observer.unobserve(topOfPageRef.current);
     };
   }, []);
 
   const scrollToTop = () => {
-    if (topOfPageRef?.current) {
-      topOfPageRef?.current.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-        inline: "nearest"
-      });
+    if (topOfPageRef.current) {
+      topOfPageRef.current.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -120,7 +114,6 @@ const Api = () => {
 
   return (
     <Wrapper>
-      <TopOfPageRef ref={topOfPageRef} />
       {!openMobileDrawer && (
         <DrawerMobileIcon
           color={theme.palette.text.primary}
@@ -168,6 +161,17 @@ const Api = () => {
         docState={docState}
       />
       <ApiContainer>
+    <TopOfPageRef ref={topOfPageRef} />
+      <DocsNavContainer>
+          <BackHomeButton
+            onClick={() => {
+              router.push("/");
+            }}
+          >
+            <CurlyBackArrowSVG color={"#ffffff"} height={"22"} width={"22"} />
+            Back Home
+          </BackHomeButton>
+        </DocsNavContainer>
         <Box>
           {docState === DocState.Q_APPS && (
             <>

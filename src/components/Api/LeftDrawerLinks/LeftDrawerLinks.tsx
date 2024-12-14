@@ -15,12 +15,12 @@ import {
   DrawerText,
   DrawerSubText,
   CustomDrawerButton,
-  HamburgerIcon
+  HamburgerIcon,
+  ThemeSelectRow,
+  TitleRow
 } from "./LeftDrawerLinks-styles";
 import { tableOfContents } from "../../../data/QAppApi";
 import { tableOfContents as tableOfContentsExtension } from "../../../data/ExtensionApi";
-
-import { ThemeSelectRow } from "../../../components/Layout/Header/Header-styles";
 import { LightModeSVG } from "../../../components/Common/Icons/LightModeSVG";
 import { DarkModeSVG } from "../../../components/Common/Icons/DarkModeSVG";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
@@ -65,9 +65,7 @@ export const LeftDrawerLinks: FC<LeftDrawerLinksProps> = ({
       variant="permanent"
       anchor="left"
     >
-      <ThemeSelectRow
-        sx={{ paddingBottom: "15px", paddingLeft: "15px", gap: "20px" }}
-      >
+      <ThemeSelectRow>
         {theme.palette.mode === "dark" ? (
           <LightModeSVG
             onClickFunc={() => dispatch(setTheme("light"))}
@@ -84,10 +82,14 @@ export const LeftDrawerLinks: FC<LeftDrawerLinksProps> = ({
           />
         )}
         <Dropdown docState={docState} />
+        <HamburgerIcon
+          onClickFunc={() => setOpenMobileDrawer()}
+          color={theme.palette.text.primary}
+          height={"30"}
+          width={"30"}
+        />
       </ThemeSelectRow>
-      <ThemeSelectRow
-        sx={{ paddingBottom: "15px", paddingLeft: "15px", gap: "20px" }}
-      >
+      <TitleRow>
         {docState === DocState.Q_APPS && (
           <QAppsLogo>
             Q-Apps <span>API</span>
@@ -98,14 +100,7 @@ export const LeftDrawerLinks: FC<LeftDrawerLinksProps> = ({
             Extension <span>API</span>
           </QAppsLogo>
         )}
-
-        <HamburgerIcon
-          onClickFunc={() => setOpenMobileDrawer()}
-          color={theme.palette.text.primary}
-          height={"30"}
-          width={"30"}
-        />
-      </ThemeSelectRow>
+      </TitleRow>
       <List>
         {(docState === DocState.EXTENSION
           ? tableOfContentsExtension
