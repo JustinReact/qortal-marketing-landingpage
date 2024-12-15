@@ -503,7 +503,7 @@ const LandingPage = () => {
             <QChatDescriptionCol>
               <SectionDescriptionTitle>Q-Chat</SectionDescriptionTitle>
               <SectionDescription>
-                Fully encrypted, group-friendly, and built right into Qortal.
+                Fully encrypted for private groups, user-friendly, and built right into Qortal.
                 Stay connected without compromising your privacy.
               </SectionDescription>
               <SectionDownloadLink href="/downloads">
