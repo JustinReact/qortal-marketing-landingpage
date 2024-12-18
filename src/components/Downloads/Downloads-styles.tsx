@@ -36,7 +36,7 @@ export const DownloadsTitle = styled(Typography)(({ theme }) => ({
 
 export const DownloadsGrid = styled(Box)(({ theme }) => ({
   display: "grid",
-  gridTemplateColumns: "repeat(4, 1fr)",
+  gridTemplateColumns: "repeat(3, 1fr)",
   gap: "20px",
   marginTop: "98px",
   "@media(max-width: 1161px)": {
@@ -48,7 +48,7 @@ export const DownloadsGrid = styled(Box)(({ theme }) => ({
     marginBottom: "40px",
     gap: "60px",
     gridTemplateColumns: "auto",
-    gridTemplateRows: "repeat(4, 1fr)"
+    gridTemplateRows: "repeat(3, 1fr)"
   }
 }));
 
@@ -61,6 +61,7 @@ export const DownloadCard = styled(Box)(({ theme }) => ({
   padding: "15px 15px 20px 24px",
   borderRadius: "5px",
   width: "100%",
+  maxWidth: "600px",
   height: "87px",
   transition: "all 0.3s ease-in-out",
   "& img, & svg": {
@@ -149,8 +150,47 @@ export const DownloadText2 = styled(Typography)(({ theme }) => ({
   }
 }));
 
+export const OtherVersionsCol = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: "20px",
+  marginTop: "100px",
+}));
+
+export const OtherVersionsRow = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "row",
+  alignItems: "center",
+  justifyContent: "center",
+}));
+
+export const OtherVersionsText = styled(Typography)(({ theme }) => ({
+  fontFamily: redditSans.style.fontFamily,
+  color: theme.palette.text.primary,
+  fontWeight: 300,
+  fontSize: "18px",
+  lineHeight: "22px",
+  userSelect: "none",
+  "& a": {
+    textDecoration: "none",
+    color: theme.palette.customBlue.main,
+    marginLeft: "5px",
+    transition: "all 0.2s ease-in-out",
+    "&:hover": {
+      cursor: "pointer",
+      filter: "brightness(0.9)"
+    }
+  },
+  [theme.breakpoints.down("md")]: {
+    lineHeight: "40px",
+    textAlign: "center"
+  }
+}));
+
 export const ScreenshotContainer = styled(Grid)(({ theme }) => ({
-  marginTop: "180px",
+  marginTop: "160px",
   alignItems: "center",
   justifyContent: "center",
   "@media(min-width: 1700px)": {

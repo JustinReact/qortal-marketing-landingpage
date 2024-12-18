@@ -12,6 +12,9 @@ import {
   DownloadText1,
   DownloadText2,
   DownloadTextCol,
+  OtherVersionsCol,
+  OtherVersionsRow,
+  OtherVersionsText,
   Screenshot1,
   Screenshot2,
   Screenshot3,
@@ -98,7 +101,7 @@ const Downloads = () => {
               width={40}
               height={40}
               alt={"Google Play Logo"}
-              style={{marginRight: "28px"}}
+              style={{ marginRight: "28px" }}
             />
             <DownloadTextCol>
               <DownloadText1>Available on</DownloadText1>
@@ -137,7 +140,7 @@ const Downloads = () => {
               width={40}
               height={40}
               alt={"Windows Logo"}
-              style={{marginRight: "25px"}}
+              style={{ marginRight: "25px" }}
             />
             <DownloadTextCol>
               <DownloadText1>Available on</DownloadText1>
@@ -176,7 +179,7 @@ const Downloads = () => {
               width={40}
               height={40}
               alt={"Linux Logo"}
-              style={{marginRight: "25px"}}
+              style={{ marginRight: "25px" }}
             />
             <DownloadTextCol>
               <DownloadText1>Available on</DownloadText1>
@@ -184,7 +187,7 @@ const Downloads = () => {
             </DownloadTextCol>
           </DownloadCard>
         </DownloadCol>
-        <DownloadCol>
+        {/* <DownloadCol>
           <DownloadText>
             Qortal <span style={{ fontWeight: "bold" }}>Extension</span>
           </DownloadText>
@@ -216,8 +219,52 @@ const Downloads = () => {
               <DownloadText2>Chome Web Store</DownloadText2>
             </DownloadTextCol>
           </DownloadCard>
-        </DownloadCol>
+        </DownloadCol> */}
       </DownloadsGrid>
+      <OtherVersionsCol>
+        <OtherVersionsRow>
+          <OtherVersionsText>
+            To download other versions of <span style={{fontWeight: "bold"}}>Qortal Hub</span> not listed
+            here, click
+            <a
+              href="https://github.com/Qortal/Qortal-Hub/releases"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => {
+                ReactGA.event({
+                  category: "User",
+                  action: "Clicked Qortal Hub Other Versions Link",
+                  label: "Clicked Qortal Hub Other Versions Link"
+                });
+              }}
+            >
+              here
+            </a>
+          </OtherVersionsText>
+        </OtherVersionsRow>
+        <OtherVersionsRow>
+          <OtherVersionsRow>
+            <OtherVersionsText>
+              To download other versions of <span style={{fontWeight: "bold"}}>Qortal Go</span> not listed
+              here, click
+              <a
+                href="https://github.com/Qortal/Qortal-Mobile/releases"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => {
+                  ReactGA.event({
+                    category: "User",
+                    action: "Clicked Qortal Go Other Versions Link",
+                    label: "Clicked Qortal Go Other Versions Link"
+                  });
+                }}
+              >
+                here
+              </a>
+            </OtherVersionsText>
+          </OtherVersionsRow>
+        </OtherVersionsRow>
+      </OtherVersionsCol>
       <ScreenshotContainer container spacing={4}>
         <ScreenshotCol item md={3} xs={12}>
           <Screenshot2
@@ -248,8 +295,10 @@ const Downloads = () => {
         </ScreenshotCol>
       </ScreenshotContainer>
       <DownloadNowText>
-        <span style={{ color: theme.palette.customBlue.main }}>Install</span> now and
-        <br /> start your <span style={{ color: theme.palette.customBlue.main }}>Journey</span>
+        <span style={{ color: theme.palette.customBlue.main }}>Install</span>{" "}
+        now and
+        <br /> start your{" "}
+        <span style={{ color: theme.palette.customBlue.main }}>Journey</span>
       </DownloadNowText>
     </Container>
   );

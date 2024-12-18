@@ -401,10 +401,11 @@ const LandingPage = () => {
         </CTAButton1>
         <CTAButton2
           onClick={() => {
+            ReactGA.set({ dimension1: "Landing Page Download Button" }); // Event-level dimension
             ReactGA.event({
               category: "User",
-              action: "Clicked Download Extension Button",
-              label: "Download Extension Button"
+              action: "Clicked Main Download CTA Button",
+              label: "Clicked Main Download CTA Button"
             });
             router.push("/downloads");
           }}
@@ -503,10 +504,21 @@ const LandingPage = () => {
             <QChatDescriptionCol>
               <SectionDescriptionTitle>Q-Chat</SectionDescriptionTitle>
               <SectionDescription>
-                Fully encrypted for private groups, user-friendly, and built right into Qortal.
-                Stay connected without compromising your privacy.
+                Fully encrypted for private groups, user-friendly, and built
+                right into Qortal. Stay connected without compromising your
+                privacy.
               </SectionDescription>
-              <SectionDownloadLink href="/downloads">
+              <SectionDownloadLink
+                href="/downloads"
+                onClick={() => {
+                  ReactGA.set({ dimension1: "Landing Page Download Button" }); // Event-level dimension
+                  ReactGA.event({
+                    category: "User",
+                    action: "Clicked Download Q-Chat Button",
+                    label: "Clicked Download Q-Chat Button"
+                  });
+                }}
+              >
                 Download{" "}
                 <RightArrow
                   height={"20"}
@@ -620,7 +632,17 @@ const LandingPage = () => {
                   Whether it’s tools, games, or new ideas, Q-Apps lets you go
                   decentralized—with just a touch of JavaScript know-how.
                 </SectionDescription>
-                <SectionDownloadLink href="/downloads">
+                <SectionDownloadLink
+                  href="/downloads"
+                  onClick={() => {
+                    ReactGA.set({ dimension1: "Landing Page Download Button" }); // Event-level dimension
+                    ReactGA.event({
+                      category: "User",
+                      action: "Clicked Download Q-Apps Button",
+                      label: "Clicked Download Q-Apps Button"
+                    });
+                  }}
+                >
                   Download{" "}
                   <RightArrow
                     height={"20"}
@@ -700,6 +722,13 @@ const LandingPage = () => {
                   href="https://qort.trade"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => {
+                    ReactGA.event({
+                      category: "User",
+                      action: "Clicked Buy QORT Button",
+                      label: "Clicked Buy QORT Button"
+                    });
+                  }}
                 >
                   Buy{" "}
                   <RightArrow
