@@ -3,6 +3,7 @@ import { Box, Button, Grid, Typography } from "@mui/material";
 import Image from "next/image";
 import { futura, redditSans } from "../../app/fonts";
 import { ChromeStoreSVG } from "../Common/Icons/ChromeStoreSVG";
+import { AppleSVG } from "../Common/Icons/AppleSVG";
 
 export const Container = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -36,10 +37,10 @@ export const DownloadsTitle = styled(Typography)(({ theme }) => ({
 
 export const DownloadsGrid = styled(Box)(({ theme }) => ({
   display: "grid",
-  gridTemplateColumns: "repeat(4, 1fr)",
+  gridTemplateColumns: "repeat(5, 1fr)",
   gap: "20px",
   marginTop: "98px",
-  "@media(max-width: 1161px)": {
+  "@media(max-width: 1243px)": {
     gap: "20px",
     gridTemplateColumns: "repeat(2, 1fr)"
   },
@@ -48,7 +49,7 @@ export const DownloadsGrid = styled(Box)(({ theme }) => ({
     marginBottom: "40px",
     gap: "60px",
     gridTemplateColumns: "auto",
-    gridTemplateRows: "repeat(4, 1fr)"
+    gridTemplateRows: "repeat(5, 1fr)"
   }
 }));
 
@@ -61,6 +62,7 @@ export const DownloadCard = styled(Box)(({ theme }) => ({
   padding: "15px 15px 20px 24px",
   borderRadius: "5px",
   width: "100%",
+  maxWidth: "600px",
   height: "87px",
   transition: "all 0.3s ease-in-out",
   "& img, & svg": {
@@ -104,11 +106,17 @@ export const DownloadText = styled(Typography)(({ theme }) => ({
   fontWeight: 300,
   fontSize: "30px",
   userSelect: "none",
-  "@media(max-width: 1276px)": {
+  "@media(max-width: 1700px)": {
+    fontSize: "28px"
+  },
+  "@media(max-width: 1613px)": {
+    fontSize: "26px"
+  },
+  "@media(max-width: 1520px)": {
     fontSize: "24px"
   },
-  "@media(max-width: 1127px)": {
-    fontSize: "30px"
+  "@media(max-width: 1319px)": {
+    fontSize: "22px"
   }
 }));
 
@@ -118,7 +126,7 @@ export const DownloadText1 = styled(Typography)(({ theme }) => ({
   fontWeight: 300,
   fontSize: "20px",
   lineHeight: "22px",
-  userSelect: "none"
+  userSelect: "none",
 }));
 
 export const DownloadText2 = styled(Typography)(({ theme }) => ({
@@ -126,13 +134,10 @@ export const DownloadText2 = styled(Typography)(({ theme }) => ({
   color: theme.palette.mode === "light" ? "#ffffff" : "#000000",
   fontWeight: 500,
   fontSize: "24px",
-  lineHeight: "18px",
+  lineHeight: "24px",
   userSelect: "none",
-  "@media(max-width: 1294px)": {
+  "@media(max-width: 1243px)": {
     fontSize: "20px"
-  },
-  "@media(max-width: 1146px)": {
-    fontSize: "18px"
   },
   "@media(max-width: 1127px)": {
     fontSize: "28px"
@@ -149,8 +154,47 @@ export const DownloadText2 = styled(Typography)(({ theme }) => ({
   }
 }));
 
+export const OtherVersionsCol = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: "20px",
+  marginTop: "100px",
+}));
+
+export const OtherVersionsRow = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "row",
+  alignItems: "center",
+  justifyContent: "center",
+}));
+
+export const OtherVersionsText = styled(Typography)(({ theme }) => ({
+  fontFamily: redditSans.style.fontFamily,
+  color: theme.palette.text.primary,
+  fontWeight: 300,
+  fontSize: "18px",
+  lineHeight: "22px",
+  userSelect: "none",
+  "& a": {
+    textDecoration: "none",
+    color: theme.palette.customBlue.main,
+    marginLeft: "5px",
+    transition: "all 0.2s ease-in-out",
+    "&:hover": {
+      cursor: "pointer",
+      filter: "brightness(0.9)"
+    }
+  },
+  [theme.breakpoints.down("md")]: {
+    lineHeight: "40px",
+    textAlign: "center"
+  }
+}));
+
 export const ScreenshotContainer = styled(Grid)(({ theme }) => ({
-  marginTop: "180px",
+  marginTop: "160px",
   alignItems: "center",
   justifyContent: "center",
   "@media(min-width: 1700px)": {
@@ -212,3 +256,7 @@ export const DownloadNowText = styled(Typography)(({ theme }) => ({
 export const ChromeStoreLogo = styled(ChromeStoreSVG)({
   marginRight: "21px"
 })
+
+export const AppleLogo = styled(AppleSVG)({
+  marginRight: "25px"
+});

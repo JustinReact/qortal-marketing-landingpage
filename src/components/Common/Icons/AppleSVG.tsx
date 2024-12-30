@@ -1,12 +1,13 @@
 import { IconTypes } from "./IconTypes";
 
-export const AppleSVG: React.FC<IconTypes> = ({ color, height, width }) => {
+export const AppleSVG: React.FC<IconTypes> = ({ color, height, width, className }) => {
   return (
     <svg
       version="1.0"
       xmlns="http://www.w3.org/2000/svg"
       width={width}
       height={height}
+      className={className}
       viewBox="0 0 250.000000 250.000000"
       preserveAspectRatio="xMidYMid meet"
     >
