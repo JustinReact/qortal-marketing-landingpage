@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import {
+  AppleLogo,
   ChromeStoreLogo,
   Container,
   DownloadCard,
@@ -150,6 +151,39 @@ const Downloads = () => {
         </DownloadCol>
         <DownloadCol>
           <DownloadText>
+            Qortal <span style={{ fontWeight: "bold" }}>Hub</span> Mac
+          </DownloadText>
+          <DownloadCard
+            aria-label="Download the Mac Desktop version of Qortal"
+            tabIndex={0}
+            onClick={() => {
+              ReactGA.event({
+                category: "User",
+                action: "Clicked Mac Desktop Download Button",
+                label: "Clicked Mac Desktop Download Button"
+              });
+              linuxDesktopDownload();
+            }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                ReactGA.event({
+                  category: "User",
+                  action: "Clicked Mac Desktop Download Button",
+                  label: "Clicked Mac Desktop Download Button"
+                });
+                // linuxDesktopDownload();
+              }
+            }}
+          >
+            <AppleLogo color={"#000000"} width={"40"} height={"40"} />
+            <DownloadTextCol>
+              <DownloadText1>Available on</DownloadText1>
+              <DownloadText2>Mac Desktop</DownloadText2>
+            </DownloadTextCol>
+          </DownloadCard>
+        </DownloadCol>
+        <DownloadCol>
+          <DownloadText>
             Qortal <span style={{ fontWeight: "bold" }}>Hub</span> Linux
           </DownloadText>
           <DownloadCard
@@ -187,7 +221,7 @@ const Downloads = () => {
             </DownloadTextCol>
           </DownloadCard>
         </DownloadCol>
-        {/* <DownloadCol>
+        <DownloadCol>
           <DownloadText>
             Qortal <span style={{ fontWeight: "bold" }}>Extension</span>
           </DownloadText>
@@ -219,12 +253,13 @@ const Downloads = () => {
               <DownloadText2>Chome Web Store</DownloadText2>
             </DownloadTextCol>
           </DownloadCard>
-        </DownloadCol> */}
+        </DownloadCol>
       </DownloadsGrid>
       <OtherVersionsCol>
         <OtherVersionsRow>
           <OtherVersionsText>
-            To download other versions of <span style={{fontWeight: "bold"}}>Qortal Hub</span> not listed
+            To download other versions of{" "}
+            <span style={{ fontWeight: "bold" }}>Qortal Hub</span> not listed
             here, click
             <a
               href="https://github.com/Qortal/Qortal-Hub/releases"
@@ -245,7 +280,8 @@ const Downloads = () => {
         <OtherVersionsRow>
           <OtherVersionsRow>
             <OtherVersionsText>
-              To download other versions of <span style={{fontWeight: "bold"}}>Qortal Go</span> not listed
+              To download other versions of{" "}
+              <span style={{ fontWeight: "bold" }}>Qortal Go</span> not listed
               here, click
               <a
                 href="https://github.com/Qortal/Qortal-Mobile/releases"
@@ -288,8 +324,8 @@ const Downloads = () => {
           <Screenshot3
             src={"/images/Downloads/ThreadsScreenshot.webp"}
             quality={100}
-            width={1920}
-            height={1080}
+            width={1100}
+            height={642}
             alt={"Qortal Screenshot 3"}
           />
         </ScreenshotCol>
