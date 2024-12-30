@@ -26,6 +26,7 @@ import {
   Box,
   FormControl,
   SelectChangeEvent,
+  Typography,
   useMediaQuery,
   useTheme
 } from "@mui/material";
@@ -118,6 +119,7 @@ const NewBlog = () => {
 
   return (
     <BlogContainer>
+      <Typography>Notes: Ensure all images are centered. Ensure to manually making font italic that needs to be, make superscripts, etc. For the bibliography, it needs to be number, dot, and space. Each on an individual line, for it to work.</Typography>
       {blogThumbnail && (
         <ProductImagesRow>
             <ImagePreviewRow>

@@ -250,7 +250,7 @@ const Downloads = () => {
             <ChromeStoreLogo width="39" height="39" color="transparent" />
             <DownloadTextCol>
               <DownloadText1>Available on</DownloadText1>
-              <DownloadText2>Chome Web Store</DownloadText2>
+              <DownloadText2>Chrome Web Store</DownloadText2>
             </DownloadTextCol>
           </DownloadCard>
         </DownloadCol>
