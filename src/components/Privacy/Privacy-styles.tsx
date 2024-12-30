@@ -8,7 +8,7 @@ export const PrivacyContainer = styled(Box)(({ theme }) => ({
   justifyContent: "center",
   alignItems: "center",
   width: "100%",
-  padding: "30px",
+  padding: "30px 300px",
   [theme.breakpoints.only("xs")]: {
     padding: "50px 20px"
   }
@@ -20,7 +20,7 @@ export const PrivacySubContainer = styled(Box)(({ theme }) => ({
   justifyContent: "center",
   alignItems: "center",
   width: "100%",
-  gap: "20px"
+  gap: "25px"
 }));
 
 export const PrivacyHeader = styled(Typography)(({ theme }) => ({
