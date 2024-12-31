@@ -30,8 +30,8 @@ const Downloads = () => {
   const theme = useTheme();
 
   const googlePlayRedirect = () => {
-    // Change link to Short.io link once available
-    window.open("https://play.google.com/store", "_blank");
+    // Change link to Google Play Store if ever it becomes available
+    window.open("https://link.qortal.dev/go", "_blank");
   };
 
   const chromeWebStoreRedirect = () => {

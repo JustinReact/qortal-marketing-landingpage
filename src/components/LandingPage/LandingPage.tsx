@@ -413,7 +413,7 @@ const LandingPage = () => {
           DOWNLOAD
         </CTAButton2>
       </TopFoldButtonRow>
-      <VideoBox>
+      {/* <VideoBox>
         <YoutubeVideoContainer>
           {showVideoPlayer ? (
             <iframe
@@ -434,7 +434,7 @@ const LandingPage = () => {
             />
           )}
         </YoutubeVideoContainer>
-      </VideoBox>
+      </VideoBox> */}
       <QortalFeaturesSection>
         <MiddleOfPageRef ref={middleOfPageRef} />
 
