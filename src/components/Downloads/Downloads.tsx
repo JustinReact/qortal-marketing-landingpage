@@ -30,40 +30,20 @@ const Downloads = () => {
   const theme = useTheme();
 
   const googlePlayRedirect = () => {
-    // Change link to Bitly link once available
+    // Change link to Short.io link once available
     window.open("https://play.google.com/store", "_blank");
   };
 
   const chromeWebStoreRedirect = () => {
-    window.open("https://bit.ly/qortal-chrome-extension", "_blank");
+    window.open("https://link.qortal.dev/extension", "_blank");
   };
 
   const windowsDesktopDownload = async () => {
-    try {
-      const response = await fetch("/api/github-windows");
-      const data = await response.json();
-      if (data.tracking_url) {
-        window.open(data.tracking_url, "_blank"); // Open the Bitly tracking link
-      } else {
-        console.error("Tracking URL not available");
-      }
-    } catch (error) {
-      console.error("Error downloading Windows Desktop version: ", error);
-    }
+    window.open("https://link.qortal.dev/hub-windows", "_blank"); // Open the Short.io tracking link
   };
 
   const linuxDesktopDownload = async () => {
-    try {
-      const response = await fetch("/api/github-linux");
-      const data = await response.json();
-      if (data.tracking_url) {
-        window.open(data.tracking_url, "_blank"); // Open the Bitly tracking link
-      } else {
-        console.error("Tracking URL not available");
-      }
-    } catch (error) {
-      console.error("Error downloading Windows Desktop version: ", error);
-    }
+      window.open("https://link.qortal.dev/hub-linux", "_blank"); // Open the Short.io tracking link
   };
 
   return (
