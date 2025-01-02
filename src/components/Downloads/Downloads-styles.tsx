@@ -4,6 +4,7 @@ import Image from "next/image";
 import { futura, redditSans } from "../../app/fonts";
 import { ChromeStoreSVG } from "../Common/Icons/ChromeStoreSVG";
 import { AppleSVG } from "../Common/Icons/AppleSVG";
+import { AndroidSVG } from "../Common/Icons/AndroidSVG";
 
 export const Container = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -258,5 +259,9 @@ export const ChromeStoreLogo = styled(ChromeStoreSVG)({
 })
 
 export const AppleLogo = styled(AppleSVG)({
+  marginRight: "25px"
+});
+
+export const AndroidIcon = styled(AndroidSVG)({
   marginRight: "25px"
 });

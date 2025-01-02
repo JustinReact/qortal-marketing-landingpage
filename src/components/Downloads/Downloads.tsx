@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import {
-  AppleLogo,
+  AndroidIcon,
   ChromeStoreLogo,
   Container,
   DownloadCard,
@@ -29,8 +29,7 @@ import { useTheme } from "@mui/material";
 const Downloads = () => {
   const theme = useTheme();
 
-  const googlePlayRedirect = () => {
-    // Change link to Google Play Store if ever it becomes available
+  const androidDownload = () => {
     window.open("https://link.qortal.dev/go", "_blank");
   };
 
@@ -56,37 +55,35 @@ const Downloads = () => {
           </DownloadText>
           <DownloadCard
             role="button"
-            aria-label="Redirect to the Google Play Store"
+            aria-label="Redirect to the Android APK"
             tabIndex={0}
             onClick={() => {
               ReactGA.event({
                 category: "User",
-                action: "Clicked Google Play Download Button",
-                label: "Clicked Google Play Download Button"
+                action: "Clicked Android Download Button",
+                label: "Clicked Android Download Button"
               });
-              googlePlayRedirect();
+              androidDownload();
             }}
             onKeyDown={(e) => {
               if (e.key === "Enter") {
                 ReactGA.event({
                   category: "User",
-                  action: "Clicked Google Play Download Button",
-                  label: "Clicked Google Play Download Button"
+                  action: "Clicked Android Download Button",
+                  label: "Clicked Android Download Button"
                 });
-                googlePlayRedirect();
+                androidDownload();
               }
             }}
           >
-            <Image
-              src={"/images/Downloads/GooglePlayLogo.png"}
-              width={40}
-              height={40}
-              alt={"Google Play Logo"}
-              style={{ marginRight: "28px" }}
+            <AndroidIcon
+              width={"40"}
+              height={"70"}
+              color={"#a4c639"}
             />
             <DownloadTextCol>
               <DownloadText1>Available on</DownloadText1>
-              <DownloadText2>Google Play</DownloadText2>
+              <DownloadText2>Android</DownloadText2>
             </DownloadTextCol>
           </DownloadCard>
         </DownloadCol>
