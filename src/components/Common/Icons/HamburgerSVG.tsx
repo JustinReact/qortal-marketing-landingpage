@@ -20,20 +20,20 @@ export const HamburgerSVG: React.FC<IconTypes> = ({
       <path
         d="M2 2H25"
         stroke={color}
-        stroke-width="3"
-        stroke-linecap="round"
+        strokeWidth="3"
+        strokeLinecap="round"
       />
       <path
         d="M2 9H25"
         stroke={color}
-        stroke-width="3"
-        stroke-linecap="round"
+        strokeWidth="3"
+        strokeLinecap="round"
       />
       <path
         d="M2 16H25"
         stroke={color}
-        stroke-width="3"
-        stroke-linecap="round"
+        strokeWidth="3"
+        strokeLinecap="round"
       />
     </svg>
   );
