@@ -62,8 +62,6 @@ const getNews = async () => {
 
 const NewsPage = async (): Promise<JSX.Element> => {
   const news: News = (await getNews()) ?? []; // Default to an empty array if blogs is undefined
-  console.log(news);
-
   if (!news || news.length === 0) {
     return <div>No news found</div>; // Fallback if no blogs are found
   }

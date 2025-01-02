@@ -42,28 +42,27 @@ const NewsPostsClient: React.FC<NewsPostsClientProps> = ({ news }) => {
                 aria-label="Visit this Qortal News and Announcements post"
                 tabIndex={0}
                 onClick={() => {
-                  console.log("here11");
-                  // ReactGA.event({
-                  //   category: "User",
-                  //   action: `Clicked on news post: ${news.title} from news page`,
-                  //   label: `Clicked on news post: ${news.title} from news page`
-                  // });
+                  ReactGA.event({
+                    category: "User",
+                    action: `Clicked on news post: ${item.title} from news page`,
+                    label: `Clicked on news post: ${item.title} from news page`
+                  });
                   router.push(`/news/${item.identifier}`);
                 }}
                 onKeyDown={(e) => {
                   if (e.key === "Enter") {
-                    // ReactGA.event({
-                    //   category: "User",
-                    //   action: `Clicked on news post: ${news.title} from news page`,
-                    //   label: `Clicked on news post: ${news.title} from news page`
-                    // });
+                    ReactGA.event({
+                      category: "User",
+                      action: `Clicked on news post: ${item.title} from news page`,
+                      label: `Clicked on news post: ${item.title} from news page`
+                    });
                     router.push(`/news/${item.identifier}`);
                   }
                 }}
               >
                 <NewsCardImage
-                  src="/images/News/NewsCardPreview.png"
-                  alt="news1"
+                  src={item.thumbnail}
+                  alt={item.title}
                   width={656}
                   height={440}
                   quality={100}

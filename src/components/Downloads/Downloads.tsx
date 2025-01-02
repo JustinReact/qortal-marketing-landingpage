@@ -129,7 +129,7 @@ const Downloads = () => {
             </DownloadTextCol>
           </DownloadCard>
         </DownloadCol>
-        <DownloadCol>
+        {/* <DownloadCol>
           <DownloadText>
             Qortal <span style={{ fontWeight: "bold" }}>Hub</span> Mac
           </DownloadText>
@@ -161,7 +161,7 @@ const Downloads = () => {
               <DownloadText2>Mac Desktop</DownloadText2>
             </DownloadTextCol>
           </DownloadCard>
-        </DownloadCol>
+        </DownloadCol> */}
         <DownloadCol>
           <DownloadText>
             Qortal <span style={{ fontWeight: "bold" }}>Hub</span> Linux
