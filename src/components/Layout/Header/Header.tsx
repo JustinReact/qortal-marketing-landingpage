@@ -114,7 +114,7 @@ export const Header = () => {
                 onClick={() => {
                   ReactGA.event({
                     category: "User",
-                    action: "Clicked Downloads Button",
+                    action: "Clicked Downloads Button Header",
                     label: "Downloads Button"
                   });
                 }}

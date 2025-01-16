@@ -32,7 +32,7 @@ export const YoutubeHeader = styled(Typography)(({ theme }) => ({
   userSelect: "none",
   fontSize: "25px",
   letterSpacing: "1.2px",
-  textShadow: "-1px -1px 0 #006eff,  1px -1px 0 #006eff,-1px  1px 0 #006eff, 1px  1px 0 #006eff",
+  textShadow: "-1px -1px 0 #000000,  1px -1px 0 #000000,-1px  1px 0 #000000, 1px  1px 0 #000000",
   [theme.breakpoints.down("md")]: {
     fontSize: "20px",
     left: 50

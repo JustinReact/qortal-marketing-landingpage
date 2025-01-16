@@ -413,13 +413,13 @@ const LandingPage = () => {
           DOWNLOAD
         </CTAButton2>
       </TopFoldButtonRow>
-      {/* <VideoBox>
+      <VideoBox>
         <YoutubeVideoContainer>
           {showVideoPlayer ? (
             <iframe
-              src="https://www.youtube.com/embed/kSXApJcOqZU?autoplay=1&rel=0"
+              src="https://www.youtube.com/embed/kAyCJayxk-c?si=Ms5OHtHZCbwbqlGc?autoplay=1&rel=0"
               loading="lazy"
-              title="Introducing the Qortal Browser Extension"
+              title="Introducing the Qortal Trifecta"
               allowFullScreen
               allow="autoplay"
             ></iframe>
@@ -428,13 +428,13 @@ const LandingPage = () => {
               isModal={false}
               onClick={handleVideoClick}
               YoutubeThumbnail={
-                "/images/Youtube/QortalBrowserExtensionThumbnail.png"
+                "/images/Youtube/TheQortalTrifectaThumbnail.png"
               }
-              YoutubeTitle="Introducing the Qortal Browser Extension"
+              YoutubeTitle="Introducing the Qortal Trifecta"
             />
           )}
         </YoutubeVideoContainer>
-      </VideoBox> */}
+      </VideoBox>
       <QortalFeaturesSection>
         <MiddleOfPageRef ref={middleOfPageRef} />
 
