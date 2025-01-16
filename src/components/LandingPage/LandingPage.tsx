@@ -417,7 +417,7 @@ const LandingPage = () => {
         <YoutubeVideoContainer>
           {showVideoPlayer ? (
             <iframe
-              src="https://www.youtube.com/embed/kAyCJayxk-c?si=Ms5OHtHZCbwbqlGc?autoplay=1&rel=0"
+              src="https://www.youtube.com/embed/kAyCJayxk-c?autoplay=1&rel=0"
               loading="lazy"
               title="Introducing the Qortal Trifecta"
               allowFullScreen
