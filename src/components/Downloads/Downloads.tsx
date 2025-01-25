@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import {
   AndroidIcon,
   ChromeStoreLogo,
@@ -24,29 +24,97 @@ import {
 } from "./Downloads-styles";
 import Image from "next/image";
 import ReactGA from "react-ga4";
-import { useTheme } from "@mui/material";
+import { useMediaQuery, useTheme } from "@mui/material";
+import { SupportModal } from "../Common/Modal/SupportModal";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Downloads = () => {
   const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
+  const [openSupportModal, setOpenSupportModal] = useState<boolean>(false);
 
   const androidDownload = () => {
+    setOpenSupportModal(true);
     window.open("https://link.qortal.dev/go", "_blank");
   };
 
   const chromeWebStoreRedirect = () => {
+    setOpenSupportModal(true);
     window.open("https://link.qortal.dev/extension", "_blank");
   };
 
   const windowsDesktopDownload = async () => {
+    setOpenSupportModal(true);
     window.open("https://link.qortal.dev/hub-windows", "_blank"); // Open the Short.io tracking link
   };
 
   const linuxDesktopDownload = async () => {
+      setOpenSupportModal(true);
       window.open("https://link.qortal.dev/hub-linux", "_blank"); // Open the Short.io tracking link
   };
 
+  const supportModalVariants = {
+    opened: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        type: "spring",
+        stiffness: 95
+      }
+    },
+    closed: {
+      opacity: 0.2,
+      x: 100,
+      transition: {
+        duration: 0.2
+      }
+    }
+  };
+  const supportModalVariantsMobile = {
+    opened: {
+      opacity: 1,
+      y: "-50%", // Aligns with `top: "50%"` and centers the modal
+      transition: {
+        type: "spring",
+        stiffness: 120,
+        damping: 15,
+      },
+    },
+    closed: {
+      opacity: 0,
+      y: "100%", // Moves the modal off-screen below
+      transition: {
+        duration: 0.3, // Faster closing animation
+      },
+    },
+  };
+  
+
   return (
     <Container>
+    <AnimatePresence>
+        {openSupportModal && (
+          <motion.div
+            animate={"opened"}
+            initial={"closed"}
+            exit={{ opacity: 0 }}
+            variants={isMobile ? supportModalVariantsMobile : supportModalVariants}
+            style={{
+              position: "fixed",
+              bottom: "0px",
+              left: "0",
+              right: "0",
+              width: "100%",
+              height: "auto",
+              zIndex: 5,
+              backgroundColor: "transparent",
+            }}
+          >
+            <SupportModal setCloseSupportModal={() => setOpenSupportModal(false)} />
+          </motion.div>
+        )}
+      </AnimatePresence>
       <DownloadsTitle>DOWNLOADS</DownloadsTitle>
       <DownloadsGrid>
         <DownloadCol>
