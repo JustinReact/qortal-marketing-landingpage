@@ -14,7 +14,7 @@ interface SupportModalProps {
   setCloseSupportModal: () => void;
 }
 
-export const SupportModal:FC<SupportModalProps> = ({
+export const SupportModal: FC<SupportModalProps> = ({
   setCloseSupportModal
 }) => {
   const theme = useTheme();
@@ -32,7 +32,17 @@ export const SupportModal:FC<SupportModalProps> = ({
           Need help getting started with Qortal? Come chat with one of our
           community members.
         </SupportModalText>
-        <SupportModalButton>
+        <SupportModalButton
+          role="button"
+          tabIndex={0}
+          aria-label="Chat with us"
+          onClick={() =>
+            window.open("https://link.qortal.dev/support", "_blank")
+          }
+          onKeyDown={() =>
+            window.open("https://link.qortal.dev/support", "_blank")
+          }
+        >
           <HeadphonesIcon
             color={theme.palette.text.primary}
             height={"18px"}

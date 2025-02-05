@@ -35,8 +35,13 @@ const Downloads = () => {
   const [openSupportModal, setOpenSupportModal] = useState<boolean>(false);
 
   const androidDownload = () => {
+    const link = document.createElement("a");
+    link.href = "https://link.qortal.dev/go";
+    link.download = "";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
     setOpenSupportModal(true);
-    window.open("https://link.qortal.dev/go", "_blank");
   };
 
   const chromeWebStoreRedirect = () => {
@@ -45,13 +50,23 @@ const Downloads = () => {
   };
 
   const windowsDesktopDownload = async () => {
+    const link = document.createElement("a");
+    link.href = "https://link.qortal.dev/hub-windows";
+    link.download = "";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
     setOpenSupportModal(true);
-    window.open("https://link.qortal.dev/hub-windows", "_blank"); // Open the Short.io tracking link
   };
 
   const linuxDesktopDownload = async () => {
-      setOpenSupportModal(true);
-      window.open("https://link.qortal.dev/hub-linux", "_blank"); // Open the Short.io tracking link
+    const link = document.createElement("a");
+    link.href = "https://link.qortal.dev/hub-linux";
+    link.download = "";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    setOpenSupportModal(true);
   };
 
   const supportModalVariants = {
@@ -78,28 +93,29 @@ const Downloads = () => {
       transition: {
         type: "spring",
         stiffness: 120,
-        damping: 15,
-      },
+        damping: 15
+      }
     },
     closed: {
       opacity: 0,
       y: "100%", // Moves the modal off-screen below
       transition: {
-        duration: 0.3, // Faster closing animation
-      },
-    },
+        duration: 0.3 // Faster closing animation
+      }
+    }
   };
-  
 
   return (
     <Container>
-    <AnimatePresence>
+      <AnimatePresence>
         {openSupportModal && (
           <motion.div
             animate={"opened"}
             initial={"closed"}
             exit={{ opacity: 0 }}
-            variants={isMobile ? supportModalVariantsMobile : supportModalVariants}
+            variants={
+              isMobile ? supportModalVariantsMobile : supportModalVariants
+            }
             style={{
               position: "fixed",
               bottom: "0px",
@@ -108,10 +124,12 @@ const Downloads = () => {
               width: "100%",
               height: "auto",
               zIndex: 5,
-              backgroundColor: "transparent",
+              backgroundColor: "transparent"
             }}
           >
-            <SupportModal setCloseSupportModal={() => setOpenSupportModal(false)} />
+            <SupportModal
+              setCloseSupportModal={() => setOpenSupportModal(false)}
+            />
           </motion.div>
         )}
       </AnimatePresence>
@@ -144,11 +162,7 @@ const Downloads = () => {
               }
             }}
           >
-            <AndroidIcon
-              width={"40"}
-              height={"70"}
-              color={"#a4c639"}
-            />
+            <AndroidIcon width={"40"} height={"70"} color={"#a4c639"} />
             <DownloadTextCol>
               <DownloadText1>Available on</DownloadText1>
               <DownloadText2>Android</DownloadText2>

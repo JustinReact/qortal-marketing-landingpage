@@ -18,7 +18,7 @@ export const AndroidSVG: React.FC<IconTypes> = ({
       <g fill={color}>
         <use strokeWidth="14.4" xlinkHref="#b" stroke="#FFF" />
         <use xlinkHref="#a" transform="scale(-1,1)" />
-        <g id="a" stroke="#FFF" stroke-width="7.2">
+        <g id="a" stroke="#FFF" strokeWidth="7.2">
           <rect
             rx="6.5"
             transform="rotate(29)"
