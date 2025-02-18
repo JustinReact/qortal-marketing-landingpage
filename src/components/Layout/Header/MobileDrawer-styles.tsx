@@ -39,4 +39,12 @@ export const DrawerButton = styled(Box, {
   textTransform: "uppercase",
   cursor: "pointer",
   userSelect: "none",
+  "&:hover": {
+    color:
+      theme.palette.mode === "dark" && !active
+        ? "#ece5e5"
+        : theme.palette.mode === "light" && !active
+        ? "#181717"
+        : "inherit"
+  }
 }));
