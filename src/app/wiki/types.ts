@@ -9,10 +9,25 @@ export interface WikiPageProps {
 
 export interface WikiProps {
   title?: string;
-  pages: WikiPageProps[];
   children: React.ReactNode;
+  sections: Record<
+    string,
+    {
+      title: string;
+      url: string;
+      headings: { title: string; depth: number }[];
+    }[]
+  >;
 }
 
 export interface SidebarProps {
-  pages: WikiPageProps[];
+  sections: Record<
+    string,
+    {
+      title: string;
+      url: string;
+      headings: { title: string; depth: number }[];
+    }[]
+  >;
+  handleNavigation: (url: string) => void;
 }

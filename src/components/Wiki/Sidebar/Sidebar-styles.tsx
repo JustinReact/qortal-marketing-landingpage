@@ -1,5 +1,5 @@
-import { styled } from "@mui/system";
-import { Box } from "@mui/material";
+import { styled, typography } from "@mui/system";
+import { Box, Typography } from "@mui/material";
 import { redditSans } from "../../../app/fonts";
 import Link from "next/link";
 
@@ -18,7 +18,7 @@ export const SidebarContainer = styled(Box)(({ theme }) => ({
   borderRight: `1px solid ${theme.palette.customBlue.main}`
 }));
 
-export const StyledLink = styled(Link)<SidebarProps>(({ theme, isActive }) => ({
+export const StyledLink = styled(Typography)<SidebarProps>(({ theme, isActive }) => ({
   display: "block",
   padding: "10px",
   fontSize: "1rem",

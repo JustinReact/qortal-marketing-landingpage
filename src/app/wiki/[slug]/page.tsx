@@ -3,44 +3,35 @@ import path from "path";
 import matter from "gray-matter";
 import { notFound } from "next/navigation";
 import { Wiki } from "../../../components/Wiki/Wiki";
-import { WikiPageProps } from "../types";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRenderer } from "../../../components/Common/Wiki/MDXRenderer";
+import { getWikiPages } from "../../../utils/getWikiPages";
 
-// Function to get all pages for the sidebar
-const getWikiPages = (): WikiPageProps[] => {
-  const docsPath = path.join(process.cwd(), "src/app/wiki");
-  if (!fs.existsSync(docsPath)) return [];
+/* Explanation for those looking to add new wiki pages */
+/* 
+  You must create a new MDX file in the `src/app/wiki` directory in order to add a new section to the wiki. If adding a new section, be sure to modify wikiOrder in `src/config/wikiOrder.ts` to include the new section. The MDX file should contain the following frontmatter: 
+  ---
+  title: "Page Title"
+  ---
 
-  const files = fs
-    .readdirSync(docsPath)
-    .filter((file) => file.endsWith(".mdx") && file !== "home.mdx");
+  ## Section 1
+  Content here...
+  ### Subsection 1
+  Content here...
 
-  return files.map((file) => {
-    const fullPath = path.join(docsPath, file);
-    const fileContents = fs.readFileSync(fullPath, "utf-8");
-    const { data, content } = matter(fileContents);
+  ## Section 2
+  Content here...
+  ### Subsection 2
+  Content here...
 
-    // Extract `h2` and `h3` headings
-    const headings = content
-      .split("\n")
-      .filter((line) => line.startsWith("## ") || line.startsWith("### "))
-      .map((line) => ({
-        title: line.replace(/^##+\s/, ""),
-        depth: line.startsWith("## ") ? 2 : 3
-      }));
+  The MDX file will be parsed and displayed in the wiki sidebar. The first `##` heading will be used as the section title, and `###` headings will be used as subsections. If no `##` heading is found, the page will be placed under "Miscellaneous" in the sidebar.
 
-    return {
-      title: data.title || file.replace(".mdx", ""),
-      url: `/wiki/${file.replace(".mdx", "")}`,
-      headings
-    };
-  });
-};
+  If you want to add a new section to an existing page, simply modify the existing MDX file and add a new `##` heading. The new section will be displayed in the sidebar under the existing page.
+*/
 
 const WikiSection = async ({ params }: { params: { slug: string } }): Promise<JSX.Element> => {
-  const pages = getWikiPages(); // Extract sidebar links
+  const sections = getWikiPages(); // Extract sidebar links
 
   // Load the correct MDX file based on `params.slug`
   const docPath = path.join(process.cwd(), `src/app/wiki/${params.slug}.mdx`);
@@ -51,7 +42,7 @@ const WikiSection = async ({ params }: { params: { slug: string } }): Promise<JS
   const mdxSource: MDXRemoteSerializeResult  = await serialize(content); // Compile MDX into JSX
 
   return (
-    <Wiki title={data.title} pages={pages}>
+    <Wiki title={data.title} sections={sections}>
       <MDXRenderer source={mdxSource} />
     </Wiki>
   );
