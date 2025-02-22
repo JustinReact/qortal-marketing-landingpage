@@ -5,7 +5,7 @@ export const WikiContainer = styled(Box)(({ theme }) => ({
   display: "grid",
   gridTemplateColumns: "1fr 3fr",
   gap: "50px",
-  padding: "25px",
+  padding: "50px",
   width: "100%",
 }));
 
