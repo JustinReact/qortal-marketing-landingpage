@@ -7,36 +7,41 @@ type SidebarProps = {
   isActive: boolean;
 };
 
+type SidebarDropdownProps = {
+  isExpanded: boolean;
+};
+
 export const SidebarContainer = styled(Box)(({ theme }) => ({
   position: "relative",
   display: "flex",
   flexDirection: "column",
   justifyContent: "space-between",
-  gap: "38px",
+  gap: "20px",
   height: "fit-content",
   maxHeight: "600px",
   overflowY: "auto",
   paddingRight: "44px",
   backgroundColor: theme.palette.background.default,
   transition: "all 0.3s ease-in-out",
-    "&::-webkit-scrollbar": {
-      width: "2px",
-    },
-    "&::-webkit-scrollbar-track": {
-      background: theme.palette.mode === "light" ? "#C0C0C0" : "#595656",
-    },
-    "&::-webkit-scrollbar-thumb": {
-      background: theme.palette.mode === "light" ? "#141414" : "#D9D9D9",
-      borderRadius: 0,
-      minHeight: "170px",
-    },
-    "&::-webkit-scrollbar-thumb:hover": {
-      background: theme.palette.mode === "light" ? "#000000" : "#bbbbbb",
-    },
-  
+  "&::-webkit-scrollbar": {
+    width: "2px"
+  },
+  "&::-webkit-scrollbar-track": {
+    background: theme.palette.mode === "light" ? "#C0C0C0" : "#595656"
+  },
+  "&::-webkit-scrollbar-thumb": {
+    background: theme.palette.mode === "light" ? "#141414" : "#D9D9D9",
+    borderRadius: 0,
+    minHeight: "170px"
+  },
+  "&::-webkit-scrollbar-thumb:hover": {
+    background: theme.palette.mode === "light" ? "#000000" : "#bbbbbb"
+  }
 }));
 
-export const SectionTitleRow = styled(Box)(({ theme }) => ({
+export const SectionTitleRow = styled(Box, {
+  shouldForwardProp: (prop) => prop !== "isExpanded"
+})<SidebarDropdownProps>(({ theme, isExpanded }) => ({
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
@@ -47,12 +52,27 @@ export const SectionTitleRow = styled(Box)(({ theme }) => ({
   transition: "all 0.3s ease-in-out",
   "&:hover": {
     cursor: "pointer",
-    backgroundColor: theme.palette.mode === "dark" ? "#D9D9D9" : "#000000",
+    backgroundColor:
+      theme.palette.mode === "dark" && !isExpanded
+        ? "#D9D9D9"
+        : theme.palette.mode === "light" && !isExpanded
+        ? "#000000"
+        : "transparent",
     "& p": {
-      color: theme.palette.mode === "dark" ? "#000000" : "#ffffff"
+      color:
+        theme.palette.mode === "dark" && !isExpanded
+          ? "#000000"
+          : theme.palette.mode === "light" && !isExpanded
+          ? "#ffffff"
+          : "inherit"
     },
     "& svg": {
-      fill: theme.palette.mode === "dark" ? "#000000" : "#ffffff"
+        fill:
+        isExpanded
+        ? "currentColor"
+        : theme.palette.mode === "dark"
+        ? "#000000"
+        : "#ffffff",
     }
   }
 }));
@@ -67,15 +87,17 @@ export const SectionTitle = styled(Typography)(({ theme }) => ({
   transition: "all 0.3s ease-in-out"
 }));
 
-export const ChevronIcon = styled(ChevronRightSVG)(({ theme }) => ({
-  transform: "rotate(90deg)",
+export const ChevronIcon = styled(ChevronRightSVG, {
+  shouldForwardProp: (prop) => prop !== "isExpanded"
+})<SidebarDropdownProps>(({ isExpanded }) => ({
+  transform: isExpanded ? "rotate(-90deg)" : "rotate(90deg)",
   transition: "all 0.3s ease-in-out"
 }));
 
 export const SectionBox = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
-  gap: "20px",
+  gap: "20px"
 }));
 
 export const SectionList = styled("ul")(({ theme }) => ({
@@ -84,7 +106,7 @@ export const SectionList = styled("ul")(({ theme }) => ({
   gap: "25px",
   margin: "0 0 0 46px",
   listStyleType: "none",
-  padding: 0, 
+  padding: 0
 }));
 
 export const SectionListItem = styled("li", {
@@ -105,7 +127,7 @@ export const SectionListItem = styled("li", {
     width: "6px",
     height: "15px",
     top: "6.5px"
-  },
+  }
 }));
 
 export const ContributeButton = styled(Button)(({ theme }) => ({
