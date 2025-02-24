@@ -38,7 +38,7 @@ export const DownloadsTitle = styled(Typography)(({ theme }) => ({
 
 export const DownloadsGrid = styled(Box)(({ theme }) => ({
   display: "grid",
-  gridTemplateColumns: "repeat(4, 1fr)",
+  gridTemplateColumns: "repeat(5, 1fr)",
   gap: "20px",
   marginTop: "98px",
   "@media(max-width: 1243px)": {
@@ -50,7 +50,7 @@ export const DownloadsGrid = styled(Box)(({ theme }) => ({
     marginBottom: "40px",
     gap: "60px",
     gridTemplateColumns: "auto",
-    gridTemplateRows: "repeat(4, 1fr)"
+    gridTemplateRows: "repeat(5, 1fr)"
   }
 }));
 

@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import {
   AndroidIcon,
+  AppleLogo,
   ChromeStoreLogo,
   Container,
   DownloadCard,
@@ -62,6 +63,16 @@ const Downloads = () => {
   const linuxDesktopDownload = async () => {
     const link = document.createElement("a");
     link.href = "https://link.qortal.dev/hub-linux";
+    link.download = "";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    setOpenSupportModal(true);
+  };
+
+  const macDesktopDownload = async () => {
+    const link = document.createElement("a");
+    link.href = "https://link.qortal.dev/hub-mac";
     link.download = "";
     document.body.appendChild(link);
     link.click();
@@ -208,7 +219,7 @@ const Downloads = () => {
             </DownloadTextCol>
           </DownloadCard>
         </DownloadCol>
-        {/* <DownloadCol>
+         <DownloadCol>
           <DownloadText>
             Qortal <span style={{ fontWeight: "bold" }}>Hub</span> Mac
           </DownloadText>
@@ -221,7 +232,7 @@ const Downloads = () => {
                 action: "Clicked Mac Desktop Download Button",
                 label: "Clicked Mac Desktop Download Button"
               });
-              linuxDesktopDownload();
+              macDesktopDownload();
             }}
             onKeyDown={(e) => {
               if (e.key === "Enter") {
@@ -230,7 +241,7 @@ const Downloads = () => {
                   action: "Clicked Mac Desktop Download Button",
                   label: "Clicked Mac Desktop Download Button"
                 });
-                // linuxDesktopDownload();
+                macDesktopDownload();
               }
             }}
           >
@@ -240,7 +251,7 @@ const Downloads = () => {
               <DownloadText2>Mac Desktop</DownloadText2>
             </DownloadTextCol>
           </DownloadCard>
-        </DownloadCol> */}
+        </DownloadCol>
         <DownloadCol>
           <DownloadText>
             Qortal <span style={{ fontWeight: "bold" }}>Hub</span> Linux
