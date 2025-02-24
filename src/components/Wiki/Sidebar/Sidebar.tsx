@@ -16,20 +16,48 @@ import { useMediaQuery, useTheme } from "@mui/material";
 import ReactGA from "react-ga4";
 
 export const Sidebar: FC<SidebarProps> = ({ handleNavigation, sections }) => {
-const pathname = usePathname();
+  const [expandedSection, setExpandedSection] = useState<string | null>(null);
+
+  const pathname = usePathname();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
+  // Auto-expand the section that contains the active page after navigation
+  useEffect(() => {
+    Object.entries(sections).forEach(([sectionTitle, pages]) => {
+      if (pages.some((page) => pathname.startsWith(page.url))) {
+        setExpandedSection(sectionTitle);
+      }
+    });
+  }, [pathname, sections]);
+
+  const toggleSection = (sectionTitle: string) => {
+    setExpandedSection((prev) => (prev === sectionTitle ? prev : sectionTitle));
+  };
+
+  const handleScrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    const contentContainer = document.getElementById("main-container"); // Target MainContainer ID in Wiki.tsx
+  
+    if (element && contentContainer) {
+      contentContainer.scrollTo({
+        top: element.offsetTop - contentContainer.offsetTop, // Scroll within MainContainer
+        behavior: "smooth",
+      });
+    }
+  };
+  
   return (
     <SidebarContainer>
       {Object.entries(sections).map(([sectionTitle, pages]) => {
-        const isExpanded = pages.some((page) => pathname.startsWith(page.url));
+       const isExpanded = expandedSection === sectionTitle;
         return (
           <SectionBox key={sectionTitle}>
             <SectionTitleRow
               onClick={() => {
-                if (pages[0]?.url === pathname) return;
-                handleNavigation(pages[0]?.url)
+                if (isExpanded) return;
+                handleNavigation(pages[0]?.url);
+                toggleSection(sectionTitle);
               }}
               isExpanded={isExpanded}
             >
@@ -55,7 +83,7 @@ const pathname = usePathname();
                         tabIndex={0}
                         role="button"
                         isActive={pathname === page.url}
-                        onClick={() => handleNavigation(page.url)}
+                        onClick={() => handleScrollToSection(heading.id)}
                       >
                         {heading.title}
                       </SectionListItem>

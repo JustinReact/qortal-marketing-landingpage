@@ -7,6 +7,7 @@ import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRenderer } from "../../components/Common/Wiki/MDXRenderer";
 import { getWikiPages } from "../../utils/getWikiPages";
+import rehypeSlug from "rehype-slug";
 
 // Metadata
 export const metadata = {
@@ -24,7 +25,11 @@ const WikiPage = async (): Promise<JSX.Element> => {
     : "⚠️ Home content not found.";
 
   const { content, data } = matter(homeContent);
-  const mdxSource: MDXRemoteSerializeResult  = await serialize(content); // Compile MDX into JSX
+  const mdxSource: MDXRemoteSerializeResult  = await serialize(content, {
+    mdxOptions: {
+      rehypePlugins: [rehypeSlug] // Add IDs to headings
+    }
+  }); // Compile MDX into JSX
 
   return (
     <Wiki title={data.title} sections={sections}>

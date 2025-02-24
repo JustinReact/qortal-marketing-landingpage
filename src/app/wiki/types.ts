@@ -4,6 +4,7 @@ export interface WikiPageProps {
   headings: {
     title: string;
     depth: number;
+    id: string;
   }[];
 }
 
@@ -15,7 +16,7 @@ export interface WikiProps {
     {
       title: string;
       url: string;
-      headings: { title: string; depth: number }[];
+      headings: { title: string; depth: number, id: string }[];
     }[]
   >;
 }
@@ -26,7 +27,7 @@ export interface SidebarProps {
     {
       title: string;
       url: string;
-      headings: { title: string; depth: number }[];
+      headings: { title: string; depth: number, id: string }[];
     }[]
   >;
   handleNavigation: (url: string) => void;

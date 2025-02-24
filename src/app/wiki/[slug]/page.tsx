@@ -7,6 +7,7 @@ import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRenderer } from "../../../components/Common/Wiki/MDXRenderer";
 import { getWikiPages } from "../../../utils/getWikiPages";
+import rehypeSlug from "rehype-slug";
 
 /* Explanation for those looking to add new wiki pages */
 /* 
@@ -39,7 +40,11 @@ const WikiSection = async ({ params }: { params: { slug: string } }): Promise<JS
 
   const fileContents = fs.readFileSync(docPath, "utf-8");
   const { content, data } = matter(fileContents);
-  const mdxSource: MDXRemoteSerializeResult  = await serialize(content); // Compile MDX into JSX
+  const mdxSource: MDXRemoteSerializeResult  = await serialize(content, {
+      mdxOptions: {
+        rehypePlugins: [rehypeSlug] // Add IDs to headings
+      }
+    }); // Compile MDX into JSX
 
   return (
     <Wiki title={data.title} sections={sections}>

@@ -19,6 +19,8 @@ export const Wiki: FC<WikiProps> = ({ title, children, sections }) => {
     });
   };
 
+  console.log({sections});
+
   return (
     <WikiContainer>
       <Sidebar
@@ -27,7 +29,7 @@ export const Wiki: FC<WikiProps> = ({ title, children, sections }) => {
         }}
         sections={sections}
       />
-      <MainContainer>
+      <MainContainer id="main-container">
         {loadingPage ? <LoadingSpinner /> : children}
       </MainContainer>
     </WikiContainer>

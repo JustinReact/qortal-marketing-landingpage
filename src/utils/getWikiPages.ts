@@ -26,17 +26,27 @@ export const getWikiPages = (): Record<string, WikiPageProps[]> => {
     const headings = content
       .split("\n")
       .filter((line) => line.startsWith("## ") || line.startsWith("### "))
-      .map((line) => ({
-        title: line.replace(/^##+\s/, ""),
-        depth: line.startsWith("## ") ? 2 : 3, // `##` = section, `###` = subsection
-      }));
+      .map((line) => {
+        const rawTitle = line.replace(/^##+\s/, "").trim();
+        const id = rawTitle
+          .toLowerCase()
+          .replace(/[^a-z0-9\s-]/g, "") // Remove special characters
+          .replace(/\s+/g, "-"); // Convert spaces to dashes
+        
+        return {
+          title: rawTitle,
+          id, // This ID now matches `rehypeSlug` output
+          depth: line.startsWith("## ") ? 2 : 3,
+        };
+      });
 
     // ✅ Use manual order or default to "Miscellaneous"
     const sectionTitle = wikiOrder.find((s) => data.title?.includes(s)) || "Miscellaneous";
+    const homepage = data.title?.includes("Welcome");
 
     const page: WikiPageProps = {
       title: data.title || file.replace(".mdx", ""),
-      url: `/wiki/${file.replace(".mdx", "")}`,
+      url: homepage ? "/wiki" : `/wiki/${file.replace(".mdx", "")}`,
       headings,
     };
 

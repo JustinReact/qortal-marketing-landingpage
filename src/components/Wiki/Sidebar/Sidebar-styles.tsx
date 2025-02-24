@@ -15,10 +15,9 @@ export const SidebarContainer = styled(Box)(({ theme }) => ({
   position: "relative",
   display: "flex",
   flexDirection: "column",
-  justifyContent: "space-between",
+  justifyContent: "flex-start",
   gap: "20px",
-  height: "fit-content",
-  maxHeight: "600px",
+  height: "70vh",
   overflowY: "auto",
   paddingRight: "44px",
   backgroundColor: theme.palette.background.default,
@@ -119,6 +118,7 @@ export const SectionListItem = styled("li", {
   lineHeight: "27px",
   color: theme.palette.text.primary,
   userSelect: "none",
+  cursor: "pointer",
   "&::before": {
     content: "''",
     backgroundColor: theme.palette.text.primary,
@@ -131,8 +131,9 @@ export const SectionListItem = styled("li", {
 }));
 
 export const ContributeButton = styled(Button)(({ theme }) => ({
-  position: "fixed",
-  bottom: "20px",
+  display: "flex",
+  alignSelf: "center",
+  marginTop: "20px",
   fontFamily: oxygen.style.fontFamily,
   fontWeight: 500,
   fontSize: "20px",
