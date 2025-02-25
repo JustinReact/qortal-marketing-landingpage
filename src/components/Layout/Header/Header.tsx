@@ -30,7 +30,7 @@ import { useDispatch } from "react-redux";
 export const Header = () => {
   const dispatch = useDispatch();
   const theme = useTheme();
-  const isMobile = useMediaQuery("(max-width: 1176px)");
+  const isMobile = useMediaQuery("(max-width: 1193px)");
   const location = usePathname();
   const router = useRouter();
 

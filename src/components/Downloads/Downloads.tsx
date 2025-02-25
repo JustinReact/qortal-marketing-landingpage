@@ -219,11 +219,12 @@ const Downloads = () => {
             </DownloadTextCol>
           </DownloadCard>
         </DownloadCol>
-         <DownloadCol>
+         <DownloadCol className="mac-col">
           <DownloadText>
             Qortal <span style={{ fontWeight: "bold" }}>Hub</span> Mac
           </DownloadText>
           <DownloadCard
+            className="mac-card"
             aria-label="Download the Mac Desktop version of Qortal"
             tabIndex={0}
             onClick={() => {
@@ -245,7 +246,7 @@ const Downloads = () => {
               }
             }}
           >
-            <AppleLogo color={"#000000"} width={"40"} height={"40"} />
+            <AppleLogo color={"#0177DB"} width={"40"} height={"40"} />
             <DownloadTextCol>
               <DownloadText1>Available on</DownloadText1>
               <DownloadText2>Mac Desktop</DownloadText2>

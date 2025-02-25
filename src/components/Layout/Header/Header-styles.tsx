@@ -1,5 +1,5 @@
 import { styled } from "@mui/system";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { HamburgerSVG } from "../../Common/Icons/HamburgerSVG";
 import Link from "next/link";
 import { magistral, oxygen } from "../../../app/fonts";
@@ -69,7 +69,12 @@ export const QortalLogoContainer = styled(Link)(({ theme }) => ({
   userSelect: "none",
   cursor: "pointer",
   textDecoration: "none",
-  padding: "25px 0"
+  padding: "25px 0",
+  [theme.breakpoints.down("sm")]: {
+    position: "absolute",
+    left: "50%",
+    transform: "translateX(-50%)",
+  }
 }));
 
 export const LightModeIcon = styled(LightModeSVG)(({ theme }) => ({
@@ -97,8 +102,8 @@ export const QortalQBlack = styled(QortalBlackLogoSVG)(({ theme }) => ({
 export const QortalQWhite = styled(QortalWhiteLogoSVG)(({ theme }) => ({
    marginRight: "2px",
    [theme.breakpoints.down("sm")]: {
-    width: "59px",
-    height: "70px"
+    width: "41px",
+    height: "59px"
   }
 }));
 

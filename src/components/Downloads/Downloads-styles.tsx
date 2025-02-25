@@ -1,4 +1,4 @@
-import { lineHeight, styled } from "@mui/system";
+import { grid, lineHeight, styled } from "@mui/system";
 import { Box, Button, Grid, Typography } from "@mui/material";
 import Image from "next/image";
 import { futura, redditSans } from "../../app/fonts";
@@ -38,7 +38,7 @@ export const DownloadsTitle = styled(Typography)(({ theme }) => ({
 
 export const DownloadsGrid = styled(Box)(({ theme }) => ({
   display: "grid",
-  gridTemplateColumns: "repeat(5, 1fr)",
+  gridTemplateColumns: "repeat(4, 1fr)",
   gap: "20px",
   marginTop: "98px",
   "@media(max-width: 1243px)": {
@@ -51,6 +51,18 @@ export const DownloadsGrid = styled(Box)(({ theme }) => ({
     gap: "60px",
     gridTemplateColumns: "auto",
     gridTemplateRows: "repeat(5, 1fr)"
+  },
+  "& .mac-col": {
+    gridColumn: "1 / -1", // Make the Mac card take the full row
+    justifySelf: "center", // Center it horizontally,
+    order: 2,
+    marginTop: "25px",
+    "@media(max-width: 731px)": {
+      gridColumn: "unset",
+      justifySelf: "unset",
+      order: 2,
+      marginTop: 0
+    }
   }
 }));
 
@@ -59,6 +71,7 @@ export const DownloadCard = styled(Box)(({ theme }) => ({
   flexDirection: "row",
   alignItems: "center",
   justifyContent: "flex-start",
+  flexGrow: 1,
   backgroundColor: theme.palette.mode === "light" ? "#2F2F2F" : "#ffffff",
   padding: "15px 15px 20px 24px",
   borderRadius: "5px",
@@ -69,6 +82,12 @@ export const DownloadCard = styled(Box)(({ theme }) => ({
   "& img, & svg": {
     marginTop: "10px"
   },  
+  "&.mac-card": {
+    minWidth: "361px", 
+    [theme.breakpoints.down("sm")]: {
+      minWidth: "unset"
+    }
+  },
   "&:hover": {
     cursor: "pointer",
     boxShadow:
