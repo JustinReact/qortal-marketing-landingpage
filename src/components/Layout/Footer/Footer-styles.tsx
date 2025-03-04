@@ -1,12 +1,12 @@
 import { styled } from "@mui/system";
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import Link from "next/link";
 import { oxygen } from "../../../app/fonts";
 
 export const FooterContainer = styled(Box)(({ theme }) => ({
   display: "flex",
-  flexDirection: "row",
-  justifyContent: "flex-end",
+  flexDirection: "column",
+  justifyContent: "center",
   alignItems: "center",
   width: "100%",
   padding: "15px 30px 0 30px",
@@ -18,16 +18,25 @@ export const FooterContainer = styled(Box)(({ theme }) => ({
   }
 }));
 
+export const FooterRow = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "center",
+  alignItems: "center",
+  gap: "42px"
+}));
+
 export const FooterLink = styled(Link)(({ theme }) => ({
   position: "relative",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
   gap: "8px",
+  textTransform: "uppercase",
   backgroundColor: "transparent",
   fontFamily: oxygen.style.fontFamily,
   fontSize: "18px",
-  color: theme.palette.text.primary,
+  color: theme.palette.mode === "light" ? "#686355" : "#ABA28A",
   height: "48px",
   borderRadius: "2px",
   padding: "10px 15px",
@@ -65,4 +74,15 @@ export const FooterLink = styled(Link)(({ theme }) => ({
       bottom: "3px"
     }
   }
+}));
+
+export const FooterIconRow = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "center",
+  alignItems: "center",
+  gap: "22px",
+  "& svg": {
+    cursor: "pointer",
+  },
 }));
