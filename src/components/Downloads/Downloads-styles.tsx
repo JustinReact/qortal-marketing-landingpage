@@ -284,3 +284,18 @@ export const AppleLogo = styled(AppleSVG)({
 export const AndroidIcon = styled(AndroidSVG)({
   marginRight: "25px"
 });
+
+export const IPhoneRow = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "row",
+  alignItems: "center",
+  justifyContent: "center",
+  marginTop: "98px",
+  "@media(max-width: 731px)": {
+    marginTop: "50px",
+    marginBottom: "40px",
+    gap: "60px",
+    gridTemplateColumns: "auto",
+    gridTemplateRows: "repeat(5, 1fr)"
+  },
+}));
