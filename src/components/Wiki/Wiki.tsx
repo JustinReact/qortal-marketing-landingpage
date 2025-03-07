@@ -29,7 +29,7 @@ export const Wiki: FC<WikiProps> = ({ title, children, sections }) => {
         }}
         sections={sections}
       />
-      <MainContainer id="main-container">
+      <MainContainer>
         {loadingPage ? <LoadingSpinner /> : children}
       </MainContainer>
     </WikiContainer>

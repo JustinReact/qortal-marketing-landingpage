@@ -12,14 +12,15 @@ type SidebarDropdownProps = {
 };
 
 export const SidebarContainer = styled(Box)(({ theme }) => ({
-  position: "relative",
+  position: "sticky",
+  top: "20px",
   display: "flex",
   flexDirection: "column",
   justifyContent: "flex-start",
   gap: "20px",
   height: "70vh",
   overflowY: "auto",
-  paddingRight: "44px",
+  padding: "0 44px 20px 0",
   backgroundColor: theme.palette.background.default,
   transition: "all 0.3s ease-in-out",
   "&::-webkit-scrollbar": {
@@ -126,7 +127,9 @@ export const SectionListItem = styled("li", {
     left: "-24px",
     width: "6px",
     height: "15px",
-    top: "6.5px"
+    top: "6.5px",
+    opacity: isActive ? 1 : 0,
+    transition: "opacity 0.3s ease-in-out"
   }
 }));
 

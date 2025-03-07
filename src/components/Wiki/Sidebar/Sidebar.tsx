@@ -17,7 +17,8 @@ import ReactGA from "react-ga4";
 
 export const Sidebar: FC<SidebarProps> = ({ handleNavigation, sections }) => {
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
-
+  const [activeSection, setActiveSection] = useState<string | null>(null);
+console.log({activeSection})
   const pathname = usePathname();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -31,20 +32,48 @@ export const Sidebar: FC<SidebarProps> = ({ handleNavigation, sections }) => {
     });
   }, [pathname, sections]);
 
+  // Highlight the active section based on the current scroll position
+  useEffect(() => {
+    const handleIntersection = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id); // ✅ Set active section based on id
+        }
+      });
+    };
+  
+    const observer = new IntersectionObserver(handleIntersection, {
+      root: null, // Observe in the viewport
+      rootMargin: "0px 0px -60% 0px", // Adjust to detect sections entering view
+      threshold: 0.1, // Trigger when at least 10% of the section is in view
+    });
+  
+    // Observe all section headings (h2 elements with IDs)
+    const sectionHeadings = document.querySelectorAll("h2[id]");
+    sectionHeadings.forEach((heading) => observer.observe(heading));
+  
+    return () => observer.disconnect();
+  }, []);
+
   const toggleSection = (sectionTitle: string) => {
     setExpandedSection((prev) => (prev === sectionTitle ? prev : sectionTitle));
   };
 
   const handleScrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    const contentContainer = document.getElementById("main-container"); // Target MainContainer ID in Wiki.tsx
+    console.log({ id });
   
-    if (element && contentContainer) {
-      contentContainer.scrollTo({
-        top: element.offsetTop - contentContainer.offsetTop, // Scroll within MainContainer
-        behavior: "smooth",
-      });
-    }
+    const element = document.getElementById(id);
+    if (!element) return;
+  
+    const elementRect = element.getBoundingClientRect();
+    const scrollY = window.scrollY + elementRect.top; // Calculate absolute position
+  
+    window.scrollTo({
+      top: scrollY, // Scroll the entire page
+      behavior: "smooth",
+    });
+  
+    console.log("Scrolling to:", scrollY);
   };
   
   return (
@@ -82,7 +111,7 @@ export const Sidebar: FC<SidebarProps> = ({ handleNavigation, sections }) => {
                         aria-label="Navigate to page"
                         tabIndex={0}
                         role="button"
-                        isActive={pathname === page.url}
+                        isActive={activeSection === heading.id}
                         onClick={() => handleScrollToSection(heading.id)}
                       >
                         {heading.title}
