@@ -187,8 +187,10 @@ const Downloads = () => {
             >
               <AppleLogo color={"#0177DB"} width={"40"} height={"40"} />
               <DownloadTextCol>
-                <DownloadText1>Available on</DownloadText1>
-                <DownloadText2>iOS</DownloadText2>
+                <DownloadText1>Use Qortal Go on iOS</DownloadText1>
+                <DownloadText1 style={{ fontWeight: "bold" }}>
+                  (Web Version)
+                </DownloadText1>
               </DownloadTextCol>
             </DownloadCard>
           </DownloadCol>
@@ -377,43 +379,21 @@ const Downloads = () => {
         </DownloadsGrid>
       )}
       {!isIOS && (
-      <OtherVersionsCol>
-        <OtherVersionsRow>
-          <OtherVersionsText>
-            To download other versions of{" "}
-            <span style={{ fontWeight: "bold" }}>Qortal Hub</span> not listed
-            here, click
-            <a
-              href="https://github.com/Qortal/Qortal-Hub/releases"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => {
-                ReactGA.event({
-                  category: "User",
-                  action: "Clicked Qortal Hub Other Versions Link",
-                  label: "Clicked Qortal Hub Other Versions Link"
-                });
-              }}
-            >
-              here
-            </a>
-          </OtherVersionsText>
-        </OtherVersionsRow>
-        <OtherVersionsRow>
+        <OtherVersionsCol>
           <OtherVersionsRow>
             <OtherVersionsText>
               To download other versions of{" "}
-              <span style={{ fontWeight: "bold" }}>Qortal Go</span> not listed
+              <span style={{ fontWeight: "bold" }}>Qortal Hub</span> not listed
               here, click
               <a
-                href="https://github.com/Qortal/Qortal-Mobile/releases"
+                href="https://github.com/Qortal/Qortal-Hub/releases"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => {
                   ReactGA.event({
                     category: "User",
-                    action: "Clicked Qortal Go Other Versions Link",
-                    label: "Clicked Qortal Go Other Versions Link"
+                    action: "Clicked Qortal Hub Other Versions Link",
+                    label: "Clicked Qortal Hub Other Versions Link"
                   });
                 }}
               >
@@ -421,8 +401,30 @@ const Downloads = () => {
               </a>
             </OtherVersionsText>
           </OtherVersionsRow>
-        </OtherVersionsRow>
-      </OtherVersionsCol>
+          <OtherVersionsRow>
+            <OtherVersionsRow>
+              <OtherVersionsText>
+                To download other versions of{" "}
+                <span style={{ fontWeight: "bold" }}>Qortal Go</span> not listed
+                here, click
+                <a
+                  href="https://github.com/Qortal/Qortal-Mobile/releases"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => {
+                    ReactGA.event({
+                      category: "User",
+                      action: "Clicked Qortal Go Other Versions Link",
+                      label: "Clicked Qortal Go Other Versions Link"
+                    });
+                  }}
+                >
+                  here
+                </a>
+              </OtherVersionsText>
+            </OtherVersionsRow>
+          </OtherVersionsRow>
+        </OtherVersionsCol>
       )}
       <ScreenshotContainer container spacing={4}>
         <ScreenshotCol item md={3} xs={12}>
