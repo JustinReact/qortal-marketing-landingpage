@@ -3,22 +3,32 @@ import { Box, Button, Typography } from "@mui/material";
 import { oxygen } from "../../../app/fonts";
 import { ChevronRightSVG } from "../../Common/Icons/ChevronRightSVG";
 
+type SidebarContainerProps = {
+  showInFullScreenMobile: boolean;
+  isMobile: boolean;
+};
+
 type SidebarProps = {
   isActive: boolean;
 };
 
 type SidebarDropdownProps = {
   isExpanded: boolean;
+  showInFullScreenMobile: boolean;
 };
 
-export const SidebarContainer = styled(Box)(({ theme }) => ({
-  position: "sticky",
-  top: "20px",
-  display: "flex",
+export const SidebarContainer = styled(Box, {
+  shouldForwardProp: (prop) => prop !== "showInFullScreenMobile"
+})<SidebarContainerProps>(({ isMobile, showInFullScreenMobile, theme }) => ({
+  position: showInFullScreenMobile ? "fixed" : "sticky",
+  top: showInFullScreenMobile ? "unset" : "20px",
+  display: !showInFullScreenMobile && isMobile ? "none" : "flex",
   flexDirection: "column",
   justifyContent: "flex-start",
+  alignItems: showInFullScreenMobile ? "center" : "unset",
   gap: "20px",
-  height: "70vh",
+  height: showInFullScreenMobile ? "100vh" : "70vh",
+  width: showInFullScreenMobile ? "100%" : "auto",
   overflowY: "auto",
   padding: "0 44px 20px 0",
   backgroundColor: theme.palette.background.default,
@@ -41,7 +51,7 @@ export const SidebarContainer = styled(Box)(({ theme }) => ({
 
 export const SectionTitleRow = styled(Box, {
   shouldForwardProp: (prop) => prop !== "isExpanded"
-})<SidebarDropdownProps>(({ theme, isExpanded }) => ({
+})<SidebarDropdownProps>(({ theme, isExpanded, showInFullScreenMobile }) => ({
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
@@ -53,26 +63,27 @@ export const SectionTitleRow = styled(Box, {
   "&:hover": {
     cursor: "pointer",
     backgroundColor:
-      theme.palette.mode === "dark" && !isExpanded
+      theme.palette.mode === "dark" && (!isExpanded || showInFullScreenMobile)
         ? "#D9D9D9"
-        : theme.palette.mode === "light" && !isExpanded
+        : theme.palette.mode === "light" &&
+          (!isExpanded || showInFullScreenMobile)
         ? "#000000"
         : "transparent",
     "& p": {
       color:
-        theme.palette.mode === "dark" && !isExpanded
+        theme.palette.mode === "dark" && (!isExpanded || showInFullScreenMobile)
           ? "#000000"
-          : theme.palette.mode === "light" && !isExpanded
+          : theme.palette.mode === "light" &&
+            (!isExpanded || showInFullScreenMobile)
           ? "#ffffff"
           : "inherit"
     },
     "& svg": {
-        fill:
-        isExpanded
+      fill: isExpanded
         ? "currentColor"
         : theme.palette.mode === "dark"
         ? "#000000"
-        : "#ffffff",
+        : "#ffffff"
     }
   }
 }));
@@ -161,8 +172,5 @@ export const ContributeButton = styled(Button)(({ theme }) => ({
         ? `1px solid ${theme.palette.text.primary}`
         : "1px solid #F3F3F3",
     color: "#000000"
-  },
-  [theme.breakpoints.down("sm")]: {
-    width: "-webkit-fill-available"
   }
 }));

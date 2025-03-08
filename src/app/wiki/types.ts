@@ -31,4 +31,6 @@ export interface SidebarProps {
     }[]
   >;
   handleNavigation: (url: string) => void;
+  showInFullScreenMobile: boolean;
+  setExpandedMobile: (expanded: boolean) => void;
 }

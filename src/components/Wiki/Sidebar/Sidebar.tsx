@@ -15,13 +15,17 @@ import { SidebarProps } from "../../../app/wiki/types";
 import { useMediaQuery, useTheme } from "@mui/material";
 import ReactGA from "react-ga4";
 
-export const Sidebar: FC<SidebarProps> = ({ handleNavigation, sections }) => {
+export const Sidebar: FC<SidebarProps> = ({
+  showInFullScreenMobile,
+  setExpandedMobile,
+  handleNavigation,
+  sections
+}) => {
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
   const [activeSection, setActiveSection] = useState<string | null>(null);
-console.log({activeSection})
   const pathname = usePathname();
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile = useMediaQuery("(max-width: 1130px)");
 
   // Auto-expand the section that contains the active page after navigation
   useEffect(() => {
@@ -41,17 +45,17 @@ console.log({activeSection})
         }
       });
     };
-  
+
     const observer = new IntersectionObserver(handleIntersection, {
       root: null, // Observe in the viewport
       rootMargin: "0px 0px -60% 0px", // Adjust to detect sections entering view
-      threshold: 0.1, // Trigger when at least 10% of the section is in view
+      threshold: 0.1 // Trigger when at least 10% of the section is in view
     });
-  
+
     // Observe all section headings (h2 elements with IDs)
     const sectionHeadings = document.querySelectorAll("h2[id]");
     sectionHeadings.forEach((heading) => observer.observe(heading));
-  
+
     return () => observer.disconnect();
   }, []);
 
@@ -61,29 +65,29 @@ console.log({activeSection})
 
   const handleScrollToSection = (id: string) => {
     console.log({ id });
-  
+
     const element = document.getElementById(id);
     if (!element) return;
-  
+
     const elementRect = element.getBoundingClientRect();
     const scrollY = window.scrollY + elementRect.top; // Calculate absolute position
-  
+
     window.scrollTo({
       top: scrollY, // Scroll the entire page
-      behavior: "smooth",
+      behavior: "smooth"
     });
-  
-    console.log("Scrolling to:", scrollY);
   };
-  
+
   return (
-    <SidebarContainer>
+    <SidebarContainer showInFullScreenMobile={showInFullScreenMobile} isMobile={isMobile}>
       {Object.entries(sections).map(([sectionTitle, pages]) => {
-       const isExpanded = expandedSection === sectionTitle;
+        const isExpanded = expandedSection === sectionTitle;
         return (
           <SectionBox key={sectionTitle}>
             <SectionTitleRow
+              showInFullScreenMobile={showInFullScreenMobile}
               onClick={() => {
+                if (isMobile) setExpandedMobile(true);
                 if (isExpanded) return;
                 handleNavigation(pages[0]?.url);
                 toggleSection(sectionTitle);
@@ -91,16 +95,19 @@ console.log({activeSection})
               isExpanded={isExpanded}
             >
               <SectionTitle>{sectionTitle}</SectionTitle>
-              <ChevronIcon
-                isExpanded={isExpanded}
-                height="13px"
-                width="13px"
-                color={theme.palette.text.primary}
-              />
+              {!isMobile && (
+                <ChevronIcon
+                  showInFullScreenMobile={showInFullScreenMobile}
+                  isExpanded={isExpanded}
+                  height="13px"
+                  width="13px"
+                  color={theme.palette.text.primary}
+                />
+              )}
             </SectionTitleRow>
             <>
               {pages.map((page) =>
-                page.headings.length > 0 && isExpanded ? (
+                page.headings.length > 0 && isExpanded && !isMobile ? (
                   <SectionList key={page.url}>
                     {page.headings.map((heading) => (
                       <SectionListItem
