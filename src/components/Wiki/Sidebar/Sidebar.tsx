@@ -14,6 +14,7 @@ import { usePathname } from "next/navigation";
 import { SidebarProps } from "../../../app/wiki/types";
 import { useMediaQuery, useTheme } from "@mui/material";
 import ReactGA from "react-ga4";
+import { handleScrollToSectionFunc } from "../../../utils/handleScrollToSectionFunc";
 
 export const Sidebar: FC<SidebarProps> = ({
   showInFullScreenMobile,
@@ -25,7 +26,7 @@ export const Sidebar: FC<SidebarProps> = ({
   const [activeSection, setActiveSection] = useState<string | null>(null);
   const pathname = usePathname();
   const theme = useTheme();
-  const isMobile = useMediaQuery("(max-width: 1130px)");
+  const isMobile = useMediaQuery("(max-width: 1086px)");
 
   // Auto-expand the section that contains the active page after navigation
   useEffect(() => {
@@ -61,21 +62,6 @@ export const Sidebar: FC<SidebarProps> = ({
 
   const toggleSection = (sectionTitle: string) => {
     setExpandedSection((prev) => (prev === sectionTitle ? prev : sectionTitle));
-  };
-
-  const handleScrollToSection = (id: string) => {
-    console.log({ id });
-
-    const element = document.getElementById(id);
-    if (!element) return;
-
-    const elementRect = element.getBoundingClientRect();
-    const scrollY = window.scrollY + elementRect.top; // Calculate absolute position
-
-    window.scrollTo({
-      top: scrollY, // Scroll the entire page
-      behavior: "smooth"
-    });
   };
 
   return (
@@ -119,7 +105,7 @@ export const Sidebar: FC<SidebarProps> = ({
                         tabIndex={0}
                         role="button"
                         isActive={activeSection === heading.id}
-                        onClick={() => handleScrollToSection(heading.id)}
+                        onClick={() => handleScrollToSectionFunc(heading.id)}
                       >
                         {heading.title}
                       </SectionListItem>

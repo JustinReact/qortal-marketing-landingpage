@@ -1,7 +1,8 @@
-import { styled } from "@mui/system";
+import { lineHeight, styled, textTransform } from "@mui/system";
 import { Box } from "@mui/material";
 import { oxygen } from "../../app/fonts";
 import { ChevronLeftSVG } from "../Common/Icons/ChevronLeftSVG";
+import { ChevronRightSVG } from "../Common/Icons/ChevronRightSVG";
 
 type MainContainerProps = {
   showInFullScreenMobile: boolean;
@@ -16,6 +17,12 @@ export const WikiContainer = styled(Box, {
   gap: "50px",
   padding: "50px",
   width: "100%",
+  [theme.breakpoints.down("lg")]: {
+    padding: "50px 25px",
+  },
+  [theme.breakpoints.down("md")]: {
+    padding: "50px 0",
+  },
 }));
 
 export const MainContainer = styled(Box, {
@@ -59,3 +66,38 @@ export const ChevronIcon = styled(ChevronLeftSVG)({
   marginTop: "5px",
   cursor: "pointer",
 })
+
+export const ChevronLeftIcon = styled(ChevronLeftSVG)({
+  marginTop: "7px",
+  cursor: "pointer",
+})
+
+export const ChevronRightIcon = styled(ChevronRightSVG)({
+  marginTop: "7px",
+  cursor: "pointer",
+});
+
+export const FooterRow = styled(Box)({
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "space-between",
+  width: "100%",
+  paddingTop: "75px",
+});
+
+export const FooterSubRow = styled(Box)({
+  display: "flex",
+  flexDirection: "row",
+  gap: "15px",
+  alignItems: "center",
+  cursor: "pointer",
+  "& p": {
+    fontFamily: oxygen.style.fontFamily,
+    fontSize: "15px",
+    fontWeight: "bold",
+    textTransform: "uppercase",
+    letterSpacing: 0,
+    lineHeight: "27px",
+    userSelect: "none",
+  }
+});

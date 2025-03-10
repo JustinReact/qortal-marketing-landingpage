@@ -18,7 +18,7 @@ type SidebarDropdownProps = {
 };
 
 export const SidebarContainer = styled(Box, {
-  shouldForwardProp: (prop) => prop !== "showInFullScreenMobile"
+  shouldForwardProp: (prop) => prop !== "showInFullScreenMobile" && prop !== "isMobile"
 })<SidebarContainerProps>(({ isMobile, showInFullScreenMobile, theme }) => ({
   position: showInFullScreenMobile ? "fixed" : "sticky",
   top: showInFullScreenMobile ? "unset" : "20px",
@@ -50,7 +50,7 @@ export const SidebarContainer = styled(Box, {
 }));
 
 export const SectionTitleRow = styled(Box, {
-  shouldForwardProp: (prop) => prop !== "isExpanded"
+  shouldForwardProp: (prop) => prop !== "isExpanded" && prop !== "showInFullScreenMobile"
 })<SidebarDropdownProps>(({ theme, isExpanded, showInFullScreenMobile }) => ({
   display: "flex",
   justifyContent: "space-between",
@@ -95,7 +95,10 @@ export const SectionTitle = styled(Typography)(({ theme }) => ({
   lineHeight: "27px",
   color: theme.palette.text.primary,
   userSelect: "none",
-  transition: "all 0.3s ease-in-out"
+  transition: "all 0.3s ease-in-out",
+  [theme.breakpoints.down("lg")]: {
+    fontSize: "18px",
+  }
 }));
 
 export const ChevronIcon = styled(ChevronRightSVG, {
@@ -131,6 +134,9 @@ export const SectionListItem = styled("li", {
   color: theme.palette.text.primary,
   userSelect: "none",
   cursor: "pointer",
+  [theme.breakpoints.down("lg")]: {
+    fontSize: "18px",
+  },
   "&::before": {
     content: "''",
     backgroundColor: theme.palette.text.primary,
