@@ -38,6 +38,7 @@
     "copy-to-clipboard": "^3.3.3",
     "framer-motion": "^10.12.12",
     "gray-matter": "^4.0.3",
+    "highlight.js": "^11.11.1",
     "html-react-parser": "^5.1.18",
     "next": "^14.2.15",
     "next-mdx-remote": "^5.0.0",

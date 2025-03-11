@@ -3,6 +3,7 @@ import { Box } from "@mui/material";
 import { oxygen } from "../../app/fonts";
 import { ChevronLeftSVG } from "../Common/Icons/ChevronLeftSVG";
 import { ChevronRightSVG } from "../Common/Icons/ChevronRightSVG";
+import { BackArrowSVG } from "../Common/Icons/BackArrowSVG";
 
 type MainContainerProps = {
   showInFullScreenMobile: boolean;
@@ -101,3 +102,32 @@ export const FooterSubRow = styled(Box)({
     userSelect: "none",
   }
 });
+
+export const TopOfPageRef = styled("div")({
+  position: "absolute",
+  top: "0px",
+  height: "1px"
+});
+
+export const ScrollToTopButton = styled("div")(({ theme }) => ({
+  position: "fixed",
+  bottom: "20px",
+  right: "20px",
+  backgroundColor: theme.palette.customBlue.main,
+  width: "45px",
+  height: "45px",
+  borderRadius: "50%",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  transition: "all 0.3s ease-in-out",
+  zIndex: 20,
+  "&:hover": {
+    cursor: "pointer",
+    transform: "scale(1.05)"
+  }
+}));
+
+export const TopArrow = styled(BackArrowSVG)(({ theme }) => ({
+  rotate: "90deg"
+}));

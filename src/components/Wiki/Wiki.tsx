@@ -1,5 +1,12 @@
 "use client";
-import React, { FC, Fragment, useEffect, useState, useTransition } from "react";
+import React, {
+  FC,
+  Fragment,
+  useEffect,
+  useRef,
+  useState,
+  useTransition
+} from "react";
 import {
   ChevronIcon,
   ChevronLeftIcon,
@@ -9,7 +16,10 @@ import {
   MainContainer,
   MobileSectionList,
   MobileSectionListContainer,
+  ScrollToTopButton,
   SectionTitleMobile,
+  TopArrow,
+  TopOfPageRef,
   WikiContainer
 } from "./Wiki-styles";
 import { Sidebar } from "./Sidebar/Sidebar";
@@ -24,10 +34,12 @@ export const Wiki: FC<WikiProps> = ({ title, children, sections }) => {
   const isMobile = useMediaQuery("(max-width: 1086px)");
   const pathname = usePathname();
   const theme = useTheme();
+  const topOfPageRef = useRef<HTMLDivElement | null>(null);
 
   const [isPending, startTransition] = useTransition();
   const [loadingPage, setLoadingPage] = useState<string | null>(null);
   const [isExpandedMobile, setExpandedMobile] = useState<boolean>(false);
+  const [showButton, setShowButton] = useState(false);
 
   const handleNavigation = (url: string) => {
     setLoadingPage(url);
@@ -43,7 +55,29 @@ export const Wiki: FC<WikiProps> = ({ title, children, sections }) => {
     }
   }, [pathname, isMobile]);
 
-  console.log(sections, "sections");
+  // Intersection observer to show scroll to top button
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setShowButton(!entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+
+    if (topOfPageRef.current) {
+      observer.observe(topOfPageRef.current);
+    }
+
+    return () => {
+      if (topOfPageRef.current) observer.unobserve(topOfPageRef.current);
+    };
+  }, []);
+
+  const scrollToTop = () => {
+    if (topOfPageRef.current) {
+      topOfPageRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <WikiContainer
@@ -62,6 +96,7 @@ export const Wiki: FC<WikiProps> = ({ title, children, sections }) => {
         isMobile={isMobile}
         showInFullScreenMobile={isMobile && isExpandedMobile}
       >
+        <TopOfPageRef ref={topOfPageRef} />
         {loadingPage ? (
           <LoadingSpinner />
         ) : (
@@ -104,7 +139,15 @@ export const Wiki: FC<WikiProps> = ({ title, children, sections }) => {
             )}
 
             {children}
-
+            {showButton && (
+              <ScrollToTopButton onClick={scrollToTop}>
+                <TopArrow
+                  color={theme.palette.text.primary}
+                  height={"25"}
+                  width={"25"}
+                />
+              </ScrollToTopButton>
+            )}
             {/* Show this footer on mobile, and only if they've clicked on a section title */}
             {isMobile && isExpandedMobile && (
               <FooterRow>

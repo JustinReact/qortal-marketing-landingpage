@@ -19,12 +19,12 @@ const WikiPage = async (): Promise<JSX.Element> => {
   const sections = getWikiPages();
 
   // Load home.mdx content
-  const homePath = path.join(process.cwd(), "src/app/wiki/home.mdx");
-  const homeContent = fs.existsSync(homePath)
-    ? fs.readFileSync(homePath, "utf-8")
-    : "⚠️ Home content not found.";
+  const welcomePath = path.join(process.cwd(), "src/app/wiki/welcome.mdx");
+  const welcomeContent = fs.existsSync(welcomePath)
+    ? fs.readFileSync(welcomePath, "utf-8")
+    : "⚠️ Welcome content not found.";
 
-  const { content, data } = matter(homeContent);
+  const { content, data } = matter(welcomeContent);
   const mdxSource: MDXRemoteSerializeResult  = await serialize(content, {
     mdxOptions: {
       rehypePlugins: [rehypeSlug] // Add IDs to headings
