@@ -32,7 +32,7 @@ import WindowsStepSix from "./Steps/WindowsStepSix";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import ReactGA from "react-ga4";
 
-const WindowsSteps = () => {
+export const WindowsSteps = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
@@ -220,5 +220,3 @@ const WindowsSteps = () => {
     </Container>
   );
 };
-
-export default WindowsSteps;

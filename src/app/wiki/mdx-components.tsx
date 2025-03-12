@@ -7,7 +7,13 @@ import { useEffect } from "react";
 // Styled components for MDX elements
 const StyledLayout = styled("div")(({ theme }) => ({
   "& h1": {
-    display: "none"
+    fontFamily: oxygen.style.fontFamily,
+    letterSpacing: 0,
+    lineHeight: "27px",
+    fontSize: "30px",
+    margin: "0 0 20px 0",
+    fontWeight: 600,
+    color: theme.palette.text.primary
   },
   "& h2": {
     fontFamily: oxygen.style.fontFamily,
