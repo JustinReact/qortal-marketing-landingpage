@@ -10,6 +10,7 @@ type SidebarContainerProps = {
 
 type SidebarProps = {
   isActive: boolean;
+  id: string;
 };
 
 type SidebarDropdownProps = {
@@ -124,31 +125,33 @@ export const SectionList = styled("ul")(({ theme }) => ({
 }));
 
 export const SectionListItem = styled("li", {
-  shouldForwardProp: (prop) => prop !== "isActive"
-})<SidebarProps>(({ theme, isActive }) => ({
-  position: "relative" as const,
-  fontFamily: oxygen.style.fontFamily,
-  fontSize: "20px",
-  fontWeight: "500",
-  lineHeight: "27px",
-  color: theme.palette.text.primary,
-  userSelect: "none",
-  cursor: "pointer",
-  [theme.breakpoints.down("lg")]: {
-    fontSize: "18px",
-  },
-  "&::before": {
-    content: "''",
-    backgroundColor: theme.palette.text.primary,
-    position: "absolute" as const,
-    left: "-24px",
-    width: "6px",
-    height: "15px",
-    top: "6.5px",
-    opacity: isActive ? 1 : 0,
-    transition: "opacity 0.3s ease-in-out"
-  }
-}));
+  shouldForwardProp: (prop) => prop !== "isActive" && prop !== "id"
+})<SidebarProps>(({ theme, isActive, id }) => {
+  return {
+    position: "relative" as const,
+    fontFamily: oxygen.style.fontFamily,
+    fontSize: "20px",
+    fontWeight: "500",
+    lineHeight: "27px",
+    color: theme.palette.text.primary,
+    userSelect: "none",
+    cursor: "pointer",
+    [theme.breakpoints.down("lg")]: {
+      fontSize: "18px",
+    },
+    "&::before": {
+      content: "''",
+      backgroundColor: theme.palette.text.primary,
+      position: "absolute" as const,
+      left: "-24px",
+      width: "6px",
+      height: "15px",
+      top: "6.5px",
+      opacity: isActive ? 1 : 0,
+      transition: "opacity 0.3s ease-in-out"
+    }
+  };
+});
 
 export const ContributeButton = styled(Button)(({ theme }) => ({
   display: "flex",

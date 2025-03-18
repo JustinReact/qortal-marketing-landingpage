@@ -24,6 +24,7 @@ export const Sidebar: FC<SidebarProps> = ({
 }) => {
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
   const [activeSection, setActiveSection] = useState<string | null>(null);
+
   const pathname = usePathname();
   const theme = useTheme();
   const isMobile = useMediaQuery("(max-width: 1086px)");
@@ -49,7 +50,7 @@ export const Sidebar: FC<SidebarProps> = ({
 
     const observer = new IntersectionObserver(handleIntersection, {
       root: null, // Observe in the viewport
-      rootMargin: "0px 0px -60% 0px", // Adjust to detect sections entering view
+      rootMargin: "0px 0px -40% 0px", // Adjust to detect sections entering view
       threshold: 0.1 // Trigger when at least 10% of the section is in view
     });
 
@@ -95,9 +96,11 @@ export const Sidebar: FC<SidebarProps> = ({
               {pages.map((page) =>
                 page.headings.length > 0 && isExpanded && !isMobile ? (
                   <SectionList key={page.url}>
-                    {page.headings.map((heading) => (
+                    {page.headings.map((heading) => {
+                      return (
                       <SectionListItem
                         key={heading.title}
+                        id={heading.id}
                         style={{
                           marginLeft: heading.depth === 3 ? "20px" : "0"
                         }}
@@ -109,7 +112,7 @@ export const Sidebar: FC<SidebarProps> = ({
                       >
                         {heading.title}
                       </SectionListItem>
-                    ))}
+                    )})}
                   </SectionList>
                 ) : null
               )}
