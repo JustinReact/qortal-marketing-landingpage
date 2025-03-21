@@ -102,7 +102,7 @@ export const Sidebar: FC<SidebarProps> = ({
                         key={heading.title}
                         id={heading.id}
                         style={{
-                          marginLeft: heading.depth === 3 ? "20px" : "0"
+                          marginLeft: heading.depth === 3 ? "22px" : "0"
                         }}
                         aria-label="Navigate to page"
                         tabIndex={0}
