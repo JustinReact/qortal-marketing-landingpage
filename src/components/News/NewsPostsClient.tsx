@@ -39,6 +39,7 @@ const NewsPostsClient: React.FC<NewsPostsClientProps> = ({ news }) => {
           .map((item) => {
             return (
               <NewsCard
+                key={item.identifier}
                 aria-label="Visit this Qortal News and Announcements post"
                 tabIndex={0}
                 onClick={() => {

@@ -123,6 +123,7 @@ export const Header = () => {
                 Downloads
               </QORTButton>
               <NewsButton
+                className={location.includes("/news") ? "active" : ""}
                 onClick={() => {
                   ReactGA.event({
                     category: "User",
@@ -152,7 +153,7 @@ export const Header = () => {
                 Documentation
               </Docs>
               <BlogButton
-                className={location === "/Blog" ? "active" : ""}
+                className={location.includes("/blog") ? "active" : ""}
                 onClick={() => {
                   ReactGA.event({
                     category: "User",

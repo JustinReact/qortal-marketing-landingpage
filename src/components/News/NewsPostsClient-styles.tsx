@@ -101,7 +101,7 @@ export const NewsCardDate = styled(Typography)({
   userSelect: "none",
 });
 
-export const NewsCardBody = styled(Typography)(({ theme }) => ({
+export const NewsCardBody = styled(Box)(({ theme }) => ({
   fontFamily: redditSans.style.fontFamily,
   color: theme.palette.mode === "light" ? "#333333" : "#888888",
   fontWeight: 400,
