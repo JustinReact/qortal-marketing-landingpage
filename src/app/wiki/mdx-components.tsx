@@ -68,7 +68,9 @@ const StyledLayout = styled("div")(({ theme }) => ({
     lineHeight: "30px",
     color: "#fff",
     borderRadius: "5px",
-    overflowX: "auto"
+    overflowX: "auto",
+    whiteSpace: "pre-wrap",
+    wordBreak: "break-word",
   }
 }));
 
@@ -76,7 +78,48 @@ export const MDXComponents = ({ children }: any) => {
   useEffect(() => {
     document.querySelectorAll("pre code").forEach((block) => {
       hljs.highlightElement(block as HTMLElement);
+  
+      // Wrap code block with a container that holds the copy button
+      const parentPre = block.parentElement;
+      
+      if (parentPre && !parentPre.querySelector(".copy-btn")) { // Avoid duplicates
+        parentPre.style.position = "relative";
+  
+        const copyButton = document.createElement("button");
+        copyButton.innerText = "Copy";
+        copyButton.className = "copy-btn";
+        
+        // Styling the copy button
+        Object.assign(copyButton.style, {
+          position: "absolute",
+          top: "8px",
+          right: "8px",
+          background: "#0070f3",
+          color: "#fff",
+          border: "none",
+          borderRadius: "5px",
+          padding: "5px 10px",
+          cursor: "pointer",
+          fontSize: "12px",
+          transition: "background-color 0.2s",
+        });
+  
+        // Copying text to clipboard
+        copyButton.onclick = async () => {
+          try {
+            await navigator.clipboard.writeText(block.textContent || "");
+            copyButton.innerText = "Copied!";
+            setTimeout(() => (copyButton.innerText = "Copy"), 2000);
+          } catch (err) {
+            console.error("Failed to copy text: ", err);
+          }
+        };
+  
+        parentPre.style.position = "relative";
+        parentPre.appendChild(copyButton);
+      }
     });
   }, []);
+  
   return <StyledLayout>{children}</StyledLayout>;
 };

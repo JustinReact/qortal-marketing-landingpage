@@ -2,22 +2,70 @@
 title: "Running A Node"
 ---
 
-# Running a Qortal Node 🌍
+# Running a Qortal Node 🌐
 
-Learn how to set up and maintain your Qortal node.
+Running a node is essential for contributing to the Qortal network. Whether you're a minter or simply supporting the network, running a node helps secure the chain and allows you to access Qortal's decentralized features.
 
 ## Why Run a Node?
-- Supports the Qortal network.
-- Allows you to mint QORT.
-- Increases decentralization.
 
-## Setting Up a Node
-### Windows Setup
-1. Download the node installer.
-2. Install and configure the node.
-3. Start the node service.
+- **Supports the Qortal network.**
+- Allows you to **mint QORT.**
+- Ensures **data integrity and decentralization.**
 
-### macOS Setup
-1. Open Terminal and run:
+### Is Running a Node Obligatory to Use Qortal?
+
+No, running a node is not mandatory to use Qortal. You can access the platform through a public node, on either Qortal Hub, Go, or Extension. We will take a look at how this works in a later subsection of this wiki page. However, be aware that running a node is recommended if you want to contribute to the network, and earn QORT through minting.
+
+## Windows Setup
+
+1. Download the Qortal Core installer from the [official release page](https://github.com/Qortal/qortal/releases/latest/download/qortal.exe).
+2. Run the downloaded file and follow the on-screen instructions to complete the installation.
+3. You will see a splash screen indicating that the core is downloading and extracting the bootstrap. It will then run in the taskbar.
+
+<figure>
+  <img
+    src="/images/Wiki/QortalCoreStarting.png"
+    alt="Qortal Core Starting"
+    style={{ width: "100%", maxWidth: "250px" }}
+  />
+  <figcaption>Qortal Core Starting</figcaption>
+</figure>
+
+4. Once installed, the Qortal Core will start running and connecting to the network. Once it is fully synced, you will see the Qortal icon in the taskbar tray. If it is not fully synced, the icon will be red. When it is fully synced, the icon will turn blue.
+
+<figure>
+  <img
+    src="/images/Wiki/SyncedNodeWindows.png"
+    alt="Qortal Node Fully Synced on the taskbar tray in Windows"
+    style={{ width: "100%", maxWidth: "250px" }}
+  />
+  <figcaption>
+    Qortal Node Fully Synced on the taskbar tray in Windows
+  </figcaption>
+</figure>
+
+## Linux Setup
+
+You can run the Qortal Core on Linux by either downloading the zip file and manually extracting it or using the command line method.
+
+### Manual Installation
+
+1. Download the [Qortal Core zip file](https://github.com/Qortal/qortal/releases/latest/download/qortal.zip).
+2. Extract the zip file.
+3. Make the scripts executable:
    ```sh
-   brew install qortal-node
+   chmod +x *.sh
+   ```
+4. Run the core
+   ```sh
+   ./start.sh
+   ```
+
+### Manual Installation
+
+1. Open a terminal window and run the following command:
+   ```sh
+   wget https://github.com/Qortal/qortal/releases/latest/download/qortal.zip && unzip qortal.zip && cd qortal && chmod +x *.sh && ./start.sh
+   ```
+   
+⚠️ Note: You will see a splash screen indicating that the core is downloading and extracting the bootstrap. It will then run in the taskbar.
