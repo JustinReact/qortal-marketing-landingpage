@@ -16,6 +16,10 @@ Running a node is essential for contributing to the Qortal network. Whether you'
 
 No, running a node is not mandatory to use Qortal. You can access the platform through a public node, on either Qortal Hub, Go, or Extension. We will take a look at how this works in a later subsection of this wiki page. However, be aware that running a node is recommended if you want to contribute to the network, and earn QORT through minting.
 
+<br />
+---
+<br />
+
 ## Windows Setup
 
 1. Download the Qortal Core installer from the [official release page](https://github.com/Qortal/qortal/releases/latest/download/qortal.exe).
@@ -31,7 +35,7 @@ No, running a node is not mandatory to use Qortal. You can access the platform t
   <figcaption>Qortal Core Starting</figcaption>
 </figure>
 
-4. Once installed, the Qortal Core will start running and connecting to the network. Once it is fully synced, you will see the Qortal icon in the taskbar tray. If it is not fully synced, the icon will be red. When it is fully synced, the icon will turn blue.
+4. Once installed, the Qortal Core will start running and connecting to the network. Once it is running, you will see the Qortal icon in the taskbar tray. If it is not fully synced, the icon will be red. When it is fully synced, the icon will turn blue.
 
 <figure>
   <img
@@ -43,6 +47,10 @@ No, running a node is not mandatory to use Qortal. You can access the platform t
     Qortal Node Fully Synced on the taskbar tray in Windows
   </figcaption>
 </figure>
+
+<br />
+---
+<br />
 
 ## Linux Setup
 
@@ -68,4 +76,102 @@ You can run the Qortal Core on Linux by either downloading the zip file and manu
    wget https://github.com/Qortal/qortal/releases/latest/download/qortal.zip && unzip qortal.zip && cd qortal && chmod +x *.sh && ./start.sh
    ```
    
-⚠️ Note: You will see a splash screen indicating that the core is downloading and extracting the bootstrap. It will then run in the taskbar.
+2. You will see a splash screen indicating that the core is downloading and extracting the bootstrap. It will then run in the taskbar.
+
+<figure>
+  <img
+    src="/images/Wiki/QortalCoreStarting.png"
+    alt="Qortal Core Starting"
+    style={{ width: "100%", maxWidth: "250px" }}
+  />
+  <figcaption>Qortal Core Starting</figcaption>
+</figure>
+
+3. Once the core is running, you can validate that your node is fully synced by checking in the Qortal Hub or Extension sidebar.
+
+<figure>
+  <img
+    src="/images/Wiki/QortalHubNodeInfo.png"
+    alt="Node Info on Qortal Hub"
+    style={{ width: "100%", maxWidth: "250px" }}
+  />
+  <figcaption>Node Info on Qortal Hub</figcaption>
+</figure>
+
+<br />
+---
+<br />
+
+## Mac Setup
+
+1. Ensure you have Java 11 or higher installed on your machine.
+2. Open the terminal. In the Finder, open the /Applications/Utilities folder, then double-click Terminal.
+3. Run the following command to download the Qortal Core:
+   ```sh
+    cd && curl -L -O https://github.com/Qortal/qortal/releases/latest/download/qortal.zip && unzip qortal.zip && cd qortal && chmod +x *.sh && ./start.sh
+   ```
+4. This will start Qortal Core, you will see a splash screen come up telling you it is downloading and extracting the bootstrap for you, let that finish, then it will run with a Q icon on the taskbar (the icon will be RED until it is fully synchronized, then it will be BLUE).
+
+<br />
+---
+<br />
+
+## Bootstrapping Your Node
+
+To synchronize your node faster, you can easily 'bootstrap'. Bootstrapping is when you download a compressed archive of the block database. It will be much faster to get that all at once, than to sync one block at a time from peers.
+
+> **Note:** For ALL operating systems, you can stop the Core, delete the `db` folder, then start the Core and it’ll automatically begin the bootstrap process. Alternatively, you can use the methods below (both achieve the same result). It's best to bootstrap when you're more than 1500 blocks behind the current block height.
+
+### How Bootstrapping Works
+When the bootstrap process begins, you’ll see a popup with several 0-100% progress bars. This may take an average of **15 minutes** depending on your internet speed. The bootstrap servers may fail from time to time and will retry the process automatically.
+
+Once the popup goes away, your node is **NOT 100% synced**. It’ll need to finish syncing the remaining blocks, as a new bootstrap is created every **12 hours**. 
+
+### Checking Sync Status
+You can verify the synchronization status by:
+1. Hovering over the Core icon in the system tray to view the current block height.
+2. Opening Qortal Hub or Extension and viewing the current block height in the sidebar.
+3. Comparing this number with the actual block height on the chain by visiting [exqlorer.com](https://exqlorer.com/).
+
+<br />
+---
+<br />
+
+### Mac, Linux & Raspberry Pi (QORTector)
+1. **Stop the Core:** 
+
+   Open the terminal and run:
+   ```sh
+   cd qortal && ./stop.sh
+   ```
+   Wait for the message "ended successfully".
+
+2. Remove the Database Folder & Restart the Core:
+    Run the following command in the terminal:
+    ```sh
+    rm -rf db && ./start.sh
+    ``` 
+    This will delete the db folder and start the Core, triggering the bootstrap process.
+
+<br />
+---
+<br />
+
+### Windows
+1. **Stop the Core:** 
+    Right-click on the Qortal icon in the taskbar tray and select 'Exit'.
+2. Locate the Qortal App Folder in your file explorer. The path should be:
+    ```sh
+    C:\Users\YOUR_USER_NAME\AppData\Local\Qortal
+    ```
+3. Delete the 'db' folder.
+4. Restart the Core by running the Qortal Core application.
+
+<figure>
+  <img
+    src="/images/Wiki/CoreBootstrap.png"
+    alt="Qortal Core Bootstrapping"
+    style={{ width: "100%", maxWidth: "250px" }}
+  />
+  <figcaption>Qortal Core Bootstrapping</figcaption>
+</figure>
