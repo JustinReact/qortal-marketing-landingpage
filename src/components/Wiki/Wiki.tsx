@@ -37,12 +37,10 @@ export const Wiki: FC<WikiProps> = ({ title, children, sections }) => {
   const topOfPageRef = useRef<HTMLDivElement | null>(null);
 
   const [isPending, startTransition] = useTransition();
-  const [loadingPage, setLoadingPage] = useState<string | null>(null);
   const [isExpandedMobile, setExpandedMobile] = useState<boolean>(false);
   const [showButton, setShowButton] = useState(false);
 
   const handleNavigation = (url: string) => {
-    setLoadingPage(url);
     startTransition(() => {
       router.push(url);
     });
@@ -95,9 +93,10 @@ export const Wiki: FC<WikiProps> = ({ title, children, sections }) => {
       <MainContainer
         isMobile={isMobile}
         showInFullScreenMobile={isMobile && isExpandedMobile}
+        style={{alignItems: isMobile && isExpandedMobile || isPending ? "center" : "flex-start"}}
       >
         <TopOfPageRef ref={topOfPageRef} />
-        {loadingPage ? (
+        {isPending ? (
           <LoadingSpinner />
         ) : (
           <>
@@ -150,7 +149,7 @@ export const Wiki: FC<WikiProps> = ({ title, children, sections }) => {
             )}
             {/* Show this footer on mobile, and only if they've clicked on a section title */}
             {isMobile && isExpandedMobile && (
-              <FooterRow>
+              <FooterRow style={{ justifyContent: pathname === "/wiki" && isExpandedMobile ? "flex-end" : "space-between" }}>
                 {(() => {
                   const allPages = Object.values(sections).flat();
                   const currentIndex = allPages.findIndex(

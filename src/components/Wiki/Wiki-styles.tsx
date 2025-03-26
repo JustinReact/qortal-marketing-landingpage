@@ -31,7 +31,6 @@ export const MainContainer = styled(Box, {
 })<MainContainerProps>(({ isMobile, showInFullScreenMobile, theme }) => ({
   display: !showInFullScreenMobile && isMobile ? "none" :  "flex",
   flexDirection: "column",
-  alignItems: showInFullScreenMobile ? "center" : "flex-start",
   padding: "15px",
 }));
 
@@ -81,7 +80,6 @@ export const ChevronRightIcon = styled(ChevronRightSVG)({
 export const FooterRow = styled(Box)({
   display: "flex",
   flexDirection: "row",
-  justifyContent: "space-between",
   width: "100%",
   paddingTop: "75px",
 });
