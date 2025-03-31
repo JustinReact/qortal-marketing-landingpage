@@ -1,10 +1,10 @@
-import "highlight.js/styles/atom-one-dark.css"; // ✅ Use VS Code Dark theme
+import "highlight.js/styles/atom-one-dark.css"; // Use VS Code Dark theme for code blocks
 import hljs from "highlight.js";
-import { styled } from "@mui/system";
+import {  styled } from "@mui/system";
 import { oxygen } from "../fonts";
 import { useEffect } from "react";
 
-// Styled components for MDX elements
+// Styled components for MDX elements. Change the styling here to modify the styling of the MDX elements. This is a global style, so it will affect all MDX elements in the app.
 const StyledLayout = styled("div")(({ theme }) => ({
   "& h1": {
     fontFamily: oxygen.style.fontFamily,
@@ -13,14 +13,14 @@ const StyledLayout = styled("div")(({ theme }) => ({
     fontSize: "30px",
     margin: "0 0 20px 0",
     fontWeight: 600,
-    color: theme.palette.text.primary
+    color: theme.palette.text.primary,
   },
   "& h2": {
     fontFamily: oxygen.style.fontFamily,
     letterSpacing: 0,
     lineHeight: "27px",
     fontSize: "27px",
-    margin: "15px 0",
+    margin: "35px 0 15px 0",
     fontWeight: 600,
     color: theme.palette.customBlue.main
   },
@@ -66,12 +66,16 @@ const StyledLayout = styled("div")(({ theme }) => ({
     fontWeight: 400,
     letterSpacing: 0,
     lineHeight: "30px",
-    color: "#fff",
+    color: theme.palette.text.primary,  
     borderRadius: "5px",
     overflowX: "auto",
     whiteSpace: "pre-wrap",
     wordBreak: "break-word",
-  }
+  },
+  "& figcaption p": {
+    fontSize: "16px",
+    fontStyle: "italic",
+  },
 }));
 
 export const MDXComponents = ({ children }: any) => {
