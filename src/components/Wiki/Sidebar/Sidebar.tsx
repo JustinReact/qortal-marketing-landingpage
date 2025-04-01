@@ -24,6 +24,7 @@ export const Sidebar: FC<SidebarProps> = ({
 }) => {
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
   const [activeSection, setActiveSection] = useState<string | null>(null);
+  const [toggledSection, setToggledSection] = useState<string | null>(null);
 
   const pathname = usePathname();
   const theme = useTheme();
@@ -33,6 +34,7 @@ export const Sidebar: FC<SidebarProps> = ({
   useEffect(() => {
     Object.entries(sections).forEach(([sectionTitle, pages]) => {
       if (pages.some((page) => pathname.startsWith(page.url))) {
+        setToggledSection(sectionTitle);
         setExpandedSection(sectionTitle);
       }
     });
@@ -66,26 +68,39 @@ export const Sidebar: FC<SidebarProps> = ({
   };
 
   return (
-    <SidebarContainer showInFullScreenMobile={showInFullScreenMobile} isMobile={isMobile}>
+    <SidebarContainer
+      showInFullScreenMobile={showInFullScreenMobile}
+      isMobile={isMobile}
+    >
       {Object.entries(sections).map(([sectionTitle, pages]) => {
         const isExpanded = expandedSection === sectionTitle;
+        const isToggled = toggledSection === sectionTitle;
         return (
           <SectionBox key={sectionTitle}>
             <SectionTitleRow
               showInFullScreenMobile={showInFullScreenMobile}
               onClick={() => {
                 if (isMobile) setExpandedMobile(true);
-                if (isExpanded) return;
-                handleNavigation(pages[0]?.url);
-                toggleSection(sectionTitle);
+
+                // If already expanded, collapse it
+                if (expandedSection === sectionTitle) {
+                  setExpandedSection(null);
+                } else {
+                  if (!isToggled) {
+                    handleNavigation(pages[0]?.url); // navigate if needed
+                  }
+                  setExpandedSection(sectionTitle);
+                }
               }}
               isExpanded={isExpanded}
+              isToggled={isToggled}
             >
               <SectionTitle>{sectionTitle}</SectionTitle>
               {!isMobile && (
                 <ChevronIcon
                   showInFullScreenMobile={showInFullScreenMobile}
                   isExpanded={isExpanded}
+                  isToggled={isToggled}
                   height="13px"
                   width="13px"
                   color={theme.palette.text.primary}
@@ -98,21 +113,22 @@ export const Sidebar: FC<SidebarProps> = ({
                   <SectionList key={page.url}>
                     {page.headings.map((heading) => {
                       return (
-                      <SectionListItem
-                        key={heading.title}
-                        id={heading.id}
-                        style={{
-                          marginLeft: heading.depth === 3 ? "22px" : "0"
-                        }}
-                        aria-label="Navigate to page"
-                        tabIndex={0}
-                        role="button"
-                        isActive={activeSection === heading.id}
-                        onClick={() => handleScrollToSectionFunc(heading.id)}
-                      >
-                        {heading.title}
-                      </SectionListItem>
-                    )})}
+                        <SectionListItem
+                          key={heading.title}
+                          id={heading.id}
+                          style={{
+                            marginLeft: heading.depth === 3 ? "22px" : "0"
+                          }}
+                          aria-label="Navigate to page"
+                          tabIndex={0}
+                          role="button"
+                          isActive={activeSection === heading.id}
+                          onClick={() => handleScrollToSectionFunc(heading.id)}
+                        >
+                          {heading.title}
+                        </SectionListItem>
+                      );
+                    })}
                   </SectionList>
                 ) : null
               )}

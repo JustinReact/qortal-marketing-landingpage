@@ -1,4 +1,4 @@
-import { styled } from "@mui/system";
+import { styled, textTransform } from "@mui/system";
 import { Box, Button, Typography } from "@mui/material";
 import { oxygen } from "../../../app/fonts";
 import { ChevronRightSVG } from "../../Common/Icons/ChevronRightSVG";
@@ -15,11 +15,13 @@ type SidebarProps = {
 
 type SidebarDropdownProps = {
   isExpanded: boolean;
+  isToggled: boolean;
   showInFullScreenMobile: boolean;
 };
 
 export const SidebarContainer = styled(Box, {
-  shouldForwardProp: (prop) => prop !== "showInFullScreenMobile" && prop !== "isMobile"
+  shouldForwardProp: (prop) =>
+    prop !== "showInFullScreenMobile" && prop !== "isMobile"
 })<SidebarContainerProps>(({ isMobile, showInFullScreenMobile, theme }) => ({
   position: showInFullScreenMobile ? "fixed" : "sticky",
   top: showInFullScreenMobile ? "unset" : "20px",
@@ -47,47 +49,67 @@ export const SidebarContainer = styled(Box, {
   },
   "&::-webkit-scrollbar-thumb:hover": {
     background: theme.palette.mode === "light" ? "#000000" : "#bbbbbb"
+  },
+  "@media(max-width: 1086px)": {
+    gap: "38px"
   }
 }));
 
 export const SectionTitleRow = styled(Box, {
-  shouldForwardProp: (prop) => prop !== "isExpanded" && prop !== "showInFullScreenMobile"
-})<SidebarDropdownProps>(({ theme, isExpanded, showInFullScreenMobile }) => ({
-  display: "flex",
-  justifyContent: "space-between",
-  alignItems: "center",
-  width: "100%",
-  height: "51px",
-  padding: "0 18px",
-  borderRadius: "4px",
-  transition: "all 0.3s ease-in-out",
-  "&:hover": {
-    cursor: "pointer",
+  shouldForwardProp: (prop) =>
+    prop !== "isExpanded" &&
+    prop !== "showInFullScreenMobile" &&
+    prop !== "isToggled"
+})<SidebarDropdownProps>(
+  ({ theme, isExpanded, showInFullScreenMobile, isToggled }) => ({
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    width: "100%",
+    height: "51px",
+    padding: "0 18px",
+    borderRadius: "4px",
+    transition: "all 0.3s ease-in-out",
     backgroundColor:
-      theme.palette.mode === "dark" && (!isExpanded || showInFullScreenMobile)
+      theme.palette.mode === "dark" && isToggled && !showInFullScreenMobile
         ? "#D9D9D9"
-        : theme.palette.mode === "light" &&
-          (!isExpanded || showInFullScreenMobile)
+        : theme.palette.mode === "light" && isToggled && !showInFullScreenMobile
         ? "#000000"
         : "transparent",
     "& p": {
       color:
-        theme.palette.mode === "dark" && (!isExpanded || showInFullScreenMobile)
+        theme.palette.mode === "dark" && isToggled && !showInFullScreenMobile
           ? "#000000"
           : theme.palette.mode === "light" &&
-            (!isExpanded || showInFullScreenMobile)
+            isToggled &&
+            !showInFullScreenMobile
           ? "#ffffff"
           : "inherit"
     },
-    "& svg": {
-      fill: isExpanded
-        ? "currentColor"
-        : theme.palette.mode === "dark"
-        ? "#000000"
-        : "#ffffff"
+    "@media(max-width: 1086px)": {
+      height: "auto"
+    },
+    "&:hover": {
+      cursor: "pointer",
+      ...(isToggled || showInFullScreenMobile
+        ? {} // Don’t override if it’s already active
+        : {
+            backgroundColor:
+              theme.palette.mode === "dark" ? "#D9D9D9" : "#000000",
+            "& p": {
+              color: theme.palette.mode === "dark" ? "#000000" : "#ffffff"
+            },
+            "& svg": {
+              fill: isExpanded
+                ? "currentColor"
+                : theme.palette.mode === "dark"
+                ? "#000000"
+                : "#ffffff"
+            }
+          })
     }
-  }
-}));
+  })
+);
 
 export const SectionTitle = styled(Typography)(({ theme }) => ({
   fontFamily: oxygen.style.fontFamily,
@@ -98,7 +120,12 @@ export const SectionTitle = styled(Typography)(({ theme }) => ({
   userSelect: "none",
   transition: "all 0.3s ease-in-out",
   [theme.breakpoints.down("lg")]: {
-    fontSize: "18px",
+    fontSize: "18px"
+  },
+  "@media(max-width: 1086px)": {
+    textTransform: "uppercase",
+    fontWeight: "bold",
+    height: "auto"
   }
 }));
 
@@ -137,7 +164,7 @@ export const SectionListItem = styled("li", {
     userSelect: "none",
     cursor: "pointer",
     [theme.breakpoints.down("lg")]: {
-      fontSize: "18px",
+      fontSize: "18px"
     },
     "&::before": {
       content: "''",
@@ -173,6 +200,9 @@ export const ContributeButton = styled(Button)(({ theme }) => ({
   boxShadow: "none",
   cursor: "pointer",
   transition: "all 0.2s ease-in-out",
+  "@media(max-width: 1086px)": {
+    marginTop: "2px"
+  },
   "&:hover": {
     boxShadow: "1px 4px 10.5px 0px #0000004D",
     backgroundColor: "#F3F3F3",

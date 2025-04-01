@@ -9,7 +9,7 @@ const StyledLayout = styled("div")(({ theme }) => ({
   "& h1": {
     fontFamily: oxygen.style.fontFamily,
     letterSpacing: 0,
-    lineHeight: "27px",
+    lineHeight: "38px",
     fontSize: "30px",
     margin: "0 0 20px 0",
     fontWeight: 600,
@@ -71,6 +71,9 @@ const StyledLayout = styled("div")(({ theme }) => ({
     overflowX: "auto",
     whiteSpace: "pre-wrap",
     wordBreak: "break-word",
+  },
+  "& figure": {
+    margin: "32px 0"
   },
   "& figcaption p": {
     fontSize: "16px",

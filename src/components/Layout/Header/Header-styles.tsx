@@ -7,7 +7,6 @@ import { QortalBlackLogoSVG } from "../../Common/Icons/QortalBlackLogoSVG";
 import { QortalWhiteLogoSVG } from "../../Common/Icons/QortalWhiteLogoSVG";
 import { LightModeSVG } from "../../Common/Icons/LightModeSVG";
 import { DarkModeSVG } from "../../Common/Icons/DarkModeSVG";
-
 interface HamburgerIconProps {
   rotated?: { isOn: boolean };
 }
@@ -69,7 +68,12 @@ export const QortalLogoContainer = styled(Link)(({ theme }) => ({
   userSelect: "none",
   cursor: "pointer",
   textDecoration: "none",
-  padding: "25px 0"
+  padding: "25px 0",
+  [theme.breakpoints.down("sm")]: {
+    position: "absolute",
+    left: "50%",
+    transform: "translateX(-50%)",
+  }
 }));
 
 export const LightModeIcon = styled(LightModeSVG)(({ theme }) => ({

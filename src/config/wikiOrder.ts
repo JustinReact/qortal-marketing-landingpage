@@ -3,7 +3,7 @@
 export const wikiOrder = [
   "Welcome",
   "Getting Started",
-  "Creating An Account",
+  "Account Creation",
   "Running A Node",
   "Qortal Groups",
   "Qortal Q-Apps",

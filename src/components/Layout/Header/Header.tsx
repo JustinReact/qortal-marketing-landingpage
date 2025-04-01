@@ -122,6 +122,19 @@ export const Header = () => {
               >
                 Downloads
               </QORTButton>
+              <QORTButton
+                className={location.includes("/downloads") ? "active" : ""}
+                onClick={() => {
+                  ReactGA.event({
+                    category: "User",
+                    action: "Clicked Wiki Button Header",
+                    label: "Wiki Button"
+                  });
+                }}
+                href={"/wiki"}
+              >
+                Wiki
+              </QORTButton>
               <NewsButton
                 onClick={() => {
                   ReactGA.event({

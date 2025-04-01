@@ -1,11 +1,15 @@
 "use client";
+import { useMediaQuery } from "@mui/material";
 import { FooterContainer, FooterLink } from "./Footer-styles";
 import { usePathname } from "next/navigation";
 
 export const Footer = () => {
   const location = usePathname();
+  const isMobile = useMediaQuery("(max-width: 1086px)");
 
-  return (
+  if (location.includes("/wiki") && isMobile) {
+    return null; // Don't show footer on mobile wiki pages
+  } else return (
     <FooterContainer style={{paddingBottom: location === "/" ? "40px" : 0}}>
       <FooterLink
         href={"/support"}
