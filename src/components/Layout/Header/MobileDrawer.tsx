@@ -59,7 +59,7 @@ export const MobileDrawer: FC<MobileDrawerProps> = ({
           setOpenMobileDrawer();
           router.push("/news");
         }}
-        active={location === "/news" ? true : false}
+        active={location.includes("/news") ? true : false}
       >
         News
       </DrawerButton>
@@ -73,7 +73,7 @@ export const MobileDrawer: FC<MobileDrawerProps> = ({
           setOpenMobileDrawer();
           router.push("/blog");
         }}
-        active={location === "/blog" ? true : false}
+        active={location.includes("/blog") ? true : false}
       >
         Blog
       </DrawerButton>
@@ -90,6 +90,20 @@ export const MobileDrawer: FC<MobileDrawerProps> = ({
         active={location === "/downloads" ? true : false}
       >
         Downloads
+      </DrawerButton>
+      <DrawerButton
+        onClick={() => {
+          ReactGA.event({
+            category: "User",
+            action: "Clicked Mobile Wiki Drawer Link",
+            label: "Clicked Mobile Wiki Drawer Link"
+          });
+          setOpenMobileDrawer();
+          router.push("/wiki");
+        }}
+        active={location.includes("/wiki") ? true : false}
+      >
+        Wiki
       </DrawerButton>
     </Container>
   );

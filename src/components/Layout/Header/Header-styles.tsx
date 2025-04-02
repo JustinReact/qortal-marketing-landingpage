@@ -1,5 +1,5 @@
 import { styled } from "@mui/system";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Paper, Typography } from "@mui/material";
 import { HamburgerSVG } from "../../Common/Icons/HamburgerSVG";
 import Link from "next/link";
 import { magistral, oxygen } from "../../../app/fonts";
@@ -362,9 +362,69 @@ export const HamburgerIcon = styled(HamburgerSVG)<HamburgerIconProps>(
   ({ rotated, theme }) => ({
     position: "absolute",
     right: 0,
-    top: "51px",
+    top: "70px",
     transition: "all 0.3s ease-in-out",
     transform: rotated?.isOn ? "rotate(90deg)" : "rotate(0deg)",
     cursor: "pointer",
   })
 );
+
+export const DropdownBtn = styled(Typography)(({ theme }) => ({
+  position: "relative",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: "8px",
+  backgroundColor: "transparent",
+  fontFamily: oxygen.style.fontFamily,
+  fontSize: "18px",
+  color: theme.palette.text.primary,
+  height: "44px",
+  borderRadius: "2px",
+  width: "130px",
+  padding: "10px 15px",
+  transition: "all 0.3s ease-in-out",
+  zIndex: 2,
+  textDecoration: "none",
+  cursor: "pointer",
+  userSelect: "none",
+}));
+
+export const DropdownContainer = styled(Paper)(({ theme }) => ({
+  position: "absolute",
+  backgroundColor: theme.palette.background.default,
+  backgroundImage: "none",
+  top: "100%",
+  left: "50%",
+  transform: "translateX(-50%)",
+  mt: "0px",
+  minWidth: "301px",
+  borderRadius: "5px",
+  border: theme.palette.mode === "dark" ? "1px solid #f5f5f5" : "1px solid #060a1e",
+  zIndex: 10
+}))
+
+export const DropdownItem = styled(Link)(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  fontFamily: oxygen.style.fontFamily,
+  fontSize: "18px",
+  lineHeight: "27px",
+  letterSpacing: 0,
+  padding: "15px 0",
+  textDecoration: "none",
+  color: theme.palette.text.primary,
+  backgroundColor: "none",
+  transition: "all 0.3s ease",
+    "&:first-of-type": {
+      borderRadius: "5px 5px 0 0"
+    },
+    "&:last-of-type": {
+      borderRadius: "0 0 5px 5px"
+    },
+  "&:hover": {
+    backgroundColor: theme.palette.mode === "dark" ? "#f5f5f5" : "#060a1e",
+    color: theme.palette.mode === "dark" ? "#000000" : "#ffffff",
+  }
+}));
