@@ -26,7 +26,6 @@ import {
   VideoBox,
   TopOfPageRef,
   MiddleOfPageRef,
-  ScrollToTopButton,
   TopCard4,
   GroupSection,
   SectionCol,
@@ -83,6 +82,7 @@ import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { useRouter } from "next/navigation";
 import QonnectFour from "../QonnectFour/QonnectFour";
 import Modal from "../Common/Modal/Modal";
+import { ScrollToTopButton, TopArrow } from "../Wiki/Wiki-styles";
 
 const LandingPage = () => {
   const theme = useTheme();
@@ -958,7 +958,11 @@ const LandingPage = () => {
       </QortalFeaturesSection>
       {showButton && (
         <ScrollToTopButton onClick={scrollToTop}>
-          BACK TO THE TOP
+          <TopArrow
+            color={theme.palette.text.primary}
+            height={"25"}
+            width={"25"}
+          />
         </ScrollToTopButton>
       )}
       {openModal && (
