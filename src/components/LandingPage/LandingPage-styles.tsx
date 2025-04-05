@@ -845,6 +845,9 @@ export const GroupSection = styled(Box)(({ theme }) => ({
       width: "100vw"
     }
   },
+  [theme.breakpoints.up("xl")]: {
+    paddingTop: "443px"
+  },
   [theme.breakpoints.down("lg")]: {
     padding: "223px 50px 153px 50px",
     gap: "30px"
@@ -922,6 +925,9 @@ export const QTradeSection = styled(Box)(({ theme }) => ({
       backgroundImage: `url('/images/LandingPage/YellowSectionBannerMobile.svg')`,
       width: "100vw"
     }
+  },
+  [theme.breakpoints.up("xl")]: {
+    paddingTop: "443px"
   },
   [theme.breakpoints.down("lg")]: {
     padding: "223px 50px 153px 50px",
@@ -1589,43 +1595,6 @@ export const FinalText = styled(Typography)(({ theme }) => ({
     fontSize: "20px",
     lineHeight: "35px",
     letterSpacing: "calc(0.042*20px)"
-  }
-}));
-
-export const ScrollToTopButton = styled(Box)(({ theme }) => ({
-  position: "fixed",
-  bottom: "20px",
-  right: "20px",
-  backgroundColor: theme.palette.background.default,
-  border:
-    theme.palette.mode === "light"
-      ? `1px solid ${theme.palette.text.primary}`
-      : "1px solid #C0C0C059",
-  color:
-    theme.palette.mode === "light" ? theme.palette.text.primary : "#C0C0C059",
-  width: "181px",
-  height: "43px",
-  borderRadius: "25px",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  fontFamily: futura.style.fontFamily,
-  fontSize: "16px",
-  fontWeight: "500",
-  lineHeight: "21.3px",
-  transition: "all 0.3s ease-in-out",
-  zIndex: 20,
-  "&:hover": {
-    cursor: "pointer",
-    color:
-      theme.palette.mode === "light" ? theme.palette.text.primary : "#f5f5f5",
-    border: "1px solid #f5f5f5",
-    backgroundColor: theme.palette.mode === "light" ? "#f5f5f5" : "transparent",
-    boxShadow:
-      theme.palette.mode === "light" ? "1px 4px 10.5px 0px #0000004D" : "none"
-  },
-  [theme.breakpoints.down("sm")]: {
-    right: "20px"
   }
 }));
 

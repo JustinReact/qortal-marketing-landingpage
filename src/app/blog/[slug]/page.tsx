@@ -101,7 +101,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 const BlogPost = async ({ params }: { params: { slug: string } }) => {
   const blogPost = await getBlogPost(params.slug);
-
   if (!blogPost) {
     return notFound();
   }

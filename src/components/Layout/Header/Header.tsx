@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import ReactGA from "react-ga4";
 import {
   HeaderNav,
@@ -17,15 +17,26 @@ import {
   QortalQWhite,
   QortalSmallerText,
   LightModeIcon,
-  DarkModeIcon
+  DarkModeIcon,
+  DropdownBtn,
+  DropdownItem,
+  DropdownContainer
 } from "./Header-styles";
-import { useMediaQuery, useTheme } from "@mui/material";
+import {
+  Box,
+  Link,
+  Paper,
+  Popper,
+  useMediaQuery,
+  useTheme
+} from "@mui/material";
 import { MobileDrawer } from "./MobileDrawer";
 import { motion, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { setTheme } from "../../../state/theme/themeSlice";
 import { useDispatch } from "react-redux";
+import { oxygen } from "../../../app/fonts";
 
 export const Header = () => {
   const dispatch = useDispatch();
@@ -33,6 +44,8 @@ export const Header = () => {
   const isMobile = useMediaQuery("(max-width: 1193px)");
   const location = usePathname();
   const router = useRouter();
+  const [open, setOpen] = useState<boolean>(false);
+  const anchorRef = useRef(null);
 
   const [openMobileDrawer, setOpenMobileDrawer] = useState<boolean>(false);
 
@@ -67,9 +80,7 @@ export const Header = () => {
               </>
               <>
                 <QortalText>ortal</QortalText>
-                <QortalSmallerText>
-                  .dev
-                </QortalSmallerText>
+                <QortalSmallerText>.dev</QortalSmallerText>
               </>
             </QortalLogoContainer>
           </ThemeSelectRow>
@@ -122,8 +133,20 @@ export const Header = () => {
               >
                 Downloads
               </QORTButton>
-              <NewsButton
-                className={location.includes("/news") ? "active" : ""}
+              <QORTButton
+                className={location.includes("/downloads") ? "active" : ""}
+                onClick={() => {
+                  ReactGA.event({
+                    category: "User",
+                    action: "Clicked Wiki Button Header",
+                    label: "Wiki Button"
+                  });
+                }}
+                href={"/wiki"}
+              >
+                Wiki
+              </QORTButton>
+              {/* <NewsButton
                 onClick={() => {
                   ReactGA.event({
                     category: "User",
@@ -134,7 +157,7 @@ export const Header = () => {
                 href={"/news"}
               >
                 News
-              </NewsButton>
+              </NewsButton> */}
               <Docs
                 className={
                   location === "/docs/extension" || location === "/docs/q-apps"
@@ -152,8 +175,8 @@ export const Header = () => {
               >
                 Documentation
               </Docs>
-              <BlogButton
-                className={location.includes("/blog") ? "active" : ""}
+              {/* <BlogButton
+                className={location === "/Blog" ? "active" : ""}
                 onClick={() => {
                   ReactGA.event({
                     category: "User",
@@ -164,7 +187,21 @@ export const Header = () => {
                 href={"/blog"}
               >
                 Blog
-              </BlogButton>
+              </BlogButton> */}
+              <Box
+                onMouseEnter={() => setOpen(true)}
+                onMouseLeave={() => setOpen(false)}
+                sx={{ position: "relative", display: "inline-block" }}
+              >
+                <DropdownBtn>Info</DropdownBtn>
+
+                {open && (
+                  <DropdownContainer elevation={3}>
+                    <DropdownItem href="/blog">Blog</DropdownItem>
+                    <DropdownItem href="/news">News</DropdownItem>
+                  </DropdownContainer>
+                )}
+              </Box>
             </HeaderButtonsRow>
           )}
         </HeaderNav>

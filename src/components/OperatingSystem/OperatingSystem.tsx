@@ -10,7 +10,7 @@ import {
   SubHeaderRow,
   SubHeaderText
 } from "./OperatingSystem-styles";
-import WindowsSteps from "../TutorialSteps/Windows/WindowsSteps";
+import { WindowsSteps } from "../TutorialSteps/Windows/WindowsSteps";
 import LinuxSteps from "../TutorialSteps/Linux/LinuxSteps";
 import MacSteps from "../TutorialSteps/Mac/MacSteps";
 
