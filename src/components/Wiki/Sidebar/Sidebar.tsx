@@ -42,26 +42,48 @@ export const Sidebar: FC<SidebarProps> = ({
 
   // Highlight the active section based on the current scroll position
   useEffect(() => {
-    const handleIntersection = (entries: IntersectionObserverEntry[]) => {
+    const headings = Array.from(document.querySelectorAll("h2[id]"));
+    const observer = new IntersectionObserver(handleIntersections, {
+      root: null,
+      threshold: 0.4,
+    });
+  
+    function handleIntersections(entries: IntersectionObserverEntry[]) {
+      let maxRatio = 0;
+      let mostVisibleId: string | null = null;
+  
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id); // ✅ Set active section based on id
+        if (entry.isIntersecting && entry.intersectionRatio > maxRatio) {
+          maxRatio = entry.intersectionRatio;
+          mostVisibleId = entry.target.id;
         }
       });
+  
+      if (mostVisibleId) {
+        setActiveSection(mostVisibleId);
+      }
+    }
+  
+    headings.forEach((heading) => observer.observe(heading));
+  
+    const handleScroll = () => {
+      const bottomReached =
+        window.innerHeight + window.scrollY >= document.body.scrollHeight - 5;
+  
+      if (bottomReached && headings.length > 0) {
+        const lastHeading = headings[headings.length - 1];
+        setActiveSection(lastHeading.id);
+      }
     };
-
-    const observer = new IntersectionObserver(handleIntersection, {
-      root: null, // Observe in the viewport
-      rootMargin: "0px 0px -40% 0px", // Adjust to detect sections entering view
-      threshold: 0.1 // Trigger when at least 10% of the section is in view
-    });
-
-    // Observe all section headings (h2 elements with IDs)
-    const sectionHeadings = document.querySelectorAll("h2[id]");
-    sectionHeadings.forEach((heading) => observer.observe(heading));
-
-    return () => observer.disconnect();
+  
+    window.addEventListener("scroll", handleScroll);
+  
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
+  
 
   const toggleSection = (sectionTitle: string) => {
     setExpandedSection((prev) => (prev === sectionTitle ? prev : sectionTitle));

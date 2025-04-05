@@ -100,11 +100,7 @@ export const SectionTitleRow = styled(Box, {
               color: theme.palette.mode === "dark" ? "#000000" : "#ffffff"
             },
             "& svg": {
-              fill: isExpanded
-                ? "currentColor"
-                : theme.palette.mode === "dark"
-                ? "#000000"
-                : "#ffffff"
+              fill: theme.palette.mode === "dark" ? "#000000" : "#ffffff"
             }
           })
     }
@@ -130,10 +126,15 @@ export const SectionTitle = styled(Typography)(({ theme }) => ({
 }));
 
 export const ChevronIcon = styled(ChevronRightSVG, {
-  shouldForwardProp: (prop) => prop !== "isExpanded"
-})<SidebarDropdownProps>(({ isExpanded }) => ({
+  shouldForwardProp: (prop) => prop !== "isExpanded" && prop !== "isToggled"
+})<SidebarDropdownProps>(({ isExpanded, isToggled, theme }) => ({
   transform: isExpanded ? "rotate(-90deg)" : "rotate(90deg)",
-  transition: "all 0.3s ease-in-out"
+  transition: "all 0.3s ease-in-out",
+  "& svg": {
+    fill:(isExpanded || isToggled) && theme.palette.mode === "dark" ? "#000000"
+    : (isExpanded || isToggled) && theme.palette.mode === "light" ? "#ffffff"
+    : theme.palette.text.primary,
+  }
 }));
 
 export const SectionBox = styled(Box)(({ theme }) => ({
