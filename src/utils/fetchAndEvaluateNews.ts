@@ -20,7 +20,6 @@ export const fetchAndEvaluateNews = async (data: any) => {
       });
 
       const responseData = await response.json();
-      console.log({ responseData });
       if (checkStructureNews(responseData)) {
         obj = {
           ...content,
@@ -30,7 +29,6 @@ export const fetchAndEvaluateNews = async (data: any) => {
           isValid: true
         };
       }
-      console.log({ obj });
       return obj;
     } catch (error) {
       console.error(error);

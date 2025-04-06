@@ -94,7 +94,6 @@ const getBlogs = async () => {
 
 const BlogPage = async (): Promise<JSX.Element> => {
   const blogs: Blog = (await getBlogs()) ?? []; // Default to an empty array if blogs is undefined
-  console.log("Blogs:", blogs);
   const newBlogs = blogs.filter((blog) => blog.identifier !== "qortal-dev-blog-MnVXFVKP5P");
   // const blogIdentifiers = newBlogs.map((blog) => blog.identifier);
   // console.log("Blog Identifiers:", blogIdentifiers);
