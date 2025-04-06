@@ -60,9 +60,9 @@ const getBlogRawData = async (
 };
 
 const getBlogs = async () => {
+  const url = `${groupApi}/arbitrary/resources/searchsimple?service=BLOG&name=Bester&identifier=${BLOG_BASE}-&limit=20&mode=ALL&prefix=true&includemetadata=false&reverse=true`;
   try {
     // Fetch list of Bester's blogs resources from Qortal blockchain
-    const url = `${groupApi}/arbitrary/resources/searchsimple?service=BLOG&name=Bester&identifier=${BLOG_BASE}-&limit=20&mode=ALL&prefix=true&includemetadata=false&reverse=true`;
     const data = await fetchWithRetry(
       url,
       {
@@ -87,18 +87,40 @@ const getBlogs = async () => {
       }
     }
     return blogs;
-  } catch (error) {
-    console.error(error);
+  } catch (error: any) {
+    console.error("🔥 Blog fetch failed:");
+    console.error("📍 URL:", url);
+    console.error("❌ Error message:", error?.message || error);
+    if (error?.cause) console.error("💥 Cause:", error.cause);
+    return [];
   }
 };
 
 const BlogPage = async (): Promise<JSX.Element> => {
-  const blogs: Blog = (await getBlogs()) ?? []; // Default to an empty array if blogs is undefined
-  const newBlogs = blogs.filter((blog) => blog.identifier !== "qortal-dev-blog-MnVXFVKP5P");
-  // const blogIdentifiers = newBlogs.map((blog) => blog.identifier);
-  // console.log("Blog Identifiers:", blogIdentifiers);
+  let blogs: Blog = [];
+  let errorMessage: string | null = null;
+
+  try {
+    blogs = await getBlogs();
+  } catch (err: any) {
+    errorMessage = err?.message || "Unknown error";
+  }
+
+  const newBlogs = blogs.filter(
+    (blog) => blog.identifier !== "qortal-dev-blog-MnVXFVKP5P"
+  );
+
   if (!blogs || blogs.length === 0) {
-    return <div>No blogs found</div>; // Fallback if no blogs are found
+    return (
+      <div>
+        <p>No blogs found</p>
+        {errorMessage && (
+          <pre style={{ color: "red", whiteSpace: "pre-wrap" }}>
+            Blog fetch failed: {errorMessage}
+          </pre>
+        )}
+      </div>
+    );
   }
 
   return <BlogPostsClient blogs={newBlogs} />;
