@@ -43,9 +43,7 @@ export const Header = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery("(max-width: 1193px)");
   const location = usePathname();
-  const router = useRouter();
   const [open, setOpen] = useState<boolean>(false);
-  const anchorRef = useRef(null);
 
   const [openMobileDrawer, setOpenMobileDrawer] = useState<boolean>(false);
 
@@ -134,7 +132,7 @@ export const Header = () => {
                 Downloads
               </QORTButton>
               <QORTButton
-                className={location.includes("/downloads") ? "active" : ""}
+                className={location.includes("/wiki") ? "active" : ""}
                 onClick={() => {
                   ReactGA.event({
                     category: "User",
@@ -175,19 +173,6 @@ export const Header = () => {
               >
                 Documentation
               </Docs>
-              {/* <BlogButton
-                className={location === "/Blog" ? "active" : ""}
-                onClick={() => {
-                  ReactGA.event({
-                    category: "User",
-                    action: "Clicked Blog Button",
-                    label: "Blog Button"
-                  });
-                }}
-                href={"/blog"}
-              >
-                Blog
-              </BlogButton> */}
               <Box
                 onMouseEnter={() => setOpen(true)}
                 onMouseLeave={() => setOpen(false)}
@@ -197,8 +182,30 @@ export const Header = () => {
 
                 {open && (
                   <DropdownContainer elevation={3}>
-                    <DropdownItem href="/blog">Blog</DropdownItem>
-                    <DropdownItem href="/news">News</DropdownItem>
+                    <DropdownItem
+                      onClick={() => {
+                        ReactGA.event({
+                          category: "User",
+                          action: "Clicked Blog Qortal Header Desktop",
+                          label: "Clicked Blog Qortal Header Desktop"
+                        });
+                      }}
+                      href="/blog"
+                    >
+                      Blog
+                    </DropdownItem>
+                    <DropdownItem
+                      onClick={() => {
+                        ReactGA.event({
+                          category: "User",
+                          action: "Clicked News Qortal Header Desktop",
+                          label: "Clicked News Qortal Header Desktop"
+                        });
+                      }}
+                      href="/news"
+                    >
+                      News
+                    </DropdownItem>
                   </DropdownContainer>
                 )}
               </Box>

@@ -187,9 +187,9 @@ const Downloads = () => {
             >
               <AppleLogo color={"#0177DB"} width={"40"} height={"40"} />
               <DownloadTextCol>
-                <DownloadText1>Use Qortal Go on iOS</DownloadText1>
+                <DownloadText1>Web App</DownloadText1>
                 <DownloadText1 style={{ fontWeight: "bold" }}>
-                  (Web Version)
+                  (PWA)
                 </DownloadText1>
               </DownloadTextCol>
             </DownloadCard>

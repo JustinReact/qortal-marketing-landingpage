@@ -362,7 +362,7 @@ export const HamburgerIcon = styled(HamburgerSVG)<HamburgerIconProps>(
   ({ rotated, theme }) => ({
     position: "absolute",
     right: 0,
-    top: "70px",
+    top: "50px",
     transition: "all 0.3s ease-in-out",
     transform: rotated?.isOn ? "rotate(90deg)" : "rotate(0deg)",
     cursor: "pointer",

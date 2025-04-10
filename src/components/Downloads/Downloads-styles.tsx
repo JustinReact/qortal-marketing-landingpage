@@ -270,6 +270,10 @@ export const DownloadNowText = styled(Typography)(({ theme }) => ({
   userSelect: "none",
   [theme.breakpoints.down("md")]: {
     marginTop: "70px"
+  },
+  [theme.breakpoints.down("sm")]: {
+    fontSize: "30px",
+    lineHeight: "35px",
   }
 }));
 
