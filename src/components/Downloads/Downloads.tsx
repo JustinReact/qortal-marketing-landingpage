@@ -7,14 +7,18 @@ import {
   Container,
   DownloadCard,
   DownloadCol,
+  DownloadContainer,
+  DownloadCoreRow,
   DownloadNowText,
-  DownloadsGrid,
+  DownloadsCoreGrid,
   DownloadsTitle,
+  DownloadSubCol,
+  DownloadsUIGrid,
   DownloadText,
-  DownloadText1,
-  DownloadText2,
-  DownloadTextCol,
+  DownloadUIRow,
   IPhoneRow,
+  MainCol,
+  MainRow,
   OtherVersionsCol,
   OtherVersionsRow,
   OtherVersionsText,
@@ -41,6 +45,8 @@ const Downloads = () => {
   const isIOS = result.os.name === "iOS"; // Covers both iPhones & iPads
 
   const [openSupportModal, setOpenSupportModal] = useState<boolean>(false);
+
+  // UI Downloads
 
   const androidDownload = () => {
     const link = document.createElement("a");
@@ -80,6 +86,38 @@ const Downloads = () => {
   const macDesktopDownload = async () => {
     const link = document.createElement("a");
     link.href = "https://link.qortal.dev/hub-mac";
+    link.download = "";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    setOpenSupportModal(true);
+  };
+
+  // Core Downloads
+
+  const coreWindowsDownload = async () => {
+    const link = document.createElement("a");
+    link.href = "https://link.qortal.dev/windows-core";
+    link.download = "";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    setOpenSupportModal(true);
+  };
+
+  const coreLinuxDownload = async () => {
+    const link = document.createElement("a");
+    link.href = "https://link.qortal.dev/linux-core";
+    link.download = "";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    setOpenSupportModal(true);
+  };
+
+  const coreMacDownload = async () => {
+    const link = document.createElement("a");
+    link.href = "https://link.qortal.dev/mac-core";
     link.download = "";
     document.body.appendChild(link);
     link.click();
@@ -156,305 +194,416 @@ const Downloads = () => {
         )}
       </AnimatePresence>
       <DownloadsTitle>DOWNLOADS</DownloadsTitle>
-      {isIOS ? (
-        <IPhoneRow>
-          <DownloadCol style={{ minWidth: "300px" }}>
-            <DownloadText>
-              Qortal <span style={{ fontWeight: "bold" }}>Go</span>
-            </DownloadText>
-            <DownloadCard
-              role="button"
-              aria-label="Redirect to the iOS Hosted Web App for Qortal Go"
-              tabIndex={0}
-              onClick={() => {
-                ReactGA.event({
-                  category: "User",
-                  action: "Clicked iOS Redirect Button",
-                  label: "Clicked iOS Redirect Button"
-                });
-                iOSRedirect();
-              }}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  ReactGA.event({
-                    category: "User",
-                    action: "Clicked iOS Redirect Button",
-                    label: "Clicked iOS Redirect Button"
-                  });
-                  iOSRedirect();
-                }
-              }}
-            >
-              <AppleLogo color={"#0177DB"} width={"40"} height={"40"} />
-              <DownloadTextCol>
-                <DownloadText1>Web App</DownloadText1>
-                <DownloadText1 style={{ fontWeight: "bold" }}>
-                  (PWA)
-                </DownloadText1>
-              </DownloadTextCol>
-            </DownloadCard>
-          </DownloadCol>
-        </IPhoneRow>
-      ) : (
-        <DownloadsGrid>
-          <DownloadCol>
-            <DownloadText>
-              Qortal <span style={{ fontWeight: "bold" }}>Go</span>
-            </DownloadText>
-            <DownloadCard
-              role="button"
-              aria-label="Redirect to the Android APK"
-              tabIndex={0}
-              onClick={() => {
-                ReactGA.event({
-                  category: "User",
-                  action: "Clicked Android Download Button",
-                  label: "Clicked Android Download Button"
-                });
-                androidDownload();
-              }}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  ReactGA.event({
-                    category: "User",
-                    action: "Clicked Android Download Button",
-                    label: "Clicked Android Download Button"
-                  });
-                  androidDownload();
-                }
-              }}
-            >
-              <AndroidIcon width={"40"} height={"70"} color={"#a4c639"} />
-              <DownloadTextCol>
-                <DownloadText1>Available on</DownloadText1>
-                <DownloadText2>Android</DownloadText2>
-              </DownloadTextCol>
-            </DownloadCard>
-          </DownloadCol>
-          <DownloadCol>
-            <DownloadText>
-              Qortal <span style={{ fontWeight: "bold" }}>Hub</span> Windows
-            </DownloadText>
-            <DownloadCard
-              aria-label="Download the Windows Desktop version of Qortal"
-              tabIndex={0}
-              onClick={() => {
-                ReactGA.event({
-                  category: "User",
-                  action: "Clicked Windows Desktop Download Button",
-                  label: "Clicked Windows Desktop Download Button"
-                });
-                windowsDesktopDownload();
-              }}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  ReactGA.event({
-                    category: "User",
-                    action: "Clicked Windows Desktop Download Button",
-                    label: "Clicked Windows Desktop Download Button"
-                  });
-                  windowsDesktopDownload();
-                }
-              }}
-            >
-              <Image
-                src={"/images/Downloads/WindowsLogo.png"}
-                width={40}
-                height={40}
-                alt={"Windows Logo"}
-                style={{ marginRight: "25px" }}
-              />
-              <DownloadTextCol>
-                <DownloadText1>Available on</DownloadText1>
-                <DownloadText2>Windows Desktop</DownloadText2>
-              </DownloadTextCol>
-            </DownloadCard>
-          </DownloadCol>
-          <DownloadCol className="mac-col">
-            <DownloadText>
-              Qortal <span style={{ fontWeight: "bold" }}>Hub</span> Mac
-            </DownloadText>
-            <DownloadCard
-              className="mac-card"
-              aria-label="Download the Mac Desktop version of Qortal"
-              tabIndex={0}
-              onClick={() => {
-                ReactGA.event({
-                  category: "User",
-                  action: "Clicked Mac Desktop Download Button",
-                  label: "Clicked Mac Desktop Download Button"
-                });
-                macDesktopDownload();
-              }}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  ReactGA.event({
-                    category: "User",
-                    action: "Clicked Mac Desktop Download Button",
-                    label: "Clicked Mac Desktop Download Button"
-                  });
-                  macDesktopDownload();
-                }
-              }}
-            >
-              <AppleLogo color={"#0177DB"} width={"40"} height={"40"} />
-              <DownloadTextCol>
-                <DownloadText1>Available on</DownloadText1>
-                <DownloadText2>Mac Desktop</DownloadText2>
-              </DownloadTextCol>
-            </DownloadCard>
-          </DownloadCol>
-          <DownloadCol>
-            <DownloadText>
-              Qortal <span style={{ fontWeight: "bold" }}>Hub</span> Linux
-            </DownloadText>
-            <DownloadCard
-              aria-label="Download the Linux Desktop version of Qortal"
-              tabIndex={0}
-              onClick={() => {
-                ReactGA.event({
-                  category: "User",
-                  action: "Clicked Linux Desktop Download Button",
-                  label: "Clicked Linux Desktop Download Button"
-                });
-                linuxDesktopDownload();
-              }}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  ReactGA.event({
-                    category: "User",
-                    action: "Clicked Linux Desktop Download Button",
-                    label: "Clicked Linux Desktop Download Button"
-                  });
-                  linuxDesktopDownload();
-                }
-              }}
-            >
-              <Image
-                src={"/images/Downloads/LinuxLogo.png"}
-                width={40}
-                height={40}
-                alt={"Linux Logo"}
-                style={{ marginRight: "25px" }}
-              />
-              <DownloadTextCol>
-                <DownloadText1>Available on</DownloadText1>
-                <DownloadText2>Linux Desktop</DownloadText2>
-              </DownloadTextCol>
-            </DownloadCard>
-          </DownloadCol>
-          <DownloadCol>
-            <DownloadText>
-              Qortal <span style={{ fontWeight: "bold" }}>Extension</span>
-            </DownloadText>
-            <DownloadCard
-              aria-label="Redirect to the Chrome Web Store"
-              tabIndex={0}
-              onClick={() => {
-                ReactGA.event({
-                  category: "User",
-                  action: "Clicked Chrome Web Store Download Button",
-                  label: "Clicked Chrome Web Store Download Button"
-                });
-                chromeWebStoreRedirect();
-              }}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  ReactGA.event({
-                    category: "User",
-                    action: "Clicked Chrome Web Store Download Button",
-                    label: "Clicked Chrome Web Store Download Button"
-                  });
-                  chromeWebStoreRedirect();
-                }
-              }}
-            >
-              <ChromeStoreLogo width="39" height="39" color="transparent" />
-              <DownloadTextCol>
-                <DownloadText1>Available on</DownloadText1>
-                <DownloadText2>Chrome Web Store</DownloadText2>
-              </DownloadTextCol>
-            </DownloadCard>
-          </DownloadCol>
-        </DownloadsGrid>
-      )}
-      {!isIOS && (
-        <OtherVersionsCol>
-          <OtherVersionsRow>
-            <OtherVersionsText>
-              To download other versions of{" "}
-              <span style={{ fontWeight: "bold" }}>Qortal Hub</span> not listed
-              here, click
-              <a
-                href="https://github.com/Qortal/Qortal-Hub/releases"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => {
-                  ReactGA.event({
-                    category: "User",
-                    action: "Clicked Qortal Hub Other Versions Link",
-                    label: "Clicked Qortal Hub Other Versions Link"
-                  });
-                }}
-              >
-                here
-              </a>
-            </OtherVersionsText>
-          </OtherVersionsRow>
-          <OtherVersionsRow>
-            <OtherVersionsRow>
-              <OtherVersionsText>
-                To download other versions of{" "}
-                <span style={{ fontWeight: "bold" }}>Qortal Go</span> not listed
-                here, click
-                <a
-                  href="https://github.com/Qortal/Qortal-Mobile/releases"
-                  target="_blank"
-                  rel="noopener noreferrer"
+      <MainRow>
+        <MainCol>
+          <DownloadText>
+            <strong>Qortal UI</strong> For:
+          </DownloadText>
+          {isIOS ? (
+            <IPhoneRow>
+              <DownloadCol style={{ minWidth: "300px" }}>
+                <DownloadCard
+                  role="button"
+                  aria-label="Redirect to the iOS Hosted Web App for Qortal Go"
+                  tabIndex={0}
                   onClick={() => {
                     ReactGA.event({
                       category: "User",
-                      action: "Clicked Qortal Go Other Versions Link",
-                      label: "Clicked Qortal Go Other Versions Link"
+                      action: "Clicked iOS Redirect Button",
+                      label: "Clicked iOS Redirect Button"
                     });
+                    iOSRedirect();
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      ReactGA.event({
+                        category: "User",
+                        action: "Clicked iOS Redirect Button",
+                        label: "Clicked iOS Redirect Button"
+                      });
+                      iOSRedirect();
+                    }
                   }}
                 >
-                  here
-                </a>
-              </OtherVersionsText>
-            </OtherVersionsRow>
-          </OtherVersionsRow>
-        </OtherVersionsCol>
-      )}
-      <ScreenshotContainer container spacing={4}>
-        <ScreenshotCol item md={3} xs={12}>
-          <Screenshot2
-            src={"/images/Downloads/TrifectaScreenshot2.png"}
-            quality={100}
-            width={386}
-            height={803}
-            alt={"Qortal Screenshot 2"}
-          />
-        </ScreenshotCol>
-        <ScreenshotCol item md={9} xs={12}>
-          <Screenshot1
-            src={"/images/Downloads/TrifectaScreenshot1.png"}
-            quality={100}
-            width={1920}
-            height={1080}
-            alt={"Qortal Screenshot 1"}
-          />
-        </ScreenshotCol>
-        <ScreenshotCol item md={12} xs={12}>
-          <Screenshot3
-            src={"/images/Downloads/ThreadsScreenshot.webp"}
-            quality={100}
-            width={1100}
-            height={642}
-            alt={"Qortal Screenshot 3"}
-          />
-        </ScreenshotCol>
-      </ScreenshotContainer>
+                  <AppleLogo color={"#0177DB"} width={"45"} height={"45"} />
+                </DownloadCard>
+              </DownloadCol>
+            </IPhoneRow>
+          ) : isMobile ? (
+            <IPhoneRow>
+              <DownloadCol style={{ minWidth: "300px" }}>
+                <DownloadCard
+                  role="button"
+                  aria-label="Redirect to the Android APK"
+                  tabIndex={0}
+                  onClick={() => {
+                    ReactGA.event({
+                      category: "User",
+                      action: "Clicked Android Download Button",
+                      label: "Clicked Android Download Button"
+                    });
+                    androidDownload();
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      ReactGA.event({
+                        category: "User",
+                        action: "Clicked Android Download Button",
+                        label: "Clicked Android Download Button"
+                      });
+                      androidDownload();
+                    }
+                  }}
+                >
+                  <AndroidIcon width={"40"} height={"70"} color={"#a4c639"} />
+                </DownloadCard>
+              </DownloadCol>
+            </IPhoneRow>
+          ) : (
+            <DownloadContainer>
+              <DownloadUIRow>
+                <DownloadsUIGrid>
+                  <DownloadCol>
+                    <DownloadCard
+                      role="button"
+                      aria-label="Redirect to the Android APK"
+                      tabIndex={0}
+                      onClick={() => {
+                        ReactGA.event({
+                          category: "User",
+                          action: "Clicked Android Download Button",
+                          label: "Clicked Android Download Button"
+                        });
+                        androidDownload();
+                      }}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                          ReactGA.event({
+                            category: "User",
+                            action: "Clicked Android Download Button",
+                            label: "Clicked Android Download Button"
+                          });
+                          androidDownload();
+                        }
+                      }}
+                    >
+                      <AndroidIcon
+                        width={"40"}
+                        height={"70"}
+                        color={"#a4c639"}
+                      />
+                    </DownloadCard>
+                  </DownloadCol>
+                  <DownloadCol>
+                    <DownloadCard
+                      aria-label="Download the Windows Desktop version of Qortal"
+                      tabIndex={0}
+                      onClick={() => {
+                        ReactGA.event({
+                          category: "User",
+                          action: "Clicked Windows Desktop Download Button",
+                          label: "Clicked Windows Desktop Download Button"
+                        });
+                        windowsDesktopDownload();
+                      }}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                          ReactGA.event({
+                            category: "User",
+                            action: "Clicked Windows Desktop Download Button",
+                            label: "Clicked Windows Desktop Download Button"
+                          });
+                          windowsDesktopDownload();
+                        }
+                      }}
+                    >
+                      <Image
+                        src={"/images/Downloads/WindowsLogo.png"}
+                        width={40}
+                        height={40}
+                        alt={"Windows Logo"}
+                        style={{ marginRight: "25px" }}
+                      />
+                    </DownloadCard>
+                  </DownloadCol>
+                  <DownloadCol className="mac-col">
+                    <DownloadCard
+                      className="mac-card"
+                      aria-label="Download the Mac Desktop version of Qortal"
+                      tabIndex={0}
+                      onClick={() => {
+                        ReactGA.event({
+                          category: "User",
+                          action: "Clicked Mac Desktop Download Button",
+                          label: "Clicked Mac Desktop Download Button"
+                        });
+                        macDesktopDownload();
+                      }}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                          ReactGA.event({
+                            category: "User",
+                            action: "Clicked Mac Desktop Download Button",
+                            label: "Clicked Mac Desktop Download Button"
+                          });
+                          macDesktopDownload();
+                        }
+                      }}
+                    >
+                      <AppleLogo color={"#0177DB"} width={"50"} height={"50"} />
+                    </DownloadCard>
+                  </DownloadCol>
+                  <DownloadCol>
+                    <DownloadCard
+                      aria-label="Download the Linux Desktop version of Qortal"
+                      tabIndex={0}
+                      onClick={() => {
+                        ReactGA.event({
+                          category: "User",
+                          action: "Clicked Linux Desktop Download Button",
+                          label: "Clicked Linux Desktop Download Button"
+                        });
+                        linuxDesktopDownload();
+                      }}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                          ReactGA.event({
+                            category: "User",
+                            action: "Clicked Linux Desktop Download Button",
+                            label: "Clicked Linux Desktop Download Button"
+                          });
+                          linuxDesktopDownload();
+                        }
+                      }}
+                    >
+                      <Image
+                        src={"/images/Downloads/LinuxLogo.png"}
+                        width={40}
+                        height={40}
+                        alt={"Linux Logo"}
+                        style={{ marginRight: "25px" }}
+                      />
+                    </DownloadCard>
+                  </DownloadCol>
+                  <DownloadCol>
+                    <DownloadCard
+                      aria-label="Redirect to the Chrome Web Store"
+                      tabIndex={0}
+                      onClick={() => {
+                        ReactGA.event({
+                          category: "User",
+                          action: "Clicked Chrome Web Store Download Button",
+                          label: "Clicked Chrome Web Store Download Button"
+                        });
+                        chromeWebStoreRedirect();
+                      }}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                          ReactGA.event({
+                            category: "User",
+                            action: "Clicked Chrome Web Store Download Button",
+                            label: "Clicked Chrome Web Store Download Button"
+                          });
+                          chromeWebStoreRedirect();
+                        }
+                      }}
+                    >
+                      <ChromeStoreLogo
+                        width="45"
+                        height="45"
+                        color="transparent"
+                      />
+                    </DownloadCard>
+                  </DownloadCol>
+                </DownloadsUIGrid>
+              </DownloadUIRow>
+              <DownloadCoreRow>
+                <DownloadSubCol>
+                  <DownloadText style={{ marginTop: 0 }}>
+                    <strong>Qortal Core</strong> For:
+                  </DownloadText>
+                  <DownloadsCoreGrid>
+                    <DownloadCol>
+                      <DownloadCard
+                        aria-label="Download the Windows Core of Qortal"
+                        tabIndex={0}
+                        onClick={() => {
+                          ReactGA.event({
+                            category: "User",
+                            action: "Clicked Windows Core Download Button",
+                            label: "Clicked Windows Core Download Button"
+                          });
+                          coreWindowsDownload();
+                        }}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter") {
+                            ReactGA.event({
+                              category: "User",
+                              action: "Clicked Windows Core Download Button",
+                              label: "Clicked Windows Core Download Button"
+                            });
+                            coreWindowsDownload();
+                          }
+                        }}
+                      >
+                        <Image
+                          src={"/images/Downloads/WindowsLogo.png"}
+                          width={40}
+                          height={40}
+                          alt={"Windows Logo"}
+                          style={{ marginRight: "25px" }}
+                        />
+                      </DownloadCard>
+                    </DownloadCol>
+                    <DownloadCol className="mac-col">
+                      <DownloadCard
+                        className="mac-card"
+                        aria-label="Download the Mac Core of Qortal"
+                        tabIndex={0}
+                        onClick={() => {
+                          ReactGA.event({
+                            category: "User",
+                            action: "Clicked Mac Core Download Button",
+                            label: "Clicked Mac Core Download Button"
+                          });
+                          coreMacDownload();
+                        }}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter") {
+                            ReactGA.event({
+                              category: "User",
+                              action: "Clicked Mac Core Download Button",
+                              label: "Clicked Mac Core Download Button"
+                            });
+                            coreMacDownload();
+                          }
+                        }}
+                      >
+                        <AppleLogo
+                          color={"#0177DB"}
+                          width={"50"}
+                          height={"50"}
+                        />
+                      </DownloadCard>
+                    </DownloadCol>
+                    <DownloadCol>
+                      <DownloadCard
+                        aria-label="Download the Linux core of Qortal"
+                        tabIndex={0}
+                        onClick={() => {
+                          ReactGA.event({
+                            category: "User",
+                            action: "Clicked Linux Core Download Button",
+                            label: "Clicked Linux Core Download Button"
+                          });
+                          coreLinuxDownload();
+                        }}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter") {
+                            ReactGA.event({
+                              category: "User",
+                              action: "Clicked Linux Core Download Button",
+                              label: "Clicked Linux Core Download Button"
+                            });
+                            coreLinuxDownload();
+                          }
+                        }}
+                      >
+                        <Image
+                          src={"/images/Downloads/LinuxLogo.png"}
+                          width={40}
+                          height={40}
+                          alt={"Linux Logo"}
+                          style={{ marginRight: "25px" }}
+                        />
+                      </DownloadCard>
+                    </DownloadCol>
+                  </DownloadsCoreGrid>
+                </DownloadSubCol>
+              </DownloadCoreRow>
+            </DownloadContainer>
+          )}
+          {!isIOS && (
+            <OtherVersionsCol>
+              <OtherVersionsRow>
+                <OtherVersionsText>
+                  To download other versions of{" "}
+                  <span style={{ fontWeight: "bold" }}>Qortal Hub</span> not
+                  listed here, click
+                  <a
+                    href="https://github.com/Qortal/Qortal-Hub/releases"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => {
+                      ReactGA.event({
+                        category: "User",
+                        action: "Clicked Qortal Hub Other Versions Link",
+                        label: "Clicked Qortal Hub Other Versions Link"
+                      });
+                    }}
+                  >
+                    here
+                  </a>
+                </OtherVersionsText>
+              </OtherVersionsRow>
+              <OtherVersionsRow>
+                <OtherVersionsRow>
+                  <OtherVersionsText>
+                    To download other versions of{" "}
+                    <span style={{ fontWeight: "bold" }}>Qortal Go</span> not
+                    listed here, click
+                    <a
+                      href="https://github.com/Qortal/Qortal-Mobile/releases"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => {
+                        ReactGA.event({
+                          category: "User",
+                          action: "Clicked Qortal Go Other Versions Link",
+                          label: "Clicked Qortal Go Other Versions Link"
+                        });
+                      }}
+                    >
+                      here
+                    </a>
+                  </OtherVersionsText>
+                </OtherVersionsRow>
+              </OtherVersionsRow>
+            </OtherVersionsCol>
+          )}
+        </MainCol>
+        <MainCol>
+          <ScreenshotContainer container spacing={4}>
+            <ScreenshotCol item md={3} xs={12}>
+              <Screenshot2
+                src={"/images/Downloads/TrifectaScreenshot2.png"}
+                quality={100}
+                width={386}
+                height={803}
+                alt={"Qortal Screenshot 2"}
+              />
+            </ScreenshotCol>
+            <ScreenshotCol item md={9} xs={12}>
+              <Screenshot1
+                src={"/images/Downloads/TrifectaScreenshot1.png"}
+                quality={100}
+                width={1920}
+                height={1080}
+                alt={"Qortal Screenshot 1"}
+              />
+            </ScreenshotCol>
+            <ScreenshotCol item md={12} xs={12}>
+              <Screenshot3
+                src={"/images/Downloads/ThreadsScreenshot.png"}
+                quality={100}
+                width={1100}
+                height={642}
+                alt={"Qortal Screenshot 3"}
+              />
+            </ScreenshotCol>
+          </ScreenshotContainer>
+        </MainCol>
+      </MainRow>
       <DownloadNowText>
         <span style={{ color: theme.palette.customBlue.main }}>Install</span>{" "}
         now and

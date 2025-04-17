@@ -1,4 +1,4 @@
-import { grid, lineHeight, styled } from "@mui/system";
+import { display, grid, lineHeight, styled } from "@mui/system";
 import { Box, Button, Grid, Typography } from "@mui/material";
 import Image from "next/image";
 import { futura, redditSans } from "../../app/fonts";
@@ -20,6 +20,25 @@ export const Container = styled(Box)(({ theme }) => ({
   }
 }));
 
+export const MainRow = styled(Box)(({ theme }) => ({
+  display: "grid",
+  gridTemplateColumns: "0.3fr 1fr",
+  alignItems: "flex-start",
+  width: "100%",
+  [theme.breakpoints.down("lg")]: {
+    gridTemplateColumns: "1fr",
+  }
+}))
+
+export const MainCol = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: "20px",
+  width: "100%",
+}))
+
 export const DownloadsTitle = styled(Typography)(({ theme }) => ({
   textAlign: "center",
   fontFamily: futura.style.fontFamily,
@@ -36,35 +55,40 @@ export const DownloadsTitle = styled(Typography)(({ theme }) => ({
   }
 }));
 
-export const DownloadsGrid = styled(Box)(({ theme }) => ({
-  display: "grid",
-  gridTemplateColumns: "repeat(4, 1fr)",
-  gap: "20px",
-  marginTop: "98px",
-  "@media(max-width: 1243px)": {
-    gap: "20px",
-    gridTemplateColumns: "repeat(2, 1fr)"
-  },
-  "@media(max-width: 731px)": {
-    marginTop: "50px",
-    marginBottom: "40px",
-    gap: "60px",
-    gridTemplateColumns: "auto",
-    gridTemplateRows: "repeat(5, 1fr)"
-  },
-  "& .mac-col": {
-    gridColumn: "1 / -1", // Make the Mac card take the full row
-    justifySelf: "center", // Center it horizontally,
-    order: 2,
-    marginTop: "25px",
-    "@media(max-width: 731px)": {
-      gridColumn: "unset",
-      justifySelf: "unset",
-      order: 2,
-      marginTop: 0
-    }
-  }
+export const DownloadContainer = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: "72px",
 }));
+
+export const DownloadUIRow = styled(Box)({
+  display: "flex",
+  flexDirection: "row",
+  alignItems: "center",
+})
+
+export const DownloadCoreRow = styled(Box)({
+  display: "flex",
+  flexDirection: "row",
+  alignItems: "center",
+ "@media(max-width: 1000px)": {
+    display: "none",
+  },
+});
+
+export const DownloadsUIGrid = styled(Box)({
+  display: "grid",
+  gridTemplateColumns: "repeat(5, 1fr)",
+  gap: "10px",
+});
+
+export const DownloadsCoreGrid = styled(Box)({
+  display: "grid",
+  gridTemplateColumns: "repeat(3, 1fr)",
+  gap: "10px",
+})
 
 export const DownloadCard = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -73,21 +97,11 @@ export const DownloadCard = styled(Box)(({ theme }) => ({
   justifyContent: "flex-start",
   flexGrow: 1,
   backgroundColor: theme.palette.mode === "light" ? "#2F2F2F" : "#ffffff",
-  padding: "15px 15px 20px 24px",
+  padding: "20px",
   borderRadius: "5px",
-  width: "100%",
-  maxWidth: "600px",
+  width: "87px",
   height: "87px",
   transition: "all 0.3s ease-in-out",
-  "& img, & svg": {
-    marginTop: "10px"
-  },  
-  "&.mac-card": {
-    minWidth: "361px", 
-    [theme.breakpoints.down("sm")]: {
-      minWidth: "unset"
-    }
-  },
   "&:hover": {
     cursor: "pointer",
     boxShadow:
@@ -96,9 +110,6 @@ export const DownloadCard = styled(Box)(({ theme }) => ({
         : "0px 12px 17px 2px hsla(0, 0%, 100%, 0.08), 0px 5px 22px 4px hsla(0, 0%, 100%, 0.09), 0px 7px 8px -4px hsla(0, 0%, 100%, 0.2),  0px 0px 10px rgba(255, 255, 255, 0.1)",
     backgroundColor: theme.palette.mode === "dark" ? "#56AEFF" : "#003E78"
   },
-  [theme.breakpoints.down("md")]: {
-    width: "80%"
-  }
 }));
 
 export const DownloadCol = styled(Box)(({ theme }) => ({
@@ -108,6 +119,18 @@ export const DownloadCol = styled(Box)(({ theme }) => ({
   justifyContent: "center",
   gap: "40px"
 }));
+
+export const DownloadSubCol = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: "46px",
+  width: "100%",
+  [theme.breakpoints.down("md")]: {
+    gap: "10px"
+  }
+}))
 
 export const DownloadTextCol = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -125,19 +148,13 @@ export const DownloadText = styled(Typography)(({ theme }) => ({
   color: theme.palette.text.primary,
   fontWeight: 300,
   fontSize: "30px",
+  marginTop: "98px",
+  lineHeight: "73px",
+  alignSelf: "flex-start",
   userSelect: "none",
-  "@media(max-width: 1700px)": {
-    fontSize: "28px"
+  [theme.breakpoints.down("lg")]: {
+    alignSelf: "center",
   },
-  "@media(max-width: 1613px)": {
-    fontSize: "26px"
-  },
-  "@media(max-width: 1520px)": {
-    fontSize: "24px"
-  },
-  "@media(max-width: 1319px)": {
-    fontSize: "22px"
-  }
 }));
 
 export const DownloadText1 = styled(Typography)(({ theme }) => ({
@@ -180,7 +197,7 @@ export const OtherVersionsCol = styled(Box)(({ theme }) => ({
   alignItems: "center",
   justifyContent: "center",
   gap: "20px",
-  marginTop: "100px",
+  marginTop: "50px",
 }));
 
 export const OtherVersionsRow = styled(Box)(({ theme }) => ({
@@ -214,18 +231,12 @@ export const OtherVersionsText = styled(Typography)(({ theme }) => ({
 }));
 
 export const ScreenshotContainer = styled(Grid)(({ theme }) => ({
-  marginTop: "160px",
+  display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  "@media(min-width: 1700px)": {
-    padding: "0 150px",
-  },
-  "@media(max-width: 1699px)": {
-    padding: "0 100px",
-  },
-  "@media(max-width: 1127px)": {
-    padding: "0 30px",
-    marginTop: "50px"
+  marginTop: "127px",
+  [theme.breakpoints.down("lg")]: {
+    display: "none"
   }
 }));
 
@@ -236,26 +247,35 @@ export const ScreenshotCol = styled(Grid)(({ theme }) => ({
 }));
 
 export const Screenshot1 = styled(Image)(({ theme }) => ({
-  width: "-webkit-fill-available",
+  width: "100%",
+  maxWidth: "100%",
   height: "auto",
   objectFit: "contain"
 }));
 
 export const Screenshot2 = styled(Image)(({ theme }) => ({
-  width: "-webkit-fill-available",
+  width: "100%",
+  maxWidth: "100%",
   height: "auto",
   objectFit: "contain",
-  transform: "translateY(50px)",
-  [theme.breakpoints.down("md")]: {
-    transform: "translateY(0px)",
-    width: "50%"
-  }
+  position: "relative",  // <-- NEW
+  top: "-70px",         // <-- Replaces translateY
+  left: "700px",         // <-- Replaces translateX
+
+  [theme.breakpoints.down("xl")]: {
+    top: "-70px",
+    left: "500px",
+  },
+  [theme.breakpoints.down("lg")]: {
+    display: "none",
+  },
 }));
 
 export const Screenshot3 = styled(Image)(({ theme }) => ({
-  width: "-webkit-fill-available",
+  width: "100%",
+  maxWidth: "100%",
   height: "auto",
-  objectFit: "contain"
+  objectFit: "contain",
 }));
 
 export const DownloadNowText = styled(Typography)(({ theme }) => ({
@@ -268,7 +288,7 @@ export const DownloadNowText = styled(Typography)(({ theme }) => ({
   marginTop: "200px",
   textAlign: "center",
   userSelect: "none",
-  [theme.breakpoints.down("md")]: {
+  [theme.breakpoints.down("lg")]: {
     marginTop: "70px"
   },
   [theme.breakpoints.down("sm")]: {
@@ -278,15 +298,12 @@ export const DownloadNowText = styled(Typography)(({ theme }) => ({
 }));
 
 export const ChromeStoreLogo = styled(ChromeStoreSVG)({
-  marginRight: "21px"
 })
 
 export const AppleLogo = styled(AppleSVG)({
-  marginRight: "25px"
 });
 
 export const AndroidIcon = styled(AndroidSVG)({
-  marginRight: "25px"
 });
 
 export const IPhoneRow = styled(Box)(({ theme }) => ({
