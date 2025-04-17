@@ -193,7 +193,9 @@ const Downloads = () => {
           </motion.div>
         )}
       </AnimatePresence>
-      <DownloadsTitle>DOWNLOADS</DownloadsTitle>
+      <DownloadsTitle>
+        {isIOS ? "Access Web App Now" : "DOWNLOADS"}
+      </DownloadsTitle>
       <MainRow>
         <MainCol>
           <DownloadText>
@@ -229,7 +231,7 @@ const Downloads = () => {
                 </DownloadCard>
               </DownloadCol>
             </IPhoneRow>
-          ) : isMobile ? (
+          ) : isMobile && !isIOS ? (
             <IPhoneRow>
               <DownloadCol style={{ minWidth: "300px" }}>
                 <DownloadCard
