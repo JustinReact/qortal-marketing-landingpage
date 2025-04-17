@@ -73,6 +73,7 @@ export const DownloadCoreRow = styled(Box)({
   display: "flex",
   flexDirection: "row",
   alignItems: "center",
+  width: "100%",
  "@media(max-width: 1000px)": {
     display: "none",
   },
@@ -123,12 +124,12 @@ export const DownloadCol = styled(Box)(({ theme }) => ({
 export const DownloadSubCol = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
-  alignItems: "center",
+  alignItems: "flex-start",
   justifyContent: "center",
   gap: "46px",
   width: "100%",
-  [theme.breakpoints.down("md")]: {
-    gap: "10px"
+  [theme.breakpoints.down("lg")]: {
+    alignItems: "center",
   }
 }))
 
