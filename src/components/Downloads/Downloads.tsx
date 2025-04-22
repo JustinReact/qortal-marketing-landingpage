@@ -267,37 +267,6 @@ const Downloads = () => {
                 <DownloadsUIGrid>
                   <DownloadCol>
                     <DownloadCard
-                      role="button"
-                      aria-label="Redirect to the Android APK"
-                      tabIndex={0}
-                      onClick={() => {
-                        ReactGA.event({
-                          category: "User",
-                          action: "Clicked Android Download Button",
-                          label: "Clicked Android Download Button"
-                        });
-                        androidDownload();
-                      }}
-                      onKeyDown={(e) => {
-                        if (e.key === "Enter") {
-                          ReactGA.event({
-                            category: "User",
-                            action: "Clicked Android Download Button",
-                            label: "Clicked Android Download Button"
-                          });
-                          androidDownload();
-                        }
-                      }}
-                    >
-                      <AndroidIcon
-                        width={"40"}
-                        height={"70"}
-                        color={"#a4c639"}
-                      />
-                    </DownloadCard>
-                  </DownloadCol>
-                  <DownloadCol>
-                    <DownloadCard
                       aria-label="Download the Windows Desktop version of Qortal"
                       tabIndex={0}
                       onClick={() => {
@@ -324,7 +293,6 @@ const Downloads = () => {
                         width={40}
                         height={40}
                         alt={"Windows Logo"}
-                        style={{ marginRight: "25px" }}
                       />
                     </DownloadCard>
                   </DownloadCol>
@@ -383,7 +351,6 @@ const Downloads = () => {
                         width={40}
                         height={40}
                         alt={"Linux Logo"}
-                        style={{ marginRight: "25px" }}
                       />
                     </DownloadCard>
                   </DownloadCol>
@@ -417,12 +384,43 @@ const Downloads = () => {
                       />
                     </DownloadCard>
                   </DownloadCol>
+                  <DownloadCol>
+                    <DownloadCard
+                      role="button"
+                      aria-label="Redirect to the Android APK"
+                      tabIndex={0}
+                      onClick={() => {
+                        ReactGA.event({
+                          category: "User",
+                          action: "Clicked Android Download Button",
+                          label: "Clicked Android Download Button"
+                        });
+                        androidDownload();
+                      }}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                          ReactGA.event({
+                            category: "User",
+                            action: "Clicked Android Download Button",
+                            label: "Clicked Android Download Button"
+                          });
+                          androidDownload();
+                        }
+                      }}
+                    >
+                      <AndroidIcon
+                        width={"40"}
+                        height={"70"}
+                        color={"#a4c639"}
+                      />
+                    </DownloadCard>
+                  </DownloadCol>
                 </DownloadsUIGrid>
               </DownloadUIRow>
               <DownloadCoreRow>
                 <DownloadSubCol>
                   <DownloadText style={{ marginTop: 0 }}>
-                    <strong>Qortal Core</strong> For:
+                    <strong>Qortal Core</strong> (Optional) For:
                   </DownloadText>
                   <DownloadsCoreGrid>
                     <DownloadCol>
@@ -453,7 +451,6 @@ const Downloads = () => {
                           width={40}
                           height={40}
                           alt={"Windows Logo"}
-                          style={{ marginRight: "25px" }}
                         />
                       </DownloadCard>
                     </DownloadCol>
@@ -516,7 +513,6 @@ const Downloads = () => {
                           width={40}
                           height={40}
                           alt={"Linux Logo"}
-                          style={{ marginRight: "25px" }}
                         />
                       </DownloadCard>
                     </DownloadCol>

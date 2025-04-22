@@ -47,7 +47,6 @@ export const DownloadsTitle = styled(Typography)(({ theme }) => ({
   fontSize: "55px",
   lineHeight: "73px",
   letterSpacing: "calc(0.09 * 55px)",
-  textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
   userSelect: "none",
   [theme.breakpoints.down("sm")]: {
     fontSize: "30px",
@@ -95,7 +94,7 @@ export const DownloadCard = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "row",
   alignItems: "center",
-  justifyContent: "flex-start",
+  justifyContent: "center",
   flexGrow: 1,
   backgroundColor: theme.palette.mode === "light" ? "#2F2F2F" : "#ffffff",
   padding: "20px",
