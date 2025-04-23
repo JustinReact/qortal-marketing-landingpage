@@ -90,7 +90,7 @@ const Ebook = () => {
     setSurveyResponseError(!isResponseValid);
     if (isResponseValid) {
       // Logic to send the survey response to the server or perform any other action
-      console.log("Survey response sent:", name);
+      console.log("Survey response sent", name);
     }
   };
 
