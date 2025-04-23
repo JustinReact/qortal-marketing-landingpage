@@ -258,9 +258,10 @@ export const Screenshot2 = styled(Image)(({ theme }) => ({
   maxWidth: "100%",
   height: "auto",
   objectFit: "contain",
-  position: "relative",  // <-- NEW
-  top: "-70px",         // <-- Replaces translateY
-  left: "700px",         // <-- Replaces translateX
+  position: "relative",
+  top: "-70px",     
+  left: "700px",       
+  zIndex: 5,
 
   [theme.breakpoints.down("xl")]: {
     top: "-70px",
