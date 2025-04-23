@@ -74,26 +74,37 @@ import {
   QTradeSectionCol,
   QonnectFourMobileCol,
   FinalTextContainer,
-  OpenSourceMobileSection
+  OpenSourceMobileSection,
+  EbookPromoTitle,
+  EbookPromoSubTitle,
+  EbookPromoContainer,
+  EbookPromoButton,
+  EbookPromoTextCol
 } from "../../components/LandingPage/LandingPage-styles";
 import { YoutubeVideoContainer } from "../Qort/QORTPage-styles";
 import { YoutubePlaceholder } from "../YouTube/YoutubePlaceholder";
-import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Typography, useMediaQuery, useTheme } from "@mui/material";
 import { useRouter } from "next/navigation";
 import QonnectFour from "../QonnectFour/QonnectFour";
 import Modal from "../Common/Modal/Modal";
 import { ScrollToTopButton, TopArrow } from "../Wiki/Wiki-styles";
+import { CommonModal } from "../Common/CommonModal/CommonModal";
+import { DownloadSVG } from "../Common/Icons/DownloadSVG";
+import { BookSVG } from "../Common/Icons/BookSVG";
 
 const LandingPage = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const router = useRouter();
+  const isSmallToMediumScreen = useMediaQuery(theme.breakpoints.down("md"));
+
   const topCard1Feature = useRef<HTMLDivElement | null>(null);
   const topCard2Feature = useRef<HTMLDivElement | null>(null);
   const topCard3Feature = useRef<HTMLDivElement | null>(null);
   const topCard4Feature = useRef<HTMLDivElement | null>(null);
   const topOfPageRef = useRef<HTMLDivElement | null>(null);
   const middleOfPageRef = useRef<HTMLDivElement | null>(null);
+  const cardRefs = [useRef(null), useRef(null), useRef(null), useRef(null)];
 
   const [showVideoPlayer, setShowVideoPlayer] = useState<boolean>(false);
   const [showButton, setShowButton] = useState(false);
@@ -103,7 +114,21 @@ const LandingPage = () => {
   const [locked, setLocked] = useState<boolean>(true);
   const [showOpenSourceText, setShowOpenSourceText] = useState<boolean>(false);
   const [activeCard, setActiveCard] = useState(0);
-  const cardRefs = [useRef(null), useRef(null), useRef(null), useRef(null)];
+  const [firstTimeVisitor, setFirstTimeVisitor] = useState<boolean>(false);
+
+  // Display download ebook modal for first time visitors
+  useEffect(() => {
+    const isFirstTimeVisitor = localStorage.getItem("isFirstTimeVisitor");
+
+    if (!isFirstTimeVisitor) {
+      // Perform actions for first-time visitors
+      setFirstTimeVisitor(true);
+      // Set the flag in localStorage
+      localStorage.setItem("isFirstTimeVisitor", "false");
+    } else {
+      return;
+    }
+  }, []);
 
   const scrollToTopCard1Feature = () => {
     if (topCard1Feature?.current) {
@@ -974,6 +999,58 @@ const LandingPage = () => {
             setSelectedImage("");
           }}
         ></Modal>
+      )}
+      {!firstTimeVisitor && (
+        <CommonModal
+          openModal={firstTimeVisitor}
+          onClickFunc={() => {
+            setFirstTimeVisitor(false);
+          }}
+          customStyles={{
+            padding: 0,
+            top: "10%",
+            maxHeight: "fit-content !important",
+            height: "100% !important",
+            backgroundColor:
+              theme.palette.mode === "dark" ? "#111112" : "#D9D9D9",
+            borderRadius: "10px"
+          }}
+        >
+          <EbookPromoContainer>
+            <BookSVG color={theme.palette.text.primary} height={"79"} width={"98"} />
+            <EbookPromoTextCol>
+              <EbookPromoTitle>
+                DOWNLOAD OUR{" "}
+                <span style={{ color: theme.palette.customBlue.main }}>
+                  FREE
+                </span>{" "}
+                EBOOK!
+              </EbookPromoTitle>
+              <EbookPromoSubTitle>
+                Learn how Qortal is leveraging the power of blockchain
+                technology to revolutionize many industries on the normal
+                internet.
+              </EbookPromoSubTitle>
+            </EbookPromoTextCol>
+            <EbookPromoButton
+              onClick={() => {
+                ReactGA.event({
+                  category: "User",
+                  action: "Clicked Download Ebook Button on Homepage Modal",
+                  label: "Clicked Download Ebook Button on Homepage Modal"
+                });
+                router.push("/ebook");
+              }}
+            >
+              <DownloadSVG
+                color={theme.palette.text.primary}
+                height={"14"}
+                width={"14"}
+              />
+              DOWNLOAD HERE
+            </EbookPromoButton>
+          </EbookPromoContainer>
+        </CommonModal>
       )}
     </Container>
   );

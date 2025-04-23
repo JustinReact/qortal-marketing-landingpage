@@ -12,21 +12,34 @@ import {
   CTADescription,
   CTASubTitle,
   CTATitle,
+  EbookTooltip,
   IconBlock,
-  IconPlaceholder,
+  IconImg,
   IconRow,
   IconText,
+  InfoIcon,
+  InfoIconContainer,
   MainCol,
-  SectionTitle
+  SectionTitle,
+  StyledTextarea,
+  SurveyText,
+  SurveyTitle
 } from "./Ebook-styles";
-import { useTheme, FormHelperText } from "@mui/material";
+import { Tooltip, useTheme } from "@mui/material";
 import { CustomInputField } from "../Blog/BlogPostsClient-styles";
 
 const Ebook = () => {
   const theme = useTheme();
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
+  const [surveyResponse, setSurveyResponse] = useState<string>("");
+  const [nameError, setNameError] = useState<boolean>(false);
   const [emailError, setEmailError] = useState<boolean>(false);
+  const [surveyResponseError, setSurveyResponseError] =
+    useState<boolean>(false);
+  const [emailTouched, setEmailTouched] = useState<boolean>(false);
+  const [showTooltip, setShowTooltip] = useState<boolean>(false);
+  const [downloadedBook, setDownloadedBook] = useState<boolean>(false);
 
   const handleNameInputChange = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -34,60 +47,205 @@ const Ebook = () => {
     setName(event.target.value as string);
   };
 
+  const validateEmail = (value: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(value);
+  };
+
+  const handleSurveyResponseChange = (
+    event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+  ) => {
+    setSurveyResponse(event.target.value);
+  };
+
   const handleEmailInputChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    const value = event.target.value;
-    setEmail(value); // Always update the field first
+    setEmail(event.target.value);
+    if (emailTouched) {
+      setEmailError(!validateEmail(event.target.value));
+    }
+  };
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    setEmailError(value.length > 0 && !emailRegex.test(value));
+  const handleEmailBlur = () => {
+    setEmailTouched(true);
+    setEmailError(!validateEmail(email));
+  };
+
+  // Function to handle the download button click
+  const handleDownloadClick = () => {
+    const isEmailValid = validateEmail(email);
+    setEmailError(!isEmailValid);
+    const isNameValid = name.trim() !== "";
+    setNameError(!isNameValid);
+
+    if (isEmailValid && isNameValid) {
+      setDownloadedBook(true);
+    }
+  };
+
+  // Function to handle sending the survey response
+  const handleSurveyResponse = () => {
+    const isResponseValid = surveyResponse.trim() !== "";
+    setSurveyResponseError(!isResponseValid);
+    if (isResponseValid) {
+      // Logic to send the survey response to the server or perform any other action
+      console.log("Survey response sent:", name);
+    }
   };
 
   return (
     <>
-    <Container>
-      <MainCol>
-        <CTASubTitle>FREE EBOOK</CTASubTitle>
-        <CTATitle>
-          UNLOCK THE WORLD OF{" "}
-          <span style={{ color: theme.palette.customBlue.main }}>QORTAL</span>
-        </CTATitle>
-        <CTADescription>
-          Your Simple Guide to Understanding Decentralized Freedom
-        </CTADescription>
-      </MainCol>
-      <MainCol>
-        <CTABox>
-          <CTABoxTitle>Get Your Free Copy</CTABoxTitle>
-          <CTABoxTextFieldContainer>
-            <CustomInputField
-              name="name"
-              aria-label="name"
-              label="Name"
-              variant="filled"
-              value={name}
-              onChange={handleNameInputChange}
-              required
-            />
-            <CustomInputField
-              name="email"
-              aria-label="email"
-              label="E-Mail address"
-              variant="filled"
-              value={email}
-              onChange={handleEmailInputChange}
-              required
-              error={emailError}
-              helperText={
-                emailError ? "Please enter a valid email address." : ""
-              }
-            />
-          </CTABoxTextFieldContainer>
-          <CTABoxButton>Download Free Ebook</CTABoxButton>
-        </CTABox>
-      </MainCol>
-    </Container>
+      <Container>
+        <MainCol>
+          <CTASubTitle>FREE EBOOK</CTASubTitle>
+          <CTATitle>
+            UNLOCK THE WORLD OF{" "}
+            <span style={{ color: theme.palette.customBlue.main }}>QORTAL</span>
+          </CTATitle>
+          <CTADescription>
+            Your Simple Guide to Understanding Decentralized Freedom
+          </CTADescription>
+        </MainCol>
+        <MainCol>
+          <CTABox>
+            {!downloadedBook ? (
+              <>
+                <EbookTooltip
+                  title="By downloading this ebook, you agree to receive emails from the Qortal community. You can unsubscribe at any time from the mailing list at any time by clicking the unsubscribe link at the bottom of the email."
+                  placement="top"
+                  open={showTooltip}
+                  onClose={() => setShowTooltip(false)}
+                  disableFocusListener
+                  disableHoverListener
+                  disableTouchListener
+                  onBlur={() => setShowTooltip(false)}
+                  slotProps={{
+                    popper: {
+                      modifiers: [
+                        {
+                          name: "offset",
+                          options: {
+                            offset: [0, -5]
+                          }
+                        }
+                      ]
+                    }
+                  }}
+                >
+                  <InfoIconContainer
+                    onMouseEnter={() => setShowTooltip(true)}
+                    onMouseLeave={() => setShowTooltip(false)}
+                    onClick={() => setShowTooltip(true)}
+                    style={{ cursor: "pointer" }}
+                  >
+                    <InfoIcon
+                      color={theme.palette.text.primary}
+                      width={"14"}
+                      height={"14"}
+                    />
+                  </InfoIconContainer>
+                </EbookTooltip>
+                <CTABoxTitle>Get Your Free Copy</CTABoxTitle>
+                <CTABoxTextFieldContainer>
+                  <CustomInputField
+                    name="name"
+                    aria-label="name"
+                    label="Name"
+                    variant="filled"
+                    value={name}
+                    onChange={handleNameInputChange}
+                    required
+                    error={nameError}
+                    helperText={nameError ? "Please enter your name." : ""}
+                  />
+                  <CustomInputField
+                    name="email"
+                    label="E-Mail address"
+                    variant="filled"
+                    value={email}
+                    onChange={handleEmailInputChange}
+                    onBlur={handleEmailBlur}
+                    required
+                    error={emailError}
+                    helperText={
+                      emailError ? "Please enter a valid email address." : ""
+                    }
+                  />
+                </CTABoxTextFieldContainer>
+                <CTABoxButton onClick={handleDownloadClick}>
+                  Download Free Ebook
+                </CTABoxButton>
+              </>
+            ) : (
+              <>
+                <EbookTooltip
+                  title="By submitting this answer, you give Qortal permission to use your reply in future marketing materials or for other purposes. Your name and email will not be shared with any third parties."
+                  placement="top"
+                  open={showTooltip}
+                  onClose={() => setShowTooltip(false)}
+                  disableFocusListener
+                  disableHoverListener
+                  disableTouchListener
+                  onBlur={() => setShowTooltip(false)}
+                  slotProps={{
+                    popper: {
+                      modifiers: [
+                        {
+                          name: "offset",
+                          options: {
+                            offset: [0, -5]
+                          }
+                        }
+                      ]
+                    }
+                  }}
+                >
+                  <InfoIconContainer
+                    onMouseEnter={() => setShowTooltip(true)}
+                    onMouseLeave={() => setShowTooltip(false)}
+                    onClick={() => setShowTooltip(true)}
+                    style={{ cursor: "pointer" }}
+                  >
+                    <InfoIcon
+                      color={theme.palette.text.primary}
+                      width={"14"}
+                      height={"14"}
+                    />
+                  </InfoIconContainer>
+                </EbookTooltip>
+                <SurveyText>
+                <SurveyTitle>
+                  Thank you for downloading the ebook! Check your email for the
+                  download link.
+                </SurveyTitle>
+                <SurveyTitle>
+                  Please help the Qortal community by answering this short
+                  survey question: Why does decentralization and a censorship-free internet matter to you?
+                </SurveyTitle>
+                </SurveyText>
+                <StyledTextarea
+                  fullWidth
+                  multiline
+                  placeholder="Type your answer here..."
+                  variant="outlined"
+                  minRows={8}
+                  maxRows={12}
+                  value={surveyResponse}
+                  onChange={handleNameInputChange}
+                  error={surveyResponseError}
+                  helperText={
+                    surveyResponseError ? "Please enter your answer." : ""
+                  }
+                />
+                <CTABoxButton onClick={handleSurveyResponse}>
+                  Send Answer
+                </CTABoxButton>
+              </>
+            )}
+          </CTABox>
+        </MainCol>
+      </Container>
       <BookSectionContainer>
         <BookImage
           src="/images/Ebook/Ebook Design.png"
@@ -95,27 +253,59 @@ const Ebook = () => {
         />
 
         <ContentCol>
-          <SectionTitle>This eBook will acquaint you with</SectionTitle>
+          <SectionTitle>
+            This Ebook covers many important concepts related to blockchain
+            technology and Qortal, including how:
+          </SectionTitle>
 
           <IconRow>
             <IconBlock>
-              <IconPlaceholder /> {/* You can replace this with a real <img> */}
-              <IconText>Lorem ipsum Lorem ipsum Lorem ipsum</IconText>
+              <IconImg
+                src={"/images/Ebook/LockShield.png"}
+                alt=""
+                width={500}
+                height={500}
+                quality={100}
+              />
+              <IconText>
+                Qortal gives users true privacy and digital freedom by
+                eliminating corporate surveillance, middlemen, and censorship,
+                forever!
+              </IconText>
             </IconBlock>
 
             <IconBlock>
-              <IconPlaceholder />
-              <IconText>Lorem ipsum Lorem ipsum Lorem ipsum</IconText>
+              <IconImg
+                src={"/images/Ebook/DecentralizedInternet.png"}
+                alt=""
+                width={500}
+                height={500}
+                quality={100}
+              />
+              <IconText>
+                Qortal’s blockchain network replaces centralized services with
+                peer-to-peer apps for video, commerce, crowdfunding, and many
+                more industries which are broken on the normal internet.
+              </IconText>
             </IconBlock>
 
             <IconBlock>
-              <IconPlaceholder />
-              <IconText>Lorem ipsum Lorem ipsum Lorem ipsum</IconText>
+              <IconImg
+                src={"/images/Ebook/CoinStack.png"}
+                alt=""
+                width={500}
+                height={500}
+                quality={100}
+              />
+              <IconText>
+                Qortal's coin QORT powers a sustainable, creator-first economy
+                without middlemen, fees, or any centralized banking.
+              </IconText>
             </IconBlock>
           </IconRow>
         </ContentCol>
       </BookSectionContainer>
-      </>
+    </>
   );
 };
 
