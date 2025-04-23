@@ -254,12 +254,16 @@ export const SectionTitle = styled(Typography)(({ theme }) => ({
   fontWeight: 400,
   fontSize: "36px",
   color: theme.palette.text.primary,
-  lineHeight: "27px",
+  lineHeight: "40px",
   letterSpacing: 0,
   userSelect: "none",
   [theme.breakpoints.down("md")]: {
     textAlign: "center",
     width: "100%"
+  },
+  [theme.breakpoints.down("sm")]: {
+    fontSize: "30px",
+    lineHeight: "35px"
   }
 }));
 

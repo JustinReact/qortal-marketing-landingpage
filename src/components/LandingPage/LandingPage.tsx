@@ -1000,7 +1000,7 @@ const LandingPage = () => {
           }}
         ></Modal>
       )}
-      {!firstTimeVisitor && (
+      {firstTimeVisitor && (
         <CommonModal
           openModal={firstTimeVisitor}
           onClickFunc={() => {
