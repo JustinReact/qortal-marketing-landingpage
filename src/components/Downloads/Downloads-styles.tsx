@@ -98,7 +98,7 @@ export const DownloadCard = styled(Box)(({ theme }) => ({
   flexDirection: "column",
   alignItems: "center",
   justifyContent: "center",
-  gap: "15px",
+  gap: "12px",
   textAlign: "center",
   flexGrow: 1,
   backgroundColor: theme.palette.mode === "light" ? "#2F2F2F" : "#ffffff",

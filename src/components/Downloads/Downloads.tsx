@@ -324,7 +324,7 @@ const Downloads = () => {
                         }
                       }}
                     >
-                      <AppleLogo color={"#0177DB"} width={"50"} height={"50"} />
+                      <AppleLogo color={"#0177DB"} width={"40"} height={"40"} />
                       <DownloadText1>Mac</DownloadText1>
                     </DownloadCard>
                   </DownloadCol>
@@ -489,8 +489,8 @@ const Downloads = () => {
                       >
                         <AppleLogo
                           color={"#0177DB"}
-                          width={"50"}
-                          height={"50"}
+                          width={"40"}
+                          height={"40"}
                         />
                         <DownloadText1>Mac</DownloadText1>
                       </DownloadCard>
