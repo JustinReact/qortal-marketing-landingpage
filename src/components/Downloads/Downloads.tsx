@@ -15,6 +15,7 @@ import {
   DownloadSubCol,
   DownloadsUIGrid,
   DownloadText,
+  DownloadText1,
   DownloadUIRow,
   IPhoneRow,
   MainCol,
@@ -199,7 +200,7 @@ const Downloads = () => {
       <MainRow>
         <MainCol>
           <DownloadText>
-            <strong>Qortal UI</strong> For:
+            <strong>Qortal User Interface</strong> For:
           </DownloadText>
           {isIOS ? (
             <IPhoneRow>
@@ -228,6 +229,7 @@ const Downloads = () => {
                   }}
                 >
                   <AppleLogo color={"#0177DB"} width={"45"} height={"45"} />
+                  <DownloadText1>iPhone</DownloadText1>
                 </DownloadCard>
               </DownloadCol>
             </IPhoneRow>
@@ -258,6 +260,7 @@ const Downloads = () => {
                   }}
                 >
                   <AndroidIcon width={"40"} height={"70"} color={"#a4c639"} />
+                  <DownloadText1>Android</DownloadText1>
                 </DownloadCard>
               </DownloadCol>
             </IPhoneRow>
@@ -294,6 +297,7 @@ const Downloads = () => {
                         height={40}
                         alt={"Windows Logo"}
                       />
+                      <DownloadText1>Windows</DownloadText1>
                     </DownloadCard>
                   </DownloadCol>
                   <DownloadCol className="mac-col">
@@ -321,6 +325,7 @@ const Downloads = () => {
                       }}
                     >
                       <AppleLogo color={"#0177DB"} width={"50"} height={"50"} />
+                      <DownloadText1>Mac</DownloadText1>
                     </DownloadCard>
                   </DownloadCol>
                   <DownloadCol>
@@ -352,6 +357,7 @@ const Downloads = () => {
                         height={40}
                         alt={"Linux Logo"}
                       />
+                      <DownloadText1>Linux</DownloadText1>
                     </DownloadCard>
                   </DownloadCol>
                   <DownloadCol>
@@ -382,6 +388,7 @@ const Downloads = () => {
                         height="45"
                         color="transparent"
                       />
+                      <DownloadText1>Extension</DownloadText1>
                     </DownloadCard>
                   </DownloadCol>
                   <DownloadCol>
@@ -410,9 +417,10 @@ const Downloads = () => {
                     >
                       <AndroidIcon
                         width={"40"}
-                        height={"70"}
+                        height={"40"}
                         color={"#a4c639"}
                       />
+                      <DownloadText1>Android</DownloadText1>
                     </DownloadCard>
                   </DownloadCol>
                 </DownloadsUIGrid>
@@ -452,6 +460,7 @@ const Downloads = () => {
                           height={40}
                           alt={"Windows Logo"}
                         />
+                        <DownloadText1>Windows</DownloadText1>
                       </DownloadCard>
                     </DownloadCol>
                     <DownloadCol className="mac-col">
@@ -483,6 +492,7 @@ const Downloads = () => {
                           width={"50"}
                           height={"50"}
                         />
+                        <DownloadText1>Mac</DownloadText1>
                       </DownloadCard>
                     </DownloadCol>
                     <DownloadCol>
@@ -514,6 +524,7 @@ const Downloads = () => {
                           height={40}
                           alt={"Linux Logo"}
                         />
+                        <DownloadText1>Linux</DownloadText1>
                       </DownloadCard>
                     </DownloadCol>
                   </DownloadsCoreGrid>
