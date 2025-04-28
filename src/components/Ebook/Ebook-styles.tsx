@@ -214,21 +214,18 @@ export const BookSectionContainer = styled(Box)(({ theme }) => ({
 
 // For the book image
 export const BookImage = styled("img")(({ theme }) => ({
-  width: "500px",
+  width: "800px",
   height: "auto",
-  transform: "translateY(-300px)",
+  transform: "translateY(-200px)",
   "@media (max-width: 1600px)": {
-    width: "400px"
-  },
-  "@media (max-width: 1500px)": {
-    width: "350px"
+    width: "700px"
   },
   [theme.breakpoints.down("lg")]: {
-    width: "325px",
+    width: "600px",
     transform: "translateY(-200px)"
   },
   [theme.breakpoints.down("md")]: {
-    width: "60%",
+    width: "80%",
     transform: "translateY(0)"
   },
   [theme.breakpoints.down("sm")]: {
