@@ -105,6 +105,20 @@ export const MobileDrawer: FC<MobileDrawerProps> = ({
       >
         Wiki
       </DrawerButton>
+      <DrawerButton
+        onClick={() => {
+          ReactGA.event({
+            category: "User",
+            action: "Clicked Mobile Ebook Drawer Link",
+            label: "Clicked Mobile Ebook Drawer Link"
+          });
+          setOpenMobileDrawer();
+          router.push("/ebook");
+        }}
+        active={location.includes("/ebook") ? true : false}
+      >
+        Ebook
+      </DrawerButton>
     </Container>
   );
 };
