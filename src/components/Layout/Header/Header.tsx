@@ -206,6 +206,18 @@ export const Header = () => {
                     >
                       News
                     </DropdownItem>
+                    <DropdownItem
+                      onClick={() => {
+                        ReactGA.event({
+                          category: "User",
+                          action: "Clicked QORT Page Header Desktop",
+                          label: "Clicked QORT Page Header Desktop"
+                        });
+                      }}
+                      href="/qort"
+                    >
+                      QORT
+                    </DropdownItem>
                   </DropdownContainer>
                 )}
               </Box>

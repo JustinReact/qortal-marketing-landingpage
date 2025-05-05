@@ -56,11 +56,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import { DiscordSVG } from "../Common/Icons/DiscordSVG";
 import { useMediaQuery, useTheme } from "@mui/material";
 import { YoutubePlaceholder } from "../YouTube/YoutubePlaceholder";
-import { useRouter } from "next/navigation";
-import LoadingSpinner from "../../app/loading";
 
 const Qort = () => {
-  const router = useRouter();
   const muiTheme = useTheme();
   const isMobile = useMediaQuery(muiTheme.breakpoints.down("sm"));
   const lessThanMediumScreen = useMediaQuery(muiTheme.breakpoints.down("md"));
@@ -73,7 +70,6 @@ const Qort = () => {
     4: false,
     5: false
   });
-  const [loading] = useState<boolean>(true);
 
   useEffect(() => {
     ReactGA.send({
@@ -128,15 +124,6 @@ const Qort = () => {
     }
   };
 
-  // Temporarily redirect to home page, until the page is ready
-  useEffect(() => {
-    router.push("/");
-  }, []);
-
-  if (loading) {
-    return <LoadingSpinner />;
-  }
-
   return (
     <Wrapper>
       <MainContainer>
@@ -144,9 +131,9 @@ const Qort = () => {
           <YoutubeVideoContainer>
             {!lessThanMediumScreen && showVideoPlayer ? (
               <iframe
-                src="https://www.youtube.com/embed/TnDrrbpRCDk?autoplay=1&rel=0"
+                src="https://www.youtube.com/watch?v=pgJybhuQGYI&t=135s?autoplay=1&rel=0"
                 loading="lazy"
-                title="Buy QORT Using Litecoin From A Centralized Exchange"
+                title="Obtain QORT Using Litecoin From A Centralized Exchange"
                 allowFullScreen
                 allow="autoplay"
               ></iframe>
@@ -155,9 +142,9 @@ const Qort = () => {
                 isModal={false}
                 onClick={handleVideoClick}
                 YoutubeThumbnail={
-                  "/images/Youtube/TradeLTCForQORTThumbnail.png"
+                  "/images/Youtube/ObtainQORT.png"
                 }
-                YoutubeTitle="Buy QORT Using Litecoin From A Centralized Exchange"
+                YoutubeTitle="Obtain QORT Using Litecoin From A Centralized Exchange"
               />
             ) : null}
           </YoutubeVideoContainer>
