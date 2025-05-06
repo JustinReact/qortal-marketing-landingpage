@@ -1,9 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import {
-  ArrowSVG,
   CoinImg,
-  CoinImgRow,
   CoinLogo,
   CoinLogoCol,
   CoinLogoName,
@@ -17,15 +15,8 @@ import {
   FAQNumberBubble,
   MainContainer,
   MainRow,
-  MainSubRow,
   MainTitle,
-  MobileOwlImageContainer,
-  MobileOwlLogo,
-  OwlImageContainer,
-  OwlImageWrapper,
-  OwlLogo,
   UseCasesContainer,
-  SocialButton,
   SubText,
   SubTextRow,
   SubTitle,
@@ -47,20 +38,21 @@ import {
   TradingPortalCol,
   UseColNumber,
   TradingPortalButton,
-  TradingPortalCard
+  TradingPortalCard,
+  TopFoldButtonRow,
+  CTAButton1,
+  CTAButton2
 } from "./QORTPage-styles";
 import ReactGA from "react-ga4";
 import { NorthEastSVG } from "../Common/Icons/NorthEastSVG";
 import { SouthEastSVG } from "../Common/Icons/SouthEastSVG";
 import { AnimatePresence, motion } from "framer-motion";
-import { DiscordSVG } from "../Common/Icons/DiscordSVG";
 import { useMediaQuery, useTheme } from "@mui/material";
 import { YoutubePlaceholder } from "../YouTube/YoutubePlaceholder";
 
 const Qort = () => {
   const muiTheme = useTheme();
   const isMobile = useMediaQuery(muiTheme.breakpoints.down("sm"));
-  const lessThanMediumScreen = useMediaQuery(muiTheme.breakpoints.down("md"));
 
   const [showVideoPlayer, setShowVideoPlayer] = useState<boolean>(false);
   const [faqsOpen, setFaqsOpen] = useState({
@@ -79,18 +71,7 @@ const Qort = () => {
     });
   }, []);
 
-  const tradePortalRef = useRef<HTMLDivElement | null>(null);
   const useCasesRef = useRef<HTMLDivElement | null>(null);
-
-  const scrollToTradePortalFunc = () => {
-    if (tradePortalRef?.current) {
-      tradePortalRef?.current.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-        inline: "nearest"
-      });
-    }
-  };
 
   const scrollToUseCasesFunc = () => {
     if (useCasesRef?.current) {
@@ -128,123 +109,71 @@ const Qort = () => {
     <Wrapper>
       <MainContainer>
         <MainRow>
-          <YoutubeVideoContainer>
-            {!lessThanMediumScreen && showVideoPlayer ? (
-              <iframe
-                src="https://www.youtube.com/watch?v=pgJybhuQGYI&t=135s?autoplay=1&rel=0"
-                loading="lazy"
-                title="Obtain QORT Using Litecoin From A Centralized Exchange"
-                allowFullScreen
-                allow="autoplay"
-              ></iframe>
-            ) : !lessThanMediumScreen ? (
-              <YoutubePlaceholder
-                isModal={false}
-                onClick={handleVideoClick}
-                YoutubeThumbnail={
-                  "/images/Youtube/ObtainQORT.png"
-                }
-                YoutubeTitle="Obtain QORT Using Litecoin From A Centralized Exchange"
-              />
-            ) : null}
-          </YoutubeVideoContainer>
-          <CoinImgRow onClick={scrollToTradePortalFunc}>
-            <CoinImg
-              src={"/images/QORT/QORTCoin.webp"}
-              alt="QORT Coin"
-              width={500}
-              height={500}
-            />
-            <MainTitle>
-              get
-              <br />
-              some
-              <br />
-              QORT
-            </MainTitle>
-          </CoinImgRow>
+          <MainTitle variant="h1">
+            Unlocking
+            <br />
+            <span>Web</span>3<br /> 1 <span>QORT</span>
+            <br /> at a time
+          </MainTitle>
+          <CoinImg
+            src={"/images/QORT/QORTCoin.webp"}
+            alt="QORT Coin"
+            width={500}
+            height={500}
+          />
         </MainRow>
-        <MainSubRow>
-          <SubTextRow>
-            <SubText>
-              QORT is more than just a coin!
-              <br /> Learn how it powers the Qortal ecosystem.
-            </SubText>
-            <ArrowSVG className="arrows" onClick={scrollToUseCasesFunc}>
-              <path className="a1" d="M0 0 L30 32 L60 0"></path>
-              <path className="a2" d="M0 20 L30 52 L60 20"></path>
-              <path className="a3" d="M0 40 L30 72 L60 40"></path>
-            </ArrowSVG>
-          </SubTextRow>
-          <OwlImageWrapper>
-            <OwlImageContainer>
-              <OwlLogo
-                src={"/images/QORT/QORTOwlMascot.webp"}
-                alt="QORT Owl Mascot"
-                width={500}
-                height={500}
-              />
-              <SocialButton
-                onClick={() => {
-                  ReactGA.event({
-                    category: "User",
-                    action: "Clicked Discord Owl Desktop",
-                    label: "Discord Button Owl Desktop"
-                  });
-                  window.open("https://discord.gg/YKdxYUSqZR", "_blank");
-                }}
-              >
-                <DiscordSVG
-                  color={"#000000"}
-                  height={isMobile ? "30" : "35"}
-                  width={isMobile ? "30" : "35"}
-                />
-                Join Discord
-              </SocialButton>
-            </OwlImageContainer>
-          </OwlImageWrapper>
-          <MobileOwlImageContainer>
-            <MobileOwlLogo
-              src={"/images/QORT/QORTOwlMascotHead.webp"}
-              alt="QORT Owl Mascot Head"
-              width={500}
-              height={500}
-            />
-            <SocialButton
-              onClick={() => {
-                ReactGA.event({
-                  category: "User",
-                  action: "Clicked Mobile Discord Owl",
-                  label: "Discord Mobile Button Owl"
-                });
-                window.open("https://discord.gg/YKdxYUSqZR", "_blank");
-              }}
-            >
-              <DiscordSVG color={"#000000"} height={"35"} width={"35"} />
-              Join Discord
-            </SocialButton>
-          </MobileOwlImageContainer>
-        </MainSubRow>
+        <SubTextRow>
+          <SubText>
+            QORT isn’t just another coin! It's the <strong>lifeblood</strong> of an alternative
+            internet. It fuels real peer-to-peer apps, incentivizes
+            contributors, and powers the parallel economy found on Qortal!
+          </SubText>
+        </SubTextRow>
+           <TopFoldButtonRow>
+                <CTAButton1
+                  onClick={() => {
+                    ReactGA.event({
+                      category: "User",
+                      action: "Clicked Learn How Button",
+                      label: "Learn How Button"
+                    });
+                  }}
+                >
+                  LEARN HOW
+                </CTAButton1>
+                <CTAButton2
+                  onClick={() => {
+                    ReactGA.set({ dimension1: "Landing Page Download Button" }); // Event-level dimension
+                    ReactGA.event({
+                      category: "User",
+                      action: "Clicked Main Download CTA Button",
+                      label: "Clicked Main Download CTA Button"
+                    });
+                  }}
+                >
+                  BUY QORT
+                </CTAButton2>
+              </TopFoldButtonRow>
+      </MainContainer>
         <YoutubeVideoContainer>
-          {lessThanMediumScreen && showVideoPlayer ? (
+          {showVideoPlayer ? (
             <iframe
-              src="https://www.youtube.com/embed/TnDrrbpRCDk?autoplay=1&rel=0"
+              src="https://www.youtube.com/watch?v=pgJybhuQGYI&t=135s?autoplay=1&rel=0"
               loading="lazy"
-              title="Buy QORT Using Litecoin From A Centralized Exchange"
+              title="Obtain QORT Using Litecoin From A Centralized Exchange"
               allowFullScreen
               allow="autoplay"
             ></iframe>
-          ) : lessThanMediumScreen ? (
+          ) : (
             <YoutubePlaceholder
               isModal={false}
               onClick={handleVideoClick}
-              YoutubeThumbnail={"/images/Youtube/TradeLTCForQORTThumbnail.png"}
-              YoutubeTitle="Buy QORT Using Litecoin From A Centralized Exchange"
+              YoutubeThumbnail={"/images/Youtube/ObtainQORT.png"}
+              YoutubeTitle="Obtain QORT Using Litecoin From A Centralized Exchange"
             />
-          ) : null}
+          )}
         </YoutubeVideoContainer>
-      </MainContainer>
-      <TradingPortalContainer ref={tradePortalRef}>
+      <TradingPortalContainer>
         <SubTitle>Trade Portal</SubTitle>
         <TradingPortalCol>
           <TradingPortalTitle>OWN QORT IN MINUTES:</TradingPortalTitle>

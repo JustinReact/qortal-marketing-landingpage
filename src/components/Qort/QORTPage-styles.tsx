@@ -1,7 +1,7 @@
 import { styled, keyframes } from "@mui/system";
 import { Box, Button, Typography } from "@mui/material";
 import Image from "next/image";
-import { montserrat, protestStrike, ptSans, raleway, spartan } from "../../app/fonts";
+import { montserrat, oxygen, protestStrike, ptSans, raleway, spartan } from "../../app/fonts";
 
 export const spinAnimation = keyframes`
   0% {
@@ -35,8 +35,20 @@ export const Wrapper = styled(Box)(({ theme }) => ({
   minHeight: "100vh",
   gap: "250px",
   width: "100%",
+  padding: "0 200px",
+  [theme.breakpoints.up("xl")]: {
+    padding: "0 300px",
+  },
+  [theme.breakpoints.down("lg")]: {
+    padding: "0 100px",
+  },
+  [theme.breakpoints.down("md")]: {
+    padding: "0 50px",
+  },
   [theme.breakpoints.down("sm")]: {
-    gap: "100px"
+    gap: "100px",
+    padding: "0 20px",
+  
   }
 }));
 
@@ -47,83 +59,12 @@ export const MainContainer = styled(Box)(({ theme }) => ({
   justifyContent: "center",
   alignItems: "center",
   width: "100%",
-  gap: "50px",
+  gap: "25px",
   marginTop: "60px",
   [theme.breakpoints.down("sm")]: {
     marginTop: "20px",
     gap: "10px"
   }
-}));
-
-export const MainSubRow = styled(Box)(({ theme }) => ({
-  display: "flex",
-  justifyContent: "center",
-  gap: "20px",
-  alignItems: "center",
-  flexDirection: "row",
-  width: "100%",
-  "@media (max-width: 1470px)": {
-    gap: 0
-  },
-  [theme.breakpoints.down("lg")]: {
-    justifyContent: "flex-start",
-    paddingLeft: "80px"
-  },
-  "@media (max-width: 1013px)": {
-    justifyContent: "flex-start",
-    paddingLeft: "40px"
-  },
-  "@media (max-width: 976px)": {
-    justifyContent: "flex-start",
-    paddingLeft: "20px"
-  },
-  [theme.breakpoints.down("md")]: {
-    flexDirection: "column",
-    gap: "30px"
-  },
-  [theme.breakpoints.only("xs")]: {
-    paddingLeft: "0"
-  }
-}));
-
-export const OwlImageWrapper = styled(Box)(({ theme }) => ({
-  [theme.breakpoints.down("md")]: {
-    display: "none"
-  }
-}));
-
-export const OwlImageContainer = styled(Box)({
-  position: "relative"
-});
-
-export const MobileOwlImageContainer = styled(Box)(({ theme }) => ({
-  position: "relative",
-  display: "flex",
-  justifyContent: "center",
-  gap: "20px",
-  alignItems: "center",
-  width: "100%",
-  [theme.breakpoints.up("md")]: {
-    display: "none"
-  }
-}));
-
-export const OwlLogo = styled(Image)(({ theme }) => ({
-  width: "200px",
-  height: "auto",
-  objectFit: "cover",
-  userSelect: "none",
-  "@media (max-width: 1470px)": {
-    width: "180px"
-  }
-}));
-
-export const MobileOwlLogo = styled(Image)(({ theme }) => ({
-  width: "80px",
-  height: "auto",
-  transform: "rotate(-0.85deg)",
-  objectFit: "cover",
-  userSelect: "none"
 }));
 
 export const UseCasesContainer = styled(Box)({
@@ -161,16 +102,16 @@ export const MainTitle = styled(Typography)(({ theme }) => ({
   color: theme.palette.mode === "dark" ? "#ffffff" : theme.palette.secondary.light,
   letterSpacing: "0px",
   userSelect: "none",
-  transform: "translateX(-75px) translateY(-50px)",
+  "& span": {
+    color: theme.palette.customBlue.main
+  },
   [theme.breakpoints.down("md")]: {
     fontSize: "180px",
     lineHeight: "150px",
-    transform: "translateX(-75px) translateY(-50px)"
   },
   [theme.breakpoints.down("sm")]: {
     fontSize: "75px",
     lineHeight: "75px",
-    transform: "translateX(-45px) translateY(-30px)"
   }
 }));
 
@@ -372,18 +313,9 @@ export const UseColDesc = styled(Typography)(({ theme }) => ({
   }
 }));
 
-export const CoinImgRow = styled(Box)({
-  display: "flex",
-  flexDirection: "row",
-  justifyContent: "center",
-  alignItems: "flex-end",
-  maxWidth: "100%",
-  cursor: "pointer"
-});
-
 export const CoinImg = styled(Image)(({ theme }) => ({
-  width: "300px",
-  height: "300px",
+  width: "400px",
+  height: "400px",
   objectFit: "cover",
   userSelect: "none",
   animation: `${spinAnimation} 20s linear infinite`,
@@ -400,39 +332,98 @@ export const CoinImg = styled(Image)(({ theme }) => ({
   }
 }));
 
-export const SubTextRow = styled(Box)(({ theme }) => ({
+export const SubTextRow = styled(Typography)({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
   flexDirection: "row",
   textAlign: "center",
-  gap: "40px",
-  [theme.breakpoints.only("xs")]: {
-    padding: "0 5px",
-    maxWidth: "100%"
+});
+
+export const SubText = styled(Typography)(({ theme }) => ({
+  fontFamily: oxygen.style.fontFamily,
+  fontSize: "32px",
+  letterSpacing: 0,
+  lineHeight: "50px",
+  fontWeight: 400,
+  userSelect: "none",
+}));
+
+export const TopFoldButtonRow = styled(Box)(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  marginTop: "25px",
+  gap: "30px",
+  marginBottom: "157px",
+  [theme.breakpoints.down("lg")]: {
+    justifyContent: "center"
+  },
+  [theme.breakpoints.down("sm")]: {
+    gap: "10px",
+    width: "100%",
+    marginBottom: "70px"
   }
 }));
 
-export const SubText = styled(Typography)(({ theme }) => ({
-  fontFamily: ptSans.style.fontFamily,
-  fontWeight: "400",
-  fontSize: "40px",
-  userSelect: "none",
-  lineHeight: "48px",
+export const CTAButton1 = styled(Button)(({ theme }) => ({
+  fontFamily: oxygen.style.fontFamily,
+  fontWeight: 500,
+  fontSize: "18px",
+  lineHeight: "21.3px",
+  letterSpacing: 0,
+  width: "181px",
+  height: "43px",
+  padding: "10px 30px 10px 30px",
+  gap: "7px",
+  borderRadius: "30px",
+  border: `1px solid ${theme.palette.text.primary}`,
   color: theme.palette.text.primary,
-  "@media (max-width: 1470px)": {
-    fontSize: "30px",
-    lineHeight: "35px"
-  },
-  "@media (max-width: 1123px)": {
-    fontSize: "24px",
-    lineHeight: "35px"
+  backgroundColor: "transparent",
+  boxShadow: "none",
+  cursor: "pointer",
+  transition: "all 0.2s ease-in-out",
+  "&:hover": {
+    boxShadow: "1px 4px 10.5px 0px #0000004D",
+    backgroundColor: "#F3F3F3",
+    border:
+      theme.palette.mode === "dark"
+        ? `1px solid ${theme.palette.text.primary}`
+        : "1px solid #F3F3F3",
+    color: "#000000"
   },
   [theme.breakpoints.down("sm")]: {
-    fontSize: "25px",
-    lineHeight: "26px"
+    width: "-webkit-fill-available"
   }
 }));
+
+export const CTAButton2 = styled(Button)(({ theme }) => ({
+  fontFamily: oxygen.style.fontFamily,
+  fontWeight: 500,
+  fontSize: "18px",
+  lineHeight: "21.3px",
+  letterSpacing: 0,
+  width: "181px",
+  height: "43px",
+  padding: "10px 30px 10px 30px",
+  gap: "7px",
+  borderRadius: "30px",
+  border: `1px solid ${theme.palette.customBlue.main}`,
+  color: "#000000",
+  backgroundColor: theme.palette.customBlue.main,
+  cursor: "pointer",
+  boxShadow: "1px 4px 10.5px 0px #0000004D",
+  transition: "all 0.2s ease-in-out",
+  "&:hover": {
+    backgroundColor: "#F3F3F3",
+    color: "#000000",
+    border: "1px solid #F3F3F3"
+  },
+  [theme.breakpoints.down("sm")]: {
+    width: "-webkit-fill-available"
+  }
+}));
+
 
 export const LogoContainer = styled(Box)({
   display: "flex",
@@ -443,181 +434,6 @@ export const LogoContainer = styled(Box)({
   flexDirection: "column",
   zIndex: 1
 });
-
-// Owl Mascot Chat Message Bubble
-
-// export const ChatBubble = styled("div")(({ theme }) => ({
-//   position: "absolute",
-//   top: "-120px",
-//   right: "-200px",
-//   margin: "40px",
-//   display: "inline-block",
-//   width: "auto",
-//   height: "auto",
-//   backgroundColor: "white",
-//   transition: "all 0.3s ease-in-out",
-//   [theme.breakpoints.only("xs")]: {
-//     right: "-160px"
-//   },
-//   "&:hover": {
-//     cursor: "pointer",
-//     filter: "drop-shadow(2px 4px 3px #3a3a3a)"
-//   },
-//   "&.tri-right.border.left-in:before": {
-//     content: "''",
-//     position: "absolute",
-//     width: 0,
-//     height: 0,
-//     left: "-40px",
-//     right: "auto",
-//     top: "30px",
-//     bottom: "auto",
-//     border: "20px solid",
-//     borderColor: "#0091ff #0091ff transparent transparent"
-//   },
-//   "&.tri-right.left-in:after": {
-//     content: "''",
-//     position: "absolute",
-//     width: 0,
-//     height: 0,
-//     left: "-20px",
-//     right: "auto",
-//     top: "38px",
-//     bottom: "auto",
-//     border: "12px solid",
-//     borderColor: "white white transparent transparent"
-//   },
-//   "&.tri-right.border.btm-left:before": {
-//     content: "''",
-//     position: "absolute",
-//     width: "0",
-//     height: "0",
-//     left: "-8px",
-//     right: "auto",
-//     top: "auto",
-//     bottom: "-40px",
-//     border: "32px solid",
-//     borderColor: "transparent transparent transparent #0091ff"
-//   },
-//   "&.tri-right.btm-left:after": {
-//     content: "''",
-//     position: "absolute",
-//     width: "0",
-//     height: "0",
-//     left: "0px",
-//     right: "auto",
-//     top: "auto",
-//     bottom: "-20px",
-//     border: "22px solid",
-//     borderColor: "transparent transparent transparent white"
-//   },
-//   "&.tri-right.border.btm-left-in:before": {
-//     content: "''",
-//     position: "absolute",
-//     width: "0",
-//     height: "0",
-//     left: "30px",
-//     right: "auto",
-//     top: "auto",
-//     bottom: "-40px",
-//     border: "20px solid",
-//     borderColor: "#0091ff transparent transparent #0091ff"
-//   },
-//   "&.tri-right.btm-left-in:after": {
-//     content: "''",
-//     position: "absolute",
-//     width: "0",
-//     height: "0",
-//     left: "38px",
-//     right: "auto",
-//     top: "auto",
-//     bottom: "-20px",
-//     border: "12px solid",
-//     borderColor: "white transparent transparent white"
-//   },
-//   "&.border": {
-//     border: "8px solid #0091ff"
-//   },
-//   "&.round": {
-//     borderRadius: "30px"
-//   }
-// }));
-
-// Arrows animation for scroll down
-
-export const ArrowSVG = styled("svg")(({ theme }) => ({
-  "&.arrows": {
-    width: "60px",
-    height: "75px",
-    [theme.breakpoints.only("sm")]: {
-      width: "140px",
-      height: "80px"
-    },
-    [theme.breakpoints.only("xs")]: {
-      width: "180px",
-      height: "80px"
-    }
-  },
-  "&.arrows path": {
-    stroke: "#ffffff",
-    fill: "transparent",
-    strokeWidth: "3px",
-    animation: `${arrowAnimation} 2s infinite`,
-    WebkitAnimation: `${arrowAnimation} 2s infinite`
-  },
-  "&.arrows path.a1": {
-    animationDelay: "-1s",
-    WebkitAnimationDelay: "-1s"
-  },
-  "&.arrows path.a2": {
-    animationDelay: "-0.5s",
-    WebkitAnimationDelay: "-0.5s"
-  },
-  "&.arrows path.a3": {
-    animationDelay: "0s",
-    WebkitAnimationDelay: "0s"
-  },
-  "&:hover": {
-    cursor: "pointer"
-  }
-}));
-
-// Social Button
-
-export const SocialButton = styled(Button)(({ theme }) => ({
-  position: "absolute",
-  top: "-50px",
-  right: "-200px",
-  display: "flex",
-  alignItems: "center",
-  borderRadius: "5px",
-  padding: "15px",
-  gap: "15px",
-  backgroundColor: "#ffffff",
-  color: "#000000",
-  fontFamily: montserrat.style.fontFamily,
-  fontSize: "22px",
-  letterSpacing: "0.9px",
-  fontWeight: 500,
-  border: "none",
-  transition: "all 0.3s ease-in-out",
-  "&:hover": {
-    cursor: "pointer",
-    backgroundColor: "#ffffff !important",
-    filter: "brightness(0.8)"
-  },
-  "@media (max-width: 1470px)": {
-    fontSize: "18px",
-    padding: "10px"
-  },
-  [theme.breakpoints.down("md")]: {
-    position: "relative",
-    top: "auto",
-    right: "auto"
-  }
-}));
-
-// FAQ Section
 
 export const FAQCardContainer = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -783,7 +599,7 @@ export const MainRow = styled(Box)({
   flexDirection: "row",
   width: "100%",
   height: "100%",
-  gap: "20px"
+  gap: "20px",
 });
 
 export const YoutubeVideoContainer = styled(Box)(({ theme }) => ({
