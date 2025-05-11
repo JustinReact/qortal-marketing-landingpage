@@ -2,10 +2,6 @@
 import { useEffect, useRef, useState } from "react";
 import {
   CoinImg,
-  CoinLogo,
-  CoinLogoCol,
-  CoinLogoName,
-  CoinLogosRow,
   FAQCard,
   FAQCardContainer,
   FAQCardContainerRow,
@@ -16,32 +12,23 @@ import {
   MainContainer,
   MainRow,
   MainTitle,
-  UseCasesContainer,
   SubText,
   SubTextRow,
-  SubTitle,
   SubTitleDesc,
   SubTitleRow,
   ThirdContainer,
   URLWord,
-  UseCard,
-  UseCardRow,
-  UseColDesc,
-  UseColImg,
-  UseColRow,
-  UseColTitle,
   Wrapper,
   YoutubeVideoContainer,
-  TradingPortalContainer,
-  TradingPortalSubTitle,
-  TradingPortalTitle,
-  TradingPortalCol,
-  UseColNumber,
-  TradingPortalButton,
-  TradingPortalCard,
+  FeatureContainer,
+  FeatureTitle,
   TopFoldButtonRow,
   CTAButton1,
-  CTAButton2
+  CTAButton2,
+  FeatureDescription,
+  FeatureCol,
+  FeatureSubContainer,
+  FeatureImg
 } from "./QORTPage-styles";
 import ReactGA from "react-ga4";
 import { NorthEastSVG } from "../Common/Icons/NorthEastSVG";
@@ -124,248 +111,79 @@ const Qort = () => {
         </MainRow>
         <SubTextRow>
           <SubText>
-            QORT isn’t just another coin! It's the <strong>lifeblood</strong> of an alternative
-            internet. It fuels real peer-to-peer apps, incentivizes
-            contributors, and powers the parallel economy found on Qortal!
+            QORT isn’t just another coin! It's the very<strong>essence</strong>{" "}
+            of an alternative internet. It fuels real peer-to-peer apps,
+            incentivizes contributors, and powers the parallel economy found on
+            Qortal!
           </SubText>
         </SubTextRow>
-           <TopFoldButtonRow>
-                <CTAButton1
-                  onClick={() => {
-                    ReactGA.event({
-                      category: "User",
-                      action: "Clicked Learn How Button",
-                      label: "Learn How Button"
-                    });
-                  }}
-                >
-                  LEARN HOW
-                </CTAButton1>
-                <CTAButton2
-                  onClick={() => {
-                    ReactGA.set({ dimension1: "Landing Page Download Button" }); // Event-level dimension
-                    ReactGA.event({
-                      category: "User",
-                      action: "Clicked Main Download CTA Button",
-                      label: "Clicked Main Download CTA Button"
-                    });
-                  }}
-                >
-                  BUY QORT
-                </CTAButton2>
-              </TopFoldButtonRow>
+        <TopFoldButtonRow>
+          <CTAButton1
+            onClick={() => {
+              ReactGA.event({
+                category: "User",
+                action: "Clicked Learn How Button",
+                label: "Learn How Button"
+              });
+            }}
+          >
+            LEARN HOW
+          </CTAButton1>
+          <CTAButton2
+            onClick={() => {
+              ReactGA.set({ dimension1: "Landing Page Download Button" }); // Event-level dimension
+              ReactGA.event({
+                category: "User",
+                action: "Clicked Main Download CTA Button",
+                label: "Clicked Main Download CTA Button"
+              });
+            }}
+          >
+            BUY QORT
+          </CTAButton2>
+        </TopFoldButtonRow>
       </MainContainer>
-        <YoutubeVideoContainer>
-          {showVideoPlayer ? (
-            <iframe
-              src="https://www.youtube.com/watch?v=pgJybhuQGYI&t=135s?autoplay=1&rel=0"
-              loading="lazy"
-              title="Obtain QORT Using Litecoin From A Centralized Exchange"
-              allowFullScreen
-              allow="autoplay"
-            ></iframe>
-          ) : (
-            <YoutubePlaceholder
-              isModal={false}
-              onClick={handleVideoClick}
-              YoutubeThumbnail={"/images/Youtube/ObtainQORT.png"}
-              YoutubeTitle="Obtain QORT Using Litecoin From A Centralized Exchange"
-            />
-          )}
-        </YoutubeVideoContainer>
-      <TradingPortalContainer>
-        <SubTitle>Trade Portal</SubTitle>
-        <TradingPortalCol>
-          <TradingPortalTitle>OWN QORT IN MINUTES:</TradingPortalTitle>
-          <TradingPortalSubTitle>
-            With just the{" "}
-            <span style={{ fontStyle: "italic" }}>Qortal Extension</span>, start
-            trading QORT instantly and securely.
-          </TradingPortalSubTitle>
-        </TradingPortalCol>
-        <UseCardRow>
-          <TradingPortalCard>
-            <UseColNumber>1</UseColNumber>
-            <UseColTitle>Extension</UseColTitle>
-            <UseColDesc>
-              Install the Qortal Extension via qortal.dev/extension or on the
-              Google Chrome Store
-            </UseColDesc>
-            <TradingPortalButton
-              onClick={() => {
-                window.open("https://bit.ly/qortal-chrome-extension", "_blank");
-                ReactGA.event({
-                  category: "User",
-                  action: "Clicked Download Extension Button on Extension Page",
-                  label: "Clicked Download Extension Button on Extension Page"
-                });
-              }}
-            >
-              DOWNLOAD EXTENSION
-            </TradingPortalButton>
-          </TradingPortalCard>
-          <TradingPortalCard>
-            <UseColNumber>2</UseColNumber>
-            <UseColTitle>Trade Portal</UseColTitle>
-            <UseColDesc>Access our trading portal via qort.trade</UseColDesc>
-            <TradingPortalButton
-              onClick={() => {
-                window.open("https://bit.ly/qort-trade-portal", "_blank");
-                ReactGA.event({
-                  category: "User",
-                  action: "Clicked Visit Trade Portal Button on Extension Page",
-                  label: "Clicked Visit Trade Portal Button on Extension Page"
-                });
-              }}
-            >
-              VISIT TRADE PORTAL
-            </TradingPortalButton>
-          </TradingPortalCard>
-          <TradingPortalCard>
-            <UseColNumber>3</UseColNumber>
-            <UseColTitle>Buy QORT</UseColTitle>
-            <UseColDesc>
-              Buy and sell QORT directly from the Qortal blockchain!
-            </UseColDesc>
-            <TradingPortalButton
-              onClick={() => {
-                window.open("https://bit.ly/qort-trade-portal", "_blank");
-                ReactGA.event({
-                  category: "User",
-                  action: "Clicked Visit Buy QORT Button on Extension Page",
-                  label: "Clicked Visit Buy QORT Button on Extension Page"
-                });
-              }}
-            >
-              BUY QORT
-            </TradingPortalButton>
-          </TradingPortalCard>
-        </UseCardRow>
-      </TradingPortalContainer>
-      <UseCasesContainer>
-        <SubTitleRow ref={useCasesRef}>
-          <SubTitle>Use Cases</SubTitle>
-          <SubTitleDesc>
-            These are some of the ways you can use QORT in the Qortal ecosystem.
-            This is only the beginning!
-          </SubTitleDesc>
-        </SubTitleRow>
-        <UseCardRow>
-          <UseCard>
-            <UseColImg
-              src={"/images/QORT/Q-ShopLogo.png"}
-              alt="Q-Shop Logo Design"
-              width={500}
-              height={500}
-            />
-            <UseColRow>
-              <UseColTitle>Q-Shop</UseColTitle>
-              <UseColDesc>
-                Buy and sell goods and services with QORT directly on the Qortal
-                blockchain!
-              </UseColDesc>
-            </UseColRow>
-          </UseCard>
-          <UseCard>
-            <UseColImg
-              src={"/images/QORT/NamesMarket.png"}
-              alt="Names Market Design"
-              width={500}
-              height={500}
-            />
-            <UseColRow>
-              <UseColTitle>Names Market</UseColTitle>
-              <UseColDesc>
-                Register a name on the Qortal blockchain and use it as a unique
-                identifier for your account. This currently costs{" "}
-                <span style={{ fontWeight: "bold" }}>1.25 QORT</span>.
-                <br />
-                <br />
-                You can also buy and sell names on the Names Market, along with
-                all the data associated with them.
-              </UseColDesc>
-            </UseColRow>
-          </UseCard>
-          <UseCard>
-            <UseColImg
-              src={"/images/QORT/TradePortal.png"}
-              alt="Trade Portal Design"
-              width={500}
-              height={500}
-            />
-            <UseColRow>
-              <UseColTitle>Trade Portal</UseColTitle>
-              <UseColDesc>
-                Trade QORT against 6 other coins directly on Qortal's Trade
-                Portal.
-                <br />
-                <br />
-                These are:
-                <br />
-              </UseColDesc>
-            </UseColRow>
-            <CoinLogosRow>
-              <CoinLogoCol>
-                <CoinLogoName>BTC</CoinLogoName>
-                <CoinLogo
-                  src={"/images/QORT/btc.webp"}
-                  alt="Bitcoin Logo"
-                  width={500}
-                  height={500}
-                />
-              </CoinLogoCol>
-              <CoinLogoCol>
-                <CoinLogoName>LTC</CoinLogoName>
-                <CoinLogo
-                  src={"/images/QORT/ltc.webp"}
-                  alt="Litecoin Logo"
-                  width={500}
-                  height={500}
-                />
-              </CoinLogoCol>
-              <CoinLogoCol>
-                <CoinLogoName>DOGE</CoinLogoName>
-                <CoinLogo
-                  src={"/images/QORT/doge.webp"}
-                  alt="Doge Logo"
-                  width={500}
-                  height={500}
-                />
-              </CoinLogoCol>
-              <CoinLogoCol>
-                <CoinLogoName>DGB</CoinLogoName>
-                <CoinLogo
-                  src={"/images/QORT/dgb.webp"}
-                  alt="DigiByte Logo"
-                  width={500}
-                  height={500}
-                />
-              </CoinLogoCol>
-              <CoinLogoCol>
-                <CoinLogoName>RVN</CoinLogoName>
-                <CoinLogo
-                  src={"/images/QORT/rvn.webp"}
-                  alt="Ravencoin Logo"
-                  width={500}
-                  height={500}
-                />
-              </CoinLogoCol>
-              <CoinLogoCol>
-                <CoinLogoName>ARRR</CoinLogoName>
-                <CoinLogo
-                  src={"/images/QORT/arrr.webp"}
-                  alt="Pirate Chain Logo"
-                  width={500}
-                  height={500}
-                />
-              </CoinLogoCol>
-            </CoinLogosRow>
-          </UseCard>
-        </UseCardRow>
-      </UseCasesContainer>
+      <YoutubeVideoContainer>
+        {showVideoPlayer ? (
+          <iframe
+            src="https://www.youtube.com/watch?v=pgJybhuQGYI&t=135s?autoplay=1&rel=0"
+            loading="lazy"
+            title="Obtain QORT Using Litecoin From A Centralized Exchange"
+            allowFullScreen
+            allow="autoplay"
+          ></iframe>
+        ) : (
+          <YoutubePlaceholder
+            isModal={false}
+            onClick={handleVideoClick}
+            YoutubeThumbnail={"/images/Youtube/ObtainQORT.png"}
+            YoutubeTitle="Obtain QORT Using Litecoin From A Centralized Exchange"
+          />
+        )}
+      </YoutubeVideoContainer>
+      <FeatureContainer>
+        <FeatureSubContainer>
+          <FeatureImg
+            quality={100}
+            height={250}
+            width={250}
+            src={"/images/QORT/Spaceship.png"}
+            alt=""
+          />
+          <FeatureCol>
+            <FeatureTitle>Powering the New Internet</FeatureTitle>
+            <FeatureDescription>
+              QORT isn’t just a coin. It’s the native currency of a
+              peer-to-peer, alternative internet that replaces the
+              infrastructure of the traditional internet. From hosting, to
+              publishing, to apps, QORT powers it all!
+            </FeatureDescription>
+          </FeatureCol>
+        </FeatureSubContainer>
+      </FeatureContainer>
       <ThirdContainer>
         <SubTitleRow>
-          <SubTitle>FAQ</SubTitle>
+          <FeatureTitle>FAQ</FeatureTitle>
           <SubTitleDesc>
             Here are some Frequently Asked Questions about QORT and how it
             pertains to Qortal

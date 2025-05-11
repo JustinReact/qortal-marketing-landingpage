@@ -67,22 +67,23 @@ export const MainContainer = styled(Box)(({ theme }) => ({
   }
 }));
 
-export const UseCasesContainer = styled(Box)({
+export const FeatureContainer = styled(Box)({
   display: "flex",
   flexDirection: "column",
   justifyContent: "flex-start",
   alignItems: "center",
   width: "100%",
-  height: "100%"
+  height: "100%",
+  gap: "150px",
 });
 
-export const TradingPortalContainer = styled(Box)({
+export const FeatureSubContainer = styled(Box)({
   display: "flex",
-  flexDirection: "column",
-  justifyContent: "flex-start",
-  alignItems: "center",
+  flexDirection: "row",
+  alignItems: "fkex-start",
+  gap: "27px",
   width: "100%",
-  height: "100%"
+  height: "100%",
 });
 
 export const ThirdContainer = styled(Box)({
@@ -93,6 +94,8 @@ export const ThirdContainer = styled(Box)({
   width: "100%",
   height: "100%"
 });
+
+export const FeatureImg = styled(Image)(({ theme }) => ({}));
 
 export const MainTitle = styled(Typography)(({ theme }) => ({
   fontFamily: protestStrike.style.fontFamily,
@@ -124,194 +127,15 @@ export const SubTitleRow = styled(Box)({
   padding: "0 15px"
 });
 
-export const SubTitle = styled(Typography)(({ theme }) => ({
-  fontFamily: spartan.style.fontFamily,
-  fontSize: "80px",
-  fontWeight: 500,
-  color: theme.palette.text.primary,
-  letterSpacing: "0px",
-  userSelect: "none",
-  lineHeight: "100px",
-  [theme.breakpoints.down("sm")]: {
-    fontSize: "70px",
-    textAlign: "center",
-    lineHeight: "90px"
-  }
-}));
-
 export const SubTitleDesc = styled(Typography)({
-  fontFamily: ptSans.style.fontFamily,
-  fontSize: "35px",
+  fontFamily: oxygen.style.fontFamily,
+  fontSize: "32px",
   fontWeight: 400,
+  lineHeight: "65px",
   color: "#ffffff",
   letterSpacing: "0px",
   userSelect: "none",
-  lineHeight: "50px"
 });
-
-export const TradingPortalCol = styled(Box)({
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  flexDirection: "column",
-  gap: "40px",
-  width: "100%",
-  height: "100%",
-  marginTop: "50px"
-});
-
-export const TradingPortalTitle = styled(Typography)(({ theme }) => ({
-  fontFamily: ptSans.style.fontFamily,
-  fontSize: "40px",
-  fontWeight: 700,
-  lineHeight: "50px",
-  textAlign: "center"
-}));
-
-export const TradingPortalSubTitle = styled(Typography)(({ theme }) => ({
-  fontFamily: ptSans.style.fontFamily,
-  fontSize: "40px",
-  fontWeight: 400,
-  lineHeight: "50px",
-  textAlign: "center"
-}));
-
-export const TradingPortalButton = styled(Button)(({ theme }) => ({
-  position: "absolute",
-  bottom: "20px",
-  width: "auto",
-  minWidth: "286px",
-  height: "87px",
-  padding: "34px 59px",
-  borderRadius: "50px",
-  border: `1px solid #ffffff`,
-  color: "#ffffff",
-  fontFamily: "Fira Sans",
-  fontSize: "16px",
-  fontWeight: 400,
-  lineHeight: "19.2px",
-  alignSelf: "center",
-  transition: "all 0.3s ease-in-out",
-  "&:hover": {
-    backgroundColor: "#14C6EE",
-    color: "#000000",
-    cursor: "pointer"    
-  },
-  [theme.breakpoints.down("sm")]: {
-    position: "relative",
-    bottom: "0",
-  }
-}));
-
-export const UseCardRow = styled(Box)({
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "flex-start",
-  flexDirection: "row",
-  gap: "80px",
-  width: "100%",
-  height: "100%",
-  flexWrap: "wrap",
-  marginTop: "95px"
-});
-
-export const TradingPortalCard = styled(Box)(({ theme }) => ({
-  position: "relative",
-  display: "flex",
-  justifyContent: "flex-start",
-  alignItems: "flex-start",
-  flexDirection: "column",
-  gap: "60px",
-  width: "400px",
-  height: "620px",
-  padding: "180px 20px 20px 20px",
-  borderRadius: "20px",
-  borderBottom: "4px solid #01041a",
-  borderRight: "4px solid #01041a",
-  background:
-    "radial-gradient(circle at 0px top, rgba(20,198,238,1) 4%, rgba(97,71,235,1) 34%, rgba(11,23,41,1) 53%)",
-  [theme.breakpoints.only("xs")]: {
-    height: "auto"
-  }
-}));
-
-export const UseCard = styled(Box)(({ theme }) => ({
-  position: "relative",
-  display: "flex",
-  justifyContent: "flex-start",
-  alignItems: "flex-start",
-  flexDirection: "column",
-  gap: "20px",
-  width: "400px",
-  height: "620px",
-  padding: "180px 20px 20px 20px",
-  borderRadius: "20px",
-  borderBottom: "4px solid #01041a",
-  borderRight: "4px solid #01041a",
-  background:
-    "radial-gradient(circle at 0px top, rgba(20,198,238,1) 4%, rgba(97,71,235,1) 34%, rgba(11,23,41,1) 53%)",
-  [theme.breakpoints.only("xs")]: {
-    height: "auto"
-  }
-}));
-
-export const UseColNumber = styled(Typography)({
-  position: "absolute",
-  top: "0",
-  left: "20px",
-  color: "#ffffff",
-  fontFamily: spartan.style.fontFamily,
-  fontSize: "128px",
-  fontWeight: 800,
-  lineHeight: "60px",
-  textAlign: "left",
-  textShadow: "-1px -1px 0 black,   1px -1px 0 black,  -1px  1px 0 black,  1px  1px 0 black", /* Shadow color */
-});
-
-export const UseColImg = styled(Image)({
-  position: "absolute",
-  top: "-65px",
-  left: "20px",
-  width: "auto",
-  height: "200px",
-  objectFit: "cover",
-  userSelect: "none",
-  filter: "drop-shadow(0px 18px 20px #cdcdcd)"
-});
-
-export const UseColRow = styled(Box)({
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "center",
-  alignItems: "flex-start",
-  gap: "20px"
-});
-
-export const UseColTitle = styled(Typography)(({ theme }) => ({
-  fontFamily: spartan.style.fontFamily,
-  fontSize: "40px",
-  lineHeight: "60px",
-  fontWeight: 500,
-  color: "#ffffff",
-  letterSpacing: "0px",
-  userSelect: "none",
-  [theme.breakpoints.down("sm")]: {
-    fontSize: "40px",
-  }
-}));
-
-export const UseColDesc = styled(Typography)(({ theme }) => ({
-  fontFamily: ptSans.style.fontFamily,
-  fontSize: "27px",
-  lineHeight: "32px",
-  fontWeight: 400,
-  color: "#ffffff",
-  letterSpacing: "0px",
-  userSelect: "none",
-  [theme.breakpoints.down("sm")]: {
-    fontSize: "20px"
-  }
-}));
 
 export const CoinImg = styled(Image)(({ theme }) => ({
   width: "400px",
@@ -332,13 +156,48 @@ export const CoinImg = styled(Image)(({ theme }) => ({
   }
 }));
 
-export const SubTextRow = styled(Typography)({
+export const SubTextRow = styled(Box)({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
   flexDirection: "row",
   textAlign: "center",
 });
+
+export const FeatureCol = styled(Box)({
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  flexDirection: "column",
+  gap: "40px",
+  width: "100%",
+  height: "100%",
+});
+
+export const FeatureTitle = styled(Typography)(({ theme }) => ({
+  fontFamily: oxygen.style.fontFamily,
+  fontSize: "64px",
+  lineHeight: "120px",
+  fontWeight: 500,
+  letterSpacing: "0px",
+  color: theme.palette.text.primary,
+  textTransform: "uppercase",
+  userSelect: "none",
+  [theme.breakpoints.down("sm")]: {
+    fontSize: "40px",
+    textAlign: "center",
+    lineHeight: "40px"
+  }
+}));
+
+export const FeatureDescription = styled(Typography)(({ theme }) => ({
+  fontFamily: oxygen.style.fontFamily,
+  fontSize: "32px",
+  letterSpacing: 0,
+  lineHeight: "50px",
+  fontWeight: 400,
+  userSelect: "none",
+}));
 
 export const SubText = styled(Typography)(({ theme }) => ({
   fontFamily: oxygen.style.fontFamily,
@@ -372,8 +231,8 @@ export const CTAButton1 = styled(Button)(({ theme }) => ({
   fontSize: "18px",
   lineHeight: "21.3px",
   letterSpacing: 0,
-  width: "181px",
-  height: "43px",
+  width: "265px",
+  height: "80px",
   padding: "10px 30px 10px 30px",
   gap: "7px",
   borderRadius: "30px",
@@ -403,13 +262,13 @@ export const CTAButton2 = styled(Button)(({ theme }) => ({
   fontSize: "18px",
   lineHeight: "21.3px",
   letterSpacing: 0,
-  width: "181px",
-  height: "43px",
+  width: "265px",
+  height: "80px",
   padding: "10px 30px 10px 30px",
   gap: "7px",
   borderRadius: "30px",
   border: `1px solid ${theme.palette.customBlue.main}`,
-  color: "#000000",
+  color: "#ffffff",
   backgroundColor: theme.palette.customBlue.main,
   cursor: "pointer",
   boxShadow: "1px 4px 10.5px 0px #0000004D",
