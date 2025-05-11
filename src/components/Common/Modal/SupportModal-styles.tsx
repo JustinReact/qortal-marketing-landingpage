@@ -18,6 +18,7 @@ export const SupportModalContainer = styled(Box)(({ theme }) => ({
   alignItems: "center",
   padding: "40px 37px",
   gap: "30px",
+  zIndex: 6,
   [theme.breakpoints.down("sm")]: {
     width: "95vw",
     right: "10px",

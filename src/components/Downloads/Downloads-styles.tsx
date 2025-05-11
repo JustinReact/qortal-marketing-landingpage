@@ -241,6 +241,7 @@ export const ScreenshotContainer = styled(Grid)(({ theme }) => ({
   alignItems: "center",
   justifyContent: "center",
   marginTop: "127px",
+  zIndex: 0,
   [theme.breakpoints.down("lg")]: {
     display: "none"
   }
