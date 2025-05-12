@@ -36,6 +36,7 @@ import { SouthEastSVG } from "../Common/Icons/SouthEastSVG";
 import { AnimatePresence, motion } from "framer-motion";
 import { useMediaQuery, useTheme } from "@mui/material";
 import { YoutubePlaceholder } from "../YouTube/YoutubePlaceholder";
+import { StaggeredFadeIn } from "../Common/Wrappers/StaggeredFadeIn";
 
 const Qort = () => {
   const muiTheme = useTheme();
@@ -92,6 +93,33 @@ const Qort = () => {
     }
   };
 
+  const features = [
+    {
+      title: "Powering the New Internet",
+      description:
+        "QORT isn’t just a coin. It’s the native currency of a peer-to-peer, alternative internet that replaces the infrastructure of the traditional internet. From hosting, to publishing, to apps, QORT powers it all!",
+      image: "/images/QORT/Spaceship.png"
+    },
+    {
+      title: "Earn by Supporting the Network",
+      description:
+        "No staking. No locked tokens. Earn QORT by becoming a minter and supporting the chain with your own node. No special hardware required!",
+      image: "/images/QORT/QORTCoins.png"
+    },
+    {
+      title: "Real Utility Through Q-Apps",
+      description:
+        "Use QORT to buy and sell on Q-Shop, support creators on Q-Tube, raise funds with Q-Fund, or chat privately in encrypted groups—all without middlemen.",
+      image: "/images/QORT/Monitor.png"
+    },
+    {
+      title: "Trustless Trading with 6+ Coins",
+      description:
+        "Q-Trade lets you swap QORT for assets like LTC, ARRR, DOGE, RVN, DGB and BTC, directly from your wallet. That means you remain in full control of your assets the entire time, without intermediaries. Just pure, on-chain, peer-to-peer trading secured by cross-chain atomic trades.",
+      image: "/images/QORT/Graph.png"
+    }
+  ];
+
   return (
     <Wrapper>
       <MainContainer>
@@ -111,7 +139,7 @@ const Qort = () => {
         </MainRow>
         <SubTextRow>
           <SubText>
-            QORT isn’t just another coin! It's the very<strong>essence</strong>{" "}
+            QORT isn’t just another coin! It's the very <strong>essence</strong>{" "}
             of an alternative internet. It fuels real peer-to-peer apps,
             incentivizes contributors, and powers the parallel economy found on
             Qortal!
@@ -146,7 +174,7 @@ const Qort = () => {
       <YoutubeVideoContainer>
         {showVideoPlayer ? (
           <iframe
-            src="https://www.youtube.com/watch?v=pgJybhuQGYI&t=135s?autoplay=1&rel=0"
+            src="https://www.youtube.com/watch?v=pgJybhuQGYI?autoplay=1&rel=0"
             loading="lazy"
             title="Obtain QORT Using Litecoin From A Centralized Exchange"
             allowFullScreen
@@ -162,24 +190,23 @@ const Qort = () => {
         )}
       </YoutubeVideoContainer>
       <FeatureContainer>
-        <FeatureSubContainer>
-          <FeatureImg
-            quality={100}
-            height={250}
-            width={250}
-            src={"/images/QORT/Spaceship.png"}
-            alt=""
-          />
-          <FeatureCol>
-            <FeatureTitle>Powering the New Internet</FeatureTitle>
-            <FeatureDescription>
-              QORT isn’t just a coin. It’s the native currency of a
-              peer-to-peer, alternative internet that replaces the
-              infrastructure of the traditional internet. From hosting, to
-              publishing, to apps, QORT powers it all!
-            </FeatureDescription>
-          </FeatureCol>
-        </FeatureSubContainer>
+        {features.map((feature, index) => (
+          <StaggeredFadeIn delayOrder={index} key={feature.title}>
+            <FeatureSubContainer>
+              <FeatureImg
+                quality={100}
+                height={250}
+                width={250}
+                src={feature.image}
+                alt=""
+              />
+              <FeatureCol>
+                <FeatureTitle>{feature.title}</FeatureTitle>
+                <FeatureDescription>{feature.description}</FeatureDescription>
+              </FeatureCol>
+            </FeatureSubContainer>
+          </StaggeredFadeIn>
+        ))}
       </FeatureContainer>
       <ThirdContainer>
         <SubTitleRow>

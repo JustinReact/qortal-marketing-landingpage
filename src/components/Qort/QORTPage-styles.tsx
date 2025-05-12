@@ -80,7 +80,7 @@ export const FeatureContainer = styled(Box)({
 export const FeatureSubContainer = styled(Box)({
   display: "flex",
   flexDirection: "row",
-  alignItems: "fkex-start",
+  alignItems: "flex-start",
   gap: "27px",
   width: "100%",
   height: "100%",
@@ -214,7 +214,6 @@ export const TopFoldButtonRow = styled(Box)(({ theme }) => ({
   justifyContent: "center",
   marginTop: "25px",
   gap: "30px",
-  marginBottom: "157px",
   [theme.breakpoints.down("lg")]: {
     justifyContent: "center"
   },
