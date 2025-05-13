@@ -27,6 +27,7 @@ import {
 } from "./Ebook-styles";
 import { Tooltip, useTheme } from "@mui/material";
 import { CustomInputField } from "../Blog/BlogPostsClient-styles";
+import { downloadEbook, submitBlurb } from "../../utils/ebookApiController";
 
 const Ebook = () => {
   const theme = useTheme();
@@ -72,25 +73,51 @@ const Ebook = () => {
     setEmailError(!validateEmail(email));
   };
 
+  const handleDownloadEbook = async () => {
+    try {
+      const res = downloadEbook(name, email);
+      if (!res) {
+        window.alert("Error! Try again!");
+      }
+    } catch (error) {
+      console.error('[handleDownloadEbook] :', error);
+    }
+  }
   // Function to handle the download button click
-  const handleDownloadClick = () => {
+  const handleDownloadClick = async () => {
     const isEmailValid = validateEmail(email);
     setEmailError(!isEmailValid);
     const isNameValid = name.trim() !== "";
     setNameError(!isNameValid);
 
     if (isEmailValid && isNameValid) {
+      await handleDownloadEbook();
       setDownloadedBook(true);
     }
   };
 
+  const handleSubmitBlurb = async (): Promise<boolean> => {
+    try {
+      const res = submitBlurb(email, surveyResponse);
+      if (!res) return false;
+      return true;
+    } catch (error) {
+      console.error('[handleSubmitBlurb] :', error)
+      return false;
+    }
+  }
   // Function to handle sending the survey response
-  const handleSurveyResponse = () => {
+  const handleSurveyResponse = async () => {
     const isResponseValid = surveyResponse.trim() !== "";
     setSurveyResponseError(!isResponseValid);
     if (isResponseValid) {
       // Logic to send the survey response to the server or perform any other action
-      console.log("Survey response sent", name);
+      const res = await handleSubmitBlurb();
+      if (res) {
+        window.alert("Success!");
+      } else {
+        window.alert("Error! Please, try again!")
+      }
     }
   };
 
@@ -232,7 +259,7 @@ const Ebook = () => {
                   minRows={8}
                   maxRows={12}
                   value={surveyResponse}
-                  onChange={handleNameInputChange}
+                  onChange={handleSurveyResponseChange}
                   error={surveyResponseError}
                   helperText={
                     surveyResponseError ? "Please enter your answer." : ""
