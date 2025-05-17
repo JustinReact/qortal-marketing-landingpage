@@ -6,6 +6,18 @@ const COLLECTIONS = {
 };
 
 /**
+ * Checks if a subscriber with the given email already exists in Firestore.
+ * @param {string} email
+ * @returns {Promise<boolean>}
+ */
+const checkIfEmailExists = async (email: string): Promise<boolean> => {
+    const q = query(collection(db, COLLECTIONS.SUBSCRIBERS), where('email', '==', email));
+    const snapshot = await getDocs(q);
+    return !snapshot.empty;
+};
+
+
+/**
  * Saves or updates a subscriber document in Firestore.
  * @param {Object} params
  * @param {string} params.name
@@ -23,6 +35,13 @@ export const saveSubscriber = async ({ name, email }: { name: string; email: str
     const subscriberRef = collection(db, COLLECTIONS.SUBSCRIBERS);
 
     try {
+        
+        const exists = await checkIfEmailExists(email);
+        console.log('exists:',exists);
+        if (exists) {
+            throw new Error('Subscriber with this email already exists.');
+        }
+
         await addDoc(subscriberRef, subscriberData);
         return { success: true, data: subscriberData };
     } catch (error) {
