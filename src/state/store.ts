@@ -2,11 +2,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import osReducer from "./features/osSlice";
 import themeReducer from "./theme/themeSlice";
+import notificationsReducer from './features/notificationsSlice'
 
 export const store = configureStore({
   reducer: {
     OS: osReducer,
-    theme: themeReducer
+    theme: themeReducer,
+    notifications: notificationsReducer
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
