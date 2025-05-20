@@ -19,8 +19,7 @@ export const downloadEbook = async (name: string, email: string) => {
       true,
       true
     );
-
-    if (!response || response.status !== 200) {
+    if (!response) {
       return false;
     }
     return response;

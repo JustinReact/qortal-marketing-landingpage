@@ -81,6 +81,7 @@ const Ebook = () => {
     try {
       const res = await downloadEbook(name, email);
       if (res) {
+        setDownloadedBook(true);
         dispatch(
           setNotification({
             msg: "Ebook downloaded successfully!",
@@ -113,7 +114,6 @@ const Ebook = () => {
 
     if (isEmailValid && isNameValid) {
       await handleDownloadEbook();
-      setDownloadedBook(true);
     }
   };
 

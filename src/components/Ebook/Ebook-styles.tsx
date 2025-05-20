@@ -1,4 +1,4 @@
-import { maxWidth, styled, textAlign, width } from "@mui/system";
+import { styled } from "@mui/system";
 import {
   Box,
   Button,

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import LayoutProvider from "./layout-provider";
-
+import Notification from "../components/Common/Notification/Notification";
 
 export const metadata: Metadata = {
   title: "Explore Qortal - A Web3 Platform for Everyone",
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://qortal.dev"
-  },
+  }
 };
 
 export default function RootLayout({
@@ -44,7 +44,8 @@ export default function RootLayout({
       <body>
         <AppRouterCacheProvider options={{ enableCssLayer: true }}>
           <LayoutProvider>
-          {children}
+            <Notification />
+            {children}
           </LayoutProvider>
         </AppRouterCacheProvider>
       </body>
