@@ -82,8 +82,6 @@ const Ebook = () => {
       const res = await downloadEbook(name, email);
       if (res) {
         setDownloadedBook(true);
-        setName("");
-        setEmail("");
         dispatch(
           setNotification({
             msg: "Ebook downloaded successfully!",
@@ -121,7 +119,7 @@ const Ebook = () => {
 
   const handleSubmitBlurb = async (): Promise<boolean> => {
     try {
-      const res = submitBlurb(email, surveyResponse);
+      const res = await submitBlurb(email, surveyResponse);
       if (!res) return false;
       return true;
     } catch (error) {
@@ -134,7 +132,6 @@ const Ebook = () => {
     const isResponseValid = surveyResponse.trim() !== "";
     setSurveyResponseError(!isResponseValid);
     if (isResponseValid) {
-      // Logic to send the survey response to the server or perform any other action
       const res = await handleSubmitBlurb();
       if (res) {
         dispatch(
@@ -144,6 +141,8 @@ const Ebook = () => {
           })
         );
         setSurveyResponse("");
+        setName("");
+        setEmail("");
         setDownloadedBook(false);
       } else {
         dispatch(
