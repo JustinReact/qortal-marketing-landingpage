@@ -82,6 +82,8 @@ const Ebook = () => {
       const res = await downloadEbook(name, email);
       if (res) {
         setDownloadedBook(true);
+        setName("");
+        setEmail("");
         dispatch(
           setNotification({
             msg: "Ebook downloaded successfully!",
