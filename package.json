@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "concurrently \"npm run serve --prefix api\" \"next dev\"",
-    "build": "npm run build --prefix api && next build",
+    "build": "next build",
     "start": "concurrently \"npm run start --prefix api\" \"next start\""
   },
   "dependencies": {

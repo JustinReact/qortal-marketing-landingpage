@@ -45,7 +45,7 @@ const Notification = () => {
   if (alertTypes.alertSuccess) {
     toast.success(`✔️ ${alertTypes?.alertSuccess}`, {
       position: "bottom-right",
-      autoClose: false,
+      autoClose: 4000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
