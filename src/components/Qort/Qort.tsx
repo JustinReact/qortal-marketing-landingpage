@@ -264,7 +264,7 @@ const Qort = () => {
         <FAQCardContainer>
           <FAQCardContainerRow>
             <FAQNumberBubble>
-              <span style={{ padding: "5px" }}>1</span>
+              <span>1</span>
             </FAQNumberBubble>
             <FAQCard
               onClick={() => {

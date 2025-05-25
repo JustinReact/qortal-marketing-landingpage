@@ -407,9 +407,9 @@ export const FAQNumberBubble = styled(Box)(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  width: "50px",
-  height: "45px",
   borderRadius: "50%",
+  aspectRatio: "1",
+  minWidth: "50px",
   backgroundColor:
     theme.palette.mode === "dark" ? "#262626" : "#9ED9FD",
   color: theme.palette.text.primary,
