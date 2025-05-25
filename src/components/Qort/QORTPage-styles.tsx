@@ -1,7 +1,9 @@
 import { styled, keyframes } from "@mui/system";
 import { Box, Button, Typography } from "@mui/material";
 import Image from "next/image";
-import { montserrat, oxygen, protestStrike, ptSans, raleway, spartan } from "../../app/fonts";
+import { oxygen, protestStrike, ptSans, raleway } from "../../app/fonts";
+import TradeOgre from "../../../public/images/QORT/TradeOgre.png";
+import { themeSlice } from "../../state/theme/themeSlice";
 
 export const spinAnimation = keyframes`
   0% {
@@ -37,18 +39,17 @@ export const Wrapper = styled(Box)(({ theme }) => ({
   width: "100%",
   padding: "0 200px",
   [theme.breakpoints.up("xl")]: {
-    padding: "0 300px",
+    padding: "0 300px"
   },
   [theme.breakpoints.down("lg")]: {
-    padding: "0 100px",
+    padding: "0 100px"
   },
   [theme.breakpoints.down("md")]: {
-    padding: "0 50px",
+    padding: "0 50px"
   },
-  [theme.breakpoints.down("sm")]: {
+  "@media (max-width: 788px)": {
     gap: "100px",
-    padding: "0 20px",
-  
+    padding: "0 20px"
   }
 }));
 
@@ -75,6 +76,9 @@ export const FeatureContainer = styled(Box)({
   width: "100%",
   height: "100%",
   gap: "150px",
+  "@media (max-width: 788px)": {
+    gap: "75px"
+  }
 });
 
 export const FeatureSubContainer = styled(Box)({
@@ -84,6 +88,11 @@ export const FeatureSubContainer = styled(Box)({
   gap: "27px",
   width: "100%",
   height: "100%",
+  "@media (max-width: 788px)": {
+    flexDirection: "column",
+    alignItems: "center",
+    gap: "0"
+  }
 });
 
 export const ThirdContainer = styled(Box)({
@@ -102,19 +111,23 @@ export const MainTitle = styled(Typography)(({ theme }) => ({
   lineHeight: "120px",
   fontSize: "128px",
   fontWeight: 500,
-  color: theme.palette.mode === "dark" ? "#ffffff" : theme.palette.secondary.light,
+  color: theme.palette.text.primary,
   letterSpacing: "0px",
   userSelect: "none",
   "& span": {
     color: theme.palette.customBlue.main
   },
+  [theme.breakpoints.down("lg")]: {
+    fontSize: "100px",
+    lineHeight: "100px"
+  },
   [theme.breakpoints.down("md")]: {
-    fontSize: "180px",
-    lineHeight: "150px",
+    fontSize: "85px",
+    lineHeight: "85px"
   },
   [theme.breakpoints.down("sm")]: {
     fontSize: "75px",
-    lineHeight: "75px",
+    lineHeight: "75px"
   }
 }));
 
@@ -122,20 +135,25 @@ export const SubTitleRow = styled(Box)({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
+  gap: "15px",
   flexDirection: "column",
   textAlign: "center",
   padding: "0 15px"
 });
 
-export const SubTitleDesc = styled(Typography)({
+export const SubTitleDesc = styled(Typography)(({ theme }) => ({
   fontFamily: oxygen.style.fontFamily,
   fontSize: "32px",
   fontWeight: 400,
-  lineHeight: "65px",
-  color: "#ffffff",
+  lineHeight: "55px",
+  color: theme.palette.text.primary,
   letterSpacing: "0px",
   userSelect: "none",
-});
+  "@media(max-width: 788px)": {
+    fontSize: "30px",
+    lineHeight: "50px"
+  }
+}));
 
 export const CoinImg = styled(Image)(({ theme }) => ({
   width: "400px",
@@ -146,6 +164,10 @@ export const CoinImg = styled(Image)(({ theme }) => ({
   filter: "drop-shadow(0px 65px 70px rgba(0, 0, 0, 0.2))",
   overflow: "visible",
   zIndex: 1,
+  [theme.breakpoints.down("lg")]: {
+    width: "350px",
+    height: "350px"
+  },
   [theme.breakpoints.down("md")]: {
     width: "300px",
     height: "300px"
@@ -161,7 +183,7 @@ export const SubTextRow = styled(Box)({
   justifyContent: "center",
   alignItems: "center",
   flexDirection: "row",
-  textAlign: "center",
+  textAlign: "center"
 });
 
 export const FeatureCol = styled(Box)({
@@ -171,33 +193,37 @@ export const FeatureCol = styled(Box)({
   flexDirection: "column",
   gap: "40px",
   width: "100%",
-  height: "100%",
+  height: "100%"
 });
 
 export const FeatureTitle = styled(Typography)(({ theme }) => ({
   fontFamily: oxygen.style.fontFamily,
   fontSize: "64px",
-  lineHeight: "120px",
+  lineHeight: "80px",
   fontWeight: 500,
   letterSpacing: "0px",
   color: theme.palette.text.primary,
   textTransform: "uppercase",
   userSelect: "none",
-  [theme.breakpoints.down("sm")]: {
-    fontSize: "40px",
+  "@media(max-width: 788px)": {
+    fontSize: "42px",
     textAlign: "center",
-    lineHeight: "40px"
+    lineHeight: "52px"
   }
 }));
 
-export const FeatureDescription = styled(Typography)(({ theme }) => ({
+export const FeatureDescription = styled(Typography)({
   fontFamily: oxygen.style.fontFamily,
   fontSize: "32px",
   letterSpacing: 0,
   lineHeight: "50px",
   fontWeight: 400,
   userSelect: "none",
-}));
+  "@media(max-width: 788px)": {
+    fontSize: "30px",
+    lineHeight: "42px"
+  }
+});
 
 export const SubText = styled(Typography)(({ theme }) => ({
   fontFamily: oxygen.style.fontFamily,
@@ -206,21 +232,85 @@ export const SubText = styled(Typography)(({ theme }) => ({
   lineHeight: "50px",
   fontWeight: 400,
   userSelect: "none",
+  [theme.breakpoints.down("md")]: {
+    fontSize: "30px",
+    lineHeight: "42px"
+  }
 }));
 
-export const TopFoldButtonRow = styled(Box)(({ theme }) => ({
+export const TopFoldButtonCol = styled(Box)({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+  width: "100%",
+  height: "100%",
+  gap: "40px",
+  maxWidth: "fit-content",
+  "@media (max-width: 788px)": {
+    gap: "15px"
+  }
+});
+
+export const TopFoldButtonRow = styled(Box)({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
   marginTop: "25px",
   gap: "30px",
-  [theme.breakpoints.down("lg")]: {
-    justifyContent: "center"
+  "@media (max-width: 788px)": {
+    flexDirection: "column-reverse",
+    alignItems: "center",
+    gap: "15px"
+  }
+});
+
+export const TradeOgreCTAButton = styled(Button)(({ theme }) => ({
+  position: "relative",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "flex-start",
+  fontFamily: oxygen.style.fontFamily,
+  fontWeight: 500,
+  fontSize: "18px",
+  height: "80px",
+  width: "100%",
+  lineHeight: "21.3px",
+  letterSpacing: 0,
+  padding: "10px 0 10px 67px",
+  gap: "37px",
+  borderRadius: "30px",
+  border: `1px solid ${theme.palette.text.primary}`,
+  color: theme.palette.text.primary,
+  backgroundColor: "transparent",
+  boxShadow: "none",
+  cursor: "pointer",
+  transition: "all 0.2s ease-in-out",
+  "&::after": {
+    content: '""',
+    backgroundImage: `url(${TradeOgre.src})`,
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "contain",
+    position: "absolute",
+    width: "300px",
+    top: 0,
+    right: "-70px",
+    height: "100%"
   },
-  [theme.breakpoints.down("sm")]: {
-    gap: "10px",
+  "&:hover": {
+    color: "#ffffff",
+    boxShadow: "1px 4px 10.5px 0px #0000004D",
+    backgroundColor: "#534242",
+    border: `1px solid #534242`,
+  },
+  "@media (max-width: 788px)": {
     width: "100%",
-    marginBottom: "70px"
+    padding: "10px 30px 10px 30px",
+    "&::after": {
+      width: "100%",
+      right: "-20px",
+      opacity: 0.3
+    }
   }
 }));
 
@@ -250,9 +340,6 @@ export const CTAButton1 = styled(Button)(({ theme }) => ({
         : "1px solid #F3F3F3",
     color: "#000000"
   },
-  [theme.breakpoints.down("sm")]: {
-    width: "-webkit-fill-available"
-  }
 }));
 
 export const CTAButton2 = styled(Button)(({ theme }) => ({
@@ -277,11 +364,7 @@ export const CTAButton2 = styled(Button)(({ theme }) => ({
     color: "#000000",
     border: "1px solid #F3F3F3"
   },
-  [theme.breakpoints.down("sm")]: {
-    width: "-webkit-fill-available"
-  }
 }));
-
 
 export const LogoContainer = styled(Box)({
   display: "flex",
@@ -327,8 +410,9 @@ export const FAQNumberBubble = styled(Box)(({ theme }) => ({
   width: "50px",
   height: "45px",
   borderRadius: "50%",
-  backgroundColor: theme.palette.mode === "dark" ? "#12154989" : theme.palette.secondary.light,
-  color: "#ffffff",
+  backgroundColor:
+    theme.palette.mode === "dark" ? "#262626" : "#9ED9FD",
+  color: theme.palette.text.primary,
   fontFamily: ptSans.style.fontFamily,
   fontSize: "24px",
   fontWeight: 500,
@@ -336,7 +420,8 @@ export const FAQNumberBubble = styled(Box)(({ theme }) => ({
   boxShadow:
     "0px 4px 5px 0px hsla(0,0%,0%,0.14),  0px 1px 10px 0px hsla(0,0%,0%,0.12),  0px 2px 4px -1px hsla(0,0%,0%,0.2)",
   [theme.breakpoints.down("md")]: {
-    width: "60px"
+    width: "60px",
+    height: "52px",
   }
 }));
 
@@ -346,13 +431,14 @@ export const FAQCard = styled(Box)(({ theme }) => ({
   alignItems: "center",
   width: "100%",
   borderRadius: "10px",
-  border: "1px solid #030242",
-  backgroundColor: theme.palette.mode === "dark" ? "#12154989" : theme.palette.secondary.light,
+  border: theme.palette.mode === "dark" ? "1px solid #FFFFFF" : "1px solid #030242",
+  backgroundColor:
+    theme.palette.mode === "dark" ? "#262626" : "#9ED9FD",
   padding: "15px 20px",
   transition: "all 0.3s ease-in-out",
   "&:hover": {
     cursor: "pointer",
-    backgroundColor: "#121549"
+    backgroundColor: theme.palette.mode === "dark" ? "#1a1a1a" : "#8cc7f9",
   }
 }));
 
@@ -365,9 +451,9 @@ export const FAQCardRow = styled(Box)({
 });
 
 export const FAQCardRowText = styled(Box)(({ theme }) => ({
-  fontFamily: ptSans.style.fontFamily,
-  fontSize: "24px",
-  color: "#ffffff",
+  fontFamily: oxygen.style.fontFamily,
+  fontSize: "22px",
+  color: theme.palette.text.primary,
   userSelect: "none",
   lineHeight: "32px",
   fontWeight: 400,
@@ -376,18 +462,24 @@ export const FAQCardRowText = styled(Box)(({ theme }) => ({
   }
 }));
 
-export const FAQCardRowBody = styled(Box)({
+export const FAQCardRowBody = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  gap: "10px",
   marginTop: "15px",
   fontFamily: raleway.style.fontFamily,
   fontSize: "18px",
-  color: "#ffffff",
+  color: theme.palette.text.primary,
   userSelect: "none",
   letterSpacing: "0.4px",
   lineHeight: "28px",
-  fontWeight: 400
-});
+  fontWeight: 400,
+  "& p": {
+    margin: 0
+  }
+}));
 
-export const InstallationWord = styled("span")({
+export const URLWord = styled("span")(({ theme }) => ({
   marginTop: "15px",
   fontFamily: raleway.style.fontFamily,
   fontSize: "18px",
@@ -395,31 +487,14 @@ export const InstallationWord = styled("span")({
   letterSpacing: "0.4px",
   lineHeight: "28px",
   fontWeight: 400,
-  color: "#2eeff6",
+  color: theme.palette.mode === "dark" ? "#2eeff6" : theme.palette.customBlue.main,
   textDecoration: "underline",
   transition: "all 0.3s ease-in-out",
   "&:hover": {
     cursor: "pointer",
-    color: "#03969b"
+    color: theme.palette.mode === "dark" ? "#03969b" : "#006ed4"
   }
-});
-
-export const URLWord = styled("span")({
-  marginTop: "15px",
-  fontFamily: raleway.style.fontFamily,
-  fontSize: "18px",
-  userSelect: "none",
-  letterSpacing: "0.4px",
-  lineHeight: "28px",
-  fontWeight: 400,
-  color: "#2eeff6",
-  textDecoration: "underline",
-  transition: "all 0.3s ease-in-out",
-  "&:hover": {
-    cursor: "pointer",
-    color: "#03969b"
-  }
-});
+}));
 
 export const CoinLogosRow = styled(Box)({
   display: "grid",
@@ -458,6 +533,11 @@ export const MainRow = styled(Box)({
   width: "100%",
   height: "100%",
   gap: "20px",
+  "@media (max-width: 788px)": {
+    flexDirection: "column",
+    alignItems: "center",
+    gap: "10px"
+  },
 });
 
 export const YoutubeVideoContainer = styled(Box)(({ theme }) => ({
@@ -468,37 +548,37 @@ export const YoutubeVideoContainer = styled(Box)(({ theme }) => ({
     "@media (max-width: 1331px)": {
       width: "600px",
       height: "500px",
-      border: "none",
+      border: "none"
     },
     [theme.breakpoints.down("lg")]: {
       width: "500px",
       height: "500px",
-      border: "none",
+      border: "none"
     },
     "@media (max-width: 1135px)": {
       width: "450px",
       height: "500px",
-      border: "none",
+      border: "none"
     },
     "@media (max-width: 1078px)": {
       width: "325px",
       height: "500px",
-      border: "none",
+      border: "none"
     },
     [theme.breakpoints.down("md")]: {
       width: "700px",
       height: "500px",
-      border: "none",
+      border: "none"
     },
     "@media (max-width: 750px)": {
       width: "500px",
       height: "500px",
-      border: "none",
+      border: "none"
     },
     [theme.breakpoints.down("sm")]: {
       width: "300px",
       height: "500px",
-      border: "none",
+      border: "none"
     }
   }
 }));

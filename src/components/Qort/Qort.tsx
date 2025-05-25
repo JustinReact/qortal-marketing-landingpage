@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   CoinImg,
   FAQCard,
@@ -28,20 +28,27 @@ import {
   FeatureDescription,
   FeatureCol,
   FeatureSubContainer,
-  FeatureImg
+  FeatureImg,
+  TopFoldButtonCol,
+  TradeOgreCTAButton
 } from "./QORTPage-styles";
 import ReactGA from "react-ga4";
 import { NorthEastSVG } from "../Common/Icons/NorthEastSVG";
 import { SouthEastSVG } from "../Common/Icons/SouthEastSVG";
-import { AnimatePresence, motion } from "framer-motion";
 import { useMediaQuery, useTheme } from "@mui/material";
 import { YoutubePlaceholder } from "../YouTube/YoutubePlaceholder";
 import { StaggeredFadeIn } from "../Common/Wrappers/StaggeredFadeIn";
+import { ScrollToTopButton, TopArrow } from "../Wiki/Wiki-styles";
+import { TopOfPageRef } from "../LandingPage/LandingPage-styles";
 
 const Qort = () => {
+  const theme = useTheme();
   const muiTheme = useTheme();
   const isMobile = useMediaQuery(muiTheme.breakpoints.down("sm"));
 
+  const topOfPageRef = useRef<HTMLDivElement | null>(null);
+
+  const [showButton, setShowButton] = useState<boolean>(false);
   const [showVideoPlayer, setShowVideoPlayer] = useState<boolean>(false);
   const [faqsOpen, setFaqsOpen] = useState({
     1: false,
@@ -75,24 +82,6 @@ const Qort = () => {
     setShowVideoPlayer((prevState) => !prevState);
   };
 
-  // FAQ Card Variants for animation
-
-  const faqCardVariants = {
-    opened: {
-      opacity: 1,
-      transition: {
-        type: "spring",
-        stiffness: 95
-      }
-    },
-    closed: {
-      opacity: 0,
-      transition: {
-        duration: 0.2
-      }
-    }
-  };
-
   const features = [
     {
       title: "Powering the New Internet",
@@ -120,8 +109,38 @@ const Qort = () => {
     }
   ];
 
+  // Intersection observer to show scroll to top button
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!useCasesRef.current) return;
+      const rect = useCasesRef.current?.getBoundingClientRect();
+      const isScrolledPast = rect && rect.top < 0; // Element is above the viewport
+      const notAtTop = window.scrollY > 0; // User is not at the top of the page
+
+      // Show button only if the user has scrolled past the element and is not at the top
+      setShowButton(isScrolledPast && notAtTop);
+    };
+
+    // Listen for scroll events
+    window.addEventListener("scroll", handleScroll);
+
+    // Run on mount to initialize state
+    handleScroll();
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const scrollToTop = () => {
+    if (topOfPageRef.current) {
+      topOfPageRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <Wrapper>
+      <TopOfPageRef ref={topOfPageRef} />
       <MainContainer>
         <MainRow>
           <MainTitle variant="h1">
@@ -145,31 +164,57 @@ const Qort = () => {
             Qortal!
           </SubText>
         </SubTextRow>
-        <TopFoldButtonRow>
-          <CTAButton1
+        <TopFoldButtonCol>
+          <TopFoldButtonRow>
+            <CTAButton1
+              onClick={() => {
+                ReactGA.event({
+                  category: "User",
+                  action: "Clicked Learn How Button",
+                  label: "Learn How Button"
+                });
+                scrollToUseCasesFunc();
+              }}
+            >
+              LEARN HOW
+            </CTAButton1>
+            <CTAButton2
+              onClick={() => {
+                ReactGA.set({ dimension1: "Landing Page Download Button" });
+                ReactGA.event({
+                  category: "User",
+                  action: "Clicked Main Download CTA Button",
+                  label: "Clicked Main Download CTA Button"
+                });
+                window.open(
+                  "https://link.qortal.dev/buy",
+                  "_blank",
+                  "noopener,noreferrer"
+                );
+              }}
+            >
+              BUY QORT
+            </CTAButton2>
+          </TopFoldButtonRow>
+          <TradeOgreCTAButton
+            type="button"
+            aria-label="Buy QORT from TradeOgre exchange"
             onClick={() => {
               ReactGA.event({
                 category: "User",
-                action: "Clicked Learn How Button",
-                label: "Learn How Button"
+                action: "Clicked TradeOgre Button",
+                label: "Clicked TradeOgre Button"
               });
+              window.open(
+                "https://link.qortal.dev/tradeogre",
+                "_blank",
+                "noopener,noreferrer"
+              );
             }}
           >
-            LEARN HOW
-          </CTAButton1>
-          <CTAButton2
-            onClick={() => {
-              ReactGA.set({ dimension1: "Landing Page Download Button" }); // Event-level dimension
-              ReactGA.event({
-                category: "User",
-                action: "Clicked Main Download CTA Button",
-                label: "Clicked Main Download CTA Button"
-              });
-            }}
-          >
-            BUY QORT
-          </CTAButton2>
-        </TopFoldButtonRow>
+            BUY FROM TRADEOGRE
+          </TradeOgreCTAButton>
+        </TopFoldButtonCol>
       </MainContainer>
       <YoutubeVideoContainer>
         {showVideoPlayer ? (
@@ -189,7 +234,7 @@ const Qort = () => {
           />
         )}
       </YoutubeVideoContainer>
-      <FeatureContainer>
+      <FeatureContainer ref={useCasesRef}>
         {features.map((feature, index) => (
           <StaggeredFadeIn delayOrder={index} key={feature.title}>
             <FeatureSubContainer>
@@ -212,8 +257,8 @@ const Qort = () => {
         <SubTitleRow>
           <FeatureTitle>FAQ</FeatureTitle>
           <SubTitleDesc>
-            Here are some Frequently Asked Questions about QORT and how it
-            pertains to Qortal
+            Here are some Frequently Asked Questions about <strong>QORT</strong>{" "}
+            and how it pertains to Qortal
           </SubTitleDesc>
         </SubTitleRow>
         <FAQCardContainer>
@@ -227,45 +272,38 @@ const Qort = () => {
               }}
             >
               <FAQCardRow>
-                <FAQCardRowText>What is QORT?</FAQCardRowText>
+                <FAQCardRowText>
+                  What is <strong>QORT</strong>?
+                </FAQCardRowText>
                 {faqsOpen[1] ? (
                   <SouthEastSVG
-                    color={"#ffffff"}
+                    color={theme.palette.text.primary}
                     height={isMobile ? "25" : "22"}
                     width={isMobile ? "25" : "22"}
                   />
                 ) : (
                   <NorthEastSVG
-                    color={"#ffffff"}
+                    color={theme.palette.text.primary}
                     height={isMobile ? "25" : "22"}
                     width={isMobile ? "25" : "22"}
                   />
                 )}
               </FAQCardRow>
-              <AnimatePresence>
-                {faqsOpen[1] && (
-                  <motion.div
-                    key={"faq1"}
-                    animate={"opened"}
-                    initial={"closed"}
-                    variants={faqCardVariants}
-                    exit="closed" // Use the same 'closed' variant for exit animation
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                      width: "100%"
-                    }}
-                  >
-                    <FAQCardRowBody>
-                      QORT is the native currency of the Qortal blockchain. It
-                      is used for transaction fees, name registration, and as a
-                      trading pair on the Qortal Trade Portal.
-                    </FAQCardRowBody>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              <FAQCardRowBody
+                style={{ display: faqsOpen[1] ? "flex" : "none" }}
+              >
+                <p>
+                  QORT is the native coin of the Qortal blockchain. Unlike
+                  typical crypto tokens, QORT powers a decentralized
+                  infrastructure that supports peer-to-peer apps, private
+                  communication, and data exchange, all without relying on
+                  centralized servers or any third parties.
+                </p>
+                <p>
+                  It's earned by the minters for validation transactions on the
+                  blockchain, and is used across the Qortal ecosystem!
+                </p>
+              </FAQCardRowBody>
             </FAQCard>
           </FAQCardContainerRow>
           <FAQCardContainerRow>
@@ -277,70 +315,46 @@ const Qort = () => {
             >
               <FAQCardRow>
                 <FAQCardRowText>
-                  Can I purchase some QORT at the moment?
+                  Can I purchase some <strong>QORT</strong> at the moment?
                 </FAQCardRowText>
                 {faqsOpen[2] ? (
                   <SouthEastSVG
-                    color={"#ffffff"}
+                    color={theme.palette.text.primary}
                     height={isMobile ? "25" : "22"}
                     width={isMobile ? "25" : "22"}
                   />
                 ) : (
                   <NorthEastSVG
-                    color={"#ffffff"}
+                    color={theme.palette.text.primary}
                     height={isMobile ? "25" : "22"}
                     width={isMobile ? "25" : "22"}
                   />
                 )}
               </FAQCardRow>
-              <AnimatePresence>
-                {faqsOpen[2] && (
-                  <motion.div
-                    key={"faq2"}
-                    animate={"opened"}
-                    initial={"closed"}
-                    variants={faqCardVariants}
-                    exit="closed" // Use the same 'closed' variant for exit animation
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                      width: "100%"
-                    }}
-                  >
-                    <FAQCardRowBody>
-                      Yes! It is already possible to buy QORT. You can do so by
-                      installing the Qortal Browser Extension, and then visiting{" "}
-                      <URLWord
-                        onClick={() => {
-                          ReactGA.event({
-                            category: "User",
-                            action:
-                              "Clicked Qort.trade button in Qort Page FAQ",
-                            label: "Clicked Qort.trade button in Qort Page FAQ"
-                          });
-                          window.open(
-                            "https://bit.ly/qort-trade-portal",
-                            "_blank"
-                          );
-                        }}
-                      >
-                        qort.trade
-                      </URLWord>
-                      . At this point, you'll need to create a new Qortal
-                      Account, which will automatically assign you a Litecoin
-                      (LTC) private wallet address. You can use any of the
-                      popular centralized exchanges to buy Litecoin, and send it
-                      to your new wallet. Once you have some Litecoin, you can
-                      use the Qort.trade to trade LTC for QORT, which will also
-                      be held in your new QORT wallet. This QORT wallet is also
-                      created automatically for you upon creating a new account
-                      in the extension.
-                    </FAQCardRowBody>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+
+              <FAQCardRowBody
+                style={{ display: faqsOpen[2] ? "flex" : "none" }}
+              >
+                <p>
+                  Yes! You can buy QORT directly from within Qortal. Simply
+                  install any of the Qortal user interfaces—Qortal Hub, Qortal
+                  Go, or the Qortal Browser Extension—and create a new Qortal
+                  account.
+                </p>
+                <p>
+                  Upon creating your account, you’ll automatically get a
+                  Litecoin (LTC) wallet address. You can purchase LTC from any
+                  centralized exchange like Coinbase or Binance, then send it to
+                  your new wallet. Once you have LTC in your Qortal wallet, use
+                  the Q-Trade app (available within the UI) to trade LTC for
+                  QORT through a secure, trustless cross-chain atomic swap.
+                </p>
+                <p>
+                  There is no KYC, no wrapped tokens, and no third-party
+                  custody—just real peer-to-peer trading on the Qortal
+                  blockchain.
+                </p>
+              </FAQCardRowBody>
             </FAQCard>
           </FAQCardContainerRow>
           <FAQCardContainerRow>
@@ -352,54 +366,40 @@ const Qort = () => {
             >
               <FAQCardRow>
                 <FAQCardRowText>
-                  Why should I buy QORT? What are the benefits?
+                  Can I buy <strong>QORT</strong> on a centralized exchange?
                 </FAQCardRowText>
                 {faqsOpen[3] ? (
                   <SouthEastSVG
-                    color={"#ffffff"}
+                    color={theme.palette.text.primary}
                     height={isMobile ? "25" : "22"}
                     width={isMobile ? "25" : "22"}
                   />
                 ) : (
                   <NorthEastSVG
-                    color={"#ffffff"}
+                    color={theme.palette.text.primary}
                     height={isMobile ? "25" : "22"}
                     width={isMobile ? "25" : "22"}
                   />
                 )}
               </FAQCardRow>
-              <AnimatePresence>
-                {faqsOpen[3] && (
-                  <motion.div
-                    key={"faq3"}
-                    animate={"opened"}
-                    initial={"closed"}
-                    variants={faqCardVariants}
-                    exit="closed" // Use the same 'closed' variant for exit animation
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                      width: "100%"
-                    }}
-                  >
-                    <FAQCardRowBody>
-                      QORT is the ideal cryptocurrency for those who want to
-                      invest in a project which is sticking to the ideals of
-                      Web3: Complete decentralization (your only connection to
-                      the normal internet is your Internet Service Provider),
-                      complete privacy (no tracking, no censorship, no cookies,
-                      no ads, no data collection), and complete security (no
-                      hacking, no phishing, no malware). It is also a blockchain
-                      with no centralized nodes, everything is peer-to-peer
-                      (P2P). The entire codebase is also open-source and
-                      transparent. This makes it the ideal internet replacement,
-                      and the ideal cryptocurrency to invest in!
-                    </FAQCardRowBody>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              <FAQCardRowBody
+                style={{ display: faqsOpen[3] ? "flex" : "none" }}
+              >
+                <p>
+                  Yes, QORT is currently listed on TradeOgre, a centralized
+                  exchange that allows trading QORT against USDT. TradeOgre does
+                  not require KYC, making it one of the few centralized
+                  exchanges where you can still trade privately.
+                </p>
+                <p>
+                  However, for maximum security and decentralization, we
+                  recommend using Q-Trade, which is Qortal’s built-in
+                  peer-to-peer exchange, to buy QORT directly with LTC inside
+                  your own wallet. Q-Trade requires no sign-up, no personal
+                  info, and avoids the risks of centralized custody or exchange
+                  shutdowns.
+                </p>
+              </FAQCardRowBody>
             </FAQCard>
           </FAQCardContainerRow>
           <FAQCardContainerRow>
@@ -411,81 +411,126 @@ const Qort = () => {
             >
               <FAQCardRow>
                 <FAQCardRowText>
-                  Where can I learn more about QORT and Qortal?
+                  Why should I buy <strong>QORT</strong>? What are the benefits?
                 </FAQCardRowText>
                 {faqsOpen[4] ? (
                   <SouthEastSVG
-                    color={"#ffffff"}
+                    color={theme.palette.text.primary}
                     height={isMobile ? "25" : "22"}
                     width={isMobile ? "25" : "22"}
                   />
                 ) : (
                   <NorthEastSVG
-                    color={"#ffffff"}
+                    color={theme.palette.text.primary}
                     height={isMobile ? "25" : "22"}
                     width={isMobile ? "25" : "22"}
                   />
                 )}
               </FAQCardRow>
-              <AnimatePresence>
-                {faqsOpen[4] && (
-                  <motion.div
-                    key={"faq4"}
-                    animate={"opened"}
-                    initial={"closed"}
-                    variants={faqCardVariants}
-                    exit="closed" // Use the same 'closed' variant for exit animation
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                      width: "100%"
+
+              <FAQCardRowBody
+                style={{ display: faqsOpen[4] ? "flex" : "none" }}
+              >
+                <p>
+                  QORT is the ideal cryptocurrency for those who want to invest
+                  in a project which is sticking to the ideals of Web3: Complete
+                  decentralization (your only connection to the normal internet
+                  is your Internet Service Provider), complete privacy (no
+                  tracking, no censorship, no cookies, no ads, no data
+                  collection), and complete security (no hacking, no phishing,
+                  no malware).
+                </p>
+                <p>
+                  It is also a blockchain with no centralized nodes, everything
+                  is peer-to-peer (P2P). The entire codebase is also open-source
+                  and transparent. This makes it the ideal internet replacement,
+                  and the ideal cryptocurrency to invest in!
+                </p>
+              </FAQCardRowBody>
+            </FAQCard>
+          </FAQCardContainerRow>
+          <FAQCardContainerRow>
+            <FAQNumberBubble>5</FAQNumberBubble>
+            <FAQCard
+              onClick={() => {
+                setFaqsOpen({ ...faqsOpen, 5: !faqsOpen[5] });
+              }}
+            >
+              <FAQCardRow>
+                <FAQCardRowText>
+                  Where can I learn more about <strong>QORT</strong> and Qortal?
+                </FAQCardRowText>
+                {faqsOpen[5] ? (
+                  <SouthEastSVG
+                    color={theme.palette.text.primary}
+                    height={isMobile ? "25" : "22"}
+                    width={isMobile ? "25" : "22"}
+                  />
+                ) : (
+                  <NorthEastSVG
+                    color={theme.palette.text.primary}
+                    height={isMobile ? "25" : "22"}
+                    width={isMobile ? "25" : "22"}
+                  />
+                )}
+              </FAQCardRow>
+              <FAQCardRowBody
+                style={{ display: faqsOpen[5] ? "flex" : "none" }}
+              >
+                <p>
+                  The best way to learn more about Qortal and QORT and to see
+                  its true power, is to install Qortal, run a node, and start
+                  using it on your own! However, if you want to learn more about
+                  the project before doing so, you can join our Discord{" "}
+                  <URLWord
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      ReactGA.event({
+                        category: "User",
+                        action: "Clicked Discord Button FAQ",
+                        label: "Discord Button FAQ"
+                      });
+                      window.open("https://discord.gg/YKdxYUSqZR", "_blank");
                     }}
                   >
-                    <FAQCardRowBody>
-                      The best way to learn more about Qortal and QORT and to
-                      see its true power, is to install Qortal, run a node, and
-                      start using it on your own! However, if you want to learn
-                      more about the project before doing so, you can join our
-                      Discord{" "}
-                      <URLWord
-                        onClick={() => {
-                          ReactGA.event({
-                            category: "User",
-                            action: "Clicked Discord Button FAQ",
-                            label: "Discord Button FAQ"
-                          });
-                          window.open(
-                            "https://discord.gg/YKdxYUSqZR",
-                            "_blank"
-                          );
-                        }}
-                      >
-                        here.
-                      </URLWord>{" "}
-                      and ask any questions you may have. We also have a Wiki
-                      with all the technical specifications{" "}
-                      <URLWord
-                        onClick={() => {
-                          ReactGA.event({
-                            category: "User",
-                            action: "Clicked Wiki Button FAQ",
-                            label: "Discord Wiki FAQ"
-                          });
-                          window.open("https://wiki.qortal.org", "_blank");
-                        }}
-                      >
-                        here.
-                      </URLWord>
-                    </FAQCardRowBody>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+                    here.
+                  </URLWord>{" "}
+                  and ask any questions you may have.
+                </p>
+                <p>
+                  We also have a Wiki with all the technical specifications{" "}
+                  <URLWord
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      ReactGA.event({
+                        category: "User",
+                        action: "Clicked Wiki Button FAQ",
+                        label: "Clicked Wiki Button FAQ"
+                      });
+                      window.open(
+                        "https://qortal.dev/wiki",
+                        "_blank",
+                        "noopener,noreferrer"
+                      );
+                    }}
+                  >
+                    here.
+                  </URLWord>
+                </p>
+              </FAQCardRowBody>
             </FAQCard>
           </FAQCardContainerRow>
         </FAQCardContainer>
       </ThirdContainer>
+      {showButton && (
+        <ScrollToTopButton onClick={scrollToTop}>
+          <TopArrow
+            color={theme.palette.text.primary}
+            height={"25"}
+            width={"25"}
+          />
+        </ScrollToTopButton>
+      )}
     </Wrapper>
   );
 };
