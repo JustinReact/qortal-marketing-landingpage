@@ -1,4 +1,4 @@
-import { styled, keyframes } from "@mui/system";
+import { styled, keyframes, maxWidth } from "@mui/system";
 import { Box, Button, Typography } from "@mui/material";
 import Image from "next/image";
 import { oxygen, protestStrike, ptSans, raleway } from "../../app/fonts";
@@ -62,6 +62,9 @@ export const MainContainer = styled(Box)(({ theme }) => ({
   width: "100%",
   gap: "25px",
   marginTop: "60px",
+  [theme.breakpoints.up("xl")]: {
+    gap: "75px"
+  },
   [theme.breakpoints.down("sm")]: {
     marginTop: "20px",
     gap: "10px"
@@ -178,13 +181,16 @@ export const CoinImg = styled(Image)(({ theme }) => ({
   }
 }));
 
-export const SubTextRow = styled(Box)({
+export const SubTextRow = styled(Box)(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
   flexDirection: "row",
-  textAlign: "center"
-});
+  textAlign: "center",
+  [theme.breakpoints.up("xl")]: {
+    maxWidth: "1000px"
+  }
+}));
 
 export const FeatureCol = styled(Box)({
   display: "flex",
@@ -232,6 +238,9 @@ export const SubText = styled(Typography)(({ theme }) => ({
   lineHeight: "50px",
   fontWeight: 400,
   userSelect: "none",
+  [theme.breakpoints.up("xl")]: {
+    lineHeight: "65px"
+  },
   [theme.breakpoints.down("md")]: {
     fontSize: "30px",
     lineHeight: "42px"
@@ -301,7 +310,7 @@ export const TradeOgreCTAButton = styled(Button)(({ theme }) => ({
     color: "#ffffff",
     boxShadow: "1px 4px 10.5px 0px #0000004D",
     backgroundColor: "#534242",
-    border: `1px solid #534242`,
+    border: `1px solid #534242`
   },
   "@media (max-width: 788px)": {
     width: "100%",
@@ -339,7 +348,7 @@ export const CTAButton1 = styled(Button)(({ theme }) => ({
         ? `1px solid ${theme.palette.text.primary}`
         : "1px solid #F3F3F3",
     color: "#000000"
-  },
+  }
 }));
 
 export const CTAButton2 = styled(Button)(({ theme }) => ({
@@ -363,7 +372,7 @@ export const CTAButton2 = styled(Button)(({ theme }) => ({
     backgroundColor: "#F3F3F3",
     color: "#000000",
     border: "1px solid #F3F3F3"
-  },
+  }
 }));
 
 export const LogoContainer = styled(Box)({
@@ -410,8 +419,7 @@ export const FAQNumberBubble = styled(Box)(({ theme }) => ({
   borderRadius: "50%",
   aspectRatio: "1",
   minWidth: "50px",
-  backgroundColor:
-    theme.palette.mode === "dark" ? "#262626" : "#9ED9FD",
+  backgroundColor: theme.palette.mode === "dark" ? "#262626" : "#9ED9FD",
   color: theme.palette.text.primary,
   fontFamily: ptSans.style.fontFamily,
   fontSize: "24px",
@@ -421,7 +429,7 @@ export const FAQNumberBubble = styled(Box)(({ theme }) => ({
     "0px 4px 5px 0px hsla(0,0%,0%,0.14),  0px 1px 10px 0px hsla(0,0%,0%,0.12),  0px 2px 4px -1px hsla(0,0%,0%,0.2)",
   [theme.breakpoints.down("md")]: {
     width: "60px",
-    height: "52px",
+    height: "52px"
   }
 }));
 
@@ -431,14 +439,14 @@ export const FAQCard = styled(Box)(({ theme }) => ({
   alignItems: "center",
   width: "100%",
   borderRadius: "10px",
-  border: theme.palette.mode === "dark" ? "1px solid #FFFFFF" : "1px solid #030242",
-  backgroundColor:
-    theme.palette.mode === "dark" ? "#262626" : "#9ED9FD",
+  border:
+    theme.palette.mode === "dark" ? "1px solid #FFFFFF" : "1px solid #030242",
+  backgroundColor: theme.palette.mode === "dark" ? "#262626" : "#9ED9FD",
   padding: "15px 20px",
   transition: "all 0.3s ease-in-out",
   "&:hover": {
     cursor: "pointer",
-    backgroundColor: theme.palette.mode === "dark" ? "#1a1a1a" : "#8cc7f9",
+    backgroundColor: theme.palette.mode === "dark" ? "#1a1a1a" : "#8cc7f9"
   }
 }));
 
@@ -487,7 +495,8 @@ export const URLWord = styled("span")(({ theme }) => ({
   letterSpacing: "0.4px",
   lineHeight: "28px",
   fontWeight: 400,
-  color: theme.palette.mode === "dark" ? "#2eeff6" : theme.palette.customBlue.main,
+  color:
+    theme.palette.mode === "dark" ? "#2eeff6" : theme.palette.customBlue.main,
   textDecoration: "underline",
   transition: "all 0.3s ease-in-out",
   "&:hover": {
@@ -537,7 +546,7 @@ export const MainRow = styled(Box)({
     flexDirection: "column",
     alignItems: "center",
     gap: "10px"
-  },
+  }
 });
 
 export const YoutubeVideoContainer = styled(Box)(({ theme }) => ({
