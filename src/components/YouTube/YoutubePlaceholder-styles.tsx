@@ -43,7 +43,8 @@ export const YoutubeHeader = styled(Typography)(({ theme }) => ({
   },
   [theme.breakpoints.down("sm")]: {
     fontSize: "13px",
-    left: 70
+    left: 70,
+    maxWidth: "300px",
   }
 }));
 
