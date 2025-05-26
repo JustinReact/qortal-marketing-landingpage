@@ -43,8 +43,8 @@ export const YoutubeHeader = styled(Typography)(({ theme }) => ({
   },
   [theme.breakpoints.down("sm")]: {
     fontSize: "13px",
-    left: 70,
-    maxWidth: "300px",
+    left: 50,
+    maxWidth: "250px",
   }
 }));
 
@@ -52,12 +52,6 @@ export const YoutubeThumbnailImg = styled(Image)(({ theme }) => ({
   width: "100%",
   height: "100%",
   objectFit: "cover",
-  [theme.breakpoints.down("md")]: {
-    width: "90%"
-  },
-  "@media (max-width: 662px)": {
-    width: "75%"
-  }
 }));
 
 export const PlayButton = styled(PlaySVG)({

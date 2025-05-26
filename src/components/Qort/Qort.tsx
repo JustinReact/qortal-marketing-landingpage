@@ -219,7 +219,7 @@ const Qort = () => {
       <YoutubeVideoContainer>
         {showVideoPlayer ? (
           <iframe
-            src="https://www.youtube.com/watch?v=pgJybhuQGYI?autoplay=1&rel=0"
+            src="https://www.youtube.com/embed/pgJybhuQGYI?si=m_tl_lHEQOi8ObEn&autoplay=1&rel=0"
             loading="lazy"
             title="Obtain QORT Using Litecoin From A Centralized Exchange"
             allowFullScreen
