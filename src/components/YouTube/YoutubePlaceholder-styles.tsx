@@ -13,12 +13,20 @@ export const YoutubePlaceholderContainer = styled(Box)(({ theme }) => ({
     cursor: "pointer",
     "& svg": {
       transition: "all 0.2s ease-in-out",
-      height: "85px",
-      width: "85px"
+      height: "82px",
+      width: "82px"
     }
   },
   [theme.breakpoints.down("md")]: {
     justifyContent: "center"
+  },
+  "&.landing-page-video": {
+    "& svg": {
+      transform: "translateX(-50%) translateY(120%)",
+      [theme.breakpoints.down("sm")]: {
+      transform: "translateX(-50%) translateY(90%)",
+      }
+    }
   }
 }));
 

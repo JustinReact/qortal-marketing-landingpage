@@ -417,7 +417,7 @@ const LandingPage = () => {
         <YoutubeVideoContainer>
           {showVideoPlayer ? (
             <iframe
-              src="https://www.youtube.com/embed/kAyCJayxk-c?autoplay=1&rel=0"
+              src="https://www.youtube.com/embed/pWyB8tNZZ40?si=hRHI1Q25ab5M2AA7&autoplay=1&rel=0"
               loading="lazy"
               title="Introducing the Qortal Trifecta"
               allowFullScreen
@@ -425,10 +425,11 @@ const LandingPage = () => {
             ></iframe>
           ) : (
             <YoutubePlaceholder
+              className="landing-page-video"
               isModal={false}
               onClick={handleVideoClick}
               YoutubeThumbnail={
-                "/images/Youtube/TheQortalTrifectaThumbnail.png"
+                "/images/Youtube/The internet is dying thumbnail.png"
               }
               YoutubeTitle="Introducing the Qortal Trifecta"
             />
