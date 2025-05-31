@@ -49,6 +49,20 @@ export const MobileDrawer: FC<MobileDrawerProps> = ({
       >
         Documentation
       </DrawerButton>
+            <DrawerButton
+        onClick={() => {
+          ReactGA.event({
+            category: "User",
+            action: "Clicked Mobile Wiki Drawer Link",
+            label: "Clicked Mobile Wiki Drawer Link"
+          });
+          setOpenMobileDrawer();
+          router.push("/wiki");
+        }}
+        active={location.includes("/wiki") ? true : false}
+      >
+        Wiki
+      </DrawerButton>
       <DrawerButton
         onClick={() => {
           ReactGA.event({
@@ -95,15 +109,15 @@ export const MobileDrawer: FC<MobileDrawerProps> = ({
         onClick={() => {
           ReactGA.event({
             category: "User",
-            action: "Clicked Mobile Wiki Drawer Link",
-            label: "Clicked Mobile Wiki Drawer Link"
+            action: "Clicked Mobile QORT Drawer Link",
+            label: "Clicked Mobile QORT Drawer Link"
           });
           setOpenMobileDrawer();
-          router.push("/wiki");
+          router.push("/qort");
         }}
-        active={location.includes("/wiki") ? true : false}
+        active={location.includes("/qort") ? true : false}
       >
-        Wiki
+        QORT
       </DrawerButton>
     </Container>
   );
