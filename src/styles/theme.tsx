@@ -106,15 +106,11 @@ const lightTheme = createTheme({
     MuiCssBaseline: {
       styleOverrides: {
         "body::-webkit-scrollbar-track": {
-          backgroundColor: "#f5f5f5"
-        },
-        "body::-webkit-scrollbar-track:hover": {
-          backgroundColor: "#f5f5f5"
+          backgroundColor: "transparent"
         },
         "body::-webkit-scrollbar": {
           width: "16px",
           height: "10px",
-          backgroundColor: "#f5f5f5"
         },
         "body::-webkit-scrollbar-thumb": {
           backgroundColor: "#0085FF",
@@ -198,15 +194,11 @@ const darkTheme = createTheme({
     MuiCssBaseline: {
       styleOverrides: {
         "body::-webkit-scrollbar-track": {
-          backgroundColor: "#060a1e"
-        },
-        "body::-webkit-scrollbar-track:hover": {
-          backgroundColor: "#060a1e"
+          backgroundColor: "transparent"
         },
         "body::-webkit-scrollbar": {
           width: "16px",
           height: "10px",
-          backgroundColor: "#060a1e"
         },
         "body::-webkit-scrollbar-thumb": {
           backgroundColor: "#0085FF",

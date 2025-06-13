@@ -113,6 +113,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
       changeFrequency: 'yearly' as const,
       priority: 0.3,
+    },
+    {
+      url: 'https://qortal.dev/ebook',
+      lastModified: new Date(),
+      changeFrequency: 'yearly' as const,
+      priority: 0.5,
     }
   ];
   const blogs: Blog = (await getBlogs()) ?? []; 

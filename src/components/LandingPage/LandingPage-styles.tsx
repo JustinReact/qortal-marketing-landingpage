@@ -1,7 +1,7 @@
 import { fontSize, fontWeight, styled, width } from "@mui/system";
 import { Box, Button, Typography } from "@mui/material";
 import Image from "next/image";
-import { futura, segoeUI } from "../../app/fonts";
+import { futura, inter, segoeUI } from "../../app/fonts";
 import Link from "next/link";
 import { LeftLongArrowSVG } from "../Common/Icons/LeftLongArrowSVG";
 
@@ -58,8 +58,7 @@ export const TopFold = styled(Box)(({ theme }) => ({
     gap: "0",
     justifyContent: "center"
   },
-  [theme.breakpoints.down("sm")]: {
-  }
+  [theme.breakpoints.down("sm")]: {}
 }));
 
 export const TopFoldCol = styled(Box)(({ theme }) => ({
@@ -815,8 +814,7 @@ export const QortalFeaturesSection = styled(Box)(({ theme }) => ({
   alignItems: "center",
   flexDirection: "column",
   gap: 0,
-  [theme.breakpoints.down("sm")]: {
-  }
+  [theme.breakpoints.down("sm")]: {}
 }));
 
 export const GroupSection = styled(Box)(({ theme }) => ({
@@ -898,7 +896,7 @@ export const QAppsSection = styled(Box)(({ theme }) => ({
   },
   [theme.breakpoints.down("sm")]: {
     padding: "66px 0 50px 0"
-  },
+  }
 }));
 
 export const QTradeSection = styled(Box)(({ theme }) => ({
@@ -1004,8 +1002,7 @@ export const SectionCol = styled(Box)(({ theme }) => ({
   width: "100%",
   alignItems: "center",
   justifyContent: "flex-start",
-  [theme.breakpoints.up("xl")]: {
-  }
+  [theme.breakpoints.up("xl")]: {}
 }));
 
 export const QChatSectionCol = styled(Box)(({ theme }) => ({
@@ -1069,8 +1066,7 @@ export const GroupSectionImgBox2 = styled(Box)(({ theme }) => ({
   padding: "20px",
   marginTop: "132px",
 
-  [theme.breakpoints.up("xl")]: {
-  },
+  [theme.breakpoints.up("xl")]: {},
   "&::before": {
     content: '""',
     position: "absolute",
@@ -1093,8 +1089,7 @@ export const GroupSectionImgBox2 = styled(Box)(({ theme }) => ({
       backgroundImage: "none"
     }
   },
-  "@media(max-width: 935px)": {
-  },
+  "@media(max-width: 935px)": {},
   [theme.breakpoints.down("sm")]: {
     padding: 0,
     margin: "30px 0",
@@ -1210,7 +1205,7 @@ export const SectionImg = styled(Image)(({ theme }) => ({
   "&:hover": {
     cursor: "pointer",
     transform: "scale(1.03)"
-  },
+  }
 }));
 
 export const SectionHeader = styled(Box)(({ theme }) => ({
@@ -1249,8 +1244,7 @@ export const GroupEncryptedHeader = styled(Box)(({ theme }) => ({
   gap: "20px",
   width: "100%",
   zIndex: 5,
-  "@media(max-width: 935px)": {
-  },
+  "@media(max-width: 935px)": {},
   [theme.breakpoints.down("sm")]: {
     display: "none"
   }
@@ -1379,7 +1373,7 @@ export const QAppsDescriptionCol = styled(Box)(({ theme }) => ({
   "@media(max-width: 935px)": {
     margin: "120px 0 0 0",
     alignItems: "center"
-  }, 
+  },
   [theme.breakpoints.down("sm")]: {
     margin: 0
   }
@@ -1572,7 +1566,7 @@ export const FinalTextContainer = styled(Box)(({ theme }) => ({
   zIndex: 5,
   "@media(max-width: 935px)": {
     justifyContent: "center"
-  },
+  }
 }));
 
 export const FinalText = styled(Typography)(({ theme }) => ({
@@ -1646,5 +1640,83 @@ export const QonnectFourMobileCol = styled(Box)(({ theme }) => ({
   flexDirection: "column",
   gap: "50px",
   alignItems: "center",
+  width: "100%"
+}));
+
+// Ebook modal styles
+
+export const EbookPromoContainer = styled(Box)(({ theme }) => ({
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  flexDirection: "column",
+  padding: "135px 200px 144px 200px",
   width: "100%",
+  [theme.breakpoints.down("md")]: {
+    padding: "50px 150px",
+  },
+  [theme.breakpoints.down("sm")]: {
+    padding: "50px 20px",
+  }
+}));
+
+export const EbookPromoTextCol = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: "6px",
+  width: "100%",
+  margin: "45px 0 36px 0",
+  [theme.breakpoints.down("sm")]: {
+    textAlign: "center",
+  }
+})); 
+
+export const EbookPromoTitle = styled(Typography)(({ theme }) => ({
+  fontFamily: inter.style.fontFamily,
+  fontSize: "24px",
+  fontWeight: 600,
+  letterSpacing: 0,
+  userSelect: "none",
+  textTransform: "uppercase",
+  color: theme.palette.text.primary
+}));
+
+export const EbookPromoSubTitle = styled(Typography)(({ theme }) => ({
+  fontFamily: inter.style.fontFamily,
+  fontSize: "15px",
+  fontWeight: 400,
+  letterSpacing: 0,
+  userSelect: "none",
+  color: theme.palette.text.primary
+}));
+
+export const EbookPromoButton = styled(Button)(({ theme }) => ({
+  fontFamily: futura.style.fontFamily,
+  fontWeight: 500,
+  fontSize: "14px",
+  letterSpacing: 0,
+  width: "376px",
+  height: "28px",
+  padding: "4.5px 0",
+  gap: "7px",
+  borderRadius: "30px",
+  border: `2px solid ${theme.palette.text.primary}`,
+  color: theme.palette.text.primary,
+  backgroundColor: "transparent",
+  cursor: "pointer",
+  transition: "all 0.3s ease-in-out",
+  "&:hover": {
+    boxShadow: "1px 4px 10.5px 0px #0000004D",
+    backgroundColor: "#F3F3F3",
+    border:
+      theme.palette.mode === "dark"
+        ? `1px solid ${theme.palette.text.primary}`
+        : "1px solid #F3F3F3",
+    color: "#000000"
+  },
+[theme.breakpoints.down("sm")]: {
+  width: "100%"
+}
 }));
