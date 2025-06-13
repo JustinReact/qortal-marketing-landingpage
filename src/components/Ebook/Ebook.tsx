@@ -84,7 +84,7 @@ const Ebook = () => {
         setDownloadedBook(true);
         dispatch(
           setNotification({
-            msg: "Ebook downloaded successfully!",
+            msg: "Success! The Ebook Was Sent To Your Email!",
             alertType: "success"
           })
         );

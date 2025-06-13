@@ -1684,6 +1684,7 @@ export const EbookPromoTitle = styled(Typography)(({ theme }) => ({
 }));
 
 export const EbookPromoSubTitle = styled(Typography)(({ theme }) => ({
+  textAlign: "center",
   fontFamily: inter.style.fontFamily,
   fontSize: "15px",
   fontWeight: 400,
