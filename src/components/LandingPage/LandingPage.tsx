@@ -444,7 +444,7 @@ const LandingPage = () => {
             <iframe
               src="https://www.youtube.com/embed/pWyB8tNZZ40?si=hRHI1Q25ab5M2AA7&autoplay=1&rel=0"
               loading="lazy"
-              title="Introducing the Qortal Trifecta"
+              title="The internet is dying"
               allowFullScreen
               allow="autoplay"
             ></iframe>
@@ -456,7 +456,7 @@ const LandingPage = () => {
               YoutubeThumbnail={
                 "/images/Youtube/The internet is dying thumbnail.png"
               }
-              YoutubeTitle="Introducing the Qortal Trifecta"
+              YoutubeTitle="The internet is dying"
             />
           )}
         </YoutubeVideoContainer>
