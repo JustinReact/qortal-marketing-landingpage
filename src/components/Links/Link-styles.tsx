@@ -1,5 +1,7 @@
 import { styled } from "@mui/system";
 import { Box } from "@mui/material";
+import Image from "next/image";
+import { oxygen } from "../../app/fonts";
 
 export const Container = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -21,4 +23,29 @@ export const MainCol = styled(Box)(({ theme }) => ({
   alignItems: "center",
   justifyContent: "flex-start",
   width: "100%"
+}));
+
+export const QortalImg = styled(Image)(({ theme }) => ({
+  marginBottom: "30px",
+}));
+
+export const LinksTitle = styled("h1")(({ theme }) => ({
+  fontSize: "20px",
+  fontFamily: oxygen.style.fontFamily,
+  fontWeight: 400,  
+  lineHeight: "24px",
+  letterSpacing: 0,
+  textAlign: "center",
+  margin: "0 0 60px 0",
+  userSelect: "none",
+}));
+
+export const LinksContainer = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: "16px",
+  width: "100%",
+  padding: "24px",
 }));

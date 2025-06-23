@@ -1,10 +1,5 @@
 import React from "react";
-import { IconRow } from "./Socials-styles";
-import { TelegramSVG } from "../../Common/Icons/TelegramSVG";
-import { YoutubeSVG } from "../../Common/Icons/YoutubeSVG";
-import { DiscordSVG } from "../../Common/Icons/DiscordSVG";
-import { LinkedInSVG } from "../../Common/Icons/LinkedInSVG";
-import { XSVG } from "../../Common/Icons/XSVG";
+import { DiscordIcon, GithubIcon, IconRow, LinkedInIcon, TelegramIcon, XIcon, YoutubeIcon } from "./Socials-styles";
 import { useTheme } from "@mui/material";
 
 export const Socials = () => {
@@ -13,7 +8,7 @@ export const Socials = () => {
 
   return (
     <IconRow>
-      <XSVG
+      <XIcon
         color={iconColor}
         height="22"
         width="22"
@@ -21,7 +16,7 @@ export const Socials = () => {
           window.open("https://link.qortal.dev/qortal-official", "_blank")
         }
       />
-      <LinkedInSVG
+      <LinkedInIcon
         color={iconColor}
         height="20"
         width="26"
@@ -29,15 +24,15 @@ export const Socials = () => {
           window.open("https://link.qortal.dev/linked-company-page", "_blank")
         }
       />
-      <DiscordSVG
+      <DiscordIcon
         color={iconColor}
-        height="23"
-        width="29"
+        height="26"
+        width="32"
         onClickFunc={() =>
           window.open("https://link.qortal.dev/discord-invite", "_blank")
         }
       />
-      <YoutubeSVG
+      <YoutubeIcon
         color={iconColor}
         height="18"
         width="24"
@@ -45,12 +40,20 @@ export const Socials = () => {
           window.open("https://link.qortal.dev/qortal-community", "_blank")
         }
       />
-      <TelegramSVG
+      <TelegramIcon
         color={iconColor}
         height="22"
         width="22"
         onClickFunc={() =>
           window.open("https://link.qortal.dev/telegram-invite", "_blank")
+        }
+      />
+      <GithubIcon
+        color={iconColor}
+        height="22"
+        width="22"
+        onClickFunc={() =>
+          window.open("https://link.qortal.dev/github", "_blank")
         }
       />
     </IconRow>
