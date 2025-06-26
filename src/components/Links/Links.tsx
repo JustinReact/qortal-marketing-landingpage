@@ -1,8 +1,18 @@
 "use client";
-import { Container, LinksTitle, MainCol, QortalImg } from "./Link-styles";
+import {
+  Container,
+  EbookIcon,
+  LinkButton,
+  LinksContainer,
+  LinksTitle,
+  MainCol,
+  QortalImg
+} from "./Link-styles";
 import { Socials } from "../Common/Socials/Socials";
+import { useTheme } from "@mui/material";
 
 export const Links = () => {
+  const theme = useTheme();
   return (
     <Container>
       <MainCol>
@@ -13,10 +23,18 @@ export const Links = () => {
           height={147}
           quality={100}
         />
-        <LinksTitle>
-          Qortal Blockchain
-        </LinksTitle>
+        <LinksTitle>Qortal Blockchain</LinksTitle>
         <Socials />
+        <LinksContainer>
+          <LinkButton
+            href="https://link.qortal.dev/ebook"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <EbookIcon height="23" width="23" color={theme.palette.text.primary} />
+            Ebook Download
+          </LinkButton>
+        </LinksContainer>
       </MainCol>
     </Container>
   );
