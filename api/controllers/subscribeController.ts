@@ -60,19 +60,19 @@ const handleSubscription = async (
     return;
   }
 
-  try {
-    // Adding the subscriber to SendGrid list for marketing purposes
-    await addToSendGridList(email);
-  } catch (error) {
-    console.error("[SendGrid List Error] Failed to add subscriber:", error);
-    res
-      .status(500)
-      .json({
-        error:
-          "Failed to add subscriber to SendGrid list. Please try again later."
-      });
-    return;
-  }
+  // try {
+  //   // Adding the subscriber to SendGrid list for marketing purposes
+  //   await addToSendGridList(email);
+  // } catch (error) {
+  //   console.error("[SendGrid List Error] Failed to add subscriber:", error);
+  //   res
+  //     .status(500)
+  //     .json({
+  //       error:
+  //         "Failed to add subscriber to SendGrid list. Please try again later."
+  //     });
+  //   return;
+  // }
 
   res.status(200).json({
     message: "Subscription successful."
