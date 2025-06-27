@@ -3,6 +3,15 @@ import { Box, Link } from "@mui/material";
 import Image from "next/image";
 import { oxygen } from "../../app/fonts";
 import { EbookSVG } from "../Common/Icons/EbookSVG";
+import { WikiSVG } from "../Common/Icons/WikiSVG";
+import { DownloadingSVG } from "../Common/Icons/DownloadingSVG";
+import { ExplorerSVG } from "../Common/Icons/ExplorerSVG";
+import { ExchangeSVG } from "../Common/Icons/ExchangeSVG";
+import { BalanceSVG } from "../Common/Icons/BalanceSVG";
+import { MonitorSVG } from "../Common/Icons/MonitorSVG";
+import { MobileSVG } from "../Common/Icons/MobileSVG";
+import { AppsSVG } from "../Common/Icons/AppsSVG";
+import { YoutubeSVG } from "../Common/Icons/YoutubeSVG";
 
 export const Container = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -82,6 +91,78 @@ export const LinkButton = styled(Link)(({ theme }) => ({
 }));
 
 export const EbookIcon = styled(EbookSVG)(({ theme }) => ({
+  transition: "all 0.3s ease-in-out",
+  color: theme.palette.text.primary,
+  position: "absolute",
+  left: "30px",
+  top: "18px",
+}));
+
+export const WikiIcon = styled(WikiSVG)(({ theme }) => ({
+  transition: "all 0.3s ease-in-out",
+  color: theme.palette.text.primary,
+  position: "absolute",
+  left: "30px",
+  top: "18px",
+}));
+
+export const DownloadingIcon = styled(DownloadingSVG)(({ theme }) => ({
+  transition: "all 0.3s ease-in-out",
+  color: theme.palette.text.primary,
+  position: "absolute",
+  left: "30px",
+  top: "18px",
+}));
+
+export const ExplorerIcon = styled(ExplorerSVG)(({ theme }) => ({
+  transition: "all 0.3s ease-in-out",
+  color: theme.palette.text.primary,
+  position: "absolute",
+  left: "30px",
+  top: "18px",
+}));
+
+export const AppsIcon = styled(AppsSVG)(({ theme }) => ({
+  transition: "all 0.3s ease-in-out",
+  color: theme.palette.text.primary,
+  position: "absolute",
+  left: "30px",
+  top: "18px",
+}));
+
+export const ExchangeIcon = styled(ExchangeSVG)(({ theme }) => ({
+  transition: "all 0.3s ease-in-out",
+  color: theme.palette.text.primary,
+  position: "absolute",
+  left: "30px",
+  top: "18px",
+}));
+
+export const BalanceIcon = styled(BalanceSVG)(({ theme }) => ({
+  transition: "all 0.3s ease-in-out",
+  color: theme.palette.text.primary,
+  position: "absolute",
+  left: "30px",
+  top: "18px",
+}));
+
+export const MonitorIcon = styled(MonitorSVG)(({ theme }) => ({
+  transition: "all 0.3s ease-in-out",
+  color: theme.palette.text.primary,
+  position: "absolute",
+  left: "30px",
+  top: "18px",
+}));
+
+export const MobileIcon = styled(MobileSVG)(({ theme }) => ({
+  transition: "all 0.3s ease-in-out",
+  color: theme.palette.text.primary,
+  position: "absolute",
+  left: "30px",
+  top: "18px",
+}));
+
+export const YoutubeIcon = styled(YoutubeSVG)(({ theme }) => ({
   transition: "all 0.3s ease-in-out",
   color: theme.palette.text.primary,
   position: "absolute",
