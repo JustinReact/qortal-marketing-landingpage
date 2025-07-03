@@ -2,27 +2,18 @@ import axios from 'axios';
 import {
     MAILERLITE_API_KEY,
     MAILERLITE_GROUP_ID,
-    MAILERLITE_SENDER_EMAIL
 } from '../config/mailerliteConfig';
-
-interface SendEmailParams {
-    to: string;
-    subject: string;
-    html: string; // MailerLite does not support template IDs via API
-}
 
 /**
  * Add a contact to MailerLite group (list)
  */
-export const addToMailerliteGroup = async (email: string, firstName: string): Promise<void> => {
+export const addToMailerliteGroup = async (email: string, name: string): Promise<void> => {
     try {
         const response = await axios.post(
             `https://api.mailerlite.com/api/v2/groups/${MAILERLITE_GROUP_ID}/subscribers`,
             {
                 email,
-                fields: {
-                    first_name: firstName
-                }
+                name
             },
             {
                 headers: {
