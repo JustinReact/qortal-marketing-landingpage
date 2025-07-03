@@ -40,7 +40,7 @@ export const saveSubscriber = async ({ name, email }: { name: string; email: str
 
   try {
     const exists = await checkIfEmailExists(email);
-    console.log('exists?:', exists);
+    // console.log('exists?:', exists);
     if (exists) {
         throw new Error('Subscriber with this email already exists.');
     }

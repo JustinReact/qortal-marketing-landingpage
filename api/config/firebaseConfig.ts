@@ -10,7 +10,7 @@ if (!admin.apps.length) {
         credential: admin.credential.cert(serviceAccount),
         projectId: process.env.FIREBASE_PROJECT_ID,
     });
-    }
+}
 
 const db = admin.firestore();
 
