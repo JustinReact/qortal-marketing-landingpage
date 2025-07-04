@@ -1,7 +1,7 @@
-import { display, grid, lineHeight, styled } from "@mui/system";
-import { Box, Button, Grid, Typography } from "@mui/material";
+import { styled } from "@mui/system";
+import { Box, Grid, Typography } from "@mui/material";
 import Image from "next/image";
-import { futura, redditSans } from "../../app/fonts";
+import { futura, oxygen, redditSans } from "../../app/fonts";
 import { ChromeStoreSVG } from "../Common/Icons/ChromeStoreSVG";
 import { AppleSVG } from "../Common/Icons/AppleSVG";
 import { AndroidSVG } from "../Common/Icons/AndroidSVG";
@@ -47,7 +47,6 @@ export const DownloadsTitle = styled(Typography)(({ theme }) => ({
   fontSize: "55px",
   lineHeight: "73px",
   letterSpacing: "calc(0.09 * 55px)",
-  textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
   userSelect: "none",
   [theme.breakpoints.down("sm")]: {
     fontSize: "30px",
@@ -83,6 +82,9 @@ export const DownloadsUIGrid = styled(Box)({
   display: "grid",
   gridTemplateColumns: "repeat(5, 1fr)",
   gap: "10px",
+  "@media(max-width: 751px)": {
+    gridTemplateColumns: "repeat(3, 1fr)",
+  },
 });
 
 export const DownloadsCoreGrid = styled(Box)({
@@ -93,15 +95,17 @@ export const DownloadsCoreGrid = styled(Box)({
 
 export const DownloadCard = styled(Box)(({ theme }) => ({
   display: "flex",
-  flexDirection: "row",
+  flexDirection: "column",
   alignItems: "center",
-  justifyContent: "flex-start",
+  justifyContent: "center",
+  gap: "12px",
+  textAlign: "center",
   flexGrow: 1,
   backgroundColor: theme.palette.mode === "light" ? "#2F2F2F" : "#ffffff",
-  padding: "20px",
+  padding: "12px",
   borderRadius: "5px",
-  width: "87px",
-  height: "87px",
+  width: "125px",
+  height: "auto",
   transition: "all 0.3s ease-in-out",
   "&:hover": {
     cursor: "pointer",
@@ -159,9 +163,9 @@ export const DownloadText = styled(Typography)(({ theme }) => ({
 }));
 
 export const DownloadText1 = styled(Typography)(({ theme }) => ({
-  fontFamily: redditSans.style.fontFamily,
+  fontFamily: oxygen.style.fontFamily,
   color: theme.palette.mode === "light" ? "#ffffff" : "#000000",
-  fontWeight: 300,
+  fontWeight: 500,
   fontSize: "20px",
   lineHeight: "22px",
   userSelect: "none",
@@ -195,8 +199,9 @@ export const DownloadText2 = styled(Typography)(({ theme }) => ({
 export const OtherVersionsCol = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
-  alignItems: "center",
   justifyContent: "center",
+  alignItems: "flex-start",
+  width: "100%",
   gap: "20px",
   marginTop: "50px",
 }));
@@ -209,7 +214,7 @@ export const OtherVersionsRow = styled(Box)(({ theme }) => ({
 }));
 
 export const OtherVersionsText = styled(Typography)(({ theme }) => ({
-  fontFamily: redditSans.style.fontFamily,
+  fontFamily: oxygen.style.fontFamily,
   color: theme.palette.text.primary,
   fontWeight: 300,
   fontSize: "18px",
@@ -236,6 +241,7 @@ export const ScreenshotContainer = styled(Grid)(({ theme }) => ({
   alignItems: "center",
   justifyContent: "center",
   marginTop: "127px",
+  zIndex: 0,
   [theme.breakpoints.down("lg")]: {
     display: "none"
   }
@@ -259,13 +265,17 @@ export const Screenshot2 = styled(Image)(({ theme }) => ({
   maxWidth: "100%",
   height: "auto",
   objectFit: "contain",
-  position: "relative",  // <-- NEW
-  top: "-70px",         // <-- Replaces translateY
-  left: "700px",         // <-- Replaces translateX
+  position: "relative",
+  top: "-70px",     
+  left: "700px",       
+  zIndex: 5,
 
   [theme.breakpoints.down("xl")]: {
     top: "-70px",
     left: "500px",
+  },
+  "@media(max-width: 1387px)": {
+    left: "400px",
   },
   [theme.breakpoints.down("lg")]: {
     display: "none",
@@ -280,12 +290,12 @@ export const Screenshot3 = styled(Image)(({ theme }) => ({
 }));
 
 export const DownloadNowText = styled(Typography)(({ theme }) => ({
-  fontFamily: redditSans.style.fontFamily,
+  fontFamily: oxygen.style.fontFamily,
   color: theme.palette.text.primary,
   fontWeight: 400,
   fontSize: "50px",
-  letterSpacing: "calc(0.09 * 65px)",
-  lineHeight: "73px",
+  letterSpacing: 0,
+  lineHeight: "65px",
   marginTop: "200px",
   textAlign: "center",
   userSelect: "none",

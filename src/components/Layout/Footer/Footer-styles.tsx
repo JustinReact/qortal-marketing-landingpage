@@ -23,7 +23,12 @@ export const FooterRow = styled(Box)(({ theme }) => ({
   flexDirection: "row",
   justifyContent: "center",
   alignItems: "center",
-  gap: "42px"
+  gap: "42px",
+  [theme.breakpoints.down("sm")]: {
+    marginTop: "20px",
+    flexDirection: "column",
+    gap: "24px"
+  }
 }));
 
 export const FooterLink = styled(Link)(({ theme }) => ({
@@ -74,15 +79,4 @@ export const FooterLink = styled(Link)(({ theme }) => ({
       bottom: "3px"
     }
   }
-}));
-
-export const FooterIconRow = styled(Box)(({ theme }) => ({
-  display: "flex",
-  flexDirection: "row",
-  justifyContent: "center",
-  alignItems: "center",
-  gap: "22px",
-  "& svg": {
-    cursor: "pointer",
-  },
 }));

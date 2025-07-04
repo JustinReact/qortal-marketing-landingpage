@@ -28,9 +28,13 @@ import {
 import { Tooltip, useTheme } from "@mui/material";
 import { CustomInputField } from "../Blog/BlogPostsClient-styles";
 import { downloadEbook, submitBlurb } from "../../utils/ebookApiController";
+import { useDispatch } from "react-redux";
+import { setNotification } from "../../state/features/notificationsSlice";
 
 const Ebook = () => {
   const theme = useTheme();
+  const dispatch = useDispatch();
+
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [surveyResponse, setSurveyResponse] = useState<string>("");
@@ -75,14 +79,32 @@ const Ebook = () => {
 
   const handleDownloadEbook = async () => {
     try {
-      const res = downloadEbook(name, email);
-      if (!res) {
-        window.alert("Error! Try again!");
+      const res = await downloadEbook(name, email);
+      if (res) {
+        setDownloadedBook(true);
+        dispatch(
+          setNotification({
+            msg: "Success! The Ebook Was Sent To Your Email!",
+            alertType: "success"
+          })
+        );
+      } else {
+        dispatch(
+          setNotification({
+            msg: "Error in downloading the Ebook! Please, try again!",
+            alertType: "error"
+          })
+        );
       }
-    } catch (error) {
-      console.error('[handleDownloadEbook] :', error);
+    } catch (error: any) {
+      dispatch(
+        setNotification({
+          msg: error,
+          alertType: "error"
+        })
+      );
     }
-  }
+  };
   // Function to handle the download button click
   const handleDownloadClick = async () => {
     const isEmailValid = validateEmail(email);
@@ -92,31 +114,43 @@ const Ebook = () => {
 
     if (isEmailValid && isNameValid) {
       await handleDownloadEbook();
-      setDownloadedBook(true);
     }
   };
 
   const handleSubmitBlurb = async (): Promise<boolean> => {
     try {
-      const res = submitBlurb(email, surveyResponse);
+      const res = await submitBlurb(email, surveyResponse);
       if (!res) return false;
       return true;
     } catch (error) {
-      console.error('[handleSubmitBlurb] :', error)
+      console.error("[handleSubmitBlurb] :", error);
       return false;
     }
-  }
+  };
   // Function to handle sending the survey response
   const handleSurveyResponse = async () => {
     const isResponseValid = surveyResponse.trim() !== "";
     setSurveyResponseError(!isResponseValid);
     if (isResponseValid) {
-      // Logic to send the survey response to the server or perform any other action
       const res = await handleSubmitBlurb();
       if (res) {
-        window.alert("Success!");
+        dispatch(
+          setNotification({
+            msg: "Questionnaire response submitted successfully!",
+            alertType: "success"
+          })
+        );
+        setSurveyResponse("");
+        setName("");
+        setEmail("");
+        setDownloadedBook(false);
       } else {
-        window.alert("Error! Please, try again!")
+        dispatch(
+          setNotification({
+            msg: "Error in submitting the questionnaire response! Please, try again!",
+            alertType: "error"
+          })
+        );
       }
     }
   };
@@ -242,14 +276,15 @@ const Ebook = () => {
                   </InfoIconContainer>
                 </EbookTooltip>
                 <SurveyText>
-                <SurveyTitle>
-                  Thank you for downloading the ebook! Check your email for the
-                  download link.
-                </SurveyTitle>
-                <SurveyTitle>
-                  Please help the Qortal community by answering this short
-                  survey question: Why does decentralization and a censorship-free internet matter to you?
-                </SurveyTitle>
+                  <SurveyTitle>
+                    Thank you for downloading the ebook! Check your email for
+                    the download link.
+                  </SurveyTitle>
+                  <SurveyTitle>
+                    Please help the Qortal community by answering this short
+                    survey question: Why does decentralization and a
+                    censorship-free internet matter to you?
+                  </SurveyTitle>
                 </SurveyText>
                 <StyledTextarea
                   fullWidth

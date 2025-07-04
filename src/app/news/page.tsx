@@ -34,7 +34,7 @@ const getNewsRawData = async (
 const getNews = async () => {
   try {
     // Fetch list of Bester's blogs resources from Qortal blockchain
-    const url = `${groupApi}/arbitrary/resources/searchsimple?service=DOCUMENT&name=Bester&identifier=${NEWS_BASE}-&limit=20&mode=ALL&prefix=true&includemetadata=false&reverse=true`;
+    const url = `${groupApi}/arbitrary/resources/searchsimple?service=DOCUMENT&name=Bester&identifier=${NEWS_BASE}-&limit=0&mode=ALL&prefix=true&includemetadata=false&reverse=true`;
     const response = await fetch(url, {
       method: "GET",
       headers: {

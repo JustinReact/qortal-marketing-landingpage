@@ -231,11 +231,14 @@ export const FilterSelectMenuItems = styled(TextField)(({ theme }) => ({
 export const MainBlogWrapper = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
-  gap: "120px",
-  padding: "25px 10px",
+  padding: "106px 90px 106px 90px",
   width: "100%",
+  "@media(max-width: 1444px)": {
+    padding: "50px 20px 34px 20px"
+  },
   [theme.breakpoints.down("sm")]: {
-    padding: "25px 0"
+    padding: "10px 20px 25px 20px",
+    width: "100%"
   }
 }));
 
@@ -247,7 +250,6 @@ export const BlogPageTitle = styled(Typography)(({ theme }) => ({
   color: theme.palette.text.primary,
   userSelect: "none",
   textAlign: "center",
-  textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)"
 }));
 
 export const BlogPostsContainer = styled(Box)({

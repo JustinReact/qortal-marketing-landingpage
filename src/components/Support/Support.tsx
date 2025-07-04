@@ -15,7 +15,7 @@ const Support = () => {
             action: "Clicked Discord Button Support Page",
             label: "Discord Button Support Page"
           });
-          window.open("https://discord.gg/YKdxYUSqZR", "_blank");
+          window.open("https://link.qortal.dev/discord-invite", "_blank");
         }}
         src={"/images/Home/JoinDiscordLogo.png"}
         alt="Join Qortal Discord"

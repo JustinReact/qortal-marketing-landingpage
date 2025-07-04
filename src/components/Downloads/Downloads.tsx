@@ -15,6 +15,7 @@ import {
   DownloadSubCol,
   DownloadsUIGrid,
   DownloadText,
+  DownloadText1,
   DownloadUIRow,
   IPhoneRow,
   MainCol,
@@ -199,7 +200,7 @@ const Downloads = () => {
       <MainRow>
         <MainCol>
           <DownloadText>
-            <strong>Qortal UI</strong> For:
+            <strong>Qortal User Interface</strong> For:
           </DownloadText>
           {isIOS ? (
             <IPhoneRow>
@@ -228,6 +229,7 @@ const Downloads = () => {
                   }}
                 >
                   <AppleLogo color={"#0177DB"} width={"45"} height={"45"} />
+                  <DownloadText1>iPhone</DownloadText1>
                 </DownloadCard>
               </DownloadCol>
             </IPhoneRow>
@@ -258,6 +260,7 @@ const Downloads = () => {
                   }}
                 >
                   <AndroidIcon width={"40"} height={"70"} color={"#a4c639"} />
+                  <DownloadText1>Android</DownloadText1>
                 </DownloadCard>
               </DownloadCol>
             </IPhoneRow>
@@ -265,37 +268,6 @@ const Downloads = () => {
             <DownloadContainer>
               <DownloadUIRow>
                 <DownloadsUIGrid>
-                  <DownloadCol>
-                    <DownloadCard
-                      role="button"
-                      aria-label="Redirect to the Android APK"
-                      tabIndex={0}
-                      onClick={() => {
-                        ReactGA.event({
-                          category: "User",
-                          action: "Clicked Android Download Button",
-                          label: "Clicked Android Download Button"
-                        });
-                        androidDownload();
-                      }}
-                      onKeyDown={(e) => {
-                        if (e.key === "Enter") {
-                          ReactGA.event({
-                            category: "User",
-                            action: "Clicked Android Download Button",
-                            label: "Clicked Android Download Button"
-                          });
-                          androidDownload();
-                        }
-                      }}
-                    >
-                      <AndroidIcon
-                        width={"40"}
-                        height={"70"}
-                        color={"#a4c639"}
-                      />
-                    </DownloadCard>
-                  </DownloadCol>
                   <DownloadCol>
                     <DownloadCard
                       aria-label="Download the Windows Desktop version of Qortal"
@@ -324,8 +296,8 @@ const Downloads = () => {
                         width={40}
                         height={40}
                         alt={"Windows Logo"}
-                        style={{ marginRight: "25px" }}
                       />
+                      <DownloadText1>Windows</DownloadText1>
                     </DownloadCard>
                   </DownloadCol>
                   <DownloadCol className="mac-col">
@@ -352,7 +324,8 @@ const Downloads = () => {
                         }
                       }}
                     >
-                      <AppleLogo color={"#0177DB"} width={"50"} height={"50"} />
+                      <AppleLogo color={"#0177DB"} width={"40"} height={"40"} />
+                      <DownloadText1>Mac</DownloadText1>
                     </DownloadCard>
                   </DownloadCol>
                   <DownloadCol>
@@ -383,8 +356,8 @@ const Downloads = () => {
                         width={40}
                         height={40}
                         alt={"Linux Logo"}
-                        style={{ marginRight: "25px" }}
                       />
+                      <DownloadText1>Linux</DownloadText1>
                     </DownloadCard>
                   </DownloadCol>
                   <DownloadCol>
@@ -415,6 +388,39 @@ const Downloads = () => {
                         height="45"
                         color="transparent"
                       />
+                      <DownloadText1>Extension</DownloadText1>
+                    </DownloadCard>
+                  </DownloadCol>
+                  <DownloadCol>
+                    <DownloadCard
+                      role="button"
+                      aria-label="Redirect to the Android APK"
+                      tabIndex={0}
+                      onClick={() => {
+                        ReactGA.event({
+                          category: "User",
+                          action: "Clicked Android Download Button",
+                          label: "Clicked Android Download Button"
+                        });
+                        androidDownload();
+                      }}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                          ReactGA.event({
+                            category: "User",
+                            action: "Clicked Android Download Button",
+                            label: "Clicked Android Download Button"
+                          });
+                          androidDownload();
+                        }
+                      }}
+                    >
+                      <AndroidIcon
+                        width={"40"}
+                        height={"40"}
+                        color={"#a4c639"}
+                      />
+                      <DownloadText1>Android</DownloadText1>
                     </DownloadCard>
                   </DownloadCol>
                 </DownloadsUIGrid>
@@ -422,7 +428,7 @@ const Downloads = () => {
               <DownloadCoreRow>
                 <DownloadSubCol>
                   <DownloadText style={{ marginTop: 0 }}>
-                    <strong>Qortal Core</strong> For:
+                    <strong>Qortal Core</strong> (Optional) For:
                   </DownloadText>
                   <DownloadsCoreGrid>
                     <DownloadCol>
@@ -453,8 +459,8 @@ const Downloads = () => {
                           width={40}
                           height={40}
                           alt={"Windows Logo"}
-                          style={{ marginRight: "25px" }}
                         />
+                        <DownloadText1>Windows</DownloadText1>
                       </DownloadCard>
                     </DownloadCol>
                     <DownloadCol className="mac-col">
@@ -483,9 +489,10 @@ const Downloads = () => {
                       >
                         <AppleLogo
                           color={"#0177DB"}
-                          width={"50"}
-                          height={"50"}
+                          width={"40"}
+                          height={"40"}
                         />
+                        <DownloadText1>Mac</DownloadText1>
                       </DownloadCard>
                     </DownloadCol>
                     <DownloadCol>
@@ -516,8 +523,8 @@ const Downloads = () => {
                           width={40}
                           height={40}
                           alt={"Linux Logo"}
-                          style={{ marginRight: "25px" }}
                         />
+                        <DownloadText1>Linux</DownloadText1>
                       </DownloadCard>
                     </DownloadCol>
                   </DownloadsCoreGrid>
