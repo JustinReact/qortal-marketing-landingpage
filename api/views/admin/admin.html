@@ -29,6 +29,35 @@
     <div id="blurbsTableWrapper"></div>
   </main>
 
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+  <script>
+    const firebaseConfig = {{FIREBASE_CONFIG}};
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    document.getElementById('logoutBtn').addEventListener('click', async () => {
+      try {
+        // Await Firebase sign out first
+        await auth.signOut();
+
+        // Hit backend logout to clear cookie
+        await fetch('/api/admin/logout', {
+          method: 'POST',
+          credentials: 'include'
+        });
+
+        // Also clear cookie manually in browser just to be safe
+        document.cookie = "firebase_id_token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC; Secure; SameSite=Strict";
+
+        // Redirect to login page
+        window.location.href = '/api/admin/login';
+      } catch (err) {
+        console.error('Logout failed:', err);
+      }
+    });
+
+  </script>
   <script>
     let fetchedBlurbs = [];
 
@@ -136,12 +165,6 @@
       const wb = XLSX.utils.book_new();
       XLSX.utils.book_append_sheet(wb, ws, 'Blurbs');
       XLSX.writeFile(wb, 'blurbs.xlsx');
-    });
-
-    document.getElementById('logoutBtn').addEventListener('click', () => {
-      document.getElementById('apiKey').value = '';
-      alert('Logged out.');
-      window.location.href = '/login.html'; // Adjust if needed
     });
   </script>
 </body>

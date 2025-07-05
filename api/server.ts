@@ -12,8 +12,8 @@ import cookieParser from 'cookie-parser';
 import path from 'path';
 
 const allowedOrigins = [
-  'http://localhost:3000',
-  process.env.FRONTEND_ORIGIN
+  process.env.FRONTEND_ORIGIN ?? 'http://localhost:3000',
+  process.env.API_ORIGIN
 ];
 
 const corsOptions = {

@@ -40,7 +40,8 @@ export const authenticateFirebaseToken = async (
   }
 
   try {
-    const decodedToken = await admin.auth().verifyIdToken(idToken);
+    const decodedToken = await admin.auth().verifyIdToken(idToken, true);
+
 
     if (!decodedToken.admin) {
         res.status(403).send('Forbidden: Admins only');
