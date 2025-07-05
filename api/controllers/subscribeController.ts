@@ -3,12 +3,9 @@ import { saveSubscriber } from '../services/firebaseServices';
 import isEmail from '../utils/validators';
 import { addToMailerliteGroup } from '../services/mailerliteServices';
 
-/**
- * Interface for the expected request body from the /subscribe endpoint
- */
 interface SubscribeRequestBody {
-    name: string;
-    email: string;
+  name: string;
+  email: string;
 }
 
 /**
@@ -16,8 +13,8 @@ interface SubscribeRequestBody {
  * saving the subscriber to Firestore, and adding the email to the MailerLite group.
  */
 const handleSubscription = async (
-    req: Request<{}, {}, SubscribeRequestBody>,
-    res: Response
+  req: Request<{}, {}, SubscribeRequestBody>,
+  res: Response
 ): Promise<void> => {
     const { name, email } = req.body;
 
@@ -49,10 +46,9 @@ const handleSubscription = async (
         return;
     }
 
-
-    res.status(200).json({
-        message: 'Subscription successful.',
-    });
+  res.status(200).json({
+    message: "Subscription successful."
+  });
 };
 
 export { handleSubscription };

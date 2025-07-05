@@ -44,7 +44,7 @@ export const XSVG: React.FC<IconTypes> = ({
             strokeLinecap: "butt",
             strokeLinejoin: "miter",
             strokeMiterlimit: 10,
-            fill:color,
+            fill: "currentcolor",
             fillRule: "nonzero",
             opacity: 1,
             transform: "matrix(1 0 0 1 0 0)"
@@ -59,7 +59,7 @@ export const XSVG: React.FC<IconTypes> = ({
             strokeLinecap: "butt",
             strokeLinejoin: "miter",
             strokeMiterlimit: 10,
-            fill: color,
+            fill:  "currentcolor",
             fillRule: "nonzero",
             opacity: 1,
             transform: "matrix(1 0 0 1 0 0)"

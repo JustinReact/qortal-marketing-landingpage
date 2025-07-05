@@ -11,13 +11,21 @@ import { authenticateFirebaseToken, authenticateWithToken } from './middleware/a
 import cookieParser from 'cookie-parser';
 import path from 'path';
 
-const allowedOrigins = [process.env.FRONTEND_ORIGIN || 'http://localhost:3000']; // Replace with your production frontend URL
-const corsOptions = {
-    origin: allowedOrigins,
-    methods: ['GET', 'POST', 'PUT'], // no DELETE for now
-    // credentials: true, // if you're using cookies or Authorization headers
-};
+const allowedOrigins = [
+  'http://localhost:3000',
+  process.env.FRONTEND_ORIGIN
+];
 
+const corsOptions = {
+  origin: function (origin: string | undefined, callback: (err: Error | null, allow?: any) => void) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: ['GET', 'POST', 'PUT']
+};
 
 const app: Express = express();
 const PORT = process.env.PORT || 3000;
@@ -25,6 +33,7 @@ app.use(express.static(path.join(__dirname, 'views')));
 
 app.use(express.urlencoded({ extended: true })); // for form parsing
 app.use(cookieParser()); // sign cookies
+
 
 app.use(cors(corsOptions));
 

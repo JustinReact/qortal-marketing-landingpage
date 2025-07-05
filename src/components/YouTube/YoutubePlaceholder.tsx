@@ -13,19 +13,21 @@ interface YoutubePlaceholderProps {
   onClick: () => void;
   YoutubeThumbnail: string;
   YoutubeTitle: string;
+  className?: string;
 }
 
 export const YoutubePlaceholder: FC<YoutubePlaceholderProps> = ({
   isModal,
   onClick,
   YoutubeThumbnail,
-  YoutubeTitle
+  YoutubeTitle,
+  className
 }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
-    <YoutubePlaceholderContainer onClick={onClick}>
+    <YoutubePlaceholderContainer className={className} onClick={onClick}>
       <YoutubeHeader>{YoutubeTitle}</YoutubeHeader>
       <YoutubeThumbnailImg
         src={YoutubeThumbnail}

@@ -783,7 +783,7 @@ export const CTAButton2 = styled(Button)(({ theme }) => ({
   gap: "7px",
   borderRadius: "30px",
   border: `1px solid ${theme.palette.customBlue.main}`,
-  color: "#000000",
+  color: "#ffffff",
   backgroundColor: theme.palette.customBlue.main,
   cursor: "pointer",
   boxShadow: "1px 4px 10.5px 0px #0000004D",
@@ -1684,6 +1684,7 @@ export const EbookPromoTitle = styled(Typography)(({ theme }) => ({
 }));
 
 export const EbookPromoSubTitle = styled(Typography)(({ theme }) => ({
+  textAlign: "center",
   fontFamily: inter.style.fontFamily,
   fontSize: "15px",
   fontWeight: 400,

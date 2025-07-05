@@ -32,7 +32,7 @@ const getBlogRawData = async (
 const getBlogs = async () => {
   try {
     // Fetch list of Bester's blogs resources from Qortal blockchain
-    const url = `${groupApi}/arbitrary/resources/searchsimple?service=BLOG&name=Bester&identifier=${BLOG_BASE}-&limit=20&mode=ALL&prefix=true&includemetadata=false&reverse=true`;
+    const url = `${groupApi}/arbitrary/resources/searchsimple?service=BLOG&name=Bester&identifier=${BLOG_BASE}-&limit=0&mode=ALL&prefix=true&includemetadata=false&reverse=true`;
     const response = await fetch(url, {
       method: "GET",
       headers: {
@@ -113,6 +113,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
       changeFrequency: 'yearly' as const,
       priority: 0.3,
+    },
+    {
+      url: 'https://qortal.dev/ebook',
+      lastModified: new Date(),
+      changeFrequency: 'yearly' as const,
+      priority: 0.5,
     }
   ];
   const blogs: Blog = (await getBlogs()) ?? []; 

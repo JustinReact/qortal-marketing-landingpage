@@ -32,7 +32,7 @@ const NewsPostsClient: React.FC<NewsPostsClientProps> = ({ news }) => {
   const router = useRouter();
   return (
     <MainNewsWrapper>
-      <NewsTitle>News & Announcements</NewsTitle>
+      <NewsTitle>NEWS & ANNOUNCEMENTS</NewsTitle>
       <NewsCardsGrid>
         {news
           .sort((a, b) => b.created - a.created)
