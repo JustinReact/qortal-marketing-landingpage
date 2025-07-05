@@ -11,7 +11,8 @@
     "prestart": "npm run build",
     "start": "node dist/server.js",
     "preserve": "npm run build",
-    "serve": "concurrently \"tsc -w\" \"npm run watch-views\" \"nodemon dist/server.js\""
+    "serve": "concurrently -k \"tsc -w\" \"npm run watch-views\" \"wait-on dist/server.js && nodemon dist/server.js\""
+
   },
   "keywords": [],
   "author": "",
