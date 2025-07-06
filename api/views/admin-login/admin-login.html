@@ -1,71 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Admin Login</title>
-    <link rel="stylesheet" href="/admin-login/admin-login.css" />
-  </head>
-  <body>
-    <h2>Admin Login</h2>
-    <form id="login-form">
-      <input type="email" id="email" placeholder="Admin email" required />
-      <input type="password" id="password" placeholder="Password" required />
-      <button type="submit">Login</button>
-    </form>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin Login</title><link rel="stylesheet" href="/admin-login/admin-login.css" />
 
-    <div id="message" style="margin-top: 1em; color: red"></div>
+</head>
+<body>
+  <h2>Admin Login</h2>
+  <form id="login-form">
+    <input type="email" id="email" placeholder="Admin email" required />
+    <input type="password" id="password" placeholder="Password" required />
+    <button type="submit">Login</button>
+  </form>
 
-    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
-    <script>
-          // This will be replaced by the server with actual Firebase config JSON so the error it's showing is irrelevant
-          const firebaseConfig = {{FIREBASE_CONFIG}};
+  <div id="message" style="margin-top: 1em; color: red;"></div>
 
-          firebase.initializeApp(firebaseConfig);
-          const auth = firebase.auth();
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+  <script>
+    // This will be replaced by the server with actual Firebase config JSON so the error it's showing is irrelevant
+    const firebaseConfig = {{FIREBASE_CONFIG}};
 
-          const loginForm = document.getElementById('login-form');
-      const messageDiv = document.getElementById('message');
-      const loginBtn = loginForm.querySelector('button');
-      let attempts = 0;
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
 
-      loginForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
+    const loginForm = document.getElementById('login-form');
+const messageDiv = document.getElementById('message');
+const loginBtn = loginForm.querySelector('button');
+let attempts = 0;
 
-        loginBtn.disabled = true;
-        messageDiv.textContent = '';
+loginForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
 
-        const email = document.getElementById('email').value.trim();
-        const password = document.getElementById('password').value.trim();
+  loginBtn.disabled = true;
+  messageDiv.textContent = '';
+  
+  const email = document.getElementById('email').value.trim();
+  const password = document.getElementById('password').value.trim();
 
-        try {
-          const userCredential = await auth.signInWithEmailAndPassword(email, password);
-          const user = userCredential.user;
-          const idToken = await user.getIdToken(true);
+  try {
+    const userCredential = await auth.signInWithEmailAndPassword(email, password);
+    const user = userCredential.user;
+    const idToken = await user.getIdToken(true);
 
-          document.cookie = `firebase_id_token=${idToken}; path=/; secure`;
+    document.cookie = `firebase_id_token=${idToken}; path=/; secure`;
 
-          messageDiv.style.color = 'green';
-          messageDiv.textContent = 'Login successful! Redirecting...';
+    messageDiv.style.color = 'green';
+    messageDiv.textContent = 'Login successful! Redirecting...';
 
-          setTimeout(() => {
-            window.location.href = '/api/admin';
-          }, 1000);
-        } catch (error) {
-          attempts++;
-          messageDiv.style.color = 'red';
-          messageDiv.textContent = `Login failed: ${error.message}`;
+    setTimeout(() => {
+      window.location.href = '/api/admin';
+    }, 1000);
+  } catch (error) {
+    attempts++;
+    messageDiv.style.color = 'red';
+    messageDiv.textContent = `Login failed: ${error.message}`;
 
-          if (attempts >= 3) {
-            messageDiv.textContent += ' Too many attempts, please wait 10 seconds.';
-            await new Promise(r => setTimeout(r, 10000)); // 10 sec delay
-            attempts = 0;
-          }
-        } finally {
-          loginBtn.disabled = false;
-        }
-      });
-    </script>
-  </body>
+    if (attempts >= 3) {
+      messageDiv.textContent += ' Too many attempts, please wait 10 seconds.';
+      await new Promise(r => setTimeout(r, 10000)); // 10 sec delay
+      attempts = 0;
+    }
+  } finally {
+    loginBtn.disabled = false;
+  }
+});
+  </script>
+</body>
 </html>
