@@ -1,12 +1,12 @@
-This API allows users to subscribe, submit blurbs, and fetch all blurbs. Built with Express.js, Firebase Firestore, and SendGrid.
+This API allows users to subscribe, submit blurbs, and fetch all blurbs. Built with Express.js, Firebase Firestore, and MailerLite.
 
 ## Folder Structure
 /project-root
-├── /config              # Firebase and SendGrid configuration
+├── /config              # Firebase and MailerLite configuration
 ├── /controllers         # API request handlers (blurbs, subscriptions)
 ├── /middleware          # Authentication middleware
 ├── /routes              # API routes (subscribe, blurb)
-├── /services            # Firebase and SendGrid services
+├── /services            # Firebase and MailerLite services
 ├── /utils               # Helper functions (validators)
 └── server.ts            # Main server file
 
