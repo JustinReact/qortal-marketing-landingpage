@@ -26,47 +26,46 @@
     const auth = firebase.auth();
 
     const loginForm = document.getElementById('login-form');
-    const messageDiv = document.getElementById('message');
-    const loginBtn = loginForm.querySelector('button');
-    let attempts = 0;
+const messageDiv = document.getElementById('message');
+const loginBtn = loginForm.querySelector('button');
+let attempts = 0;
 
-    loginForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
+loginForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
 
-      loginBtn.disabled = true;
-      messageDiv.textContent = '';
-      
-      const email = document.getElementById('email').value.trim();
-      const password = document.getElementById('password').value.trim();
+  loginBtn.disabled = true;
+  messageDiv.textContent = '';
+  
+  const email = document.getElementById('email').value.trim();
+  const password = document.getElementById('password').value.trim();
 
-      try {
-        const userCredential = await auth.signInWithEmailAndPassword(email, password);
-        const user = userCredential.user;
-        const idToken = await user.getIdToken(true);
+  try {
+    const userCredential = await auth.signInWithEmailAndPassword(email, password);
+    const user = userCredential.user;
+    const idToken = await user.getIdToken(true);
 
-        document.cookie = `firebase_id_token=${idToken}; path=/; Secure; SameSite=Strict`;
+    document.cookie = `firebase_id_token=${idToken}; path=/; secure`;
 
+    messageDiv.style.color = 'green';
+    messageDiv.textContent = 'Login successful! Redirecting...';
 
-        messageDiv.style.color = 'green';
-        messageDiv.textContent = 'Login successful! Redirecting...';
+    setTimeout(() => {
+      window.location.href = '/api/admin';
+    }, 1000);
+  } catch (error) {
+    attempts++;
+    messageDiv.style.color = 'red';
+    messageDiv.textContent = `Login failed: ${error.message}`;
 
-        setTimeout(() => {
-          window.location.href = '/api/admin';
-        }, 1000);
-      } catch (error) {
-        attempts++;
-        messageDiv.style.color = 'red';
-        messageDiv.textContent = `Login failed`;
-
-        if (attempts >= 3) {
-          messageDiv.textContent += ' Too many attempts, please wait 10 seconds.';
-          await new Promise(r => setTimeout(r, 10000)); // 10 sec delay
-          attempts = 0;
-        }
-      } finally {
-        loginBtn.disabled = false;
-      }
-    });
+    if (attempts >= 3) {
+      messageDiv.textContent += ' Too many attempts, please wait 10 seconds.';
+      await new Promise(r => setTimeout(r, 10000)); // 10 sec delay
+      attempts = 0;
+    }
+  } finally {
+    loginBtn.disabled = false;
+  }
+});
   </script>
 </body>
 </html>
