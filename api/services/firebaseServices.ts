@@ -116,3 +116,25 @@ export const getAllBlurbs = async (): Promise<{ name: string; blurb: string }[]>
     throw new Error('Could not retrieve subscribers.');
   }
 };
+
+
+/**
+ * Retrieves all subscribers with email and name
+ * @returns {Promise<Array<{ email: string; name: string }>>}
+ */
+export const getAllSubscribers = async (): Promise<{ email: string; name: string }[]> => {
+  try {
+    const snapshot = await db.collection(COLLECTIONS.SUBSCRIBERS).get();
+
+    return snapshot.docs.map(doc => {
+      const data = doc.data();
+      return {
+        email: data.email || '',
+        name: data.name || '',
+      };
+    });
+  } catch (error) {
+    console.error('[Firestore Error] Failed to fetch subscribers:', error);
+    throw new Error('Could not retrieve subscribers.');
+  }
+};

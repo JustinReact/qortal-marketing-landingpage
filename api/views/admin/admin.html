@@ -16,156 +16,32 @@
     <div class="card">
       <label for="apiKey">Enter API Secret Key:</label>
       <input type="password" id="apiKey" placeholder="••••••••••••••" />
-      <button id="fetchBtn">Fetch Blurbs</button>
-      <div id="loadingSpinner" style="display:none; margin-top: 1rem; color: #7a89a1; font-weight: 600;">Loading...</div>
+      <div class="button-group">
+        <button id="fetchBlurbsBtn">Fetch Blurbs</button>
+        <button id="fetchSubscribersBtn">Fetch Subscribers</button>
+      </div>
+      <div id="loadingSpinner" class="loading" hidden>Loading...</div>
     </div>
 
     <div class="action-buttons">
-      <button id="downloadCsvBtn" style="display: none;">Download as CSV</button>
-      <button id="downloadExcelBtn" style="display: none;">Download Excel (.xlsx)</button>
+      <button id="downloadCsvBtn" hidden>Download CSV</button>
+      <button id="downloadExcelBtn" hidden>Download Excel</button>
     </div>
 
-    <h2>Blurbs</h2>
-    <div id="blurbsTableWrapper"></div>
+    <h2 id="tableTitle">Data</h2>
+    <div id="dataTableWrapper"></div>
   </main>
 
+  <!-- Firebase Auth -->
   <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
   <script>
     const firebaseConfig = {{FIREBASE_CONFIG}};
     firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth();
-
-    document.getElementById('logoutBtn').addEventListener('click', async () => {
-      try {
-        // Await Firebase sign out first
-        await auth.signOut();
-
-        // Hit backend logout to clear cookie
-        await fetch('/api/admin/logout', {
-          method: 'POST',
-          credentials: 'include'
-        });
-
-        // Also clear cookie manually in browser just to be safe
-        document.cookie = "firebase_id_token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC; Secure; SameSite=Strict";
-
-        // Redirect to login page
-        window.location.href = '/api/admin/login';
-      } catch (err) {
-        console.error('Logout failed:', err);
-      }
-    });
-
+    window.auth = firebase.auth();
   </script>
-  <script>
-    let fetchedBlurbs = [];
 
-    const fetchBtn = document.getElementById('fetchBtn');
-    const downloadCsvBtn = document.getElementById('downloadCsvBtn');
-    const downloadExcelBtn = document.getElementById('downloadExcelBtn');
-    const loadingSpinner = document.getElementById('loadingSpinner');
-
-    fetchBtn.addEventListener('click', async () => {
-      const apiKey = document.getElementById('apiKey').value.trim();
-      if (!apiKey) {
-        alert('Please enter the API secret key.');
-        return;
-      }
-
-      loadingSpinner.style.display = 'block';
-      downloadCsvBtn.style.display = 'none';
-      downloadExcelBtn.style.display = 'none';
-      document.getElementById('blurbsTableWrapper').innerHTML = '';
-
-      try {
-        const response = await fetch('/api/admin/blurbs', {
-          headers: {
-            'Authorization': 'Bearer ' + apiKey
-          }
-        });
-
-        if (!response.ok) throw new Error('Unauthorized or failed to fetch blurbs.');
-
-        fetchedBlurbs = await response.json();
-        renderTable(fetchedBlurbs);
-
-        if (fetchedBlurbs.length) {
-          downloadCsvBtn.style.display = 'inline-block';
-          downloadExcelBtn.style.display = 'inline-block';
-        }
-      } catch (err) {
-        alert(err.message);
-      } finally {
-        loadingSpinner.style.display = 'none';
-      }
-    });
-
-    function renderTable(data) {
-      const wrapper = document.getElementById('blurbsTableWrapper');
-      if (!data.length) {
-        wrapper.innerHTML = '<p>No blurbs found.</p>';
-        return;
-      }
-
-      const headers = Object.keys(data[0]).slice(0, 2); // Show only first 2 keys
-      const table = document.createElement('table');
-      table.id = 'blurbsTable';
-
-      const thead = document.createElement('thead');
-      const headRow = document.createElement('tr');
-      headers.forEach(h => {
-        const th = document.createElement('th');
-        th.textContent = h;
-        headRow.appendChild(th);
-      });
-      thead.appendChild(headRow);
-      table.appendChild(thead);
-
-      const tbody = document.createElement('tbody');
-      data.forEach(item => {
-        const row = document.createElement('tr');
-        headers.forEach(h => {
-          const td = document.createElement('td');
-          td.textContent = item[h] ?? '';
-          row.appendChild(td);
-        });
-        tbody.appendChild(row);
-      });
-      table.appendChild(tbody);
-
-      wrapper.innerHTML = '';
-      wrapper.appendChild(table);
-    }
-
-    downloadCsvBtn.addEventListener('click', () => {
-      if (!fetchedBlurbs.length) return;
-      const headers = Object.keys(fetchedBlurbs[0]);
-      let csv = headers.join(',') + '\n';
-
-      fetchedBlurbs.forEach(b => {
-        const row = headers.map(h => `"${(b[h] || '').toString().replace(/"/g, '""')}"`).join(',');
-        csv += row + '\n';
-      });
-
-      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.setAttribute('href', url);
-      link.setAttribute('download', 'blurbs.csv');
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    });
-
-    downloadExcelBtn.addEventListener('click', () => {
-      if (!fetchedBlurbs.length) return;
-
-      const ws = XLSX.utils.json_to_sheet(fetchedBlurbs);
-      const wb = XLSX.utils.book_new();
-      XLSX.utils.book_append_sheet(wb, ws, 'Blurbs');
-      XLSX.writeFile(wb, 'blurbs.xlsx');
-    });
-  </script>
+  <!-- JS Modules -->
+  <script type="module" src="/admin/admin.js"></script>
 </body>
 </html>

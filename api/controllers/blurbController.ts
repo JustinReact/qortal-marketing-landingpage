@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import isEmail from '../utils/validators';
-import { addBlurbByEmail, getAllBlurbs } from '../services/firebaseServices';
+import { addBlurbByEmail, getAllBlurbs, getAllSubscribers } from '../services/firebaseServices';
 
 // Interface defining the structure of the expected request body for /submit-blurt endpoint
 interface BlurbRequestBody {
@@ -53,5 +53,23 @@ export const handleGetAllBlurbs = async (
     } catch (error) {
         console.error("[Error while getting all blurbs] Failed in handleGetAllBlurbs.", error);
         res.status(500).json({ error: 'Failed to get blurbs. Please try again later'});
+    }
+}
+
+/**
+ * Retrieves all subscribers from Firestore with name and email.
+ * This is used for viewing all subscribres.
+ */
+export const handleGetAllSubscribers = async (
+    req: Request<{}, {}, {}>, // No request body needed for this endpoint
+    res: Response
+): Promise<void> => {
+    console.log("1")
+    try { // Fetch all subscribers from Firestore
+        const data = await getAllSubscribers();
+        res.status(200).json(data);
+    } catch (error) {
+        console.error("[Error while getting all subscribers] Failed in handleGetAllSubscribers.", error);
+        res.status(500).json({ error: 'Failed to get subscribers. Please try again later'});
     }
 }
