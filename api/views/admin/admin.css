@@ -96,7 +96,13 @@ input#apiKey:focus {
     0 0 20px rgba(74 144 226 / 0.3);
 }
 
-button#fetchBtn {
+.button-group {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+}
+
+button#fetchBlurbsBtn, button#fetchSubscribersBtn {
   cursor: pointer;
   background: linear-gradient(90deg, #2a7ff6 0%, #45a4f9 100%);
   border: none;
@@ -112,11 +118,11 @@ button#fetchBtn {
   filter: drop-shadow(0 1px 2px rgba(42, 127, 246, 0.5));
   width: 100%;
 }
-button#fetchBtn:hover {
+button#fetchBlurbsBtn:hover, button#fetchSubscribersBtn:hover {
   transform: scale(1.05);
   box-shadow: 0 6px 14px rgba(42, 127, 246, 0.55);
 }
-button#fetchBtn:active {
+button#fetchBlurbsBtn:active, button#fetchSubscribersBtn:active {
   transform: scale(0.98);
   box-shadow: 0 3px 7px rgba(42, 127, 246, 0.4);
 }
@@ -189,7 +195,7 @@ h2 {
   text-align: center;
 }
 
-#blurbsTableWrapper {
+#dataTableWrapper {
   width: 100%;
   max-width: 980px;
   max-height: 50dvh; /* cool, dynamic viewport height */
@@ -208,17 +214,17 @@ h2 {
 }
 
 /* WebKit Browsers */
-#blurbsTableWrapper::-webkit-scrollbar {
+#dataTableWrapper::-webkit-scrollbar {
   width: 10px;            /* width of vertical scrollbar */
   height: 10px;           /* height of horizontal scrollbar */
 }
 
-#blurbsTableWrapper::-webkit-scrollbar-track {
+#dataTableWrapper::-webkit-scrollbar-track {
   background: transparent; /* or a subtle color */
   border-radius: 12px;
 }
 
-#blurbsTableWrapper::-webkit-scrollbar-thumb {
+#dataTableWrapper::-webkit-scrollbar-thumb {
   background: #4a90e2;    /* nice blue accent */
   border-radius: 12px;
   border: 2px solid transparent; /* creates padding around thumb */
@@ -226,37 +232,53 @@ h2 {
   transition: background-color 0.3s ease;
 }
 
-#blurbsTableWrapper::-webkit-scrollbar-thumb:hover {
+#dataTableWrapper::-webkit-scrollbar-thumb:hover {
   background: #357abd;    /* darker on hover */
 }
 
 
-#blurbsTable {
+#dataTable {
   width: 100%;
-  border-collapse: collapse;
-  color: #d0d6e3;
-  font-size: 1rem;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #181f2a;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.10);
 }
 
-#blurbsTable th,
-#blurbsTable td {
-  padding: 0.75rem 1rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+#dataTable th,
+#dataTable td {
+  padding: 1rem 1.2rem;
+  border-bottom: 1px solid #232c3b;
   text-align: left;
-  white-space: nowrap;
+  font-size: 1.05rem;
 }
 
-#blurbsTable thead th {
-  background: rgba(255 255 255 / 0.07);
-  font-weight: 700;
-  color: #9fb2c8;
+#dataTable th {
+  background: #232c3b;
+  color: #7fc1ff;
+  position: sticky;
+  top: 0;
+  z-index: 2;
   letter-spacing: 0.04em;
-  text-transform: uppercase;
+  font-weight: 700;
 }
 
-#blurbsTable tbody tr:hover {
-  background: rgba(74, 144, 226, 0.15);
-  transition: background 0.25s ease;
+#dataTable tr.zebra {
+  background: #1e2633;
+}
+
+#dataTable tbody tr:hover {
+  background: #27344a;
+  transition: background 0.2s;
+}
+
+.empty-msg {
+  color: #8a95a1;
+  text-align: center;
+  padding: 2rem 0;
+  font-size: 1.2rem;
 }
 
 @media (max-width: 640px) {
@@ -271,7 +293,7 @@ h2 {
     max-width: 400px;
   }
 
-  #blurbsTableWrapper {
+  #dataTableWrapper {
     padding: 1rem 1rem;
   }
 }

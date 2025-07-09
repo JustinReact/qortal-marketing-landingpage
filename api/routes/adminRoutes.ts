@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { authenticateFirebaseToken, authenticateWithToken } from '../middleware/authMiddleware';
 import fs from 'fs';
-import { handleGetAllBlurbs } from '../controllers/blurbController';
+import { handleGetAllBlurbs, handleGetAllSubscribers } from '../controllers/blurbController';
 
 const router = Router();
 router.use((req, res, next) => {
@@ -53,5 +53,6 @@ router.get('/', authenticateFirebaseToken, (req, res) => {
 
 // Add other secure admin routes below here (blurbs, moderation, etc)
 router.get('/blurbs', authenticateWithToken, handleGetAllBlurbs);
+router.get('/subscribers', authenticateWithToken, handleGetAllSubscribers);
 
 export default router;
