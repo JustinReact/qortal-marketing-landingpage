@@ -1,29 +1,58 @@
 "use client";
-import ReactGA from "react-ga4";
-import { DiscordLogo, SupportContainer, SupportHeader } from "./Support-styles"
+import {
+  CloudIcon,
+  Container,
+  DiscordIcon,
+  LinkButton,
+  LinksContainer,
+  LinksTitle,
+  MainCol,
+  QortalImg
+} from "./Support-styles";
+import { useTheme } from "@mui/material";
 
 const Support = () => {
+  const theme = useTheme();
   return (
-    <SupportContainer>
-      <SupportHeader>
-        Need support? Join our Discord server and we'll be glad to help you!
-      </SupportHeader>
-      <DiscordLogo
-        onClick={() => {
-          ReactGA.event({
-            category: "User",
-            action: "Clicked Discord Button Support Page",
-            label: "Discord Button Support Page"
-          });
-          window.open("https://link.qortal.dev/discord-invite", "_blank");
-        }}
-        src={"/images/Home/JoinDiscordLogo.png"}
-        alt="Join Qortal Discord"
-        width={500}
-        height={500}
-      />
-    </SupportContainer>
-  )
-}
+    <Container>
+      <MainCol>
+        <QortalImg
+          src="/images/Links/QortalLogo.png"
+          alt="Qortal Logo"
+          width={130}
+          height={147}
+          quality={100}
+        />
+        <LinksTitle>Qortal Blockchain</LinksTitle>
+        <LinksContainer>
+          <LinkButton
+            href="https://link.qortal.dev/support"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <CloudIcon
+              height="24"
+              width="24"
+              color={theme.palette.text.primary}
+            />
+            Cloud Support
+          </LinkButton>
+          <LinkButton
+            href="https://link.qortal.dev/discord-invite"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <DiscordIcon
+              height="24"
+              width="24"
+              color={theme.palette.text.primary}
+            />
+            Discord Support
+          </LinkButton>
+        </LinksContainer>
+      </MainCol>
+    </Container>
+  );
+};
 
 export default Support;

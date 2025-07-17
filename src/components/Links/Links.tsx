@@ -16,7 +16,7 @@ import {
   QortalImg,
   WikiIcon,
   YoutubeIcon
-} from "./Link-styles";
+} from "./Links-styles";
 import { Socials } from "../Common/Socials/Socials";
 import { useMediaQuery, useTheme } from "@mui/material";
 
