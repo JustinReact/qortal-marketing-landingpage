@@ -13,7 +13,7 @@ export const Footer = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery("(max-width: 1086px)");
 
-  if ((location.includes("/wiki") && isMobile) || location.includes("/links")) {
+  if ((location.includes("/wiki") && isMobile) || location.includes("/links") || location.includes("/other-web3")) {
     return null; // Don't show footer on mobile wiki pages or links page
   } else
     return (
