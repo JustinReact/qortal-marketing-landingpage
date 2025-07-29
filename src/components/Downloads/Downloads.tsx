@@ -1,9 +1,12 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   AndroidIcon,
   AppleLogo,
   ChromeStoreLogo,
+  CommandLineModalContainer,
+  CommandLineModalContent,
+  CommandLineModalText,
   Container,
   DownloadCard,
   DownloadCol,
@@ -16,6 +19,7 @@ import {
   DownloadsUIGrid,
   DownloadText,
   DownloadText1,
+  DownloadText3,
   DownloadUIRow,
   IPhoneRow,
   MainCol,
@@ -35,6 +39,9 @@ import { useMediaQuery, useTheme } from "@mui/material";
 import { SupportModal } from "../Common/Modal/SupportModal";
 import { motion, AnimatePresence } from "framer-motion";
 import { UAParser } from "ua-parser-js";
+import { CommandLineSVG } from "../Common/Icons/CommandLineSVG";
+import { CloseIcon } from "../Common/Modal/SupportModal-styles";
+import { CheckmarkSVG } from "../Common/Icons/CheckmarkSVG";
 
 const Downloads = () => {
   const theme = useTheme();
@@ -46,6 +53,8 @@ const Downloads = () => {
   const isIOS = result.os.name === "iOS"; // Covers both iPhones & iPads
 
   const [openSupportModal, setOpenSupportModal] = useState<boolean>(false);
+  const [openCommandLineModal, setOpenCommandLineModal] =
+    useState<boolean>(false);
 
   // UI Downloads
 
@@ -82,6 +91,18 @@ const Downloads = () => {
     link.click();
     document.body.removeChild(link);
     setOpenSupportModal(true);
+  };
+
+  const linuxCommandLineScript = async () => {
+    try {
+      await navigator.clipboard.writeText(
+        "bash <(curl -fsSL https://link.qortal.dev/linux-script || wget -qO- https://link.qortal.dev/linux-script)"
+      );
+      setOpenSupportModal(true);
+      setOpenCommandLineModal(true);
+    } catch (err) {
+      console.error("Failed to copy install script:", err);
+    }
   };
 
   const macDesktopDownload = async () => {
@@ -147,6 +168,25 @@ const Downloads = () => {
       }
     }
   };
+  
+  const commandLineModalVariants = {
+    opened: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        type: "spring",
+        stiffness: 95
+      }
+    },
+    closed: {
+      opacity: 0.2,
+      x: -100,
+      transition: {
+        duration: 0.2
+      }
+    }
+  };
+
   const supportModalVariantsMobile = {
     opened: {
       opacity: 1,
@@ -165,6 +205,14 @@ const Downloads = () => {
       }
     }
   };
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (openCommandLineModal) {
+        setOpenCommandLineModal(false);
+      }
+    }, 30000);
+  }, [openCommandLineModal]);
 
   return (
     <Container>
@@ -191,6 +239,69 @@ const Downloads = () => {
             <SupportModal
               setCloseSupportModal={() => setOpenSupportModal(false)}
             />
+          </motion.div>
+        )}
+        {openCommandLineModal && (
+          <motion.div
+            animate={"opened"}
+            initial={"closed"}
+            exit={{ opacity: 0 }}
+            variants={commandLineModalVariants}
+            style={{
+              position: "fixed",
+              bottom: "0px",
+              left: "0",
+              right: "0",
+              width: "100%",
+              height: "auto",
+              zIndex: 5,
+              backgroundColor: "transparent"
+            }}
+          >
+            <CommandLineModalContainer>
+              <CloseIcon
+                onClickFunc={() => setOpenCommandLineModal(false)}
+                color={theme.palette.text.primary}
+                height="25px"
+                width="25px"
+              />
+              <CheckmarkSVG
+                color={theme.palette.text.primary}
+                height="50px"
+                width="50px"
+              />
+              <CommandLineModalContent>
+                <CommandLineModalText>
+                  Copied script successfully!
+                  <br />
+                  You can now paste that into terminal and push ENTER.
+                  <br />
+                  <br />
+                  This will: Download/Run the script once pasted in terminal.
+                  <br />
+                  <br />
+                  The script will:
+                  <ul
+                    style={{
+                      textAlign: "left",
+                      margin: "8px 0",
+                      paddingLeft: "24px"
+                    }}
+                  >
+                    <li>
+                      Download and setup Qortal Hub, Qortal Core, and automation
+                    </li>
+                    <li>Setup Qortal Icon theme</li>
+                    <li>
+                      Setup Qortal Launchers and put them in the menu if it
+                      exists
+                    </li>
+                    <li>Use Qortal Icons on the launchers</li>
+                    <li>Download and setup all dependencies</li>
+                  </ul>
+                </CommandLineModalText>
+              </CommandLineModalContent>
+            </CommandLineModalContainer>
           </motion.div>
         )}
       </AnimatePresence>
@@ -421,6 +532,40 @@ const Downloads = () => {
                         color={"#a4c639"}
                       />
                       <DownloadText1>Android</DownloadText1>
+                    </DownloadCard>
+                  </DownloadCol>
+                  <DownloadCol>
+                    <DownloadCard
+                      aria-label="Copy the Linux Desktop version of Qortal command line script"
+                      tabIndex={0}
+                      onClick={() => {
+                        ReactGA.event({
+                          category: "User",
+                          action:
+                            "Clicked Linux Command Line Script Copy Button",
+                          label: "Clicked Linux Command Line Script Copy Button"
+                        });
+                        linuxCommandLineScript();
+                      }}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                          ReactGA.event({
+                            category: "User",
+                            action:
+                              "Clicked Linux Command Line Script Copy Button",
+                            label:
+                              "Clicked Linux Command Line Script Copy Button"
+                          });
+                          linuxCommandLineScript();
+                        }
+                      }}
+                    >
+                      <CommandLineSVG
+                        width="40"
+                        height="40"
+                        color={"transparent"}
+                      />
+                      <DownloadText3>Linux (Script)</DownloadText3>
                     </DownloadCard>
                   </DownloadCol>
                 </DownloadsUIGrid>

@@ -1,7 +1,7 @@
 import { styled } from "@mui/system";
 import { Box, Grid, Typography } from "@mui/material";
 import Image from "next/image";
-import { futura, oxygen, redditSans } from "../../app/fonts";
+import { futura, inter, oxygen, redditSans } from "../../app/fonts";
 import { ChromeStoreSVG } from "../Common/Icons/ChromeStoreSVG";
 import { AppleSVG } from "../Common/Icons/AppleSVG";
 import { AndroidSVG } from "../Common/Icons/AndroidSVG";
@@ -196,6 +196,16 @@ export const DownloadText2 = styled(Typography)(({ theme }) => ({
   }
 }));
 
+export const DownloadText3 = styled(Typography)(({ theme }) => ({
+  fontFamily: oxygen.style.fontFamily,
+  color: theme.palette.mode === "light" ? "#ffffff" : "#000000",
+  fontWeight: 500,
+  fontSize: "16px",
+  lineHeight: "22px",
+  userSelect: "none",
+}));
+
+
 export const OtherVersionsCol = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
@@ -330,4 +340,37 @@ export const IPhoneRow = styled(Box)(({ theme }) => ({
     gridTemplateColumns: "auto",
     gridTemplateRows: "repeat(5, 1fr)"
   },
+}));
+
+export const CommandLineModalContainer = styled(Box)(({ theme }) => ({
+  position: "fixed",
+  bottom: "50px",
+  left: "20px",
+  width: "450px",
+  height: "auto",
+  backgroundColor: theme.palette.mode === "light" ? "#D9D9D9" : "#111112",
+  borderRadius: "10px",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
+  padding: "20px",
+  gap: "20px",
+  zIndex: 6,
+}));
+
+export const CommandLineModalContent = styled(Box)({
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
+});
+
+export const CommandLineModalText = styled(Typography)(({ theme }) => ({
+  fontFamily: inter.style.fontFamily,
+  fontSize: "15px",
+  letterSpacing: 0,
+  color: theme.palette.text.primary,
+  textAlign: "center",
+  userSelect: "none",
 }));
