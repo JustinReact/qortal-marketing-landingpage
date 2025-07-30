@@ -23,7 +23,7 @@
     "@reduxjs/toolkit": "^1.9.7",
     "@tiptap/extension-color": "^2.8.0",
     "@tiptap/extension-heading": "^2.8.0",
-    "@tiptap/extension-link": "^2.9.1",
+    "@tiptap/extension-link": "^2.8.0",
     "@tiptap/extension-list-item": "^2.8.0",
     "@tiptap/extension-placeholder": "^2.8.0",
     "@tiptap/extension-superscript": "^2.8.0",
@@ -65,5 +65,8 @@
     "@types/ua-parser-js": "^0.7.39",
     "concurrently": "^9.1.2",
     "typescript": "^4.9.3"
-  }
+  },
+  "overrides": {
+  "linkifyjs": "^4.3.2"
+}
 }
