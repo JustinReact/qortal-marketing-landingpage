@@ -1,4 +1,4 @@
-import { styled } from "@mui/system";
+import { letterSpacing, styled } from "@mui/system";
 import {
   Box,
   Grid,
@@ -25,12 +25,13 @@ export const NewsTitle = styled(Typography)(({ theme }) => ({
   fontFamily: futura.style.fontFamily,
   fontWeight: "400",
   fontSize: "55px",
-  letterSpacing: "calc(0.09*15px)",
+  letterSpacing: "calc(0.09*55px)",
   color: theme.palette.text.primary,
   userSelect: "none",
   textAlign: "center",
   [theme.breakpoints.down("sm")]: {
-    fontSize: "40px"
+    fontSize: "35px",
+    letterSpacing: "calc(0.09*15px)",
   }
 }));
 
