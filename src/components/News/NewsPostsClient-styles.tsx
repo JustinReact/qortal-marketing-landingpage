@@ -38,6 +38,7 @@ export const NewsCardsGrid = styled(Grid)(({ theme }) => ({
   display: "grid",
   gridTemplateColumns: "repeat(auto-fill, minmax(368px, 1fr))",
   alignItems: "flex-start",
+  justifyContent: "center",
   flexWrap: "wrap",
   gap: "15px",
   padding: "25px 10px",

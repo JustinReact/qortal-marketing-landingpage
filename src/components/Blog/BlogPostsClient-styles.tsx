@@ -257,6 +257,7 @@ export const BlogPostsContainer = styled(Box)({
   gridTemplateColumns: "repeat(auto-fill, minmax(368px, 1fr))",
   alignItems: "flex-start",
   flexWrap: "wrap",
+  justifyContent: "center",
   gap: "15px",
   padding: "25px 10px",
   width: "100%"
