@@ -1,5 +1,5 @@
 import { Button, Typography } from "@mui/material";
-import { Box, styled } from "@mui/system";
+import { Box, maxWidth, styled } from "@mui/system";
 import Image from "next/image";
 import { redditSans, roboto } from "../../app/fonts";
 
@@ -117,6 +117,7 @@ export const BlogBody = styled(Box)(({ theme }) => ({
   },
   "& img": {
     marginTop: "10px !important",
+    maxWidth: "100%",
   },
 }));
 

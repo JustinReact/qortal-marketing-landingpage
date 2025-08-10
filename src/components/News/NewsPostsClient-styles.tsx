@@ -25,7 +25,7 @@ export const NewsTitle = styled(Typography)(({ theme }) => ({
   fontFamily: futura.style.fontFamily,
   fontWeight: "400",
   fontSize: "55px",
-  letterSpacing: "calc(0.09*55px)",
+  letterSpacing: "calc(0.09*15px)",
   color: theme.palette.text.primary,
   userSelect: "none",
   textAlign: "center",
@@ -54,6 +54,9 @@ export const NewsCard = styled(Box)(({ theme }) => ({
   margin: "0 auto",
   ":hover": {
     cursor: "pointer"
+  },
+  [theme.breakpoints.down("sm")]: {
+    width: "330px",
   }
 }));
 

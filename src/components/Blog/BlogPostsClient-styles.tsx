@@ -249,7 +249,7 @@ export const BlogPageTitle = styled(Typography)(({ theme }) => ({
   letterSpacing: "calc(0.09*55px)",
   color: theme.palette.text.primary,
   userSelect: "none",
-  textAlign: "center",
+  textAlign: "center"
 }));
 
 export const BlogPostsContainer = styled(Box)({
@@ -272,6 +272,9 @@ export const BlogPostCard = styled(Box)(({ theme }) => ({
   margin: "0 auto",
   ":hover": {
     cursor: "pointer"
+  },
+  [theme.breakpoints.down("sm")]: {
+    width: "330px"
   }
 }));
 

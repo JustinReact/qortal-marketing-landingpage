@@ -93,6 +93,7 @@ export const NewsPostBody = styled(Box)(({ theme }) => ({
     lineHeight: "1.6"
   },
   "& img": {
-    marginTop: "10px !important"
+    marginTop: "10px !important",
+    maxWidth: "100%",
   },
 }));

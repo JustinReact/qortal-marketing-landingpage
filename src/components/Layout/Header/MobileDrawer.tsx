@@ -19,6 +19,7 @@ export const MobileDrawer: FC<MobileDrawerProps> = ({
 }) => {
   const router = useRouter();
   const location = usePathname();
+
   return (
     <Container>
       <DrawerButton
@@ -115,7 +116,7 @@ export const MobileDrawer: FC<MobileDrawerProps> = ({
           setOpenMobileDrawer();
           router.push("/qort");
         }}
-        active={location.includes("/qort") ? true : false}
+        active={location === "/qort" ? true : false}
       >
         QORT
       </DrawerButton>
