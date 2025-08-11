@@ -5,6 +5,7 @@ import { oxygen } from "../../app/fonts";
 import { MonitorSVG } from "../Common/Icons/MonitorSVG";
 import { TelegramSVG } from "../Common/Icons/TelegramSVG";
 import { CalendarSVG } from "../Common/Icons/CalendarSVG";
+import { GroupSVG } from "../Common/Icons/GroupSVG";
 
 export const Container = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -90,6 +91,17 @@ export const LinkButton = styled(Link)(({ theme }) => ({
 }));
 
 export const CalendarIcon = styled(CalendarSVG)(({ theme }) => ({
+  transition: "all 0.3s ease-in-out",
+  color: theme.palette.text.primary,
+  position: "absolute",
+  left: "30px",
+  top: "16px",
+  [theme.breakpoints.down("sm")]: {
+    left: "20px",
+  }
+}));
+
+export const GroupIcon = styled(GroupSVG)(({ theme }) => ({
   transition: "all 0.3s ease-in-out",
   color: theme.palette.text.primary,
   position: "absolute",

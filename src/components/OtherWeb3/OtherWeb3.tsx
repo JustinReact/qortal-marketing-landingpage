@@ -2,6 +2,7 @@
 import {
   CalendarIcon,
   Container,
+  GroupIcon,
   LinkButton,
   LinksContainer,
   LinksTitle,
@@ -32,6 +33,18 @@ export const OtherWeb3 = () => {
               color={theme.palette.text.primary}
             />
             RSVP to Attend (Lu.ma)
+          </LinkButton>
+          <LinkButton
+            href="https://link.qortal.dev/meetup"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <GroupIcon
+              height="24"
+              width="24"
+              color={theme.palette.text.primary}
+            />
+            Meetup
           </LinkButton>
           <LinkButton
             href="https://link.qortal.dev/chat"
