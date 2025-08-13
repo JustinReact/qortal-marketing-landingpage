@@ -12,24 +12,28 @@ import {
   IconContainer2,
   IconContainer3,
   FeatureText,
-  VideoBox
+  VideoBox,
+  LockIcon,
+  CTAButton
 } from "../Creators/Creators-styles";
 import ReactGA from "react-ga4";
 import { Grid, useTheme } from "@mui/material";
-import { OpenSourceSVG } from "../Common/Icons/OpenSourceSVG";
 import { HiveSVG } from "../Common/Icons/HiveSVG";
 import { ConnectSVG } from "../Common/Icons/ConnectSVG";
 import { YoutubeVideoContainer } from "../Qort/QORTPage-styles";
 import { YoutubePlaceholder } from "../YouTube/YoutubePlaceholder";
 import { useState } from "react";
+import { PlayCircleSVG } from "../Common/Icons/PlayCircleSVG";
+import { QortalSVG } from "../Common/Icons/QortalSVG";
 
 const Creators = () => {
-    const [showVideoPlayer, setShowVideoPlayer] = useState<boolean>(false);
+  const theme = useTheme();
+  const [showVideoPlayer, setShowVideoPlayer] = useState<boolean>(false);
 
-    const handleVideoClick = () => {
+  const handleVideoClick = () => {
     setShowVideoPlayer((prevState) => !prevState);
   };
-  
+
   return (
     <>
       <Container container>
@@ -48,21 +52,21 @@ const Creators = () => {
           <YoutubeVideoContainer>
             {showVideoPlayer ? (
               <iframe
-                src="https://www.youtube.com/embed/pWyB8tNZZ40?si=hRHI1Q25ab5M2AA7&autoplay=1&rel=0"
+                src="https://www.youtube.com/embed/M01coUo0dVA?si=gJC29726RcXxxJsH&autoplay=1&rel=0"
                 loading="lazy"
-                title="The internet is dying"
+                title="How To Publish Videos To Q-Tube On Qortal"
                 allowFullScreen
                 allow="autoplay"
               ></iframe>
             ) : (
               <YoutubePlaceholder
-                className="landing-page-video"
+                className="creator-page-video"
                 isModal={false}
                 onClick={handleVideoClick}
                 YoutubeThumbnail={
-                  "/images/Youtube/The internet is dying thumbnail.png"
+                  "/images/Creators/UncensorableVideos.png"
                 }
-                YoutubeTitle="The internet is dying"
+                YoutubeTitle="How To Publish Videos To Q-Tube On Qortal"
               />
             )}
           </YoutubeVideoContainer>
@@ -71,49 +75,52 @@ const Creators = () => {
       <Features container>
         <FeatureContainer item sm={12} md={4}>
           <IconContainer1>
-            <OpenSourceSVG color={"#ffffff"} height="40" width="40" />
+            <PlayCircleSVG color={"#ffffff"} height="55" width="55" />
+            <LockIcon color={"#8162f0"} height="13" width="13" />
           </IconContainer1>
-          <SubHeader>Open-Source</SubHeader>
+          <SubHeader>Own Your Channel</SubHeader>
           <FeatureText>
-            Qortal's open-source code allows for full transparency and invites
-            all developers to contribute, fostering trust and collective growth.
+            On Qortal, your channel lives on a peer-to-peer network, not on a
+            company’s servers. That means that there are no takedowns, no
+            strikes, and no sudden loss of your entire audience because of
+            something you may have done wrong!
           </FeatureText>
         </FeatureContainer>
         <FeatureContainer item sm={12} md={4}>
           <IconContainer2>
-            <HiveSVG color={"#ffffff"} height="40" width="40" />
+            <QortalSVG color={"#ffffff"} height="40" width="40" />
           </IconContainer2>
-          <SubHeader>Decentralized</SubHeader>
+          <SubHeader>Keep 100% of Your Earnings</SubHeader>
           <FeatureText>
-            Decentralization ensures Qortal is censorship-proof and not
-            controlled by a single entity, promising you freedom and equity.
+            There are no ads, no middlemen, and no platform cuts. You earn QORT
+            through superlikes on your content, and keep 100% of the earnings!{" "}
           </FeatureText>
         </FeatureContainer>
         <FeatureContainer item sm={12} md={4}>
           <IconContainer3>
-            <ConnectSVG color={"#ffffff"} height="40" width="40" />
+            <ConnectSVG color={"#ffffff"} height="42" width="42" />
           </IconContainer3>
-          <SubHeader>Peer-To-Peer</SubHeader>
+          <SubHeader>Reach Your Audience Every Time</SubHeader>
           <FeatureText>
-            Qortal's P2P technology ensures that you have direct control over
-            your transactions, eliminating intermediaries for greater
-            transparency and enhanced security.
+            No algorithms hiding your work. Every subscriber sees what you
+            publish, exactly when you publish it.
           </FeatureText>
         </FeatureContainer>
-                  <ButtonRow>
-                    <DiscordButton
-              onClick={() => {
-                ReactGA.event({
-                  category: "User",
-                  action: "Clicked Install Qortal Button on Promo page",
-                  label: "Clicked Install Qortal Button on Promo page"
-                });
-                window.open("https://bit.ly/qortal-chrome-extension", "_blank");
-              }}
-            >
-              INSTALL QORTAL 
-            </DiscordButton>
-          </ButtonRow>
+        <ButtonRow>
+          <CTAButton
+            onClick={() => {
+              ReactGA.set({ dimension1: "Landing Page Download Button" }); // Event-level dimension
+              ReactGA.event({
+                category: "User",
+                action: "Clicked Main Download CTA Button",
+                label: "Clicked Main Download CTA Button"
+              });
+              // router.push("/downloads");
+            }}
+          >
+            BOOK A CALL
+          </CTAButton>
+        </ButtonRow>
       </Features>
     </>
   );

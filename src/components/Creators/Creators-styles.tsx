@@ -1,7 +1,8 @@
 import { styled } from "@mui/system";
-import { Grid, Typography, Box } from "@mui/material";
+import { Grid, Typography, Box, Button } from "@mui/material";
 import Image from "next/image";
 import { montserrat, museo, oxygen } from "../../app/fonts";
+import { LockSVG } from "../Common/Icons/LockSVG";
 
 export const Container = styled(Grid)(({ theme }) => ({
   display: "flex",
@@ -56,8 +57,9 @@ export const VideoBox = styled(Box)(({ theme }) => ({
 
 export const ButtonRow = styled(Box)(({ theme }) => ({
   display: "flex",
+  width: "100%",
   justifyContent: "center",
-  padding: "20px"
+  margin: "50px 0"
 }));
 
 export const DiscordButton = styled("button")(({ theme }) => ({
@@ -109,12 +111,13 @@ export const SubHeader = styled(Typography)(({ theme }) => ({
 }));
 
 export const IconContainer1 = styled(Box)(({ theme }) => ({
+  position: "relative",
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  padding: "10px",
+  padding: "2.5px",
   borderRadius: "20px",
-  backgroundColor: "#6271F0",
+  backgroundColor: "#8162f0",
   userSelect: "none"
 }));
 
@@ -124,7 +127,7 @@ export const IconContainer2 = styled(Box)(({ theme }) => ({
   alignItems: "center",
   padding: "10px",
   borderRadius: "20px",
-  backgroundColor: "#e4f062",
+  backgroundColor: "#09b912",
   userSelect: "none"
 }));
 
@@ -134,7 +137,7 @@ export const IconContainer3 = styled(Box)(({ theme }) => ({
   alignItems: "center",
   padding: "10px",
   borderRadius: "20px",
-  backgroundColor: "#0fa8dc",
+  backgroundColor: "#00318b",
   userSelect: "none"
 }));
 
@@ -144,4 +147,38 @@ export const FeatureText = styled(Typography)(({ theme }) => ({
   color: theme.palette.text.primary,
   letterSpacing: "0.5px",
   userSelect: "none"
+}));
+
+export const LockIcon = styled(LockSVG)(({ theme }) => ({
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translateY(-50%) translateX(-50%)",
+}));
+
+export const CTAButton = styled(Button)(({ theme }) => ({
+  fontFamily: oxygen.style.fontFamily,
+  fontWeight: 500,
+  fontSize: "18px",
+  lineHeight: "21.3px",
+  letterSpacing: 0,
+  width: "200px",
+  height: "48px",
+  padding: "10px 30px 10px 30px",
+  gap: "7px",
+  borderRadius: "30px",
+  border: `1px solid ${theme.palette.customBlue.main}`,
+  color: "#ffffff",
+  backgroundColor: theme.palette.customBlue.main,
+  cursor: "pointer",
+  boxShadow: "1px 4px 10.5px 0px #0000004D",
+  transition: "all 0.2s ease-in-out",
+  "&:hover": {
+    backgroundColor: "#F3F3F3",
+    color: "#000000",
+    border: "1px solid #F3F3F3"
+  },
+  [theme.breakpoints.down("sm")]: {
+    width: "-webkit-fill-available"
+  }
 }));

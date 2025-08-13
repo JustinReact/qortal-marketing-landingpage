@@ -38,6 +38,12 @@ export const Footer = () => {
           >
             Links
           </FooterLink>
+          <FooterLink
+            href={"/creators"}
+            className={location === "/creators" ? "active" : ""}
+          >
+            Creators
+          </FooterLink>
         </FooterRow>
       </FooterContainer>
     );
