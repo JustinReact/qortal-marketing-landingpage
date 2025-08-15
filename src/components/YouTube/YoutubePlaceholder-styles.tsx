@@ -24,15 +24,14 @@ export const YoutubePlaceholderContainer = styled(Box)(({ theme }) => ({
     "& svg": {
       transform: "translateX(-50%) translateY(120%)",
       [theme.breakpoints.down("sm")]: {
-      transform: "translateX(-50%) translateY(90%)",
+        transform: "translateX(-50%) translateY(90%)"
       }
     },
-    "&.creator-page-video": {
-      // target YoutubeThumbnailImg constant
-      "& img": {
-        width: "400px !important",
-        height: "400px !important",
-      }
+  },
+  "&.creator-page-video": {
+    "& img": {
+      width: "100% !important",
+      height: "250px !important",
     }
   }
 }));
@@ -47,7 +46,8 @@ export const YoutubeHeader = styled(Typography)(({ theme }) => ({
   userSelect: "none",
   fontSize: "25px",
   letterSpacing: "1.2px",
-  textShadow: "-1px -1px 0 #000000,  1px -1px 0 #000000,-1px  1px 0 #000000, 1px  1px 0 #000000",
+  textShadow:
+    "-1px -1px 0 #000000,  1px -1px 0 #000000,-1px  1px 0 #000000, 1px  1px 0 #000000",
   [theme.breakpoints.down("md")]: {
     fontSize: "20px",
     left: 50
@@ -59,14 +59,14 @@ export const YoutubeHeader = styled(Typography)(({ theme }) => ({
   [theme.breakpoints.down("sm")]: {
     fontSize: "13px",
     left: 50,
-    maxWidth: "250px",
+    maxWidth: "250px"
   }
 }));
 
 export const YoutubeThumbnailImg = styled(Image)(({ theme }) => ({
   width: "100%",
   height: "100%",
-  objectFit: "cover",
+  objectFit: "cover"
 }));
 
 export const PlayButton = styled(PlaySVG)({

@@ -3,8 +3,7 @@ import {
   ArrowImg,
   Container,
   Header,
-  DiscordButton,
-  ButtonRow,
+  CTARow,
   SubHeader,
   Features,
   FeatureContainer,
@@ -14,21 +13,110 @@ import {
   FeatureText,
   VideoBox,
   LockIcon,
-  CTAButton
+  CTAButton,
+  YoutubeVideoContainer,
+  CTAText,
+  BookImage,
+  CTABox,
+  CTABoxButton,
+  CTABoxTextFieldContainer
 } from "../Creators/Creators-styles";
 import ReactGA from "react-ga4";
 import { Grid, useTheme } from "@mui/material";
-import { HiveSVG } from "../Common/Icons/HiveSVG";
 import { ConnectSVG } from "../Common/Icons/ConnectSVG";
-import { YoutubeVideoContainer } from "../Qort/QORTPage-styles";
 import { YoutubePlaceholder } from "../YouTube/YoutubePlaceholder";
 import { useState } from "react";
 import { PlayCircleSVG } from "../Common/Icons/PlayCircleSVG";
 import { QortalSVG } from "../Common/Icons/QortalSVG";
+import {
+  CTABoxTitle,
+  EbookTooltip,
+  InfoIcon,
+  InfoIconContainer
+} from "../Ebook/Ebook-styles";
+import { CustomInputField } from "../Blog/BlogPostsClient-styles";
+import { useDispatch } from "react-redux";
+import { setNotification } from "../../state/features/notificationsSlice";
+import { downloadEbook } from "../../utils/ebookApiController";
 
 const Creators = () => {
   const theme = useTheme();
+  const dispatch = useDispatch();
+
   const [showVideoPlayer, setShowVideoPlayer] = useState<boolean>(false);
+  const [name, setName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [nameError, setNameError] = useState<boolean>(false);
+  const [emailError, setEmailError] = useState<boolean>(false);
+  const [emailTouched, setEmailTouched] = useState<boolean>(false);
+  const [showTooltip, setShowTooltip] = useState<boolean>(false);
+
+  const handleNameInputChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setName(event.target.value as string);
+  };
+
+  const validateEmail = (value: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(value);
+  };
+
+  const handleEmailInputChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setEmail(event.target.value);
+    if (emailTouched) {
+      setEmailError(!validateEmail(event.target.value));
+    }
+  };
+
+  const handleDownloadEbook = async () => {
+    try {
+      const res = await downloadEbook(name, email);
+      if (res) {
+        dispatch(
+          setNotification({
+            msg: "Success! The Ebook Was Sent To Your Email!",
+            alertType: "success"
+          })
+        );
+        setName("");
+        setEmail("");
+      } else {
+        dispatch(
+          setNotification({
+            msg: "Error in downloading the Ebook! Please, try again!",
+            alertType: "error"
+          })
+        );
+      }
+    } catch (error: any) {
+      dispatch(
+        setNotification({
+          msg: error,
+          alertType: "error"
+        })
+      );
+    }
+  };
+
+  // Function to handle the download button click
+  const handleDownloadClick = async () => {
+    const isEmailValid = validateEmail(email);
+    setEmailError(!isEmailValid);
+    const isNameValid = name.trim() !== "";
+    setNameError(!isNameValid);
+
+    if (isEmailValid && isNameValid) {
+      await handleDownloadEbook();
+    }
+  };
+
+  const handleEmailBlur = () => {
+    setEmailTouched(true);
+    setEmailError(!validateEmail(email));
+  };
 
   const handleVideoClick = () => {
     setShowVideoPlayer((prevState) => !prevState);
@@ -38,19 +126,11 @@ const Creators = () => {
     <>
       <Container container>
         <Grid item xs={12} sm={12}>
-          <Header>
-            Your Videos. Your Audience. No Takedowns. Ever.
-            {/* <ArrowImg
-              src={"/images/Promo/Arrow.webp"}
-              alt="arrow"
-              width={500}
-              height={500}
-            /> */}
-          </Header>
+          <Header>Your Videos. Your Audience. No Takedowns. Ever.</Header>
         </Grid>
         <VideoBox>
-          <YoutubeVideoContainer>
-            {showVideoPlayer ? (
+          {showVideoPlayer ? (
+            <YoutubeVideoContainer>
               <iframe
                 src="https://www.youtube.com/embed/M01coUo0dVA?si=gJC29726RcXxxJsH&autoplay=1&rel=0"
                 loading="lazy"
@@ -58,18 +138,16 @@ const Creators = () => {
                 allowFullScreen
                 allow="autoplay"
               ></iframe>
-            ) : (
-              <YoutubePlaceholder
-                className="creator-page-video"
-                isModal={false}
-                onClick={handleVideoClick}
-                YoutubeThumbnail={
-                  "/images/Creators/UncensorableVideos.png"
-                }
-                YoutubeTitle="How To Publish Videos To Q-Tube On Qortal"
-              />
-            )}
-          </YoutubeVideoContainer>
+            </YoutubeVideoContainer>
+          ) : (
+            <YoutubePlaceholder
+              className="creator-page-video"
+              isModal={false}
+              onClick={handleVideoClick}
+              YoutubeThumbnail={"/images/Creators/UncensorableVideos.png"}
+              YoutubeTitle="How To Publish Videos To Q-Tube On Qortal"
+            />
+          )}
         </VideoBox>
       </Container>
       <Features container>
@@ -82,8 +160,7 @@ const Creators = () => {
           <FeatureText>
             On Qortal, your channel lives on a peer-to-peer network, not on a
             company’s servers. That means that there are no takedowns, no
-            strikes, and no sudden loss of your entire audience because of
-            something you may have done wrong!
+            strikes, and no sudden loss of your entire audience possible!
           </FeatureText>
         </FeatureContainer>
         <FeatureContainer item sm={12} md={4}>
@@ -106,21 +183,93 @@ const Creators = () => {
             publish, exactly when you publish it.
           </FeatureText>
         </FeatureContainer>
-        <ButtonRow>
+        <CTARow>
+          <ArrowImg
+            src={"/images/Creators/Blue arrow.png"}
+            alt="arrow"
+            width={250}
+            height={250}
+          />
           <CTAButton
             onClick={() => {
-              ReactGA.set({ dimension1: "Landing Page Download Button" }); // Event-level dimension
-              ReactGA.event({
-                category: "User",
-                action: "Clicked Main Download CTA Button",
-                label: "Clicked Main Download CTA Button"
-              });
-              // router.push("/downloads");
+              window.open("https://link.qortal.dev/call", "_blank");
             }}
           >
             BOOK A CALL
           </CTAButton>
-        </ButtonRow>
+          <CTAText>OR</CTAText>
+          <CTABox>
+            <EbookTooltip
+              title="By downloading this ebook, you agree to receive emails from the Qortal community. You can unsubscribe at any time from the mailing list at any time by clicking the unsubscribe link at the bottom of the email."
+              placement="top"
+              open={showTooltip}
+              onClose={() => setShowTooltip(false)}
+              disableFocusListener
+              disableHoverListener
+              disableTouchListener
+              onBlur={() => setShowTooltip(false)}
+              slotProps={{
+                popper: {
+                  modifiers: [
+                    {
+                      name: "offset",
+                      options: {
+                        offset: [0, -5]
+                      }
+                    }
+                  ]
+                }
+              }}
+            >
+              <InfoIconContainer
+                onMouseEnter={() => setShowTooltip(true)}
+                onMouseLeave={() => setShowTooltip(false)}
+                onClick={() => setShowTooltip(true)}
+                style={{ cursor: "pointer" }}
+              >
+                <InfoIcon
+                  color={theme.palette.text.primary}
+                  width={"14"}
+                  height={"14"}
+                />
+              </InfoIconContainer>
+            </EbookTooltip>
+            <CTABoxTitle>Get Your Free Ebook Copy</CTABoxTitle>
+            <BookImage
+              src="/images/Ebook/Ebook Design.png"
+              alt="Understanding Qortal Book"
+            />
+            <CTABoxTextFieldContainer>
+              <CustomInputField
+                name="name"
+                aria-label="name"
+                label="Name"
+                variant="filled"
+                value={name}
+                onChange={handleNameInputChange}
+                required
+                error={nameError}
+                helperText={nameError ? "Please enter your name." : ""}
+              />
+              <CustomInputField
+                name="email"
+                label="E-Mail address"
+                variant="filled"
+                value={email}
+                onChange={handleEmailInputChange}
+                onBlur={handleEmailBlur}
+                required
+                error={emailError}
+                helperText={
+                  emailError ? "Please enter a valid email address." : ""
+                }
+              />
+            </CTABoxTextFieldContainer>
+            <CTABoxButton onClick={handleDownloadClick}>
+              Download Free Ebook
+            </CTABoxButton>
+          </CTABox>
+        </CTARow>
       </Features>
     </>
   );

@@ -13,7 +13,7 @@ export const Container = styled(Grid)(({ theme }) => ({
     padding: "40px 60px"
   },
   [theme.breakpoints.down("sm")]: {
-    padding: "20px",
+    padding: "20px 20px 70px 20px"
   }
 }));
 
@@ -29,67 +29,116 @@ export const Header = styled(Typography)(({ theme }) => ({
   marginBottom: "50px",
   zIndex: 1,
   [theme.breakpoints.only("sm")]: {
-    fontSize: "50px",
+    fontSize: "50px"
   },
   [theme.breakpoints.only("xs")]: {
-    fontSize: "40px",
+    fontSize: "40px"
   }
 }));
 
 export const ArrowImg = styled(Image)(({ theme }) => ({
   position: "absolute",
-  bottom: "-30px",
-  right: "-100px",
-  width: "100px",
-  height: "auto",
-  transform: "rotateX(180deg)",
-  rotate: "-40deg",
+  top: "40px",
+  left: "150px",
+  [theme.breakpoints.up("xl")]: {
+    left: "500px",
+    width: "250px",
+    height: "250px"
+  },
+  "@media (max-width: 1510px)": {
+    left: "80px"
+  },
+  "@media (max-width: 1320px)": {
+    left: 0
+  },
   [theme.breakpoints.down("md")]: {
-    right: "-80px"
+    display: "none"
   }
 }));
 
 export const VideoBox = styled(Box)(({ theme }) => ({
   display: "flex",
   width: "100%",
-  justifyContent: "center",
+  justifyContent: "center"
 }));
 
-export const ButtonRow = styled(Box)(({ theme }) => ({
+export const YoutubeVideoContainer = styled(Box)(({ theme }) => ({
+  "& iframe": {
+    width: "700px",
+    height: "500px",
+    border: "none",
+    "@media (max-width: 1331px)": {
+      width: "600px",
+      height: "500px",
+      border: "none"
+    },
+    [theme.breakpoints.down("lg")]: {
+      width: "500px",
+      height: "500px",
+      border: "none"
+    },
+    "@media (max-width: 1135px)": {
+      width: "450px",
+      height: "500px",
+      border: "none"
+    },
+    "@media (max-width: 1078px)": {
+      width: "325px",
+      height: "500px",
+      border: "none"
+    },
+    [theme.breakpoints.down("md")]: {
+      width: "700px",
+      height: "500px",
+      border: "none"
+    },
+    "@media (max-width: 750px)": {
+      width: "500px",
+      height: "500px",
+      border: "none"
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: "300px",
+      height: "500px",
+      border: "none"
+    }
+  }
+}));
+
+export const CTARow = styled(Box)(({ theme }) => ({
+  position: "relative",
   display: "flex",
   width: "100%",
   justifyContent: "center",
-  margin: "50px 0"
+  gap: "75px",
+  alignItems: "center",
+  margin: "50px 0",
+  [theme.breakpoints.down("md")]: {
+    flexDirection: "column",
+    alignItems: "center",
+    gap: "20px"
+  },
+  [theme.breakpoints.down("sm")]: {
+    marginTop: "20px"
+  }
 }));
 
-export const DiscordButton = styled("button")(({ theme }) => ({
-  position: "relative",
-  width: "300px",
-  backgroundColor: "#ffffff",
-  color: "#6271F0",
-  fontFamily: montserrat.style.fontFamily,
-  padding: "18px 40px",
-  fontSize: "20px",
-  letterSpacing: "0.9px",
-  fontWeight: 500,
-  border: "none",
-  boxShadow:
-    theme.palette.mode === "dark"
-      ? "0px 4px 5px 0px hsla(0,0%,0%,0.14),  0px 1px 10px 0px hsla(0,0%,0%,0.12),  0px 2px 4px -1px hsla(0,0%,0%,0.2)"
-      : "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
-  transition: "all 0.3s ease-in-out",
-  "&:hover": {
-    cursor: "pointer",
-    boxShadow:
-      theme.palette.mode === "dark"
-        ? "0px 8px 10px 1px hsla(0,0%,0%,0.14), 0px 3px 14px 2px hsla(0,0%,0%,0.12), 0px 5px 5px -3px hsla(0,0%,0%,0.2)"
-        : "rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;"
-  }
+export const CTAText = styled(Typography)(({ theme }) => ({
+  fontFamily: oxygen.style.fontFamily,
+  fontSize: "60px",
+  textTransform: "capitalize",
+  color: theme.palette.text.primary,
+  letterSpacing: "0.5px",
+  userSelect: "none"
 }));
 
 export const Features = styled(Grid)(({ theme }) => ({
   display: "flex",
-  alignItems: "flex-start"
+  alignItems: "flex-start",
+  marginBottom: "50px",
+  [theme.breakpoints.down("sm")]: {
+   gap: "20px",
+  }
 }));
 
 export const FeatureContainer = styled(Grid)(({ theme }) => ({
@@ -153,17 +202,17 @@ export const LockIcon = styled(LockSVG)(({ theme }) => ({
   position: "absolute",
   top: "50%",
   left: "50%",
-  transform: "translateY(-50%) translateX(-50%)",
+  transform: "translateY(-50%) translateX(-50%)"
 }));
 
 export const CTAButton = styled(Button)(({ theme }) => ({
   fontFamily: oxygen.style.fontFamily,
   fontWeight: 500,
-  fontSize: "18px",
+  fontSize: "20px",
   lineHeight: "21.3px",
   letterSpacing: 0,
-  width: "200px",
-  height: "48px",
+  width: "250px",
+  height: "58px",
   padding: "10px 30px 10px 30px",
   gap: "7px",
   borderRadius: "30px",
@@ -180,5 +229,61 @@ export const CTAButton = styled(Button)(({ theme }) => ({
   },
   [theme.breakpoints.down("sm")]: {
     width: "-webkit-fill-available"
+  }
+}));
+
+export const CTABox = styled(Box)(({ theme }) => ({
+  position: "relative",
+  display: "flex",
+  flexDirection: "column",
+  backgroundColor: theme.palette.background.default,
+  border:
+    theme.palette.mode === "light" ? "1px solid #000000" : "1px solid #F5F5F5",
+  borderRadius: "10px",
+  padding: "60px 55px 80px 55px",
+  minWidth: "450px",
+  [theme.breakpoints.down("lg")]: {
+    minWidth: "auto"
+  }
+}));
+
+export const CTABoxTextFieldContainer = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  gap: "20px",
+  width: "100%"
+}));
+
+export const CTABoxButton = styled(Button)(({ theme }) => ({
+  fontFamily: oxygen.style.fontFamily,
+  fontWeight: 500,
+  fontSize: "20px",
+  lineHeight: "27px",
+  color: "#ffffff",
+  backgroundColor: theme.palette.customBlue.main,
+  borderRadius: "5px",
+  padding: "22px 0",
+  marginTop: "20px",
+  transition: "all 0.3s ease-in-out",
+  "&:hover": {
+    cursor: "pointer",
+    backgroundColor: theme.palette.customBlue.main,
+    opacity: "0.8"
+  }
+}));
+
+export const BookImage = styled("img")(({ theme }) => ({
+  alignSelf: "center",
+  width: "300px",
+  height: "auto",
+  margin: "0",
+  [theme.breakpoints.up("xl")]: {
+    width: "400px"
+  },
+  [theme.breakpoints.down("md")]: {
+    width: "80%"
+  },
+  [theme.breakpoints.down("sm")]: {
+    width: "75%"
   }
 }));

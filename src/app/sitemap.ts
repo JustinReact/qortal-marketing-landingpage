@@ -1,7 +1,7 @@
-import type { MetadataRoute } from 'next';
-import { groupApi } from '../constants/endpoint';
-import { BLOG_BASE } from '../constants/Identifiers';
-import { fetchAndEvaluateBlogs } from '../utils/fetchAndEvaluateBlogs';
+import type { MetadataRoute } from "next";
+import { groupApi } from "../constants/endpoint";
+import { BLOG_BASE } from "../constants/Identifiers";
+import { fetchAndEvaluateBlogs } from "../utils/fetchAndEvaluateBlogs";
 
 interface BlogPost {
   title: string;
@@ -61,72 +61,78 @@ const getBlogs = async () => {
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPages = [
     {
-      url: 'https://qortal.dev',
+      url: "https://qortal.dev",
       lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 1,
+      changeFrequency: "monthly" as const,
+      priority: 1
     },
     {
-      url: 'https://qortal.dev/wiki',
+      url: "https://qortal.dev/wiki",
       lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
+      changeFrequency: "monthly" as const,
       priority: 0.6
     },
     {
-      url: 'https://qortal.dev/support',
+      url: "https://qortal.dev/support",
       lastModified: new Date(),
-      changeFrequency: 'yearly' as const,
-      priority: 0.1,
+      changeFrequency: "yearly" as const,
+      priority: 0.1
     },
     {
-      url: 'https://qortal.dev/blog',
+      url: "https://qortal.dev/blog",
       lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.9,
+      changeFrequency: "weekly" as const,
+      priority: 0.9
     },
     {
-      url: 'https://qortal.dev/privacy',
+      url: "https://qortal.dev/privacy",
       lastModified: new Date(),
-      changeFrequency: 'yearly' as const,
-      priority: 0.1,  
+      changeFrequency: "yearly" as const,
+      priority: 0.1
     },
     {
-      url: 'https://qortal.dev/qort',
+      url: "https://qortal.dev/qort",
       lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.5,
+      changeFrequency: "monthly" as const,
+      priority: 0.5
     },
     {
-      url: 'https://qortal.dev/docs/q-apps',
+      url: "https://qortal.dev/docs/q-apps",
       lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
+      changeFrequency: "monthly" as const,
+      priority: 0.7
     },
     {
-      url: 'https://qortal.dev/docs/extension',
+      url: "https://qortal.dev/docs/extension",
       lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
+      changeFrequency: "monthly" as const,
+      priority: 0.7
     },
     {
-      url: 'https://qortal.dev/promo',
+      url: "https://qortal.dev/promo",
       lastModified: new Date(),
-      changeFrequency: 'yearly' as const,
-      priority: 0.3,
+      changeFrequency: "yearly" as const,
+      priority: 0.3
     },
     {
-      url: 'https://qortal.dev/ebook',
+      url: "https://qortal.dev/ebook",
       lastModified: new Date(),
-      changeFrequency: 'yearly' as const,
-      priority: 0.5,
+      changeFrequency: "yearly" as const,
+      priority: 0.5
+    },
+    {
+      url: "https://qortal.dev/creators",
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.5
     }
   ];
-  const blogs: Blog = (await getBlogs()) ?? []; 
+  const blogs: Blog = (await getBlogs()) ?? [];
   const blogPostPages = blogs.map((post) => ({
     url: `https://qortal.dev/blog/${post.identifier}`,
     lastModified: new Date(post.created),
-    changeFrequency: 'weekly' as const,
-    priority: 0.9,
+    changeFrequency: "weekly" as const,
+    priority: 0.9
   }));
 
   return [...staticPages, ...blogPostPages];
