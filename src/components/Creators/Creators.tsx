@@ -22,7 +22,7 @@ import {
   CTABoxTextFieldContainer
 } from "../Creators/Creators-styles";
 import ReactGA from "react-ga4";
-import { Grid, useTheme } from "@mui/material";
+import { Grid, useMediaQuery, useTheme } from "@mui/material";
 import { ConnectSVG } from "../Common/Icons/ConnectSVG";
 import { YoutubePlaceholder } from "../YouTube/YoutubePlaceholder";
 import { useState } from "react";
@@ -42,6 +42,7 @@ import { downloadEbook } from "../../utils/ebookApiController";
 const Creators = () => {
   const theme = useTheme();
   const dispatch = useDispatch();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const [showVideoPlayer, setShowVideoPlayer] = useState<boolean>(false);
   const [name, setName] = useState<string>("");
@@ -126,7 +127,16 @@ const Creators = () => {
     <>
       <Container container>
         <Grid item xs={12} sm={12}>
-          <Header>Your Videos. Your Audience. No Takedowns. Ever.</Header>
+          {isMobile ? (
+            <Header>
+              Your Videos. <br />
+              Your Audience. <br />
+              No Takedowns. <br />
+              Ever.
+            </Header>
+          ) : (
+            <Header>Your Videos. Your Audience. No Takedowns. Ever.</Header>
+          )}
         </Grid>
         <VideoBox>
           {showVideoPlayer ? (
