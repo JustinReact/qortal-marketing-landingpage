@@ -196,7 +196,8 @@ const Qort = () => {
               BUY QORT
             </CTAButton2>
           </TopFoldButtonRow>
-          <TradeOgreCTAButton
+          {/* To be replaced with another CEX in the future */}
+          {/* <TradeOgreCTAButton
             type="button"
             aria-label="Buy QORT from TradeOgre exchange"
             onClick={() => {
@@ -213,7 +214,7 @@ const Qort = () => {
             }}
           >
             BUY FROM TRADEOGRE
-          </TradeOgreCTAButton>
+          </TradeOgreCTAButton> */}
         </TopFoldButtonCol>
       </MainContainer>
       <YoutubeVideoContainer>

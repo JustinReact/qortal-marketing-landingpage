@@ -35,7 +35,7 @@ export const Wrapper = styled(Box)(({ theme }) => ({
   alignItems: "center",
   justifyContent: "flex-start",
   minHeight: "100vh",
-  gap: "250px",
+  gap: "220px",
   width: "100%",
   padding: "0 200px",
   [theme.breakpoints.up("xl")]: {
