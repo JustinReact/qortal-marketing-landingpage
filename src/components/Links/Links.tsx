@@ -123,18 +123,6 @@ export const Links = () => {
             Qortal Exqlorer
           </LinkButton>
           <LinkButton
-            href="https://link.qortal.dev/tradeogre-link"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <ExchangeIcon
-              height="24"
-              width="24"
-              color={theme.palette.text.primary}
-            />
-            TradeOgre Listing
-          </LinkButton>
-          <LinkButton
             href="https://link.qortal.dev/cmc-link"
             target="_blank"
             rel="noopener noreferrer"
