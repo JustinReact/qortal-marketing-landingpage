@@ -15,15 +15,20 @@ import {
   CTAButton2,
   TopSubHeader,
   FeaturesTitleContainer,
+  FeaturesTitleContainer as WikiSectionTitle,
   FeatureCardsRow,
   QAppsImg,
-  CTAButton
+  CTAButton,
+  WikiSectionContainer,
+  BackArrowIcon,
+  WikiSectionRow,
+  WikiSectionColumn,
+  WikiCTAButton,
+  QortalLogoImg
 } from "../Devs/Devs-styles";
 import { useMediaQuery, useTheme } from "@mui/material";
-import { ConnectSVG } from "../Common/Icons/ConnectSVG";
 import { YoutubePlaceholder } from "../YouTube/YoutubePlaceholder";
 import { useState } from "react";
-import { QortalSVG } from "../Common/Icons/QortalSVG";
 
 const Devs = () => {
   const theme = useTheme();
@@ -154,7 +159,7 @@ const Devs = () => {
             </CTAButton>
           </FeatureContainer>
           <FeatureContainer item sm={12} md={4}>
-           <QAppsImg
+            <QAppsImg
               src={
                 theme.palette.mode === "dark"
                   ? "/images/Devs/Q-FundDark.png"
@@ -168,18 +173,41 @@ const Devs = () => {
             <SubHeader>Q-Fund</SubHeader>
             <FeatureText>
               Q-Fund is a decentralized crowdfunding platform that allows you to
-              raise funds for your projects or causes, with no platform fees,
-              no middlemen, and full control over your campaigns.
+              raise funds for your projects or causes, with no platform fees, no
+              middlemen, and full control over your campaigns.
             </FeatureText>
             <CTAButton
               onClick={() => {
                 window.open("https://link.qortal.dev/call", "_blank");
               }}
-            > TRY IT NOW
+            >
+              {" "}
+              TRY IT NOW
             </CTAButton>
           </FeatureContainer>
         </FeatureCardsRow>
       </Features>
+      <WikiSectionContainer>
+        <WikiSectionColumn>
+          <WikiSectionTitle>
+            <TopHeader>Ready to build?</TopHeader>
+            <Header>
+              Check out our wiki guide on setting up and deploying your first
+              Q-App!
+            </Header>
+            <WikiSectionRow>
+              <TopSubHeader>Read the wiki guide</TopSubHeader>
+              <BackArrowIcon
+                color={theme.palette.text.primary}
+                height={"25px"}
+                width={"25px"}
+              />
+            </WikiSectionRow>
+          </WikiSectionTitle>
+          <WikiCTAButton>READ WIKI</WikiCTAButton>
+        </WikiSectionColumn>
+        <QortalLogoImg src="/images/Devs/QortalLogo.webp" alt="Qortal Logo" width={350} height={350} quality={100} />
+      </WikiSectionContainer>
     </>
   );
 };

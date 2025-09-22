@@ -2,6 +2,7 @@ import { styled } from "@mui/system";
 import { Grid, Typography, Box, Button } from "@mui/material";
 import { oxygen } from "../../app/fonts";
 import Image from "next/image";
+import { BackArrowSVG } from "../Common/Icons/BackArrowSVG";
 
 export const Container = styled(Grid)(({ theme }) => ({
   display: "flex",
@@ -13,10 +14,11 @@ export const Container = styled(Grid)(({ theme }) => ({
   marginBottom: "100px",
   backgroundColor: theme.palette.mode === "dark" ? "#0d1122" : "#e6e6e6",
   [theme.breakpoints.down("md")]: {
-    padding: "40px 60px"
+    padding: "40px 60px",
+    gap: "50px"
   },
   [theme.breakpoints.down("sm")]: {
-    padding: "20px 20px 70px 20px"
+    padding: "40px 20px"
   }
 }));
 
@@ -129,7 +131,12 @@ export const Features = styled(Grid)(({ theme }) => ({
   alignItems: "flex-start",
   gap: "30px",
   padding: "0 130px 90px 130px",
-
+  [theme.breakpoints.down("md")]: {
+    padding: "0 45px 50px 45px",
+  },
+  [theme.breakpoints.down("sm")]: {
+    padding: "0 20px 50px 20px",
+  }
 }));
 
 export const FeatureContainer = styled(Grid)(({ theme }) => ({
@@ -180,7 +187,6 @@ export const FeaturesTitleContainer = styled(Box)(({ theme }) => ({
   flexDirection: "column",
   alignItems: "flex-start",
   gap: "15px",
-  maxWidth: "50%"
 }));
 
 export const FeatureCardsRow = styled(Grid)(({ theme }) => ({
@@ -193,37 +199,6 @@ export const FeatureCardsRow = styled(Grid)(({ theme }) => ({
   [theme.breakpoints.down("md")]: {
     flexDirection: "column",
   }
-}));
-
-export const IconContainer1 = styled(Box)(({ theme }) => ({
-  position: "relative",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  padding: "2.5px",
-  borderRadius: "20px",
-  backgroundColor: "#8162f0",
-  userSelect: "none"
-}));
-
-export const IconContainer2 = styled(Box)(({ theme }) => ({
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  padding: "10px",
-  borderRadius: "20px",
-  backgroundColor: "#09b912",
-  userSelect: "none"
-}));
-
-export const IconContainer3 = styled(Box)(({ theme }) => ({
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  padding: "10px",
-  borderRadius: "20px",
-  backgroundColor: "#00318b",
-  userSelect: "none"
 }));
 
 export const FeatureText = styled(Typography)(({ theme }) => ({
@@ -290,7 +265,7 @@ export const CTAButton1 = styled(Button)(({ theme }) => ({
   height: "43px",
   padding: "10px 30px 10px 30px",
   gap: "7px",
-  borderRadius: "10px",
+  borderRadius: "3px",
   border: `1px solid ${theme.palette.text.primary}`,
   color: theme.palette.text.primary,
   backgroundColor: "transparent",
@@ -321,7 +296,7 @@ export const CTAButton2 = styled(Button)(({ theme }) => ({
   height: "43px",
   padding: "10px 30px 10px 30px",
   gap: "7px",
-  borderRadius: "10px",
+  borderRadius: "3px",
   border: `1px solid ${theme.palette.customBlue.main}`,
   color: "#ffffff",
   backgroundColor: theme.palette.customBlue.main,
@@ -335,5 +310,82 @@ export const CTAButton2 = styled(Button)(({ theme }) => ({
   },
   [theme.breakpoints.down("sm")]: {
     width: "-webkit-fill-available"
+  }
+}));
+
+export const WikiSectionContainer = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "row",
+  padding: "90px 130px",
+  width: "calc(100vw - 16px)",
+  gap: "75px",
+  marginBottom: "50px",
+  backgroundColor: theme.palette.mode === "dark" ? "#0d1122" : "#e6e6e6",
+  [theme.breakpoints.down("md")]: {
+    flexDirection: "column",
+    padding: "40px 60px",
+  }
+}));
+
+export const WikiSectionRow = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "row",
+  alignItems: "center",
+  gap: "10px",
+}));
+
+export const WikiSectionColumn = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  gap: "15px",
+  justifyContent: "center",
+  alignItems: "flex-start",
+  width: "50%",
+  [theme.breakpoints.down("md")]: {
+    width: "100%",
+  }
+}));
+
+export const BackArrowIcon = styled(BackArrowSVG)(({ theme }) => ({
+  transform: "rotate(270deg)",
+}));
+
+export const WikiCTAButton = styled(Button)(({ theme }) => ({
+  fontFamily: oxygen.style.fontFamily,
+  fontWeight: 400,
+  lineHeight: "21.3px",
+  marginTop: "10px",
+  letterSpacing: 0,
+  fontSize: "16px",
+  width: "fitContent",
+  height: "38px",
+  padding: "15px 30px",
+  gap: "7px",
+  borderRadius: "3px",
+  border: `1px solid ${theme.palette.customBlue.main}`,
+  color: "#ffffff",
+  backgroundColor: theme.palette.customBlue.main,
+  cursor: "pointer",
+  boxShadow: "1px 4px 10.5px 0px #0000004D",
+  transition: "all 0.2s ease-in-out",
+  "&:hover": {
+    backgroundColor: "#F3F3F3",
+    color: "#000000",
+    border: "1px solid #F3F3F3"
+  },
+  [theme.breakpoints.down("sm")]: {
+    width: "-webkit-fill-available"
+  }
+}));
+
+export const QortalLogoImg = styled(Image)(({ theme }) => ({
+  objectFit: "contain",
+  objectPosition: "left",
+  userSelect: "none",
+  marginBottom: "5px",
+  [theme.breakpoints.down("md")]: {
+    objectFit: "cover",
+    objectPosition: "center",
+    alignSelf: "center",
   }
 }));
