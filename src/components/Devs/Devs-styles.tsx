@@ -3,19 +3,27 @@ import { Grid, Typography, Box, Button } from "@mui/material";
 import { oxygen } from "../../app/fonts";
 import Image from "next/image";
 import { BackArrowSVG } from "../Common/Icons/BackArrowSVG";
+import { junit } from "node:test/reporters";
 
-export const Container = styled(Grid)(({ theme }) => ({
+export const Container = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "row",
-  padding: "90px 130px",
+  alignItems: "center",
+  padding: "90px 190px",
   textAlign: "center",
   transform: "translateY(10px)",
   width: "calc(100vw - 16px)",
   marginBottom: "100px",
   backgroundColor: theme.palette.mode === "dark" ? "#0d1122" : "#e6e6e6",
-  [theme.breakpoints.down("md")]: {
-    padding: "40px 60px",
+  [theme.breakpoints.up("xl")]: {
+    padding: "90px 200px",
+  },
+  "@media (max-width: 1313px)": {
+    flexDirection: "column",
     gap: "50px"
+  },
+  [theme.breakpoints.down("md")]: {
+    padding: "40px 120px",
   },
   [theme.breakpoints.down("sm")]: {
     padding: "40px 20px"
@@ -35,23 +43,29 @@ export const Header = styled(Typography)(({ theme }) => ({
   zIndex: 1,
   [theme.breakpoints.up("xl")]: {
     fontSize: "42px"
+  },
+  "& span": {
+    fontSize: "35px",
+    [theme.breakpoints.up("xl")]: {
+      fontSize: "45px"
+    },
   }
 }));
 
-export const TopCol = styled(Grid)(({ theme }) => ({
+export const TopCol = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   gap: "15px",
   justifyContent: "center",
-  alignItems: "flex-start"
+  alignItems: "flex-start",
 }));
 
-export const VideoBox = styled(Grid)(({ theme }) => ({
+export const VideoBox = styled(Box)(({ theme }) => ({
   display: "flex",
   width: "100%",
   justifyContent: "center",
-  [theme.breakpoints.up("xl")]: {
-    justifyContent: "flex-start"
+  [theme.breakpoints.only("md")]: {
+    justifyContent: "flex-start",
   }
 }));
 
@@ -130,13 +144,16 @@ export const Features = styled(Grid)(({ theme }) => ({
   flexDirection: "column",
   alignItems: "flex-start",
   gap: "30px",
-  padding: "0 130px 90px 130px",
+  padding: "0 190px 90px 190px",
+  [theme.breakpoints.up("xl")]: {
+  padding: "0 200px 90px 200px",
+  },
   [theme.breakpoints.down("md")]: {
-    padding: "0 45px 50px 45px",
+    padding: "0 120px 50px 120px",
   },
   [theme.breakpoints.down("sm")]: {
     padding: "0 20px 50px 20px",
-  }
+  },
 }));
 
 export const FeatureContainer = styled(Grid)(({ theme }) => ({
@@ -182,24 +199,24 @@ export const SubHeader = styled(Typography)(({ theme }) => ({
   userSelect: "none"
 }));
 
-export const FeaturesTitleContainer = styled(Box)(({ theme }) => ({
+export const FeaturesTitleContainer = styled(Box)({
   display: "flex",
   flexDirection: "column",
   alignItems: "flex-start",
   gap: "15px",
-}));
+});
 
-export const FeatureCardsRow = styled(Grid)(({ theme }) => ({
+export const FeatureCardsRow = styled(Grid)({
   display: "flex",
   flexDirection: "row",
   alignItems: "center",
   justifyContent: "space-between",
   width: "100%",
   gap: "20px",
-  [theme.breakpoints.down("md")]: {
+  "@media (max-width: 1313px)": {
     flexDirection: "column",
   }
-}));
+});
 
 export const FeatureText = styled(Typography)(({ theme }) => ({
   fontFamily: oxygen.style.fontFamily,
@@ -239,21 +256,20 @@ export const CTAButton = styled(Button)(({ theme }) => ({
   }
 }));
 
-export const TopFoldButtonRow = styled(Box)(({ theme }) => ({
+export const TopFoldButtonRow = styled(Box)({
   display: "flex",
   alignItems: "center",
-  justifyContent: "center",
   margin: "8px 0",
   gap: "10px",
   width: "100%"
-}));
+});
 
-export const QAppsImg = styled(Image)(({ theme }) => ({
+export const QAppsImg = styled(Image)({
   objectFit: "contain",
   objectPosition: "left",
   userSelect: "none",
   marginBottom: "5px",
-}));
+});
 
 export const CTAButton1 = styled(Button)(({ theme }) => ({
   fontFamily: oxygen.style.fontFamily,
@@ -316,14 +332,17 @@ export const CTAButton2 = styled(Button)(({ theme }) => ({
 export const WikiSectionContainer = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "row",
-  padding: "90px 130px",
+  padding: "90px 190px",
   width: "calc(100vw - 16px)",
   gap: "75px",
   marginBottom: "50px",
   backgroundColor: theme.palette.mode === "dark" ? "#0d1122" : "#e6e6e6",
+  [theme.breakpoints.up("xl")]: {
+    padding: "90px 200px",
+  },
   [theme.breakpoints.down("md")]: {
     flexDirection: "column",
-    padding: "40px 60px",
+    padding: "40px 120px",
   }
 }));
 

@@ -26,13 +26,13 @@ import {
   WikiCTAButton,
   QortalLogoImg
 } from "../Devs/Devs-styles";
-import { useMediaQuery, useTheme } from "@mui/material";
+import { useTheme } from "@mui/material";
 import { YoutubePlaceholder } from "../YouTube/YoutubePlaceholder";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 const Devs = () => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const featureRef = useRef<HTMLDivElement | null>(null);
 
   const [showVideoPlayer, setShowVideoPlayer] = useState<boolean>(false);
 
@@ -40,37 +40,43 @@ const Devs = () => {
     setShowVideoPlayer((prevState) => !prevState);
   };
 
+  const scrollToFeatures = () => {
+    if (featureRef?.current) {
+      featureRef?.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "nearest"
+      });
+    }
+  };
+
   return (
     <>
-      <Container container>
-        <TopCol item xs={12} sm={12} md={6}>
+      <Container>
+        <TopCol>
           <TopHeader>Qortal For Developers</TopHeader>
           <Header>
-            Build an uncensorable app in 5 minutes.
-            <br /> No backend required.
+            Build an uncensorable App in 5 minutes.
+            <br /> <span>No backend required.</span>
           </Header>
           <TopFoldButtonRow>
             <CTAButton1
-            // onClick={() => {
-            //   scrollToTopCard1Feature();
-            // }}
+              onClick={() => {
+                scrollToFeatures();
+              }}
             >
               SEE IT NOW
             </CTAButton1>
             <CTAButton2
-            // onClick={() => {
-            //   router.push("/downloads");
-            // }}
+              onClick={() => {
+                window.open("https://link.qortal.dev/new-devs", "_blank");
+              }}
             >
               JOIN DEV GROUP
             </CTAButton2>
           </TopFoldButtonRow>
-          <TopSubHeader>
-            Join our community of developers building the next generation of
-            decentralized applications on Qortal!
-          </TopSubHeader>
         </TopCol>
-        <VideoBox item xs={12} sm={12} md={6}>
+        <VideoBox>
           {showVideoPlayer ? (
             <YoutubeVideoContainer>
               <iframe
@@ -92,7 +98,7 @@ const Devs = () => {
           )}
         </VideoBox>
       </Container>
-      <Features container>
+      <Features ref={featureRef}>
         <FeaturesTitleContainer>
           <TopHeader>Qortal Q-Apps</TopHeader>
           <Header>
@@ -100,12 +106,12 @@ const Devs = () => {
             on Qortal!
           </Header>
           <TopSubHeader>
-            You can deploy an app in minutes, using only Javascript, and paying
+            You can deploy an App in minutes, using only JavaScript, and paying
             a tiny publishing fee. Nothing else needed!
           </TopSubHeader>
         </FeaturesTitleContainer>
         <FeatureCardsRow>
-          <FeatureContainer item sm={12} md={4}>
+          <FeatureContainer>
             <QAppsImg
               src={
                 theme.palette.mode === "dark"
@@ -125,13 +131,13 @@ const Devs = () => {
             </FeatureText>
             <CTAButton
               onClick={() => {
-                window.open("https://link.qortal.dev/call", "_blank");
+                window.open("https://link.qortal.dev/qtube", "_blank");
               }}
             >
               TRY IT NOW
             </CTAButton>
           </FeatureContainer>
-          <FeatureContainer item sm={12} md={4}>
+          <FeatureContainer>
             <QAppsImg
               src={
                 theme.palette.mode === "dark"
@@ -152,13 +158,13 @@ const Devs = () => {
             </FeatureText>
             <CTAButton
               onClick={() => {
-                window.open("https://link.qortal.dev/call", "_blank");
+                window.open("https://link.qortal.dev/qshop", "_blank");
               }}
             >
               TRY IT NOW
             </CTAButton>
           </FeatureContainer>
-          <FeatureContainer item sm={12} md={4}>
+          <FeatureContainer>
             <QAppsImg
               src={
                 theme.palette.mode === "dark"
@@ -178,7 +184,7 @@ const Devs = () => {
             </FeatureText>
             <CTAButton
               onClick={() => {
-                window.open("https://link.qortal.dev/call", "_blank");
+                window.open("https://link.qortal.dev/qfund", "_blank");
               }}
             >
               {" "}
@@ -204,9 +210,21 @@ const Devs = () => {
               />
             </WikiSectionRow>
           </WikiSectionTitle>
-          <WikiCTAButton>READ WIKI</WikiCTAButton>
+          <WikiCTAButton
+            onClick={() => {
+              window.open("https://link.qortal.dev/wiki", "_blank");
+            }}
+          >
+            READ WIKI
+          </WikiCTAButton>
         </WikiSectionColumn>
-        <QortalLogoImg src="/images/Devs/QortalLogo.webp" alt="Qortal Logo" width={350} height={350} quality={100} />
+        <QortalLogoImg
+          src="/images/Devs/QortalLogo.webp"
+          alt="Qortal Logo"
+          width={350}
+          height={350}
+          quality={100}
+        />
       </WikiSectionContainer>
     </>
   );
