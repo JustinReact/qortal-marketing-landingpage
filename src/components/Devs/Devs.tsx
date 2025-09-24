@@ -11,7 +11,6 @@ import {
   TopCol,
   TopHeader,
   TopFoldButtonRow,
-  CTAButton1,
   CTAButton2,
   TopSubHeader,
   FeaturesTitleContainer,
@@ -28,11 +27,10 @@ import {
 } from "../Devs/Devs-styles";
 import { useTheme } from "@mui/material";
 import { YoutubePlaceholder } from "../YouTube/YoutubePlaceholder";
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 const Devs = () => {
   const theme = useTheme();
-  const featureRef = useRef<HTMLDivElement | null>(null);
 
   const [showVideoPlayer, setShowVideoPlayer] = useState<boolean>(false);
 
@@ -40,15 +38,6 @@ const Devs = () => {
     setShowVideoPlayer((prevState) => !prevState);
   };
 
-  const scrollToFeatures = () => {
-    if (featureRef?.current) {
-      featureRef?.current.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-        inline: "nearest"
-      });
-    }
-  };
 
   return (
     <>
@@ -60,19 +49,12 @@ const Devs = () => {
             <br /> <span>No backend required.</span>
           </Header>
           <TopFoldButtonRow>
-            <CTAButton1
-              onClick={() => {
-                scrollToFeatures();
-              }}
-            >
-              SEE IT NOW
-            </CTAButton1>
             <CTAButton2
               onClick={() => {
                 window.open("https://link.qortal.dev/new-devs", "_blank");
               }}
             >
-              JOIN DEV GROUP
+              LEARN HOW
             </CTAButton2>
           </TopFoldButtonRow>
         </TopCol>
@@ -98,7 +80,7 @@ const Devs = () => {
           )}
         </VideoBox>
       </Container>
-      <Features ref={featureRef}>
+      <Features>
         <FeaturesTitleContainer>
           <TopHeader>Qortal Q-Apps</TopHeader>
           <Header>
@@ -212,7 +194,7 @@ const Devs = () => {
           </WikiSectionTitle>
           <WikiCTAButton
             onClick={() => {
-              window.open("https://link.qortal.dev/wiki", "_blank");
+              window.open("https://link.qortal.dev/dev-wiki", "_blank");
             }}
           >
             READ WIKI

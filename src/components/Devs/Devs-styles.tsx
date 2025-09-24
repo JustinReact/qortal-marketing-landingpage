@@ -145,6 +145,7 @@ export const Features = styled(Grid)(({ theme }) => ({
   alignItems: "flex-start",
   gap: "30px",
   padding: "0 190px 90px 190px",
+  width: "calc(100vw - 16px)",
   [theme.breakpoints.up("xl")]: {
   padding: "0 200px 90px 200px",
   },
@@ -305,10 +306,10 @@ export const CTAButton1 = styled(Button)(({ theme }) => ({
 export const CTAButton2 = styled(Button)(({ theme }) => ({
   fontFamily: oxygen.style.fontFamily,
   fontWeight: 400,
-  fontSize: "16px",
+  fontSize: "20px",
   lineHeight: "21.3px",
   letterSpacing: 0,
-  width: "190px",
+  width: "400px",
   height: "43px",
   padding: "10px 30px 10px 30px",
   gap: "7px",
@@ -335,7 +336,7 @@ export const WikiSectionContainer = styled(Box)(({ theme }) => ({
   padding: "90px 190px",
   width: "calc(100vw - 16px)",
   gap: "75px",
-  marginBottom: "50px",
+  marginBottom: "100px",
   backgroundColor: theme.palette.mode === "dark" ? "#0d1122" : "#e6e6e6",
   [theme.breakpoints.up("xl")]: {
     padding: "90px 200px",
@@ -343,7 +344,11 @@ export const WikiSectionContainer = styled(Box)(({ theme }) => ({
   [theme.breakpoints.down("md")]: {
     flexDirection: "column",
     padding: "40px 120px",
-  }
+  },
+  [theme.breakpoints.down("sm")]: {
+    padding: "40px 20px",
+    marginBottom: "50px",
+  },
 }));
 
 export const WikiSectionRow = styled(Box)(({ theme }) => ({

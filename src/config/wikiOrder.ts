@@ -7,5 +7,6 @@ export const wikiOrder = [
   "Running A Node",
   "Qortal Groups",
   "Qortal Q-Apps",
-  "Minting"
+  "Minting",
+  "Setting Up a New Q-App",
 ];
