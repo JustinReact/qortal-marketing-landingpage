@@ -62,9 +62,9 @@ const Devs = () => {
           {showVideoPlayer ? (
             <YoutubeVideoContainer>
               <iframe
-                src="https://www.youtube.com/embed/M01coUo0dVA?si=gJC29726RcXxxJsH&autoplay=1&rel=0"
+                src="https://youtu.be/jgI4PDoPAMU&autoplay=1&rel=0"
                 loading="lazy"
-                title="How To Publish Videos To Q-Tube On Qortal"
+                title="How To Create A Q-App On Qortal"
                 allowFullScreen
                 allow="autoplay"
               ></iframe>
@@ -74,7 +74,7 @@ const Devs = () => {
               className="dev-page-video"
               isModal={false}
               onClick={handleVideoClick}
-              YoutubeThumbnail={"/images/Creators/UncensorableVideos.png"}
+              YoutubeThumbnail={"/images/Devs/Q-AppsTutorial.png"}
               YoutubeTitle="How To Publish Videos To Q-Tube On Qortal"
             />
           )}
