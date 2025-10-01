@@ -26,12 +26,22 @@ export const YoutubePlaceholderContainer = styled(Box)(({ theme }) => ({
       [theme.breakpoints.down("sm")]: {
         transform: "translateX(-50%) translateY(90%)"
       }
-    },
+    }
   },
   "&.creator-page-video": {
     "& img": {
       width: "100% !important",
-      height: "250px !important",
+      height: "250px !important"
+    }
+  },
+  "&.dev-page-video": {
+    alignItems: "flex-start",
+    "& img": {
+      width: "100% !important",
+      height: "250px !important"
+    },
+    "& svg": {
+      top: "33%",
     }
   }
 }));

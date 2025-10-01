@@ -153,13 +153,18 @@ export const nanumGothic = localFont({
 export const oxygen = localFont({
   src: [
     {
+      path: "../../public/fonts/Oxygen-Light.ttf", // Very light weight
+      weight: "300",
+      style: "normal"
+    },
+    {
       path: "../../public/fonts/Oxygen.ttf", // Light weight
       weight: "400",
       style: "normal"
     },
     {
-      path: "../../public/fonts/Oxygen.ttf", // Normal weight
-      weight: "500",
+      path: "../../public/fonts/Oxygen-Bold.ttf", // Normal weight
+      weight: "700",
       style: "normal"
     }
   ]

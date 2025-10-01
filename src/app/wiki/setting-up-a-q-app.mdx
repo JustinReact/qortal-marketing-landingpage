@@ -1,0 +1,131 @@
+---
+title: "Setting Up a New Q-App"
+---
+
+# Setting Up a New Q-App ⚙️
+
+## What You’ll Need
+
+- Latest version of Node.js
+- An IDE such as VS Code
+- Qortal Hub
+
+---
+
+## Setting up a New Q-App Quickly
+
+Use the npm package `create-qortal-app` to quickly set up a new Q-App.
+
+### Step 1: Install globally
+
+```bash
+npm install -g create-qortal-app
+```
+
+### Step 2: Run create-qortal-app
+
+```bash
+npx create-qortal-app
+```
+
+### Step 3: Enter the name of your app
+
+```bash
+? Enter the name of your app: my app
+```
+
+### Step 4: Choose a template
+
+```bash
+🔍 Fetching available templates...
+
+? Select a template: (Use arrow keys)
+❯ react-default-template
+```
+
+Wait about a minute while the project is created.
+
+If you're using VS Code, the project may open automatically.
+If not, open your IDE and navigate to your project folder manually.
+
+### Run the App in Development Mode
+
+```bash
+npm run dev
+```
+
+By default, Vite will serve your app with port: 5173
+
+## Running the app in dev mode in Qortal Hub
+
+### Step 1: Open Qortal Hub
+
+Open Qortal Hub and authenticate.
+
+### Step 2: Click the ⚙️ settings icon at the top-right.
+
+<figure>
+  <img
+    src="/images/Wiki/Q-AppSettingsCog.png"
+    alt="Q-App Settings Cog"
+    style={{ width: "100%", maxWidth: "600px" }}
+  />
+  <figcaption>Access the settings in Qortal Hub</figcaption>
+</figure>
+
+### Step 3: Toggle Enable Dev Mode.
+
+<figure>
+  <img
+    src="/images/Wiki/Q-AppEnableDevMode.png"
+    alt="Q-App Enable Dev Mode"
+    style={{ width: "100%", maxWidth: "600px" }}
+  />
+  <figcaption>Toggle "Enable dev mode" once inside the settings</figcaption>
+</figure>
+
+### Step 4: Close the modal.
+
+### Step 5: On the left sidebar, click Dev.
+
+<figure>
+  <img
+    src="/images/Wiki/Q-AppSelectDev.png"
+    alt="Q-App Select Dev"
+    style={{ width: "100%", maxWidth: "600px" }}
+  />
+  <figcaption>Select "Dev" from the left sidebar</figcaption>
+</figure>
+
+### Step 6: Click Server.
+
+<figure>
+  <img
+    src="/images/Wiki/Q-AppSelectServer.png"
+    alt="Q-App Select Server"
+    style={{ width: "100%", maxWidth: "600px" }}
+  />
+  <figcaption>Select "Server" from the options</figcaption>
+</figure>
+
+### Step 7: Enter the port number: 5173
+  
+<figure>
+  <img
+    src="/images/Wiki/Q-AppAddPort.png"
+    alt="Q-App Add Port"
+    style={{ width: "100%", maxWidth: "600px" }}
+  />
+  <figcaption>Enter the port number: 5173 and click "ADD" </figcaption>
+</figure>
+
+### Step 8: App should appear
+
+<figure>
+  <img
+    src="/images/Wiki/Q-AppRefreshApp.png"
+    alt="Q-App Add Port"
+    style={{ width: "100%", maxWidth: "600px" }}
+  />
+  <figcaption>Your app should appear after a few seconds. If code changes aren’t updating,<br /> click the refresh button on the left side of Qortal Hub to force an update.</figcaption>
+</figure>

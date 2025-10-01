@@ -165,7 +165,7 @@ export const DownloadText = styled(Typography)(({ theme }) => ({
 export const DownloadText1 = styled(Typography)(({ theme }) => ({
   fontFamily: oxygen.style.fontFamily,
   color: theme.palette.mode === "light" ? "#ffffff" : "#000000",
-  fontWeight: 500,
+  fontWeight: 400,
   fontSize: "20px",
   lineHeight: "22px",
   userSelect: "none",
@@ -174,7 +174,7 @@ export const DownloadText1 = styled(Typography)(({ theme }) => ({
 export const DownloadText2 = styled(Typography)(({ theme }) => ({
   fontFamily: redditSans.style.fontFamily,
   color: theme.palette.mode === "light" ? "#ffffff" : "#000000",
-  fontWeight: 500,
+  fontWeight: 400,
   fontSize: "24px",
   lineHeight: "24px",
   userSelect: "none",
@@ -199,7 +199,7 @@ export const DownloadText2 = styled(Typography)(({ theme }) => ({
 export const DownloadText3 = styled(Typography)(({ theme }) => ({
   fontFamily: oxygen.style.fontFamily,
   color: theme.palette.mode === "light" ? "#ffffff" : "#000000",
-  fontWeight: 500,
+  fontWeight: 400,
   fontSize: "16px",
   lineHeight: "22px",
   userSelect: "none",
