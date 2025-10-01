@@ -62,7 +62,7 @@ const Devs = () => {
           {showVideoPlayer ? (
             <YoutubeVideoContainer>
               <iframe
-                src="https://youtu.be/jgI4PDoPAMU&autoplay=1&rel=0"
+                src="https://www.youtube.com/embed/jgI4PDoPAMU?si=012wkriR86HSeJtC&autoplay=1&rel=0"
                 loading="lazy"
                 title="How To Create A Q-App On Qortal"
                 allowFullScreen
