@@ -18,8 +18,7 @@ export const LogoContainer = styled(Box)(({theme}) => ({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  width:"100%",
-  height: "350px",
+  height: "auto",
   flexDirection: "column",
   zIndex: 1,
   [theme.breakpoints.only("xl")]: {

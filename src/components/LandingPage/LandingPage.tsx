@@ -65,8 +65,6 @@ import {
   RightArrow,
   RadioButtons,
   TopFoldMainCol,
-  Header2,
-  SubHeader2,
   SectionHeaderMobile,
   SectionMobileRow,
   SectionMobileHeader,
@@ -79,11 +77,17 @@ import {
   EbookPromoSubTitle,
   EbookPromoContainer,
   EbookPromoButton,
-  EbookPromoTextCol
+  EbookPromoTextCol,
+  InfoRow,
+  SubHeader2,
+  IconRow,
+  IconImg,
+  SubHeader3,
+  ArrowDownIcon
 } from "../../components/LandingPage/LandingPage-styles";
 import { YoutubeVideoContainer } from "../Qort/QORTPage-styles";
 import { YoutubePlaceholder } from "../YouTube/YoutubePlaceholder";
-import { Typography, useMediaQuery, useTheme } from "@mui/material";
+import { useMediaQuery, useTheme } from "@mui/material";
 import { useRouter } from "next/navigation";
 import QonnectFour from "../QonnectFour/QonnectFour";
 import Modal from "../Common/Modal/Modal";
@@ -91,6 +95,7 @@ import { ScrollToTopButton, TopArrow } from "../Wiki/Wiki-styles";
 import { CommonModal } from "../Common/CommonModal/CommonModal";
 import { DownloadSVG } from "../Common/Icons/DownloadSVG";
 import { BookSVG } from "../Common/Icons/BookSVG";
+import { ChevronLeftSVG } from "../Common/Icons/ChevronLeftSVG";
 
 const LandingPage = () => {
   const theme = useTheme();
@@ -121,10 +126,12 @@ const LandingPage = () => {
     const isFirstTimeVisitor = localStorage.getItem("isFirstTimeVisitor");
 
     if (!isFirstTimeVisitor) {
-      // Perform actions for first-time visitors
-      setFirstTimeVisitor(true);
-      // Set the flag in localStorage
-      localStorage.setItem("isFirstTimeVisitor", "false");
+      setTimeout(() => {
+        // Perform actions for first-time visitors
+        setFirstTimeVisitor(true);
+        // Set the flag in localStorage
+        localStorage.setItem("isFirstTimeVisitor", "false");
+      }, 30000);
     } else {
       return;
     }
@@ -239,42 +246,82 @@ const LandingPage = () => {
   return (
     <Container>
       <TopOfPageRef ref={topOfPageRef} />
-      <TopFold>
-        <TopFoldCol>
-          <TopFoldRow>
-            <Header>QORTAL</Header>
-          </TopFoldRow>
-          <TopFoldRow>
-            <Header2 style={{}}>ECOSYSTEM</Header2>
-          </TopFoldRow>
-        </TopFoldCol>
-        <TopFoldWordCol>
-          <TopFoldRow>
-            <SubHeader>
-              <Typography style={{ fontWeight: 300 }}>REDEFINING</Typography>
-              <SubHeaderBox>
-                THE REGULAR INTERNET
-                <SubHeaderBoxImage
-                  src={"/images/LandingPage/SpellingMistakeLine.png"}
-                  quality={100}
-                  width={594}
-                  height={43}
-                  alt={""}
-                />
-              </SubHeaderBox>
-            </SubHeader>
-          </TopFoldRow>
-          <TopFoldRow>
-            <SubHeader2>
-              <Typography style={{ fontWeight: 300 }}>PIONEERING</Typography>
-              <Typography style={{ fontWeight: "bold" }}>
-                THE NEW INTERNET
-              </Typography>
-            </SubHeader2>
-          </TopFoldRow>
-        </TopFoldWordCol>
-      </TopFold>
+      <TopFoldCol>
+        <TopFoldRow>
+          <Header>
+            A BRAND{" "}
+            <span style={{ color: theme.palette.customBlue.main }}>
+              NEW INTERNET
+            </span>{" "}
+            WHERE YOU CANNOT BE CENSORED!
+          </Header>
+        </TopFoldRow>
+        <TopFoldRow>
+          <SubHeader>
+            Qortal is a fully decentralized, censorship-proof Web3 platform that
+            empowers users with complete control over their data and online
+            interactions. In a matter of minutes, you can get started on this
+            alternative internet.
+          </SubHeader>
+        </TopFoldRow>
+        <TopFoldButtonRow>
+          <CTAButton1
+            onClick={() => {
+              ReactGA.event({
+                category: "User",
+                action: "Clicked Learn How Button",
+                label: "Learn How Button"
+              });
+              scrollToTopCard1Feature();
+            }}
+          >
+            LEARN HOW
+          </CTAButton1>
+          <CTAButton2
+            onClick={() => {
+              ReactGA.set({ dimension1: "Landing Page Download Button" }); // Event-level dimension
+              ReactGA.event({
+                category: "User",
+                action: "Clicked Main Download CTA Button",
+                label: "Clicked Main Download CTA Button"
+              });
+              router.push("/downloads");
+            }}
+          >
+            DOWNLOAD
+          </CTAButton2>
+        </TopFoldButtonRow>
+      </TopFoldCol>
+      <InfoRow>
+        <SubHeader2>500+ apps already deployed on Qortal!</SubHeader2>
+        <IconRow>
+          <IconImg
+            src={"/images/LandingPage/Q-Tube Avatar.png"}
+            alt="Qortal Q-Apps Q-Tube Icon"
+            width={30}
+            height={30}
+            quality={100}
+          />
+          <IconImg
+            src={"/images/LandingPage/Q-Share Avatar.png"}
+            alt="Qortal Q-Apps Q-Share Icon"
+            width={30}
+            height={30}
+            quality={100}
+          />
+          <IconImg
+            src={"/images/LandingPage/Q-Mail Avatar.png"}
+            alt="Qortal Q-Apps Q-Mail Icon"
+            width={30}
+            height={30}
+            quality={100}
+          />
+        </IconRow>
+      </InfoRow>
       <TopFoldMainCol>
+        <SubHeader3>
+          The only Web3 platform with these features already LIVE <ArrowDownIcon color={theme.palette.text.primary} width={"30"} height={"30"} />
+        </SubHeader3>
         <TopCardRow>
           <TopCard1
             ref={cardRefs[0]}
@@ -305,7 +352,7 @@ const LandingPage = () => {
           <TopCard2
             ref={cardRefs[1]}
             role="button"
-            aria-label="Qortal Q-Apps - SOFTWARE DEVELOPMENT"
+            aria-label="Qortal Q-Apps - APPS YOU CAN USE TODAY"
             tabIndex={0}
             onKeyDown={(e) => {
               if (e.key === "Enter" || e.key === " ") {
@@ -317,11 +364,11 @@ const LandingPage = () => {
             }}
           >
             <TopCardSubContainer>
-              <TopCardTitle>SOFTWARE DEVELOPMENT</TopCardTitle>
+              <TopCardTitle>APPS YOU CAN USE TODAY</TopCardTitle>
               <TopCardSubTitle>Q-Apps</TopCardSubTitle>
             </TopCardSubContainer>
             <TopCardImage
-              src={"/images/LandingPage/QAppsScreenshot.webp"}
+              src={"/images/LandingPage/Q-Tube Video Screenshot.png"}
               alt="Qortal Q-Apps Screenshot"
               width={1920}
               height={1080}
@@ -331,7 +378,7 @@ const LandingPage = () => {
           <TopCard3
             ref={cardRefs[2]}
             role="button"
-            aria-label="Trading Platform and QORT - CRYPTO"
+            aria-label="Trading DEX Platform and QORT - CRYPTO"
             tabIndex={0}
             onKeyDown={(e) => {
               if (e.key === "Enter" || e.key === " ") {
@@ -344,7 +391,7 @@ const LandingPage = () => {
           >
             <TopCardSubContainerCrypto>
               <TopCardTitle>CRYPTO</TopCardTitle>
-              <TopCardSubTitle>Trading Platform & QORT</TopCardSubTitle>
+              <TopCardSubTitle>Trading DEX Platform & QORT</TopCardSubTitle>
             </TopCardSubContainerCrypto>
             <TopCardImage
               src={"/images/LandingPage/Q-TradeScreenshot.webp"}
@@ -411,33 +458,6 @@ const LandingPage = () => {
           ))}
         </RadioButtons>
       </TopFoldMainCol>
-      <TopFoldButtonRow>
-        <CTAButton1
-          onClick={() => {
-            ReactGA.event({
-              category: "User",
-              action: "Clicked Learn How Button",
-              label: "Learn How Button"
-            });
-            scrollToTopCard1Feature();
-          }}
-        >
-          LEARN HOW
-        </CTAButton1>
-        <CTAButton2
-          onClick={() => {
-            ReactGA.set({ dimension1: "Landing Page Download Button" }); // Event-level dimension
-            ReactGA.event({
-              category: "User",
-              action: "Clicked Main Download CTA Button",
-              label: "Clicked Main Download CTA Button"
-            });
-            router.push("/downloads");
-          }}
-        >
-          DOWNLOAD
-        </CTAButton2>
-      </TopFoldButtonRow>
       <VideoBox>
         <YoutubeVideoContainer>
           {showVideoPlayer ? (
@@ -600,7 +620,7 @@ const LandingPage = () => {
           <SectionHeaderMobile>
             <SectionHeaderCol>
               <SectionHeaderSubtitle>
-                SOFTWARE DEVELOPMENT
+                APPS YOU CAN USE TODAY
               </SectionHeaderSubtitle>
               <SectionLinesImg
                 src={"/images/LandingPage/BlueStripesMobile.png"}
@@ -619,7 +639,7 @@ const LandingPage = () => {
                   src={
                     isMobile
                       ? "/images/LandingPage/QAppsScreenshotMobile.webp"
-                      : "/images/LandingPage/QAppsScreenshot.webp"
+                      : "/images/LandingPage/Q-Tube Video Screenshot.png"
                   }
                   alt="Qortal Q-Apps Screenshot"
                   width={isMobile ? 440 : 1920}
@@ -629,7 +649,7 @@ const LandingPage = () => {
                     if (isMobile) return;
                     setOpenModal(true);
                     setSelectedImage(
-                      "/images/LandingPage/QAppsScreenshot.webp"
+                      "/images/LandingPage/Q-Tube Video Screenshot.png"
                     );
                   }}
                 />
@@ -646,7 +666,7 @@ const LandingPage = () => {
                 />
                 <SectionHeaderCol>
                   <SectionHeaderSubtitle>
-                    SOFTWARE DEVELOPMENT
+                    APPS YOU CAN USE TODAY
                   </SectionHeaderSubtitle>
                   <SectionHeaderTitle>Q-Apps</SectionHeaderTitle>
                 </SectionHeaderCol>
@@ -655,8 +675,8 @@ const LandingPage = () => {
                 <SectionDescription>
                   Build, share, and run apps directly on the{" "}
                   <span style={{ fontWeight: "bold" }}>Qortal blockchain</span>.
-                  Whether it’s tools, games, or new ideas, Q-Apps lets you go
-                  decentralized—with just a touch of JavaScript know-how.
+                  Whether it’s tools, videos, or new ideas, Q-Apps lets you go
+                  decentralized, with just a touch of JavaScript know-how.
                 </SectionDescription>
                 <SectionDownloadLink
                   href="/downloads"
@@ -733,7 +753,7 @@ const LandingPage = () => {
               />
               <SectionHeaderCol>
                 <SectionHeaderSubtitle>CRYPTO</SectionHeaderSubtitle>
-                <SectionHeaderTitle>Trading Platform</SectionHeaderTitle>
+                <SectionHeaderTitle>Trading DEX Platform</SectionHeaderTitle>
               </SectionHeaderCol>
             </SectionHeader>
             {isMobile ? (
@@ -770,7 +790,7 @@ const LandingPage = () => {
                 <SectionDescription>
                   Trade crypto the Qortal way—peer-to-peer, secure, and no
                   middlemen. Swap QORT and other supported coins directly on our
-                  decentralized trading platform.
+                  decentralized trading DEX platform.
                 </SectionDescription>
               </QTradeDescriptionCol>
             )}
@@ -780,7 +800,7 @@ const LandingPage = () => {
             </QonnectFourMobileCol>
           </QTradeSectionCol>
           <SectionCol style={{ alignItems: "flex-start" }}>
-            <SectionMobileHeader>Trading Platform</SectionMobileHeader>
+            <SectionMobileHeader>Trading DEX Platform</SectionMobileHeader>
             <QTradeSectionImgBox>
               <SectionImg
                 src={
@@ -841,7 +861,7 @@ const LandingPage = () => {
                 <SectionDescription>
                   Trade crypto the Qortal way—peer-to-peer, secure, and no
                   middlemen. Swap QORT and other supported coins directly on our
-                  decentralized trading platform.
+                  decentralized trading DEX platform.
                 </SectionDescription>
               </QTradeDescriptionCol>
             )}
@@ -1018,7 +1038,11 @@ const LandingPage = () => {
           }}
         >
           <EbookPromoContainer>
-            <BookSVG color={theme.palette.text.primary} height={"79"} width={"98"} />
+            <BookSVG
+              color={theme.palette.text.primary}
+              height={"79"}
+              width={"98"}
+            />
             <EbookPromoTextCol>
               <EbookPromoTitle>
                 DOWNLOAD OUR{" "}

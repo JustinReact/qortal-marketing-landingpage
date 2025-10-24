@@ -1,9 +1,10 @@
-import { fontSize, fontWeight, styled, width } from "@mui/system";
+import { styled } from "@mui/system";
 import { Box, Button, Typography } from "@mui/material";
 import Image from "next/image";
-import { futura, inter, segoeUI } from "../../app/fonts";
+import { futura, inter, oxygen, segoeUI } from "../../app/fonts";
 import Link from "next/link";
 import { LeftLongArrowSVG } from "../Common/Icons/LeftLongArrowSVG";
+import { BackArrowSVG } from "../Common/Icons/BackArrowSVG";
 
 type ShowOpenSourceText = {
   showOpenSourceText: boolean;
@@ -17,7 +18,7 @@ export const Container = styled(Box)(({ theme }) => ({
   position: "relative",
   display: "flex",
   flexDirection: "column",
-  padding: "40px 60px 14px 60px",
+  padding: "50px 60px 14px 60px",
   width: "100%",
   [theme.breakpoints.down("lg")]: {
     padding: "40px 20px 14px 20px"
@@ -67,6 +68,7 @@ export const TopFoldCol = styled(Box)(({ theme }) => ({
   flexDirection: "column",
   alignItems: "center",
   width: "100%",
+  gap: "20px",
   "@media(max-width: 1146px)": {
     flexDirection: "row",
     justifySelf: "center",
@@ -104,8 +106,21 @@ export const TopFoldRow = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "row",
   alignItems: "center",
-  justifyContent: "flex-start",
-  width: "100%",
+  justifyContent: "center",
+  width: "70%",
+  gap: "15px",
+  textAlign: "center",
+  [theme.breakpoints.down("sm")]: {
+    justifyContent: "center"
+  }
+}));
+
+export const TopFoldRow2 = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "row",
+  alignItems: "center",
+  justifyContent: "center",
+  width: "80%",
   [theme.breakpoints.down("sm")]: {
     justifyContent: "center"
   }
@@ -127,7 +142,7 @@ export const ExtensionScreenshotsImg = styled(Image)(({ theme }) => ({
   }
 }));
 
-export const Header = styled(Typography)(({ theme }) => ({
+export const Header = styled("h1")(({ theme }) => ({
   fontFamily: futura.style.fontFamily,
   fontSize: "64px",
   fontWeight: 400,
@@ -135,7 +150,7 @@ export const Header = styled(Typography)(({ theme }) => ({
   letterSpacing: "calc(0.1 * 64px)",
   color: theme.palette.text.primary,
   userSelect: "none",
-  whiteSpace: "nowrap",
+  margin: 0,
   "@media(max-width: 1643px)": {
     fontSize: "59px",
     letterSpacing: "calc(0.1 * 59px)"
@@ -163,186 +178,46 @@ export const Header = styled(Typography)(({ theme }) => ({
   }
 }));
 
-export const Header2 = styled(Typography)(({ theme }) => ({
-  fontFamily: futura.style.fontFamily,
-  fontSize: "64px",
+export const SubHeader = styled("h2")(({ theme }) => ({
+  display: "flex",
+  flexDirection: "row",
+  gap: "14px",
+  textAlign: "center",
+  color: theme.palette.text.primary,
+  fontFamily: oxygen.style.fontFamily,
+  fontSize: "27px",
   fontWeight: 400,
-  lineHeight: "63px",
-  letterSpacing: "calc(0.1 * 64px)",
-  color: theme.palette.customBlue.main,
+  lineHeight: "40px",
+  letterSpacing: 0,
   userSelect: "none",
-  whiteSpace: "nowrap",
-  "@media(max-width: 1643px)": {
-    fontSize: "59px",
-    letterSpacing: "calc(0.1 * 59px)"
-  },
-  "@media(max-width: 1495px)": {
-    fontSize: "53px",
-    letterSpacing: "calc(0.1 * 53px)"
-  },
-  "@media(max-width: 1399px)": {
-    fontSize: "45px",
-    letterSpacing: "calc(0.1 * 45px)"
-  },
-  "@media(max-width: 1146px)": {
-    fontSize: "55px",
-    lineHeight: "63px",
-    letterSpacing: "calc(0.1 * 55px)"
-  },
-  "@media(max-width: 914px)": {
-    fontSize: "50px"
-  },
-  [theme.breakpoints.down("sm")]: {
-    fontSize: "25px",
-    fontWeight: "600",
-    lineHeight: "28px",
-    letterSpacing: "calc(0.1 * 25px)"
-  }
+  margin: 0,
 }));
 
-export const SubHeader = styled(Box)(({ theme }) => ({
-  display: "flex",
-  flexDirection: "row",
-  gap: "14px",
-  "& p": {
+export const SubHeader2 = styled("h3")(({ theme }) => ({
     color: theme.palette.text.primary,
-    fontFamily: segoeUI.style.fontFamily,
-    fontSize: "36px",
-    fontWeight: 400,
-    lineHeight: "48px",
-    letterSpacing: "calc(0.28*36px)",
+    fontFamily: oxygen.style.fontFamily,
+    fontSize: "18px",
+    fontWeight: 300,
+    letterSpacing: 0,
     userSelect: "none",
-    "@media(max-width: 1643px)": {
-      fontSize: "35px",
-      letterSpacing: "calc(0.28*35px)"
-    },
-    "@media(max-width: 1274px)": {
-      fontSize: "31px",
-      letterSpacing: "calc(0.28*31px)"
-    },
-    "@media(max-width: 893px)": {
-      fontSize: "28px",
-      letterSpacing: "calc(0.28*28px)"
-    },
-    "@media(max-width: 813px)": {
-      fontSize: "26px",
-      letterSpacing: "calc(0.28*26px)"
-    },
-    "@media(max-width: 763px)": {
-      fontSize: "24px",
-      letterSpacing: "calc(0.28*24px)"
-    },
-    "@media(max-width: 713px)": {
-      fontSize: "22px",
-      letterSpacing: "calc(0.28 * 22px)"
-    },
-    "@media(max-width: 655px)": {
-      fontSize: "20px",
-      letterSpacing: "calc(0.28 * 20px)",
-      lineHeight: "35px"
-    },
-    "@media(max-width: 566px)": {
-      fontSize: "18px",
-      letterSpacing: "calc(0.28 * 18px)"
-    },
-    "@media(max-width: 516px)": {
-      fontSize: "16px",
-      letterSpacing: "calc(0.28 * 16px)"
-    },
-    "@media(max-width: 471px)": {
-      fontSize: "18px",
-      letterSpacing: "calc(0.28 * 5px)"
-    },
-    "@media(max-width: 404px)": {
-      fontSize: "18px",
-      letterSpacing: "calc(0.28 * 2px)"
-    }
-  },
-  "@media (max-width: 693px)": {
-    gap: "8px",
-    width: "100%",
-    justifyContent: "center"
-  },
-  [theme.breakpoints.down("sm")]: {
-    display: "none"
-  }
+    margin: 0,
 }));
 
-export const SubHeader2 = styled(Box)(({ theme }) => ({
+export const InfoRow = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "row",
-  gap: "14px",
-  "& p": {
-    color: theme.palette.text.primary,
-    fontFamily: segoeUI.style.fontFamily,
-    fontSize: "36px",
-    fontWeight: 400,
-    lineHeight: "48px",
-    letterSpacing: "calc(0.28*36px)",
-    userSelect: "none",
-    "@media(max-width: 1643px)": {
-      fontSize: "35px",
-      letterSpacing: "calc(0.28*35px)"
-    },
-    "@media(max-width: 1274px)": {
-      fontSize: "31px",
-      letterSpacing: "calc(0.28*31px)"
-    },
-    "@media(max-width: 893px)": {
-      fontSize: "28px",
-      letterSpacing: "calc(0.28*28px)"
-    },
-    "@media(max-width: 813px)": {
-      fontSize: "26px",
-      letterSpacing: "calc(0.28*26px)"
-    },
-    "@media(max-width: 763px)": {
-      fontSize: "24px",
-      letterSpacing: "calc(0.28*24px)"
-    },
-    "@media(max-width: 713px)": {
-      fontSize: "22px",
-      letterSpacing: "calc(0.28 * 22px)"
-    },
-    "@media(max-width: 655px)": {
-      fontSize: "20px",
-      letterSpacing: "calc(0.28 * 20px)",
-      lineHeight: "35px"
-    },
-    "@media(max-width: 566px)": {
-      fontSize: "18px",
-      letterSpacing: "calc(0.28 * 18px)"
-    },
-    "@media(max-width: 516px)": {
-      fontSize: "16px",
-      letterSpacing: "calc(0.28 * 16px)"
-    },
-    "@media(max-width: 471px)": {
-      fontSize: "18px",
-      letterSpacing: "calc(0.28 * 5px)"
-    },
-    "@media(max-width: 404px)": {
-      fontSize: "18px",
-      letterSpacing: "calc(0.28 * 2px)"
-    }
-  },
-  "@media (max-width: 693px)": {
-    gap: "8px",
-    width: "100%",
-    justifyContent: "center",
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "16px",
-      lineHeight: "24px",
-      letterSpacing: "calc(0.28 * 16px)"
-    }
-  },
-  [theme.breakpoints.down("sm")]: {
-    flexDirection: "column",
-    alignItems: "center",
-    gap: 0,
-    marginTop: "50px"
-  }
+  justifyContent: "center",
+  width: "100%",
+  margin: "50px 0 100px 0",
+  gap: "20px"
 }));
+
+export const IconRow = styled(Box)({
+  display: "flex",
+  flexDirection: "row",
+  gap: "5px",
+  alignItems: "center",
+})
 
 export const SubHeaderBox = styled(Typography)({
   position: "relative",
@@ -370,6 +245,24 @@ export const TopFoldMainCol = styled(Box)(({ theme }) => ({
   gap: "5px"
 }));
 
+export const SubHeader3 = styled("h3")(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  color: theme.palette.text.primary,
+  fontFamily: oxygen.style.fontFamily,
+  fontSize: "20px",
+  fontWeight: 400,
+  lineHeight: "28px",
+  letterSpacing: 0,
+  userSelect: "none",
+  marginBottom: "10px",
+  gap: "10px"
+}));
+
+export const ArrowDownIcon = styled(BackArrowSVG)(({ theme }) => ({
+  transform: "rotate(-90deg)",
+}));
+
 export const TopCardRow = styled(Box)(({ theme }) => ({
   display: "grid",
   gridTemplateColumns: "auto",
@@ -381,7 +274,6 @@ export const TopCardRow = styled(Box)(({ theme }) => ({
   whiteSpace: "nowrap",
   width: "100%",
   maxWidth: "calc(100vw - 152px)",
-  paddingTop: "25px",
   paddingBottom: "15px",
   "&::-webkit-scrollbar-track": {
     backgroundColor: `${theme.palette.background.default} !important`
@@ -698,6 +590,13 @@ export const TopCardImage = styled(Image)(({ theme }) => ({
   userSelect: "none"
 }));
 
+export const IconImg = styled(Image)(({ theme }) => ({
+  width: "100%",
+  objectFit: "contain",
+  objectPosition: "center",
+  userSelect: "none"
+}));
+
 export const TopCardLockIcon = styled(Image)(({ theme }) => ({
   position: "absolute",
   top: "55%",
@@ -717,7 +616,7 @@ export const VideoBox = styled(Box)(({ theme }) => ({
   display: "flex",
   width: "100%",
   justifyContent: "center",
-  marginBottom: "145px",
+  margin: "75px 0 75px 0",
   [theme.breakpoints.down("sm")]: {
     marginBottom: "56px"
   }
@@ -729,7 +628,6 @@ export const TopFoldButtonRow = styled(Box)(({ theme }) => ({
   justifyContent: "center",
   marginTop: "25px",
   gap: "30px",
-  marginBottom: "157px",
   [theme.breakpoints.down("lg")]: {
     justifyContent: "center"
   },
@@ -1653,10 +1551,10 @@ export const EbookPromoContainer = styled(Box)(({ theme }) => ({
   padding: "135px 200px 144px 200px",
   width: "100%",
   [theme.breakpoints.down("md")]: {
-    padding: "50px 150px",
+    padding: "50px 150px"
   },
   [theme.breakpoints.down("sm")]: {
-    padding: "50px 20px",
+    padding: "50px 20px"
   }
 }));
 
@@ -1669,9 +1567,9 @@ export const EbookPromoTextCol = styled(Box)(({ theme }) => ({
   width: "100%",
   margin: "45px 0 36px 0",
   [theme.breakpoints.down("sm")]: {
-    textAlign: "center",
+    textAlign: "center"
   }
-})); 
+}));
 
 export const EbookPromoTitle = styled(Typography)(({ theme }) => ({
   fontFamily: inter.style.fontFamily,
@@ -1715,9 +1613,13 @@ export const EbookPromoButton = styled(Button)(({ theme }) => ({
       theme.palette.mode === "dark"
         ? `1px solid ${theme.palette.text.primary}`
         : "1px solid #F3F3F3",
-    color: "#000000"
+    color: "#000000",
+    "& svg": {
+      transition: "all 0.3s ease-in-out",
+      fill: "#000000"
+    }
   },
-[theme.breakpoints.down("sm")]: {
-  width: "100%"
-}
+  [theme.breakpoints.down("sm")]: {
+    width: "100%"
+  }
 }));
