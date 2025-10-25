@@ -46,11 +46,15 @@ export const MobileDrawer: FC<MobileDrawerProps> = ({
           setOpenMobileDrawer();
           router.push("/docs/q-apps");
         }}
-        active={(location === "/docs/q-apps" || location === "/docs/extension") ? true : false}
+        active={
+          location === "/docs/q-apps" || location === "/docs/extension"
+            ? true
+            : false
+        }
       >
         Documentation
       </DrawerButton>
-            <DrawerButton
+      <DrawerButton
         onClick={() => {
           ReactGA.event({
             category: "User",
@@ -63,6 +67,20 @@ export const MobileDrawer: FC<MobileDrawerProps> = ({
         active={location.includes("/wiki") ? true : false}
       >
         Wiki
+      </DrawerButton>
+      <DrawerButton
+        onClick={() => {
+          ReactGA.event({
+            category: "User",
+            action: "Clicked Mobile Team Drawer Link",
+            label: "Clicked Mobile Team Drawer Link"
+          });
+          setOpenMobileDrawer();
+          router.push("/team");
+        }}
+        active={location.includes("/team") ? true : false}
+      >
+        Team
       </DrawerButton>
       <DrawerButton
         onClick={() => {

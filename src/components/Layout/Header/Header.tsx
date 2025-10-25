@@ -144,34 +144,22 @@ export const Header = () => {
               >
                 Wiki
               </QORTButton>
-              {/* <NewsButton
-                onClick={() => {
-                  ReactGA.event({
-                    category: "User",
-                    action: "Clicked News Qortal Header Desktop",
-                    label: "Clicked News Qortal Header Desktop"
-                  });
-                }}
-                href={"/news"}
-              >
-                News
-              </NewsButton> */}
               <Docs
                 className={
-                  location === "/docs/extension" || location === "/docs/q-apps"
+                  location === "/team"
                     ? "active"
                     : ""
                 }
                 onClick={() => {
                   ReactGA.event({
                     category: "User",
-                    action: "Clicked Docs Button",
-                    label: "Docs Button"
+                    action: "Clicked Team Button",
+                    label: "Team Button"
                   });
                 }}
-                href={"/docs/q-apps"}
+                href={"/team"}
               >
-                Documentation
+                Team
               </Docs>
               <Box
                 onMouseEnter={() => setOpen(true)}
@@ -205,6 +193,18 @@ export const Header = () => {
                       href="/news"
                     >
                       News
+                    </DropdownItem>
+                    <DropdownItem
+                      onClick={() => {
+                        ReactGA.event({
+                          category: "User",
+                          action: "Clicked Documentation Page Header Desktop",
+                          label: "Clicked Documentation Page Header Desktop"
+                        });
+                      }}
+                      href="/docs/q-apps"
+                    >
+                      Documentation
                     </DropdownItem>
                     <DropdownItem
                       onClick={() => {

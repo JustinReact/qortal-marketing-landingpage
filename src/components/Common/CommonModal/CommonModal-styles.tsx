@@ -77,8 +77,8 @@ export const Modalbody = styled(Box)(({ theme }) => ({
 
 export const CloseIcon = styled(CloseSVG)(({ theme }) => ({
   position: "absolute",
-  right: "15px",
-  top: "15px",
+  right: "5px",
+  top: "5px",
   transition: "all 0.1s ease-in-out",
   "&:hover": {
     cursor: "pointer",
