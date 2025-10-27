@@ -70,14 +70,14 @@ const Team = () => {
     {
       name: "Qortal Seth",
       role: "Qortal App Developer and Tester",
-      image: "/images/Team/qortal-seth.jpg",
+      image: "/images/Team/generic.jpg",
       focus: "Q-App development",
       bio: "Exclusively developing Q-Apps on Qortal since their public release in April 2023, with a mission to establish a sustainable new economy where community-driven, open-source software is both profitable and culturally normalized."
     },
     {
       name: "Gisele",
       role: "Community Administrator and Tester",
-      image: "/images/Team/gisele.png",
+      image: "/images/Team/generic.jpg",
       focus:
         "Conveying concerns and questions from the community to the development teams",
       bio: "Dev Admin for Qortal since January 2023 — responsible for reviewing features and functionality, and assisting with testing all core releases on Raspberry Pi 4 as well as UI releases for macOS and Windows. Previously provided technical support for Qortal beginning in March 2021 via Discord and Telegram, specializing in setup and troubleshooting for Raspberry Pi 4, Qortector, and macOS. Joined the Qortal network at genesis."
@@ -85,9 +85,16 @@ const Team = () => {
     {
       name: "Ice",
       role: "Founder and Core Developer",
-      image: "/images/Team/ice.png",
+      image: "/images/Team/generic.jpg",
       focus: "Core Development - bug fixes, optimizations, and utilities",
       bio: "A results-driven senior technology executive with over 20 years of experience in IT leadership, systems engineering, and advanced technology integration. As Vice President of Engineering in the corporate world, he leads teams delivering next-generation streaming and unified communication solutions that drive multimillion-dollar growth. A founder of the Qortal Blockchain project and proficient in Java and other programming languages, he brings deep expertise in systems virtualization, cybersecurity, and network architecture, supported by industry certifications in security and systems engineering. He has a proven record of guiding digital transformation, mentoring high-performance teams, and aligning technology with complex mission needs."
+    },
+    {
+      name: "Nicola",
+      role: "Interface Developer",
+      image: "/images/Team/generic.jpg",
+      focus: "User Interface, Q-App development",
+      bio: "Nicola has 10 years of experience in backend development in Java. Now he's working in ML/AI processes as DevOps. He joined the Qortal team in 2025, focusing on Qortal Hub frontend development, and Q-App development."
     }
   ];
 

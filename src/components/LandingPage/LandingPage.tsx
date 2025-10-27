@@ -83,7 +83,8 @@ import {
   IconRow,
   IconImg,
   SubHeader3,
-  ArrowDownIcon
+  ArrowDownIcon,
+  SectionTitle
 } from "../../components/LandingPage/LandingPage-styles";
 import { YoutubeVideoContainer } from "../Qort/QORTPage-styles";
 import { YoutubePlaceholder } from "../YouTube/YoutubePlaceholder";
@@ -95,7 +96,6 @@ import { ScrollToTopButton, TopArrow } from "../Wiki/Wiki-styles";
 import { CommonModal } from "../Common/CommonModal/CommonModal";
 import { DownloadSVG } from "../Common/Icons/DownloadSVG";
 import { BookSVG } from "../Common/Icons/BookSVG";
-import { ChevronLeftSVG } from "../Common/Icons/ChevronLeftSVG";
 
 const LandingPage = () => {
   const theme = useTheme();
@@ -269,13 +269,13 @@ const LandingPage = () => {
             onClick={() => {
               ReactGA.event({
                 category: "User",
-                action: "Clicked Learn How Button",
-                label: "Learn How Button"
+                action: "Clicked Learn why Button",
+                label: "Learn why Button"
               });
               scrollToTopCard1Feature();
             }}
           >
-            LEARN HOW
+            LEARN WHY
           </CTAButton1>
           <CTAButton2
             onClick={() => {
@@ -320,7 +320,12 @@ const LandingPage = () => {
       </InfoRow>
       <TopFoldMainCol>
         <SubHeader3>
-          The only Web3 platform with these features already LIVE <ArrowDownIcon color={theme.palette.text.primary} width={"30"} height={"30"} />
+          The only Web3 platform with these features already LIVE{" "}
+          <ArrowDownIcon
+            color={theme.palette.text.primary}
+            width={"30"}
+            height={"30"}
+          />
         </SubHeader3>
         <TopCardRow>
           <TopCard1
@@ -487,6 +492,10 @@ const LandingPage = () => {
         {/* Groups Section */}
 
         <GroupSection ref={topCard1Feature}>
+          <SectionTitle>
+            With one download, you can access a brand new peer-to-peer internet
+            where censorship is impossible.
+          </SectionTitle>
           <SectionCol style={{ alignItems: "flex-start" }}>
             <SectionMobileHeader>Q-Mail</SectionMobileHeader>
             <GroupSectionImgBox>
@@ -494,12 +503,12 @@ const LandingPage = () => {
                 src={
                   isMobile
                     ? "/images/LandingPage/QMailScreenshotMobile.webp"
-                    : "/images/LandingPage/Q-ChatScreenshot.webp"
+                    : "/images/LandingPage/Q-AppsLibrary.png"
                 }
                 alt={
                   isMobile
                     ? "Qortal Q-Mail Screenshot"
-                    : "Qortal Group Encrypted Chat Screenshot"
+                    : "Qortal Q-Apps Library Screenshot"
                 }
                 width={1920}
                 height={1080}
@@ -507,7 +516,7 @@ const LandingPage = () => {
                 onClick={() => {
                   if (isMobile) return;
                   setOpenModal(true);
-                  setSelectedImage("/images/LandingPage/Q-ChatScreenshot.webp");
+                  setSelectedImage("/images/LandingPage/Q-AppsLibrary.png");
                 }}
               />
             </GroupSectionImgBox>
@@ -520,16 +529,21 @@ const LandingPage = () => {
                 quality={100}
               />
               <SectionHeaderCol>
-                <SectionHeaderSubtitle>COMMUNICATION</SectionHeaderSubtitle>
-                <SectionHeaderTitle>Group-Encrypted Mailing</SectionHeaderTitle>
+                <SectionHeaderSubtitle>EASE OF USE</SectionHeaderSubtitle>
+                <SectionHeaderTitle>
+                  What makes Qortal so easy to get into?
+                </SectionHeaderTitle>
               </SectionHeaderCol>
             </SectionHeader>
             <QMailDescriptionCol>
-              <SectionDescriptionTitle>Q-Mail</SectionDescriptionTitle>
+              <SectionDescriptionTitle>
+                Account Creation In Minutes
+              </SectionDescriptionTitle>
               <SectionDescription>
-                Say goodbye to snoopy inboxes. With Q-Mail, your messages are
-                fully private and stay between you and your recipient—no
-                middleman, no data mining, just you in control.
+                With other Web3 projects, you get lost in complicated setups,
+                seed phrases, and 3rd party wallets. Qortal makes it easy to get
+                started with just an encrypted file and a password. No email, no
+                phone number, no KYC, no hassle.
               </SectionDescription>
             </QMailDescriptionCol>
           </SectionCol>
@@ -543,16 +557,22 @@ const LandingPage = () => {
                 quality={100}
               />
               <SectionHeaderCol>
-                <SectionHeaderSubtitle>COMMUNICATION</SectionHeaderSubtitle>
-                <SectionHeaderTitle>Group-Encrypted Chats</SectionHeaderTitle>
+                <SectionHeaderSubtitle>UNIQUENESS</SectionHeaderSubtitle>
+                <SectionHeaderTitle>
+                  What makes Qortal the best blockchain right now?
+                </SectionHeaderTitle>
               </SectionHeaderCol>
             </GroupEncryptedHeader>
             <QChatDescriptionCol>
-              <SectionDescriptionTitle>Q-Chat</SectionDescriptionTitle>
+              <SectionDescriptionTitle>
+                Truly Decentralized
+              </SectionDescriptionTitle>
               <SectionDescription>
-                Fully encrypted for private groups, user-friendly, and built
-                right into Qortal. Stay connected without compromising your
-                privacy.
+                While other Web3 projects claim they are completely
+                decentralized, they are not. Qortal is decentralized from bottom
+                up, from running your own node, to building apps, nobody can
+                censor or take down any data. And it's all possible with a
+                single download!
               </SectionDescription>
               <SectionDownloadLink
                 href="/downloads"
@@ -560,8 +580,8 @@ const LandingPage = () => {
                   ReactGA.set({ dimension1: "Landing Page Download Button" }); // Event-level dimension
                   ReactGA.event({
                     category: "User",
-                    action: "Clicked Download Q-Chat Button",
-                    label: "Clicked Download Q-Chat Button"
+                    action: "Clicked Download Group Section Button",
+                    label: "Clicked Download Group Section Button"
                   });
                 }}
               >
@@ -578,7 +598,7 @@ const LandingPage = () => {
                 src={
                   isMobile
                     ? "/images/LandingPage/Q-ChatScreenshotMobile.webp"
-                    : "/images/LandingPage/QMailScreenshot.webp"
+                    : "/images/LandingPage/LoginPage.png"
                 }
                 alt={
                   isMobile
@@ -591,7 +611,7 @@ const LandingPage = () => {
                 onClick={() => {
                   if (isMobile) return;
                   setOpenModal(true);
-                  setSelectedImage("/images/LandingPage/QMailScreenshot.webp");
+                  setSelectedImage("/images/LandingPage/LoginPage.png");
                 }}
               />
             </GroupSectionImgBox2>
@@ -794,10 +814,6 @@ const LandingPage = () => {
                 </SectionDescription>
               </QTradeDescriptionCol>
             )}
-            <QonnectFourMobileCol>
-              <SectionMobileHeader>QORT</SectionMobileHeader>
-              <QonnectFour />
-            </QonnectFourMobileCol>
           </QTradeSectionCol>
           <SectionCol style={{ alignItems: "flex-start" }}>
             <SectionMobileHeader>Trading DEX Platform</SectionMobileHeader>
@@ -821,50 +837,6 @@ const LandingPage = () => {
                 }}
               />
             </QTradeSectionImgBox>
-            <SectionHeader>
-              <SectionLinesImg
-                src={"/images/LandingPage/YellowLines.png"}
-                alt=""
-                width={40}
-                height={63}
-                quality={100}
-              />
-              <SectionHeaderCol>
-                <SectionHeaderSubtitle>CRYPTO</SectionHeaderSubtitle>
-                <SectionHeaderTitle>Currency</SectionHeaderTitle>
-              </SectionHeaderCol>
-            </SectionHeader>
-            {!isMobile ? (
-              <QORTDescriptionCol>
-                <SectionDescriptionTitle>QORT</SectionDescriptionTitle>
-                <SectionDescription>
-                  Fuel the Qortal ecosystem with QORT! Use it to trade, tip,
-                  donate, and even bet in games. It’s more than a coin; it’s
-                  your key to a decentralized world.
-                </SectionDescription>
-                <SectionDownloadLink
-                  href="https://qort.trade"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Buy{" "}
-                  <RightArrow
-                    height={"20"}
-                    width="20"
-                    color={theme.palette.customBlue.main}
-                  />
-                </SectionDownloadLink>
-              </QORTDescriptionCol>
-            ) : (
-              <QTradeDescriptionCol>
-                <SectionDescriptionTitle>Q-Trade</SectionDescriptionTitle>
-                <SectionDescription>
-                  Trade crypto the Qortal way—peer-to-peer, secure, and no
-                  middlemen. Swap QORT and other supported coins directly on our
-                  decentralized trading DEX platform.
-                </SectionDescription>
-              </QTradeDescriptionCol>
-            )}
           </SectionCol>
           <SectionHeaderMobile>
             <SectionHeaderCol>
@@ -901,38 +873,8 @@ const LandingPage = () => {
             </SectionHeaderMobile>
             <SectionMobileHeader>Open Source</SectionMobileHeader>
             <OpenSourceSectionImgBox>
-              <OpenSourceBox
-                style={{ cursor: !showOpenSourceText ? "pointer" : "auto" }}
-                role="button"
-                tabIndex={0}
-                aria-label="Open Source Codebase"
-                onMouseEnter={() => setLocked(false)}
-                onMouseLeave={() => setLocked(true)}
-                onClick={() => {
-                  setShowOpenSourceText(true);
-                }}
-                showOpenSourceText={showOpenSourceText}
-              >
-                {!showOpenSourceText && (
-                  <OpenSourceImg
-                    src={
-                      locked
-                        ? "/images/LandingPage/Lock.png"
-                        : "/images/LandingPage/WhiteLock.png"
-                    }
-                    alt="Lock icon"
-                    width={70}
-                    height={90}
-                    quality={100}
-                    hovered={locked}
-                  />
-                )}
-                <SectionCol
-                  style={{
-                    zIndex: !showOpenSourceText ? 1 : 10,
-                    filter: !showOpenSourceText ? "blur(10px)" : "blur(0px)"
-                  }}
-                >
+              <OpenSourceBox tabIndex={0} aria-label="Open Source Codebase">
+                <SectionCol>
                   <SectionHeader>
                     <SectionLinesImg
                       src={"/images/LandingPage/RedLines.png"}

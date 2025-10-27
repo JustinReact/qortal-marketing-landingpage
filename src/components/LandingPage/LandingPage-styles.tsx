@@ -717,8 +717,8 @@ export const QortalFeaturesSection = styled(Box)(({ theme }) => ({
 
 export const GroupSection = styled(Box)(({ theme }) => ({
   position: "relative",
-  display: "flex",
-  flexDirection: "row",
+  display: "grid",
+  gridTemplateColumns: "repeat(2, 1fr)",
   gap: "55px",
   padding: "223px 100px 153px 100px",
   alignItems: "flex-start",
@@ -900,6 +900,7 @@ export const SectionCol = styled(Box)(({ theme }) => ({
   width: "100%",
   alignItems: "center",
   justifyContent: "flex-start",
+  gridColumn: "auto",
   [theme.breakpoints.up("xl")]: {}
 }));
 
@@ -909,6 +910,7 @@ export const QChatSectionCol = styled(Box)(({ theme }) => ({
   width: "100%",
   alignItems: "flex-start",
   justifyContent: "flex-start",
+  gridColumn: "auto",
   [theme.breakpoints.down("sm")]: {
     flexDirection: "column-reverse"
   }
@@ -1121,6 +1123,18 @@ export const SectionHeader = styled(Box)(({ theme }) => ({
   }
 }));
 
+export const SectionTitle = styled("h2")(({ theme }) => ({
+  fontFamily: oxygen.style.fontFamily,
+  textAlign: "center",
+  margin: "0 0 25px 0",
+  fontSize: "48px",
+  fontWeight: 700,
+  lineHeight: "56px",
+  userSelect: "none",
+  color: theme.palette.text.primary,
+  gridColumn: "1 / -1", 
+}));
+
 export const SectionHeaderMobile = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
@@ -1224,7 +1238,7 @@ export const QMailDescriptionCol = styled(Box)(({ theme }) => ({
   gap: "20px",
   alignItems: "flex-start",
   justifyContent: "flex-start",
-  margin: "98px 75px 0 49px",
+  margin: "48px 75px 0 49px",
   maxWidth: "496px",
   [theme.breakpoints.up("xl")]: {
     marginLeft: "60px"
@@ -1314,7 +1328,7 @@ export const OpenSourceDescriptionCol = styled(Box)(({ theme }) => ({
 
 export const SectionDescriptionTitle = styled(Typography)(({ theme }) => ({
   fontFamily: segoeUI.style.fontFamily,
-  fontSize: "36px",
+  fontSize: "30px",
   fontWeight: 500,
   lineHeight: "30px",
   letterSpacing: 0,
@@ -1395,9 +1409,7 @@ export const QAppsLogo = styled(Image)(({ theme }) => ({
   userSelect: "none"
 }));
 
-export const OpenSourceBox = styled(Box, {
-  shouldForwardProp: (prop) => prop !== "showOpenSourceText"
-})<ShowOpenSourceText>(({ theme, showOpenSourceText }) => ({
+export const OpenSourceBox = styled(Box)(({ theme }) => ({
   position: "relative",
   display: "flex",
   flexDirection: "row",
@@ -1418,7 +1430,6 @@ export const OpenSourceBox = styled(Box, {
     height: "100%",
     transform: "translateX(-50%)",
     backgroundImage: `url('/images/LandingPage/BlueRectangle.png')`,
-    opacity: !showOpenSourceText ? 0.5 : 0,
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
@@ -1430,9 +1441,7 @@ export const OpenSourceBox = styled(Box, {
   }
 }));
 
-export const OpenSourceImg = styled(Image, {
-  shouldForwardProp: (prop) => prop !== "hovered"
-})<Hovered>(({ theme, hovered }) => ({
+export const OpenSourceImg = styled(Image)(({ theme }) => ({
   position: "absolute",
   width: "auto",
   height: "auto",
@@ -1441,7 +1450,6 @@ export const OpenSourceImg = styled(Image, {
   zIndex: 25,
   userSelect: "none",
   transition: "all 0.2s ease-in-out",
-  transform: hovered ? "translateY(7px)" : "translateY(0)"
 }));
 
 export const OpenSourceMobileSection = styled(Box)(({ theme }) => ({
