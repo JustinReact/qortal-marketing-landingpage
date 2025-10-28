@@ -115,9 +115,6 @@ const LandingPage = () => {
   const [showButton, setShowButton] = useState(false);
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [selectedImage, setSelectedImage] = useState<string>("");
-  const [lockedTop, setLockedTop] = useState<boolean>(true);
-  const [locked, setLocked] = useState<boolean>(true);
-  const [showOpenSourceText, setShowOpenSourceText] = useState<boolean>(false);
   const [activeCard, setActiveCard] = useState(0);
   const [firstTimeVisitor, setFirstTimeVisitor] = useState<boolean>(false);
 
@@ -160,16 +157,6 @@ const LandingPage = () => {
   const scrollToTopCard3Feature = () => {
     if (topCard3Feature?.current) {
       topCard3Feature?.current.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-        inline: "nearest"
-      });
-    }
-  };
-
-  const scrollToTopCard4Feature = () => {
-    if (topCard4Feature?.current) {
-      topCard4Feature?.current.scrollIntoView({
         behavior: "smooth",
         block: "start",
         inline: "nearest"
@@ -347,7 +334,7 @@ const LandingPage = () => {
               <TopCardSubTitle>Group-Encrypted Chats</TopCardSubTitle>
             </TopCardSubContainer>
             <TopCardImage
-              src={"/images/LandingPage/GroupEncryptedChats.webp"}
+              src={"/images/LandingPage/Q-Chat.png"}
               alt="Qortal Group Encrypted Chat Screenshot"
               width={1920}
               height={1080}
@@ -399,56 +386,13 @@ const LandingPage = () => {
               <TopCardSubTitle>Trading DEX Platform & QORT</TopCardSubTitle>
             </TopCardSubContainerCrypto>
             <TopCardImage
-              src={"/images/LandingPage/Q-TradeScreenshot.webp"}
+              src={"/images/LandingPage/Q-Trade.png"}
               alt="Qortal Q-Trade Screenshot"
               width={1920}
               height={1080}
               quality={100}
             />
           </TopCard3>
-          <TopCard4
-            ref={cardRefs[3]}
-            role="button"
-            aria-label="Code Transparency - OPEN SOURCE"
-            tabIndex={0}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                scrollToTopCard4Feature();
-              }
-            }}
-            onClick={() => {
-              scrollToTopCard4Feature();
-            }}
-            onMouseEnter={() => {
-              setLockedTop(false);
-            }}
-            onMouseLeave={() => {
-              setLockedTop(true);
-            }}
-          >
-            <TopCardSubContainer>
-              <TopCardTitle>FULL TRANSPARENCY</TopCardTitle>
-              <TopCardSubTitle>Open Source Codebase</TopCardSubTitle>
-            </TopCardSubContainer>
-            <TopCardImage
-              src={"/images/LandingPage/BlueRectangleTop.png"}
-              alt="Qortal Q-Apps Screenshot"
-              width={1920}
-              height={1080}
-              quality={100}
-            />
-            <TopCardLockIcon
-              src={
-                lockedTop
-                  ? "/images/LandingPage/DarkRedLock.png"
-                  : "/images/LandingPage/RedLockUnlocked.png"
-              }
-              alt=""
-              width={70}
-              height={90}
-              quality={100}
-            />
-          </TopCard4>
         </TopCardRow>
         <RadioButtons>
           {[0, 1, 2, 3].map((index) => (
@@ -696,7 +640,7 @@ const LandingPage = () => {
                   Build, share, and run apps directly on the{" "}
                   <span style={{ fontWeight: "bold" }}>Qortal blockchain</span>.
                   Whether it’s tools, videos, or new ideas, Q-Apps lets you go
-                  decentralized, with just a touch of JavaScript know-how.
+                  decentralized, with just a touch of JavaScript know-how. From social media to apps to video-sharing apps, the possibilities are endless!
                 </SectionDescription>
                 <SectionDownloadLink
                   href="/downloads"

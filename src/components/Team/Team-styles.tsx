@@ -2,6 +2,7 @@ import { padding, styled } from "@mui/system";
 import { Box, Button, Grid, Typography } from "@mui/material";
 import { oxygen } from "../../app/fonts";
 import Image from "next/image";
+import { LinkedInSVG } from "../Common/Icons/LinkedInSVG";
 
 export const TeamContainer = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -111,6 +112,14 @@ export const TeamMemberFocus = styled(Typography)(({ theme }) => ({
   userSelect: "none"
 }));
 
+export const TeamMemberCol = styled(Box)({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: "20px"
+});
+
 export const TeamMemberBio = styled(Typography)(({ theme }) => ({
   fontFamily: oxygen.style.fontFamily,
   fontWeight: "400",
@@ -119,22 +128,11 @@ export const TeamMemberBio = styled(Typography)(({ theme }) => ({
   userSelect: "none"
 }));
 
-export const TeamMoreButton = styled(Button)(({ theme }) => ({
-  alignSelf: "left",
-  width: "40%",
-  fontFamily: oxygen.style.fontFamily,
-  fontWeight: 400,
-  fontSize: "20px",
-  lineHeight: "15px",
-  color: "#ffffff",
-  backgroundColor: theme.palette.customBlue.main,
-  borderRadius: "5px",
-  padding: "10px 5px",
-  marginTop: "auto",
-  transition: "all 0.3s ease-in-out",
+export const LinkedInIcon = styled(LinkedInSVG)(({ theme }) => ({
+  alignSelf: "flex-start",
+  cursor: "pointer",
+  transition: "transform 0.3s",
   "&:hover": {
-    cursor: "pointer",
-    backgroundColor: theme.palette.customBlue.main,
-    opacity: "0.8"
+    transform: "scale(1.05)",
   }
 }));

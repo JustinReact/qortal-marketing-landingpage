@@ -3,24 +3,19 @@ import { useRef, useState } from "react";
 import ReactGA from "react-ga4";
 import {
   HeaderNav,
-  NewsButton,
   ThemeSelectRow,
   QortalLogoContainer,
   HeaderButtonsRow,
   Docs,
   HamburgerIcon,
-  BlogButton,
   QORTButton,
-  QortalText,
   Divider,
-  QortalQBlack,
-  QortalQWhite,
-  QortalSmallerText,
   LightModeIcon,
   DarkModeIcon,
   DropdownBtn,
   DropdownItem,
-  DropdownContainer
+  DropdownContainer,
+  QortalMainLogo
 } from "./Header-styles";
 import {
   Box,
@@ -69,17 +64,23 @@ export const Header = () => {
               />
             )}
             <QortalLogoContainer href="/">
-              <>
-                {theme.palette.mode === "light" ? (
-                  <QortalQBlack width="79" height="90" color="none" />
-                ) : (
-                  <QortalQWhite width="79" height="90" color="none" />
-                )}
-              </>
-              <>
-                <QortalText>ortal</QortalText>
-                <QortalSmallerText>.dev</QortalSmallerText>
-              </>
+              {theme.palette.mode === "light" ? (
+                <QortalMainLogo
+                  src={"/images/Header/QortalLogoDark.png"}
+                  alt="Qortal Logo Dark"
+                  width={287}
+                  height={90}
+                  quality={100}
+                />
+              ) : (
+                <QortalMainLogo
+                  src={"/images/Header/QortalLogoLight.png"}
+                  alt="Qortal Logo Light"
+                  width={287}
+                  height={90}
+                  quality={100}
+                />
+              )}
             </QortalLogoContainer>
           </ThemeSelectRow>
           {isMobile ? (
@@ -145,11 +146,7 @@ export const Header = () => {
                 Wiki
               </QORTButton>
               <Docs
-                className={
-                  location === "/team"
-                    ? "active"
-                    : ""
-                }
+                className={location === "/team" ? "active" : ""}
                 onClick={() => {
                   ReactGA.event({
                     category: "User",

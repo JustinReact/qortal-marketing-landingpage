@@ -274,6 +274,7 @@ export const TopCardRow = styled(Box)(({ theme }) => ({
   whiteSpace: "nowrap",
   width: "100%",
   maxWidth: "calc(100vw - 152px)",
+  paddingTop: "24px",
   paddingBottom: "15px",
   "&::-webkit-scrollbar-track": {
     backgroundColor: `${theme.palette.background.default} !important`
@@ -1066,7 +1067,7 @@ export const OpenSourceSectionImgBox = styled(Box)(({ theme }) => ({
   justifyContent: "center",
   alignItems: "center",
   padding: "20px", // Add padding to extend the box dimensions
-  marginBottom: "250px",
+  marginBottom: "100px",
   "&::before": {
     content: '""',
     position: "absolute",
