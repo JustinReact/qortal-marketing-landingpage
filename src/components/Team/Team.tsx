@@ -10,6 +10,7 @@ import {
   TeamMemberCard,
   TeamMemberCol,
   TeamMemberFocus,
+  TeamMemberImageModal,
   TeamMemberImg,
   TeamMemberName,
   TeamMemberRole,
@@ -183,7 +184,7 @@ const Team = () => {
           </DialogRow>
           <DialogContent>
             <TeamMemberCol>
-              <TeamMemberImg
+              <TeamMemberImageModal
                 src={modalContent?.image || ""}
                 alt="Team Member Image"
                 width={300}

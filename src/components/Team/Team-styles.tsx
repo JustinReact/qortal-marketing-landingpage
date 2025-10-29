@@ -83,6 +83,20 @@ export const TeamMemberImg = styled(Image)({
   width: "300px",
   maxHeight: "200px",
   minHeight: "200px",
+  maxWidth: "100%",
+  objectPosition: "top",
+  objectFit: "cover",
+  height: "auto",
+  marginBottom: "15px",
+  userSelect: "none",
+  margin: "-15px -15px 10px -15px"
+});
+
+export const TeamMemberImageModal = styled(Image)({
+  width: "300px",
+  maxHeight: "200px",
+  minHeight: "200px",
+  maxWidth: "100%",
   objectPosition: "top",
   objectFit: "cover",
   height: "auto",
