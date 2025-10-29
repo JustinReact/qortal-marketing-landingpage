@@ -1,5 +1,5 @@
 import { padding, styled } from "@mui/system";
-import { Box, Button, Grid, Typography } from "@mui/material";
+import { Box, Button, DialogTitle, Grid, Typography } from "@mui/material";
 import { oxygen } from "../../app/fonts";
 import Image from "next/image";
 import { LinkedInSVG } from "../Common/Icons/LinkedInSVG";
@@ -30,6 +30,8 @@ export const TeamPageTitle = styled("h1")(({ theme }) => ({
   margin: "25px 0",
   [theme.breakpoints.down("sm")]: {
     marginTop: 0,
+    fontSize: "38px",
+    lineHeight: "40px"
   }
 }));
 
@@ -141,3 +143,20 @@ export const LinkedInIcon = styled(LinkedInSVG)(({ theme }) => ({
     transform: "scale(1.05)",
   }
 }));
+
+export const StyledDialogTitle = styled(DialogTitle)(({ theme }) => ({
+  fontFamily: oxygen.style.fontFamily,
+  fontWeight: "400",
+  fontSize: "20px",
+  color: theme.palette.text.primary,
+  userSelect: "none"
+}));
+
+export const DialogRow = styled(Box)({
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "space-between",
+  alignItems: "center",
+  padding: "0 3px",
+  width: "100%"
+});

@@ -1,7 +1,9 @@
 "use client";
 import React, { useState } from "react";
 import {
+  DialogRow,
   LinkedInIcon,
+  StyledDialogTitle,
   TeamContainer,
   TeamGrid,
   TeamMemberBio,
@@ -14,8 +16,14 @@ import {
   TeamPageSubtitle,
   TeamPageTitle
 } from "./Team-styles";
-import { CommonModal } from "../Common/CommonModal/CommonModal";
-import { useMediaQuery, useTheme } from "@mui/material";
+import {
+  Dialog,
+  DialogContent,
+  IconButton,
+  useMediaQuery,
+  useTheme
+} from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 
 interface TeamMember {
   name: string;
@@ -27,6 +35,7 @@ interface TeamMember {
 }
 
 interface ModalContent {
+  name: string;
   image: string;
   bio: string;
   linkedIn?: string;
@@ -55,7 +64,7 @@ const Team = () => {
       image: "/images/Team/siddi.png",
       focus: "Reticulum integration and networking infrastructure",
       bio: "Siddi has a background in Engineering (M.Sc. in Electrical Engineering, ETH Zurich) and over 25 years of experience as a Systems Integrator and Architect. He joined Qortal in 2021 and has been contributing to the Java implementation of Reticulum since 2023. He is part of the Qortal Core development team, integrating Reticulum as an additional network stack.",
-      linkedIn: "https://www.linkedin.com/in/j%C3%BCrg-schulthess-18448330/",
+      linkedIn: "https://www.linkedin.com/in/j%C3%BCrg-schulthess-18448330/"
     },
     {
       name: "Phillip Lang",
@@ -115,6 +124,7 @@ const Team = () => {
   // Function to handle opening the modal with member bio
   const setMemberInModal = (member: TeamMember) => {
     setModalContent({
+      name: member.name,
       bio: member.bio,
       image: member.image,
       linkedIn: member.linkedIn
@@ -139,8 +149,7 @@ const Team = () => {
         <TeamPageTitle>Meet the Dev Admins</TeamPageTitle>
         <TeamPageSubtitle>
           Learn about the dedicated team behind Qortal Blockchain. Meet the
-          developers and administrators driving the project
-          forward.
+          developers and administrators driving the project forward.
         </TeamPageSubtitle>
         <TeamGrid>
           {teamMembers.map((member, index) => (
@@ -163,32 +172,36 @@ const Team = () => {
         </TeamGrid>
       </TeamContainer>
       {isModalOpen && (
-        <CommonModal
-          openModal={isModalOpen}
-          onClickFunc={closeModal}
-          customStyles={{
-            padding: "35px 30px",
-            top: isMobile ? "10% !important" : "auto",
-            height: isMobile ? "fit-content" : "auto",
-            backgroundColor: theme.palette.background.paper,
-            borderRadius: "10px",
-            minWidth: isMobile ? "95%" : "300px"
-          }}
-        >
-          <TeamMemberCol>
-            <TeamMemberImg
-              src={modalContent?.image || ""}
-              alt="Team Member Image"
-              width={300}
-              height={300}
-              quality={100}
-            />
-            <TeamMemberBio>{modalContent?.bio}</TeamMemberBio>
-            {modalContent?.linkedIn && (
-              <LinkedInIcon onClickFunc={() => openLinkedIn(modalContent?.linkedIn)} width={"30"} height={"30"} color={theme.palette.text.primary} />
-            )}
-          </TeamMemberCol>
-        </CommonModal>
+        <Dialog open={isModalOpen} onClose={closeModal}>
+          <DialogRow>
+          <StyledDialogTitle>{modalContent?.name}</StyledDialogTitle>
+          <IconButton
+            onClick={closeModal}
+          >
+            <CloseIcon />
+          </IconButton>
+          </DialogRow>
+          <DialogContent>
+            <TeamMemberCol>
+              <TeamMemberImg
+                src={modalContent?.image || ""}
+                alt="Team Member Image"
+                width={300}
+                height={300}
+                quality={100}
+              />
+              <TeamMemberBio>{modalContent?.bio}</TeamMemberBio>
+              {modalContent?.linkedIn && (
+                <LinkedInIcon
+                  onClickFunc={() => openLinkedIn(modalContent?.linkedIn)}
+                  width={"30"}
+                  height={"30"}
+                  color={theme.palette.text.primary}
+                />
+              )}
+            </TeamMemberCol>
+          </DialogContent>
+        </Dialog>
       )}
     </>
   );
