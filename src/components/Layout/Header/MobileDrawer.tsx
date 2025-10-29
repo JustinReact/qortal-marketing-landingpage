@@ -40,33 +40,15 @@ export const MobileDrawer: FC<MobileDrawerProps> = ({
         onClick={() => {
           ReactGA.event({
             category: "User",
-            action: "Clicked Mobile Documentation Drawer Link",
-            label: "Clicked Mobile Documentation Drawer Link"
+            action: "Clicked Mobile Download Drawer Link",
+            label: "Clicked Mobile Download Drawer Link"
           });
           setOpenMobileDrawer();
-          router.push("/docs/q-apps");
+          router.push("/downloads");
         }}
-        active={
-          location === "/docs/q-apps" || location === "/docs/extension"
-            ? true
-            : false
-        }
+        active={location === "/downloads" ? true : false}
       >
-        Documentation
-      </DrawerButton>
-      <DrawerButton
-        onClick={() => {
-          ReactGA.event({
-            category: "User",
-            action: "Clicked Mobile Wiki Drawer Link",
-            label: "Clicked Mobile Wiki Drawer Link"
-          });
-          setOpenMobileDrawer();
-          router.push("/wiki");
-        }}
-        active={location.includes("/wiki") ? true : false}
-      >
-        Wiki
+        Downloads
       </DrawerButton>
       <DrawerButton
         onClick={() => {
@@ -81,6 +63,20 @@ export const MobileDrawer: FC<MobileDrawerProps> = ({
         active={location.includes("/team") ? true : false}
       >
         Team
+      </DrawerButton>
+      <DrawerButton
+        onClick={() => {
+          ReactGA.event({
+            category: "User",
+            action: "Clicked Mobile Wiki Drawer Link",
+            label: "Clicked Mobile Wiki Drawer Link"
+          });
+          setOpenMobileDrawer();
+          router.push("/wiki");
+        }}
+        active={location.includes("/wiki") ? true : false}
+      >
+        Wiki
       </DrawerButton>
       <DrawerButton
         onClick={() => {
@@ -114,20 +110,6 @@ export const MobileDrawer: FC<MobileDrawerProps> = ({
         onClick={() => {
           ReactGA.event({
             category: "User",
-            action: "Clicked Mobile Download Drawer Link",
-            label: "Clicked Mobile Download Drawer Link"
-          });
-          setOpenMobileDrawer();
-          router.push("/downloads");
-        }}
-        active={location === "/downloads" ? true : false}
-      >
-        Downloads
-      </DrawerButton>
-      <DrawerButton
-        onClick={() => {
-          ReactGA.event({
-            category: "User",
             action: "Clicked Mobile QORT Drawer Link",
             label: "Clicked Mobile QORT Drawer Link"
           });
@@ -137,6 +119,24 @@ export const MobileDrawer: FC<MobileDrawerProps> = ({
         active={location === "/qort" ? true : false}
       >
         QORT
+      </DrawerButton>
+      <DrawerButton
+        onClick={() => {
+          ReactGA.event({
+            category: "User",
+            action: "Clicked Mobile Documentation Drawer Link",
+            label: "Clicked Mobile Documentation Drawer Link"
+          });
+          setOpenMobileDrawer();
+          router.push("/docs/q-apps");
+        }}
+        active={
+          location === "/docs/q-apps" || location === "/docs/extension"
+            ? true
+            : false
+        }
+      >
+        Documentation
       </DrawerButton>
       <DrawerButton
         onClick={() => {

@@ -84,13 +84,13 @@ import {
   IconImg,
   SubHeader3,
   ArrowDownIcon,
-  SectionTitle
+  SectionTitle,
+  SubHeaderRow
 } from "../../components/LandingPage/LandingPage-styles";
 import { YoutubeVideoContainer } from "../Qort/QORTPage-styles";
 import { YoutubePlaceholder } from "../YouTube/YoutubePlaceholder";
 import { useMediaQuery, useTheme } from "@mui/material";
 import { useRouter } from "next/navigation";
-import QonnectFour from "../QonnectFour/QonnectFour";
 import Modal from "../Common/Modal/Modal";
 import { ScrollToTopButton, TopArrow } from "../Wiki/Wiki-styles";
 import { CommonModal } from "../Common/CommonModal/CommonModal";
@@ -101,7 +101,6 @@ const LandingPage = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const router = useRouter();
-  const isSmallToMediumScreen = useMediaQuery(theme.breakpoints.down("md"));
 
   const topCard1Feature = useRef<HTMLDivElement | null>(null);
   const topCard2Feature = useRef<HTMLDivElement | null>(null);
@@ -306,14 +305,16 @@ const LandingPage = () => {
         </IconRow>
       </InfoRow>
       <TopFoldMainCol>
-        <SubHeader3>
-          The only Web3 platform with these features already LIVE{" "}
+        <SubHeaderRow>
+          <SubHeader3>
+            The only Web3 platform with these features already LIVE{" "}
+          </SubHeader3>
           <ArrowDownIcon
             color={theme.palette.text.primary}
-            width={"30"}
-            height={"30"}
+            width={isMobile ? "28" : "30"}
+            height={isMobile ? "28" : "30"}
           />
-        </SubHeader3>
+        </SubHeaderRow>
         <TopCardRow>
           <TopCard1
             ref={cardRefs[0]}
@@ -533,7 +534,11 @@ const LandingPage = () => {
                 <RightArrow
                   height={"20"}
                   width="20"
-                  color={theme.palette.customBlue.main}
+                  color={
+                    theme.palette.mode === "dark"
+                      ? "#02cbe6"
+                      : theme.palette.customBlue.main
+                  }
                 />
               </SectionDownloadLink>
             </QChatDescriptionCol>
@@ -640,7 +645,9 @@ const LandingPage = () => {
                   Build, share, and run apps directly on the{" "}
                   <span style={{ fontWeight: "bold" }}>Qortal blockchain</span>.
                   Whether it’s tools, videos, or new ideas, Q-Apps lets you go
-                  decentralized, with just a touch of JavaScript know-how. From social media to apps to video-sharing apps, the possibilities are endless!
+                  decentralized, with just a touch of JavaScript know-how. From
+                  social media to apps to video-sharing apps, the possibilities
+                  are endless!
                 </SectionDescription>
                 <SectionDownloadLink
                   href="/downloads"
@@ -657,7 +664,11 @@ const LandingPage = () => {
                   <RightArrow
                     height={"20"}
                     width="20"
-                    color={theme.palette.customBlue.main}
+                    color={
+                      theme.palette.mode === "dark"
+                        ? "#02cbe6"
+                        : theme.palette.customBlue.main
+                    }
                   />
                 </SectionDownloadLink>
               </QAppsDescriptionCol>
@@ -728,23 +739,16 @@ const LandingPage = () => {
                   donate, and even bet in games. It’s more than a coin; it’s
                   your key to a decentralized world.
                 </SectionDescription>
-                <SectionDownloadLink
-                  href="https://qort.trade"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => {
-                    ReactGA.event({
-                      category: "User",
-                      action: "Clicked Buy QORT Button",
-                      label: "Clicked Buy QORT Button"
-                    });
-                  }}
-                >
-                  Buy{" "}
+                <SectionDownloadLink href="/downloads">
+                  Learn more{" "}
                   <RightArrow
                     height={"20"}
                     width="20"
-                    color={theme.palette.customBlue.main}
+                    color={
+                      theme.palette.mode === "dark"
+                        ? "#02cbe6"
+                        : theme.palette.customBlue.main
+                    }
                   />
                 </SectionDownloadLink>
               </QORTDescriptionCol>
@@ -851,7 +855,11 @@ const LandingPage = () => {
                       <RightArrow
                         height={"20"}
                         width="20"
-                        color={theme.palette.customBlue.main}
+                        color={
+                          theme.palette.mode === "dark"
+                            ? "#02cbe6"
+                            : theme.palette.customBlue.main
+                        }
                       />
                     </SectionDownloadLink>
                   </OpenSourceDescriptionCol>
@@ -874,7 +882,11 @@ const LandingPage = () => {
                   <RightArrow
                     height={"20"}
                     width="20"
-                    color={theme.palette.customBlue.main}
+                    color={
+                      theme.palette.mode === "dark"
+                        ? "#02cbe6"
+                        : theme.palette.customBlue.main
+                    }
                   />
                 </SectionDownloadLink>
               </OpenSourceDescriptionCol>

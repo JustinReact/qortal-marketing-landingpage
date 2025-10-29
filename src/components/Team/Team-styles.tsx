@@ -15,7 +15,7 @@ export const TeamContainer = styled(Box)(({ theme }) => ({
     padding: "50px 100px 30px 100px"
   },
   [theme.breakpoints.only("xs")]: {
-    padding: "50px 20px"
+    padding: "30px 20px 50px 20px"
   }
 }));
 
@@ -26,7 +26,11 @@ export const TeamPageTitle = styled("h1")(({ theme }) => ({
   letterSpacing: 0,
   color: theme.palette.text.primary,
   userSelect: "none",
-  textAlign: "center"
+  textAlign: "center",
+  margin: "25px 0",
+  [theme.breakpoints.down("sm")]: {
+    marginTop: 0,
+  }
 }));
 
 export const TeamPageSubtitle = styled(Typography)(({ theme }) => ({
@@ -116,8 +120,9 @@ export const TeamMemberCol = styled(Box)({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-  justifyContent: "center",
-  gap: "20px"
+  justifyContent: "flex-start",
+  gap: "20px",
+  height: "100%"
 });
 
 export const TeamMemberBio = styled(Typography)(({ theme }) => ({

@@ -15,7 +15,7 @@ import {
   TeamPageTitle
 } from "./Team-styles";
 import { CommonModal } from "../Common/CommonModal/CommonModal";
-import { useTheme } from "@mui/material";
+import { useMediaQuery, useTheme } from "@mui/material";
 
 interface TeamMember {
   name: string;
@@ -34,6 +34,7 @@ interface ModalContent {
 
 const Team = () => {
   const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState<ModalContent | null>(null);
@@ -53,7 +54,8 @@ const Team = () => {
       role: "Core Network (Reticulum) Developer",
       image: "/images/Team/siddi.png",
       focus: "Reticulum integration and networking infrastructure",
-      bio: "Siddi has a background in Engineering (M.Sc. in Electrical Engineering, ETH Zurich) and over 25 years of experience as a Systems Integrator and Architect. He joined Qortal in 2021 and has been contributing to the Java implementation of Reticulum since 2023. He is part of the Qortal Core development team, integrating Reticulum as an additional network stack."
+      bio: "Siddi has a background in Engineering (M.Sc. in Electrical Engineering, ETH Zurich) and over 25 years of experience as a Systems Integrator and Architect. He joined Qortal in 2021 and has been contributing to the Java implementation of Reticulum since 2023. He is part of the Qortal Core development team, integrating Reticulum as an additional network stack.",
+      linkedIn: "https://www.linkedin.com/in/j%C3%BCrg-schulthess-18448330/",
     },
     {
       name: "Phillip Lang",
@@ -137,7 +139,7 @@ const Team = () => {
         <TeamPageTitle>Meet the Dev Admins</TeamPageTitle>
         <TeamPageSubtitle>
           Learn about the dedicated team behind Qortal Blockchain. Meet the
-          developers, community managers, and contributors driving the project
+          developers and administrators driving the project
           forward.
         </TeamPageSubtitle>
         <TeamGrid>
@@ -166,11 +168,11 @@ const Team = () => {
           onClickFunc={closeModal}
           customStyles={{
             padding: "35px 30px",
-            top: "10%",
-            height: "auto",
+            top: isMobile ? "10% !important" : "auto",
+            height: isMobile ? "fit-content" : "auto",
             backgroundColor: theme.palette.background.paper,
             borderRadius: "10px",
-            minWidth: "300px"
+            minWidth: isMobile ? "95%" : "300px"
           }}
         >
           <TeamMemberCol>

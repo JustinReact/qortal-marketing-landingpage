@@ -69,12 +69,6 @@ export const TopFoldCol = styled(Box)(({ theme }) => ({
   alignItems: "center",
   width: "100%",
   gap: "20px",
-  "@media(max-width: 1146px)": {
-    flexDirection: "row",
-    justifySelf: "center",
-    width: "fit-content",
-    gap: "15px"
-  },
   [theme.breakpoints.down("sm")]: {
     flexDirection: "column",
     gap: 0
@@ -111,7 +105,8 @@ export const TopFoldRow = styled(Box)(({ theme }) => ({
   gap: "15px",
   textAlign: "center",
   [theme.breakpoints.down("sm")]: {
-    justifyContent: "center"
+    justifyContent: "center",
+    width: "100%"
   }
 }));
 
@@ -172,9 +167,10 @@ export const Header = styled("h1")(({ theme }) => ({
     fontSize: "50px"
   },
   [theme.breakpoints.down("sm")]: {
-    fontSize: "40px",
+    fontSize: "36px",
     lineHeight: "40px",
-    letterSpacing: "calc(0.1 * 40px)"
+    letterSpacing: "calc(0.1 * 40px)",
+    marginBottom: "10px"
   }
 }));
 
@@ -191,6 +187,10 @@ export const SubHeader = styled("h2")(({ theme }) => ({
   letterSpacing: 0,
   userSelect: "none",
   margin: 0,
+  [theme.breakpoints.down("sm")]: {
+    fontSize: "18px",
+    lineHeight: "28px",
+  }
 }));
 
 export const SubHeader2 = styled("h3")(({ theme }) => ({
@@ -209,7 +209,13 @@ export const InfoRow = styled(Box)(({ theme }) => ({
   justifyContent: "center",
   width: "100%",
   margin: "50px 0 100px 0",
-  gap: "20px"
+  gap: "20px",
+  [theme.breakpoints.down("sm")]: {
+    flexDirection: "column",
+    gap: "10px",
+    alignItems: "center",
+    margin: "15px 0 75px 0"
+  }
 }));
 
 export const IconRow = styled(Box)({
@@ -245,9 +251,18 @@ export const TopFoldMainCol = styled(Box)(({ theme }) => ({
   gap: "5px"
 }));
 
-export const SubHeader3 = styled("h3")(({ theme }) => ({
+export const SubHeaderRow = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
+  gap: "10px",
+  width: "100%",
+  justifyContent: "center",
+  [theme.breakpoints.down("sm")]: {
+    width: "250px"
+  }
+}));
+
+export const SubHeader3 = styled("h3")(({ theme }) => ({
   color: theme.palette.text.primary,
   fontFamily: oxygen.style.fontFamily,
   fontSize: "20px",
@@ -256,11 +271,16 @@ export const SubHeader3 = styled("h3")(({ theme }) => ({
   letterSpacing: 0,
   userSelect: "none",
   marginBottom: "10px",
-  gap: "10px"
+  [theme.breakpoints.down("sm")]: {
+    fontSize: "16px",
+  }
 }));
 
 export const ArrowDownIcon = styled(BackArrowSVG)(({ theme }) => ({
-  transform: "rotate(-90deg)",
+  transform: "rotate(-90deg) translateX(-5px)",
+  [theme.breakpoints.down("sm")]: {
+    flexShrink: 0,
+  }
 }));
 
 export const TopCardRow = styled(Box)(({ theme }) => ({
@@ -629,13 +649,11 @@ export const TopFoldButtonRow = styled(Box)(({ theme }) => ({
   justifyContent: "center",
   marginTop: "25px",
   gap: "30px",
-  [theme.breakpoints.down("lg")]: {
-    justifyContent: "center"
-  },
   [theme.breakpoints.down("sm")]: {
     gap: "10px",
-    width: "100%",
-    marginBottom: "70px"
+    width: "80%",
+    marginBottom: "30px",
+    flexDirection: "column"
   }
 }));
 
@@ -755,7 +773,7 @@ export const GroupSection = styled(Box)(({ theme }) => ({
     gap: 0
   },
   [theme.breakpoints.down("sm")]: {
-    flexDirection: "column-reverse",
+    display: "flex",
     padding: "66px 0 40px 0"
   }
 }));
@@ -1134,6 +1152,11 @@ export const SectionTitle = styled("h2")(({ theme }) => ({
   userSelect: "none",
   color: theme.palette.text.primary,
   gridColumn: "1 / -1", 
+  [theme.breakpoints.down("sm")]: {
+    fontSize: "28px",
+    lineHeight: "38px",
+    gridColumn: "auto"
+  }
 }));
 
 export const SectionHeaderMobile = styled(Box)(({ theme }) => ({
@@ -1211,7 +1234,7 @@ export const SectionHeaderSubtitle = styled(Typography)(({ theme }) => ({
 
 export const SectionMobileHeader = styled(Typography)(({ theme }) => ({
   fontFamily: segoeUI.style.fontFamily,
-  fontSize: "36px",
+  fontSize: "32px",
   lineHeight: "30px",
   fontWeight: 500,
   alignSelf: "center",
@@ -1265,7 +1288,7 @@ export const QTradeDescriptionCol = styled(Box)(({ theme }) => ({
   [theme.breakpoints.up("xl")]: {
     marginBottom: "255px"
   },
-  "@media(max-width: 935px)": {
+  "@media(max-width: 1100px)": {
     margin: "120px 0",
     alignItems: "center"
   },
@@ -1351,7 +1374,8 @@ export const SectionDescription = styled(Typography)(({ theme }) => ({
   zIndex: 5,
   [theme.breakpoints.down("sm")]: {
     fontWeight: 300,
-    fontSize: "15px",
+    fontSize: "16px",
+    lineHeight: "28px",
     letterSpacing: "calc(0.04*15px)",
     textAlign: "center"
   }
@@ -1365,7 +1389,7 @@ export const SectionDownloadLink = styled(Link)(({ theme }) => ({
   fontSize: "20px",
   lineHeight: "30px",
   letterSpacing: "calc(0.04*20px)",
-  color: theme.palette.customBlue.main,
+  color: theme.palette.mode === "dark" ? "#02cbe6" : theme.palette.customBlue.main,
   textDecoration: "none",
   transition: "all 0.3s ease-in-out",
   zIndex: 5,
