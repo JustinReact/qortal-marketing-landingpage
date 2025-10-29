@@ -396,7 +396,7 @@ const LandingPage = () => {
           </TopCard3>
         </TopCardRow>
         <RadioButtons>
-          {[0, 1, 2, 3].map((index) => (
+          {[0, 1, 2].map((index) => (
             <input
               key={index}
               type="radio"

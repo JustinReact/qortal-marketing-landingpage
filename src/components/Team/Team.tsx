@@ -80,7 +80,7 @@ const Team = () => {
       role: "Marketer and Developer",
       image: "/images/Team/justin.png",
       focus: "Marketing, community management, and testing",
-      bio: "Justin has been working on Qortal for over 3  years, starting with Q-App development, and then moving into marketing and community management. He is responsible for managing the Qortal.dev website, has his own social media channels talking about Qortal, and regularly coordinates in-person events to spread the idea of decentralization at the grassroots level.",
+      bio: "Justin has been working on Qortal for over 3  years, starting with user interface development, then proceeding to code some Q-Apps, and then moving into marketing and community management. He is responsible for managing the Qortal.dev website, has his own social media channels talking about Qortal, and regularly coordinates in-person events to spread the idea of decentralization at the grassroots level.",
       linkedIn: "https://www.linkedin.com/in/justin-ferrari/"
     },
     {
