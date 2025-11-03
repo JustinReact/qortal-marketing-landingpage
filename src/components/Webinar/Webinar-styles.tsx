@@ -57,6 +57,9 @@ export const LinksContainer = styled(Box)(({ theme }) => ({
   maxWidth: "751px",
   padding: "24px",
   marginTop: "10px",
+  [theme.breakpoints.down("sm")]: {
+    padding: 0,
+  }
 }));
 
 export const LinkButton = styled(Link)(({ theme }) => ({
