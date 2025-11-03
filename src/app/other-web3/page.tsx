@@ -1,4 +1,3 @@
-import { Links } from "../../components/Links/Links";
 import { OtherWeb3 } from "../../components/OtherWeb3/OtherWeb3";
 
 export const metadata = {
@@ -6,8 +5,8 @@ export const metadata = {
   description: "Meetup and resources for The Other Web3 community in the Balkans.",
 };
 
-const LinksPage = () => {
+const OtherWeb3Page = () => {
   return <OtherWeb3 />;
 };
 
-export default LinksPage;
+export default OtherWeb3Page;

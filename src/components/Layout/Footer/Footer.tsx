@@ -1,10 +1,6 @@
 "use client";
 import { useMediaQuery, useTheme } from "@mui/material";
-import {
-  FooterContainer,
-  FooterLink,
-  FooterRow
-} from "./Footer-styles";
+import { FooterContainer, FooterLink, FooterRow } from "./Footer-styles";
 import { usePathname } from "next/navigation";
 import { Socials } from "../../Common/Socials/Socials";
 
@@ -13,8 +9,13 @@ export const Footer = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery("(max-width: 1086px)");
 
-  if ((location.includes("/wiki") && isMobile) || location.includes("/links") || location.includes("/other-web3")) {
-    return null; // Don't show footer on mobile wiki pages or links page
+  if (
+    (location.includes("/wiki") && isMobile) ||
+    location.includes("/links") ||
+    location.includes("/other-web3") ||
+    location.includes("/webinar")
+  ) {
+    return null; // Don't show footer on mobile wiki pages, links page, or webinar page
   } else
     return (
       <FooterContainer style={{ paddingBottom: location === "/" ? "40px" : 0 }}>
