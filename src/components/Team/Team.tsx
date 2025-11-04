@@ -88,7 +88,7 @@ const Team = () => {
       role: "Consultant",
       image: "/images/Team/kenny.png",
       focus: "Core Development - new features, bug fixes, optimizations",
-      bio: "Kenny brings 25 years of expertise in Java web service design and development, specializing in solutions that enhance logistical operations, load planning, and financial decision-making. His proficiency spans both SQL and non-SQL databases, ensuring robust and scalable data management. In 2022, he joined the Qortal platform and began making significant contributions in 2024.",
+      bio: "Kenny brings 25 years of expertise in Java web service design and development, specializing in solutions that enhance logistical operations, load planning, and financial decision-making. His proficiency spans both SQL and NoSQL databases, ensuring robust and scalable data management. In 2022, he joined the Qortal platform and began making significant contributions in 2024.",
       linkedIn: "https://www.linkedin.com/in/kennycud/"
     },
     {
