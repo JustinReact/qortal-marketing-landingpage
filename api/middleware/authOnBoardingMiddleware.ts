@@ -34,7 +34,7 @@ export const requireOnboardingAuth: RequestHandler = (req, res, next) => {
       exp: number;
       qortalAddress: string;
     };
-    console.log("decoded", decoded);
+
     req.onboarding = decoded;
     next();
   } catch (err: any) {

@@ -122,7 +122,7 @@ const validateAddress = (address) => {
       isAddress = true;
     }
   } catch (error) {
-    console.error(error);
+    isAddress = false;
   }
 
   return isAddress;
@@ -261,5 +261,6 @@ module.exports = {
   createTransaction,
   getNameOrAddress,
   getLastRef,
-  sendQortFee
+  sendQortFee,
+  validateAddress
 };

@@ -1,9 +1,12 @@
 "use client";
 import React, { useCallback, useEffect, useState } from "react";
-import { Container } from "./Onboarding-styles";
-import { Box, Button } from "@mui/material";
-
-const EBOOK_API: string =
+import {
+  ButtonOnBoarding,
+  ButtonWarningOnBoarding,
+  Container
+} from "./Onboarding-styles";
+import { Box, Button, Typography } from "@mui/material";
+export const EBOOK_API: string =
   process.env.NEXT_PUBLIC_EBOOK_API_HOST || "http://localhost:3010";
 
 interface PropsReceiveQort {
@@ -44,9 +47,9 @@ const ReceiveQort = ({ qortStep }: PropsReceiveQort) => {
       } else {
         setMessage(`❌ ${data.error || "Something went wrong"}`);
       }
-    } catch (err) {
+    } catch (err: any) {
       console.error(err);
-      setMessage("❌ Failed to send code. Please try again.");
+      setMessage(`❌ ${err?.message || "Failed to send code."}`);
     } finally {
       setLoadingSend(false);
     }
@@ -121,7 +124,7 @@ const ReceiveQort = ({ qortStep }: PropsReceiveQort) => {
   const checkForSession = useCallback(async () => {
     try {
       setLoadingSession(true);
-      console.log("hello");
+
       const res = await fetch(`${EBOOK_API}/api/onboarding/session`, {
         headers: { "Content-Type": "application/json" },
         // If your server sets an HTTP-only cookie with the token, include credentials:
@@ -156,7 +159,6 @@ const ReceiveQort = ({ qortStep }: PropsReceiveQort) => {
         setEmail("");
         setQortalAddress("");
         setCode("");
-        setV;
       }
     } catch (error) {
       console.error(error);
@@ -166,155 +168,159 @@ const ReceiveQort = ({ qortStep }: PropsReceiveQort) => {
   if (loadingSession) return null;
 
   return (
-    <form
-      onSubmit={handleSend}
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        maxWidth: 320,
-        margin: "0 auto",
-        gap: 10
-      }}
-    >
+    <>
       <Box
         sx={{
-          width: "100%",
-          display: "flex",
-          justifyContent: "flex-end"
+          marginBottom: "10px"
         }}
       >
-        {hasSession && (
-          <Button
-            onClick={logout}
-            variant="contained"
-            color="warning"
-            sx={{
-              marginBottom: "10px",
-              maxWidth: "125px"
-            }}
-          >
-            Start over
-          </Button>
-        )}
+        <Typography variant="body1" color="text.secondary">
+          Get your first 2 QORT. An email is required to send a verification
+          code in order to prevent abuse.
+        </Typography>
       </Box>
-      <label htmlFor="email" style={{ fontWeight: 500 }}>
-        Enter your email
-      </label>
-      <input
-        id="email"
-        type="email"
-        placeholder="you@example.com"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        required
-        disabled={loadingSend || emailSent || hasSession} // lock email after send
+      <form
+        onSubmit={handleSend}
         style={{
-          padding: "8px 10px",
-          borderRadius: 6,
-          border: "1px solid #ccc",
-          fontSize: 16
+          display: "flex",
+          flexDirection: "column",
+          maxWidth: 320,
+          margin: "0 auto",
+          gap: 10
         }}
-      />
-
-      <label htmlFor="code" style={{ fontWeight: 500, marginTop: 8 }}>
-        Enter your Qortal address
-      </label>
-      <input
-        id="qortalAddress"
-        type="text"
-        placeholder="Qortal address"
-        value={qortalAddress}
-        disabled={hasSession}
-        onChange={(e) => setQortalAddress(e.target.value)}
-        required
-        style={{
-          padding: "8px 10px",
-          borderRadius: 6,
-          border: "1px solid #ccc",
-          fontSize: 16
-        }}
-      />
-      {!hasSession && (
-        <Button
-          type="submit"
-          variant="contained"
-          disabled={
-            loadingSend || !email || emailSent || !qortalAddress || hasSession
-          }
+      >
+        <Box
+          sx={{
+            width: "100%",
+            display: "flex",
+            justifyContent: "flex-end"
+          }}
         >
-          {loadingSend ? "Sending..." : "Send Code"}
-        </Button>
-      )}
+          {hasSession && (
+            <ButtonWarningOnBoarding
+              onClick={logout}
+              variant="contained"
+              color="warning"
+              sx={{
+                marginBottom: "10px",
+                maxWidth: "125px"
+              }}
+            >
+              Start over
+            </ButtonWarningOnBoarding>
+          )}
+        </Box>
+        <label htmlFor="email" style={{ fontWeight: 500 }}>
+          Enter your email
+        </label>
+        <input
+          id="email"
+          type="email"
+          placeholder="you@example.com"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+          disabled={loadingSend || emailSent || hasSession} // lock email after send
+          style={{
+            padding: "8px 10px",
+            borderRadius: 6,
+            border: "1px solid #ccc",
+            fontSize: 16
+          }}
+        />
 
-      {/* Code input shows only after email sent */}
-      {emailSent && !hasSession && (
-        <>
-          <label htmlFor="code" style={{ fontWeight: 500, marginTop: 8 }}>
-            Enter the verification code
-          </label>
-          <input
-            id="code"
-            type="text"
-            inputMode="numeric"
-            pattern="\d{6}"
-            maxLength={6}
-            placeholder="6-digit code"
-            value={code}
-            onChange={(e) => setCode(e.target.value)}
-            required
-            disabled={hasSession}
-            style={{
-              padding: "8px 10px",
-              borderRadius: 6,
-              border: "1px solid #ccc",
-              fontSize: 16,
-              letterSpacing: 2,
-              textAlign: "center"
-            }}
-          />
+        <label htmlFor="code" style={{ fontWeight: 500, marginTop: 8 }}>
+          Enter your Qortal address
+        </label>
+        <input
+          id="qortalAddress"
+          type="text"
+          placeholder="Qortal address"
+          value={qortalAddress}
+          disabled={hasSession}
+          onChange={(e) => setQortalAddress(e.target.value)}
+          required
+          style={{
+            padding: "8px 10px",
+            borderRadius: 6,
+            border: "1px solid #ccc",
+            fontSize: 16
+          }}
+        />
+        {!hasSession && (
+          <ButtonOnBoarding
+            type="submit"
+            variant="contained"
+            disabled={
+              loadingSend || !email || emailSent || !qortalAddress || hasSession
+            }
+          >
+            {loadingSend ? "Sending..." : "Send Code"}
+          </ButtonOnBoarding>
+        )}
 
-          <button
-            onClick={handleVerify}
-            disabled={loadingVerify || code.length < 4 || hasSession} // allow 4–6 depending on your backend
-            style={{
-              background: "#00b894",
-              color: "white",
-              padding: "10px 12px",
-              border: "none",
-              borderRadius: 6,
-              cursor: "pointer",
-              fontWeight: 500
+        {/* Code input shows only after email sent */}
+        {emailSent && !hasSession && (
+          <>
+            <label htmlFor="code" style={{ fontWeight: 500, marginTop: 8 }}>
+              Enter the verification code
+            </label>
+            <input
+              id="code"
+              type="text"
+              inputMode="numeric"
+              pattern="\d{6}"
+              maxLength={6}
+              placeholder="6-digit code"
+              value={code}
+              onChange={(e) => setCode(e.target.value)}
+              required
+              disabled={hasSession}
+              style={{
+                padding: "8px 10px",
+                borderRadius: 6,
+                border: "1px solid #ccc",
+                fontSize: 16,
+                letterSpacing: 2,
+                textAlign: "center"
+              }}
+            />
+
+            <ButtonOnBoarding
+              variant="contained"
+              onClick={handleVerify}
+              disabled={loadingVerify || code.length < 4 || hasSession} // allow 4–6 depending on your backend
+            >
+              {loadingVerify ? "Verifying..." : "Verify Code"}
+            </ButtonOnBoarding>
+          </>
+        )}
+
+        {hasSession && (
+          <ButtonOnBoarding
+            onClick={handleSendQort}
+            disabled={loadingSendQort} // allow 4–6 depending on your backend
+            variant="contained"
+            sx={{
+              marginTop: "10px"
             }}
           >
-            {loadingVerify ? "Verifying..." : "Verify Code"}
-          </button>
-        </>
-      )}
+            Send 2 QORT
+          </ButtonOnBoarding>
+        )}
 
-      {hasSession && (
-        <Button
-          onClick={handleSendQort}
-          disabled={loadingSendQort} // allow 4–6 depending on your backend
-          variant="contained"
-          sx={{
-            marginTop: "10px"
-          }}
-        >
-          Send 2 QORT
-        </Button>
-      )}
-
-      {message && (
-        <p
-          style={{
-            marginTop: 10,
-            color: message.startsWith("✅") ? "green" : "red"
-          }}
-        >
-          {message}
-        </p>
-      )}
-    </form>
+        {message && (
+          <p
+            style={{
+              marginTop: 10,
+              color: message.startsWith("✅") ? "green" : "red"
+            }}
+          >
+            {message}
+          </p>
+        )}
+      </form>
+    </>
   );
 };
 

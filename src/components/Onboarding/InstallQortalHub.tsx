@@ -20,6 +20,7 @@ import {
 import WindowsIcon from "@mui/icons-material/Window";
 import AppleIcon from "@mui/icons-material/Apple";
 import TerminalIcon from "@mui/icons-material/Terminal";
+import { ButtonOnBoarding, ButtonTextOnBoarding } from "./Onboarding-styles";
 
 type OS = "windows" | "mac" | "linux";
 type TutorialMode = "text" | "video";
@@ -239,22 +240,21 @@ export function InstallQortalHub({ onBack, onNext }: InstallQortalHubProps) {
                     )}
 
                     <Stack direction="row" spacing={1} sx={{ mt: 2 }}>
-                      <Button
+                      <ButtonOnBoarding
                         variant="contained"
                         size="small"
                         onClick={handleNextStep}
+                        disabled={index === textSteps.length - 1}
                       >
-                        {index === textSteps.length - 1
-                          ? "Continue"
-                          : "Next step"}
-                      </Button>
-                      <Button
+                        Next Step
+                      </ButtonOnBoarding>
+                      <ButtonTextOnBoarding
                         size="small"
                         onClick={handleBackStep}
                         disabled={index === 0 && !onBack}
                       >
                         Back
-                      </Button>
+                      </ButtonTextOnBoarding>
                     </Stack>
                   </StepContent>
                 </Step>

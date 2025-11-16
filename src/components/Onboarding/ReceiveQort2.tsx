@@ -1,9 +1,15 @@
 "use client";
 import React, { useCallback, useEffect, useState } from "react";
-import { Container } from "./Onboarding-styles";
+import {
+  ButtonOnBoarding,
+  ButtonTextOnBoarding,
+  Container
+} from "./Onboarding-styles";
 import { Box, Button, Stack, Typography } from "@mui/material";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import CancelIcon from "@mui/icons-material/Cancel";
+import RefreshIcon from "@mui/icons-material/Refresh";
+
 const EBOOK_API: string =
   process.env.NEXT_PUBLIC_EBOOK_API_HOST || "http://localhost:3010";
 
@@ -17,6 +23,7 @@ const ReceiveQort2 = ({ qortStep }: PropsReceiveQort) => {
   const [qortalAddress, setQortalAddress] = useState("");
   const [hasName, setHasName] = useState(false);
   const [loadingName, setLoadingName] = useState(true);
+  const [missingToken, setMissingToken] = useState(false);
   const [loadingSend, setLoadingSend] = useState(false);
   const [message, setMessage] = useState("");
 
@@ -39,7 +46,6 @@ const ReceiveQort2 = ({ qortStep }: PropsReceiveQort) => {
         setMessage("✅ 4 QORT sent");
         // TODO: route to next step or unlock UI
       } else {
-        console.log("data", data);
         const message =
           data?.reason === "invalid_qort_range_step1"
             ? "2 QORT already sent"
@@ -59,7 +65,7 @@ const ReceiveQort2 = ({ qortStep }: PropsReceiveQort) => {
   const checkForQortalName = useCallback(async () => {
     try {
       setLoadingName(true);
-      console.log("hello");
+
       const res = await fetch(`${EBOOK_API}/api/onboarding/hasQortalName`, {
         headers: { "Content-Type": "application/json" },
         // If your server sets an HTTP-only cookie with the token, include credentials:
@@ -70,6 +76,7 @@ const ReceiveQort2 = ({ qortStep }: PropsReceiveQort) => {
         setHasName(true);
       }
       if (data?.reason === "missing_token") {
+        setMissingToken(true);
         setMessage(
           "❌ Missing token! Go back to step 5 to re-send verification code."
         );
@@ -96,23 +103,45 @@ const ReceiveQort2 = ({ qortStep }: PropsReceiveQort) => {
         gap: "30px"
       }}
     >
-      <Stack direction="row" spacing={1} alignItems="center">
-        {hasName ? (
-          <CheckCircleIcon color="success" />
-        ) : (
-          <CancelIcon color="error" />
-        )}
+      {!missingToken && (
+        <>
+          <Stack direction="row" spacing={1} alignItems="center">
+            {hasName ? (
+              <CheckCircleIcon color="success" />
+            ) : (
+              <CancelIcon color="error" />
+            )}
+            <Box>
+              <Typography>{hasName ? "Has a name" : "No name yet"}</Typography>
+            </Box>
+          </Stack>
 
-        <Typography>{hasName ? "Has a name" : "No name yet"}</Typography>
-      </Stack>
-
-      <Button
-        onClick={handleSendQort}
-        disabled={loadingSend || !hasName}
-        variant="contained"
-      >
-        Send 4 Qort
-      </Button>
+          {!hasName && (
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center"
+              }}
+            >
+              <Typography>
+                To receive the remaining 4 QORT please register a name.
+              </Typography>
+              <ButtonTextOnBoarding onClick={checkForQortalName} size="medium">
+                <RefreshIcon />
+                Recheck for name
+              </ButtonTextOnBoarding>
+            </Box>
+          )}
+          <ButtonOnBoarding
+            onClick={handleSendQort}
+            disabled={loadingSend || !hasName}
+            variant="contained"
+          >
+            Send 4 Qort
+          </ButtonOnBoarding>
+        </>
+      )}
 
       {message && (
         <p

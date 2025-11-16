@@ -56,9 +56,9 @@ export const saveSubscriber = async ({
 
   try {
     const exists = await checkIfEmailExists(email);
-    // console.log('exists?:', exists);
+
     if (exists) {
-      throw new Error("Subscriber with this email already exists.");
+      return { success: true, data: subscriberData };
     }
     await db.collection(COLLECTIONS.SUBSCRIBERS).add(subscriberData);
     return { success: true, data: subscriberData };
@@ -218,7 +218,7 @@ export async function checkAndReserveQortPayout(params: {
     // If email exists, validate based on qortStep
     if (emailSnap.exists) {
       prevQort = emailSnap.data()?.qort ?? 0;
-      console.log("prevQort", prevQort);
+
       if (params.qortStep === 1) {
         if (!(prevQort < 2)) {
           return {

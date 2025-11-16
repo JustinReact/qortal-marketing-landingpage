@@ -46,7 +46,49 @@ export const fetchNamesByAddress = async (
   }
 };
 
+export const fetchBalanceByAddress = async (
+  address: string
+): Promise<number> => {
+  if (!address) {
+    throw new Error("missing_address");
+  }
+
+  try {
+    const validApi: string = await findUsableApi();
+
+    try {
+      const { data } = await axios.get<any>(
+        `${validApi}/addresses/balance/${address}`
+      );
+
+      const balance = Number(data?.value);
+      if (Number.isNaN(balance)) return 0;
+
+      return balance;
+    } catch (error: any) {
+      // Any error here => treat as 0 QORT
+      if (axios.isAxiosError(error)) {
+        const status = error.response?.status;
+        if (status === 404) {
+          // Address not found => 0 QORT
+          return 0;
+        }
+      }
+
+      return 0;
+    }
+  } catch (error: any) {
+    // This catch is only for findUsableApi()
+    throw new Error("failed_to_fetch_qortal_balance");
+  }
+};
 export const hasQortalName = async (address: string): Promise<boolean> => {
   const names = await fetchNamesByAddress(address);
+
   return names.length > 0;
+};
+
+export const isNewUser = async (address: string): Promise<boolean> => {
+  const balance = await fetchBalanceByAddress(address);
+  return balance < 6;
 };

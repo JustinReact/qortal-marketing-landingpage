@@ -1,6 +1,11 @@
 "use client";
-import React, { useState } from "react";
-import { Container } from "./Onboarding-styles";
+import React, { useEffect, useMemo } from "react";
+import {
+  ButtonOnBoarding,
+  ButtonTextOnBoarding,
+  Container,
+  SupportButton
+} from "./Onboarding-styles";
 import Introduction from "./Introduction";
 import { usePersistentState } from "../../hooks/usePersistentState";
 import {
@@ -8,10 +13,10 @@ import {
   Paper,
   Stack,
   Typography,
-  Button,
   MobileStepper,
   useTheme
 } from "@mui/material";
+import { useSearchParams } from "next/navigation";
 import { InstallQortalHub } from "./InstallQortalHub";
 import { SetupQortalCore } from "./SetupQortalCore";
 import { CreateNewAccount } from "./CreateNewAccount";
@@ -19,32 +24,118 @@ import { RegisterName } from "./RegisterName";
 import { JoinGroup } from "./JoinGroup";
 import ReceiveQort from "./ReceiveQort";
 import ReceiveQort2 from "./ReceiveQort2";
+import NextSteps from "./NextSteps";
+import MailingList from "./MailingList";
+import {
+  HeadphonesIcon,
+  SupportModalButton
+} from "../Common/Modal/SupportModal-styles";
 
-const steps = [
-  "Qortal Onboarding",
-  "Install Qortal Hub",
-  "Setup Qortal Core",
-  "Create new Qortal account",
-  "Receive 2 QORT",
-  "Register a name",
-  "Join 'The Freedom Cell Network' Group",
-  "Receive 4 QORT",
-  "Next steps",
-  "Mailing list"
-];
+type StepDefinition = {
+  key: string;
+  label: string;
+  render: () => React.ReactNode;
+  requiresFreedomCells?: boolean;
+};
 
 const Onboarding = () => {
   const theme = useTheme();
+  const searchParams = useSearchParams();
+  const referral = searchParams?.get("ref")?.toLowerCase() ?? null;
+  const showFreedomCellsStep = referral === "freedomcells";
+  const storageKey = showFreedomCellsStep
+    ? "onboardingStep-freedomcells"
+    : "onboardingStep";
 
   const [activeStep, setActiveStep, isHydrated] = usePersistentState<number>(
-    "onboardingStep",
+    storageKey,
     0
   );
-  const handleNext = () => setActiveStep((prev) => prev + 1);
-  const handleBack = () => setActiveStep((prev) => prev - 1);
 
-  console.log("activestep", activeStep);
-  if (!isHydrated) return null;
+  const stepDefinitions = useMemo<StepDefinition[]>(
+    () => [
+      {
+        key: "intro",
+        label: "Qortal Onboarding",
+        render: () => <Introduction />
+      },
+      {
+        key: "install-hub",
+        label: "Install Qortal Hub",
+        render: () => <InstallQortalHub />
+      },
+      {
+        key: "setup-core",
+        label: "Setup Qortal Core",
+        render: () => <SetupQortalCore />
+      },
+      {
+        key: "create-account",
+        label: "Create new Qortal account",
+        render: () => <CreateNewAccount />
+      },
+      {
+        key: "receive-two",
+        label: "Receive 2 QORT",
+        render: () => <ReceiveQort qortStep={1} />
+      },
+      {
+        key: "register-name",
+        label: "Register a name",
+        render: () => <RegisterName />
+      },
+      {
+        key: "join-group",
+        label: "Join 'The Freedom Cell Network' Group",
+        render: () => <JoinGroup />,
+        requiresFreedomCells: true
+      },
+      {
+        key: "receive-four",
+        label: "Receive 4 QORT",
+        render: () => <ReceiveQort2 qortStep={2} />
+      },
+      {
+        key: "mailing-list",
+        label: "Mailing list",
+        render: () => <MailingList />
+      },
+      {
+        key: "next-steps",
+        label: "Next steps",
+        render: () => <NextSteps />
+      }
+    ],
+    []
+  );
+
+  const steps = useMemo(
+    () =>
+      stepDefinitions.filter(
+        (step) => showFreedomCellsStep || !step.requiresFreedomCells
+      ),
+    [stepDefinitions, showFreedomCellsStep]
+  );
+
+  useEffect(() => {
+    if (!isHydrated) return;
+    const maxIndex = Math.max(steps.length - 1, 0);
+    if (activeStep > maxIndex) {
+      setActiveStep(maxIndex);
+    }
+  }, [activeStep, steps.length, setActiveStep, isHydrated]);
+
+  const handleNext = () =>
+    setActiveStep((prev) => Math.min(prev + 1, steps.length - 1));
+  const handleBack = () => setActiveStep((prev) => Math.max(prev - 1, 0));
+
+  if (!isHydrated || steps.length === 0) return null;
+
+  const currentStepIndex = Math.min(activeStep, steps.length - 1);
+  const currentStep = steps[currentStepIndex];
+  const isLastStep = currentStepIndex === steps.length - 1;
+  const isSecondToLast = currentStepIndex === steps.length - 2;
+
   return (
     <Container>
       <Box
@@ -73,49 +164,71 @@ const Onboarding = () => {
           <Stack flex={1} spacing={3}>
             <Box>
               <Typography variant="overline" color="text.secondary">
-                Step {activeStep + 1} of {steps.length}
+                Step {currentStepIndex + 1} of {steps.length}
               </Typography>
-              <Typography variant="h4" fontWeight={600}>
-                {steps[activeStep]}
-              </Typography>
+              <Stack
+                direction={"row"}
+                alignContent={"center"}
+                justifyContent={"space-between"}
+              >
+                <Typography variant="h4" fontWeight={600}>
+                  {currentStep?.label}
+                </Typography>
+                <SupportButton
+                  role="button"
+                  tabIndex={0}
+                  aria-label="Chat with us"
+                  onClick={() =>
+                    window.open("https://link.qortal.dev/support", "_blank")
+                  }
+                  onKeyDown={() =>
+                    window.open("https://link.qortal.dev/support", "_blank")
+                  }
+                >
+                  <HeadphonesIcon
+                    color={theme.palette.text.primary}
+                    height={"18px"}
+                    width={"18px"}
+                  />{" "}
+                  Community support
+                </SupportButton>
+              </Stack>
             </Box>
 
-            {/* TODO: Render content per step here */}
-            <Box sx={{ flex: 1 }}>
-              {activeStep === 0 && <Introduction />}
-              {activeStep === 1 && <InstallQortalHub />}
-              {activeStep === 2 && <SetupQortalCore />}
-              {activeStep === 3 && <CreateNewAccount />}
-              {activeStep === 4 && <ReceiveQort qortStep={1} />}
-              {activeStep === 5 && <RegisterName />}
-              {activeStep === 6 && <JoinGroup />}
-              {activeStep === 7 && <ReceiveQort2 qortStep={2} />}
-            </Box>
+            <Box sx={{ flex: 1 }}>{currentStep?.render()}</Box>
 
             {/* Navigation */}
             <MobileStepper
               variant="dots"
               steps={steps.length}
               position="static"
-              activeStep={activeStep}
+              activeStep={currentStepIndex}
               nextButton={
-                <Button
+                <ButtonOnBoarding
                   size="small"
                   onClick={handleNext}
-                  disabled={activeStep === steps.length - 1}
+                  disabled={isLastStep}
                   variant="contained"
                 >
-                  {activeStep === steps.length - 1 ? "Finish" : "Continue"}
-                </Button>
+                  {isLastStep
+                    ? "Finished"
+                    : isSecondToLast
+                    ? "Finish"
+                    : "Continue"}
+                </ButtonOnBoarding>
               }
               backButton={
-                <Button
+                <ButtonTextOnBoarding
                   size="small"
                   onClick={handleBack}
-                  disabled={activeStep === 0}
+                  disabled={
+                    currentStepIndex === 0 ||
+                    currentStepIndex === steps.length - 1
+                  }
+                  variant="text"
                 >
                   Back
-                </Button>
+                </ButtonTextOnBoarding>
               }
               sx={{
                 bgcolor: "transparent",

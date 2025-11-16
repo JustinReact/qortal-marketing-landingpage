@@ -15,6 +15,7 @@ import {
   Button,
   Chip
 } from "@mui/material";
+import { ButtonOnBoarding, ButtonTextOnBoarding } from "./Onboarding-styles";
 
 type TutorialMode = "text" | "video";
 
@@ -138,7 +139,7 @@ export function CreateNewAccount({ onBack, onNext }: SetupQortalCoreProps) {
                     )}
 
                     <Stack direction="row" spacing={1} sx={{ mt: 2 }}>
-                      <Button
+                      <ButtonOnBoarding
                         variant="contained"
                         size="small"
                         onClick={handleNextStep}
@@ -146,14 +147,14 @@ export function CreateNewAccount({ onBack, onNext }: SetupQortalCoreProps) {
                         {index === textSteps.length - 1
                           ? "Continue"
                           : "Next step"}
-                      </Button>
-                      <Button
+                      </ButtonOnBoarding>
+                      <ButtonTextOnBoarding
                         size="small"
                         onClick={handleBackStep}
                         disabled={index === 0 && !onBack}
                       >
                         Back
-                      </Button>
+                      </ButtonTextOnBoarding>
                     </Stack>
                   </StepContent>
                 </Step>

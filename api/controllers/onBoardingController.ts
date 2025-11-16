@@ -8,9 +8,12 @@ import {
   checkAndReserveQortPayout,
   rollbackQortPayout
 } from "../services/firebaseServices";
-import { hasQortalName } from "../services/qortalServices";
+import { hasQortalName, isNewUser } from "../services/qortalServices";
 
-const { sendCoin } = require("../qortal/transactions/transactions");
+const {
+  sendCoin,
+  validateAddress
+} = require("../qortal/transactions/transactions");
 
 const JWT_SECRET = process.env.JWT_SECRET as string;
 
@@ -31,7 +34,7 @@ const handleSendCode = async (
   try {
     const rawEmail = req.body.email;
     const email = rawEmail?.trim().toLowerCase();
-
+    const address = req.body.qortalAddress?.trim();
     if (!email) {
       res.status(400).json({ error: "Missing email!" });
       return;
@@ -41,7 +44,17 @@ const handleSendCode = async (
       res.status(400).json({ error: "Invalid email format!" });
       return;
     }
-
+    if (!validateAddress(address)) {
+      res.status(400).json({ error: "Invalid qortal address!" });
+      return;
+    }
+    const isValidNewUser = await isNewUser(address);
+    if (!isValidNewUser) {
+      res.status(429).json({
+        error: "This is already an existing account."
+      });
+      return;
+    }
     // Prevent spam
     const existing = codes.get(email);
     if (existing) {
@@ -93,8 +106,6 @@ const handleSendCode = async (
       hasClaimed: false
     });
 
-    console.log("[Onboarding] Code sent:", email, code);
-
     res.json({ success: true });
   } catch (err) {
     console.error("[Onboarding] Failed to send code:", err);
@@ -109,7 +120,7 @@ const handleVerifyCode = async (
   res: Response
 ): Promise<void> => {
   const { email, code, qortalAddress } = req.body;
-  console.log("code2", code, email);
+
   if (!email || !code) {
     res.status(400).json({ error: "Email and code are required" });
     return;
@@ -137,9 +148,13 @@ const handleVerifyCode = async (
   codes.set(email, record);
 
   // Create a JWT valid for 7 days
-  const token = jwt.sign({ email, qortalAddress }, JWT_SECRET, {
-    expiresIn: "7d"
-  });
+  const token = jwt.sign(
+    { email, qortalAddress: qortalAddress?.trim() },
+    JWT_SECRET,
+    {
+      expiresIn: "7d"
+    }
+  );
 
   // Set cookie (valid for 7 days)
   res.cookie("qortal_onboarding_token", token, {
@@ -170,12 +185,12 @@ const handleSendQort = async (
     return;
   }
 
-  const email = payload.email;
-  const qortalAddress = payload.qortalAddress;
+  const email = payload.email?.trim();
+  const qortalAddress = payload.qortalAddress?.trim();
   const qortStep = +(req.query.qortStep ?? 0);
 
   const ip = getClientIp(req);
-  console.log("ip", ip);
+
   if (!ip) {
     res.status(400).json({ valid: false, reason: "missing_ip" });
     return;
@@ -201,7 +216,6 @@ const handleSendQort = async (
       receiver: qortalAddress
     });
 
-    console.log("responseSendQort", responseSendQort);
     if (responseSendQort?.res?.data?.signature) {
       res.status(200).json({
         valid: true,
