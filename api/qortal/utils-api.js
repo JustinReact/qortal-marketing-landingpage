@@ -14,10 +14,7 @@ const findUsableApi = async () => {
       });
       const data = response.data;
       if (data.isSynchronizing === false && data.syncPercent === 100) {
-        console.log(`Usable API found: ${endpoint}`);
         return endpoint;
-      } else {
-        console.log(`API not ready: ${endpoint}`);
       }
     } catch (error) {
       if (error.code === "ECONNABORTED") {

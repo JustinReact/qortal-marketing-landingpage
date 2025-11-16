@@ -211,8 +211,9 @@ const handleSendQort = async (
 
   // 2) Try sending QORT
   try {
+    const qortAmount = qortStep === 1 ? 2 : 4;
     const responseSendQort = await sendCoin({
-      amount: 1,
+      amount: qortAmount,
       receiver: qortalAddress
     });
 
