@@ -147,12 +147,12 @@ const handleVerifyCode = async (
   record.verified = true;
   codes.set(email, record);
 
-  // Create a JWT valid for 7 days
+  // Create a JWT valid for 2 days
   const token = jwt.sign(
     { email, qortalAddress: qortalAddress?.trim() },
     JWT_SECRET,
     {
-      expiresIn: "7d"
+      expiresIn: "2d"
     }
   );
 
