@@ -50,7 +50,7 @@ const macDesktopDownload = async () => {
   document.body.removeChild(link);
 };
 
-const DownloadRender = ({ download, type }) => {
+const DownloadRender = ({ download, type }: any) => {
   const [copied, setCopied] = React.useState(false);
   return (
     <Button
