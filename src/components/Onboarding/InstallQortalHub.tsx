@@ -21,14 +21,63 @@ import WindowsIcon from "@mui/icons-material/Window";
 import AppleIcon from "@mui/icons-material/Apple";
 import TerminalIcon from "@mui/icons-material/Terminal";
 import { ButtonOnBoarding, ButtonTextOnBoarding } from "./Onboarding-styles";
-
+import DownloadIcon from "@mui/icons-material/Download";
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 type OS = "windows" | "mac" | "linux";
 type TutorialMode = "text" | "video";
+
+const windowsDesktopDownload = async () => {
+  const link = document.createElement("a");
+  link.href = "https://link.qortal.dev/hub-windows";
+  link.download = "";
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
+
+const linuxDesktopDownload = async () => {
+  await navigator.clipboard.writeText(
+    "bash <(curl -fsSL https://link.qortal.dev/linux-script || wget -qO- https://link.qortal.dev/linux-script)"
+  );
+};
+
+const macDesktopDownload = async () => {
+  const link = document.createElement("a");
+  link.href = "https://link.qortal.dev/hub-mac";
+  link.download = "";
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
+
+const DownloadRender = ({ download, type }) => {
+  const [copied, setCopied] = React.useState(false);
+  return (
+    <Button
+      startIcon={type === "linux" ? <ContentCopyIcon /> : <DownloadIcon />}
+      variant="outlined"
+      size="small"
+      onClick={() => {
+        download();
+        if (type === "linux") {
+          setCopied(true);
+        }
+      }}
+    >
+      {copied ? "Copied" : type === "linux" ? "Copy" : "Download"}
+    </Button>
+  );
+};
 
 const tutorialData: Record<
   OS,
   {
-    textSteps: { label: string; description: string; imageSrc?: string }[];
+    textSteps: {
+      label: string;
+      description: string;
+      imageSrc?: string;
+      render?: React.JSX.Element;
+    }[];
     videoUrl: string;
   }
 > = {
@@ -36,8 +85,8 @@ const tutorialData: Record<
     textSteps: [
       {
         label: "Download the installer",
-        description:
-          "Click the 'Download for Windows' button on the Qortal website and save the .exe file."
+        description: "Click the download button below to save the .exe file.",
+        render: <DownloadRender download={windowsDesktopDownload} type="win" />
         // imageSrc: "/images/onboarding/windows-step1.png",
       },
       {
@@ -57,8 +106,8 @@ const tutorialData: Record<
     textSteps: [
       {
         label: "Download the .dmg",
-        description:
-          "Click the 'Download for macOS' button on the Qortal website and save the .dmg file."
+        description: "Click the download button below to save the .dmg file.",
+        render: <DownloadRender download={macDesktopDownload} type="mac" />
       },
       {
         label: "Open and drag to Applications",
@@ -76,9 +125,10 @@ const tutorialData: Record<
   linux: {
     textSteps: [
       {
-        label: "Download the package",
+        label: "Copy the terminal command",
         description:
-          "Choose the appropriate package for your distro (AppImage / .deb / .rpm) from the Qortal downloads page."
+          "Click the copy button below to copy the terminal command.",
+        render: <DownloadRender download={linuxDesktopDownload} type="linux" />
       },
       {
         label: "Make it executable",
@@ -223,6 +273,15 @@ export function InstallQortalHub({ onBack, onNext }: InstallQortalHubProps) {
                     <Typography variant="body2" color="text.secondary">
                       {step.description}
                     </Typography>
+                    {step?.render && (
+                      <Box
+                        sx={{
+                          margin: "5px 0px"
+                        }}
+                      >
+                        {step?.render}
+                      </Box>
+                    )}
                     {/* Optional screenshot placeholder */}
                     {step.imageSrc && (
                       <Box
