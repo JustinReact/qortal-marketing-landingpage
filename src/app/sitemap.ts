@@ -143,6 +143,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
       priority: 0.5
+    },
+    {
+      url: "https://qortal.dev/onboarding",
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.5
     }
   ];
   const blogs: Blog = (await getBlogs()) ?? [];
