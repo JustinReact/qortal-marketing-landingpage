@@ -33,7 +33,7 @@ const ReceiveQort2 = ({ qortStep }: PropsReceiveQort) => {
 
     try {
       const res = await fetch(
-        `${EBOOK_API}/api/onboarding/sendQort?qortStep=${qortStep}`,
+        `${EBOOK_API}/onboarding/sendQort?qortStep=${qortStep}`,
         {
           headers: { "Content-Type": "application/json" },
           // If your server sets an HTTP-only cookie with the token, include credentials:
@@ -66,7 +66,7 @@ const ReceiveQort2 = ({ qortStep }: PropsReceiveQort) => {
     try {
       setLoadingName(true);
 
-      const res = await fetch(`${EBOOK_API}/api/onboarding/hasQortalName`, {
+      const res = await fetch(`${EBOOK_API}/onboarding/hasQortalName`, {
         headers: { "Content-Type": "application/json" },
         // If your server sets an HTTP-only cookie with the token, include credentials:
         credentials: "include"

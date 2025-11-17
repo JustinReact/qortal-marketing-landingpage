@@ -32,7 +32,7 @@ const ReceiveQort = ({ qortStep }: PropsReceiveQort) => {
     setMessage("");
 
     try {
-      const res = await fetch(`${EBOOK_API}/api/onboarding/sendCode`, {
+      const res = await fetch(`${EBOOK_API}/onboarding/sendCode`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, qortalAddress })
@@ -61,7 +61,7 @@ const ReceiveQort = ({ qortStep }: PropsReceiveQort) => {
     setMessage("");
 
     try {
-      const res = await fetch(`${EBOOK_API}/api/onboarding/verifyCode`, {
+      const res = await fetch(`${EBOOK_API}/onboarding/verifyCode`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         // If your server sets an HTTP-only cookie with the token, include credentials:
@@ -92,7 +92,7 @@ const ReceiveQort = ({ qortStep }: PropsReceiveQort) => {
 
     try {
       const res = await fetch(
-        `${EBOOK_API}/api/onboarding/sendQort?qortStep=${qortStep}`,
+        `${EBOOK_API}/onboarding/sendQort?qortStep=${qortStep}`,
         {
           headers: { "Content-Type": "application/json" },
           // If your server sets an HTTP-only cookie with the token, include credentials:
@@ -125,7 +125,7 @@ const ReceiveQort = ({ qortStep }: PropsReceiveQort) => {
     try {
       setLoadingSession(true);
 
-      const res = await fetch(`${EBOOK_API}/api/onboarding/session`, {
+      const res = await fetch(`${EBOOK_API}/onboarding/session`, {
         headers: { "Content-Type": "application/json" },
         // If your server sets an HTTP-only cookie with the token, include credentials:
         credentials: "include"
@@ -148,7 +148,7 @@ const ReceiveQort = ({ qortStep }: PropsReceiveQort) => {
 
   const logout = async () => {
     try {
-      const res = await fetch(`${EBOOK_API}/api/onboarding/logout`, {
+      const res = await fetch(`${EBOOK_API}/onboarding/logout`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         // If your server sets an HTTP-only cookie with the token, include credentials:

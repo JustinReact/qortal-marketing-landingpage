@@ -6,13 +6,15 @@ import GroupsIcon from "@mui/icons-material/Groups";
 import PlayCircleFilledIcon from "@mui/icons-material/PlayCircleFilled";
 import Diversity3Icon from "@mui/icons-material/Diversity3";
 import PublicIcon from "@mui/icons-material/Public";
-import { EBOOK_API } from "./ReceiveQort";
+
+const EBOOK_API: string =
+  process.env.NEXT_PUBLIC_EBOOK_API_HOST || "http://localhost:3010";
 
 const logout = async () => {
   try {
     localStorage.setItem("onboardingStep", JSON.stringify(0));
     localStorage.setItem("onboardingStep-freedomcells", JSON.stringify(0));
-    await fetch(`${EBOOK_API}/api/onboarding/logout`, {
+    await fetch(`${EBOOK_API}/onboarding/logout`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       // If your server sets an HTTP-only cookie with the token, include credentials:

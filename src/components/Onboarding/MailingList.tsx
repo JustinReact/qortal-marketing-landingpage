@@ -18,7 +18,7 @@ const MailingList = () => {
   useEffect(() => {
     const fetchSession = async () => {
       try {
-        const res = await fetch(`${EBOOK_API}/api/onboarding/session`, {
+        const res = await fetch(`${EBOOK_API}/onboarding/session`, {
           credentials: "include"
         });
 
@@ -50,7 +50,7 @@ const MailingList = () => {
       setStatus("loading");
       setMessage("");
 
-      const res = await fetch(`${EBOOK_API}/api/subscribe`, {
+      const res = await fetch(`${EBOOK_API}/subscribe`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: email?.trim(), name })

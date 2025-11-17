@@ -19,7 +19,7 @@ const Onboarding = () => {
     setMessage("");
 
     try {
-      const res = await fetch(`${EBOOK_API}/api/onboarding/sendCode`, {
+      const res = await fetch(`${EBOOK_API}/onboarding/sendCode`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email })
@@ -46,7 +46,7 @@ const Onboarding = () => {
     setMessage("");
 
     try {
-      const res = await fetch(`${EBOOK_API}/api/onboarding/verifyCode`, {
+      const res = await fetch(`${EBOOK_API}/onboarding/verifyCode`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         // If your server sets an HTTP-only cookie with the token, include credentials:
@@ -75,7 +75,7 @@ const Onboarding = () => {
     setMessage("");
 
     try {
-      const res = await fetch(`${EBOOK_API}/api/onboarding/sendQort`, {
+      const res = await fetch(`${EBOOK_API}/onboarding/sendQort`, {
         headers: { "Content-Type": "application/json" },
         // If your server sets an HTTP-only cookie with the token, include credentials:
         credentials: "include"
