@@ -131,11 +131,6 @@ const tutorialData: Record<
         render: <DownloadRender download={linuxDesktopDownload} type="linux" />
       },
       {
-        label: "Make it executable",
-        description:
-          "If using an AppImage, run `chmod +x qortal-hub*.AppImage` in a terminal."
-      },
-      {
         label: "Run Qortal Hub",
         description:
           "Double-click the file or run it from a terminal. You can optionally create a desktop launcher."
