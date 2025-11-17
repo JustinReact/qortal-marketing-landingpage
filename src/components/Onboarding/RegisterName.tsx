@@ -15,6 +15,7 @@ import {
   Button,
   Chip
 } from "@mui/material";
+import { TextSteps } from "./CreateNewAccount";
 
 type TutorialMode = "text" | "video";
 
@@ -23,7 +24,7 @@ interface SetupQortalCoreProps {
   onNext?: () => void;
 }
 
-const textSteps = [
+const textSteps: TextSteps[] = [
   {
     label: "Click on 'REGISTER NAME'",
     description: "test"

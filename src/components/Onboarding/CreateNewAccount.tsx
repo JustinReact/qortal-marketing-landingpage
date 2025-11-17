@@ -24,7 +24,13 @@ interface SetupQortalCoreProps {
   onNext?: () => void;
 }
 
-const textSteps = [
+export interface TextSteps {
+  label: string;
+  description: string;
+  imageSrc?: string;
+}
+
+const textSteps: TextSteps[] = [
   {
     label: "Open Qortal Hub",
     description:
