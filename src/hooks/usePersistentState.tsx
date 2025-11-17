@@ -22,7 +22,7 @@ export function usePersistentState<T>(key: string, defaultValue: T) {
 
   // Write to localStorage when value changes (and after we've hydrated)
   useEffect(() => {
-    if (!hydrated) return;
+    if (!hydrated || value === 8) return;
     try {
       localStorage.setItem(key, JSON.stringify(value));
     } catch {
