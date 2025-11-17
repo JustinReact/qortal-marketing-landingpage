@@ -387,8 +387,8 @@ const Qort = () => {
                 style={{ display: faqsOpen[3] ? "flex" : "none" }}
               >
                 <p>
-                  Yes, QORT is currently listed on TradeOgre, a centralized
-                  exchange that allows trading QORT against USDT. TradeOgre does
+                  Yes, QORT is currently listed on Nonkyc.io, a centralized
+                  exchange that allows trading QORT against USDT. Nonkyc.io does
                   not require KYC, making it one of the few centralized
                   exchanges where you can still trade privately.
                 </p>
@@ -491,7 +491,10 @@ const Qort = () => {
                         action: "Clicked Discord Button FAQ",
                         label: "Discord Button FAQ"
                       });
-                      window.open("https://link.qortal.dev/discord-invite", "_blank");
+                      window.open(
+                        "https://link.qortal.dev/discord-invite",
+                        "_blank"
+                      );
                     }}
                   >
                     here.
