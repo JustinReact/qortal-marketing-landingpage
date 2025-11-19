@@ -30,7 +30,7 @@ import {
   FeatureSubContainer,
   FeatureImg,
   TopFoldButtonCol,
-  TradeOgreCTAButton
+  NonKYCCTAButton
 } from "./QORTPage-styles";
 import ReactGA from "react-ga4";
 import { NorthEastSVG } from "../Common/Icons/NorthEastSVG";
@@ -196,25 +196,24 @@ const Qort = () => {
               BUY QORT
             </CTAButton2>
           </TopFoldButtonRow>
-          {/* To be replaced with another CEX in the future */}
-          {/* <TradeOgreCTAButton
+          <NonKYCCTAButton
             type="button"
-            aria-label="Buy QORT from TradeOgre exchange"
+            aria-label="Buy QORT from NonKYC exchange"
             onClick={() => {
               ReactGA.event({
                 category: "User",
-                action: "Clicked TradeOgre Button",
-                label: "Clicked TradeOgre Button"
+                action: "Clicked NonKYC Button",
+                label: "Clicked NonKYC Button"
               });
               window.open(
-                "https://link.qortal.dev/tradeogre",
+                "https://link.qortal.dev/nonkyc",
                 "_blank",
                 "noopener,noreferrer"
               );
             }}
           >
-            BUY FROM TRADEOGRE
-          </TradeOgreCTAButton> */}
+            BUY FROM NONKYC
+          </NonKYCCTAButton>
         </TopFoldButtonCol>
       </MainContainer>
       <YoutubeVideoContainer>
@@ -387,10 +386,10 @@ const Qort = () => {
                 style={{ display: faqsOpen[3] ? "flex" : "none" }}
               >
                 <p>
-                  Yes, QORT is currently listed on TradeOgre, a centralized
-                  exchange that allows trading QORT against USDT. TradeOgre does
-                  not require KYC, making it one of the few centralized
-                  exchanges where you can still trade privately.
+                  Yes, QORT is currently listed on NonKYC, a centralized
+                  exchange that allows trading QORT against USDT. NonKYC does
+                  not require KYC of course, making it one of the few
+                  centralized exchanges where you can still trade privately.
                 </p>
                 <p>
                   However, for maximum security and decentralization, we
@@ -491,7 +490,10 @@ const Qort = () => {
                         action: "Clicked Discord Button FAQ",
                         label: "Discord Button FAQ"
                       });
-                      window.open("https://link.qortal.dev/discord-invite", "_blank");
+                      window.open(
+                        "https://link.qortal.dev/discord-invite",
+                        "_blank"
+                      );
                     }}
                   >
                     here.
