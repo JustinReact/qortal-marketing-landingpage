@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import {
   ButtonOnBoarding,
   ButtonTextOnBoarding,
@@ -17,7 +17,7 @@ import {
   useTheme
 } from "@mui/material";
 import { useSearchParams } from "next/navigation";
-import { InstallQortalHub } from "./InstallQortalHub";
+import { InstallQortalHub, OS } from "./InstallQortalHub";
 import { SetupQortalCore } from "./SetupQortalCore";
 import { CreateNewAccount } from "./CreateNewAccount";
 import { RegisterName } from "./RegisterName";
@@ -30,6 +30,7 @@ import {
   HeadphonesIcon,
   SupportModalButton
 } from "../Common/Modal/SupportModal-styles";
+import Modal from "../Common/Modal/Modal";
 
 type StepDefinition = {
   key: string;
@@ -43,6 +44,10 @@ const Onboarding = () => {
   const searchParams = useSearchParams();
   const referral = searchParams?.get("ref")?.toLowerCase() ?? null;
   const showFreedomCellsStep = referral === "freedomcells";
+  const [os, setOS] = useState<OS>("windows");
+  const [selectedOnBoardingScreenShot, setSelectedOnBoardingScreenShot] =
+    useState<null | string>(null);
+
   const storageKey = showFreedomCellsStep
     ? "onboardingStep-freedomcells"
     : "onboardingStep";
@@ -52,6 +57,21 @@ const Onboarding = () => {
     0
   );
 
+  useEffect(() => {
+    const ua = window.navigator.userAgent.toLowerCase();
+
+    if (ua.includes("mac")) {
+      setOS("mac");
+    } else if (ua.includes("win")) {
+      setOS("windows");
+    } else if (ua.includes("linux")) {
+      setOS("linux");
+    } else {
+      setOS("windows");
+    }
+  }, []);
+
+  console.log("os", os);
   const stepDefinitions = useMemo<StepDefinition[]>(
     () => [
       {
@@ -62,12 +82,22 @@ const Onboarding = () => {
       {
         key: "install-hub",
         label: "Install Qortal Hub",
-        render: () => <InstallQortalHub />
+        render: () => (
+          <InstallQortalHub
+            osAuto={os}
+            setSelectedOnBoardingScreenShot={setSelectedOnBoardingScreenShot}
+          />
+        )
       },
       {
         key: "setup-core",
         label: "Setup Qortal Core",
-        render: () => <SetupQortalCore />
+        render: () => (
+          <SetupQortalCore
+            osAuto={os}
+            setSelectedOnBoardingScreenShot={setSelectedOnBoardingScreenShot}
+          />
+        )
       },
       {
         key: "create-account",
@@ -106,7 +136,7 @@ const Onboarding = () => {
         render: () => <NextSteps />
       }
     ],
-    []
+    [os]
   );
 
   const steps = useMemo(
@@ -241,6 +271,15 @@ const Onboarding = () => {
           </Stack>
         </Paper>
       </Box>
+      {selectedOnBoardingScreenShot && (
+        <Modal
+          images={[selectedOnBoardingScreenShot]}
+          openModal={!!selectedOnBoardingScreenShot}
+          onClickFunc={() => {
+            setSelectedOnBoardingScreenShot(null);
+          }}
+        ></Modal>
+      )}
     </Container>
   );
 };

@@ -23,7 +23,7 @@ import TerminalIcon from "@mui/icons-material/Terminal";
 import { ButtonOnBoarding, ButtonTextOnBoarding } from "./Onboarding-styles";
 import DownloadIcon from "@mui/icons-material/Download";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
-type OS = "windows" | "mac" | "linux";
+export type OS = "windows" | "mac" | "linux";
 type TutorialMode = "text" | "video";
 
 const windowsDesktopDownload = async () => {
@@ -37,7 +37,7 @@ const windowsDesktopDownload = async () => {
 
 const linuxDesktopDownload = async () => {
   await navigator.clipboard.writeText(
-    "bash <(curl -fsSL https://link.qortal.dev/linux-script || wget -qO- https://link.qortal.dev/linux-script)"
+    "bash <(curl -fsSL https://qortal-hub-setup-linux.qortal.org || wget -qO- https://qortal-hub-setup-linux.qortal.org)"
   );
 };
 
@@ -86,21 +86,38 @@ const tutorialData: Record<
       {
         label: "Download the installer",
         description: "Click the download button below to save the .exe file.",
-        render: <DownloadRender download={windowsDesktopDownload} type="win" />
-        // imageSrc: "/images/onboarding/windows-step1.png",
+        render: <DownloadRender download={windowsDesktopDownload} type="win" />,
+        imageSrc: "/images/Onboarding/InstallQortalHub/windows/install-hub.webp"
       },
       {
-        label: "Run the installer",
-        description:
-          "Double-click the downloaded file and follow the prompts. Accept the security warning if Windows asks."
+        label: "When ready, go to downloads and click installer.",
+        description: "",
+        imageSrc: "/images/Onboarding/InstallQortalHub/windows/click-exe.webp"
       },
       {
-        label: "Launch Qortal Hub",
+        label: "Allow changes to your device, click yes.",
+        description: "",
+        imageSrc: "/images/Onboarding/InstallQortalHub/windows/permission.webp"
+      },
+      {
+        label: "Choose install location",
         description:
-          "Once installation is finished, open Qortal Hub from the Start menu."
+          "Choose install location, don't change unless you are doing something advanced.",
+        imageSrc: "/images/Onboarding/InstallQortalHub/windows/location.webp"
+      },
+      {
+        label: "Installing, wait a minute.",
+        description: "",
+        imageSrc: "/images/Onboarding/InstallQortalHub/windows/installing.webp"
+      },
+      {
+        label: "Complete Qortal setup",
+        description:
+          "Complete Qortal setup, check Run Qortal Hub, click Finish. Qortal Hub will appear.",
+        imageSrc: "/images/Onboarding/InstallQortalHub/windows/run.webp"
       }
     ],
-    videoUrl: "https://www.youtube.com/embed/XXXXXXXXXXX" // TODO: real video
+    videoUrl: "https://www.youtube.com/embed/T6iycBd8xCw"
   },
   mac: {
     textSteps: [
@@ -125,15 +142,36 @@ const tutorialData: Record<
   linux: {
     textSteps: [
       {
-        label: "Copy the terminal command",
+        label: "Install Qortal Hub",
         description:
           "Click the copy button below to copy the terminal command.",
         render: <DownloadRender download={linuxDesktopDownload} type="linux" />
       },
       {
-        label: "Run Qortal Hub",
+        label: "Open Terminal",
+        description: "Open Terminal, Paste Command & Enter.",
+        imageSrc: "/images/Onboarding/InstallQortalHub/linux/terminal.jpg"
+      },
+      {
+        label: "Installing",
         description:
-          "Double-click the file or run it from a terminal. You can optionally create a desktop launcher."
+          "While the command is executing, the Qortal Hub window will popup for a moment then automatically close, this is intentional and you need to ignore it",
+        imageSrc: "/images/Onboarding/InstallQortalHub/linux/wait.jpg"
+      },
+      {
+        label: "Installation completed",
+        description: "The command execution completes",
+        imageSrc: "/images/Onboarding/InstallQortalHub/linux/completed.jpg"
+      },
+      {
+        label: "Open Qortal Hub",
+        description: "Search for Qortal, Select Qortal Hub.",
+        imageSrc: "/images/Onboarding/InstallQortalHub/linux/search.jpg"
+      },
+      {
+        label: "Welcome to Qortal Hub",
+        description: "",
+        imageSrc: "/images/Onboarding/InstallQortalHub/linux/launch.jpg"
       }
     ],
     videoUrl: "https://www.youtube.com/embed/ZZZZZZZZZZZ"
@@ -143,10 +181,19 @@ const tutorialData: Record<
 interface InstallQortalHubProps {
   onBack?: () => void;
   onNext?: () => void;
+  osAuto: OS;
+  setSelectedOnBoardingScreenShot: React.Dispatch<
+    React.SetStateAction<string | null>
+  >;
 }
 
-export function InstallQortalHub({ onBack, onNext }: InstallQortalHubProps) {
-  const [os, setOs] = React.useState<OS>("windows");
+export function InstallQortalHub({
+  onBack,
+  onNext,
+  osAuto,
+  setSelectedOnBoardingScreenShot
+}: InstallQortalHubProps) {
+  const [os, setOs] = React.useState<OS>(osAuto);
   const [mode, setMode] = React.useState<TutorialMode>("text");
   const [activeStep, setActiveStep] = React.useState(0);
 
@@ -280,6 +327,9 @@ export function InstallQortalHub({ onBack, onNext }: InstallQortalHubProps) {
                     {/* Optional screenshot placeholder */}
                     {step.imageSrc && (
                       <Box
+                        onClick={() =>
+                          setSelectedOnBoardingScreenShot(step.imageSrc!)
+                        }
                         component="img"
                         src={step.imageSrc}
                         alt={step.label}
@@ -288,7 +338,8 @@ export function InstallQortalHub({ onBack, onNext }: InstallQortalHubProps) {
                           borderRadius: 2,
                           width: "100%",
                           maxWidth: 480,
-                          display: "block"
+                          display: "block",
+                          cursor: "pointer"
                         }}
                       />
                     )}

@@ -6,6 +6,8 @@ import {
   Paper,
   Stack,
   Typography,
+  ToggleButtonGroup,
+  ToggleButton,
   Tabs,
   Tab,
   Stepper,
@@ -15,45 +17,193 @@ import {
   Button,
   Chip
 } from "@mui/material";
-import { TextSteps } from "./CreateNewAccount";
-
+import WindowsIcon from "@mui/icons-material/Window";
+import AppleIcon from "@mui/icons-material/Apple";
+import TerminalIcon from "@mui/icons-material/Terminal";
+import { ButtonOnBoarding, ButtonTextOnBoarding } from "./Onboarding-styles";
+import DownloadIcon from "@mui/icons-material/Download";
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+export type OS = "windows" | "mac" | "linux";
 type TutorialMode = "text" | "video";
 
-interface SetupQortalCoreProps {
+const windowsDesktopDownload = async () => {
+  const link = document.createElement("a");
+  link.href = "https://link.qortal.dev/hub-windows";
+  link.download = "";
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
+
+const tutorialData: Record<
+  OS,
+  {
+    textSteps: {
+      label: string;
+      description: string;
+      imageSrc?: string;
+      render?: React.JSX.Element;
+    }[];
+    videoUrl: string;
+  }
+> = {
+  windows: {
+    textSteps: [
+      {
+        label: " Welcome, click Next.",
+        description: "",
+        imageSrc: "/images/Onboarding/CoreSetup/windows/welcome.jpg"
+      },
+      {
+        label: "Click Install And Start Qortal Core.",
+        description: "",
+        imageSrc: "/images/Onboarding/CoreSetup/windows/install.jpg"
+      },
+      {
+        label: "Wait for the download.",
+        description: "",
+        imageSrc: "/images/Onboarding/CoreSetup/windows/downloading.jpg"
+      },
+      {
+        label: "Qortal Setup Wizard, Click Next.",
+        description: "",
+        imageSrc: "/images/Onboarding/CoreSetup/windows/setup.jpg"
+      },
+      {
+        label: "More Qortal Setup, Click Accept and Install",
+        description: "",
+        imageSrc: "/images/Onboarding/CoreSetup/windows/more.webp"
+      },
+      {
+        label: "User Account Control, Click Yes",
+        description: "",
+        imageSrc: "/images/Onboarding/CoreSetup/windows/control.webp"
+      },
+      {
+        label: "Wait through the installation process",
+        description: "",
+        imageSrc: "/images/Onboarding/CoreSetup/windows/installing.webp"
+      },
+      {
+        label: "Completing the Qortal Setup Wizard, Click Finish",
+        description: "",
+        imageSrc: "/images/Onboarding/CoreSetup/windows/completed.webp"
+      },
+      {
+        label: "Starting Qortal Core, this should start automatically",
+        description: "",
+        imageSrc: "/images/Onboarding/CoreSetup/windows/starting.webp"
+      },
+      {
+        label: "Wait for this to finish.",
+        description:
+          "Bootstrapping, this automatically copies the existing blockchain and extracts it. This is so it is available to your Qortal Core.",
+        imageSrc: "/images/Onboarding/CoreSetup/windows/downloading.webp"
+      }
+    ],
+    videoUrl: "https://www.youtube.com/embed/XXXXXXXXXXX" // TODO: real video
+  },
+  mac: {
+    textSteps: [
+      {
+        label: "Open Qortal Hub",
+        description: "Click Spotlight Search, Type 'qortal', Click Qortal Hub",
+        imageSrc: "/images/Onboarding/CoreSetup/mac/spotlight.webp"
+      },
+      {
+        label: "Install Java, Install Qortal Core, Start Qortal Core",
+        description:
+          "Once you've opened Hub, you'll see a popup. Click on the 'Install and Start Core' button",
+        imageSrc: "/images/Onboarding/CoreSetup/mac/start.webp"
+      },
+      {
+        label: "Qortal Splash Screen will show for a minute.",
+        description:
+          "If this is your first time starting the Qortal Core, it will need to perform some extra processes. This can take up to 10 mins. Please patiently wait as subsequent launches of the Qortal Core will not take that long.",
+        imageSrc: "/images/Onboarding/CoreSetup/mac/wait.webp"
+      },
+      {
+        label: "Click Finish",
+        description:
+          "Once the Qortal Core has finished starting up. You are ready to go.",
+        imageSrc: "/images/Onboarding/CoreSetup/mac/finish.webp"
+      },
+      {
+        label: "Understanding Syncronization",
+        description:
+          "Look at the Red Qortal Icon at the top. This will remain red for multiple minutes while the Qortal Core is synchronizing. Once it is syncronized, the Red Qortal Icon will change to a Blue color. You need to be fully syncronized to perform data publishes and blockcahin operations.",
+        imageSrc: "/images/Onboarding/CoreSetup/mac/sync.webp"
+      }
+    ],
+    videoUrl: "https://www.youtube.com/embed/YYYYYYYYYYY"
+  },
+  linux: {
+    textSteps: [
+      {
+        label: "Open Qortal Hub, Search Qortal and select Qortal Hub",
+        description:
+          "Click the copy button below to copy the terminal command.",
+        imageSrc: "/images/Onboarding/CoreSetup/linux/open.jpg"
+      },
+      {
+        label: "Welcome to Qortal Hub, Select Next",
+        description:
+          "Click the copy button below to copy the terminal command.",
+        imageSrc: "/images/Onboarding/CoreSetup/linux/welcome.jpg"
+      },
+      {
+        label:
+          "Install Java, Install Qortal Core, Run Qortal Core, Click Green Button",
+        description:
+          "Click the copy button below to copy the terminal command.",
+        imageSrc: "/images/Onboarding/CoreSetup/linux/start.jpg"
+      },
+      {
+        label: "Wait through the installation",
+        description:
+          "Click the copy button below to copy the terminal command.",
+        imageSrc: "/images/Onboarding/CoreSetup/linux/installing.jpg"
+      },
+      {
+        label: "Starting up",
+        description:
+          "When the installation is complete, the Qortal Core will automatically run. It will first bootstrap the blockchain and extract it. When the extraction is done, the core will synchronize and then it will be ready to use.",
+        imageSrc: "/images/Onboarding/CoreSetup/linux/run.jpg"
+      }
+    ],
+    videoUrl: "https://www.youtube.com/embed/ZZZZZZZZZZZ"
+  }
+};
+
+interface InstallQortalHubProps {
   onBack?: () => void;
   onNext?: () => void;
+  osAuto: OS;
+  setSelectedOnBoardingScreenShot: React.Dispatch<
+    React.SetStateAction<string | null>
+  >;
 }
 
-const textSteps: TextSteps[] = [
-  {
-    label: "Open Qortal Hub",
-    description:
-      "Launch Qortal Hub on your computer. You should see the main dashboard where you can manage Qortal Core."
-    // imageSrc: "/images/onboarding/core-step1.png",
-  },
-  {
-    label: "Start Qortal Core",
-    description:
-      "Click the button to start Qortal Core. This will run the node in the background and connect it to the network."
-    // imageSrc: "/images/onboarding/core-step2.png",
-  },
-  {
-    label: "Wait for synchronization",
-    description:
-      "Qortal Core will begin syncing blocks. The first sync may take a while. Keep Qortal Hub open until it reaches 100%."
-    // imageSrc: "/images/onboarding/core-step3.png",
-  },
-  {
-    label: "Verify you are online",
-    description:
-      "Once synced, Qortal Hub should show your node as online and synced. You’re now ready to use Qortal fully."
-    // imageSrc: "/images/onboarding/core-step4.png",
-  }
-];
-
-export function SetupQortalCore({ onBack, onNext }: SetupQortalCoreProps) {
+export function SetupQortalCore({
+  onBack,
+  onNext,
+  osAuto,
+  setSelectedOnBoardingScreenShot
+}: InstallQortalHubProps) {
+  const [os, setOs] = React.useState<OS>(osAuto);
   const [mode, setMode] = React.useState<TutorialMode>("text");
   const [activeStep, setActiveStep] = React.useState(0);
+
+  const { textSteps, videoUrl } = tutorialData[os];
+
+  const handleOsChange = (
+    _event: React.MouseEvent<HTMLElement>,
+    value: OS | null
+  ) => {
+    if (!value) return;
+    setOs(value);
+    setActiveStep(0);
+  };
 
   const handleModeChange = (
     _event: React.SyntheticEvent,
@@ -72,11 +222,8 @@ export function SetupQortalCore({ onBack, onNext }: SetupQortalCoreProps) {
   };
 
   const handleBackStep = () => {
-    if (activeStep > 0) {
-      setActiveStep((prev) => prev - 1);
-    } else {
-      onBack?.();
-    }
+    if (activeStep > 0) setActiveStep((prev) => prev - 1);
+    else onBack?.();
   };
 
   return (
@@ -90,10 +237,47 @@ export function SetupQortalCore({ onBack, onNext }: SetupQortalCoreProps) {
         </Typography>
       </Box>
 
-      {/* Mode selector */}
+      {/* OS Selector */}
       <Box>
         <Typography variant="subtitle2" color="text.secondary" gutterBottom>
-          Choose tutorial style
+          1. Select your operating system
+        </Typography>
+        <ToggleButtonGroup
+          exclusive
+          value={os}
+          onChange={handleOsChange}
+          sx={{
+            flexWrap: "wrap",
+            "& .MuiToggleButton-root": {
+              flex: { xs: "1 1 100%", sm: "1 1 auto" },
+              justifyContent: "flex-start",
+              textTransform: "none",
+              px: 2.5,
+              py: 1.5,
+              borderRadius: 2,
+              m: 0.5
+            }
+          }}
+        >
+          <ToggleButton value="windows">
+            <WindowsIcon sx={{ mr: 1 }} />
+            Windows
+          </ToggleButton>
+          <ToggleButton value="mac">
+            <AppleIcon sx={{ mr: 1 }} />
+            macOS
+          </ToggleButton>
+          <ToggleButton value="linux">
+            <TerminalIcon sx={{ mr: 1 }} />
+            Linux
+          </ToggleButton>
+        </ToggleButtonGroup>
+      </Box>
+
+      {/* Mode Selector */}
+      <Box>
+        <Typography variant="subtitle2" color="text.secondary" gutterBottom>
+          2. Choose tutorial style
         </Typography>
         <Tabs
           value={mode}
@@ -110,8 +294,15 @@ export function SetupQortalCore({ onBack, onNext }: SetupQortalCoreProps) {
         {mode === "text" ? (
           <Stack spacing={2}>
             <Typography variant="body2" color="text.secondary">
-              Follow the steps below. Screenshots in the guide will match what
-              you see in Qortal Hub.
+              Follow these steps carefully. Screenshots will match{" "}
+              <strong>
+                {os === "windows"
+                  ? "Windows"
+                  : os === "mac"
+                  ? "macOS"
+                  : "Linux"}
+              </strong>
+              .
             </Typography>
             <Stepper activeStep={activeStep} orientation="vertical">
               {textSteps.map((step, index) => (
@@ -121,10 +312,21 @@ export function SetupQortalCore({ onBack, onNext }: SetupQortalCoreProps) {
                     <Typography variant="body2" color="text.secondary">
                       {step.description}
                     </Typography>
-
+                    {step?.render && (
+                      <Box
+                        sx={{
+                          margin: "5px 0px"
+                        }}
+                      >
+                        {step?.render}
+                      </Box>
+                    )}
                     {/* Optional screenshot placeholder */}
                     {step.imageSrc && (
                       <Box
+                        onClick={() =>
+                          setSelectedOnBoardingScreenShot(step.imageSrc!)
+                        }
                         component="img"
                         src={step.imageSrc}
                         alt={step.label}
@@ -133,28 +335,28 @@ export function SetupQortalCore({ onBack, onNext }: SetupQortalCoreProps) {
                           borderRadius: 2,
                           width: "100%",
                           maxWidth: 480,
-                          display: "block"
+                          display: "block",
+                          cursor: "pointer"
                         }}
                       />
                     )}
 
                     <Stack direction="row" spacing={1} sx={{ mt: 2 }}>
-                      <Button
+                      <ButtonOnBoarding
                         variant="contained"
                         size="small"
                         onClick={handleNextStep}
+                        disabled={index === textSteps.length - 1}
                       >
-                        {index === textSteps.length - 1
-                          ? "Continue"
-                          : "Next step"}
-                      </Button>
-                      <Button
+                        Next Step
+                      </ButtonOnBoarding>
+                      <ButtonTextOnBoarding
                         size="small"
                         onClick={handleBackStep}
                         disabled={index === 0 && !onBack}
                       >
                         Back
-                      </Button>
+                      </ButtonTextOnBoarding>
                     </Stack>
                   </StepContent>
                 </Step>
@@ -166,7 +368,7 @@ export function SetupQortalCore({ onBack, onNext }: SetupQortalCoreProps) {
             <Box
               sx={{
                 position: "relative",
-                pt: "56.25%", // 16:9
+                pt: "56.25%", // 16:9 aspect ratio
                 borderRadius: 2,
                 overflow: "hidden",
                 bgcolor: "black"
@@ -174,8 +376,8 @@ export function SetupQortalCore({ onBack, onNext }: SetupQortalCoreProps) {
             >
               <Box
                 component="iframe"
-                src="https://www.youtube.com/embed/REPLACE_WITH_CORE_VIDEO"
-                title="Qortal Core setup"
+                src={videoUrl}
+                title="Qortal Hub installation"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
                 sx={{
