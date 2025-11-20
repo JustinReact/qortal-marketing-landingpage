@@ -101,7 +101,7 @@ const tutorialData: Record<
         imageSrc: "/images/Onboarding/CoreSetup/windows/downloading.webp"
       }
     ],
-    videoUrl: "https://www.youtube.com/embed/XXXXXXXXXXX" // TODO: real video
+    videoUrl: "https://www.youtube.com/embed/ZWIYFVWAfIY"
   },
   mac: {
     textSteps: [
@@ -135,7 +135,7 @@ const tutorialData: Record<
         imageSrc: "/images/Onboarding/CoreSetup/mac/sync.webp"
       }
     ],
-    videoUrl: "https://www.youtube.com/embed/YYYYYYYYYYY"
+    videoUrl: "https://www.youtube.com/embed/nwQCMZ8GE2g"
   },
   linux: {
     textSteps: [
@@ -171,7 +171,7 @@ const tutorialData: Record<
         imageSrc: "/images/Onboarding/CoreSetup/linux/run.jpg"
       }
     ],
-    videoUrl: "https://www.youtube.com/embed/ZZZZZZZZZZZ"
+    videoUrl: "https://www.youtube.com/embed/KUouFkLvE98"
   }
 };
 

@@ -174,7 +174,7 @@ const tutorialData: Record<
         imageSrc: "/images/Onboarding/InstallQortalHub/linux/launch.jpg"
       }
     ],
-    videoUrl: "https://www.youtube.com/embed/ZZZZZZZZZZZ"
+    videoUrl: "https://www.youtube.com/embed/wqpSwONzz-A"
   }
 };
 
