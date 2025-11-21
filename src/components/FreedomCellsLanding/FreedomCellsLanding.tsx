@@ -45,7 +45,7 @@ const highlightCards = [
   },
   {
     title: "Group coordination",
-    text: "The onboarding flow automatically includes the “Freedom Cell Network” group step, helping people discover other FreedomCells users."
+    text: "The onboarding flow automatically includes the “Freedom Cell Network” group step, helping people discover other Freedom Cells users."
   }
 ];
 
