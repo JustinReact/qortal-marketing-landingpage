@@ -22,6 +22,9 @@ type TutorialMode = "text" | "video";
 interface SetupQortalCoreProps {
   onBack?: () => void;
   onNext?: () => void;
+  setSelectedOnBoardingScreenShot: React.Dispatch<
+    React.SetStateAction<string | null>
+  >;
 }
 
 export interface TextSteps {
@@ -32,32 +35,52 @@ export interface TextSteps {
 
 const textSteps: TextSteps[] = [
   {
-    label: "Open Qortal Hub",
+    label: "Click on 'Create Account'",
     description:
-      "Launch Qortal Hub on your computer. You should see the main dashboard where you can manage Qortal Core."
-    // imageSrc: "/images/onboarding/core-step1.png",
+      "On the Qortal Hub welcome page, click on the 'Create Account' button",
+    imageSrc: "/images/Onboarding/CreateAccount/welcome.jpg"
   },
   {
-    label: "Start Qortal Core",
+    label: "SeedPhrase (optional)",
     description:
-      "Click the button to start Qortal Core. This will run the node in the background and connect it to the network."
-    // imageSrc: "/images/onboarding/core-step2.png",
+      "While you can export your seedphrase if you wish, we DO NOT recommend it. Continue to the next step to save your password protected account.",
+    imageSrc: "/images/Onboarding/CreateAccount/seedphrase.jpg"
   },
   {
-    label: "Wait for synchronization",
-    description:
-      "Qortal Core will begin syncing blocks. The first sync may take a while. Keep Qortal Hub open until it reaches 100%."
-    // imageSrc: "/images/onboarding/core-step3.png",
+    label: "Enter a password",
+    description: "Enter a password to protect your account",
+    imageSrc: "/images/Onboarding/CreateAccount/password.jpg"
   },
   {
-    label: "Verify you are online",
+    label: "Backup your account",
     description:
-      "Once synced, Qortal Hub should show your node as online and synced. You’re now ready to use Qortal fully."
-    // imageSrc: "/images/onboarding/core-step4.png",
+      "Click on the 'Backup Account' to save your account to your file system.",
+    imageSrc: "/images/Onboarding/CreateAccount/backup.jpg"
+  },
+  {
+    label: "Save account",
+    description: "Important that you save your account for later access.",
+    imageSrc: "/images/Onboarding/CreateAccount/save.jpg"
+  },
+  {
+    label: "Important reminder",
+    description:
+      "Save your account in multiple places where only you have access to it.",
+    imageSrc: "/images/Onboarding/CreateAccount/important.jpg"
+  },
+  {
+    label: "Copy address",
+    description:
+      "Once you've copied your address, continue to the next section.",
+    imageSrc: "/images/Onboarding/CreateAccount/copy.jpg"
   }
 ];
 
-export function CreateNewAccount({ onBack, onNext }: SetupQortalCoreProps) {
+export function CreateNewAccount({
+  onBack,
+  onNext,
+  setSelectedOnBoardingScreenShot
+}: SetupQortalCoreProps) {
   const [mode, setMode] = React.useState<TutorialMode>("text");
   const [activeStep, setActiveStep] = React.useState(0);
 
@@ -139,8 +162,12 @@ export function CreateNewAccount({ onBack, onNext }: SetupQortalCoreProps) {
                           borderRadius: 2,
                           width: "100%",
                           maxWidth: 480,
-                          display: "block"
+                          display: "block",
+                          cursor: "pointer"
                         }}
+                        onClick={() =>
+                          setSelectedOnBoardingScreenShot(step.imageSrc!)
+                        }
                       />
                     )}
 
@@ -149,10 +176,9 @@ export function CreateNewAccount({ onBack, onNext }: SetupQortalCoreProps) {
                         variant="contained"
                         size="small"
                         onClick={handleNextStep}
+                        disabled={index === textSteps.length - 1}
                       >
-                        {index === textSteps.length - 1
-                          ? "Continue"
-                          : "Next step"}
+                        Next Step
                       </ButtonOnBoarding>
                       <ButtonTextOnBoarding
                         size="small"

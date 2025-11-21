@@ -22,6 +22,9 @@ type TutorialMode = "text" | "video";
 interface SetupQortalCoreProps {
   onBack?: () => void;
   onNext?: () => void;
+  setSelectedOnBoardingScreenShot: React.Dispatch<
+    React.SetStateAction<string | null>
+  >;
 }
 
 const textSteps: TextSteps[] = [
@@ -51,7 +54,11 @@ const textSteps: TextSteps[] = [
   }
 ];
 
-export function JoinGroup({ onBack, onNext }: SetupQortalCoreProps) {
+export function JoinGroup({
+  onBack,
+  onNext,
+  setSelectedOnBoardingScreenShot
+}: SetupQortalCoreProps) {
   const [mode, setMode] = React.useState<TutorialMode>("text");
   const [activeStep, setActiveStep] = React.useState(0);
 
@@ -133,8 +140,12 @@ export function JoinGroup({ onBack, onNext }: SetupQortalCoreProps) {
                           borderRadius: 2,
                           width: "100%",
                           maxWidth: 480,
-                          display: "block"
+                          display: "block",
+                          cursor: "pointer"
                         }}
+                        onClick={() =>
+                          setSelectedOnBoardingScreenShot(step.imageSrc!)
+                        }
                       />
                     )}
 

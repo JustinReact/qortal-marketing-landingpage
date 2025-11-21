@@ -102,7 +102,11 @@ const Onboarding = () => {
       {
         key: "create-account",
         label: "Create new Qortal account",
-        render: () => <CreateNewAccount />
+        render: () => (
+          <CreateNewAccount
+            setSelectedOnBoardingScreenShot={setSelectedOnBoardingScreenShot}
+          />
+        )
       },
       {
         key: "receive-two",
@@ -112,12 +116,20 @@ const Onboarding = () => {
       {
         key: "register-name",
         label: "Register a name",
-        render: () => <RegisterName />
+        render: () => (
+          <RegisterName
+            setSelectedOnBoardingScreenShot={setSelectedOnBoardingScreenShot}
+          />
+        )
       },
       {
         key: "join-group",
         label: "Join 'The Freedom Cell Network' Group",
-        render: () => <JoinGroup />,
+        render: () => (
+          <JoinGroup
+            setSelectedOnBoardingScreenShot={setSelectedOnBoardingScreenShot}
+          />
+        ),
         requiresFreedomCells: true
       },
       {

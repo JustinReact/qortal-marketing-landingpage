@@ -16,41 +16,38 @@ import {
   Chip
 } from "@mui/material";
 import { TextSteps } from "./CreateNewAccount";
+import { ButtonOnBoarding, ButtonTextOnBoarding } from "./Onboarding-styles";
 
 type TutorialMode = "text" | "video";
 
 interface SetupQortalCoreProps {
   onBack?: () => void;
   onNext?: () => void;
+  setSelectedOnBoardingScreenShot: React.Dispatch<
+    React.SetStateAction<string | null>
+  >;
 }
 
 const textSteps: TextSteps[] = [
   {
-    label: "Click on 'REGISTER NAME'",
-    description: "test"
-    // imageSrc: "/images/onboarding/core-step1.png",
+    label: "Make sure you have a QORT balance",
+    description:
+      "In the Qortal Hub home screen, verify if you have the 2 QORT sent to you. Click the refresh button if your balance is still at zero.",
+    imageSrc: "/images/Onboarding/RegisterName/balance.jpg"
   },
   {
-    label: "Start Qortal Core",
+    label: "Register your first name",
     description:
-      "Click the button to start Qortal Core. This will run the node in the background and connect it to the network."
-    // imageSrc: "/images/onboarding/core-step2.png",
-  },
-  {
-    label: "Wait for synchronization",
-    description:
-      "Qortal Core will begin syncing blocks. The first sync may take a while. Keep Qortal Hub open until it reaches 100%."
-    // imageSrc: "/images/onboarding/core-step3.png",
-  },
-  {
-    label: "Verify you are online",
-    description:
-      "Once synced, Qortal Hub should show your node as online and synced. You’re now ready to use Qortal fully."
-    // imageSrc: "/images/onboarding/core-step4.png",
+      "Click the button 'REGISTER NAME' in red to register your first name.",
+    imageSrc: "/images/Onboarding/RegisterName/balance.jpg"
   }
 ];
 
-export function RegisterName({ onBack, onNext }: SetupQortalCoreProps) {
+export function RegisterName({
+  onBack,
+  onNext,
+  setSelectedOnBoardingScreenShot
+}: SetupQortalCoreProps) {
   const [mode, setMode] = React.useState<TutorialMode>("text");
   const [activeStep, setActiveStep] = React.useState(0);
 
@@ -132,28 +129,31 @@ export function RegisterName({ onBack, onNext }: SetupQortalCoreProps) {
                           borderRadius: 2,
                           width: "100%",
                           maxWidth: 480,
-                          display: "block"
+                          display: "block",
+                          cursor: "pointer"
                         }}
+                        onClick={() =>
+                          setSelectedOnBoardingScreenShot(step.imageSrc!)
+                        }
                       />
                     )}
 
                     <Stack direction="row" spacing={1} sx={{ mt: 2 }}>
-                      <Button
+                      <ButtonOnBoarding
                         variant="contained"
                         size="small"
                         onClick={handleNextStep}
+                        disabled={index === textSteps.length - 1}
                       >
-                        {index === textSteps.length - 1
-                          ? "Continue"
-                          : "Next step"}
-                      </Button>
-                      <Button
+                        Next Step
+                      </ButtonOnBoarding>
+                      <ButtonTextOnBoarding
                         size="small"
                         onClick={handleBackStep}
                         disabled={index === 0 && !onBack}
                       >
                         Back
-                      </Button>
+                      </ButtonTextOnBoarding>
                     </Stack>
                   </StepContent>
                 </Step>
