@@ -65,7 +65,7 @@ const textSteps: TextSteps[] = [
   {
     label: "Important reminder",
     description:
-      "Save your account in multiple places where only you have access to it.",
+      "IMPORTANT! There is no password recovery or file recovery. Save your account in multiple places where only you have access to it.  A backup on a thumb drive is recommended.",
     imageSrc: "/images/Onboarding/CreateAccount/important.jpg"
   },
   {
@@ -206,7 +206,7 @@ export function CreateNewAccount({
             >
               <Box
                 component="iframe"
-                src="https://www.youtube.com/embed/REPLACE_WITH_CORE_VIDEO"
+                src="https://www.youtube.com/embed/WAozOiABSWE"
                 title="Qortal Core setup"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen

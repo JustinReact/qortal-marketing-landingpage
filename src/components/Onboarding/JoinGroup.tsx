@@ -16,6 +16,7 @@ import {
   Chip
 } from "@mui/material";
 import { TextSteps } from "./CreateNewAccount";
+import { ButtonOnBoarding, ButtonTextOnBoarding } from "./Onboarding-styles";
 
 type TutorialMode = "text" | "video";
 
@@ -29,28 +30,59 @@ interface SetupQortalCoreProps {
 
 const textSteps: TextSteps[] = [
   {
-    label: "Open Qortal Hub",
-    description:
-      "Launch Qortal Hub on your computer. You should see the main dashboard where you can manage Qortal Core."
-    // imageSrc: "/images/onboarding/core-step1.png",
+    label: "Click Apps on the left",
+    description: "Start at the Qortal Hub Home Page, Click Apps on the left.",
+    imageSrc: "/images/Onboarding/JoinGroup/home.jpg"
   },
   {
-    label: "Start Qortal Core",
+    label: "Click on Library",
     description:
-      "Click the button to start Qortal Core. This will run the node in the background and connect it to the network."
-    // imageSrc: "/images/onboarding/core-step2.png",
+      "Apps Dashboard Page, Click the circle with the text Library towards the left.",
+    imageSrc: "/images/Onboarding/JoinGroup/apps.jpg"
   },
   {
-    label: "Wait for synchronization",
+    label: "Type in freedomcells",
     description:
-      "Qortal Core will begin syncing blocks. The first sync may take a while. Keep Qortal Hub open until it reaches 100%."
-    // imageSrc: "/images/onboarding/core-step3.png",
+      "Go to the search bar towards the upper right and Type FreedomCells in the search bar, FreedomCells will show in your results.",
+    imageSrc: "/images/Onboarding/JoinGroup/search.jpg"
   },
   {
-    label: "Verify you are online",
+    label: "Pin and Download FreedomCells",
     description:
-      "Once synced, Qortal Hub should show your node as online and synced. You’re now ready to use Qortal fully."
-    // imageSrc: "/images/onboarding/core-step4.png",
+      "Once synced, Qortal Hub should show your node as online and synced. You’re now ready to use Qortal fully.",
+    imageSrc: "/images/Onboarding/JoinGroup/search.jpg"
+  },
+  {
+    label: "Wait for FreedomCells to load to your screen",
+    description: "",
+    imageSrc: "/images/Onboarding/JoinGroup/loading.jpg"
+  },
+  {
+    label: "Authenticate, Click Accept",
+    description: "",
+    imageSrc: "/images/Onboarding/JoinGroup/accept.jpg"
+  },
+  {
+    label: "Join the Freedom Cell Network, Click Join Group",
+    description: "",
+    imageSrc: "/images/Onboarding/JoinGroup/join.jpg"
+  },
+  {
+    label: "Confirm Group Join, Click Accept",
+    description: "",
+    imageSrc: "/images/Onboarding/JoinGroup/acceptjoin.jpg"
+  },
+  {
+    label: "Wait for group join confirmation",
+    description:
+      "Wait 2-5 minutes for group join confirmation. In order to verify confirmation refresh the screen as shown on the left. You can also go above the plus sign, click the X on the app icon and re-enter the FreedomCells Q-App from the Apps Dashboard.",
+    imageSrc: "/images/Onboarding/JoinGroup/refresh.jpg"
+  },
+  {
+    label: "Successfully Joined",
+    description:
+      "Once you receive confirmation, you can use this Q-App to keep up with the Community Milestones for further Q-App development and Freedom Cell Network announcements.",
+    imageSrc: "/images/Onboarding/JoinGroup/done.jpg"
   }
 ];
 
@@ -148,24 +180,22 @@ export function JoinGroup({
                         }
                       />
                     )}
-
                     <Stack direction="row" spacing={1} sx={{ mt: 2 }}>
-                      <Button
+                      <ButtonOnBoarding
                         variant="contained"
                         size="small"
                         onClick={handleNextStep}
+                        disabled={index === textSteps.length - 1}
                       >
-                        {index === textSteps.length - 1
-                          ? "Continue"
-                          : "Next step"}
-                      </Button>
-                      <Button
+                        Next Step
+                      </ButtonOnBoarding>
+                      <ButtonTextOnBoarding
                         size="small"
                         onClick={handleBackStep}
                         disabled={index === 0 && !onBack}
                       >
                         Back
-                      </Button>
+                      </ButtonTextOnBoarding>
                     </Stack>
                   </StepContent>
                 </Step>
@@ -185,7 +215,7 @@ export function JoinGroup({
             >
               <Box
                 component="iframe"
-                src="https://www.youtube.com/embed/REPLACE_WITH_CORE_VIDEO"
+                src="https://www.youtube.com/embed/Ai-HBMOWo3U"
                 title="Qortal Core setup"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen

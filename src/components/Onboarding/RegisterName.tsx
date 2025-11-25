@@ -173,7 +173,7 @@ export function RegisterName({
             >
               <Box
                 component="iframe"
-                src="https://www.youtube.com/embed/REPLACE_WITH_CORE_VIDEO"
+                src="https://www.youtube.com/embed/7iABsJdmNa8"
                 title="Qortal Core setup"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen

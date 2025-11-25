@@ -124,20 +124,48 @@ const tutorialData: Record<
       {
         label: "Download the .dmg",
         description: "Click the download button below to save the .dmg file.",
-        render: <DownloadRender download={macDesktopDownload} type="mac" />
+        render: <DownloadRender download={macDesktopDownload} type="mac" />,
+        imageSrc: "/images/Onboarding/InstallQortalHub/mac/download.jpg"
       },
       {
-        label: "Open and drag to Applications",
+        label: "Locate the downloaded .dmg file",
         description:
-          "Open the .dmg and drag the Qortal Hub icon into your Applications folder."
+          "When the download is complete, Click the file in the upper right corner of your browser or click the latest file in your downloads folder.",
+        imageSrc: "/images/Onboarding/InstallQortalHub/mac/click.jpg"
       },
       {
-        label: "Allow app to run",
-        description:
-          "On first launch you may need to allow Qortal Hub in System Settings → Privacy & Security."
+        label: "Drag Qortal Hub into your Applications",
+        description: "",
+        imageSrc: "/images/Onboarding/InstallQortalHub/mac/drag.jpg"
+      },
+      {
+        label: "Right click the installer on your Desktop, Click Eject.",
+        description: "",
+        imageSrc: "/images/Onboarding/InstallQortalHub/mac/eject.jpg"
+      },
+      {
+        label:
+          "Click Spotlight Search Icon in the upper right corner of you screen.",
+        description: "",
+        imageSrc: "/images/Onboarding/InstallQortalHub/mac/spotlight.jpg"
+      },
+      {
+        label: "Type Qortal into the Spotlight Search field, Select Qortal Hub",
+        description: "",
+        imageSrc: "/images/Onboarding/InstallQortalHub/mac/type.jpg"
+      },
+      {
+        label: "If a popup appears, Click Open.",
+        description: "",
+        imageSrc: "/images/Onboarding/InstallQortalHub/mac/confirm.jpg"
+      },
+      {
+        label: "Qortal Hub is Ready",
+        description: "",
+        imageSrc: "/images/Onboarding/InstallQortalHub/mac/ready.jpg"
       }
     ],
-    videoUrl: "https://www.youtube.com/embed/YYYYYYYYYYY"
+    videoUrl: "https://www.youtube.com/embed/a0JkrkA4LD8"
   },
   linux: {
     textSteps: [
