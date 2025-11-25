@@ -47,8 +47,9 @@ const textSteps: TextSteps[] = [
     imageSrc: "/images/Onboarding/CreateAccount/seedphrase.jpg"
   },
   {
-    label: "Enter a password",
-    description: "Enter a password to protect your account",
+    label: "Input a password",
+    description:
+      "This is a local encryption password securing the saved Qortal Hub and downloaded backup file copy of your account.",
     imageSrc: "/images/Onboarding/CreateAccount/password.jpg"
   },
   {
@@ -65,7 +66,7 @@ const textSteps: TextSteps[] = [
   {
     label: "Important reminder",
     description:
-      "IMPORTANT! There is no password recovery or file recovery. Save your account in multiple places where only you have access to it.  A backup on a thumb drive is recommended.",
+      "IMPORTANT! There is no 'account recovery' of any kind. The account creator is the only one that has access to the account.. Save your account in multiple places where only you have access to it.  A backup on a thumb drive is recommended.",
     imageSrc: "/images/Onboarding/CreateAccount/important.jpg"
   },
   {

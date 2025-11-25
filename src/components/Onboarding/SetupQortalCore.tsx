@@ -99,6 +99,12 @@ const tutorialData: Record<
         description:
           "Bootstrapping, this automatically copies the existing blockchain and extracts it. This is so it is available to your Qortal Core.",
         imageSrc: "/images/Onboarding/CoreSetup/windows/downloading.webp"
+      },
+      {
+        label: "Click Finish",
+        description:
+          "Once the Qortal Core has finished starting up. You are ready to go.",
+        imageSrc: "/images/Onboarding/CoreSetup/mac/finish.webp"
       }
     ],
     videoUrl: "https://www.youtube.com/embed/ZWIYFVWAfIY"
@@ -141,27 +147,23 @@ const tutorialData: Record<
     textSteps: [
       {
         label: "Open Qortal Hub, Search Qortal and select Qortal Hub",
-        description:
-          "Click the copy button below to copy the terminal command.",
+        description: "",
         imageSrc: "/images/Onboarding/CoreSetup/linux/open.jpg"
       },
       {
         label: "Welcome to Qortal Hub, Select Next",
-        description:
-          "Click the copy button below to copy the terminal command.",
+        description: "",
         imageSrc: "/images/Onboarding/CoreSetup/linux/welcome.jpg"
       },
       {
         label:
           "Install Java, Install Qortal Core, Run Qortal Core, Click Green Button",
-        description:
-          "Click the copy button below to copy the terminal command.",
+        description: "",
         imageSrc: "/images/Onboarding/CoreSetup/linux/start.jpg"
       },
       {
         label: "Wait through the installation",
-        description:
-          "Click the copy button below to copy the terminal command.",
+        description: "",
         imageSrc: "/images/Onboarding/CoreSetup/linux/installing.jpg"
       },
       {
@@ -169,6 +171,12 @@ const tutorialData: Record<
         description:
           "When the installation is complete, the Qortal Core will automatically run. It will first bootstrap the blockchain and extract it. When the extraction is done, the core will synchronize and then it will be ready to use.",
         imageSrc: "/images/Onboarding/CoreSetup/linux/run.jpg"
+      },
+      {
+        label: "Click Finish",
+        description:
+          "Once the Qortal Core has finished starting up. You are ready to go.",
+        imageSrc: "/images/Onboarding/CoreSetup/mac/finish.webp"
       }
     ],
     videoUrl: "https://www.youtube.com/embed/KUouFkLvE98"

@@ -102,7 +102,7 @@ const tutorialData: Record<
       {
         label: "Choose install location",
         description:
-          "Choose install location, don't change unless you are doing something advanced.",
+          "Choose install location, don't change unless you are doing something advanced. Click Install.",
         imageSrc: "/images/Onboarding/InstallQortalHub/windows/location.webp"
       },
       {
