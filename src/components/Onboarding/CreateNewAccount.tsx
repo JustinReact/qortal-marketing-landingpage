@@ -66,7 +66,7 @@ const textSteps: TextSteps[] = [
   {
     label: "Important reminder",
     description:
-      "IMPORTANT! There is no 'account recovery' of any kind. The account creator is the only one that has access to the account.. Save your account in multiple places where only you have access to it.  A backup on a thumb drive is recommended.",
+      "IMPORTANT! There is no 'account recovery' of any kind. The account creator is the only one that has access to the account. Save your account in multiple places where only you have access to it.  A backup on a thumb drive is recommended.",
     imageSrc: "/images/Onboarding/CreateAccount/important.jpg"
   },
   {
