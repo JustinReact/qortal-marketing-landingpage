@@ -48,8 +48,7 @@ const textSteps: TextSteps[] = [
   },
   {
     label: "Pin and Download FreedomCells",
-    description:
-      "Once synced, Qortal Hub should show your node as online and synced. You’re now ready to use Qortal fully.",
+    description: "",
     imageSrc: "/images/Onboarding/JoinGroup/search.jpg"
   },
   {

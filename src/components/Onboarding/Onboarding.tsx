@@ -250,6 +250,9 @@ const Onboarding = () => {
                   onClick={handleNext}
                   disabled={isLastStep}
                   variant="contained"
+                  sx={{
+                    visibility: isLastStep ? "hidden" : "visible"
+                  }}
                 >
                   {isLastStep
                     ? "Finished"

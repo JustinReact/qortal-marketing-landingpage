@@ -105,7 +105,13 @@ const MailingList = () => {
           type="submit"
           variant="contained"
           color="primary"
-          disabled={!email || status === "loading" || loadingEmail || !name}
+          disabled={
+            !email ||
+            status === "loading" ||
+            loadingEmail ||
+            !name ||
+            status === "success"
+          }
           startIcon={<MailOutlineIcon />}
         >
           {status === "loading" ? "Subscribing..." : "Join the mailing list"}

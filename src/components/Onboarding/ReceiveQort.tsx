@@ -71,7 +71,7 @@ const ReceiveQort = ({ qortStep }: PropsReceiveQort) => {
       const data = await res.json();
 
       if (res.ok) {
-        setMessage("✅ Verified! You’re good to continue.");
+        setMessage("✅ Verified! Click the Send 2 QORT button.");
         setHasSession(true);
 
         // TODO: route to next step or unlock UI
@@ -160,6 +160,7 @@ const ReceiveQort = ({ qortStep }: PropsReceiveQort) => {
         setQortalAddress("");
         setCode("");
         setEmailSent(false);
+        setMessage("");
       }
     } catch (error) {
       console.error(error);
@@ -197,19 +198,18 @@ const ReceiveQort = ({ qortStep }: PropsReceiveQort) => {
             justifyContent: "flex-end"
           }}
         >
-          {hasSession && (
-            <ButtonWarningOnBoarding
-              onClick={logout}
-              variant="contained"
-              color="warning"
-              sx={{
-                marginBottom: "10px",
-                maxWidth: "125px"
-              }}
-            >
-              Start over
-            </ButtonWarningOnBoarding>
-          )}
+          <ButtonWarningOnBoarding
+            onClick={logout}
+            variant="contained"
+            color="warning"
+            size="small"
+            disabled={!hasSession}
+            sx={{
+              marginBottom: "10px"
+            }}
+          >
+            Start over - only if there's an issue
+          </ButtonWarningOnBoarding>
         </Box>
         <label htmlFor="email" style={{ fontWeight: 500 }}>
           Enter your email
@@ -261,7 +261,7 @@ const ReceiveQort = ({ qortStep }: PropsReceiveQort) => {
         )}
 
         {/* Code input shows only after email sent */}
-        {emailSent && !hasSession && (
+        {emailSent && (
           <>
             <label htmlFor="code" style={{ fontWeight: 500, marginTop: 8 }}>
               Enter the verification code
