@@ -217,7 +217,7 @@ const handleSendQort = async (
       amount: qortAmount,
       receiver: qortalAddress
     });
-
+    console.log("responseSendQort", responseSendQort);
     if (responseSendQort?.res?.data?.signature) {
       res.status(200).json({
         valid: true,

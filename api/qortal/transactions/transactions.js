@@ -202,6 +202,7 @@ const sendCoin = async ({ amount, receiver }) => {
     );
     return { res, validApi };
   } catch (error) {
+    console.error(error);
     return false;
   }
 };
