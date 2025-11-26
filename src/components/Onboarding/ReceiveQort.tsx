@@ -159,6 +159,7 @@ const ReceiveQort = ({ qortStep }: PropsReceiveQort) => {
         setEmail("");
         setQortalAddress("");
         setCode("");
+        setEmailSent(false);
       }
     } catch (error) {
       console.error(error);
