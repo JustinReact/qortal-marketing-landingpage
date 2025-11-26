@@ -185,7 +185,7 @@ const handleSendQort = async (
       .json({ valid: false, reason: "missing_onboarding_payload" });
     return;
   }
-
+  console.log("payload", payload);
   const email = payload.email?.trim();
   const qortalAddress = payload.qortalAddress?.trim();
   const qortStep = +(req.query.qortStep ?? 0);
