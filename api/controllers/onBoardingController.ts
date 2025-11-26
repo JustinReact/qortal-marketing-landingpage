@@ -305,7 +305,7 @@ const handleLogout = (_req: Request, res: Response): void => {
   res.clearCookie("qortal_onboarding_token", {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
-    sameSite: "strict",
+    sameSite: "none",
     path: "/"
   });
 

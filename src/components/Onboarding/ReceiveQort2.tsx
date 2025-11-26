@@ -26,6 +26,7 @@ const ReceiveQort2 = ({ qortStep }: PropsReceiveQort) => {
   const [missingToken, setMissingToken] = useState(false);
   const [loadingSend, setLoadingSend] = useState(false);
   const [message, setMessage] = useState("");
+  const [hasSentQort, setHasSentQort] = useState(false);
 
   const handleSendQort = async () => {
     setLoadingSend(true);
@@ -43,7 +44,10 @@ const ReceiveQort2 = ({ qortStep }: PropsReceiveQort) => {
       const data = await res.json();
 
       if (res.ok) {
-        setMessage("✅ 4 QORT sent");
+        setMessage(
+          "✅ 4 QORT sent. It might take up to 2 minutes to receive the 4 QORT."
+        );
+        setHasSentQort(true);
         // TODO: route to next step or unlock UI
       } else {
         const message =
@@ -135,7 +139,7 @@ const ReceiveQort2 = ({ qortStep }: PropsReceiveQort) => {
           )}
           <ButtonOnBoarding
             onClick={handleSendQort}
-            disabled={loadingSend || !hasName}
+            disabled={loadingSend || !hasName || hasSentQort}
             variant="contained"
           >
             Send 4 Qort

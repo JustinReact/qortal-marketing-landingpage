@@ -22,7 +22,7 @@ const ReceiveQort = ({ qortStep }: PropsReceiveQort) => {
   const [loadingVerify, setLoadingVerify] = useState(false);
   const [loadingSession, setLoadingSession] = useState(false);
   const [loadingSendQort, setLoadingSendQort] = useState(false);
-
+  const [hasSentQort, setHasSentQort] = useState(false);
   const [hasSession, setHasSession] = useState(false);
 
   const [message, setMessage] = useState("");
@@ -102,7 +102,10 @@ const ReceiveQort = ({ qortStep }: PropsReceiveQort) => {
       const data = await res.json();
 
       if (res.ok) {
-        setMessage("✅ 2 QORT sent");
+        setMessage(
+          "✅ 2 QORT sent. It might take up to 2 minutes to receive the 2 QORT."
+        );
+        setHasSentQort(true);
         // TODO: route to next step or unlock UI
       } else {
         const message =
@@ -161,6 +164,7 @@ const ReceiveQort = ({ qortStep }: PropsReceiveQort) => {
         setCode("");
         setEmailSent(false);
         setMessage("");
+        setHasSentQort(false);
       }
     } catch (error) {
       console.error(error);
@@ -297,18 +301,16 @@ const ReceiveQort = ({ qortStep }: PropsReceiveQort) => {
           </>
         )}
 
-        {hasSession && (
-          <ButtonOnBoarding
-            onClick={handleSendQort}
-            disabled={loadingSendQort} // allow 4–6 depending on your backend
-            variant="contained"
-            sx={{
-              marginTop: "10px"
-            }}
-          >
-            Send 2 QORT
-          </ButtonOnBoarding>
-        )}
+        <ButtonOnBoarding
+          onClick={handleSendQort}
+          disabled={loadingSendQort || !hasSession || hasSentQort} // allow 4–6 depending on your backend
+          variant="contained"
+          sx={{
+            marginTop: "10px"
+          }}
+        >
+          Send 2 QORT
+        </ButtonOnBoarding>
 
         {message && (
           <p

@@ -173,14 +173,16 @@ export function CreateNewAccount({
                     )}
 
                     <Stack direction="row" spacing={1} sx={{ mt: 2 }}>
-                      <ButtonOnBoarding
-                        variant="contained"
-                        size="small"
-                        onClick={handleNextStep}
-                        disabled={index === textSteps.length - 1}
-                      >
-                        Next Step
-                      </ButtonOnBoarding>
+                      {index !== textSteps.length - 1 && (
+                        <ButtonOnBoarding
+                          variant="contained"
+                          size="small"
+                          onClick={handleNextStep}
+                          disabled={index === textSteps.length - 1}
+                        >
+                          Next Step
+                        </ButtonOnBoarding>
+                      )}
                       <ButtonTextOnBoarding
                         size="small"
                         onClick={handleBackStep}

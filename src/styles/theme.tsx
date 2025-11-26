@@ -56,10 +56,10 @@ const commonThemeOptions = createTheme({
       fontSize: "14px"
     },
     body1: {
-      fontSize: "16px"
+      fontSize: "18px"
     },
     body2: {
-      fontSize: "14px"
+      fontSize: "16px"
     }
   },
   spacing: 8, // Customize the base spacing unit (default is 8)
@@ -184,7 +184,7 @@ const darkTheme = createTheme({
     },
     text: {
       primary: "#ffffff",
-      secondary: "#837f7f"
+      secondary: "#bfb9b9"
     },
     customBlue: {
       main: "#0085FF"
