@@ -129,7 +129,9 @@ const ReceiveQort2 = ({ qortStep }: PropsReceiveQort) => {
               }}
             >
               <Typography>
-                To receive the remaining 4 QORT please register a name.
+                To receive the remaining 4 QORT please register a name. If you
+                have already registered a name, please wait a few minutes and
+                then click "Recheck for name".
               </Typography>
               <ButtonTextOnBoarding onClick={checkForQortalName} size="medium">
                 <RefreshIcon />
