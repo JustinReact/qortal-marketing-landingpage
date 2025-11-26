@@ -71,7 +71,6 @@ const Onboarding = () => {
     }
   }, []);
 
-  console.log("os", os);
   const stepDefinitions = useMemo<StepDefinition[]>(
     () => [
       {
