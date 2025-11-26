@@ -160,7 +160,8 @@ const handleVerifyCode = async (
   res.cookie("qortal_onboarding_token", token, {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production", // only send via HTTPS in production
-    sameSite: "strict",
+    // Allow the cookie to be sent on cross-site requests (frontend + API are on different origins)
+    sameSite: "none",
     path: "/",
     maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
   });
