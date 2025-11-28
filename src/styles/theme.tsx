@@ -56,10 +56,10 @@ const commonThemeOptions = createTheme({
       fontSize: "14px"
     },
     body1: {
-      fontSize: "16px"
+      fontSize: "18px"
     },
     body2: {
-      fontSize: "14px"
+      fontSize: "16px"
     }
   },
   spacing: 8, // Customize the base spacing unit (default is 8)
@@ -82,7 +82,7 @@ const lightTheme = createTheme({
   palette: {
     mode: "light",
     primary: {
-      main: "#eeeef4",
+      main: "#115bc5",
       dark: "#d6d6db",
       light: "#f4f4f8"
     },
@@ -110,7 +110,7 @@ const lightTheme = createTheme({
         },
         "body::-webkit-scrollbar": {
           width: "16px",
-          height: "10px",
+          height: "10px"
         },
         "body::-webkit-scrollbar-thumb": {
           backgroundColor: "#0085FF",
@@ -184,7 +184,7 @@ const darkTheme = createTheme({
     },
     text: {
       primary: "#ffffff",
-      secondary: "#525252"
+      secondary: "#bfb9b9"
     },
     customBlue: {
       main: "#0085FF"
@@ -198,7 +198,7 @@ const darkTheme = createTheme({
         },
         "body::-webkit-scrollbar": {
           width: "16px",
-          height: "10px",
+          height: "10px"
         },
         "body::-webkit-scrollbar-thumb": {
           backgroundColor: "#0085FF",

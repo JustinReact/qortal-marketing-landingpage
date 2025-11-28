@@ -386,10 +386,10 @@ const Qort = () => {
                 style={{ display: faqsOpen[3] ? "flex" : "none" }}
               >
                 <p>
-                  Yes, QORT is currently listed on NonKYC, a centralized
-                  exchange that allows trading QORT against USDT. NonKYC does
-                  not require KYC of course, making it one of the few
-                  centralized exchanges where you can still trade privately.
+                  Yes, QORT is currently listed on Nonkyc.io, a centralized
+                  exchange that allows trading QORT against USDT. Nonkyc.io does
+                  not require KYC, making it one of the few centralized
+                  exchanges where you can still trade privately.
                 </p>
                 <p>
                   However, for maximum security and decentralization, we
