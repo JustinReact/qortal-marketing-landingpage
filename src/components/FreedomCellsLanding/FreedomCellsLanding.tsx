@@ -83,7 +83,7 @@ const FreedomCellsLanding = () => {
           </HeroTitle>
           <HeroSubtitle>
             Start with our onboarding journey built just for the Freedom Cell
-            Network. They&apos;ll setup Qortal Hub, receive QORT, and join the
+            Network. They&apos;ll setup Qortal Hub, redeem QORT, and join the
             group in a single flow.
           </HeroSubtitle>
           <HeroButtons>

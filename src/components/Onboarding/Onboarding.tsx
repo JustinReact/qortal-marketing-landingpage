@@ -109,7 +109,7 @@ const Onboarding = () => {
       },
       {
         key: "receive-two",
-        label: "Receive 2 QORT",
+        label: "Redeem 2 QORT",
         render: () => <ReceiveQort qortStep={1} />
       },
       {
@@ -133,7 +133,7 @@ const Onboarding = () => {
       },
       {
         key: "receive-four",
-        label: "Receive 4 QORT",
+        label: "Redeem 4 QORT",
         render: () => <ReceiveQort2 qortStep={2} />
       },
       {

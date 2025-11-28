@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { Box, Stack, Typography, TextField, Button } from "@mui/material";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
+import { ButtonOnBoarding } from "./Onboarding-styles";
 
 const EBOOK_API: string =
   process.env.NEXT_PUBLIC_EBOOK_API_HOST || "http://localhost:3010";
@@ -101,7 +102,7 @@ const MailingList = () => {
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
-        <Button
+        <ButtonOnBoarding
           type="submit"
           variant="contained"
           color="primary"
@@ -115,7 +116,7 @@ const MailingList = () => {
           startIcon={<MailOutlineIcon />}
         >
           {status === "loading" ? "Subscribing..." : "Join the mailing list"}
-        </Button>
+        </ButtonOnBoarding>
       </Stack>
 
       {message && (

@@ -45,17 +45,17 @@ const ReceiveQort2 = ({ qortStep }: PropsReceiveQort) => {
 
       if (res.ok) {
         setMessage(
-          "✅ 4 QORT sent. It might take up to 2 minutes to receive the 4 QORT."
+          "✅ 4 QORT redeemed. It might take up to 2 minutes to receive the 4 QORT."
         );
         setHasSentQort(true);
         // TODO: route to next step or unlock UI
       } else {
         const message =
           data?.reason === "invalid_qort_range_step1"
-            ? "2 QORT already sent"
+            ? "2 QORT already redeemed"
             : data?.reason === "invalid_qort_range_step2"
-            ? "4 QORT already sent"
-            : "Unable to send QORT";
+            ? "4 QORT already redeemed"
+            : "Unable to redeem QORT";
         setMessage(`❌ ${message}`);
       }
     } catch (err) {
@@ -129,7 +129,7 @@ const ReceiveQort2 = ({ qortStep }: PropsReceiveQort) => {
               }}
             >
               <Typography>
-                To receive the remaining 4 QORT please register a name. If you
+                To redeem the remaining 4 QORT please register a name. If you
                 have already registered a name, please wait a few minutes and
                 then click "Recheck for name".
               </Typography>
@@ -144,7 +144,7 @@ const ReceiveQort2 = ({ qortStep }: PropsReceiveQort) => {
             disabled={loadingSend || !hasName || hasSentQort}
             variant="contained"
           >
-            Send 4 Qort
+            REDEEM 4 Qort
           </ButtonOnBoarding>
         </>
       )}

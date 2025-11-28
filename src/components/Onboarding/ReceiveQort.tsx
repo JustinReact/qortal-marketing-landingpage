@@ -103,7 +103,7 @@ const ReceiveQort = ({ qortStep }: PropsReceiveQort) => {
 
       if (res.ok) {
         setMessage(
-          "✅ 2 QORT sent. It might take up to 2 minutes to receive the 2 QORT."
+          "✅ 2 QORT redeemed. It might take up to 2 minutes to receive the 2 QORT."
         );
         setHasSentQort(true);
         // TODO: route to next step or unlock UI
@@ -309,7 +309,7 @@ const ReceiveQort = ({ qortStep }: PropsReceiveQort) => {
             marginTop: "10px"
           }}
         >
-          Send 2 QORT
+          REDEEM 2 QORT
         </ButtonOnBoarding>
 
         {message && (
