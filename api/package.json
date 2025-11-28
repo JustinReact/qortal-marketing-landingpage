@@ -20,7 +20,9 @@
   "dependencies": {
     "@types/express": "^5.0.1",
     "@types/node": "^22.15.17",
+    "asmcrypto.js": "^2.3.2",
     "body-parser": "^2.2.0",
+    "bs58": "^5.0.0",
     "concurrently": "^9.1.2",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
@@ -28,6 +30,8 @@
     "express": "^5.1.0",
     "firebase": "^11.7.1",
     "firebase-admin": "^13.6.0",
+    "jsonwebtoken": "^9.0.2",
+    "mailersend": "^2.6.0",
     "nodemon": "^3.1.10",
     "rimraf": "^6.1.0",
     "typescript": "^5.8.3",
