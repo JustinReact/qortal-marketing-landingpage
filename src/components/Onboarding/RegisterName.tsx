@@ -191,6 +191,15 @@ export function RegisterName({
           </Stack>
         )}
       </Box>
+      <p
+        style={{
+          marginTop: 10,
+          color: "green"
+        }}
+      >
+        Once you have registered a name, you can continue to the next step to
+        redeem the remaining 4 QORT.
+      </p>
     </Stack>
   );
 }

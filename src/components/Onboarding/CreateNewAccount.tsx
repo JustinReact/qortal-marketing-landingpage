@@ -225,6 +225,15 @@ export function CreateNewAccount({
           </Stack>
         )}
       </Box>
+      <p
+        style={{
+          marginTop: 10,
+          color: "green"
+        }}
+      >
+        Once you have created your account, you can continue to the next step to
+        redeem the your 2/6 QORT.
+      </p>
     </Stack>
   );
 }
