@@ -232,6 +232,15 @@ export function JoinGroup({
           </Stack>
         )}
       </Box>
+      <p
+        style={{
+          marginTop: 10,
+          color: "green"
+        }}
+      >
+        Once you have joined the group, you can continue to the next step to
+        redeem the remaining 4 QORT.
+      </p>
     </Stack>
   );
 }

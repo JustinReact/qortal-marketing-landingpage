@@ -35,10 +35,11 @@ router.get("/login", (req, res) => {
 
 // Logout
 router.post("/logout", (req, res) => {
+  const isProd = process.env.NODE_ENV === "production";
   res.clearCookie("firebase_id_token", {
     path: "/",
-    secure: true,
-    sameSite: "none",
+    secure: isProd,
+    sameSite: isProd ? "none" : "lax",
     httpOnly: true // add this for extra security, even if you don’t set it in cookie on login
   });
   res.status(200).send("Logged out");

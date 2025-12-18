@@ -71,7 +71,7 @@ const ReceiveQort = ({ qortStep }: PropsReceiveQort) => {
       const data = await res.json();
 
       if (res.ok) {
-        setMessage("✅ Verified! Click the Send 2 QORT button.");
+        setMessage("✅ Verified!");
         setHasSession(true);
 
         // TODO: route to next step or unlock UI
@@ -110,10 +110,13 @@ const ReceiveQort = ({ qortStep }: PropsReceiveQort) => {
       } else {
         const message =
           data?.reason === "invalid_qort_range_step1"
-            ? "2 QORT already sent"
+            ? "2 QORT already sent. Please proceed to the next step to redeem the remaining 4 QORT."
             : data?.reason === "invalid_qort_range_step1"
             ? "4 QORT already sent"
             : "Unable to send QORT";
+        if (data?.reason === "invalid_qort_range_step1") {
+          setHasSentQort(true);
+        }
         setMessage(`❌ ${message}`);
       }
     } catch (err) {
@@ -144,6 +147,12 @@ const ReceiveQort = ({ qortStep }: PropsReceiveQort) => {
       setLoadingSession(false);
     }
   }, []);
+
+  useEffect(() => {
+    if (hasSession) {
+      handleSendQort();
+    }
+  }, [hasSession]);
 
   useEffect(() => {
     checkForSession();
@@ -294,14 +303,14 @@ const ReceiveQort = ({ qortStep }: PropsReceiveQort) => {
             <ButtonOnBoarding
               variant="contained"
               onClick={handleVerify}
-              disabled={loadingVerify || code.length < 4 || hasSession} // allow 4–6 depending on your backend
+              disabled={loadingVerify || code.length < 4 || hasSession}
             >
               {loadingVerify ? "Verifying..." : "Verify Code"}
             </ButtonOnBoarding>
           </>
         )}
 
-        <ButtonOnBoarding
+        {/* <ButtonOnBoarding
           onClick={handleSendQort}
           disabled={loadingSendQort || !hasSession || hasSentQort} // allow 4–6 depending on your backend
           variant="contained"
@@ -310,16 +319,27 @@ const ReceiveQort = ({ qortStep }: PropsReceiveQort) => {
           }}
         >
           REDEEM 2 QORT
-        </ButtonOnBoarding>
+        </ButtonOnBoarding> */}
 
         {message && (
           <p
             style={{
               marginTop: 10,
-              color: message.startsWith("✅") ? "green" : "red"
+              color: message.startsWith("✅") ? "green" : "inherit"
             }}
           >
             {message}
+          </p>
+        )}
+        {hasSentQort && (
+          <p
+            style={{
+              marginTop: 10,
+              color: "green"
+            }}
+          >
+            Continue to the next step to reedem the remaining 4 QORT. You will
+            need to register a name first. Instructions in the next step.
           </p>
         )}
       </form>
