@@ -1,9 +1,6 @@
 const axios = require("axios");
 
-const apiEndpoints = [
-  "https://appnode.qortal.org",
-  "https://ext-node.qortal.link"
-];
+const apiEndpoints = ["http://localhost:12391", "https://ext-node.qortal.link"];
 
 const findUsableApi = async () => {
   for (const endpoint of apiEndpoints) {

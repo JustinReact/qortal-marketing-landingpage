@@ -20,6 +20,20 @@ function LayoutProvider({ children }: { children: React.ReactNode }) {
     window.scrollTo(0, 0);
   }, [location]);
   
+  // For editor routes (including /editor/view), don't wrap with header/footer
+  const isEditorRoute = location.startsWith('/editor');
+  
+  if (isEditorRoute) {
+    return (
+      <Provider store={store}>
+        <ThemeProviderWrapper>
+          <CssBaseline />
+          {children}
+        </ThemeProviderWrapper>
+      </Provider>
+    );
+  }
+  
   return (
     <Provider store={store}>
       <ThemeProviderWrapper>

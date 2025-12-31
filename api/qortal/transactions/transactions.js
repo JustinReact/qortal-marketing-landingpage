@@ -263,5 +263,6 @@ module.exports = {
   getNameOrAddress,
   getLastRef,
   sendQortFee,
-  validateAddress
+  validateAddress,
+  processTransactionVersion2
 };
