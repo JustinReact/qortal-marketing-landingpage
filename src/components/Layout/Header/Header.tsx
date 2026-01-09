@@ -106,19 +106,6 @@ export const Header = () => {
               >
                 Home
               </QORTButton>
-              {/* <QORTButton
-                className={location === "/qort" ? "active" : ""}
-                onClick={() => {
-                  ReactGA.event({
-                    category: "User",
-                    action: "Clicked QORT Button",
-                    label: "QORT Button"
-                  });
-                }}
-                href={"/qort"}
-              >
-                QORT
-              </QORTButton> */}
               <QORTButton
                 className={location === "/downloads" ? "active" : ""}
                 onClick={() => {
@@ -133,17 +120,17 @@ export const Header = () => {
                 Downloads
               </QORTButton>
               <QORTButton
-                className={location.includes("/wiki") ? "active" : ""}
+                className={location.includes("/onboarding") ? "active" : ""}
                 onClick={() => {
                   ReactGA.event({
                     category: "User",
-                    action: "Clicked Wiki Button Header",
-                    label: "Wiki Button"
+                    action: "Clicked Onboarding Button Header",
+                    label: "Onboarding Button"
                   });
                 }}
-                href={"/wiki"}
+                href={"/onboarding"}
               >
-                Wiki
+                Onboarding
               </QORTButton>
               <Docs
                 className={location === "/team" ? "active" : ""}
@@ -163,10 +150,22 @@ export const Header = () => {
                 onMouseLeave={() => setOpen(false)}
                 sx={{ position: "relative", display: "inline-block" }}
               >
-                <DropdownBtn>Info</DropdownBtn>
+                <DropdownBtn>More</DropdownBtn>
 
                 {open && (
                   <DropdownContainer elevation={3}>
+                    <DropdownItem
+                      onClick={() => {
+                        ReactGA.event({
+                          category: "User",
+                          action: "Clicked Wiki Qortal Header Desktop",
+                          label: "Clicked Wiki Qortal Header Desktop"
+                        });
+                      }}
+                      href="/wiki"
+                    >
+                      Wiki
+                    </DropdownItem>
                     <DropdownItem
                       onClick={() => {
                         ReactGA.event({
