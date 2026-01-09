@@ -12,17 +12,6 @@ export const publishLimiter = rateLimit({
   },
   standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
   legacyHeaders: false, // Disable the `X-RateLimit-*` headers
-  // Use a more sophisticated key generator if behind a proxy
-  keyGenerator: (req) => {
-    // Try to get real IP from proxy headers, fallback to socket IP
-    return (
-      req.ip ||
-      (req.headers["x-forwarded-for"] as string) ||
-      (req.headers["x-real-ip"] as string) ||
-      req.socket.remoteAddress ||
-      "unknown"
-    );
-  },
   // Skip successful requests from rate limit counting (optional)
   skipSuccessfulRequests: false,
   // Skip failed requests from rate limit counting (optional)
