@@ -95,6 +95,12 @@ const ReceiveQort2 = ({ qortStep }: PropsReceiveQort) => {
     checkForQortalName();
   }, []);
 
+  useEffect(() => {
+    if (hasName) {
+      handleSendQort();
+    }
+  }, [hasName]);
+
   if (loadingName) return null;
 
   return (
@@ -139,13 +145,13 @@ const ReceiveQort2 = ({ qortStep }: PropsReceiveQort) => {
               </ButtonTextOnBoarding>
             </Box>
           )}
-          <ButtonOnBoarding
+          {/* <ButtonOnBoarding
             onClick={handleSendQort}
             disabled={loadingSend || !hasName || hasSentQort}
             variant="contained"
           >
             REDEEM 4 Qort
-          </ButtonOnBoarding>
+          </ButtonOnBoarding> */}
         </>
       )}
 

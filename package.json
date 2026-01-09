@@ -9,6 +9,7 @@
     "start": "concurrently \"npm run start --prefix api\" \"next start\""
   },
   "dependencies": {
+    "@codesandbox/sandpack-react": "^2.20.0",
     "@emotion/cache": "^11.13.1",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",

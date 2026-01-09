@@ -157,11 +157,11 @@ const handleVerifyCode = async (
   );
 
   // Set cookie (valid for 7 days)
+  const isProd = process.env.NODE_ENV === "production";
   res.cookie("qortal_onboarding_token", token, {
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production", // only send via HTTPS in production
-    // Allow the cookie to be sent on cross-site requests (frontend + API are on different origins)
-    sameSite: "none",
+    secure: isProd, // only send via HTTPS in production
+    sameSite: isProd ? "none" : "lax",
     path: "/",
     maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
   });
@@ -302,10 +302,11 @@ const handleGetOnboardingProfile = (req: Request, res: Response): void => {
 };
 
 const handleLogout = (_req: Request, res: Response): void => {
+  const isProd = process.env.NODE_ENV === "production";
   res.clearCookie("qortal_onboarding_token", {
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "none",
+    secure: isProd,
+    sameSite: isProd ? "none" : "lax",
     path: "/"
   });
 

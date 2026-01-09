@@ -22,6 +22,7 @@ import { SetupQortalCore } from "./SetupQortalCore";
 import { CreateNewAccount } from "./CreateNewAccount";
 import { RegisterName } from "./RegisterName";
 import { JoinGroup } from "./JoinGroup";
+import { DynamicJoinGroup } from "./DynamicJoinGroup";
 import ReceiveQort from "./ReceiveQort";
 import ReceiveQort2 from "./ReceiveQort2";
 import NextSteps from "./NextSteps";
@@ -31,24 +32,45 @@ import {
   SupportModalButton
 } from "../Common/Modal/SupportModal-styles";
 import Modal from "../Common/Modal/Modal";
+import { groupApi } from "../../constants/endpoint";
+import { fetchAPI } from "../../utils/fetchAPI";
 
 type StepDefinition = {
   key: string;
   label: string;
   render: () => React.ReactNode;
   requiresFreedomCells?: boolean;
+  requiresDynamicGroup?: boolean;
 };
+
+interface GroupInfo {
+  groupId: number;
+  owner: string;
+  groupName: string;
+  description: string;
+  created: number;
+  isOpen: boolean;
+  approvalThreshold: string;
+  minimumBlockDelay: number;
+  maximumBlockDelay: number;
+  memberCount: number;
+}
 
 const Onboarding = () => {
   const theme = useTheme();
   const searchParams = useSearchParams();
   const referral = searchParams?.get("ref")?.toLowerCase() ?? null;
+  const groupIdParam = searchParams?.get("groupId") ?? null;
   const showFreedomCellsStep = referral === "freedomcells";
   const [os, setOS] = useState<OS>("windows");
   const [selectedOnBoardingScreenShot, setSelectedOnBoardingScreenShot] =
     useState<null | string>(null);
+  const [groupInfo, setGroupInfo] = useState<GroupInfo | null>(null);
+  const [isLoadingGroup, setIsLoadingGroup] = useState<boolean>(false);
 
-  const storageKey = showFreedomCellsStep
+  const storageKey = groupInfo
+    ? `onboardingStep-group-${groupInfo.groupId}`
+    : showFreedomCellsStep
     ? "onboardingStep-freedomcells"
     : "onboardingStep";
 
@@ -70,6 +92,30 @@ const Onboarding = () => {
       setOS("windows");
     }
   }, []);
+
+  // Fetch group info if groupId is provided
+  useEffect(() => {
+    const fetchGroupInfo = async () => {
+      if (!groupIdParam) return;
+
+      setIsLoadingGroup(true);
+      try {
+        const response = await fetchAPI(
+          groupApi,
+          `/groups/${groupIdParam}`,
+          "GET"
+        );
+        setGroupInfo(response);
+      } catch (error) {
+        console.error("Failed to fetch group info:", error);
+        setGroupInfo(null);
+      } finally {
+        setIsLoadingGroup(false);
+      }
+    };
+
+    fetchGroupInfo();
+  }, [groupIdParam]);
 
   const stepDefinitions = useMemo<StepDefinition[]>(
     () => [
@@ -132,6 +178,18 @@ const Onboarding = () => {
         requiresFreedomCells: true
       },
       {
+        key: "join-dynamic-group",
+        label: groupInfo ? `Join '${groupInfo.groupName}' Group` : "Join Group",
+        render: () =>
+          groupInfo ? (
+            <DynamicJoinGroup
+              groupInfo={groupInfo}
+              setSelectedOnBoardingScreenShot={setSelectedOnBoardingScreenShot}
+            />
+          ) : null,
+        requiresDynamicGroup: true
+      },
+      {
         key: "receive-four",
         label: "Redeem 4 QORT",
         render: () => <ReceiveQort2 qortStep={2} />
@@ -147,15 +205,17 @@ const Onboarding = () => {
         render: () => <NextSteps />
       }
     ],
-    [os]
+    [os, groupInfo]
   );
 
   const steps = useMemo(
     () =>
       stepDefinitions.filter(
-        (step) => showFreedomCellsStep || !step.requiresFreedomCells
+        (step) =>
+          (showFreedomCellsStep || !step.requiresFreedomCells) &&
+          (groupInfo || !step.requiresDynamicGroup)
       ),
-    [stepDefinitions, showFreedomCellsStep]
+    [stepDefinitions, showFreedomCellsStep, groupInfo]
   );
 
   useEffect(() => {
@@ -170,7 +230,7 @@ const Onboarding = () => {
     setActiveStep((prev) => Math.min(prev + 1, steps.length - 1));
   const handleBack = () => setActiveStep((prev) => Math.max(prev - 1, 0));
 
-  if (!isHydrated || steps.length === 0) return null;
+  if (!isHydrated || steps.length === 0 || isLoadingGroup) return null;
 
   const currentStepIndex = Math.min(activeStep, steps.length - 1);
   const currentStep = steps[currentStepIndex];

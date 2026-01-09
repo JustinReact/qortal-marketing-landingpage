@@ -3,7 +3,6 @@
 import * as React from "react";
 import {
   Box,
-  Paper,
   Stack,
   Typography,
   Tabs,
@@ -12,15 +11,28 @@ import {
   Step,
   StepLabel,
   StepContent,
-  Button,
-  Chip
+  Alert
 } from "@mui/material";
 import { TextSteps } from "./CreateNewAccount";
 import { ButtonOnBoarding, ButtonTextOnBoarding } from "./Onboarding-styles";
 
 type TutorialMode = "text" | "video";
 
-interface SetupQortalCoreProps {
+interface GroupInfo {
+  groupId: number;
+  owner: string;
+  groupName: string;
+  description: string;
+  created: number;
+  isOpen: boolean;
+  approvalThreshold: string;
+  minimumBlockDelay: number;
+  maximumBlockDelay: number;
+  memberCount: number;
+}
+
+interface DynamicJoinGroupProps {
+  groupInfo: GroupInfo;
   onBack?: () => void;
   onNext?: () => void;
   setSelectedOnBoardingScreenShot: React.Dispatch<
@@ -28,70 +40,60 @@ interface SetupQortalCoreProps {
   >;
 }
 
-const textSteps: TextSteps[] = [
+// Generic text steps for joining any group
+const getTextSteps = (groupName: string): TextSteps[] => [
   {
     label: "Click Apps on the left",
     description: "Start at the Qortal Hub Home Page, Click Apps on the left.",
     imageSrc: "/images/Onboarding/JoinGroup/home.jpg"
   },
   {
-    label: "Click on Library",
+    label: "Click on Groups",
     description:
-      "Apps Dashboard Page, Click the circle with the text Library towards the left.",
+      "In the Apps section, locate and click on the Groups application.",
     imageSrc: "/images/Onboarding/JoinGroup/apps.jpg"
   },
   {
-    label: "Type in freedomcells",
-    description:
-      "Go to the search bar towards the upper right and Type FreedomCells in the search bar, FreedomCells will show in your results.",
+    label: `Search for "${groupName}"`,
+    description: `Go to the search bar and type "${groupName}" to find the group.`,
     imageSrc: "/images/Onboarding/JoinGroup/search.jpg"
   },
   {
-    label: "Pin and Download FreedomCells",
-    description: "",
-    imageSrc: "/images/Onboarding/JoinGroup/search.jpg"
-  },
-  {
-    label: "Wait for FreedomCells to load to your screen",
-    description: "",
-    imageSrc: "/images/Onboarding/JoinGroup/loading.jpg"
-  },
-  {
-    label: "Authenticate, Click Accept",
-    description: "",
-    imageSrc: "/images/Onboarding/JoinGroup/accept.jpg"
-  },
-  {
-    label: "Join the Freedom Cell Network, Click Join Group",
-    description: "",
+    label: "Join the Group",
+    description: `Click the "Join Group" button for "${groupName}".`,
     imageSrc: "/images/Onboarding/JoinGroup/join.jpg"
   },
   {
-    label: "Confirm Group Join, Click Accept",
-    description: "",
+    label: "Confirm Group Join",
+    description: "Click Accept to confirm joining the group.",
     imageSrc: "/images/Onboarding/JoinGroup/acceptjoin.jpg"
   },
   {
     label: "Wait for group join confirmation",
     description:
-      "Wait 2-5 minutes for group join confirmation. In order to verify confirmation refresh the screen as shown on the left. You can also go above the plus sign, click the X on the app icon and re-enter the FreedomCells Q-App from the Apps Dashboard.",
+      "Wait 2-5 minutes for group join confirmation. You may need to refresh the page to see the confirmation.",
     imageSrc: "/images/Onboarding/JoinGroup/refresh.jpg"
   },
   {
     label: "Successfully Joined",
-    description:
-      "Once you receive confirmation, you can use this Q-App to keep up with the Community Milestones for further Q-App development and Freedom Cell Network announcements.",
+    description: `You have successfully joined "${groupName}".`,
     imageSrc: "/images/Onboarding/JoinGroup/done.jpg"
   }
 ];
 
-export function JoinGroup({
+export function DynamicJoinGroup({
+  groupInfo,
   onBack,
   onNext,
   setSelectedOnBoardingScreenShot
-}: SetupQortalCoreProps) {
+}: DynamicJoinGroupProps) {
   const [mode, setMode] = React.useState<TutorialMode>("text");
   const [activeStep, setActiveStep] = React.useState(0);
+
+  const textSteps = React.useMemo(
+    () => getTextSteps(groupInfo.groupName),
+    [groupInfo.groupName]
+  );
 
   const handleModeChange = (
     _event: React.SyntheticEvent,
@@ -119,13 +121,19 @@ export function JoinGroup({
 
   return (
     <Stack spacing={3}>
-      {/* Header */}
-
+      {/* Group Information */}
       <Box>
-        <Typography variant="body1" color="text.secondary">
-          Account creation takes under 1 minute. Everything is done locally on
-          your device. No calls to servers!
-        </Typography>
+        <Alert severity="info" sx={{ mb: 2 }}>
+          <Typography variant="body2" fontWeight={600} gutterBottom>
+            {groupInfo.groupName}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {groupInfo.description}
+          </Typography>
+          <Typography variant="caption" color="text.secondary" sx={{ mt: 1, display: "block" }}>
+            Members: {groupInfo.memberCount} • Group ID: {groupInfo.groupId}
+          </Typography>
+        </Alert>
       </Box>
 
       {/* Mode selector */}
@@ -148,8 +156,8 @@ export function JoinGroup({
         {mode === "text" ? (
           <Stack spacing={2}>
             <Typography variant="body2" color="text.secondary">
-              Follow the steps below. Screenshots in the guide will match what
-              you see in Qortal Hub.
+              Follow the steps below to join {groupInfo.groupName}. Screenshots
+              in the guide will match what you see in Qortal Hub.
             </Typography>
             <Stepper activeStep={activeStep} orientation="vertical">
               {textSteps.map((step, index) => (
@@ -217,7 +225,7 @@ export function JoinGroup({
               <Box
                 component="iframe"
                 src="https://www.youtube.com/embed/Ai-HBMOWo3U"
-                title="Qortal Core setup"
+                title="Qortal group join tutorial"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
                 sx={{
@@ -232,15 +240,16 @@ export function JoinGroup({
           </Stack>
         )}
       </Box>
-      <p
-        style={{
-          marginTop: 10,
-          color: "green"
+      <Typography
+        variant="body2"
+        sx={{
+          marginTop: 2,
+          color: "success.main"
         }}
       >
-        Once you have joined the group, you can continue to the next step to
-        redeem the remaining 4 QORT.
-      </p>
+        Once you have joined the group, you can continue to the next step.
+      </Typography>
     </Stack>
   );
 }
+

@@ -2,8 +2,7 @@ import { styled, keyframes, maxWidth } from "@mui/system";
 import { Box, Button, Typography } from "@mui/material";
 import Image from "next/image";
 import { oxygen, protestStrike, ptSans, raleway } from "../../app/fonts";
-import TradeOgre from "../../../public/images/QORT/TradeOgre.png";
-import { themeSlice } from "../../state/theme/themeSlice";
+import nonkyc from "../../../public/images/QORT/nonkyc.png";
 
 export const spinAnimation = keyframes`
   0% {
@@ -274,7 +273,7 @@ export const TopFoldButtonRow = styled(Box)({
   }
 });
 
-export const TradeOgreCTAButton = styled(Button)(({ theme }) => ({
+export const NonKYCCTAButton = styled(Button)(({ theme }) => ({
   position: "relative",
   display: "flex",
   alignItems: "center",
@@ -297,7 +296,7 @@ export const TradeOgreCTAButton = styled(Button)(({ theme }) => ({
   transition: "all 0.2s ease-in-out",
   "&::after": {
     content: '""',
-    backgroundImage: `url(${TradeOgre.src})`,
+    backgroundImage: `url(${nonkyc.src})`,
     backgroundRepeat: "no-repeat",
     backgroundSize: "contain",
     position: "absolute",
@@ -309,8 +308,8 @@ export const TradeOgreCTAButton = styled(Button)(({ theme }) => ({
   "&:hover": {
     color: "#ffffff",
     boxShadow: "1px 4px 10.5px 0px #0000004D",
-    backgroundColor: "#534242",
-    border: `1px solid #534242`
+    backgroundColor: "#0043c8",
+    border: `1px solid #0043c8`
   },
   "@media (max-width: 788px)": {
     width: "100%",
