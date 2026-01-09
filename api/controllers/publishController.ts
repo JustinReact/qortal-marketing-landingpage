@@ -64,23 +64,27 @@ export const publishApp = async (
     console.log(`[${buildId}] Setting up node_modules...`);
     const sourceNodeModules = path.join(BASE_TEMPLATE_PATH, "node_modules");
     const targetNodeModules = path.join(tempBuildPath, "node_modules");
-    
+
     // Check if source node_modules exists
     const sourceExists = await fs.pathExists(sourceNodeModules);
-    
+
     if (sourceExists) {
       // Try symlink first (works locally)
       try {
         await fs.ensureSymlink(sourceNodeModules, targetNodeModules);
         console.log(`[${buildId}] node_modules linked successfully`);
       } catch (symlinkError) {
-        console.log(`[${buildId}] Symlink failed, copying node_modules instead...`);
+        console.log(
+          `[${buildId}] Symlink failed, copying node_modules instead...`
+        );
         await fs.copy(sourceNodeModules, targetNodeModules);
         console.log(`[${buildId}] node_modules copied successfully`);
       }
     } else {
       // If node_modules doesn't exist, install dependencies
-      console.log(`[${buildId}] node_modules not found, installing dependencies...`);
+      console.log(
+        `[${buildId}] node_modules not found, installing dependencies...`
+      );
       await execPromise("npm install", {
         cwd: tempBuildPath,
         env: { ...process.env, NODE_ENV: "development" }, // Use development to install devDependencies (needed for vite)
