@@ -312,8 +312,6 @@ const uploadData = async (
   const trimmedResult = result.trim();
 
   // Log the response for debugging
-  console.log("Finalize response:", trimmedResult);
-  console.log("Response length:", trimmedResult.length);
 
   // Check if result looks like Base58 (should only contain Base58 characters)
   if (!trimmedResult || trimmedResult.length === 0) {
@@ -401,14 +399,11 @@ const signAndProcessWithFee = async (
   transactionBytesBase58: string
 ) => {
   console.log("Valid API:", validApi);
-  console.log("Transaction bytes (input):", transactionBytesBase58);
 
   let convertedBytesBase58 = await convertBytesForSigning(
     validApi,
     transactionBytesBase58
   );
-
-  console.log("Converted bytes:", convertedBytesBase58);
 
   if (convertedBytesBase58.error) {
     throw new Error("Error when signing");
@@ -426,7 +421,6 @@ const signAndProcessWithFee = async (
     convertedBytesBase58,
     keyPair
   );
-  console.log("Signed arbitrary bytes:", signedArbitraryBytes);
   const response = await processTransactionVersion2(
     Base58.encode(signedArbitraryBytes),
     validApi

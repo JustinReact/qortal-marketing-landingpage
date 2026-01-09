@@ -27,7 +27,6 @@ export const publishApp = async (
   req: Request,
   res: Response
 ): Promise<void> => {
-  console.log("entered");
   const buildId = randomUUID();
   const tempBuildPath = path.join(TEMP_DIR, buildId);
   const distPath = path.join(tempBuildPath, "dist");
@@ -37,7 +36,6 @@ export const publishApp = async (
     const { appCode, identifier } = req.body as PublishRequest;
 
     if (!appCode || typeof appCode !== "string") {
-      console.log("appCode is required");
       res.status(400).json({
         success: false,
         error: "App code is required"
@@ -47,7 +45,9 @@ export const publishApp = async (
 
     console.log(`[${buildId}] Starting build process...`);
     if (identifier) {
-      console.log(`[${buildId}] Using existing identifier for update: ${identifier}`);
+      console.log(
+        `[${buildId}] Using existing identifier for update: ${identifier}`
+      );
     }
 
     // Step 1: Copy base template to temp directory (excluding node_modules for now)
@@ -98,10 +98,6 @@ export const publishApp = async (
     // Step 6: Publish to Qortal network
     console.log(`[${buildId}] Publishing to Qortal network...`);
     const qortalResponse = await publishToQortal(outputZipPath, identifier);
-    console.log(
-      `[${buildId}] Published to Qortal successfully:`,
-      qortalResponse
-    );
 
     // Step 7: Cleanup temp directory and zip file
     console.log(`[${buildId}] Cleaning up temp files...`);
