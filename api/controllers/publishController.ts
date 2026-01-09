@@ -60,12 +60,34 @@ export const publishApp = async (
     });
     console.log(`[${buildId}] Base template copied successfully`);
 
-    // Step 1b: Create symlink to node_modules to save space and time
-    console.log(`[${buildId}] Linking node_modules...`);
+    // Step 1b: Set up node_modules
+    console.log(`[${buildId}] Setting up node_modules...`);
     const sourceNodeModules = path.join(BASE_TEMPLATE_PATH, "node_modules");
     const targetNodeModules = path.join(tempBuildPath, "node_modules");
-    await fs.ensureSymlink(sourceNodeModules, targetNodeModules);
-    console.log(`[${buildId}] node_modules linked successfully`);
+    
+    // Check if source node_modules exists
+    const sourceExists = await fs.pathExists(sourceNodeModules);
+    
+    if (sourceExists) {
+      // Try symlink first (works locally)
+      try {
+        await fs.ensureSymlink(sourceNodeModules, targetNodeModules);
+        console.log(`[${buildId}] node_modules linked successfully`);
+      } catch (symlinkError) {
+        console.log(`[${buildId}] Symlink failed, copying node_modules instead...`);
+        await fs.copy(sourceNodeModules, targetNodeModules);
+        console.log(`[${buildId}] node_modules copied successfully`);
+      }
+    } else {
+      // If node_modules doesn't exist, install dependencies
+      console.log(`[${buildId}] node_modules not found, installing dependencies...`);
+      await execPromise("npm install", {
+        cwd: tempBuildPath,
+        env: { ...process.env, NODE_ENV: "development" }, // Use development to install devDependencies (needed for vite)
+        timeout: 300000 // 5 minutes timeout
+      });
+      console.log(`[${buildId}] Dependencies installed successfully`);
+    }
 
     // Step 2: Replace App.tsx with user code
     console.log(`[${buildId}] Writing user App.tsx...`);

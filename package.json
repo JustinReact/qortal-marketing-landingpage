@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "concurrently \"npm run serve --prefix api\" \"next dev\"",
-    "build": "next build",
+    "setup-template": "cd api/base-template && npm install && cd ../..",
+    "build": "npm run setup-template && next build",
     "start": "concurrently \"npm run start --prefix api\" \"next start\""
   },
   "dependencies": {
