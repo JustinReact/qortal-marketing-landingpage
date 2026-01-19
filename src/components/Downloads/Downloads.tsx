@@ -16,10 +16,12 @@ import {
   DownloadsCoreGrid,
   DownloadsTitle,
   DownloadSubCol,
+  DownloadSubText,
   DownloadsUIGrid,
   DownloadText,
   DownloadText1,
   DownloadText3,
+  DownloadTextCol,
   DownloadUIRow,
   IPhoneRow,
   MainCol,
@@ -168,7 +170,7 @@ const Downloads = () => {
       }
     }
   };
-  
+
   const commandLineModalVariants = {
     opened: {
       opacity: 1,
@@ -310,9 +312,16 @@ const Downloads = () => {
       </DownloadsTitle>
       <MainRow>
         <MainCol>
-          <DownloadText>
-            <strong>Qortal User Interface</strong> For:
-          </DownloadText>
+          <DownloadTextCol>
+            <DownloadText>
+              <strong>Qortal User Interface</strong>
+            </DownloadText>
+            <DownloadSubText>
+              This is what most users need. The Qortal User Interface lets you
+              access Qortal apps, messaging, groups, and wallets. Only a simple
+              installation is needed.
+            </DownloadSubText>
+          </DownloadTextCol>
           {isIOS ? (
             <IPhoneRow>
               <DownloadCol style={{ minWidth: "300px" }}>
@@ -572,9 +581,14 @@ const Downloads = () => {
               </DownloadUIRow>
               <DownloadCoreRow>
                 <DownloadSubCol>
+                  <DownloadTextCol>
                   <DownloadText style={{ marginTop: 0 }}>
-                    <strong>Qortal Core</strong> (Optional) For:
+                    <strong>Qortal Core</strong> (Optional)
                   </DownloadText>
+                  <DownloadSubText>
+                    Qortal Core runs a full node. This is optional and only needed if you want to support the network, mint QORT, or run infrastructure. It is recommended for those looking to fully participate in the Qortal network.
+                  </DownloadSubText>
+                  </DownloadTextCol>
                   <DownloadsCoreGrid>
                     <DownloadCol>
                       <DownloadCard

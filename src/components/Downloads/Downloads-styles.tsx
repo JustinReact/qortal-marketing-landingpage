@@ -26,18 +26,18 @@ export const MainRow = styled(Box)(({ theme }) => ({
   alignItems: "flex-start",
   width: "100%",
   [theme.breakpoints.down("lg")]: {
-    gridTemplateColumns: "1fr",
+    gridTemplateColumns: "1fr"
   }
-}))
+}));
 
 export const MainCol = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
   justifyContent: "center",
-  gap: "20px",
-  width: "100%",
-}))
+  gap: "22px",
+  width: "100%"
+}));
 
 export const DownloadsTitle = styled(Typography)(({ theme }) => ({
   textAlign: "center",
@@ -59,39 +59,39 @@ export const DownloadContainer = styled(Box)(({ theme }) => ({
   flexDirection: "column",
   alignItems: "center",
   justifyContent: "center",
-  gap: "72px",
+  gap: "72px"
 }));
 
 export const DownloadUIRow = styled(Box)({
   display: "flex",
   flexDirection: "row",
-  alignItems: "center",
-})
+  alignItems: "center"
+});
 
-export const DownloadCoreRow = styled(Box)({
+export const DownloadCoreRow = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "row",
   alignItems: "center",
   width: "100%",
- "@media(max-width: 1000px)": {
-    display: "none",
-  },
-});
+  [theme.breakpoints.down("sm")]: {
+    display: "none"
+  }
+}));
 
 export const DownloadsUIGrid = styled(Box)({
   display: "grid",
   gridTemplateColumns: "repeat(5, 1fr)",
   gap: "10px",
   "@media(max-width: 751px)": {
-    gridTemplateColumns: "repeat(3, 1fr)",
-  },
+    gridTemplateColumns: "repeat(3, 1fr)"
+  }
 });
 
 export const DownloadsCoreGrid = styled(Box)({
   display: "grid",
   gridTemplateColumns: "repeat(3, 1fr)",
-  gap: "10px",
-})
+  gap: "10px"
+});
 
 export const DownloadCard = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -114,7 +114,7 @@ export const DownloadCard = styled(Box)(({ theme }) => ({
         ? "none"
         : "0px 12px 17px 2px hsla(0, 0%, 100%, 0.08), 0px 5px 22px 4px hsla(0, 0%, 100%, 0.09), 0px 7px 8px -4px hsla(0, 0%, 100%, 0.2),  0px 0px 10px rgba(255, 255, 255, 0.1)",
     backgroundColor: theme.palette.mode === "dark" ? "#56AEFF" : "#003E78"
-  },
+  }
 }));
 
 export const DownloadCol = styled(Box)(({ theme }) => ({
@@ -130,22 +130,19 @@ export const DownloadSubCol = styled(Box)(({ theme }) => ({
   flexDirection: "column",
   alignItems: "flex-start",
   justifyContent: "center",
-  gap: "46px",
+  gap: "22px",
   width: "100%",
   [theme.breakpoints.down("lg")]: {
-    alignItems: "center",
+    alignItems: "center"
   }
-}))
+}));
 
 export const DownloadTextCol = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   alignItems: "flex-start",
   justifyContent: "center",
-  gap: "8px",
-  [theme.breakpoints.down("md")]: {
-    gap: 0
-  }
+  gap: "8px"
 }));
 
 export const DownloadText = styled(Typography)(({ theme }) => ({
@@ -154,12 +151,28 @@ export const DownloadText = styled(Typography)(({ theme }) => ({
   fontWeight: 300,
   fontSize: "30px",
   marginTop: "98px",
-  lineHeight: "73px",
+  lineHeight: "43px",
   alignSelf: "flex-start",
   userSelect: "none",
   [theme.breakpoints.down("lg")]: {
-    alignSelf: "center",
+    alignSelf: "center"
+  }
+}));
+
+export const DownloadSubText = styled(Typography)(({ theme }) => ({
+  fontFamily: redditSans.style.fontFamily,
+  color: theme.palette.text.primary,
+  fontWeight: 300,
+  fontSize: "20px",
+  lineHeight: "22px",
+  alignSelf: "flex-start",
+  userSelect: "none",
+  [theme.breakpoints.down("lg")]: {
+    alignSelf: "center"
   },
+  [theme.breakpoints.down("sm")]: {
+    textAlign: "center"
+  }
 }));
 
 export const DownloadText1 = styled(Typography)(({ theme }) => ({
@@ -168,7 +181,7 @@ export const DownloadText1 = styled(Typography)(({ theme }) => ({
   fontWeight: 400,
   fontSize: "20px",
   lineHeight: "22px",
-  userSelect: "none",
+  userSelect: "none"
 }));
 
 export const DownloadText2 = styled(Typography)(({ theme }) => ({
@@ -202,9 +215,8 @@ export const DownloadText3 = styled(Typography)(({ theme }) => ({
   fontWeight: 400,
   fontSize: "16px",
   lineHeight: "22px",
-  userSelect: "none",
+  userSelect: "none"
 }));
-
 
 export const OtherVersionsCol = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -213,14 +225,14 @@ export const OtherVersionsCol = styled(Box)(({ theme }) => ({
   alignItems: "flex-start",
   width: "100%",
   gap: "20px",
-  marginTop: "50px",
+  marginTop: "50px"
 }));
 
 export const OtherVersionsRow = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "row",
   alignItems: "center",
-  justifyContent: "center",
+  justifyContent: "center"
 }));
 
 export const OtherVersionsText = styled(Typography)(({ theme }) => ({
@@ -276,27 +288,27 @@ export const Screenshot2 = styled(Image)(({ theme }) => ({
   height: "auto",
   objectFit: "contain",
   position: "relative",
-  top: "-70px",     
-  left: "700px",       
+  top: "-70px",
+  left: "700px",
   zIndex: 5,
 
   [theme.breakpoints.down("xl")]: {
     top: "-70px",
-    left: "500px",
+    left: "500px"
   },
   "@media(max-width: 1387px)": {
-    left: "400px",
+    left: "400px"
   },
   [theme.breakpoints.down("lg")]: {
-    display: "none",
-  },
+    display: "none"
+  }
 }));
 
 export const Screenshot3 = styled(Image)(({ theme }) => ({
   width: "100%",
   maxWidth: "100%",
   height: "auto",
-  objectFit: "contain",
+  objectFit: "contain"
 }));
 
 export const DownloadNowText = styled(Typography)(({ theme }) => ({
@@ -314,18 +326,15 @@ export const DownloadNowText = styled(Typography)(({ theme }) => ({
   },
   [theme.breakpoints.down("sm")]: {
     fontSize: "30px",
-    lineHeight: "35px",
+    lineHeight: "35px"
   }
 }));
 
-export const ChromeStoreLogo = styled(ChromeStoreSVG)({
-})
+export const ChromeStoreLogo = styled(ChromeStoreSVG)({});
 
-export const AppleLogo = styled(AppleSVG)({
-});
+export const AppleLogo = styled(AppleSVG)({});
 
-export const AndroidIcon = styled(AndroidSVG)({
-});
+export const AndroidIcon = styled(AndroidSVG)({});
 
 export const IPhoneRow = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -339,7 +348,7 @@ export const IPhoneRow = styled(Box)(({ theme }) => ({
     gap: "60px",
     gridTemplateColumns: "auto",
     gridTemplateRows: "repeat(5, 1fr)"
-  },
+  }
 }));
 
 export const CommandLineModalContainer = styled(Box)(({ theme }) => ({
@@ -356,14 +365,14 @@ export const CommandLineModalContainer = styled(Box)(({ theme }) => ({
   alignItems: "center",
   padding: "20px",
   gap: "20px",
-  zIndex: 6,
+  zIndex: 6
 }));
 
 export const CommandLineModalContent = styled(Box)({
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
-  alignItems: "center",
+  alignItems: "center"
 });
 
 export const CommandLineModalText = styled(Typography)(({ theme }) => ({
@@ -372,5 +381,5 @@ export const CommandLineModalText = styled(Typography)(({ theme }) => ({
   letterSpacing: 0,
   color: theme.palette.text.primary,
   textAlign: "center",
-  userSelect: "none",
+  userSelect: "none"
 }));
