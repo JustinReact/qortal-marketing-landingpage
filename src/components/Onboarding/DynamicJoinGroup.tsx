@@ -88,8 +88,8 @@ const getTextSteps = (groupName: string, groupId: number): TextSteps[] => [
     imageSrc: "/images/Onboarding/DynamicJoinGroup/09-click-group-name.jpg"
   },
   {
-    label: "Participate in the group chat conversation",
-    description: `You've successfully joined ${groupName}! Say hello to the group and start participating in the conversation.`,
+    label: "See the group chat conversation",
+    description: `You've successfully joined ${groupName}! Before you can participate in the group chat conversation, you need to redeem the remaining 4 QORT.`,
     imageSrc: "/images/Onboarding/DynamicJoinGroup/10-participate-chat.jpg"
   }
 ];
@@ -268,7 +268,8 @@ export function DynamicJoinGroup({
             color: "success.main"
           }}
         >
-          Once you have joined the group, you can continue to the next step.
+           Once you have joined the group, you can continue to the next step to
+           redeem the remaining 4 QORT.
         </Typography>
       </Stack>
     </Box>
