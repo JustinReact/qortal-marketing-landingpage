@@ -11,9 +11,15 @@ export const EBOOK_API: string =
 
 interface PropsReceiveQort {
   qortStep: number;
+  setSelectedOnBoardingScreenShot?: React.Dispatch<
+    React.SetStateAction<string | null>
+  >;
 }
 
-const ReceiveQort = ({ qortStep }: PropsReceiveQort) => {
+const ReceiveQort = ({
+  qortStep,
+  setSelectedOnBoardingScreenShot
+}: PropsReceiveQort) => {
   const [email, setEmail] = useState("");
   const [code, setCode] = useState("");
   const [qortalAddress, setQortalAddress] = useState("");
@@ -271,6 +277,48 @@ const ReceiveQort = ({ qortStep }: PropsReceiveQort) => {
           >
             {loadingSend ? "Sending..." : "Send Code"}
           </ButtonOnBoarding>
+        )}
+        {!hasSession && (
+          <Box
+            sx={{
+              mt: 2,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: 1
+            }}
+          >
+            <Typography
+              variant="body2"
+              color="text.secondary"
+              sx={{ textAlign: "center", mb: 1 }}
+            >
+              Need help finding your Qortal address? Click the image below to see
+              where to find and copy your address in Qortal Hub.
+            </Typography>
+            <Box
+              component="img"
+              src="/images/QORT/copyAddress.png"
+              alt="Click to copy address - Shows where to find your Qortal address in Qortal Hub"
+              onClick={() =>
+                setSelectedOnBoardingScreenShot?.(
+                  "/images/QORT/copyAddress.png"
+                )
+              }
+              sx={{
+                maxWidth: "100%",
+                height: "auto",
+                borderRadius: 2,
+                cursor: "pointer",
+                border: "1px solid",
+                borderColor: "divider",
+                "&:hover": {
+                  opacity: 0.9,
+                  borderColor: "primary.main"
+                }
+              }}
+            />
+          </Box>
         )}
 
         {/* Code input shows only after email sent */}

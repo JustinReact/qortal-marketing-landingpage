@@ -7,7 +7,6 @@ import {
   SupportButton
 } from "./Onboarding-styles";
 import Introduction from "./Introduction";
-import { usePersistentState } from "../../hooks/usePersistentState";
 import {
   Box,
   Paper,
@@ -67,17 +66,7 @@ const Onboarding = () => {
     useState<null | string>(null);
   const [groupInfo, setGroupInfo] = useState<GroupInfo | null>(null);
   const [isLoadingGroup, setIsLoadingGroup] = useState<boolean>(false);
-
-  const storageKey = groupInfo
-    ? `onboardingStep-group-${groupInfo.groupId}`
-    : showFreedomCellsStep
-    ? "onboardingStep-freedomcells"
-    : "onboardingStep";
-
-  const [activeStep, setActiveStep, isHydrated] = usePersistentState<number>(
-    storageKey,
-    0
-  );
+  const [activeStep, setActiveStep] = useState<number>(0);
 
   useEffect(() => {
     const ua = window.navigator.userAgent.toLowerCase();
@@ -156,7 +145,12 @@ const Onboarding = () => {
       {
         key: "receive-two",
         label: "Redeem 2 QORT",
-        render: () => <ReceiveQort qortStep={1} />
+        render: () => (
+          <ReceiveQort
+            qortStep={1}
+            setSelectedOnBoardingScreenShot={setSelectedOnBoardingScreenShot}
+          />
+        )
       },
       {
         key: "register-name",
@@ -219,18 +213,32 @@ const Onboarding = () => {
   );
 
   useEffect(() => {
-    if (!isHydrated) return;
     const maxIndex = Math.max(steps.length - 1, 0);
     if (activeStep > maxIndex) {
       setActiveStep(maxIndex);
     }
-  }, [activeStep, steps.length, setActiveStep, isHydrated]);
+  }, [activeStep, steps.length, setActiveStep]);
 
-  const handleNext = () =>
+  // Scroll to top when step changes
+
+
+  const handleNext = () => {
+    // Scroll to top immediately before state change
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
     setActiveStep((prev) => Math.min(prev + 1, steps.length - 1));
-  const handleBack = () => setActiveStep((prev) => Math.max(prev - 1, 0));
+  };
+  
+  const handleBack = () => {
+    // Scroll to top immediately before state change
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    setActiveStep((prev) => Math.max(prev - 1, 0));
+  };
 
-  if (!isHydrated || steps.length === 0 || isLoadingGroup) return null;
+  if (steps.length === 0 || isLoadingGroup) return null;
 
   const currentStepIndex = Math.min(activeStep, steps.length - 1);
   const currentStep = steps[currentStepIndex];

@@ -185,17 +185,6 @@ function EditorWithPublish() {
           signature: signature
         });
 
-        // Open app in new tab for both first publish and updates
-        // Force full page load instead of Next.js client-side navigation
-        // This avoids hydration/loading issues
-        const link = document.createElement("a");
-        link.href = localAppUrl;
-        link.target = "_blank";
-        link.rel = "noopener noreferrer";
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-
         // Show success overlay for both first-time publish and updates
         setShowSuccessOverlay(true);
       } else {
@@ -587,156 +576,143 @@ function EditorWithPublish() {
         <div
           style={{
             position: "fixed",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundColor: "rgba(0, 0, 0, 0.85)",
-            backdropFilter: "blur(8px)",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            zIndex: 9999,
-            padding: "20px"
-          }}
-          onClick={() => {
-            // Only allow closing if download button was clicked
-            if (hasClickedDownload) {
-              setShowSuccessOverlay(false);
-              setHasClickedDownload(false); // Reset for next time
-            }
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            background: "linear-gradient(135deg, #10b981 0%, #059669 100%)",
+            borderRadius: "20px",
+            padding: "40px",
+            maxWidth: "550px",
+            width: "90%",
+            textAlign: "center",
+            boxShadow: "0 20px 60px rgba(0, 0, 0, 0.5)",
+            zIndex: 9999
           }}
         >
           <div
             style={{
-              background: "linear-gradient(135deg, #10b981 0%, #059669 100%)",
-              borderRadius: "20px",
-              padding: "40px",
-              maxWidth: "550px",
-              width: "100%",
-              textAlign: "center",
-              boxShadow: "0 20px 60px rgba(0, 0, 0, 0.5)",
-              position: "relative"
+              fontSize: "64px",
+              marginBottom: "20px"
             }}
-            onClick={(e) => e.stopPropagation()}
           >
-            <div
-              style={{
-                fontSize: "64px",
-                marginBottom: "20px"
-              }}
-            >
-              🎉
-            </div>
-            <h2
+            🎉
+          </div>
+          <h2
+            style={{
+              color: "white",
+              fontSize: "32px",
+              fontWeight: "bold",
+              marginBottom: "20px",
+              lineHeight: "1.3"
+            }}
+          >
+            Just like that, you've published a decentralized app!
+          </h2>
+          <div
+            style={{
+              background: "rgba(0, 0, 0, 0.25)",
+              borderRadius: "12px",
+              padding: "24px",
+              marginBottom: "24px",
+              textAlign: "left",
+              border: "1px solid rgba(255, 255, 255, 0.2)"
+            }}
+          >
+            <p
               style={{
                 color: "white",
-                fontSize: "32px",
-                fontWeight: "bold",
-                marginBottom: "20px",
-                lineHeight: "1.3"
+                fontSize: "16px",
+                marginBottom: "16px",
+                lineHeight: "1.5"
               }}
             >
-              Just like that, you've published a decentralized app!
-            </h2>
+              <strong>This is just a demo.</strong>
+            </p>
+            <p
+              style={{
+                color: "rgba(255, 255, 255, 0.95)",
+                fontSize: "15px",
+                lineHeight: "1.6",
+                marginBottom: "12px"
+              }}
+            >
+              Using <strong>Qortal Hub</strong> you can create full-fledged apps
+              that can't be taken down.
+            </p>
             <div
               style={{
-                background: "rgba(0, 0, 0, 0.25)",
-                borderRadius: "12px",
-                padding: "24px",
-                marginBottom: "24px",
-                textAlign: "left",
-                border: "1px solid rgba(255, 255, 255, 0.2)"
+                marginTop: "16px",
+                paddingLeft: "12px"
               }}
             >
               <p
                 style={{
                   color: "white",
-                  fontSize: "16px",
-                  marginBottom: "16px",
-                  lineHeight: "1.5"
+                  fontSize: "14px",
+                  marginBottom: "8px",
+                  display: "flex",
+                  alignItems: "flex-start",
+                  gap: "8px"
                 }}
               >
-                <strong>This is just a demo.</strong>
+                <span style={{ marginTop: "2px" }}>✓</span>
+                <span>Authentication</span>
               </p>
               <p
                 style={{
-                  color: "rgba(255, 255, 255, 0.95)",
-                  fontSize: "15px",
-                  lineHeight: "1.6",
-                  marginBottom: "12px"
+                  color: "white",
+                  fontSize: "14px",
+                  marginBottom: "8px",
+                  display: "flex",
+                  alignItems: "flex-start",
+                  gap: "8px"
                 }}
               >
-                Using <strong>Qortal Hub</strong> you can create full-fledged
-                apps that can't be taken down.
+                <span style={{ marginTop: "2px" }}>✓</span>
+                <span>Data publishing</span>
               </p>
-              <div
+
+              <p
                 style={{
-                  marginTop: "16px",
-                  paddingLeft: "12px"
+                  color: "white",
+                  fontSize: "14px",
+                  display: "flex",
+                  alignItems: "flex-start",
+                  gap: "8px"
                 }}
               >
-                <p
-                  style={{
-                    color: "white",
-                    fontSize: "14px",
-                    marginBottom: "8px",
-                    display: "flex",
-                    alignItems: "flex-start",
-                    gap: "8px"
-                  }}
-                >
-                  <span style={{ marginTop: "2px" }}>✓</span>
-                  <span>Authentication</span>
-                </p>
-                <p
-                  style={{
-                    color: "white",
-                    fontSize: "14px",
-                    marginBottom: "8px",
-                    display: "flex",
-                    alignItems: "flex-start",
-                    gap: "8px"
-                  }}
-                >
-                  <span style={{ marginTop: "2px" }}>✓</span>
-                  <span>Data publishing</span>
-                </p>
-
-                <p
-                  style={{
-                    color: "white",
-                    fontSize: "14px",
-                    display: "flex",
-                    alignItems: "flex-start",
-                    gap: "8px"
-                  }}
-                >
-                  <span style={{ marginTop: "2px" }}>✓</span>
-                  <span>Zero hosting fees!</span>
-                </p>
-                <p
-                  style={{
-                    color: "white",
-                    fontSize: "14px",
-                    display: "flex",
-                    alignItems: "flex-start",
-                    gap: "8px"
-                  }}
-                >
-                  <span style={{ marginTop: "2px" }}>✓</span>
-                  <span>
-                    And much more - <strong>always free!</strong>
-                  </span>
-                </p>
-              </div>
+                <span style={{ marginTop: "2px" }}>✓</span>
+                <span>Zero hosting fees!</span>
+              </p>
+              <p
+                style={{
+                  color: "white",
+                  fontSize: "14px",
+                  display: "flex",
+                  alignItems: "flex-start",
+                  gap: "8px"
+                }}
+              >
+                <span style={{ marginTop: "2px" }}>✓</span>
+                <span>
+                  And much more - <strong>always free!</strong>
+                </span>
+              </p>
             </div>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              gap: "12px",
+              flexDirection: "column",
+              width: "100%"
+            }}
+          >
             <button
               onClick={() => {
-                setHasClickedDownload(true);
-                setShowSuccessOverlay(false);
-                setHasClickedDownload(false); // Reset for next time
-                window.open("https://link.qortal.dev/download-hub", "_blank");
+                if (publishResult?.qortalUrl) {
+                  window.open(publishResult.qortalUrl, "_blank");
+                }
               }}
               style={{
                 background: "white",
@@ -761,7 +737,36 @@ function EditorWithPublish() {
                   "0 4px 12px rgba(0, 0, 0, 0.2)";
               }}
             >
-              Download Qortal Hub 🚀
+              🚀 View Your App
+            </button>
+            <button
+              onClick={() => {
+                setHasClickedDownload(true);
+                setShowSuccessOverlay(false);
+                setHasClickedDownload(false);
+                window.open("https://link.qortal.dev/download-hub", "_blank");
+              }}
+              style={{
+                background: "rgba(255, 255, 255, 0.2)",
+                color: "white",
+                border: "1px solid rgba(255, 255, 255, 0.3)",
+                borderRadius: "10px",
+                padding: "12px 32px",
+                fontSize: "14px",
+                fontWeight: "600",
+                cursor: "pointer",
+                transition: "all 0.2s"
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "rgba(255, 255, 255, 0.3)";
+                e.currentTarget.style.transform = "translateY(-2px)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "rgba(255, 255, 255, 0.2)";
+                e.currentTarget.style.transform = "translateY(0)";
+              }}
+            >
+              Download Qortal Hub
             </button>
           </div>
         </div>

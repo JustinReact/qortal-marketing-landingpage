@@ -41,43 +41,56 @@ interface DynamicJoinGroupProps {
 }
 
 // Generic text steps for joining any group
-const getTextSteps = (groupName: string): TextSteps[] => [
+const getTextSteps = (groupName: string, groupId: number): TextSteps[] => [
   {
-    label: "Click Apps on the left",
-    description: "Start at the Qortal Hub Home Page, Click Apps on the left.",
-    imageSrc: "/images/Onboarding/JoinGroup/home.jpg"
+    label: "Click Chat on the left",
+    description: "Start at the Qortal Hub Home Page. Click Chat on the left sidebar to open the Chat interface.",
+    imageSrc: "/images/Onboarding/DynamicJoinGroup/01-welcome.jpg"
   },
   {
-    label: "Click on Groups",
-    description:
-      "In the Apps section, locate and click on the Groups application.",
-    imageSrc: "/images/Onboarding/JoinGroup/apps.jpg"
+    label: "Click Groups on bottom left",
+    description: "In the Chat page, locate and click the Groups button at the bottom left of the interface.",
+    imageSrc: "/images/Onboarding/DynamicJoinGroup/02-chat-groups.jpg"
   },
   {
-    label: `Search for "${groupName}"`,
-    description: `Go to the search bar and type "${groupName}" to find the group.`,
-    imageSrc: "/images/Onboarding/JoinGroup/search.jpg"
+    label: "Click Find Group",
+    description: "In the Group Management window, click on the Find Group tab to search for groups.",
+    imageSrc: "/images/Onboarding/DynamicJoinGroup/03-find-group.jpg"
   },
   {
-    label: "Join the Group",
-    description: `Click the "Join Group" button for "${groupName}".`,
-    imageSrc: "/images/Onboarding/JoinGroup/join.jpg"
+    label: `Enter "${groupName}" in the search field`,
+    description: `In the Find Group tab, enter "${groupName}" in the search for groups field to find the group you want to join.`,
+    imageSrc: "/images/Onboarding/DynamicJoinGroup/04-search-group.jpg"
   },
   {
-    label: "Confirm Group Join",
-    description: "Click Accept to confirm joining the group.",
-    imageSrc: "/images/Onboarding/JoinGroup/acceptjoin.jpg"
+    label: "Click the group and click Join Group",
+    description: `Click on "${groupName}" from the search results. In the popup window that appears, click the "Join Group" button.`,
+    imageSrc: "/images/Onboarding/DynamicJoinGroup/05-join-group.jpg"
   },
   {
-    label: "Wait for group join confirmation",
-    description:
-      "Wait 2-5 minutes for group join confirmation. You may need to refresh the page to see the confirmation.",
-    imageSrc: "/images/Onboarding/JoinGroup/refresh.jpg"
+    label: "Accept transaction fee",
+    description: "Review and accept the transaction fee to complete the join request. This fee is required to process your group membership.",
+    imageSrc: "/images/Onboarding/DynamicJoinGroup/06-accept-fee.jpg"
   },
   {
-    label: "Successfully Joined",
-    description: `You have successfully joined "${groupName}".`,
-    imageSrc: "/images/Onboarding/JoinGroup/done.jpg"
+    label: "Exit Group Management",
+    description: "After accepting the transaction fee, exit the Group Management window by clicking the X button in the top right corner.",
+    imageSrc: "/images/Onboarding/DynamicJoinGroup/07-exit-management.jpg"
+  },
+  {
+    label: "Wait for transaction to confirm",
+    description: "Wait for the transaction to confirm. This typically takes around 2 minutes for the group to be added to your list.",
+    imageSrc: "/images/Onboarding/DynamicJoinGroup/08-wait-confirm.jpg"
+  },
+  {
+    label: "Click on the group name when it appears",
+    description: `Once the transaction is confirmed, you'll see "${groupName}" appear in your groups list on the left. Click on the group name to open it.`,
+    imageSrc: "/images/Onboarding/DynamicJoinGroup/09-click-group-name.jpg"
+  },
+  {
+    label: "Participate in the group chat conversation",
+    description: `You've successfully joined ${groupName}! Say hello to the group and start participating in the conversation.`,
+    imageSrc: "/images/Onboarding/DynamicJoinGroup/10-participate-chat.jpg"
   }
 ];
 
@@ -89,11 +102,13 @@ export function DynamicJoinGroup({
 }: DynamicJoinGroupProps) {
   const [mode, setMode] = React.useState<TutorialMode>("text");
   const [activeStep, setActiveStep] = React.useState(0);
+  const topRef = React.useRef<HTMLDivElement>(null);
 
   const textSteps = React.useMemo(
-    () => getTextSteps(groupInfo.groupName),
-    [groupInfo.groupName]
+    () => getTextSteps(groupInfo.groupName, groupInfo.groupId),
+    [groupInfo.groupName, groupInfo.groupId]
   );
+
 
   const handleModeChange = (
     _event: React.SyntheticEvent,
@@ -105,6 +120,7 @@ export function DynamicJoinGroup({
 
   const handleNextStep = () => {
     if (activeStep < textSteps.length - 1) {
+    
       setActiveStep((prev) => prev + 1);
     } else {
       onNext?.();
@@ -120,9 +136,10 @@ export function DynamicJoinGroup({
   };
 
   return (
-    <Stack spacing={3}>
-      {/* Group Information */}
-      <Box>
+    <Box ref={topRef}>
+      <Stack spacing={3}>
+        {/* Group Information */}
+        <Box>
         <Alert severity="info" sx={{ mb: 2 }}>
           <Typography variant="body2" fontWeight={600} gutterBottom>
             {groupInfo.groupName}
@@ -130,7 +147,11 @@ export function DynamicJoinGroup({
           <Typography variant="body2" color="text.secondary">
             {groupInfo.description}
           </Typography>
-          <Typography variant="caption" color="text.secondary" sx={{ mt: 1, display: "block" }}>
+          <Typography
+            variant="caption"
+            color="text.secondary"
+            sx={{ mt: 1, display: "block" }}
+          >
             Members: {groupInfo.memberCount} • Group ID: {groupInfo.groupId}
           </Typography>
         </Alert>
@@ -224,7 +245,7 @@ export function DynamicJoinGroup({
             >
               <Box
                 component="iframe"
-                src="https://www.youtube.com/embed/Ai-HBMOWo3U"
+                src="https://www.youtube.com/embed/pmYFzGVdUQ4"
                 title="Qortal group join tutorial"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -240,16 +261,16 @@ export function DynamicJoinGroup({
           </Stack>
         )}
       </Box>
-      <Typography
-        variant="body2"
-        sx={{
-          marginTop: 2,
-          color: "success.main"
-        }}
-      >
-        Once you have joined the group, you can continue to the next step.
-      </Typography>
-    </Stack>
+        <Typography
+          variant="body2"
+          sx={{
+            marginTop: 2,
+            color: "success.main"
+          }}
+        >
+          Once you have joined the group, you can continue to the next step.
+        </Typography>
+      </Stack>
+    </Box>
   );
 }
-
