@@ -280,7 +280,46 @@ const ReceiveQort = ({
             {loadingSend ? "Sending..." : "Send Code"}
           </ButtonOnBoarding>
         )}
-        {!hasSession && (
+     
+
+        {/* Code input shows only after email sent */}
+        {emailSent && (
+          <>
+            <label htmlFor="code" style={{ fontWeight: 500, marginTop: 8 }}>
+              Enter the verification code
+            </label>
+            <input
+              id="code"
+              type="text"
+              inputMode="numeric"
+              pattern="\d{6}"
+              maxLength={6}
+              placeholder="6-digit code"
+              value={code}
+              onChange={(e) => setCode(e.target.value)}
+              required
+              disabled={hasSession}
+              style={{
+                padding: "8px 10px",
+                borderRadius: 6,
+                border: "1px solid #ccc",
+                fontSize: 16,
+                letterSpacing: 2,
+                textAlign: "center"
+              }}
+            />
+
+            <ButtonOnBoarding
+              variant="contained"
+              onClick={handleVerify}
+              disabled={loadingVerify || code.length < 4 || hasSession}
+            >
+              {loadingVerify ? "Verifying..." : "Verify Code"}
+            </ButtonOnBoarding>
+          </>
+        )}
+
+{!hasSession && (
           <Box
             sx={{
               mt: 2,
@@ -321,43 +360,6 @@ const ReceiveQort = ({
               }}
             />
           </Box>
-        )}
-
-        {/* Code input shows only after email sent */}
-        {emailSent && (
-          <>
-            <label htmlFor="code" style={{ fontWeight: 500, marginTop: 8 }}>
-              Enter the verification code
-            </label>
-            <input
-              id="code"
-              type="text"
-              inputMode="numeric"
-              pattern="\d{6}"
-              maxLength={6}
-              placeholder="6-digit code"
-              value={code}
-              onChange={(e) => setCode(e.target.value)}
-              required
-              disabled={hasSession}
-              style={{
-                padding: "8px 10px",
-                borderRadius: 6,
-                border: "1px solid #ccc",
-                fontSize: 16,
-                letterSpacing: 2,
-                textAlign: "center"
-              }}
-            />
-
-            <ButtonOnBoarding
-              variant="contained"
-              onClick={handleVerify}
-              disabled={loadingVerify || code.length < 4 || hasSession}
-            >
-              {loadingVerify ? "Verifying..." : "Verify Code"}
-            </ButtonOnBoarding>
-          </>
         )}
 
         {/* <ButtonOnBoarding
