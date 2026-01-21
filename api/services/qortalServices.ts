@@ -2,7 +2,7 @@ import axios from "axios";
 import { randomUUID } from "crypto";
 import { statSync } from "fs";
 
-const { findUsableApi } = require("../qortal/utils-api");
+const { findUsableApi, findUsableApiEditor } = require("../qortal/utils-api");
 const { nacl } = require("../qortal/deps/nacl-fast");
 const utils = require("../qortal/transactions/utils");
 
@@ -441,7 +441,7 @@ export const publishApp = async (
   zipLocation: string,
   existingIdentifier?: string
 ): Promise<any> => {
-  const validApi: string = await findUsableApi();
+  const validApi: string = await findUsableApiEditor();
   // Use existing identifier if provided, otherwise generate new one
   const identifier = existingIdentifier || "demo" + "-" + randomUUID();
 

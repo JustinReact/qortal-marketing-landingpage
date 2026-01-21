@@ -37,7 +37,7 @@ export default function AppViewPage() {
   const identifier = params?.identifier as string;
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
-  const defaultUrl = `https://api.qortal.org/render/FILES/onboarding?identifier=${identifier}`;
+  const defaultUrl = `https://appnode.qortal.org/render/FILES/onboarding?identifier=${identifier}`;
 
   return (
     <Container>
