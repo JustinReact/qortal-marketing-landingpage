@@ -114,15 +114,17 @@ const ReceiveQort = ({
         setHasSentQort(true);
         // TODO: route to next step or unlock UI
       } else {
-        const message =
-          data?.reason === "invalid_qort_range_step1"
-            ? "2 QORT already sent. Please proceed to the next step to redeem the remaining 4 QORT."
-            : data?.reason === "invalid_qort_range_step1"
-            ? "4 QORT already sent"
-            : "Unable to send QORT";
+        let message = "Unable to send QORT";
+        
         if (data?.reason === "invalid_qort_range_step1") {
+          message = "2 QORT already sent. Please proceed to the next step to redeem the remaining 4 QORT.";
           setHasSentQort(true);
+        } else if (data?.reason === "invalid_qort_range_step2") {
+          message = "4 QORT already sent";
+        } else if (data?.reason === "ip_limit_reached") {
+          message = "QORT was already sent to you";
         }
+        
         setMessage(`❌ ${message}`);
       }
     } catch (err) {
