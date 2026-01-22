@@ -1,5 +1,6 @@
 import { styled } from "@mui/system";
 import { Box, Button } from "@mui/material";
+import { CloseSVG } from "../Common/Icons/CloseSVG";
 
 export const EditorContainer = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -14,6 +15,17 @@ export const EditorContainer = styled(Box)(({ theme }) => ({
   right: 0,
   bottom: 0
 }));
+
+export const CloseIcon = styled(CloseSVG)({
+  position: "absolute",
+  top: "10px",
+  right: "10px",
+  transition: "all 0.2s ease-in-out",
+  "&:hover": {
+    cursor: "pointer",
+    transform: "scale(1.1)"
+  }
+});
 
 export const EditorContent = styled(Box)(({ theme }) => ({
   display: "flex",

@@ -15,8 +15,10 @@ import {
   SandpackWrapper,
   PublishSection,
   PublishDescription,
-  PublishButton
+  PublishButton,
+  CloseIcon
 } from "./EditorDemo-styles";
+import { useTheme } from "@mui/material";
 
 const API_BASE_URL: string =
   process.env.NEXT_PUBLIC_EBOOK_API_HOST || "http://localhost:3010";
@@ -66,6 +68,7 @@ root.render(
 
 // Inner component that has access to Sandpack context
 function EditorWithPublish() {
+  const theme = useTheme();
   const { sandpack } = useSandpack();
   const [isPublishing, setIsPublishing] = useState(false);
   const [publishResult, setPublishResult] = useState<{
@@ -235,10 +238,9 @@ function EditorWithPublish() {
             style={{
               marginTop: publishResult?.qortalUrl ? "0" : "20px",
               padding: "20px",
-              background:
-                "linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(102, 126, 234, 0.15) 100%)",
+              background: "#0f4ed2",
               borderRadius: "12px",
-              border: "2px solid #10b981",
+              border: "2px solid #0f4ed2",
               boxShadow: "0 4px 12px rgba(16, 185, 129, 0.2)"
             }}
           >
@@ -368,8 +370,8 @@ function EditorWithPublish() {
               {isPublishing
                 ? "Updating..."
                 : savedIdentifier
-                ? "🔄 Update App"
-                : "🔄 Re-publish App"}
+                  ? "🔄 Update App"
+                  : "🔄 Re-publish App"}
             </PublishButton>
           </div>
         )}
@@ -572,7 +574,7 @@ function EditorWithPublish() {
       )}
 
       {/* Success Overlay - shown after first publish */}
-      {showSuccessOverlay && (
+      {!showSuccessOverlay && (
         <div
           style={{
             position: "fixed",
@@ -589,6 +591,14 @@ function EditorWithPublish() {
             zIndex: 9999
           }}
         >
+          <CloseIcon
+            color={theme.palette.text.primary}
+            onClickFunc={() => {
+              setShowSuccessOverlay(false);
+            }}
+            height={"25"}
+            width={"25"}
+          ></CloseIcon>
           <div
             style={{
               fontSize: "64px",
