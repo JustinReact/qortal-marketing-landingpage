@@ -574,7 +574,7 @@ function EditorWithPublish() {
       )}
 
       {/* Success Overlay - shown after first publish */}
-      {!showSuccessOverlay && (
+      {showSuccessOverlay && (
         <div
           style={{
             position: "fixed",
