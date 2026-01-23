@@ -28,3 +28,6 @@ build
 next-env.d.ts
 # env
 .env*
+# Publish system directories
+/temp-builds/
+/published-apps/

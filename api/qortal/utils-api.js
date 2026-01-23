@@ -1,10 +1,7 @@
 const axios = require("axios");
 
-const apiEndpoints = [
-  "https://appnode.qortal.org",
-  "https://ext-node.qortal.link"
-];
-
+const apiEndpoints = ["https://api.qortal.org"];
+const apiEndpointsEditor = ["https://appnode.qortal.org"];
 const findUsableApi = async () => {
   for (const endpoint of apiEndpoints) {
     try {
@@ -28,4 +25,24 @@ const findUsableApi = async () => {
   throw new Error("No usable API found");
 };
 
-module.exports = { findUsableApi };
+const findUsableApiEditor = async () => {
+    for (const endpoint of apiEndpointsEditor) {
+      try {
+        const response = await axios.get(`${endpoint}/admin/status`, {
+          timeout: 3000
+        });
+        const data = response.data;
+        if (data.isSynchronizing === false && data.syncPercent === 100) {
+          return endpoint;
+        }
+      } catch (error) {
+        if (error.code === "ECONNABORTED") {
+          console.log(`Timeout reached for API ${endpoint}`);
+        } else {
+      }
+    }
+    throw new Error("No usable API found");
+  }
+};
+
+module.exports = { findUsableApi, findUsableApiEditor };

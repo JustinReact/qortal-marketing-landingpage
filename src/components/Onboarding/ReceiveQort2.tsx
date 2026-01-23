@@ -50,12 +50,18 @@ const ReceiveQort2 = ({ qortStep }: PropsReceiveQort) => {
         setHasSentQort(true);
         // TODO: route to next step or unlock UI
       } else {
-        const message =
-          data?.reason === "invalid_qort_range_step1"
-            ? "2 QORT already redeemed"
-            : data?.reason === "invalid_qort_range_step2"
-            ? "4 QORT already redeemed"
-            : "Unable to redeem QORT";
+        let message = "Unable to redeem QORT";
+        
+        if (data?.reason === "invalid_qort_range_step1") {
+          message = "2 QORT already redeemed";
+        } else if (data?.reason === "invalid_qort_range_step2") {
+          message = "4 QORT already redeemed";
+        } else if (data?.reason === "step1_not_completed") {
+          message = "Please complete step 1 (2 QORT) first before redeeming 4 QORT";
+        } else if (data?.reason === "ip_limit_reached") {
+          message = "QORT was already sent to you";
+        }
+        
         setMessage(`❌ ${message}`);
       }
     } catch (err) {

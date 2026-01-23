@@ -12,8 +12,6 @@ const EBOOK_API: string =
 
 const logout = async () => {
   try {
-    localStorage.setItem("onboardingStep", JSON.stringify(0));
-    localStorage.setItem("onboardingStep-freedomcells", JSON.stringify(0));
     await fetch(`${EBOOK_API}/onboarding/logout`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },

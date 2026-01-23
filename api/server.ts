@@ -7,6 +7,7 @@ import subscribeRoutes from "./routes/subscribeRoutes";
 import onBoardingRoutes from "./routes/onboardingRoutes";
 import blurbRoutes from "./routes/blurbRoutes";
 import adminRoutes from "./routes/adminRoutes";
+import publishRoutes from "./routes/publishRoutes";
 import { handleGetAllBlurbs } from "./controllers/blurbController";
 import { authenticateWithToken } from "./middleware/authMiddleware";
 import cookieParser from "cookie-parser";
@@ -35,6 +36,8 @@ const corsOptions = {
 const app: Express = express();
 const PORT = process.env.PORT || 3000;
 app.use(express.static(path.join(__dirname, "views")));
+// Serve published apps from project root, not api directory
+app.use('/published-apps', express.static(path.join(__dirname, "../../published-apps")));
 
 app.use(express.urlencoded({ extended: true })); // for form parsing
 app.use(cookieParser()); // sign cookies
@@ -47,6 +50,7 @@ app.use("/api/admin", adminRoutes);
 app.use("/api/subscribe", subscribeRoutes);
 app.use("/api/submit-blurb", blurbRoutes);
 app.use("/api/onboarding", onBoardingRoutes);
+app.use("/api", publishRoutes);
 app.get("/api/get-blurbs", authenticateWithToken, handleGetAllBlurbs);
 
 app.get("/", (req: Request, res: Response) => {
