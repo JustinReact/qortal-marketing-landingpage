@@ -5,4 +5,4 @@
   package = "@netlify/plugin-nextjs"  # Use the Netlify Next.js plugin to support SSR and dynamic routes
 
 [context.production.environment]
-  node_version = "18.17.0"
+  NODE_VERSION = "20"
