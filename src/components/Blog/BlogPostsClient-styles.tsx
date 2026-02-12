@@ -322,7 +322,11 @@ export const BlogPostBody = styled(Box)(({ theme }) => ({
   WebkitBoxOrient: "vertical" /* Required for clamping */,
   WebkitLineClamp: 4 /* Adjust this number to the desired number of lines */,
   overflow: "hidden" /* Hides the overflowing content */,
-  textOverflow: "ellipsis" /* Adds the ellipsis when content overflows */
+  textOverflow: "ellipsis" /* Adds the ellipsis when content overflows */,
+  "& h2": {
+  fontSize: "13px",
+  margin: 0,
+}
 }));
 
 export const BlogDateAndCategoryCol = styled(Box)({
