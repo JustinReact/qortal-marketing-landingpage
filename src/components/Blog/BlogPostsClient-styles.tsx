@@ -323,6 +323,10 @@ export const BlogPostBody = styled(Box)(({ theme }) => ({
   WebkitLineClamp: 4 /* Adjust this number to the desired number of lines */,
   overflow: "hidden" /* Hides the overflowing content */,
   textOverflow: "ellipsis" /* Adds the ellipsis when content overflows */,
+  "& h1": {
+  fontSize: "13px",
+  margin: 0,
+},
   "& h2": {
   fontSize: "13px",
   margin: 0,
