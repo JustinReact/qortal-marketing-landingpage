@@ -13,7 +13,8 @@ import {
   StepLabel,
   StepContent,
   Button,
-  Chip
+  Chip,
+  useTheme
 } from "@mui/material";
 import { TextSteps } from "./CreateNewAccount";
 import { ButtonOnBoarding, ButtonTextOnBoarding } from "./Onboarding-styles";
@@ -90,6 +91,8 @@ export function JoinGroup({
   onNext,
   setSelectedOnBoardingScreenShot
 }: SetupQortalCoreProps) {
+  const theme = useTheme();
+
   const [mode, setMode] = React.useState<TutorialMode>("text");
   const [activeStep, setActiveStep] = React.useState(0);
 
