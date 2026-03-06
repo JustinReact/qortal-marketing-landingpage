@@ -13,7 +13,8 @@ import {
   StepLabel,
   StepContent,
   Button,
-  Chip
+  Chip,
+  useTheme
 } from "@mui/material";
 import { TextSteps } from "./CreateNewAccount";
 import { ButtonOnBoarding, ButtonTextOnBoarding } from "./Onboarding-styles";
@@ -48,6 +49,8 @@ export function RegisterName({
   onNext,
   setSelectedOnBoardingScreenShot
 }: SetupQortalCoreProps) {
+  const theme = useTheme();
+
   const [mode, setMode] = React.useState<TutorialMode>("text");
   const [activeStep, setActiveStep] = React.useState(0);
 
@@ -94,7 +97,22 @@ export function RegisterName({
         <Tabs
           value={mode}
           onChange={handleModeChange}
-          sx={{ borderBottom: 1, borderColor: "divider" }}
+          sx={{
+            borderBottom: 1,
+            borderColor: "divider",
+            "& .MuiTabs-indicator": {
+              backgroundColor:
+                theme.palette.mode === "dark"
+                  ? "white"
+                  : theme.palette.customBlue.main
+            },
+            "& .MuiTab-root.Mui-selected": {
+              color:
+                theme.palette.mode === "dark"
+                  ? "white"
+                  : theme.palette.customBlue.main
+            }
+          }}
         >
           <Tab value="text" label="Text & screenshots" />
           <Tab value="video" label="Video tutorial" />
@@ -109,7 +127,15 @@ export function RegisterName({
               Follow the steps below. Screenshots in the guide will match what
               you see in Qortal Hub.
             </Typography>
-            <Stepper activeStep={activeStep} orientation="vertical">
+            <Stepper
+              sx={{
+                "& .MuiStepIcon-root": {
+                  color: theme.palette.mode === "dark" ? "#707070" : "#9d9696"
+                }
+              }}
+              activeStep={activeStep}
+              orientation="vertical"
+            >
               {textSteps.map((step, index) => (
                 <Step key={step.label}>
                   <StepLabel>{step.label}</StepLabel>
@@ -194,7 +220,7 @@ export function RegisterName({
       <p
         style={{
           marginTop: 10,
-          color: "green"
+          color: theme.palette.customBlue.main
         }}
       >
         Once you have registered a name, you can continue to the next step to

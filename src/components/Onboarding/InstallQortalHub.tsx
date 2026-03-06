@@ -15,7 +15,8 @@ import {
   StepLabel,
   StepContent,
   Button,
-  Chip
+  Chip,
+  useTheme
 } from "@mui/material";
 import WindowsIcon from "@mui/icons-material/Window";
 import AppleIcon from "@mui/icons-material/Apple";
@@ -56,6 +57,13 @@ const DownloadRender = ({ download, type }: any) => {
     <Button
       startIcon={type === "linux" ? <ContentCopyIcon /> : <DownloadIcon />}
       variant="outlined"
+      sx={{
+        color: "text.primary",
+        borderColor: "text.primary",
+        "&:hover": {
+          borderColor: "text.primary"
+        }
+      }}
       size="small"
       onClick={() => {
         download();
@@ -221,6 +229,8 @@ export function InstallQortalHub({
   osAuto,
   setSelectedOnBoardingScreenShot
 }: InstallQortalHubProps) {
+  const theme = useTheme();
+
   const [os, setOs] = React.useState<OS>(osAuto);
   const [mode, setMode] = React.useState<TutorialMode>("text");
   const [activeStep, setActiveStep] = React.useState(0);
@@ -262,7 +272,7 @@ export function InstallQortalHub({
       {/* Header */}
 
       <Box>
-        <Typography variant="body1" color="text.secondary">
+        <Typography variant="body1" color="text.primary">
           Choose your operating system and how you’d like to follow the guide.
           We’ll walk you through the installation step by step.
         </Typography>
@@ -270,7 +280,7 @@ export function InstallQortalHub({
 
       {/* OS Selector */}
       <Box>
-        <Typography variant="subtitle2" color="text.secondary" gutterBottom>
+        <Typography variant="subtitle2" color="text.primary" gutterBottom>
           1. Select your operating system
         </Typography>
         <ToggleButtonGroup
@@ -307,13 +317,28 @@ export function InstallQortalHub({
 
       {/* Mode Selector */}
       <Box>
-        <Typography variant="subtitle2" color="text.secondary" gutterBottom>
+        <Typography variant="subtitle2" color="text.primary" gutterBottom>
           2. Choose tutorial style
         </Typography>
         <Tabs
           value={mode}
           onChange={handleModeChange}
-          sx={{ borderBottom: 1, borderColor: "divider" }}
+          sx={{
+            borderBottom: 1,
+            borderColor: "divider",
+            "& .MuiTabs-indicator": {
+              backgroundColor:
+                theme.palette.mode === "dark"
+                  ? "white"
+                  : theme.palette.customBlue.main // underline indicator color
+            },
+            "& .MuiTab-root.Mui-selected": {
+              color:
+                theme.palette.mode === "dark"
+                  ? "white"
+                  : theme.palette.customBlue.main // selected tab text color
+            }
+          }}
         >
           <Tab value="text" label="Text & screenshots" />
           <Tab value="video" label="Video tutorial" />
@@ -324,23 +349,31 @@ export function InstallQortalHub({
       <Box sx={{ mt: 1 }}>
         {mode === "text" ? (
           <Stack spacing={2}>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" color="text.primary">
               Follow these steps carefully. Screenshots will match{" "}
               <strong>
                 {os === "windows"
                   ? "Windows"
                   : os === "mac"
-                  ? "macOS"
-                  : "Linux"}
+                    ? "macOS"
+                    : "Linux"}
               </strong>
               .
             </Typography>
-            <Stepper activeStep={activeStep} orientation="vertical">
+            <Stepper
+              sx={{
+                "& .MuiStepIcon-root": {
+                  color: theme.palette.mode === "dark" ? "#707070" : "#999797"
+                }
+              }}
+              activeStep={activeStep}
+              orientation="vertical"
+            >
               {textSteps.map((step, index) => (
                 <Step key={step.label}>
                   <StepLabel>{step.label}</StepLabel>
                   <StepContent>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography variant="body2" color="text.primary">
                       {step.description}
                     </Typography>
                     {step?.render && (

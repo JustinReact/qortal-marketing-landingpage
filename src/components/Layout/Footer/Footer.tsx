@@ -13,7 +13,8 @@ export const Footer = () => {
     (location.includes("/wiki") && isMobile) ||
     location.includes("/links") ||
     location.includes("/other-web3") ||
-    location.includes("/webinar")
+    location.includes("/webinar") ||
+    location.includes("/onboarding")
   ) {
     return null; // Don't show footer on mobile wiki pages, links page, or webinar page
   } else

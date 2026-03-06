@@ -136,7 +136,22 @@ export function JoinGroup({
         <Tabs
           value={mode}
           onChange={handleModeChange}
-          sx={{ borderBottom: 1, borderColor: "divider" }}
+          sx={{
+            borderBottom: 1,
+            borderColor: "divider",
+            "& .MuiTabs-indicator": {
+              backgroundColor:
+                theme.palette.mode === "dark"
+                  ? "white"
+                  : theme.palette.customBlue.main // underline indicator color
+            },
+            "& .MuiTab-root.Mui-selected": {
+              color:
+                theme.palette.mode === "dark"
+                  ? "white"
+                  : theme.palette.customBlue.main // selected tab text color
+            }
+          }}
         >
           <Tab value="text" label="Text & screenshots" />
           <Tab value="video" label="Video tutorial" />

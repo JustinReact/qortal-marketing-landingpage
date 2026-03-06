@@ -25,7 +25,7 @@ const Introduction = () => {
     <>
       <Stack spacing={3}>
         {/* Main description */}
-        <Typography variant="body1" color="text.secondary">
+        <Typography variant="body2" color="text.primary">
           This guide will help you install Qortal on your desktop and get you
           started with{" "}
           <Box component="span" sx={{ fontWeight: 700, color: "primary.main" }}>
@@ -47,7 +47,7 @@ const Introduction = () => {
               <Typography variant="body2" fontWeight={600}>
                 Own your data
               </Typography>
-              <Typography variant="body2" color="text.secondary">
+              <Typography variant="body2" color="text.primary">
                 No central server, no permissions. You control your keys.
               </Typography>
             </Box>
@@ -59,7 +59,7 @@ const Introduction = () => {
               <Typography variant="body2" fontWeight={600}>
                 Join the community
               </Typography>
-              <Typography variant="body2" color="text.secondary">
+              <Typography variant="body2" color="text.primary">
                 Chat, join groups, and discover apps built on Qortal.
               </Typography>
             </Box>

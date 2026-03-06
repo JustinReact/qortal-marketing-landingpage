@@ -51,7 +51,7 @@ export const SupportButton = styled(Button)(({ theme }) => ({
   alignItems: "center",
   justifyContent: "center",
   gap: "7px",
-  padding: "4.5px 5",
+  padding: "4.5px 15px",
   height: "auto",
   fontSize: "14px",
   fontWeight: 400,
@@ -73,4 +73,11 @@ export const SupportButton = styled(Button)(({ theme }) => ({
       fill: "#ffffff !important"
     }
   }
+}));
+
+export const CommunityRow = styled(Box)(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  width: "100%",
+  justifyContent: "space-between"
 }));

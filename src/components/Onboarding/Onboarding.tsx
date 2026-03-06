@@ -3,6 +3,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import {
   ButtonOnBoarding,
   ButtonTextOnBoarding,
+  CommunityRow,
   Container,
   SupportButton
 } from "./Onboarding-styles";
@@ -221,7 +222,6 @@ const Onboarding = () => {
 
   // Scroll to top when step changes
 
-
   const handleNext = () => {
     // Scroll to top immediately before state change
     window.scrollTo(0, 0);
@@ -229,7 +229,7 @@ const Onboarding = () => {
     document.body.scrollTop = 0;
     setActiveStep((prev) => Math.min(prev + 1, steps.length - 1));
   };
-  
+
   const handleBack = () => {
     // Scroll to top immediately before state change
     window.scrollTo(0, 0);
@@ -242,6 +242,7 @@ const Onboarding = () => {
 
   const currentStepIndex = Math.min(activeStep, steps.length - 1);
   const currentStep = steps[currentStepIndex];
+  const isFirstStep = currentStepIndex === 0;
   const isLastStep = currentStepIndex === steps.length - 1;
   const isSecondToLast = currentStepIndex === steps.length - 2;
 
@@ -271,38 +272,33 @@ const Onboarding = () => {
         >
           {/* Right side – step content */}
           <Stack flex={1} spacing={3}>
-            <Box>
-              <Typography variant="overline" color="text.secondary">
-                Step {currentStepIndex + 1} of {steps.length}
-              </Typography>
+            <CommunityRow>
               <Stack
-                direction={"row"}
+                direction={"column"}
                 alignContent={"center"}
-                justifyContent={"space-between"}
+                justifyContent={"center"}
               >
+                <Typography variant="overline" color="text.primary">
+                  Step {currentStepIndex + 1} of {steps.length}
+                </Typography>
                 <Typography variant="h4" fontWeight={600}>
                   {currentStep?.label}
                 </Typography>
-                <SupportButton
-                  role="button"
-                  tabIndex={0}
-                  aria-label="Chat with us"
-                  onClick={() =>
-                    window.open("https://link.qortal.dev/support", "_blank")
-                  }
-                  onKeyDown={() =>
-                    window.open("https://link.qortal.dev/support", "_blank")
-                  }
-                >
-                  <HeadphonesIcon
-                    color={theme.palette.text.primary}
-                    height={"18px"}
-                    width={"18px"}
-                  />{" "}
-                  Community support
-                </SupportButton>
               </Stack>
-            </Box>
+              <SupportButton
+                role="button"
+                tabIndex={0}
+                aria-label="Chat with us"
+                onClick={() =>
+                  window.open("https://link.qortal.dev/support", "_blank")
+                }
+                onKeyDown={() =>
+                  window.open("https://link.qortal.dev/support", "_blank")
+                }
+              >
+                Support
+              </SupportButton>
+            </CommunityRow>
 
             <Box sx={{ flex: 1 }}>{currentStep?.render()}</Box>
 
@@ -325,14 +321,17 @@ const Onboarding = () => {
                   {isLastStep
                     ? "Finished"
                     : isSecondToLast
-                    ? "Finish"
-                    : "Continue"}
+                      ? "Finish"
+                      : "Continue"}
                 </ButtonOnBoarding>
               }
               backButton={
                 <ButtonTextOnBoarding
                   size="small"
                   onClick={handleBack}
+                  sx={{
+                    visibility: isFirstStep ? "hidden" : "visible"
+                  }}
                   disabled={
                     currentStepIndex === 0 ||
                     currentStepIndex === steps.length - 1
