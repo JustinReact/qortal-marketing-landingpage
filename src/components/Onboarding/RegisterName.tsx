@@ -83,7 +83,7 @@ export function RegisterName({
       {/* Header */}
 
       <Box>
-        <Typography variant="body1" color="text.secondary">
+        <Typography variant="body1" color="text.primary">
           Having a name allows you to publish any kind of data on Qortal such as
           videos, posts, audio, ect.
         </Typography>
@@ -91,7 +91,7 @@ export function RegisterName({
 
       {/* Mode selector */}
       <Box>
-        <Typography variant="subtitle2" color="text.secondary" gutterBottom>
+        <Typography variant="subtitle2" color="text.primary" gutterBottom>
           Choose tutorial style
         </Typography>
         <Tabs
@@ -114,7 +114,7 @@ export function RegisterName({
             }
           }}
         >
-          <Tab value="text" label="Text & screenshots" />
+          <Tab value="text" label="Text tutorial" />
           <Tab value="video" label="Video tutorial" />
         </Tabs>
       </Box>
@@ -123,7 +123,7 @@ export function RegisterName({
       <Box sx={{ mt: 1 }}>
         {mode === "text" ? (
           <Stack spacing={2}>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" color="text.primary">
               Follow the steps below. Screenshots in the guide will match what
               you see in Qortal Hub.
             </Typography>
@@ -140,7 +140,7 @@ export function RegisterName({
                 <Step key={step.label}>
                   <StepLabel>{step.label}</StepLabel>
                   <StepContent>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography variant="body2" color="text.primary">
                       {step.description}
                     </Typography>
 
@@ -220,7 +220,7 @@ export function RegisterName({
       <p
         style={{
           marginTop: 10,
-          color: theme.palette.customBlue.main
+          color: theme.palette.text.primary
         }}
       >
         Once you have registered a name, you can continue to the next step to

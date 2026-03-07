@@ -79,7 +79,7 @@ const MailingList = () => {
         <Typography variant="h5" gutterBottom>
           Stay in the loop
         </Typography>
-        <Typography variant="body1" color="text.secondary">
+        <Typography variant="body1" color="text.primary">
           Subscribe to the official Qortal mailing list and be the first to know
           about new releases, governance updates, Q-App launches, and
           community-led initiatives. No spam — just the most important news so

@@ -87,7 +87,7 @@ export function SetupQortalCore({ onBack, onNext }: SetupQortalCoreProps) {
       {/* Header */}
 
       <Box>
-        <Typography variant="body1" color="text.secondary">
+        <Typography variant="body1" color="text.primary">
           Qortal Core is the engine that connects you to the Qortal network.
           Choose how you’d like to follow the setup guide.
         </Typography>
@@ -95,7 +95,7 @@ export function SetupQortalCore({ onBack, onNext }: SetupQortalCoreProps) {
 
       {/* Mode selector */}
       <Box>
-        <Typography variant="subtitle2" color="text.secondary" gutterBottom>
+        <Typography variant="subtitle2" color="text.primary" gutterBottom>
           Choose tutorial style
         </Typography>
         <Tabs
@@ -118,7 +118,7 @@ export function SetupQortalCore({ onBack, onNext }: SetupQortalCoreProps) {
             }
           }}
         >
-          <Tab value="text" label="Text & screenshots" />
+          <Tab value="text" label="Text tutorial" />
           <Tab value="video" label="Video tutorial" />
         </Tabs>
       </Box>
@@ -127,7 +127,7 @@ export function SetupQortalCore({ onBack, onNext }: SetupQortalCoreProps) {
       <Box sx={{ mt: 1 }}>
         {mode === "text" ? (
           <Stack spacing={2}>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" color="text.primary">
               Follow the steps below. Screenshots in the guide will match what
               you see in Qortal Hub.
             </Typography>
@@ -144,7 +144,7 @@ export function SetupQortalCore({ onBack, onNext }: SetupQortalCoreProps) {
                 <Step key={step.label}>
                   <StepLabel>{step.label}</StepLabel>
                   <StepContent>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography variant="body2" color="text.primary">
                       {step.description}
                     </Typography>
 

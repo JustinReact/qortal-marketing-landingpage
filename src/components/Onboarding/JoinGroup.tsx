@@ -125,7 +125,7 @@ export function JoinGroup({
       {/* Header */}
 
       <Box>
-        <Typography variant="body1" color="text.secondary">
+        <Typography variant="body1" color="text.primary">
           Account creation takes under 1 minute. Everything is done locally on
           your device. No calls to servers!
         </Typography>
@@ -133,7 +133,7 @@ export function JoinGroup({
 
       {/* Mode selector */}
       <Box>
-        <Typography variant="subtitle2" color="text.secondary" gutterBottom>
+        <Typography variant="subtitle2" color="text.primary" gutterBottom>
           Choose tutorial style
         </Typography>
         <Tabs
@@ -156,7 +156,7 @@ export function JoinGroup({
             }
           }}
         >
-          <Tab value="text" label="Text & screenshots" />
+          <Tab value="text" label="Text tutorial" />
           <Tab value="video" label="Video tutorial" />
         </Tabs>
       </Box>
@@ -165,7 +165,7 @@ export function JoinGroup({
       <Box sx={{ mt: 1 }}>
         {mode === "text" ? (
           <Stack spacing={2}>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" color="text.primary">
               Follow the steps below. Screenshots in the guide will match what
               you see in Qortal Hub.
             </Typography>
@@ -174,7 +174,7 @@ export function JoinGroup({
                 <Step key={step.label}>
                   <StepLabel>{step.label}</StepLabel>
                   <StepContent>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography variant="body2" color="text.primary">
                       {step.description}
                     </Typography>
 

@@ -151,12 +151,12 @@ export function DynamicJoinGroup({
             <Typography variant="body2" fontWeight={600} gutterBottom>
               {groupInfo.groupName}
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" color="text.primary">
               {groupInfo.description}
             </Typography>
             <Typography
               variant="caption"
-              color="text.secondary"
+              color="text.primary"
               sx={{ mt: 1, display: "block" }}
             >
               Members: {groupInfo.memberCount} • Group ID: {groupInfo.groupId}
@@ -166,7 +166,7 @@ export function DynamicJoinGroup({
 
         {/* Mode selector */}
         <Box>
-          <Typography variant="subtitle2" color="text.secondary" gutterBottom>
+          <Typography variant="subtitle2" color="text.primary" gutterBottom>
             Choose tutorial style
           </Typography>
           <Tabs
@@ -189,7 +189,7 @@ export function DynamicJoinGroup({
               }
             }}
           >
-            <Tab value="text" label="Text & screenshots" />
+            <Tab value="text" label="Text tutorial" />
             <Tab value="video" label="Video tutorial" />
           </Tabs>
         </Box>
@@ -198,7 +198,7 @@ export function DynamicJoinGroup({
         <Box sx={{ mt: 1 }}>
           {mode === "text" ? (
             <Stack spacing={2}>
-              <Typography variant="body2" color="text.secondary">
+              <Typography variant="body2" color="text.primary">
                 Follow the steps below to join {groupInfo.groupName}.
                 Screenshots in the guide will match what you see in Qortal Hub.
               </Typography>
@@ -215,7 +215,7 @@ export function DynamicJoinGroup({
                   <Step key={step.label}>
                     <StepLabel>{step.label}</StepLabel>
                     <StepContent>
-                      <Typography variant="body2" color="text.secondary">
+                      <Typography variant="body2" color="text.primary">
                         {step.description}
                       </Typography>
 

@@ -34,7 +34,7 @@ const NextSteps = () => {
           <Typography variant="h5" gutterBottom>
             You’re all set on Qortal 🎉
           </Typography>
-          <Typography variant="body1" color="text.secondary">
+          <Typography variant="body1" color="text.primary">
             You now have the tools to fully participate in the Qortal ecosystem.
             Stay curious, explore, and start building in a network that can’t be
             shut down.
@@ -52,7 +52,7 @@ const NextSteps = () => {
               <Typography variant="body2" fontWeight={600}>
                 Own your data
               </Typography>
-              <Typography variant="body2" color="text.secondary">
+              <Typography variant="body2" color="text.primary">
                 No central server, no permissions. You control your keys.
               </Typography>
             </Box>
@@ -64,7 +64,7 @@ const NextSteps = () => {
               <Typography variant="body2" fontWeight={600}>
                 Join the community
               </Typography>
-              <Typography variant="body2" color="text.secondary">
+              <Typography variant="body2" color="text.primary">
                 Chat, join groups, and discover apps built on Qortal.
               </Typography>
             </Box>
@@ -85,7 +85,7 @@ const NextSteps = () => {
                 <Typography variant="body2" fontWeight={600}>
                   Join a group and start talking
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" color="text.primary">
                   Use Qortal’s built-in groups to meet other supporters, ask
                   questions, collaborate on ideas, and stay updated on community
                   events.
@@ -99,7 +99,7 @@ const NextSteps = () => {
                 <Typography variant="body2" fontWeight={600}>
                   Watch and publish on Q-Tube
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" color="text.primary">
                   Q-Tube hosts videos via P2P. Browse, share, or upload your own
                   content.
                 </Typography>
@@ -112,7 +112,7 @@ const NextSteps = () => {
                 <Typography variant="body2" fontWeight={600}>
                   Explore every Q-App
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" color="text.primary">
                   Forums, storage, social, publishing tools, and more — all
                   running on the same decentralized chain so there’s never a
                   single point of failure.
@@ -128,7 +128,7 @@ const NextSteps = () => {
           <Typography variant="subtitle1" fontWeight={600} gutterBottom>
             Qortal is unstoppable
           </Typography>
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant="body2" color="text.primary">
             Everything you build or share from here on is secured by a global
             mesh of community nodes. No corporation or government can censor or
             seize your identity, content, or coins. Welcome to the future of the

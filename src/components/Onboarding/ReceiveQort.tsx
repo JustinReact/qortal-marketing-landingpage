@@ -115,16 +115,17 @@ const ReceiveQort = ({
         // TODO: route to next step or unlock UI
       } else {
         let message = "Unable to send QORT";
-        
+
         if (data?.reason === "invalid_qort_range_step1") {
-          message = "2 QORT already sent. Please proceed to the next step to redeem the remaining 4 QORT.";
+          message =
+            "2 QORT already sent. Please proceed to the next step to redeem the remaining 4 QORT.";
           setHasSentQort(true);
         } else if (data?.reason === "invalid_qort_range_step2") {
           message = "4 QORT already sent";
         } else if (data?.reason === "ip_limit_reached") {
           message = "QORT was already sent to you";
         }
-        
+
         setMessage(`❌ ${message}`);
       }
     } catch (err) {
@@ -197,7 +198,7 @@ const ReceiveQort = ({
           marginBottom: "10px"
         }}
       >
-        <Typography variant="body1" color="text.secondary">
+        <Typography variant="body1" color="text.primary">
           Get your first 2 QORT. An email is required to send a verification
           code in order to prevent abuse.
         </Typography>
@@ -280,7 +281,6 @@ const ReceiveQort = ({
             {loadingSend ? "Sending..." : "Send Code"}
           </ButtonOnBoarding>
         )}
-     
 
         {/* Code input shows only after email sent */}
         {emailSent && (
@@ -319,7 +319,7 @@ const ReceiveQort = ({
           </>
         )}
 
-{!hasSession && (
+        {!hasSession && (
           <Box
             sx={{
               mt: 2,
@@ -331,11 +331,11 @@ const ReceiveQort = ({
           >
             <Typography
               variant="body2"
-              color="text.secondary"
+              color="text.primary"
               sx={{ textAlign: "center", mb: 1 }}
             >
-              Need help finding your Qortal address? Click the image below to see
-              where to find and copy your address in Qortal Hub.
+              Need help finding your Qortal address? Click the image below to
+              see where to find and copy your address in Qortal Hub.
             </Typography>
             <Box
               component="img"

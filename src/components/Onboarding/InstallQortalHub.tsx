@@ -340,7 +340,7 @@ export function InstallQortalHub({
             }
           }}
         >
-          <Tab value="text" label="Text & screenshots" />
+          <Tab value="text" label="Text tutorial" />
           <Tab value="video" label="Video tutorial" />
         </Tabs>
       </Box>

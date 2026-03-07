@@ -117,7 +117,7 @@ export function CreateNewAccount({
       {/* Header */}
 
       <Box>
-        <Typography variant="body1" color="text.secondary">
+        <Typography variant="body1" color="text.primary">
           Account creation takes under 1 minute. Everything is done locally on
           your device. No calls to servers!
         </Typography>
@@ -125,7 +125,7 @@ export function CreateNewAccount({
 
       {/* Mode selector */}
       <Box>
-        <Typography variant="subtitle2" color="text.secondary" gutterBottom>
+        <Typography variant="subtitle2" color="text.primary" gutterBottom>
           Choose tutorial style
         </Typography>
         <Tabs
@@ -148,7 +148,7 @@ export function CreateNewAccount({
             }
           }}
         >
-          <Tab value="text" label="Text & screenshots" />
+          <Tab value="text" label="Text tutorial" />
           <Tab value="video" label="Video tutorial" />
         </Tabs>
       </Box>
@@ -157,7 +157,7 @@ export function CreateNewAccount({
       <Box sx={{ mt: 1 }}>
         {mode === "text" ? (
           <Stack spacing={2}>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" color="text.primary">
               Follow the steps below. Screenshots in the guide will match what
               you see in Qortal Hub.
             </Typography>
@@ -174,7 +174,7 @@ export function CreateNewAccount({
                 <Step key={step.label}>
                   <StepLabel>{step.label}</StepLabel>
                   <StepContent>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography variant="body2" color="text.primary">
                       {step.description}
                     </Typography>
 
@@ -254,7 +254,7 @@ export function CreateNewAccount({
       <p
         style={{
           marginTop: 10,
-          color: theme.palette.customBlue.main
+          color: theme.palette.text.primary
         }}
       >
         Once you have created your account, you can continue to the next step to
