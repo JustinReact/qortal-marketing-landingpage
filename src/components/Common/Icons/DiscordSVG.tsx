@@ -1,9 +1,15 @@
-import { IconTypes } from './IconTypes';
+import { IconTypes } from "./IconTypes";
 
-export const DiscordSVG: React.FC<IconTypes> = ({ color, height, width, className, onClickFunc }) => {
+export const DiscordSVG: React.FC<IconTypes> = ({
+  color,
+  height,
+  width,
+  className,
+  onClickFunc
+}) => {
   return (
     <svg
-      fill={color}
+      fill="currentColor"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 50 50"
       width={width}

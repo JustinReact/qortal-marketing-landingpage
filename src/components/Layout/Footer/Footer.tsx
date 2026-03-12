@@ -29,10 +29,22 @@ export const Footer = () => {
             Support
           </FooterLink>
           <FooterLink
-            href={"/privacy"}
-            className={location === "/privacy" ? "active" : ""}
+            href={"/creators"}
+            className={location === "/creators" ? "active" : ""}
           >
-            Privacy Policy
+            For Creators
+          </FooterLink>
+          <FooterLink
+            href={"/devs"}
+            className={location === "/devs" ? "active" : ""}
+          >
+            For Developers
+          </FooterLink>
+          <FooterLink
+            href={"/donate"}
+            className={location === "/donate" ? "active" : ""}
+          >
+            Donate
           </FooterLink>
           <FooterLink
             href={"/links"}
@@ -41,16 +53,10 @@ export const Footer = () => {
             Links
           </FooterLink>
           <FooterLink
-            href={"/creators"}
-            className={location === "/creators" ? "active" : ""}
+            href={"/privacy"}
+            className={location === "/privacy" ? "active" : ""}
           >
-            Creators
-          </FooterLink>
-          <FooterLink
-            href={"/devs"}
-            className={location === "/devs" ? "active" : ""}
-          >
-            Devs
+            Privacy Policy
           </FooterLink>
         </FooterRow>
       </FooterContainer>

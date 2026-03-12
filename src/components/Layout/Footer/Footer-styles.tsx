@@ -24,6 +24,7 @@ export const FooterRow = styled(Box)(({ theme }) => ({
   justifyContent: "center",
   alignItems: "center",
   gap: "42px",
+  marginTop: "10px",
   [theme.breakpoints.down("sm")]: {
     marginTop: "20px",
     flexDirection: "column",

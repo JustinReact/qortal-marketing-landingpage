@@ -43,17 +43,17 @@ export const TeamPageSubtitle = styled(Typography)(({ theme }) => ({
   color: theme.palette.text.primary,
   userSelect: "none",
   textAlign: "center",
-  marginTop: "10px",
+  marginTop: "10px"
 }));
 
 export const TeamGrid = styled(Grid)(({ theme }) => ({
   display: "grid",
   gridTemplateColumns: "repeat(2, minmax(0, 300px))",
-  justifyContent: "center", 
+  justifyContent: "center",
   marginTop: "50px",
   gap: "50px",
   [theme.breakpoints.down("md")]: {
-    gridTemplateColumns: "minmax(0, 300px)",
+    gridTemplateColumns: "minmax(0, 300px)"
   }
 }));
 
@@ -68,13 +68,14 @@ export const TeamMemberCard = styled(Box)(({ theme }) => ({
   justifyContent: "flex-start",
   borderRadius: "15px",
   backgroundColor: theme.palette.background.paper,
-  boxShadow: theme.palette.mode === "dark"
-    ? "0 4px 8px rgba(0, 0, 0, 0.5)"
-    : "0 4px 8px rgba(0, 0, 0, 0.1)",
+  boxShadow:
+    theme.palette.mode === "dark"
+      ? "0 4px 8px rgba(0, 0, 0, 0.5)"
+      : "0 4px 8px rgba(0, 0, 0, 0.1)",
   overflow: "hidden",
   transition: "transform 0.3s, box-shadow 0.3s",
   "&:hover": {
-    transform: "translateY(-5px)",
+    transform: "translateY(-5px)"
   },
   cursor: "pointer"
 }));
@@ -153,7 +154,7 @@ export const LinkedInIcon = styled(LinkedInSVG)(({ theme }) => ({
   cursor: "pointer",
   transition: "transform 0.3s",
   "&:hover": {
-    transform: "scale(1.05)",
+    transform: "scale(1.05)"
   }
 }));
 
@@ -162,13 +163,13 @@ export const StyledDialogTitle = styled(DialogTitle)(({ theme }) => ({
   fontWeight: "400",
   fontSize: "20px",
   color: theme.palette.text.primary,
-  userSelect: "none"
+  userSelect: "none",
+  textAlign: "center"
 }));
 
 export const DialogRow = styled(Box)({
   display: "flex",
   flexDirection: "row",
-  justifyContent: "space-between",
   alignItems: "center",
   padding: "0 3px",
   width: "100%"

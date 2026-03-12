@@ -29,7 +29,7 @@ export const Links = () => {
         <QortalImg
           src="/images/Links/QortalLogo.png"
           alt="Qortal Logo"
-          width={130}
+          width={147}
           height={147}
           quality={100}
         />

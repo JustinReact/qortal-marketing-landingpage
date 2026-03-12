@@ -9,7 +9,7 @@ export const QortalSVG: React.FC<IconTypes> = ({
   return (
     <svg
       className={className}
-      fill={color}
+      fill="currentColor"
       version="1.0"
       xmlns="http://www.w3.org/2000/svg"
       width={width}
