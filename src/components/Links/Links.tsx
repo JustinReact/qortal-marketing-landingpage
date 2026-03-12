@@ -13,6 +13,7 @@ import {
   MainCol,
   MobileIcon,
   MonitorIcon,
+  NonKYCIcon,
   QortalImg,
   WikiIcon,
   YoutubeIcon
@@ -121,6 +122,22 @@ export const Links = () => {
               color={theme.palette.text.primary}
             />
             Qortal Exqlorer
+          </LinkButton>
+          <LinkButton
+            href="https://link.qortal.dev/nonkyc"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <NonKYCIcon
+              height="80"
+              width="80"
+              color={theme.palette.text.primary}
+            />
+            {isMobile ? (
+              <span style={{ marginLeft: "50px" }}>NonKYC</span>
+            ) : (
+              "NonKYC Listing"
+            )}
           </LinkButton>
           <LinkButton
             href="https://link.qortal.dev/cmc-link"

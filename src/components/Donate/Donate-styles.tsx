@@ -82,6 +82,10 @@ export const LinkButton = styled(Link)(({ theme }) => ({
   textTransform: "none",
   textDecoration: "none",
   transition: "all 0.3s ease-in-out",
+  [theme.breakpoints.down("sm")]: {
+    justifyContent: "flex-start",
+    gap: "10px"
+  },
   "&:hover": {
     backgroundColor: theme.palette.text.primary,
     color: theme.palette.mode === "dark" ? "#000000" : "#ffffff",
@@ -110,6 +114,10 @@ export const DonateButton = styled(Button)(({ theme }) => ({
   textTransform: "none",
   textDecoration: "none",
   transition: "all 0.3s ease-in-out",
+  [theme.breakpoints.down("sm")]: {
+    justifyContent: "flex-start",
+    gap: "10px"
+  },
   "&:hover": {
     backgroundColor: theme.palette.text.primary,
     color: theme.palette.mode === "dark" ? "#000000" : "#ffffff",
@@ -124,7 +132,15 @@ export const PatreonIcon = styled(PatreonSVG)(({ theme }) => ({
   color: theme.palette.text.primary,
   position: "absolute",
   left: "30px",
-  top: "18px"
+  top: "50%",
+  transform: "translateY(-50%)",
+  [theme.breakpoints.down("sm")]: {
+    position: "static",
+    transform: "none",
+    top: "auto",
+    left: "auto",
+    marginLeft: "15px"
+  }
 }));
 
 export const QORTIcon = styled(QortalSVG)(({ theme }) => ({
@@ -132,7 +148,15 @@ export const QORTIcon = styled(QortalSVG)(({ theme }) => ({
   color: theme.palette.text.primary,
   position: "absolute",
   left: "30px",
-  top: "18px"
+  top: "50%",
+  transform: "translateY(-50%)",
+  [theme.breakpoints.down("sm")]: {
+    position: "static",
+    transform: "none",
+    top: "auto",
+    left: "auto",
+    marginLeft: "15px"
+  }
 }));
 
 export const LTCIcon = styled(LTCSVG)(({ theme }) => ({
@@ -140,7 +164,15 @@ export const LTCIcon = styled(LTCSVG)(({ theme }) => ({
   color: theme.palette.text.primary,
   position: "absolute",
   left: "30px",
-  top: "18px"
+  top: "50%",
+  transform: "translateY(-50%)",
+  [theme.breakpoints.down("sm")]: {
+    position: "static",
+    transform: "none",
+    top: "auto",
+    left: "auto",
+    marginLeft: "15px"
+  }
 }));
 
 export const DonateCol = styled(Box)({

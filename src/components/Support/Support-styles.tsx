@@ -28,18 +28,18 @@ export const MainCol = styled(Box)(({ theme }) => ({
 }));
 
 export const QortalImg = styled(Image)(({ theme }) => ({
-  marginBottom: "30px",
+  marginBottom: "30px"
 }));
 
 export const LinksTitle = styled("h1")(({ theme }) => ({
   fontSize: "20px",
   fontFamily: oxygen.style.fontFamily,
-  fontWeight: 400,  
+  fontWeight: 400,
   lineHeight: "24px",
   letterSpacing: 0,
   textAlign: "center",
   margin: 0,
-  userSelect: "none",
+  userSelect: "none"
 }));
 
 export const LinksContainer = styled(Box)(({ theme }) => ({
@@ -51,7 +51,7 @@ export const LinksContainer = styled(Box)(({ theme }) => ({
   width: "100%",
   maxWidth: "751px",
   padding: "24px",
-  marginTop: "45px",
+  marginTop: "45px"
 }));
 
 export const LinkButton = styled(Link)(({ theme }) => ({
@@ -73,13 +73,17 @@ export const LinkButton = styled(Link)(({ theme }) => ({
   textTransform: "none",
   textDecoration: "none",
   transition: "all 0.3s ease-in-out",
+  [theme.breakpoints.down("sm")]: {
+    justifyContent: "flex-start",
+    gap: "10px"
+  },
   "&:hover": {
     backgroundColor: theme.palette.text.primary,
     color: theme.palette.mode === "dark" ? "#000000" : "#ffffff",
     "& svg": {
-      color: theme.palette.mode === "dark" ? "#000000" : "#ffffff",
+      color: theme.palette.mode === "dark" ? "#000000" : "#ffffff"
     }
-  },
+  }
 }));
 
 export const CloudIcon = styled(CloudSVG)(({ theme }) => ({
@@ -87,7 +91,15 @@ export const CloudIcon = styled(CloudSVG)(({ theme }) => ({
   color: theme.palette.text.primary,
   position: "absolute",
   left: "30px",
-  top: "18px",
+  top: "50%",
+  transform: "translateY(-50%)",
+  [theme.breakpoints.down("sm")]: {
+    position: "static",
+    transform: "none",
+    top: "auto",
+    left: "auto",
+    marginLeft: "15px"
+  }
 }));
 
 export const DiscordIcon = styled(DiscordSVG)(({ theme }) => ({
@@ -95,5 +107,13 @@ export const DiscordIcon = styled(DiscordSVG)(({ theme }) => ({
   color: theme.palette.text.primary,
   position: "absolute",
   left: "30px",
-  top: "18px",
+  top: "50%",
+  transform: "translateY(-50%)",
+  [theme.breakpoints.down("sm")]: {
+    position: "static",
+    transform: "none",
+    top: "auto",
+    left: "auto",
+    marginLeft: "15px"
+  }
 }));

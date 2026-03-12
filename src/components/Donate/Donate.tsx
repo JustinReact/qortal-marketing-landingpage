@@ -80,9 +80,8 @@ const Donate = () => {
           quality={100}
         />
         <LinksTitle>
-          If you would like to help support ongoing outreach, educational
-          content, and infrastructure supporting the Qortal network, you can
-          contribute below.
+          Your contribution helps fund marketing, infrastructure, and the tools
+          used to grow the Qortal network. Thank you for your support!
         </LinksTitle>
         <LinksContainer>
           <LinkButton

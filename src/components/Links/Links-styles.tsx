@@ -12,6 +12,7 @@ import { MonitorSVG } from "../Common/Icons/MonitorSVG";
 import { MobileSVG } from "../Common/Icons/MobileSVG";
 import { AppsSVG } from "../Common/Icons/AppsSVG";
 import { YoutubeSVG } from "../Common/Icons/YoutubeSVG";
+import { NonKYCSVG } from "../Common/Icons/NonKYCSVG";
 
 export const Container = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -36,18 +37,18 @@ export const MainCol = styled(Box)(({ theme }) => ({
 }));
 
 export const QortalImg = styled(Image)(({ theme }) => ({
-  marginBottom: "30px",
+  marginBottom: "30px"
 }));
 
 export const LinksTitle = styled("h1")(({ theme }) => ({
   fontSize: "20px",
   fontFamily: oxygen.style.fontFamily,
-  fontWeight: 400,  
+  fontWeight: 400,
   lineHeight: "24px",
   letterSpacing: 0,
   textAlign: "center",
   margin: "0 0 60px 0",
-  userSelect: "none",
+  userSelect: "none"
 }));
 
 export const LinksContainer = styled(Box)(({ theme }) => ({
@@ -59,7 +60,7 @@ export const LinksContainer = styled(Box)(({ theme }) => ({
   width: "100%",
   maxWidth: "751px",
   padding: "24px",
-  marginTop: "45px",
+  marginTop: "45px"
 }));
 
 export const LinkButton = styled(Link)(({ theme }) => ({
@@ -81,13 +82,17 @@ export const LinkButton = styled(Link)(({ theme }) => ({
   textTransform: "none",
   textDecoration: "none",
   transition: "all 0.3s ease-in-out",
+  [theme.breakpoints.down("sm")]: {
+    justifyContent: "flex-start",
+    gap: "10px"
+  },
   "&:hover": {
     backgroundColor: theme.palette.text.primary,
     color: theme.palette.mode === "dark" ? "#000000" : "#ffffff",
     "& svg": {
-      color: theme.palette.mode === "dark" ? "#000000" : "#ffffff",
+      color: theme.palette.mode === "dark" ? "#000000" : "#ffffff"
     }
-  },
+  }
 }));
 
 export const EbookIcon = styled(EbookSVG)(({ theme }) => ({
@@ -95,7 +100,15 @@ export const EbookIcon = styled(EbookSVG)(({ theme }) => ({
   color: theme.palette.text.primary,
   position: "absolute",
   left: "30px",
-  top: "18px",
+  top: "50%",
+  transform: "translateY(-50%)",
+  [theme.breakpoints.down("sm")]: {
+    position: "static",
+    transform: "none",
+    top: "auto",
+    left: "auto",
+    marginLeft: "15px"
+  }
 }));
 
 export const WikiIcon = styled(WikiSVG)(({ theme }) => ({
@@ -103,7 +116,15 @@ export const WikiIcon = styled(WikiSVG)(({ theme }) => ({
   color: theme.palette.text.primary,
   position: "absolute",
   left: "30px",
-  top: "18px",
+  top: "50%",
+  transform: "translateY(-50%)",
+  [theme.breakpoints.down("sm")]: {
+    position: "static",
+    transform: "none",
+    top: "auto",
+    left: "auto",
+    marginLeft: "15px"
+  }
 }));
 
 export const DownloadingIcon = styled(DownloadingSVG)(({ theme }) => ({
@@ -111,7 +132,15 @@ export const DownloadingIcon = styled(DownloadingSVG)(({ theme }) => ({
   color: theme.palette.text.primary,
   position: "absolute",
   left: "30px",
-  top: "18px",
+  top: "50%",
+  transform: "translateY(-50%)",
+  [theme.breakpoints.down("sm")]: {
+    position: "static",
+    transform: "none",
+    top: "auto",
+    left: "auto",
+    marginLeft: "15px"
+  }
 }));
 
 export const ExplorerIcon = styled(ExplorerSVG)(({ theme }) => ({
@@ -119,7 +148,15 @@ export const ExplorerIcon = styled(ExplorerSVG)(({ theme }) => ({
   color: theme.palette.text.primary,
   position: "absolute",
   left: "30px",
-  top: "18px",
+  top: "50%",
+  transform: "translateY(-50%)",
+  [theme.breakpoints.down("sm")]: {
+    position: "static",
+    transform: "none",
+    top: "auto",
+    left: "auto",
+    marginLeft: "15px"
+  }
 }));
 
 export const AppsIcon = styled(AppsSVG)(({ theme }) => ({
@@ -127,7 +164,15 @@ export const AppsIcon = styled(AppsSVG)(({ theme }) => ({
   color: theme.palette.text.primary,
   position: "absolute",
   left: "30px",
-  top: "18px",
+  top: "50%",
+  transform: "translateY(-50%)",
+  [theme.breakpoints.down("sm")]: {
+    position: "static",
+    transform: "none",
+    top: "auto",
+    left: "auto",
+    marginLeft: "15px"
+  }
 }));
 
 export const ExchangeIcon = styled(ExchangeSVG)(({ theme }) => ({
@@ -135,7 +180,27 @@ export const ExchangeIcon = styled(ExchangeSVG)(({ theme }) => ({
   color: theme.palette.text.primary,
   position: "absolute",
   left: "30px",
-  top: "18px",
+  top: "50%",
+  transform: "translateY(-50%)",
+  [theme.breakpoints.down("sm")]: {
+    position: "static",
+    transform: "none",
+    top: "auto",
+    left: "auto",
+    marginLeft: "15px"
+  }
+}));
+
+export const NonKYCIcon = styled(NonKYCSVG)(({ theme }) => ({
+  transition: "all 0.3s ease-in-out",
+  color: theme.palette.text.primary,
+  position: "absolute",
+  left: "30px",
+  top: "50%",
+  transform: "translateY(-50%)",
+  [theme.breakpoints.down("sm")]: {
+    left: "15px"
+  }
 }));
 
 export const BalanceIcon = styled(BalanceSVG)(({ theme }) => ({
@@ -143,7 +208,15 @@ export const BalanceIcon = styled(BalanceSVG)(({ theme }) => ({
   color: theme.palette.text.primary,
   position: "absolute",
   left: "30px",
-  top: "18px",
+  top: "50%",
+  transform: "translateY(-50%)",
+  [theme.breakpoints.down("sm")]: {
+    position: "static",
+    transform: "none",
+    top: "auto",
+    left: "auto",
+    marginLeft: "15px"
+  }
 }));
 
 export const MonitorIcon = styled(MonitorSVG)(({ theme }) => ({
@@ -151,7 +224,15 @@ export const MonitorIcon = styled(MonitorSVG)(({ theme }) => ({
   color: theme.palette.text.primary,
   position: "absolute",
   left: "30px",
-  top: "18px",
+  top: "50%",
+  transform: "translateY(-50%)",
+  [theme.breakpoints.down("sm")]: {
+    position: "static",
+    transform: "none",
+    top: "auto",
+    left: "auto",
+    marginLeft: "15px"
+  }
 }));
 
 export const MobileIcon = styled(MobileSVG)(({ theme }) => ({
@@ -159,7 +240,15 @@ export const MobileIcon = styled(MobileSVG)(({ theme }) => ({
   color: theme.palette.text.primary,
   position: "absolute",
   left: "30px",
-  top: "18px",
+  top: "50%",
+  transform: "translateY(-50%)",
+  [theme.breakpoints.down("sm")]: {
+    position: "static",
+    transform: "none",
+    top: "auto",
+    left: "auto",
+    marginLeft: "15px"
+  }
 }));
 
 export const YoutubeIcon = styled(YoutubeSVG)(({ theme }) => ({
@@ -167,5 +256,13 @@ export const YoutubeIcon = styled(YoutubeSVG)(({ theme }) => ({
   color: theme.palette.text.primary,
   position: "absolute",
   left: "30px",
-  top: "18px",
+  top: "50%",
+  transform: "translateY(-50%)",
+  [theme.breakpoints.down("sm")]: {
+    position: "static",
+    transform: "none",
+    top: "auto",
+    left: "auto",
+    marginLeft: "15px"
+  }
 }));
