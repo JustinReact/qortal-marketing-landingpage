@@ -37,6 +37,7 @@ import Image from "next/image";
 import { CopySVG } from "../Common/Icons/CopySVG";
 import { CheckmarkSVG } from "../Common/Icons/CheckmarkSVG";
 import CloseIcon from "@mui/icons-material/Close";
+import Link from "next/link";
 
 type DonateProps = {
   address: string;
@@ -128,6 +129,22 @@ const Donate = () => {
             />
             Donate Using LTC
           </DonateButton>
+          <DonateText style={{ marginTop: "20px" }}>
+            Transparency is important. A public sheet showing how funds are used
+            can be viewed here. While it currently uses Google Sheets for
+            convenience, the data may later be mirrored on QDN.
+            <Link
+              href="https://link.qortal.dev/marketing-costs"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                color: theme.palette.customBlue.main,
+                marginLeft: "5px"
+              }}
+            >
+              Qortal Donation Sheet
+            </Link>
+          </DonateText>
         </LinksContainer>
       </MainCol>
       <>
@@ -197,7 +214,7 @@ const Donate = () => {
                 </DonateRow>
                 <Image
                   src={LTCDetails.qrCode}
-                  alt="QORT QR Code"
+                  alt="LTC QR Code"
                   width={150}
                   height={150}
                 />
