@@ -225,6 +225,14 @@ export const DonateText = styled(Typography)(({ theme }) => ({
   wordBreak: "break-all"
 }));
 
+export const DonateText2 = styled(Typography)(({ theme }) => ({
+  fontFamily: oxygen.style.fontFamily,
+  fontSize: "15px",
+  fontWeight: 400,
+  marginTop: "20px",
+  color: theme.palette.text.primary
+}));
+
 export const CopyButton = styled(Button)(({ theme }) => ({
   position: "relative",
   padding: "3px 10px",

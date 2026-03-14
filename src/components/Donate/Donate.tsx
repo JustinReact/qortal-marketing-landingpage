@@ -18,7 +18,8 @@ import {
   CheckmarkIcon,
   StyledDialogTitle,
   StyledDialogRow,
-  StyledCloseIcon
+  StyledCloseIcon,
+  DonateText2
 } from "./Donate-styles";
 import {
   Box,
@@ -129,7 +130,7 @@ const Donate = () => {
             />
             Donate Using LTC
           </DonateButton>
-          <DonateText style={{ marginTop: "20px" }}>
+          <DonateText2>
             Transparency is important. A public sheet showing how funds are used
             can be viewed here. While it currently uses Google Sheets for
             convenience, the data may later be mirrored on QDN.
@@ -144,7 +145,7 @@ const Donate = () => {
             >
               Qortal Donation Sheet
             </Link>
-          </DonateText>
+          </DonateText2>
         </LinksContainer>
       </MainCol>
       <>
