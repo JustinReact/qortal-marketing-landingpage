@@ -175,8 +175,6 @@ export const Header = styled("h1")(({ theme }) => ({
 }));
 
 export const SubHeader = styled("h2")(({ theme }) => ({
-  display: "flex",
-  flexDirection: "row",
   gap: "14px",
   textAlign: "center",
   color: theme.palette.text.primary,
@@ -189,18 +187,18 @@ export const SubHeader = styled("h2")(({ theme }) => ({
   margin: 0,
   [theme.breakpoints.down("sm")]: {
     fontSize: "18px",
-    lineHeight: "28px",
+    lineHeight: "28px"
   }
 }));
 
 export const SubHeader2 = styled("h3")(({ theme }) => ({
-    color: theme.palette.text.primary,
-    fontFamily: oxygen.style.fontFamily,
-    fontSize: "18px",
-    fontWeight: 300,
-    letterSpacing: 0,
-    userSelect: "none",
-    margin: 0,
+  color: theme.palette.text.primary,
+  fontFamily: oxygen.style.fontFamily,
+  fontSize: "18px",
+  fontWeight: 300,
+  letterSpacing: 0,
+  userSelect: "none",
+  margin: 0
 }));
 
 export const InfoRow = styled(Box)(({ theme }) => ({
@@ -208,7 +206,7 @@ export const InfoRow = styled(Box)(({ theme }) => ({
   flexDirection: "row",
   justifyContent: "center",
   width: "100%",
-  margin: "50px 0 100px 0",
+  margin: "10px 0",
   gap: "20px",
   [theme.breakpoints.down("sm")]: {
     flexDirection: "column",
@@ -222,8 +220,8 @@ export const IconRow = styled(Box)({
   display: "flex",
   flexDirection: "row",
   gap: "5px",
-  alignItems: "center",
-})
+  alignItems: "center"
+});
 
 export const SubHeaderBox = styled(Typography)({
   position: "relative",
@@ -272,14 +270,14 @@ export const SubHeader3 = styled("h3")(({ theme }) => ({
   userSelect: "none",
   marginBottom: "10px",
   [theme.breakpoints.down("sm")]: {
-    fontSize: "16px",
+    fontSize: "16px"
   }
 }));
 
 export const ArrowDownIcon = styled(BackArrowSVG)(({ theme }) => ({
   transform: "rotate(-90deg) translateX(-5px)",
   [theme.breakpoints.down("sm")]: {
-    flexShrink: 0,
+    flexShrink: 0
   }
 }));
 
@@ -647,7 +645,7 @@ export const TopFoldButtonRow = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  marginTop: "25px",
+  marginTop: "5px",
   gap: "30px",
   [theme.breakpoints.down("sm")]: {
     gap: "10px",
@@ -1151,7 +1149,7 @@ export const SectionTitle = styled("h2")(({ theme }) => ({
   lineHeight: "56px",
   userSelect: "none",
   color: theme.palette.text.primary,
-  gridColumn: "1 / -1", 
+  gridColumn: "1 / -1",
   [theme.breakpoints.down("sm")]: {
     fontSize: "28px",
     lineHeight: "38px",
@@ -1389,7 +1387,8 @@ export const SectionDownloadLink = styled(Link)(({ theme }) => ({
   fontSize: "20px",
   lineHeight: "30px",
   letterSpacing: "calc(0.04*20px)",
-  color: theme.palette.mode === "dark" ? "#02cbe6" : theme.palette.customBlue.main,
+  color:
+    theme.palette.mode === "dark" ? "#02cbe6" : theme.palette.customBlue.main,
   textDecoration: "none",
   transition: "all 0.3s ease-in-out",
   zIndex: 5,
@@ -1474,7 +1473,7 @@ export const OpenSourceImg = styled(Image)(({ theme }) => ({
   objectPosition: "center",
   zIndex: 25,
   userSelect: "none",
-  transition: "all 0.2s ease-in-out",
+  transition: "all 0.2s ease-in-out"
 }));
 
 export const OpenSourceMobileSection = styled(Box)(({ theme }) => ({

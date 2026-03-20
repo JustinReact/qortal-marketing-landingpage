@@ -244,12 +244,36 @@ const LandingPage = () => {
         </TopFoldRow>
         <TopFoldRow>
           <SubHeader>
-            Qortal is a fully decentralized, censorship-proof Web3 platform that
-            empowers users with complete control over their data and online
-            interactions. In a matter of minutes, you can get started on this
-            alternative internet.
+            No AWS. No Google. No kill switch. Your content, your data, yours
+            forever. <strong>Up and running in under 5 minutes.</strong>
           </SubHeader>
         </TopFoldRow>
+        <InfoRow>
+          <SubHeader2>500+ apps already deployed on Qortal!</SubHeader2>
+          <IconRow>
+            <IconImg
+              src={"/images/LandingPage/Q-Tube Avatar.png"}
+              alt="Qortal Q-Apps Q-Tube Icon"
+              width={30}
+              height={30}
+              quality={100}
+            />
+            <IconImg
+              src={"/images/LandingPage/Q-Share Avatar.png"}
+              alt="Qortal Q-Apps Q-Share Icon"
+              width={30}
+              height={30}
+              quality={100}
+            />
+            <IconImg
+              src={"/images/LandingPage/Q-Mail Avatar.png"}
+              alt="Qortal Q-Apps Q-Mail Icon"
+              width={30}
+              height={30}
+              quality={100}
+            />
+          </IconRow>
+        </InfoRow>
         <TopFoldButtonRow>
           <CTAButton1
             onClick={() => {
@@ -278,32 +302,7 @@ const LandingPage = () => {
           </CTAButton2>
         </TopFoldButtonRow>
       </TopFoldCol>
-      <InfoRow>
-        <SubHeader2>500+ apps already deployed on Qortal!</SubHeader2>
-        <IconRow>
-          <IconImg
-            src={"/images/LandingPage/Q-Tube Avatar.png"}
-            alt="Qortal Q-Apps Q-Tube Icon"
-            width={30}
-            height={30}
-            quality={100}
-          />
-          <IconImg
-            src={"/images/LandingPage/Q-Share Avatar.png"}
-            alt="Qortal Q-Apps Q-Share Icon"
-            width={30}
-            height={30}
-            quality={100}
-          />
-          <IconImg
-            src={"/images/LandingPage/Q-Mail Avatar.png"}
-            alt="Qortal Q-Apps Q-Mail Icon"
-            width={30}
-            height={30}
-            quality={100}
-          />
-        </IconRow>
-      </InfoRow>
+
       <TopFoldMainCol>
         <SubHeaderRow>
           <SubHeader3>
