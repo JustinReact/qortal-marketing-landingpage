@@ -67,6 +67,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 1
     },
     {
+      url: "https://qortal.dev/downloads",
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 1
+    },
+    {
       url: "https://qortal.dev/wiki",
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
@@ -155,6 +161,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
       priority: 0.5
+    },
+    {
+      url: "https://qortal.dev/donate",
+      lastModified: new Date(),
+      changeFrequency: "yearly" as const,
+      priority: 0.3
     }
   ];
   const blogs: Blog = (await getBlogs()) ?? [];
