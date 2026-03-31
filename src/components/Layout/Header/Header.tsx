@@ -119,7 +119,7 @@ export const Header = () => {
               >
                 Downloads
               </QORTButton>
-              <QORTButton
+              {/* <QORTButton
                 className={location.includes("/onboarding") ? "active" : ""}
                 onClick={() => {
                   ReactGA.event({
@@ -131,6 +131,19 @@ export const Header = () => {
                 href={"/onboarding"}
               >
                 Onboarding
+              </QORTButton> */}
+              <QORTButton
+                className={location.includes("/wiki") ? "active" : ""}
+                onClick={() => {
+                  ReactGA.event({
+                    category: "User",
+                    action: "Clicked Wiki Button",
+                    label: "Wiki Button"
+                  });
+                }}
+                href={"/wiki"}
+              >
+                Wiki
               </QORTButton>
               <Docs
                 className={location === "/team" ? "active" : ""}
@@ -154,7 +167,7 @@ export const Header = () => {
 
                 {open && (
                   <DropdownContainer elevation={3}>
-                    <DropdownItem
+                    {/* <DropdownItem
                       onClick={() => {
                         ReactGA.event({
                           category: "User",
@@ -165,7 +178,7 @@ export const Header = () => {
                       href="/wiki"
                     >
                       Wiki
-                    </DropdownItem>
+                    </DropdownItem> */}
                     <DropdownItem
                       onClick={() => {
                         ReactGA.event({
