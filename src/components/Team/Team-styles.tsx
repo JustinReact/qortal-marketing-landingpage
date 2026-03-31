@@ -170,6 +170,7 @@ export const StyledDialogTitle = styled(DialogTitle)(({ theme }) => ({
 export const DialogRow = styled(Box)({
   display: "flex",
   flexDirection: "row",
+  justifyContent: "space-between",
   alignItems: "center",
   padding: "0 3px",
   width: "100%"
