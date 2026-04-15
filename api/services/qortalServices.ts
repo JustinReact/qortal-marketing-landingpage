@@ -99,6 +99,53 @@ export const hasQortalName = async (address: string): Promise<boolean> => {
   return names.length > 0;
 };
 
+/**
+ * True if this address has ever **purchased** a name on-chain (confirmed BUY_NAME).
+ * Step 2 QORT is for users who **registered** a name without buying one: they must
+ * have a name (`hasQortalName`) and no BUY_NAME history (empty search = eligible).
+ */
+export const hasConfirmedBuyNameTransaction = async (
+  address: string
+): Promise<boolean> => {
+  if (!address) {
+    throw new Error("missing_address");
+  }
+
+  try {
+    const validApi: string = await findUsableApi();
+    const { data } = await axios.get<unknown[]>(
+      `${validApi}/transactions/search`,
+      {
+        params: {
+          txType: "BUY_NAME",
+          address,
+          confirmationStatus: "CONFIRMED",
+          limit: 1
+        }
+      }
+    );
+
+    if (!Array.isArray(data)) {
+      return false;
+    }
+
+    return data.length > 0;
+  } catch (error: any) {
+    if (axios.isAxiosError(error)) {
+      const status = error.response?.status;
+      if (status === 404) {
+        return false;
+      }
+    }
+
+    console.error(
+      `[Qortal] Failed to search BUY_NAME transactions for ${address}:`,
+      error?.message ?? error
+    );
+    throw new Error("failed_to_fetch_buy_name_transactions");
+  }
+};
+
 export const isNewUser = async (address: string): Promise<boolean> => {
   const balance = await fetchBalanceByAddress(address);
   return balance < 6;

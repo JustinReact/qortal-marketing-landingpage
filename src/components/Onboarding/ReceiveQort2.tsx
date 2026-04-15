@@ -60,6 +60,22 @@ const ReceiveQort2 = ({ qortStep }: PropsReceiveQort) => {
           message = "Please complete step 1 (2 QORT) first before redeeming 4 QORT";
         } else if (data?.reason === "ip_limit_reached") {
           message = "QORT was already sent to you";
+        } else if (data?.reason === "name_required_step2") {
+          message =
+            "Register a Qortal name for this address before redeeming the 4 QORT.";
+        } else if (data?.reason === "buy_name_history_exists") {
+          message =
+            "The 4 QORT is only for addresses that registered a name without buying one. This address has a name purchase on-chain.";
+        } else if (data?.reason === "buy_name_tx_lookup_failed") {
+          message =
+            "Could not verify name purchase status. Please try again in a few minutes.";
+        } else if (data?.reason === "qortal_lookup_failed") {
+          message =
+            "Could not verify your name on the network. Please try again in a few minutes.";
+        } else if (data?.reason === "name_check_failed") {
+          message = "Could not verify your name. Please try again.";
+        } else if (data?.reason === "missing_qortal_address") {
+          message = "Missing Qortal address. Please restart onboarding.";
         }
         
         setMessage(`❌ ${message}`);
