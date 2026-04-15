@@ -50,7 +50,7 @@ export const MobileDrawer: FC<MobileDrawerProps> = ({
       >
         Downloads
       </DrawerButton>
-      {/* <DrawerButton
+      <DrawerButton
         onClick={() => {
           ReactGA.event({
             category: "User",
@@ -63,7 +63,7 @@ export const MobileDrawer: FC<MobileDrawerProps> = ({
         active={location.includes("/onboarding") ? true : false}
       >
         Onboarding
-      </DrawerButton> */}
+      </DrawerButton>
       <DrawerButton
         onClick={() => {
           ReactGA.event({
