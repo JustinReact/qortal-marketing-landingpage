@@ -43,7 +43,7 @@
     "gray-matter": "^4.0.3",
     "highlight.js": "^11.11.1",
     "html-react-parser": "^5.1.18",
-    "next": "^14.2.34",
+    "next": "^14.2.35",
     "next-mdx-remote": "^5.0.0",
     "next-mdx-remote-client": "^1.0.7",
     "prism-react-renderer": "^2.0.4",
