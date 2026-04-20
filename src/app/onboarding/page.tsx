@@ -1,4 +1,3 @@
-import { notFound } from "next/navigation";
 import Onboarding from "../../components/Onboarding/Onboarding";
 
 export const metadata = {
@@ -7,10 +6,6 @@ export const metadata = {
 };
 
 const OnboardingPage = () => {
-  // Hide onboarding page in production temporarily
-  if (process.env.NODE_ENV === "production") {
-    return notFound();
-  }
   return <Onboarding />;
 };
 

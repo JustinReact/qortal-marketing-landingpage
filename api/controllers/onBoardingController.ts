@@ -6,9 +6,19 @@ import { codes } from "../lib/codeStore";
 import jwt from "jsonwebtoken";
 import {
   checkAndReserveQortPayout,
+  reserveNonReputableDomainSendCode,
+  rollbackNonReputableDomainSendCode,
   rollbackQortPayout
 } from "../services/firebaseServices";
-import { hasQortalName, isNewUser } from "../services/qortalServices";
+import {
+  getEmailDomain,
+  isReputableEmailDomain
+} from "../lib/reputableEmailDomains";
+import {
+  hasConfirmedBuyNameTransaction,
+  hasQortalName,
+  isNewUser
+} from "../services/qortalServices";
 
 const {
   sendCoin,
@@ -69,6 +79,21 @@ const handleSendCode = async (
       }
     }
 
+    const emailDomain = getEmailDomain(email);
+    let reservedNonReputableDomain = false;
+    if (!isReputableEmailDomain(email)) {
+      const { allowed } = await reserveNonReputableDomainSendCode(emailDomain);
+      if (!allowed) {
+        res.status(429).json({
+          error:
+            "This email domain has reached its daily limit for verification codes. Use a major email provider (e.g. Gmail or Outlook) or try again tomorrow.",
+          code: "domain_daily_limit"
+        });
+        return;
+      }
+      reservedNonReputableDomain = true;
+    }
+
     // Generate code
     const code = crypto.randomInt(100000, 999999).toString();
     const expiresAt = Date.now() + 15 * 60 * 1000; // 15 minutes
@@ -91,12 +116,19 @@ const handleSendCode = async (
     const text = `Your Qortal.dev verification code is: ${code}`;
 
     // Send MailerSend transactional email
-    await sendTransactionalEmail(
-      email,
-      "Your Qortal onboarding verification code",
-      html,
-      text
-    );
+    try {
+      await sendTransactionalEmail(
+        email,
+        "Your Qortal onboarding verification code",
+        html,
+        text
+      );
+    } catch (sendErr) {
+      if (reservedNonReputableDomain) {
+        await rollbackNonReputableDomainSendCode(emailDomain).catch(() => {});
+      }
+      throw sendErr;
+    }
 
     // Store in memory
     codes.set(email, {
@@ -195,6 +227,55 @@ const handleSendQort = async (
   if (!ip) {
     res.status(400).json({ valid: false, reason: "missing_ip" });
     return;
+  }
+
+  if (!qortalAddress) {
+    res.status(400).json({ valid: false, reason: "missing_qortal_address" });
+    return;
+  }
+
+  if (qortStep === 2) {
+    try {
+      // Must own a name, and it must not have been acquired via a BUY_NAME (purchase).
+      const named = await hasQortalName(qortalAddress);
+      if (!named) {
+        res.status(403).json({
+          valid: false,
+          reason: "name_required_step2"
+        });
+        return;
+      }
+
+      const hasBuyNameTx = await hasConfirmedBuyNameTransaction(qortalAddress);
+      if (hasBuyNameTx) {
+        res.status(403).json({
+          valid: false,
+          reason: "buy_name_history_exists"
+        });
+        return;
+      }
+    } catch (err: any) {
+      const lookupFailed = err?.message === "failed_to_fetch_qortal_names";
+      const buyNameLookupFailed =
+        err?.message === "failed_to_fetch_buy_name_transactions";
+      if (lookupFailed) {
+        res.status(502).json({
+          valid: false,
+          reason: "qortal_lookup_failed"
+        });
+        return;
+      }
+      if (buyNameLookupFailed) {
+        res.status(502).json({
+          valid: false,
+          reason: "buy_name_tx_lookup_failed"
+        });
+        return;
+      }
+      console.error("[Onboarding] Step 2 name check failed:", err);
+      res.status(500).json({ valid: false, reason: "name_check_failed" });
+      return;
+    }
   }
 
   // 1) Check & reserve payout (email + IP anti-abuse)

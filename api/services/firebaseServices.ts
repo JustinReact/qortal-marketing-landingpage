@@ -183,6 +183,66 @@ function normalizeEmail(email: string) {
   return email.trim().toLowerCase();
 }
 
+const ONBOARDING_DOMAIN_DAILY = "onboardingDomainDailySends";
+const NON_REPUTABLE_DOMAIN_SENDS_PER_UTC_DAY = 2;
+
+/**
+ * Non-reputable email domains: max N verification emails per domain per UTC day.
+ * Reputable domains skip this (see api/lib/reputableEmailDomains.ts).
+ */
+export async function reserveNonReputableDomainSendCode(
+  emailDomain: string
+): Promise<{ allowed: boolean }> {
+  const normalized = emailDomain.toLowerCase().trim();
+  if (!normalized) return { allowed: false };
+
+  const utcDate = new Date().toISOString().slice(0, 10);
+  const docId = `${utcDate}_${hmacSha256Hex(`domain:${normalized}`)}`;
+  const ref = db.collection(ONBOARDING_DOMAIN_DAILY).doc(docId);
+
+  return db.runTransaction(async (t) => {
+    const snap = await t.get(ref);
+    const count = snap.data()?.count ?? 0;
+    if (count >= NON_REPUTABLE_DOMAIN_SENDS_PER_UTC_DAY) {
+      return { allowed: false };
+    }
+    t.set(
+      ref,
+      {
+        count: count + 1,
+        updatedAt: FieldValue.serverTimestamp()
+      },
+      { merge: true }
+    );
+    return { allowed: true };
+  });
+}
+
+export async function rollbackNonReputableDomainSendCode(
+  emailDomain: string
+): Promise<void> {
+  const normalized = emailDomain.toLowerCase().trim();
+  if (!normalized) return;
+
+  const utcDate = new Date().toISOString().slice(0, 10);
+  const docId = `${utcDate}_${hmacSha256Hex(`domain:${normalized}`)}`;
+  const ref = db.collection(ONBOARDING_DOMAIN_DAILY).doc(docId);
+
+  await db.runTransaction(async (t) => {
+    const snap = await t.get(ref);
+    const count = snap.data()?.count ?? 0;
+    if (count <= 0) return;
+    t.set(
+      ref,
+      {
+        count: count - 1,
+        updatedAt: FieldValue.serverTimestamp()
+      },
+      { merge: true }
+    );
+  });
+}
+
 /**
  * Checks & reserves a QORT payout atomically:
  * - Block if email already paid (emailHash doc exists).
