@@ -290,16 +290,10 @@ const Onboarding = () => {
                 tabIndex={0}
                 aria-label="Chat with us"
                 onClick={() =>
-                  window.open(
-                    "https://link.qortal.dev/discord-invite",
-                    "_blank"
-                  )
+                  window.open("https://link.qortal.dev/support", "_blank")
                 }
                 onKeyDown={() =>
-                  window.open(
-                    "https://link.qortal.dev/discord-invite",
-                    "_blank"
-                  )
+                  window.open("https://link.qortal.dev/support", "_blank")
                 }
               >
                 Support
