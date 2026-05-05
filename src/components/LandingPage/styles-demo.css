@@ -196,7 +196,8 @@ a,
   height: 30px;
   flex: 0 0 auto;
   background: linear-gradient(180deg, #24c4ff, var(--accent-strong));
-  -webkit-mask: url("/landing-hub-demo/qortalIcon.svg") center / contain no-repeat;
+  -webkit-mask: url("/landing-hub-demo/qortalIcon.svg") center / contain
+    no-repeat;
   mask: url("/landing-hub-demo/qortalIcon.svg") center / contain no-repeat;
   filter: drop-shadow(0 0 18px rgba(132, 175, 240, 0.35));
 }
@@ -4137,8 +4138,8 @@ body.is-modal-open .info-popover {
   overflow: hidden;
   border-radius: 7px;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  background: #020812 url("/landing-hub-demo/lyrid-meteor.svg") center center / cover
-    no-repeat;
+  background: #020812 url("/landing-hub-demo/lyrid-meteor.svg") center center /
+    cover no-repeat;
 }
 
 .feed-post__media::before,
@@ -7643,7 +7644,8 @@ body.is-modal-open .info-popover {
   height: 66px;
   background: linear-gradient(180deg, #63cbff 0%, #3388ff 58%, #256ce8 100%);
   filter: drop-shadow(0 0 16px rgba(132, 175, 240, 0.42));
-  -webkit-mask: url("/landing-hub-demo/qortalIcon.svg") center / contain no-repeat;
+  -webkit-mask: url("/landing-hub-demo/qortalIcon.svg") center / contain
+    no-repeat;
   mask: url("/landing-hub-demo/qortalIcon.svg") center / contain no-repeat;
 }
 

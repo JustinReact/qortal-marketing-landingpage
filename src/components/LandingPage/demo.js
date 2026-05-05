@@ -108,7 +108,12 @@ const featuredApps = [
     tone: "teal",
     icon: assetUrl("quitter.webp")
   },
-  { name: "Q-Mail", logo: "mail", tone: "white", icon: assetUrl("q-mail.webp") },
+  {
+    name: "Q-Mail",
+    logo: "mail",
+    tone: "white",
+    icon: assetUrl("q-mail.webp")
+  },
   { name: "Q-Blog", logo: "blog", tone: "cyan", icon: assetUrl("q-blog.webp") },
   {
     name: "Q-Trade",
