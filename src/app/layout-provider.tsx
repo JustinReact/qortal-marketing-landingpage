@@ -19,10 +19,10 @@ function LayoutProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
-  
+
   // For editor routes (including /editor/view), don't wrap with header/footer
-  const isEditorRoute = location.startsWith('/editor');
-  
+  const isEditorRoute = location.startsWith("/editor");
+
   if (isEditorRoute) {
     return (
       <Provider store={store}>
@@ -33,7 +33,7 @@ function LayoutProvider({ children }: { children: React.ReactNode }) {
       </Provider>
     );
   }
-  
+
   return (
     <Provider store={store}>
       <ThemeProviderWrapper>
@@ -43,8 +43,8 @@ function LayoutProvider({ children }: { children: React.ReactNode }) {
             !location.includes("/docs") && !location.includes("/")
               ? "BGImageMain"
               : location === "/"
-              ? "landingPage"
-              : ""
+                ? "landingPage"
+                : ""
           }
         >
           <Header />
