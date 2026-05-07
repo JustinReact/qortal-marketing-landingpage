@@ -10,7 +10,7 @@ import {
   LightModeIcon,
   DarkModeIcon,
   QortalMainLogo
-} from "./Header-styles";
+} from "./HeaderMobile-styles";
 import { useMediaQuery, useTheme } from "@mui/material";
 import { MobileDrawer } from "./MobileDrawer";
 import { motion, AnimatePresence } from "framer-motion";

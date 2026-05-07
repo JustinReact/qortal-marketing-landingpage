@@ -9,12 +9,13 @@ import {
 } from "@mui/material";
 import AdsClickIcon from "@mui/icons-material/AdsClick";
 import FileDownloadRoundedIcon from "@mui/icons-material/FileDownloadRounded";
+import dynamic from "next/dynamic";
 import Link from "next/link";
-import { inter, segoeUI } from "../../app/fonts";
+import { inter, segoeUIHubHeadline } from "../../app/fonts";
 import { QortalSVG } from "../Common/Icons/QortalSVG";
 import Demo from "./DemoComponent";
-import LandingPagePrevious from "./LandingPagePrevious";
-import { Container } from "./LandingPage-styles";
+
+const LandingPagePrevious = dynamic(() => import("./LandingPagePrevious"));
 
 const LandingPage = () => {
   const theme = useTheme();
@@ -53,10 +54,14 @@ const LandingPage = () => {
           }
         }}
       />
-      <Container
+      <Box
         className={inter.className}
         sx={{
+          position: "relative",
+          display: "flex",
+          flexDirection: "column",
           alignItems: "center",
+          width: "100%",
           isolation: "isolate",
           overflow: "hidden",
           px: "60px",
@@ -140,7 +145,7 @@ const LandingPage = () => {
           <Typography
             id="hub-preview-title"
             component="h1"
-            className={segoeUI.className}
+            className={segoeUIHubHeadline.className}
             sx={{
               m: 0,
               color: heroTextColor,
@@ -678,7 +683,7 @@ const LandingPage = () => {
             </Box>
           </Box>
         </Box>
-      </Container>
+      </Box>
     </>
   );
 };

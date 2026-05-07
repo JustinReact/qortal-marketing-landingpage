@@ -94,7 +94,7 @@ export const futura = localFont({
 });
 
 export const inter = localFont({
-  src: "../../public/fonts/Inter.ttf",
+  src: "../../public/fonts/Inter.woff2",
   weight: "400",
   style: "normal",
   display: "block",
@@ -270,6 +270,14 @@ export const segoeUI = localFont({
       style: "normal"
     }
   ],
+  display: "block",
+  preload: true
+});
+
+export const segoeUIHubHeadline = localFont({
+  src: "../../public/fonts/SegoeUIHubHeadline.woff2",
+  weight: "450",
+  style: "normal",
   display: "block",
   preload: true
 });
