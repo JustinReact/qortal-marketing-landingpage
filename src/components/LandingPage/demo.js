@@ -2374,7 +2374,7 @@ function setupHubInteractions() {
     }
 
     if (card.matches(".hub-card--account")) {
-      return ["bottom", "right", "left", "top"];
+      return ["bottom", "top"];
     }
 
     return ["top", "bottom", "right", "left"];
