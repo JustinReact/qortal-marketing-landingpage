@@ -1,16 +1,24 @@
 "use client";
 
-import { Box, GlobalStyles, Typography, useTheme } from "@mui/material";
+import {
+  Box,
+  GlobalStyles,
+  Typography,
+  useMediaQuery,
+  useTheme
+} from "@mui/material";
 import AdsClickIcon from "@mui/icons-material/AdsClick";
 import FileDownloadRoundedIcon from "@mui/icons-material/FileDownloadRounded";
 import Link from "next/link";
 import { inter, segoeUI } from "../../app/fonts";
 import { QortalSVG } from "../Common/Icons/QortalSVG";
 import Demo from "./DemoComponent";
+import LandingPagePrevious from "./LandingPagePrevious";
 import { Container } from "./LandingPage-styles";
 
 const LandingPage = () => {
   const theme = useTheme();
+  const isMobileViewport = useMediaQuery("(max-width: 1193px)");
   const isDarkMode = theme.palette.mode === "dark";
   const pageBackground = isDarkMode ? "#020713" : theme.palette.background.default;
   const heroTextColor = isDarkMode ? "#f7faff" : "#07111f";
@@ -20,6 +28,10 @@ const LandingPage = () => {
   const heroHelperTextColor = isDarkMode
     ? "rgba(218, 229, 243, 0.78)"
     : "rgba(8, 17, 34, 0.62)";
+
+  if (isMobileViewport) {
+    return <LandingPagePrevious />;
+  }
 
   return (
     <>
