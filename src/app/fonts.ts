@@ -97,7 +97,7 @@ export const inter = localFont({
   src: "../../public/fonts/Inter.ttf",
   weight: "400",
   style: "normal",
-  display: "block",
+  display: "swap",
   preload: true
 });
 
@@ -270,6 +270,6 @@ export const segoeUI = localFont({
       style: "normal"
     }
   ],
-  display: "block",
+  display: "swap",
   preload: true
 });

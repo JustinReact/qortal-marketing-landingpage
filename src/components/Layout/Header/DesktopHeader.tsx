@@ -124,6 +124,7 @@ export const DesktopHeader = () => {
       <Box
         component={Link}
         href="/"
+        prefetch={false}
         onClick={() => trackHeaderClick("Home")}
         sx={{
           position: "relative",
@@ -189,6 +190,7 @@ export const DesktopHeader = () => {
                 key={item.href}
                 component={Link}
                 href={item.href}
+                prefetch={false}
                 onClick={() => trackHeaderClick(item.label)}
                 sx={{
                   position: "relative",
@@ -339,6 +341,7 @@ export const DesktopHeader = () => {
                         key={dropdownItem.href}
                         component={Link}
                         href={dropdownItem.href}
+                        prefetch={false}
                         onClick={() => trackHeaderClick(dropdownItem.label)}
                         sx={{
                           display: "flex",
@@ -387,6 +390,7 @@ export const DesktopHeader = () => {
         <Box
           component={Link}
           href="/downloads"
+          prefetch={false}
           onClick={() => trackHeaderClick("Download Hub")}
           sx={{
             display: "inline-flex",

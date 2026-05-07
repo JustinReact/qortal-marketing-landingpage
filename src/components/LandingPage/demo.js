@@ -97,7 +97,9 @@ const featuredApps = [
   {
     name: "Q-Tube",
     logo: "cube",
-    icon: assetUrl("q-tube.webp"),
+    icon: assetUrl("q-tube-icon.webp"),
+    iconWidth: 128,
+    iconHeight: 128,
     iconStyle: "qtube",
     detail: "decentralized.\ncat. videos.\nplatform.",
     tone: "red",
@@ -107,26 +109,41 @@ const featuredApps = [
     name: "Quitter",
     logo: "quitter",
     tone: "teal",
-    icon: assetUrl("quitter.webp")
+    icon: assetUrl("quitter-icon.webp"),
+    iconWidth: 128,
+    iconHeight: 128
   },
   {
     name: "Q-Mail",
     logo: "mail",
     tone: "white",
-    icon: assetUrl("q-mail.webp")
+    icon: assetUrl("q-mail.webp"),
+    iconWidth: 100,
+    iconHeight: 100
   },
-  { name: "Q-Blog", logo: "blog", tone: "cyan", icon: assetUrl("q-blog.webp") },
+  {
+    name: "Q-Blog",
+    logo: "blog",
+    tone: "cyan",
+    icon: assetUrl("q-blog-icon.webp"),
+    iconWidth: 128,
+    iconHeight: 88
+  },
   {
     name: "Q-Trade",
     logo: "trade",
     tone: "dark",
     icon: assetUrl("q-trade.webp"),
+    iconWidth: 100,
+    iconHeight: 100,
     iconStyle: "trade"
   },
   {
     name: "SubWire",
     logo: "subwire",
-    icon: assetUrl("subwire.webp"),
+    icon: assetUrl("subwire-icon.webp"),
+    iconWidth: 128,
+    iconHeight: 128,
     iconStyle: "subwire",
     detail: "write.\nown.\nearn.",
     align: "right",
@@ -192,7 +209,9 @@ const groups = [
     sender: "privateFixXer",
     time: "1h ago",
     avatar: "privatefixxer",
-    avatarImage: assetUrl("siesta-410.webp"),
+    avatarImage: assetUrl("siesta-410-avatar.webp"),
+    avatarWidth: 192,
+    avatarHeight: 371,
     unread: true
   },
   {
@@ -200,7 +219,9 @@ const groups = [
     sender: "AndY",
     time: "3h ago",
     avatar: "andy",
-    avatarImage: assetUrl("qort-coin-blue.png?v=andy-avatar-20260505"),
+    avatarImage: assetUrl("qort-coin-blue-avatar.webp"),
+    avatarWidth: 128,
+    avatarHeight: 128,
     unread: true
   },
   {
@@ -208,7 +229,9 @@ const groups = [
     sender: "privateFixXer",
     time: "21h ago",
     avatar: "privatefixxer",
-    avatarImage: assetUrl("siesta-410.webp"),
+    avatarImage: assetUrl("siesta-410-avatar.webp"),
+    avatarWidth: 192,
+    avatarHeight: 371,
     unread: true
   }
 ];
@@ -572,7 +595,7 @@ function QortinoPanel() {
   return `
       <div class="qortino-panel">
         <div class="qortino-avatar" aria-hidden="true">
-          <img src="${assetUrl("QortinoCurrentNoAntenna.svg")}" alt="" />
+          <img src="${assetUrl("QortinoCurrentNoAntenna.svg")}" width="168" height="156" alt="" />
         </div>
         <div class="qortino-copy">
           <div class="qortino-title-row">
@@ -647,7 +670,7 @@ function FeaturedApps() {
 
 function FeaturedAppTile(app) {
   const iconMarkup = app.icon
-    ? `<img class="featured-app__logo featured-app__icon-image featured-app__icon-image--${app.iconStyle || app.logo}" src="${app.icon}" alt="" aria-hidden="true" />`
+    ? `<img class="featured-app__logo featured-app__icon-image featured-app__icon-image--${app.iconStyle || app.logo}" src="${app.icon}" width="${app.iconWidth || 128}" height="${app.iconHeight || 128}" alt="" aria-hidden="true" />`
     : `<span class="featured-app__logo featured-app__logo--${app.logo}" aria-hidden="true"></span>`;
 
   if (app.wide) {
@@ -801,7 +824,7 @@ function GroupActivity() {
 function GroupRow(group) {
   const avatarMarkup = group.avatarImage
     ? `<span class="group-icon group-icon--image group-icon--${group.avatar}" aria-hidden="true">
-          <img src="${group.avatarImage}" alt="" loading="lazy" />
+          <img src="${group.avatarImage}" width="${group.avatarWidth || 128}" height="${group.avatarHeight || 128}" alt="" loading="lazy" />
         </span>`
     : `<span class="group-icon group-icon--${group.avatar}" aria-hidden="true"></span>`;
 
@@ -901,7 +924,9 @@ function FeaturedQAppsModal() {
       title: "Quitter",
       description: "Decentralized social feed.",
       preview: "social",
-      icon: assetUrl("quitter.webp"),
+      icon: assetUrl("quitter-icon.webp"),
+      iconWidth: 128,
+      iconHeight: 128,
       previewImage: assetUrl("quitter-preview-slot.png")
     },
     {
@@ -909,7 +934,9 @@ function FeaturedQAppsModal() {
       title: "Q-Tube",
       description: "Video sharing without takedowns.",
       preview: "tube",
-      icon: assetUrl("q-tube.webp"),
+      icon: assetUrl("q-tube-icon.webp"),
+      iconWidth: 128,
+      iconHeight: 128,
       previewImage: assetUrl("q-tube-preview-slot.png")
     },
     {
@@ -918,6 +945,8 @@ function FeaturedQAppsModal() {
       description: "Private, encrypted, p2p mailing",
       preview: "mail",
       icon: assetUrl("q-mail.webp"),
+      iconWidth: 100,
+      iconHeight: 100,
       previewImage: assetUrl("q-mail-preview-slot.png")
     },
     {
@@ -925,7 +954,9 @@ function FeaturedQAppsModal() {
       title: "SubWire",
       description: "Write. Publish. Earn.",
       preview: "subwire",
-      icon: assetUrl("subwire.webp"),
+      icon: assetUrl("subwire-icon.webp"),
+      iconWidth: 128,
+      iconHeight: 128,
       previewImage: assetUrl("subwire-preview-slot.png")
     }
   ];
@@ -984,7 +1015,7 @@ function FeaturedQAppsModal() {
 
 function QAppShowcaseCard(app) {
   const iconMarkup = app.icon
-    ? `<img class="qapps-card__logo qapps-card__icon-image qapps-card__icon-image--${app.id}" src="${app.icon}" alt="" aria-hidden="true" />`
+    ? `<img class="qapps-card__logo qapps-card__icon-image qapps-card__icon-image--${app.id}" src="${app.icon}" width="${app.iconWidth || 128}" height="${app.iconHeight || 128}" alt="" aria-hidden="true" />`
     : `<span class="qapps-card__logo qapps-card__logo--${app.id}" aria-hidden="true"></span>`;
 
   return `
@@ -1041,7 +1072,9 @@ function GroupActivityModal() {
     },
     {
       icon: "qnn",
-      image: assetUrl("qort-coin-blue.png?v=andy-avatar-20260505"),
+      image: assetUrl("qort-coin-blue-avatar.webp"),
+      imageWidth: 128,
+      imageHeight: 128,
       title: "QNN-Chat",
       sender: "AndY",
       time: "3h ago"
@@ -1093,7 +1126,7 @@ function GroupActivityModal() {
           <div class="group-activity-thread-list">
             <article class="group-activity-thread group-activity-thread--incoming" data-group-activity-new hidden aria-hidden="true">
               <span class="group-activity-thread__avatar group-activity-thread__avatar--privatefixxer group-activity-thread__avatar--image" aria-hidden="true">
-                <img src="${assetUrl("siesta-410.webp?v=privatefixxer-avatar-20260505")}" alt="" loading="lazy" />
+                <img src="${assetUrl("siesta-410-avatar.webp")}" width="192" height="371" alt="" loading="lazy" />
               </span>
               <div class="group-activity-thread__content">
                 <div class="group-activity-thread__topline">
@@ -1113,7 +1146,7 @@ function GroupActivityModal() {
                     ${
                       row.image
                         ? `<span class="group-activity-thread__avatar group-activity-thread__avatar--${row.icon} group-activity-thread__avatar--image" aria-hidden="true">
-                            <img src="${row.image}" alt="" loading="lazy" />
+                            <img src="${row.image}" width="${row.imageWidth || 128}" height="${row.imageHeight || 128}" alt="" loading="lazy" />
                           </span>`
                         : `<span class="group-activity-thread__avatar group-activity-thread__avatar--${row.icon}" aria-hidden="true"></span>`
                     }
@@ -1456,7 +1489,7 @@ function WalletQortModal() {
               <strong>8.45 QORT</strong>
               <span>&asymp; $2.58 USD</span>
             </div>
-            <img class="wallet-qort-coin" src="${assetUrl("qort-coin-blue.png?v=tilted-coin-20260505")}" alt="" aria-hidden="true" />
+            <img class="wallet-qort-coin" src="${assetUrl("qort-coin-blue-wallet.webp")}" width="512" height="512" alt="" aria-hidden="true" />
             <div class="wallet-qort-actions" aria-label="Read-only QORT wallet actions">
               <button type="button">
                 <span class="wallet-qort-action-icon wallet-qort-action-icon--send" aria-hidden="true"></span>
@@ -1610,7 +1643,7 @@ function AccountIdentityModal() {
           <div class="account-identity-modal__visual">
             <div class="identity-profile-card">
               <div class="identity-profile-card__avatar" aria-hidden="true">
-                <img src="${assetUrl("QortinoCurrentNoAntenna.svg")}" alt="" />
+                <img src="${assetUrl("QortinoCurrentNoAntenna.svg")}" width="168" height="156" alt="" />
               </div>
               <div class="identity-profile-card__content">
                 <div class="identity-profile-card__name">
