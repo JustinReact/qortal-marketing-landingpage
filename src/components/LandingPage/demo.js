@@ -595,7 +595,7 @@ function QortinoPanel() {
   return `
       <div class="qortino-panel">
         <div class="qortino-avatar" aria-hidden="true">
-          <img src="${assetUrl("QortinoCurrentNoAntenna.svg")}" width="168" height="156" alt="" />
+          <img src="${assetUrl("QortinoCurrentNoAntenna.svg")}" alt="" />
         </div>
         <div class="qortino-copy">
           <div class="qortino-title-row">
@@ -1643,7 +1643,7 @@ function AccountIdentityModal() {
           <div class="account-identity-modal__visual">
             <div class="identity-profile-card">
               <div class="identity-profile-card__avatar" aria-hidden="true">
-                <img src="${assetUrl("QortinoCurrentNoAntenna.svg")}" width="168" height="156" alt="" />
+                <img src="${assetUrl("QortinoCurrentNoAntenna.svg")}" alt="" />
               </div>
               <div class="identity-profile-card__content">
                 <div class="identity-profile-card__name">
