@@ -97,7 +97,8 @@ export const inter = localFont({
   src: "../../public/fonts/Inter.ttf",
   weight: "400",
   style: "normal",
-  display: "swap"
+  display: "block",
+  preload: true
 });
 
 export const kadwa = localFont({
@@ -268,5 +269,7 @@ export const segoeUI = localFont({
       weight: "450",
       style: "normal"
     }
-  ]
+  ],
+  display: "block",
+  preload: true
 });

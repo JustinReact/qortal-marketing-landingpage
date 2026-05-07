@@ -1,4 +1,4 @@
-:root {
+#hub-preview-root {
   color-scheme: dark;
   --background: #06080d;
   --panel: #0f141c;
@@ -27,7 +27,7 @@
   src: url("/landing-hub-demo/fonts/Inter-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
 
 @font-face {
@@ -35,7 +35,7 @@
   src: url("/landing-hub-demo/fonts/Inter-Medium.ttf") format("truetype");
   font-weight: 500;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
 
 @font-face {
@@ -43,7 +43,7 @@
   src: url("/landing-hub-demo/fonts/Inter-SemiBold.ttf") format("truetype");
   font-weight: 600;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
 
 @font-face {
@@ -51,7 +51,7 @@
   src: url("/landing-hub-demo/fonts/Inter-Bold.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
 
 @font-face {
@@ -59,7 +59,7 @@
   src: url("/landing-hub-demo/fonts/Inter-ExtraBold.ttf") format("truetype");
   font-weight: 800;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
 
 @property --cursor-angle {
@@ -68,22 +68,14 @@
   initial-value: 110deg;
 }
 
-* {
+#hub-preview-root,
+#hub-preview-root * {
   box-sizing: border-box;
 }
 
-html {
-  scrollbar-gutter: stable;
-  scroll-behavior: smooth;
-}
-
-body {
-  min-height: 100vh;
+#hub-preview-root {
+  min-height: 0;
   margin: 0;
-  background:
-    linear-gradient(180deg, rgba(132, 175, 240, 0.08), transparent 340px),
-    linear-gradient(90deg, rgba(155, 108, 255, 0.08), transparent 48%),
-    var(--background);
   color: var(--text);
   font-family:
     Inter,
@@ -94,55 +86,26 @@ body {
     "Segoe UI",
     sans-serif;
   letter-spacing: 0;
-  overflow-x: hidden;
 }
 
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
-  background-size: 48px 48px;
-  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.5), transparent 76%);
+@media (min-width: 1194px) {
+  #hub-preview-root {
+    min-height: calc(960px * var(--hub-scale));
+  }
+
+  #hub-preview-root .hub-card--apps {
+    animation: none;
+  }
 }
 
-.preview-build-counter {
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  z-index: 20000;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding: 5px 8px;
-  border: 1px solid rgba(132, 175, 240, 0.36);
-  border-radius: 999px;
-  background: rgba(6, 12, 22, 0.82);
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.32);
-  color: rgba(212, 225, 246, 0.82);
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0;
-  line-height: 1;
-  pointer-events: none;
-}
-
-.preview-build-counter strong {
-  color: var(--accent);
-  font-size: 0.78rem;
-}
-
-a {
+#hub-preview-root a {
   color: inherit;
   text-decoration: none;
 }
 
-button,
-a,
-.hub-card {
+#hub-preview-root button,
+#hub-preview-root a,
+#hub-preview-root .hub-card {
   transition:
     color 180ms ease,
     background-color 180ms ease,
@@ -152,7 +115,7 @@ a,
     transform 180ms ease;
 }
 
-:focus-visible {
+#hub-preview-root :focus-visible {
   outline: 2px solid rgba(132, 175, 240, 0.86);
   outline-offset: 3px;
 }
@@ -162,7 +125,7 @@ a,
   margin: 0 auto;
 }
 
-.site-header {
+.site-shell .site-header {
   position: sticky;
   top: 0;
   z-index: 30;
@@ -174,7 +137,7 @@ a,
   backdrop-filter: blur(18px);
 }
 
-.site-header__inner {
+.site-shell .site-header__inner {
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
@@ -954,6 +917,43 @@ body.is-modal-open .hub-card.is-active::after {
   opacity: 1;
   visibility: visible;
   transform: translate(-50%, 0);
+  pointer-events: auto;
+}
+
+@media (min-width: 721px) {
+  .hub-card:hover .info-popover:not(.is-viewport-positioned),
+  .hub-card.is-active .info-popover:not(.is-viewport-positioned) {
+    z-index: 1000;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+}
+
+.hub-card--feed.has-viewport-popover:hover
+  .info-popover.is-viewport-positioned,
+.hub-card--feed.has-viewport-popover.is-active
+  .info-popover.is-viewport-positioned,
+.hub-card--groups.has-viewport-popover:hover
+  .info-popover.is-viewport-positioned,
+.hub-card--groups.has-viewport-popover.is-active
+  .info-popover.is-viewport-positioned {
+  pointer-events: none;
+}
+
+.hub-card--feed.has-viewport-popover
+  .info-popover.is-viewport-positioned::before,
+.hub-card--groups.has-viewport-popover
+  .info-popover.is-viewport-positioned::before {
+  pointer-events: none;
+}
+
+.hub-card--feed.has-viewport-popover
+  .info-popover.is-viewport-positioned
+  .info-cta,
+.hub-card--groups.has-viewport-popover
+  .info-popover.is-viewport-positioned
+  .info-cta {
   pointer-events: auto;
 }
 
@@ -8644,7 +8644,7 @@ body.is-modal-open {
   padding-inline: 20px;
 }
 
-.site-footer {
+.site-shell .site-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -8653,7 +8653,7 @@ body.is-modal-open {
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.site-footer p {
+.site-shell .site-footer p {
   max-width: 620px;
   margin: 0;
   color: var(--faint);
@@ -8674,7 +8674,7 @@ body.is-modal-open {
     zoom: 1;
   }
 
-  .site-header__inner {
+  .site-shell .site-header__inner {
     grid-template-columns: auto auto;
   }
 
@@ -8694,7 +8694,7 @@ body.is-modal-open {
     border-top: 1px solid rgba(255, 255, 255, 0.08);
   }
 
-  .site-header.is-nav-open .site-nav {
+  .site-shell .site-header.is-nav-open .site-nav {
     display: flex;
   }
 
@@ -8708,13 +8708,13 @@ body.is-modal-open {
     width: 84px;
   }
 
-  .site-header .download-button {
+  .site-shell .site-header .download-button {
     grid-column: 1 / -1;
     justify-self: stretch;
     display: none;
   }
 
-  .site-header.is-nav-open .download-button {
+  .site-shell .site-header.is-nav-open .download-button {
     display: inline-flex;
     margin-bottom: 14px;
   }
@@ -8809,11 +8809,11 @@ body.is-modal-open {
     width: min(100% - 24px, var(--container));
   }
 
-  .site-header {
+  .site-shell .site-header {
     margin-top: 12px;
   }
 
-  .site-header__inner {
+  .site-shell .site-header__inner {
     padding: 0 12px;
   }
 
@@ -9126,7 +9126,7 @@ body.is-modal-open {
   }
 
   .download-panel,
-  .site-footer {
+  .site-shell .site-footer {
     grid-template-columns: 1fr;
     flex-direction: column;
     align-items: flex-start;
@@ -9140,7 +9140,7 @@ body.is-modal-open {
     justify-self: stretch;
   }
 
-  .site-footer p {
+  .site-shell .site-footer p {
     text-align: left;
   }
 }

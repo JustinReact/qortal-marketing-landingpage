@@ -10,6 +10,7 @@ function assetUrl(spec) {
 const hubPreviewMusicHashes = new Set(["#hub-preview", "#q-apps"]);
 
 let hubDemoMusicGlobalListenersAttached = false;
+let hubDemoInteractionsCleanup = null;
 
 function resetHubPreviewMusicPlayback() {
   const player = document.querySelector("[data-music-player]");
@@ -223,7 +224,7 @@ const feedPosts = [
   {
     author: "Qort Darth BZ",
     time: "1h ago",
-    text: "Mike Adams | BVN, Apr 23, 2026 - China Recalibrating Sea Route Security in Light of Shocking U.S. Navy Piracy....",
+    text: "John Keller | BVN, Apr 23, 2026 - China Recalibrating Sea Route Security in Light of Shocking U.S. Navy Piracy....",
     link: "qortal://APP/Q-Tube/video/Qort%20Darlood%20...",
     avatar: "darlood"
   }
@@ -1945,8 +1946,13 @@ function setupInfoModal() {
     clearHubPreviewState();
 
     if (sourceCard) {
-      sourceCard.classList.add("is-hover-suppressed");
+      sourceCard.classList.remove("is-hover-suppressed");
       sourceCard.blur();
+      window.requestAnimationFrame(() => {
+        if (sourceCard.matches(":hover")) {
+          sourceCard.dispatchEvent(new MouseEvent("mouseenter"));
+        }
+      });
       return;
     }
 
@@ -2035,6 +2041,12 @@ function setupMusicPlayer() {
   if (!player || !toggle || !audio || !progress) {
     return;
   }
+
+  if (toggle.dataset.hubDemoMusicBound === "1") {
+    return;
+  }
+
+  toggle.dataset.hubDemoMusicBound = "1";
 
   const setPlayingState = (isPlaying) => {
     player.classList.toggle("is-playing", isPlaying);
@@ -2242,6 +2254,11 @@ function setupAccountDecryptHover() {
 }
 
 function setupHubInteractions() {
+  if (hubDemoInteractionsCleanup) {
+    hubDemoInteractionsCleanup();
+    hubDemoInteractionsCleanup = null;
+  }
+
   const preview = document.querySelector("[data-hub-preview]");
   const hubCards = Array.from(document.querySelectorAll("[data-hub-card]"));
   const hubLayers = Array.from(
@@ -2249,10 +2266,18 @@ function setupHubInteractions() {
   );
   let popoverFrame = null;
   const popoverExitTimers = new WeakMap();
+  const listenerDisposers = [];
 
   if (!preview || hubCards.length === 0) {
     return;
   }
+
+  const addTrackedListener = (target, type, handler, options) => {
+    target.addEventListener(type, handler, options);
+    listenerDisposers.push(() => {
+      target.removeEventListener(type, handler, options);
+    });
+  };
 
   const cancelPopoverFrame = () => {
     if (popoverFrame) {
@@ -2355,6 +2380,22 @@ function setupHubInteractions() {
     return ["top", "bottom", "right", "left"];
   };
 
+  const getLockedDesktopPopoverPlacement = (card) => {
+    if (window.matchMedia("(max-width: 720px)").matches) {
+      return null;
+    }
+
+    if (card.matches(".hub-card--feed")) {
+      return "right";
+    }
+
+    if (card.matches(".hub-card--groups")) {
+      return "left";
+    }
+
+    return null;
+  };
+
   const choosePopoverPlacement = (
     cardRect,
     popoverRect,
@@ -2425,13 +2466,15 @@ function setupHubInteractions() {
       ),
       height: measuredRect.height
     };
-    const placement = choosePopoverPlacement(
-      cardRect,
-      popoverRect,
-      getPreferredPopoverPlacements(card),
-      topMargin,
-      viewportMargin
-    );
+    const placement =
+      getLockedDesktopPopoverPlacement(card) ||
+      choosePopoverPlacement(
+        cardRect,
+        popoverRect,
+        getPreferredPopoverPlacements(card),
+        topMargin,
+        viewportMargin
+      );
     const maxLeft = window.innerWidth - viewportMargin - popoverRect.width;
     const maxTop = window.innerHeight - viewportMargin - popoverRect.height;
     let left = cardRect.left + cardRect.width / 2 - popoverRect.width / 2;
@@ -2496,13 +2539,17 @@ function setupHubInteractions() {
     }
   };
 
+  const isDesktopPopoverMode = () =>
+    !window.matchMedia("(max-width: 720px)").matches;
+
   hubCards.forEach((card) => {
-    card.addEventListener("mouseenter", () => {
+    const handleMouseEnter = () => {
       card.classList.remove("is-hover-suppressed");
       releaseFocusedCard(card);
       activateCard(card);
-    });
-    card.addEventListener("mouseleave", () => {
+    };
+
+    const handleMouseLeave = () => {
       card.classList.remove("is-hover-suppressed");
       if (
         card.matches("[data-hover-only-card]") ||
@@ -2510,18 +2557,18 @@ function setupHubInteractions() {
       ) {
         clearActiveCards();
       }
-    });
+    };
 
-    card.addEventListener("click", () => {
+    const handleClick = () => {
       if (card.matches("[data-hover-only-card]")) {
         return;
       }
 
       releaseFocusedCard(card);
       activateCard(card);
-    });
+    };
 
-    card.addEventListener("focusin", () => {
+    const handleFocusIn = () => {
       if (card.matches("[data-hover-only-card]")) {
         return;
       }
@@ -2529,8 +2576,9 @@ function setupHubInteractions() {
       if (!card.classList.contains("is-hover-suppressed")) {
         activateCard(card);
       }
-    });
-    card.addEventListener("focusout", (event) => {
+    };
+
+    const handleFocusOut = (event) => {
       if (!card.contains(event.relatedTarget)) {
         setTimeout(() => {
           if (!preview.contains(document.activeElement)) {
@@ -2538,15 +2586,61 @@ function setupHubInteractions() {
           }
         }, 0);
       }
-    });
+    };
 
-    card.addEventListener("keydown", (event) => {
+    const handleKeyDown = (event) => {
       if (event.key === "Escape") {
         clearActiveCards();
         card.focus();
       }
-    });
+    };
+
+    addTrackedListener(card, "mouseenter", handleMouseEnter);
+    addTrackedListener(card, "mouseleave", handleMouseLeave);
+    addTrackedListener(card, "click", handleClick);
+    addTrackedListener(card, "focusin", handleFocusIn);
+    addTrackedListener(card, "focusout", handleFocusOut);
+    addTrackedListener(card, "keydown", handleKeyDown);
   });
+
+  const handlePreviewPointerOver = (event) => {
+    if (!isDesktopPopoverMode()) {
+      return;
+    }
+
+    const card = event.target.closest?.("[data-hub-card]");
+
+    if (!card || !preview.contains(card) || card.classList.contains("is-active")) {
+      return;
+    }
+
+    card.classList.remove("is-hover-suppressed");
+    releaseFocusedCard(card);
+    activateCard(card);
+  };
+
+  const handlePreviewPointerOut = (event) => {
+    if (!isDesktopPopoverMode()) {
+      return;
+    }
+
+    const card = event.target.closest?.("[data-hub-card]");
+
+    if (!card || !preview.contains(card) || card.contains(event.relatedTarget)) {
+      return;
+    }
+
+    card.classList.remove("is-hover-suppressed");
+    if (
+      card.matches("[data-hover-only-card]") ||
+      !card.matches(":focus-within")
+    ) {
+      clearActiveCards();
+    }
+  };
+
+  addTrackedListener(preview, "pointerover", handlePreviewPointerOver);
+  addTrackedListener(preview, "pointerout", handlePreviewPointerOut);
 
   const updateActivePopover = () => {
     const activeCard = hubCards.find((card) =>
@@ -2558,11 +2652,19 @@ function setupHubInteractions() {
     }
   };
 
-  window.addEventListener("scroll", updateActivePopover, {
+  const scrollListenerOptions = {
     passive: true,
     capture: true
-  });
-  window.addEventListener("resize", updateActivePopover, { passive: true });
+  };
+  const resizeListenerOptions = { passive: true };
+
+  addTrackedListener(window, "scroll", updateActivePopover, scrollListenerOptions);
+  addTrackedListener(window, "resize", updateActivePopover, resizeListenerOptions);
+
+  hubDemoInteractionsCleanup = () => {
+    cancelPopoverFrame();
+    listenerDisposers.forEach((dispose) => dispose());
+  };
 }
 
 export function getHubPreviewHtml() {
@@ -2577,6 +2679,13 @@ export function initHubPreviewAfterMount() {
   if (!document.querySelector("[data-info-modal]")) {
     document.body.insertAdjacentHTML("beforeend", InfoModal());
   }
+
+  const modal = document.querySelector("[data-info-modal]");
+
+  if (!modal?.classList.contains("is-open")) {
+    document.body.classList.remove("is-modal-open", "is-modal-opening");
+  }
+
   setupHubInteractions();
   setupInfoModal();
   setupMusicPlayer();
