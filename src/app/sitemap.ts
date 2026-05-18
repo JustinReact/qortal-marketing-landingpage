@@ -41,6 +41,7 @@ const getBlogs = async () => {
       next: { revalidate: 60 } // Cache this data for 24 hours
     });
     const data = await response.json();
+    if (!Array.isArray(data)) return [];
     let blogs: Blog = [];
     for (const content of data) {
       if (content.name && content.identifier) {

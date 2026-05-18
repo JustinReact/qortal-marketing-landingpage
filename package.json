@@ -20,7 +20,7 @@
     "@mui/material": "^6.5.0",
     "@mui/material-nextjs": "^6.4.12",
     "@mui/types": "^7.4.12",
-    "@netlify/plugin-nextjs": "^5.7.4",
+    "@netlify/plugin-nextjs": "^5.15.11",
     "@next/mdx": "^15.5.16",
     "@reduxjs/toolkit": "^1.9.7",
     "@tiptap/extension-color": "^2.8.0",
