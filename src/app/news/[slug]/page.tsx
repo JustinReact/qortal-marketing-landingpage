@@ -7,8 +7,8 @@ import { stripHtmlTags } from "../../../utils/stripHTMLTags";
 import { notFound } from "next/navigation";
 
 type Props = {
-  params: { slug: string };
-  searchParams: { [key: string]: string | string[] | undefined };
+  params: Promise<{ slug: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
 const getNewsPost = async (slug: string): Promise<NewsPostInteface | null> => {
@@ -39,7 +39,7 @@ const getNewsPost = async (slug: string): Promise<NewsPostInteface | null> => {
 // Dynamic metadata
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {
-    const slug = params.slug;
+    const { slug } = await params;
     const url = `${groupApi}/arbitrary/resources/searchsimple?service=DOCUMENT&name=Bester&identifier=${slug}&limit=1&mode=ALL&prefix=true&includemetadata=false&reverse=true`;
     const response = await fetch(url, {
       method: "GET",
@@ -98,8 +98,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-const NewsPost = async ({ params }: { params: { slug: string } }) => {
-  const newsPost = await getNewsPost(params.slug);
+const NewsPost = async ({ params }: { params: Promise<{ slug: string }> }) => {
+  const { slug } = await params;
+  const newsPost = await getNewsPost(slug);
 
   if (!newsPost) {
     return notFound();

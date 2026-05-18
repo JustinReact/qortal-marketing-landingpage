@@ -37,31 +37,35 @@ export const DisplayCode = ({ codeBlock, language = "javascript" }: any) => {
             className={`${className} stripe-code-block`}
             style={{ ...style }}
           >
-            {tokens.map((line, i) => (
-              <div
-                key={i}
-                {...getLineProps({ line, key: i })}
-                style={{ display: "flex" }}
-              >
-                <span
-                  style={{
-                    display: "inline-block",
-                    width: "2em",
-                    userSelect: "none",
-                    opacity: "0.5",
-                    marginRight: "8px",
-                    fontSize: "14px"
-                  }}
+            {tokens.map((line, i) => {
+              const { key: lineKey, ...lineProps } = getLineProps({ line });
+              return (
+                <div
+                  key={i}
+                  {...lineProps}
+                  style={{ display: "flex" }}
                 >
-                  {i + 1}
-                </span>
-                <span style={{ flex: 1, fontSize: "18px" }}>
-                  {line.map((token, key) => (
-                    <span key={key} {...getTokenProps({ token, key })} />
-                  ))}
-                </span>
-              </div>
-            ))}
+                  <span
+                    style={{
+                      display: "inline-block",
+                      width: "2em",
+                      userSelect: "none",
+                      opacity: "0.5",
+                      marginRight: "8px",
+                      fontSize: "14px"
+                    }}
+                  >
+                    {i + 1}
+                  </span>
+                  <span style={{ flex: 1, fontSize: "18px" }}>
+                    {line.map((token, key) => {
+                      const { key: tokenKey, ...tokenProps } = getTokenProps({ token });
+                      return <span key={key} {...tokenProps} />;
+                    })}
+                  </span>
+                </div>
+              );
+            })}
           </DisplayCodePre>
         )}
       </Highlight>

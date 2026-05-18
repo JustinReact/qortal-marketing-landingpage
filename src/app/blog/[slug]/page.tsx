@@ -8,8 +8,8 @@ import { Metadata } from "next";
 import { stripHtmlTags } from "../../../utils/stripHTMLTags";
 
 type Props = {
-  params: { slug: string };
-  searchParams: { [key: string]: string | string[] | undefined };
+  params: Promise<{ slug: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
 const getBlogPost = async (slug: string): Promise<BlogPostInterface | null> => {
@@ -40,7 +40,7 @@ const getBlogPost = async (slug: string): Promise<BlogPostInterface | null> => {
 // Dynamic metadata
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {
-    const slug = params.slug;
+    const { slug } = await params;
     const url = `${groupApi}/arbitrary/resources/searchsimple?service=BLOG&name=Bester&identifier=${slug}&limit=1&mode=ALL&prefix=true&includemetadata=false&reverse=true`;
     const response = await fetch(url, {
       method: "GET",
@@ -99,8 +99,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-const BlogPost = async ({ params }: { params: { slug: string } }) => {
-  const blogPost = await getBlogPost(params.slug);
+const BlogPost = async ({ params }: { params: Promise<{ slug: string }> }) => {
+  const { slug } = await params;
+  const blogPost = await getBlogPost(slug);
   if (!blogPost) {
     return notFound();
   }

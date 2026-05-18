@@ -31,11 +31,12 @@ import rehypeSlug from "rehype-slug";
   If you want to add a new section to an existing page, simply modify the existing MDX file and add a new `##` heading. The new section will be displayed in the sidebar under the existing page.
 */
 
-const WikiSection = async ({ params }: { params: { slug: string } }): Promise<JSX.Element> => {
+const WikiSection = async ({ params }: { params: Promise<{ slug: string }> }): Promise<JSX.Element> => {
+  const { slug } = await params;
   const sections = getWikiPages(); // Extract sidebar links
 
-  // Load the correct MDX file based on `params.slug`
-  const docPath = path.join(process.cwd(), `src/app/wiki/${params.slug}.mdx`);
+  // Load the correct MDX file based on `slug`
+  const docPath = path.join(process.cwd(), `src/app/wiki/${slug}.mdx`);
   if (!fs.existsSync(docPath)) return notFound(); // Return 404 if page doesn't exist
 
   const fileContents = fs.readFileSync(docPath, "utf-8");

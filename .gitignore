@@ -31,3 +31,6 @@ next-env.d.ts
 # Publish system directories
 /temp-builds/
 /published-apps/
+# TypeScript
+*.tsbuildinfo
+.tsbuildinfo

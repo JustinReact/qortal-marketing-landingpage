@@ -40,30 +40,34 @@ export const DisplayCodeResponse = ({
               <Typography>RESPONSE</Typography>
             </Box>
 
-            {tokens.map((line, i) => (
-              <div
-                key={i}
-                {...getLineProps({ line, key: i })}
-                style={{ display: "flex" }}
-              >
-                <span
-                  style={{
-                    display: "inline-block",
-                    userSelect: "none",
-                    opacity: "0.5",
-                    marginRight: "8px",
-                    fontSize: "16px"
-                  }}
+            {tokens.map((line, i) => {
+              const { key: lineKey, ...lineProps } = getLineProps({ line });
+              return (
+                <div
+                  key={i}
+                  {...lineProps}
+                  style={{ display: "flex" }}
                 >
-                  {i + 1}
-                </span>
-                <span style={{ flex: 1, fontSize: "18px" }}>
-                  {line.map((token, key) => (
-                    <span key={key} {...getTokenProps({ token, key })} />
-                  ))}
-                </span>
-              </div>
-            ))}
+                  <span
+                    style={{
+                      display: "inline-block",
+                      userSelect: "none",
+                      opacity: "0.5",
+                      marginRight: "8px",
+                      fontSize: "16px"
+                    }}
+                  >
+                    {i + 1}
+                  </span>
+                  <span style={{ flex: 1, fontSize: "18px" }}>
+                    {line.map((token, key) => {
+                      const { key: tokenKey, ...tokenProps } = getTokenProps({ token });
+                      return <span key={key} {...tokenProps} />;
+                    })}
+                  </span>
+                </div>
+              );
+            })}
           </DisplayCodeResponsePre>
         )}
       </Highlight>

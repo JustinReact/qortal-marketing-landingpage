@@ -16,12 +16,12 @@
     "@emotion/styled": "^11.10.6",
     "@mdx-js/loader": "^3.1.0",
     "@mdx-js/react": "^3.1.0",
-    "@mui/icons-material": "^5.11.11",
-    "@mui/material": "^5.11.15",
-    "@mui/material-nextjs": "^6.1.3",
-    "@mui/types": "^7.2.3",
+    "@mui/icons-material": "^6.5.0",
+    "@mui/material": "^6.5.0",
+    "@mui/material-nextjs": "^6.4.12",
+    "@mui/types": "^7.4.12",
     "@netlify/plugin-nextjs": "^5.7.4",
-    "@next/mdx": "^15.1.7",
+    "@next/mdx": "^15.5.16",
     "@reduxjs/toolkit": "^1.9.7",
     "@tiptap/extension-color": "^2.8.0",
     "@tiptap/extension-heading": "^2.8.0",
@@ -43,7 +43,7 @@
     "gray-matter": "^4.0.3",
     "highlight.js": "^11.11.1",
     "html-react-parser": "^5.1.18",
-    "next": "^14.2.35",
+    "next": "^15.5.16",
     "next-mdx-remote": "^5.0.0",
     "next-mdx-remote-client": "^1.0.7",
     "prism-react-renderer": "^2.0.4",
@@ -67,7 +67,7 @@
     "@types/react-dom": "^18.0.11",
     "@types/ua-parser-js": "^0.7.39",
     "concurrently": "^9.2.1",
-    "typescript": "^4.9.3"
+    "typescript": "^6.0.3"
   },
   "overrides": {
     "linkifyjs": "^4.3.2"

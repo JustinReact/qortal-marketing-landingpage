@@ -4,13 +4,14 @@ import Api from "../../../components/Api/Api";
 export async function generateMetadata({
   params
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
+  const { slug } = await params;
   let pageTitle: string;
 
-  if (params.slug === "q-apps") {
+  if (slug === "q-apps") {
     pageTitle = "Q-Apps Documentation";
-  } else if (params.slug === "extension") {
+  } else if (slug === "extension") {
     pageTitle = "Qortal Browser Extension Documentation";
   } else {
     pageTitle = "Unknown Page";
