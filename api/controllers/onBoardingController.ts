@@ -12,6 +12,7 @@ import {
 } from "../services/firebaseServices";
 import {
   getEmailDomain,
+  getNonReputableDomainLimitError,
   isReputableEmailDomain
 } from "../lib/reputableEmailDomains";
 import {
@@ -85,8 +86,7 @@ const handleSendCode = async (
       const { allowed } = await reserveNonReputableDomainSendCode(emailDomain);
       if (!allowed) {
         res.status(429).json({
-          error:
-            "This email domain has reached its daily limit for verification codes. Use a major email provider (e.g. Gmail or Outlook) or try again tomorrow.",
+          error: getNonReputableDomainLimitError(emailDomain),
           code: "domain_daily_limit"
         });
         return;
@@ -151,7 +151,8 @@ const handleVerifyCode = async (
   req: Request<{}, {}, VerifyCodeRequestBody>,
   res: Response
 ): Promise<void> => {
-  const { email, code, qortalAddress } = req.body;
+  const { email: rawEmail, code, qortalAddress } = req.body;
+  const email = rawEmail?.trim().toLowerCase();
 
   if (!email || !code) {
     res.status(400).json({ error: "Email and code are required" });

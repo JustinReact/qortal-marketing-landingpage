@@ -14,7 +14,8 @@ import {
   Stack,
   Typography,
   MobileStepper,
-  useTheme
+  useTheme,
+  Alert
 } from "@mui/material";
 import { useSearchParams } from "next/navigation";
 import { InstallQortalHub, OS } from "./InstallQortalHub";
@@ -34,6 +35,7 @@ import {
 import Modal from "../Common/Modal/Modal";
 import { groupApi } from "../../constants/endpoint";
 import { fetchAPI } from "../../utils/fetchAPI";
+import { ONBOARDING_EMAIL_REQUIREMENT } from "../../constants/onboardingEmail";
 
 type StepDefinition = {
   key: string;
@@ -300,7 +302,31 @@ const Onboarding = () => {
               </SupportButton>
             </CommunityRow>
 
-            <Box sx={{ flex: 1 }}>{currentStep?.render()}</Box>
+            <Box sx={{ flex: 1 }}>
+              {currentStep?.key === "receive-two" && (
+                <Alert
+                  severity="info"
+                  sx={{
+                    mb: 2,
+                    ...(theme.palette.mode === "dark" && {
+                      bgcolor: "rgba(17, 91, 197, 0.2)",
+                      color: theme.palette.text.primary,
+                      "& .MuiAlert-icon": {
+                        color: theme.palette.primary.light
+                      },
+                      "& .MuiAlert-message": {
+                        color: theme.palette.text.primary
+                      }
+                    })
+                  }}
+                >
+                  <Typography variant="body2" color="text.primary">
+                    {ONBOARDING_EMAIL_REQUIREMENT}
+                  </Typography>
+                </Alert>
+              )}
+              {currentStep?.render()}
+            </Box>
 
             {/* Navigation */}
             <MobileStepper

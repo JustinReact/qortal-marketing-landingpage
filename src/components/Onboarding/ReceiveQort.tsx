@@ -6,8 +6,11 @@ import {
   Container
 } from "./Onboarding-styles";
 import { Box, Button, Typography } from "@mui/material";
+import { APPROVED_EMAIL_PROVIDER_EXAMPLES } from "../../constants/onboardingEmail";
 export const EBOOK_API: string =
   process.env.NEXT_PUBLIC_EBOOK_API_HOST || "http://localhost:3010";
+
+const normalizeEmail = (value: string) => value.trim().toLowerCase();
 
 interface PropsReceiveQort {
   qortStep: number;
@@ -38,14 +41,16 @@ const ReceiveQort = ({
     setMessage("");
 
     try {
+      const normalizedEmail = normalizeEmail(email);
       const res = await fetch(`${EBOOK_API}/onboarding/sendCode`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, qortalAddress })
+        body: JSON.stringify({ email: normalizedEmail, qortalAddress })
       });
       const data = await res.json();
 
       if (res.ok) {
+        setEmail(normalizedEmail);
         setEmailSent(true);
         setMessage(
           "✅ Verification code sent! Check your email. If the code is not in your inbox, please check the spam."
@@ -67,12 +72,18 @@ const ReceiveQort = ({
     setMessage("");
 
     try {
+      const normalizedEmail = normalizeEmail(email);
       const res = await fetch(`${EBOOK_API}/onboarding/verifyCode`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         // If your server sets an HTTP-only cookie with the token, include credentials:
         credentials: "include",
-        body: JSON.stringify({ email, code, qortStep, qortalAddress })
+        body: JSON.stringify({
+          email: normalizedEmail,
+          code,
+          qortStep,
+          qortalAddress
+        })
       });
       const data = await res.json();
 
@@ -200,7 +211,8 @@ const ReceiveQort = ({
       >
         <Typography variant="body1" color="text.primary">
           Get your first 2 QORT. An email is required to send a verification
-          code in order to prevent abuse.
+          code in order to prevent abuse. Use a personal address from a provider
+          such as {APPROVED_EMAIL_PROVIDER_EXAMPLES}.
         </Typography>
       </Box>
       <form

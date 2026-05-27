@@ -116,3 +116,24 @@ export function isReputableEmailDomain(email: string): boolean {
   if (!domain) return false;
   return REPUTABLE_DOMAINS.has(domain);
 }
+
+/** Short list for user-facing copy (not exhaustive). */
+export const REPUTABLE_EMAIL_EXAMPLES = [
+  "Gmail",
+  "Outlook",
+  "Yahoo",
+  "iCloud",
+  "Proton Mail"
+] as const;
+
+export function getNonReputableDomainLimitError(domain: string): string {
+  const examples = REPUTABLE_EMAIL_EXAMPLES.join(", ");
+  const domainHint = domain ? ` (${domain})` : "";
+
+  return (
+    `This email domain${domainHint} is not on our approved provider list and has ` +
+    `reached its daily verification limit. Temporary and disposable email services ` +
+    `are not supported. Please use a personal inbox from a major provider such as ` +
+    `${examples}, or try again tomorrow.`
+  );
+}
