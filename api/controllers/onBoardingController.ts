@@ -322,6 +322,8 @@ const handleSendQort = async (
   } catch (err) {
     console.error("Error sending QORT", err);
 
+    await rollbackQortPayout({ email, ip, qortStep }).catch(() => {});
+
     res.status(500).json({
       valid: false,
       reason: "send_failed"
