@@ -242,7 +242,7 @@ const Home: FC = () => {
                   action: "Clicked Discord Button on homepage modal",
                   label: "Clicked Discord Button on homepage modal"
                 });
-                window.open("https://discord.gg/YKdxYUSqZR", "_blank");
+                window.open("https://link.qortal.dev/discord-link", "_blank");
               }}
             >
               <CustomDiscordSVG color={"#000000"} height={"62"} width={"62"} />

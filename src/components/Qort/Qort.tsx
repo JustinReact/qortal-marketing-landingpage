@@ -491,7 +491,7 @@ const Qort = () => {
                         label: "Discord Button FAQ"
                       });
                       window.open(
-                        "https://link.qortal.dev/discord-invite",
+                        "https://link.qortal.dev/discord-link",
                         "_blank"
                       );
                     }}

@@ -198,7 +198,7 @@ export const WindowsSteps = () => {
                   action: "Clicked Discord Button Windows Steps",
                   label: "Discord Windows Steps"
                 });
-                window.open("https://discord.gg/YKdxYUSqZR", "_blank");
+                window.open("https://link.qortal.dev/discord-link", "_blank");
               }}
             >
               Join Discord
