@@ -1,69 +1,23 @@
-import NewsPostsClient from "../../components/News/NewsPostsClient";
-import { groupApi } from "../../constants/endpoint";
+import NewsPostsClient, {
+  type NewsPost
+} from "../../components/News/NewsPostsClient";
 import { NEWS_BASE } from "../../constants/Identifiers";
-import { fetchAndEvaluateNews } from "../../utils/fetchAndEvaluateNews";
-
-interface NewsPost {
-  title: string;
-  body: string;
-  thumbnail: string;
-  identifier: string;
-  created: number;
-  isValid: boolean;
-}
-
-type News = NewsPost[];
+import { fetchAllNewsPosts } from "../../utils/fetchQortalPosts";
 
 export const metadata = {
   title: "Qortal News",
   description: "Get the latest news and updates from the Qortal team"
 };
 
-const getNewsRawData = async (
-  name: string,
-  identifier: string,
-  content: any
-): Promise<NewsPost> => {
-  const res = await fetchAndEvaluateNews({
-    name,
-    identifier,
-    content
-  });
-  return res;
-};
-
-const getNews = async () => {
+const NewsPage = async (): Promise<JSX.Element> => {
+  let news: NewsPost[] = [];
   try {
-    // Fetch list of Bester's blogs resources from Qortal blockchain
-    const url = `${groupApi}/arbitrary/resources/searchsimple?service=DOCUMENT&name=Bester&identifier=${NEWS_BASE}-&limit=0&mode=ALL&prefix=true&includemetadata=false&reverse=true`;
-    const response = await fetch(url, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      next: { revalidate: 60 } // Cache this data for 24 hours
-    });
-    const data = await response.json();
-    let news: News = [];
-    for (const content of data) {
-      if (content.name && content.identifier) {
-        const fullBlogData = await getNewsRawData(
-          content.name,
-          content.identifier,
-          content
-        );
-        news.push(fullBlogData);
-      }
-    }
-    return news;
+    news = await fetchAllNewsPosts(`${NEWS_BASE}-`);
   } catch (error) {
     console.error(error);
   }
-};
 
-const NewsPage = async (): Promise<JSX.Element> => {
-  const news: News = (await getNews()) ?? [];
-  const validNews = news.filter((item) => item.isValid);
+  const validNews = news.filter((item) => item?.isValid);
   if (validNews.length === 0) {
     return <div>No news found</div>;
   }

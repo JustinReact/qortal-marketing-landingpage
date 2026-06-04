@@ -1,63 +1,6 @@
 import type { MetadataRoute } from "next";
-import { groupApi } from "../constants/endpoint";
 import { BLOG_BASE } from "../constants/Identifiers";
-import { fetchAndEvaluateBlogs } from "../utils/fetchAndEvaluateBlogs";
-
-interface BlogPost {
-  title: string;
-  body: string;
-  thumbnail: string;
-  categories: string[];
-  name: string;
-  identifier: string;
-  isValid: boolean;
-  created: number;
-}
-
-type Blog = BlogPost[];
-
-const getBlogRawData = async (
-  name: string,
-  identifier: string,
-  content: any
-): Promise<BlogPost> => {
-  const res = await fetchAndEvaluateBlogs({
-    name,
-    identifier,
-    content
-  });
-  return res;
-};
-
-const getBlogs = async () => {
-  try {
-    // Fetch list of Bester's blogs resources from Qortal blockchain
-    const url = `${groupApi}/arbitrary/resources/searchsimple?service=BLOG&name=Bester&identifier=${BLOG_BASE}-&limit=0&mode=ALL&prefix=true&includemetadata=false&reverse=true`;
-    const response = await fetch(url, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      next: { revalidate: 60 } // Cache this data for 24 hours
-    });
-    const data = await response.json();
-    if (!Array.isArray(data)) return [];
-    let blogs: Blog = [];
-    for (const content of data) {
-      if (content.name && content.identifier) {
-        const fullBlogData = await getBlogRawData(
-          content.name,
-          content.identifier,
-          content
-        );
-        blogs.push(fullBlogData);
-      }
-    }
-    return blogs;
-  } catch (error) {
-    console.error(error);
-  }
-};
+import { fetchQortalResourceList } from "../utils/qortalResourceList";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPages = [
@@ -170,13 +113,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.3
     }
   ];
-  const blogs: Blog = (await getBlogs()) ?? [];
-  const blogPostPages = blogs.map((post) => ({
-    url: `https://qortal.dev/blog/${post.identifier}`,
-    lastModified: new Date(post.created),
-    changeFrequency: "weekly" as const,
-    priority: 0.9
-  }));
+
+  let blogPostPages: MetadataRoute.Sitemap = [];
+  try {
+    const blogs = await fetchQortalResourceList("BLOG", `${BLOG_BASE}-`, 60);
+    blogPostPages = blogs.map((post) => ({
+      url: `https://qortal.dev/blog/${post.identifier}`,
+      lastModified: post.created ? new Date(post.created) : new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.9
+    }));
+  } catch (error) {
+    console.error("Failed to fetch blog list for sitemap:", error);
+  }
 
   return [...staticPages, ...blogPostPages];
 }
