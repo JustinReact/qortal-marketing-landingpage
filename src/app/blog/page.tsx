@@ -93,12 +93,13 @@ const getBlogs = async () => {
 };
 
 const BlogPage = async (): Promise<JSX.Element> => {
-  const blogs: Blog = (await getBlogs()) ?? []; // Default to an empty array if blogs is undefined
-  const newBlogs = blogs.filter((blog) => blog.identifier !== "qortal-dev-blog-MnVXFVKP5P");
-  // const blogIdentifiers = newBlogs.map((blog) => blog.identifier);
-  // console.log("Blog Identifiers:", blogIdentifiers);
-  if (!blogs || blogs.length === 0) {
-    return <div>No blogs found</div>; // Fallback if no blogs are found
+  const blogs: Blog = (await getBlogs()) ?? [];
+  const validBlogs = blogs.filter((blog) => blog?.isValid);
+  const newBlogs = validBlogs.filter(
+    (blog) => blog.identifier !== "qortal-dev-blog-MnVXFVKP5P"
+  );
+  if (newBlogs.length === 0) {
+    return <div>No blogs found</div>;
   }
 
   return <BlogPostsClient blogs={newBlogs} />;

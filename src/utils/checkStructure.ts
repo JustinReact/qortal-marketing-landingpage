@@ -4,7 +4,7 @@ export const checkStructureBlog = (content: any) => {
   if (!content?.title) isValid = false;
   if (!content?.categories) isValid = false;
   if (!content?.thumbnail) isValid = false;
-  if (!content?.body) isValid = false;
+  if (typeof content?.body !== "string") isValid = false;
   return isValid;
 };
 
@@ -12,6 +12,6 @@ export const checkStructureNews = (content: any) => {
   let isValid = true;
   if (!content?.title) isValid = false;
   if (!content?.thumbnail) isValid = false;
-  if (!content?.body) isValid = false;
+  if (typeof content?.body !== "string") isValid = false;
   return isValid;
 };

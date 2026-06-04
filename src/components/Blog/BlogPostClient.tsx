@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import ReactGA from "react-ga4";
 import {
   BlogCategoriesRow,
@@ -23,6 +23,11 @@ import { useRouter } from "next/navigation";
 import { useTheme, useMediaQuery } from "@mui/material";
 import { CurlyBackArrowSVG } from "../Common/Icons/CurlyBackArrowSVG";
 import { BlogCategoryColors } from "../../constants/enums";
+import Modal from "../Common/Modal/Modal";
+import {
+  useClickablePostImages,
+  usePostImageModal,
+} from "../../hooks/usePostImageModal";
 
 interface BlogPostClientProps {
   blog: BlogPost;
@@ -32,9 +37,17 @@ const BlogPostClient = ({ blog }: BlogPostClientProps) => {
   const theme = useTheme();
   const router = useRouter();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const postContainerRef = useRef<HTMLDivElement>(null);
+  const { openModal, modalImages, openImageModal, closeModal } =
+    usePostImageModal();
+
+  useClickablePostImages(postContainerRef, openImageModal, [
+    blog?.body,
+    isMobile,
+  ]);
 
   useEffect(() => {
-    if (blog && blog.body) {
+    if (blog && typeof blog.body === "string") {
       // Once the content is rendered, select the superscripts and references
       const superscripts = document.querySelectorAll("sup");
       const references = document.querySelectorAll("p");
@@ -112,7 +125,7 @@ const BlogPostClient = ({ blog }: BlogPostClientProps) => {
   };
 
   return (
-    <BlogPostContainer>
+    <BlogPostContainer ref={postContainerRef}>
       <BackToBlogButton
         onClick={() => {
           router.push("/blog");
@@ -144,7 +157,16 @@ const BlogPostClient = ({ blog }: BlogPostClientProps) => {
         width={500}
         height={500}
       />
-      <BlogBody>{parse(blog.body)}</BlogBody>
+      <BlogBody>
+        {typeof blog.body === "string" ? parse(blog.body) : null}
+      </BlogBody>
+      {openModal && (
+        <Modal
+          images={modalImages}
+          openModal={openModal}
+          onClickFunc={closeModal}
+        />
+      )}
     </BlogPostContainer>
   );
 };

@@ -26,6 +26,7 @@ export interface BlogPost {
   categories: string[];
   identifier: string;
   created: number;
+  isValid: boolean;
 }
 
 interface BlogPostsClientProps {
@@ -61,7 +62,9 @@ const BlogPostsClient: React.FC<BlogPostsClientProps> = ({ blogs }) => {
               />
               <BlogSubContainer>
                 <BlogPostTitle>{blog.title}</BlogPostTitle>
-                <BlogPostBody>{parse(blog.body)}</BlogPostBody>
+                <BlogPostBody>
+                  {typeof blog.body === "string" ? parse(blog.body) : null}
+                </BlogPostBody>
               </BlogSubContainer>
               <BlogPostDate>
                 {formatDateWithSuffix(blog.created)}

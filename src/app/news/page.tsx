@@ -9,6 +9,7 @@ interface NewsPost {
   thumbnail: string;
   identifier: string;
   created: number;
+  isValid: boolean;
 }
 
 type News = NewsPost[];
@@ -61,12 +62,13 @@ const getNews = async () => {
 };
 
 const NewsPage = async (): Promise<JSX.Element> => {
-  const news: News = (await getNews()) ?? []; // Default to an empty array if blogs is undefined
-  if (!news || news.length === 0) {
-    return <div>No news found</div>; // Fallback if no blogs are found
+  const news: News = (await getNews()) ?? [];
+  const validNews = news.filter((item) => item.isValid);
+  if (validNews.length === 0) {
+    return <div>No news found</div>;
   }
 
-  return <NewsPostsClient news={news} />;
+  return <NewsPostsClient news={validNews} />;
 };
 
 export default NewsPage;

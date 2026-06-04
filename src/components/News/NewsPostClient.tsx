@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useRef } from "react";
 import {
   BackToNewsButton,
   NewsPostBody,
@@ -15,6 +15,11 @@ import { NewsPost } from "./NewsPostsClient";
 import parse from "html-react-parser";
 import { themeSlice } from "../../state/theme/themeSlice";
 import { useTheme } from "@mui/material";
+import Modal from "../Common/Modal/Modal";
+import {
+  useClickablePostImages,
+  usePostImageModal,
+} from "../../hooks/usePostImageModal";
 
 interface NewsPostClientProps {
   newsPost: NewsPost;
@@ -23,8 +28,14 @@ interface NewsPostClientProps {
 const NewsPostClient = ({ newsPost }: NewsPostClientProps) => {
   const router = useRouter();
   const theme = useTheme();
+  const postContainerRef = useRef<HTMLDivElement>(null);
+  const { openModal, modalImages, openImageModal, closeModal } =
+    usePostImageModal();
+
+  useClickablePostImages(postContainerRef, openImageModal, [newsPost?.body]);
+
   return (
-    <NewsPostContainer>
+    <NewsPostContainer ref={postContainerRef}>
       <NewsSubContainer>
         <NewsTitleContainer>
           <BackToNewsButton
@@ -47,6 +58,13 @@ const NewsPostClient = ({ newsPost }: NewsPostClientProps) => {
           {parse(newsPost.body)}
         </NewsPostBody>
       </NewsSubContainer>
+      {openModal && (
+        <Modal
+          images={modalImages}
+          openModal={openModal}
+          onClickFunc={closeModal}
+        />
+      )}
     </NewsPostContainer>
   );
 };

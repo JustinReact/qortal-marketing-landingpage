@@ -22,6 +22,7 @@ export interface NewsPost {
   thumbnail: string;
   identifier: string;
   created: number;
+  isValid: boolean;
 }
 
 interface NewsPostsClientProps {
@@ -70,7 +71,9 @@ const NewsPostsClient: React.FC<NewsPostsClientProps> = ({ news }) => {
                 />
                 <NewsCardWrapper>
                   <NewsCardTitle>{item.title}</NewsCardTitle>
-                  <NewsCardBody>{parse(item.body)}</NewsCardBody>
+                  <NewsCardBody>
+                    {typeof item.body === "string" ? parse(item.body) : null}
+                  </NewsCardBody>
                   <NewsCardDate>
                     {formatDateWithSuffix(item.created)}
                   </NewsCardDate>
