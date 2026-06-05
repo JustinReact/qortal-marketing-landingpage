@@ -2297,13 +2297,31 @@ function setupHubInteractions() {
   const hubLayers = Array.from(
     document.querySelectorAll(".hub-column, .hub-widget-row")
   );
+  const hoverIntentDelay = 400;
+  const hoverSwitchDelay = 400;
   let popoverFrame = null;
+  let hoverIntentTimer = null;
+  let pendingHoverCard = null;
   const popoverExitTimers = new WeakMap();
   const listenerDisposers = [];
 
   if (!preview || hubCards.length === 0) {
     return;
   }
+
+  hubCards.forEach((card) => {
+    const popover = card.querySelector(".info-popover");
+
+    card.classList.remove("has-viewport-popover");
+    card.classList.remove("is-positioning-popover");
+    card.classList.remove("is-delaying-popover");
+    popover?.classList.remove("is-viewport-positioned");
+    popover?.style.removeProperty("--popover-left");
+    popover?.style.removeProperty("--popover-top");
+    if (popover?.dataset.popoverPlacement) {
+      delete popover.dataset.popoverPlacement;
+    }
+  });
 
   const addTrackedListener = (target, type, handler, options) => {
     target.addEventListener(type, handler, options);
@@ -2317,6 +2335,20 @@ function setupHubInteractions() {
       window.cancelAnimationFrame(popoverFrame);
       popoverFrame = null;
     }
+  };
+
+  const clearHoverIntent = (card) => {
+    if (card && pendingHoverCard !== card) {
+      return;
+    }
+
+    if (hoverIntentTimer) {
+      window.clearTimeout(hoverIntentTimer);
+      hoverIntentTimer = null;
+    }
+
+    pendingHoverCard?.classList.remove("is-delaying-popover");
+    pendingHoverCard = null;
   };
 
   const clearPopoverExit = (card) => {
@@ -2344,6 +2376,8 @@ function setupHubInteractions() {
     }
 
     card.classList.add("is-popover-exiting");
+    card.classList.remove("is-positioning-popover");
+    card.classList.remove("is-delaying-popover");
     card.classList.remove("has-viewport-popover");
     popover.classList.remove("is-viewport-positioned");
     popover.style.removeProperty("--popover-left");
@@ -2363,11 +2397,14 @@ function setupHubInteractions() {
   };
 
   const clearActiveCards = () => {
+    clearHoverIntent();
     cancelPopoverFrame();
     preview.classList.remove("has-active-card");
     hubLayers.forEach((layer) => layer.classList.remove("is-active-layer"));
     hubCards.forEach((card) => {
       card.classList.remove("is-active");
+      card.classList.remove("is-positioning-popover");
+      card.classList.remove("is-delaying-popover");
       card.setAttribute("aria-expanded", "false");
     });
     resetAllPopoverPositions();
@@ -2463,12 +2500,12 @@ function setupHubInteractions() {
     );
   };
 
-  const positionPopover = (card) => {
+  const positionPopover = (card, allowInactive = false) => {
     const popover = card.querySelector(".info-popover");
 
     if (
       !popover ||
-      !card.classList.contains("is-active") ||
+      (!allowInactive && !card.classList.contains("is-active")) ||
       document.body.classList.contains("is-modal-open")
     ) {
       resetPopoverPosition(card);
@@ -2547,6 +2584,9 @@ function setupHubInteractions() {
       return;
     }
 
+    if (!activeCard.classList.contains("is-delaying-popover")) {
+      clearHoverIntent(activeCard);
+    }
     clearPopoverExit(activeCard);
     preview.classList.add("has-active-card");
     hubLayers.forEach((layer) => {
@@ -2554,14 +2594,25 @@ function setupHubInteractions() {
     });
     hubCards.forEach((card) => {
       const isActive = card === activeCard;
-      card.classList.toggle("is-active", isActive);
       card.setAttribute("aria-expanded", String(isActive));
 
       if (!isActive) {
+        card.classList.remove("is-active");
+        card.classList.remove("is-positioning-popover");
+        card.classList.remove("is-delaying-popover");
         resetPopoverPosition(card);
       }
     });
-    schedulePopoverPosition(activeCard);
+    cancelPopoverFrame();
+    if (window.matchMedia("(max-width: 720px)").matches) {
+      activeCard.classList.add("is-active");
+      return;
+    }
+
+    activeCard.classList.add("is-positioning-popover");
+    positionPopover(activeCard, true);
+    activeCard.classList.add("is-active");
+    activeCard.classList.remove("is-positioning-popover");
   };
 
   const releaseFocusedCard = (activeCard) => {
@@ -2575,14 +2626,50 @@ function setupHubInteractions() {
   const isDesktopPopoverMode = () =>
     !window.matchMedia("(max-width: 720px)").matches;
 
+  const scheduleHoverActivation = (card) => {
+    if (card.classList.contains("is-hover-suppressed")) {
+      return;
+    }
+
+    if (pendingHoverCard === card || card.classList.contains("is-active")) {
+      return;
+    }
+
+    clearHoverIntent();
+    pendingHoverCard = card;
+    const delay = preview.classList.contains("has-active-card")
+      ? hoverSwitchDelay
+      : hoverIntentDelay;
+
+    card.classList.add("is-delaying-popover");
+    releaseFocusedCard(card);
+    activateCard(card);
+
+    hoverIntentTimer = window.setTimeout(() => {
+      hoverIntentTimer = null;
+
+      if (
+        pendingHoverCard !== card ||
+        !card.matches(":hover") ||
+        !card.classList.contains("is-active")
+      ) {
+        clearHoverIntent(card);
+        return;
+      }
+
+      card.classList.remove("is-delaying-popover");
+      pendingHoverCard = null;
+    }, delay);
+  };
+
   hubCards.forEach((card) => {
     const handleMouseEnter = () => {
       card.classList.remove("is-hover-suppressed");
-      releaseFocusedCard(card);
-      activateCard(card);
+      scheduleHoverActivation(card);
     };
 
     const handleMouseLeave = () => {
+      clearHoverIntent(card);
       card.classList.remove("is-hover-suppressed");
       if (
         card.matches("[data-hover-only-card]") ||
@@ -2597,6 +2684,7 @@ function setupHubInteractions() {
         return;
       }
 
+      clearHoverIntent();
       releaseFocusedCard(card);
       activateCard(card);
     };
@@ -2648,8 +2736,7 @@ function setupHubInteractions() {
     }
 
     card.classList.remove("is-hover-suppressed");
-    releaseFocusedCard(card);
-    activateCard(card);
+    scheduleHoverActivation(card);
   };
 
   const handlePreviewPointerOut = (event) => {
@@ -2664,6 +2751,7 @@ function setupHubInteractions() {
     }
 
     card.classList.remove("is-hover-suppressed");
+    clearHoverIntent(card);
     if (
       card.matches("[data-hover-only-card]") ||
       !card.matches(":focus-within")
@@ -2680,7 +2768,7 @@ function setupHubInteractions() {
       card.classList.contains("is-active")
     );
 
-    if (activeCard) {
+    if (activeCard?.classList.contains("has-viewport-popover")) {
       schedulePopoverPosition(activeCard);
     }
   };
@@ -2695,6 +2783,7 @@ function setupHubInteractions() {
   addTrackedListener(window, "resize", updateActivePopover, resizeListenerOptions);
 
   hubDemoInteractionsCleanup = () => {
+    clearHoverIntent();
     cancelPopoverFrame();
     listenerDisposers.forEach((dispose) => dispose());
   };

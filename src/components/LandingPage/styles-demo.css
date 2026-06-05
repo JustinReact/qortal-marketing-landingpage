@@ -870,6 +870,20 @@ body.is-modal-open .hub-card.is-active::after {
   transform: none;
 }
 
+.hub-card.is-positioning-popover .info-popover {
+  z-index: 0 !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+.hub-card.is-delaying-popover .info-popover {
+  z-index: 0 !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
 .info-popover::before {
   content: "";
   position: absolute;
@@ -921,7 +935,6 @@ body.is-modal-open .hub-card.is-active::after {
   height: auto;
 }
 
-.hub-card.has-viewport-popover:hover .info-popover.is-viewport-positioned,
 .hub-card.has-viewport-popover.is-active .info-popover.is-viewport-positioned {
   z-index: 1000;
   opacity: 1;
@@ -931,7 +944,6 @@ body.is-modal-open .hub-card.is-active::after {
 }
 
 @media (min-width: 721px) {
-  .hub-card:hover .info-popover:not(.is-viewport-positioned),
   .hub-card.is-active .info-popover:not(.is-viewport-positioned) {
     z-index: 1000;
     opacity: 1;
@@ -940,11 +952,7 @@ body.is-modal-open .hub-card.is-active::after {
   }
 }
 
-.hub-card--feed.has-viewport-popover:hover
-  .info-popover.is-viewport-positioned,
 .hub-card--feed.has-viewport-popover.is-active
-  .info-popover.is-viewport-positioned,
-.hub-card--groups.has-viewport-popover:hover
   .info-popover.is-viewport-positioned,
 .hub-card--groups.has-viewport-popover.is-active
   .info-popover.is-viewport-positioned {
@@ -1081,11 +1089,8 @@ body.is-modal-open .info-popover {
   height: auto;
 }
 
-.hub-card--music:hover .info-popover,
 .hub-card--music.is-active .info-popover,
-.hub-card--qortino:hover .info-popover,
 .hub-card--qortino.is-active .info-popover,
-.hub-card--quick:hover .info-popover,
 .hub-card--quick.is-active .info-popover {
   transform: translate(0, 0);
 }
@@ -1109,9 +1114,7 @@ body.is-modal-open .info-popover {
   height: auto;
 }
 
-.hub-card--status:hover .info-popover,
 .hub-card--status.is-active .info-popover,
-.hub-card--wallet:hover .info-popover,
 .hub-card--wallet.is-active .info-popover {
   transform: translate(0, 0);
 }
@@ -1127,7 +1130,6 @@ body.is-modal-open .info-popover {
   bottom: auto;
 }
 
-.hub-card--account:hover .info-popover,
 .hub-card--account.is-active .info-popover {
   transform: translate(-50%, 0);
 }
@@ -8784,29 +8786,16 @@ body.is-modal-open {
     bottom: auto;
   }
 
-  .hub-card.has-viewport-popover:hover .info-popover.is-viewport-positioned,
   .hub-card.has-viewport-popover.is-active .info-popover.is-viewport-positioned,
-  .hub-card--account.has-viewport-popover:hover
-    .info-popover.is-viewport-positioned,
   .hub-card--account.has-viewport-popover.is-active
-    .info-popover.is-viewport-positioned,
-  .hub-card--music.has-viewport-popover:hover
     .info-popover.is-viewport-positioned,
   .hub-card--music.has-viewport-popover.is-active
     .info-popover.is-viewport-positioned,
-  .hub-card--qortino.has-viewport-popover:hover
-    .info-popover.is-viewport-positioned,
   .hub-card--qortino.has-viewport-popover.is-active
-    .info-popover.is-viewport-positioned,
-  .hub-card--quick.has-viewport-popover:hover
     .info-popover.is-viewport-positioned,
   .hub-card--quick.has-viewport-popover.is-active
     .info-popover.is-viewport-positioned,
-  .hub-card--status.has-viewport-popover:hover
-    .info-popover.is-viewport-positioned,
   .hub-card--status.has-viewport-popover.is-active
-    .info-popover.is-viewport-positioned,
-  .hub-card--wallet.has-viewport-popover:hover
     .info-popover.is-viewport-positioned,
   .hub-card--wallet.has-viewport-popover.is-active
     .info-popover.is-viewport-positioned {
@@ -8908,7 +8897,6 @@ body.is-modal-open {
     display: none;
   }
 
-  .hub-card:hover .info-popover,
   .hub-card.is-active .info-popover {
     max-height: 720px;
     margin-bottom: 12px;
