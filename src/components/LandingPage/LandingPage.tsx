@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import {
   Box,
   GlobalStyles,
@@ -11,7 +12,19 @@ import AdsClickIcon from "@mui/icons-material/AdsClick";
 import FileDownloadRoundedIcon from "@mui/icons-material/FileDownloadRounded";
 import dynamic from "next/dynamic";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import ReactGA from "react-ga4";
 import { inter, segoeUIHubHeadline } from "../../app/fonts";
+import {
+  EbookPromoButton,
+  EbookPromoContainer,
+  EbookPromoSubTitle,
+  EbookPromoTextCol,
+  EbookPromoTitle
+} from "../../components/LandingPage/LandingPage-styles";
+import { CommonModal } from "../Common/CommonModal/CommonModal";
+import { BookSVG } from "../Common/Icons/BookSVG";
+import { DownloadSVG } from "../Common/Icons/DownloadSVG";
 import { QortalSVG } from "../Common/Icons/QortalSVG";
 import Demo from "./DemoComponent";
 
@@ -20,6 +33,8 @@ const LandingPagePrevious = dynamic(() => import("./LandingPagePrevious"));
 const LandingPage = () => {
   const theme = useTheme();
   const isMobileViewport = useMediaQuery("(max-width: 1193px)");
+  const router = useRouter();
+  const [firstTimeVisitor, setFirstTimeVisitor] = useState<boolean>(false);
   const isDarkMode = theme.palette.mode === "dark";
   const pageBackground = isDarkMode ? "#020713" : theme.palette.background.default;
   const heroTextColor = isDarkMode ? "#f7faff" : "#07111f";
@@ -29,6 +44,26 @@ const LandingPage = () => {
   const heroHelperTextColor = isDarkMode
     ? "rgba(218, 229, 243, 0.78)"
     : "rgba(8, 17, 34, 0.62)";
+
+  // Display download ebook modal for first time desktop visitors.
+  useEffect(() => {
+    if (isMobileViewport) {
+      return;
+    }
+
+    const isFirstTimeVisitor = localStorage.getItem("isFirstTimeVisitor");
+
+    if (!isFirstTimeVisitor) {
+      const timeoutId = window.setTimeout(() => {
+        setFirstTimeVisitor(true);
+        localStorage.setItem("isFirstTimeVisitor", "false");
+      }, 30000);
+
+      return () => {
+        window.clearTimeout(timeoutId);
+      };
+    }
+  }, [isMobileViewport]);
 
   if (isMobileViewport) {
     return <LandingPagePrevious />;
@@ -639,6 +674,14 @@ const LandingPage = () => {
             <Box
               component={Link}
               href="/downloads"
+              onClick={() => {
+                ReactGA.set({ dimension1: "Landing Page Download Button" }); // Event-level dimension
+                ReactGA.event({
+                  category: "User",
+                  action: "Clicked Main Download CTA Button",
+                  label: "Clicked Main Download CTA Button"
+                });
+              }}
               sx={{
                 position: "relative",
                 zIndex: 1,
@@ -684,6 +727,62 @@ const LandingPage = () => {
           </Box>
         </Box>
       </Box>
+      {firstTimeVisitor && (
+        <CommonModal
+          openModal={firstTimeVisitor}
+          onClickFunc={() => {
+            setFirstTimeVisitor(false);
+          }}
+          customStyles={{
+            padding: 0,
+            top: "10%",
+            maxHeight: "fit-content !important",
+            height: "100% !important",
+            backgroundColor:
+              theme.palette.mode === "dark" ? "#111112" : "#D9D9D9",
+            borderRadius: "10px"
+          }}
+        >
+          <EbookPromoContainer>
+            <BookSVG
+              color={theme.palette.text.primary}
+              height={"79"}
+              width={"98"}
+            />
+            <EbookPromoTextCol>
+              <EbookPromoTitle>
+                DOWNLOAD OUR{" "}
+                <span style={{ color: theme.palette.customBlue.main }}>
+                  FREE
+                </span>{" "}
+                EBOOK!
+              </EbookPromoTitle>
+              <EbookPromoSubTitle>
+                Learn how Qortal is leveraging the power of blockchain
+                technology to revolutionize many industries on the normal
+                internet.
+              </EbookPromoSubTitle>
+            </EbookPromoTextCol>
+            <EbookPromoButton
+              onClick={() => {
+                ReactGA.event({
+                  category: "User",
+                  action: "Clicked Download Ebook Button on Homepage Modal",
+                  label: "Clicked Download Ebook Button on Homepage Modal"
+                });
+                router.push("/ebook");
+              }}
+            >
+              <DownloadSVG
+                color={theme.palette.text.primary}
+                height={"14"}
+                width={"14"}
+              />
+              DOWNLOAD HERE
+            </EbookPromoButton>
+          </EbookPromoContainer>
+        </CommonModal>
+      )}
     </>
   );
 };
