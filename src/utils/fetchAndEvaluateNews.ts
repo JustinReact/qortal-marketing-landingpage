@@ -1,40 +1,48 @@
 import { groupApi } from "../constants/endpoint";
 import { checkStructureNews } from "./checkStructure";
+import { fetchJsonWithRetry } from "./fetchHelpers";
 
-export const fetchAndEvaluateNews = async (data: any) => {
-  const getNewsData = async () => {
-    const { name, identifier, content } = data;
-    let obj: any = {
-      ...content,
-      isValid: false
-    };
-    if (!name || !identifier) return obj;
-    // Fetch rawdata from QDN based on resource's location (need name, service type and identifier)
-    try {
-      const url = `${groupApi}/arbitrary/DOCUMENT/${name}/${identifier}`;
-      const response = await fetch(url, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json"
-        }
-      });
+interface FetchNewsInput {
+  name: string;
+  identifier: string;
+  content: any;
+}
 
-      const responseData = await response.json();
-      if (checkStructureNews(responseData)) {
-        obj = {
-          ...content,
-          ...responseData,
-          name,
-          id: identifier,
-          isValid: true
-        };
-      }
-      return obj;
-    } catch (error) {
-      console.error(error);
+const invalidNewsPost = (content: any, name?: string, identifier?: string) => ({
+  ...content,
+  name,
+  identifier,
+  isValid: false
+});
+
+export const fetchAndEvaluateNews = async (data: FetchNewsInput) => {
+  const { name, identifier, content } = data;
+  const fallback = invalidNewsPost(content, name, identifier);
+
+  if (!name || !identifier) return fallback;
+
+  try {
+    const url = `${groupApi}/arbitrary/DOCUMENT/${name}/${identifier}`;
+    const responseData = await fetchJsonWithRetry(url, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+      next: { revalidate: 60 }
+    });
+
+    if (checkStructureNews(responseData)) {
+      return {
+        ...content,
+        ...(responseData as object),
+        name,
+        id: identifier,
+        identifier,
+        isValid: true
+      };
     }
-  };
 
-  const res = await getNewsData();
-  return res;
+    return fallback;
+  } catch (error) {
+    console.error(`Failed to fetch news post ${identifier}:`, error);
+    return fallback;
+  }
 };

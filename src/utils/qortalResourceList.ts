@@ -1,4 +1,5 @@
 import { groupApi } from "../constants/endpoint";
+import { fetchJsonWithRetry } from "./fetchHelpers";
 
 export interface QortalResourceRef {
   name: string;
@@ -12,14 +13,21 @@ export async function fetchQortalResourceList(
   revalidate = 60
 ): Promise<QortalResourceRef[]> {
   const url = `${groupApi}/arbitrary/resources/searchsimple?service=${service}&name=Bester&identifier=${identifierPrefix}&limit=0&mode=ALL&prefix=true&includemetadata=false&reverse=true`;
-  const response = await fetch(url, {
-    method: "GET",
-    headers: { "Content-Type": "application/json" },
-    next: { revalidate }
-  });
-  const data = await response.json();
-  if (!Array.isArray(data)) return [];
-  return data.filter(
-    (item): item is QortalResourceRef => item.name && item.identifier
-  );
+
+  try {
+    const data = await fetchJsonWithRetry(url, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+      next: { revalidate }
+    });
+
+    if (!Array.isArray(data)) return [];
+
+    return data.filter(
+      (item): item is QortalResourceRef => item.name && item.identifier
+    );
+  } catch (error) {
+    console.error(`Failed to fetch Qortal ${service} list:`, error);
+    return [];
+  }
 }

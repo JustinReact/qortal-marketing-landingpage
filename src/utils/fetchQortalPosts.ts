@@ -1,6 +1,9 @@
 import { fetchAndEvaluateBlogs } from "./fetchAndEvaluateBlogs";
 import { fetchAndEvaluateNews } from "./fetchAndEvaluateNews";
+import { mapWithConcurrency } from "./fetchHelpers";
 import { fetchQortalResourceList } from "./qortalResourceList";
+
+const FETCH_CONCURRENCY = 3;
 
 export async function fetchAllNewsPosts(identifierPrefix: string) {
   const items = await fetchQortalResourceList(
@@ -8,14 +11,15 @@ export async function fetchAllNewsPosts(identifierPrefix: string) {
     identifierPrefix,
     60
   );
-  return Promise.all(
-    items.map((content) =>
+  return mapWithConcurrency(
+    items,
+    (content) =>
       fetchAndEvaluateNews({
         name: content.name,
         identifier: content.identifier,
         content
-      })
-    )
+      }),
+    FETCH_CONCURRENCY
   );
 }
 
@@ -23,14 +27,19 @@ export async function fetchAllBlogPosts(
   identifierPrefix: string,
   revalidate = 3600
 ) {
-  const items = await fetchQortalResourceList("BLOG", identifierPrefix, revalidate);
-  return Promise.all(
-    items.map((content) =>
+  const items = await fetchQortalResourceList(
+    "BLOG",
+    identifierPrefix,
+    revalidate
+  );
+  return mapWithConcurrency(
+    items,
+    (content) =>
       fetchAndEvaluateBlogs({
         name: content.name,
         identifier: content.identifier,
         content
-      })
-    )
+      }),
+    FETCH_CONCURRENCY
   );
 }

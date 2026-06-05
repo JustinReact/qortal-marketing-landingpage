@@ -1,40 +1,48 @@
 import { groupApi } from "../constants/endpoint";
 import { checkStructureBlog } from "./checkStructure";
+import { fetchJsonWithRetry } from "./fetchHelpers";
 
-export const fetchAndEvaluateBlogs = async (data: any) => {
-  const getBlogData = async () => {
-    const { name, identifier, content } = data;
-    let obj: any = {
-      ...content,
-      isValid: false
-    };
-    if (!name || !identifier) return obj;
-    // Fetch rawdata from QDN based on resource's location (need name, service type and identifier)
-    try {
-      const url = `${groupApi}/arbitrary/BLOG/${name}/${identifier}`;
-      const response = await fetch(url, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json"
-        }
-      });
+interface FetchBlogInput {
+  name: string;
+  identifier: string;
+  content: any;
+}
 
-      const responseData = await response.json();
-      if (checkStructureBlog(responseData)) {
-        obj = {
-          ...content,
-          ...responseData,
-          name,
-          id: identifier,
-          isValid: true
-        };
-      }
-      return obj;
-    } catch (error) {
-      console.error(error);
+const invalidBlogPost = (content: any, name?: string, identifier?: string) => ({
+  ...content,
+  name,
+  identifier,
+  isValid: false
+});
+
+export const fetchAndEvaluateBlogs = async (data: FetchBlogInput) => {
+  const { name, identifier, content } = data;
+  const fallback = invalidBlogPost(content, name, identifier);
+
+  if (!name || !identifier) return fallback;
+
+  try {
+    const url = `${groupApi}/arbitrary/BLOG/${name}/${identifier}`;
+    const responseData = await fetchJsonWithRetry(url, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+      next: { revalidate: 3600 }
+    });
+
+    if (checkStructureBlog(responseData)) {
+      return {
+        ...content,
+        ...(responseData as object),
+        name,
+        id: identifier,
+        identifier,
+        isValid: true
+      };
     }
-  };
 
-  const res = await getBlogData();
-  return res;
+    return fallback;
+  } catch (error) {
+    console.error(`Failed to fetch blog post ${identifier}:`, error);
+    return fallback;
+  }
 };
