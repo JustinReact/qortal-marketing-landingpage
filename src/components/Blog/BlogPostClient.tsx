@@ -154,8 +154,9 @@ const BlogPostClient = ({ blog }: BlogPostClientProps) => {
       <BlogMainImage
         src={blog.thumbnail}
         alt={blog.title}
-        width={500}
-        height={500}
+        width={1200}
+        height={1200}
+        data-full-src={blog.thumbnail}
       />
       <BlogBody>
         {typeof blog.body === "string" ? parse(blog.body) : null}

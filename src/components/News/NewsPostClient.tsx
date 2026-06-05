@@ -50,8 +50,9 @@ const NewsPostClient = ({ newsPost }: NewsPostClientProps) => {
           <NewsPostMainImage
             src={newsPost.thumbnail}
             alt={newsPost.title}
-            width={500}
-            height={500}
+            width={1200}
+            height={1200}
+            data-full-src={newsPost.thumbnail}
           />
         </NewsTitleContainer>
         <NewsPostBody>

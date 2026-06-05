@@ -9,6 +9,7 @@ import {
   ModalScreenshot
 } from "./Modal-styles";
 import { useTheme } from "@mui/material";
+import { shouldBypassImageOptimization } from "../../../utils/resolveOriginalImageSrc";
 
 interface ModalProps {
   openModal: boolean;
@@ -50,6 +51,12 @@ const Modal: FC<ModalProps> = ({
     return () => {
       document.body.style.cssText = "";
     };
+  }, [openModal]);
+
+  useEffect(() => {
+    if (openModal) {
+      setSelectedImageIndex(0);
+    }
   }, [openModal]);
 
   const handlePreviousImage = () => {
@@ -126,6 +133,9 @@ const Modal: FC<ModalProps> = ({
           width={1920}
           height={1080}
           quality={100}
+          unoptimized={shouldBypassImageOptimization(
+            images[selectedImageIndex]
+          )}
         ></ModalScreenshot>
         <CloseIcon
           onClickFunc={() => {

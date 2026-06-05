@@ -1,4 +1,5 @@
 import { RefObject, useCallback, useEffect, useState } from "react";
+import { resolveOriginalImageSrc } from "../utils/resolveOriginalImageSrc";
 
 export function usePostImageModal() {
   const [openModal, setOpenModal] = useState(false);
@@ -38,12 +39,15 @@ export function useClickablePostImages(
     if (images.length === 0) return;
 
     const allSrcs = [
-      ...new Set(images.map((img) => img.src).filter(Boolean)),
+      ...new Set(
+        images.map((img) => resolveOriginalImageSrc(img)).filter(Boolean)
+      ),
     ];
 
     const clickHandlers = images.map((img) => {
       img.style.cursor = "pointer";
-      const handler = () => openImageModal(img.src, allSrcs);
+      const handler = () =>
+        openImageModal(resolveOriginalImageSrc(img), allSrcs);
       img.addEventListener("click", handler);
       return { img, handler };
     });
