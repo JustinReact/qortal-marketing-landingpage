@@ -17,15 +17,18 @@ import {
   useTheme
 } from "@mui/material";
 import { ButtonOnBoarding, ButtonTextOnBoarding } from "./Onboarding-styles";
+import {
+  getStepImageIndex,
+  getStepImageSources,
+  OpenOnboardingScreenshot
+} from "./onboardingScreenshot";
 
 type TutorialMode = "text" | "video";
 
 interface SetupQortalCoreProps {
   onBack?: () => void;
   onNext?: () => void;
-  setSelectedOnBoardingScreenShot: React.Dispatch<
-    React.SetStateAction<string | null>
-  >;
+  openScreenshotModal: OpenOnboardingScreenshot;
 }
 
 export interface TextSteps {
@@ -39,54 +42,49 @@ const textSteps: TextSteps[] = [
     label: "Click on 'Create Account'",
     description:
       "On the Qortal Hub welcome page, click on the 'Create Account' button",
-    imageSrc: "/images/Onboarding/CreateAccount/welcome.jpg"
-  },
-  {
-    label: "SeedPhrase (optional)",
-    description:
-      "While you can export your seedphrase if you wish, we DO NOT recommend it. Continue to the next step to save your password protected account.",
-    imageSrc: "/images/Onboarding/CreateAccount/seedphrase.jpg"
+    imageSrc: "/images/Onboarding/CreateAccount/welcome.png"
   },
   {
     label: "Input a password",
     description:
       "This is a local encryption password securing the saved Qortal Hub and downloaded backup file copy of your account.",
-    imageSrc: "/images/Onboarding/CreateAccount/password.jpg"
+    imageSrc: "/images/Onboarding/CreateAccount/password.png"
+  },
+  {
+    label: "SeedPhrase (optional)",
+    description:
+      "While you can export your seedphrase if you wish, we DO NOT recommend it. Continue to the next step to save your password protected account.",
+    imageSrc: "/images/Onboarding/CreateAccount/seedphrase.png"
   },
   {
     label: "Backup your account",
     description:
       "Click on the 'Backup Account' to save your account to your file system.",
-    imageSrc: "/images/Onboarding/CreateAccount/backup.jpg"
+    imageSrc: "/images/Onboarding/CreateAccount/backup.png"
   },
   {
     label: "Save account",
-    description: "Important that you save your account for later access.",
-    imageSrc: "/images/Onboarding/CreateAccount/save.jpg"
-  },
-  {
-    label: "Important reminder",
-    description:
-      "IMPORTANT! There is no 'account recovery' of any kind. The account creator is the only one that has access to the account. Save your account in multiple places where only you have access to it.  A backup on a thumb drive is recommended.",
-    imageSrc: "/images/Onboarding/CreateAccount/important.jpg"
+    description: "Important that you save your account for later access. There is no 'account recovery' of any kind. The account creator is the only one that has access to the account. Save your account in multiple places where only you have access to it.  A backup on a thumb drive is recommended",
+    imageSrc: "/images/Onboarding/CreateAccount/save.png"
   },
   {
     label: "Copy address",
     description:
       "Once you've copied your address, continue to the next section.",
-    imageSrc: "/images/Onboarding/CreateAccount/copy.jpg"
+    imageSrc: "/images/Onboarding/CreateAccount/copy.png"
   }
 ];
 
 export function CreateNewAccount({
   onBack,
   onNext,
-  setSelectedOnBoardingScreenShot
+  openScreenshotModal
 }: SetupQortalCoreProps) {
   const theme = useTheme();
 
   const [mode, setMode] = React.useState<TutorialMode>("text");
   const [activeStep, setActiveStep] = React.useState(0);
+  const stepImages = getStepImageSources(textSteps);
 
   const handleModeChange = (
     _event: React.SyntheticEvent,
@@ -193,7 +191,10 @@ export function CreateNewAccount({
                           cursor: "pointer"
                         }}
                         onClick={() =>
-                          setSelectedOnBoardingScreenShot(step.imageSrc!)
+                          openScreenshotModal(
+                            stepImages,
+                            getStepImageIndex(textSteps, index)
+                          )
                         }
                       />
                     )}

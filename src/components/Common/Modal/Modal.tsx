@@ -9,20 +9,21 @@ import {
   ModalScreenshot
 } from "./Modal-styles";
 import { useTheme } from "@mui/material";
-import { shouldBypassImageOptimization } from "../../../utils/resolveOriginalImageSrc";
 
 interface ModalProps {
   openModal: boolean;
   onImageChangeFunc?: (image: string) => void;
   onClickFunc: (e?: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
   images: string[];
+  initialImageIndex?: number;
 }
 
 const Modal: FC<ModalProps> = ({
   onClickFunc,
   onImageChangeFunc,
   openModal,
-  images
+  images,
+  initialImageIndex = 0
 }) => {
   const theme = useTheme();
   const modalRef = useRef(null);
@@ -55,9 +56,9 @@ const Modal: FC<ModalProps> = ({
 
   useEffect(() => {
     if (openModal) {
-      setSelectedImageIndex(0);
+      setSelectedImageIndex(initialImageIndex);
     }
-  }, [openModal]);
+  }, [openModal, initialImageIndex]);
 
   const handlePreviousImage = () => {
     const newIndex =
@@ -130,12 +131,10 @@ const Modal: FC<ModalProps> = ({
         <ModalScreenshot
           src={images[selectedImageIndex]}
           alt="modal-image"
-          width={1920}
-          height={1080}
+          width={3840}
+          height={2160}
           quality={100}
-          unoptimized={shouldBypassImageOptimization(
-            images[selectedImageIndex]
-          )}
+          unoptimized
         ></ModalScreenshot>
         <CloseIcon
           onClickFunc={() => {

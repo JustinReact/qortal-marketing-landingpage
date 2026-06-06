@@ -22,6 +22,11 @@ import WindowsIcon from "@mui/icons-material/Window";
 import AppleIcon from "@mui/icons-material/Apple";
 import TerminalIcon from "@mui/icons-material/Terminal";
 import { ButtonOnBoarding, ButtonTextOnBoarding } from "./Onboarding-styles";
+import {
+  getStepImageIndex,
+  getStepImageSources,
+  OpenOnboardingScreenshot
+} from "./onboardingScreenshot";
 import DownloadIcon from "@mui/icons-material/Download";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 export type OS = "windows" | "mac" | "linux";
@@ -51,61 +56,51 @@ const tutorialData: Record<
   windows: {
     textSteps: [
       {
-        label: " Welcome, click Next.",
+        label: " Welcome to the Qortal Hub login page. ",
         description: "",
-        imageSrc: "/images/Onboarding/CoreSetup/windows/welcome.jpg"
+        imageSrc: "/images/Onboarding/CoreSetup/windows/welcome.png"
       },
       {
-        label: "Click Install And Start Qortal Core.",
+        label: "Click the cog icon on the bottom right of the page. Once the menu opens, click the \"Download\" button to begin the installation of the Qortal Core.",
         description: "",
-        imageSrc: "/images/Onboarding/CoreSetup/windows/install.jpg"
+        imageSrc: "/images/Onboarding/CoreSetup/windows/install.png"
       },
       {
         label: "Wait for the download.",
         description: "",
-        imageSrc: "/images/Onboarding/CoreSetup/windows/downloading.jpg"
+        imageSrc: "/images/Onboarding/CoreSetup/windows/wait.png"
       },
       {
         label: "Qortal Setup Wizard, Click Next.",
         description: "",
-        imageSrc: "/images/Onboarding/CoreSetup/windows/setup.jpg"
+        imageSrc: "/images/Onboarding/CoreSetup/windows/wizard.png"
       },
       {
         label: "More Qortal Setup, Click Accept and Install",
         description: "",
-        imageSrc: "/images/Onboarding/CoreSetup/windows/more.webp"
-      },
-      {
-        label: "User Account Control, Click Yes",
-        description: "",
-        imageSrc: "/images/Onboarding/CoreSetup/windows/control.webp"
-      },
-      {
-        label: "Wait through the installation process",
-        description: "",
-        imageSrc: "/images/Onboarding/CoreSetup/windows/installing.webp"
+        imageSrc: "/images/Onboarding/CoreSetup/windows/more.png"
       },
       {
         label: "Completing the Qortal Setup Wizard, Click Finish",
         description: "",
-        imageSrc: "/images/Onboarding/CoreSetup/windows/completed.webp"
+        imageSrc: "/images/Onboarding/CoreSetup/windows/completed.png"
       },
       {
         label: "Starting Qortal Core, this should start automatically",
         description: "",
-        imageSrc: "/images/Onboarding/CoreSetup/windows/starting.webp"
+        imageSrc: "/images/Onboarding/CoreSetup/windows/starting.png"
       },
       {
         label: "Wait for this to finish.",
         description:
           "Bootstrapping, this automatically copies the existing blockchain and extracts it. This is so it is available to your Qortal Core.",
-        imageSrc: "/images/Onboarding/CoreSetup/windows/downloading.webp"
+        imageSrc: "/images/Onboarding/CoreSetup/windows/downloading.png"
       },
       {
         label: "Click Finish",
         description:
           "Once the Qortal Core has finished starting up. You are ready to go.",
-        imageSrc: "/images/Onboarding/CoreSetup/mac/finish.webp"
+        imageSrc: "/images/Onboarding/CoreSetup/mac/finish.png"
       }
     ],
     videoUrl: "https://www.youtube.com/embed/ZWIYFVWAfIY"
@@ -115,31 +110,31 @@ const tutorialData: Record<
       {
         label: "Open Qortal Hub",
         description: "Click Spotlight Search, Type 'qortal', Click Qortal Hub",
-        imageSrc: "/images/Onboarding/CoreSetup/mac/spotlight.webp"
+        imageSrc: "/images/Onboarding/CoreSetup/mac/spotlight.png"
       },
       {
         label: "Install Java, Install Qortal Core, Start Qortal Core",
         description:
-          "Once you've opened Hub, you'll see a popup. Click on the 'Install and Start Core' button",
-        imageSrc: "/images/Onboarding/CoreSetup/mac/start.webp"
+          "Once you've opened Hub, you'll see a popup. Click on the 'Start Core' button",
+        imageSrc: "/images/Onboarding/CoreSetup/mac/start.png"
       },
       {
         label: "Qortal Splash Screen will show for a minute.",
         description:
           "If this is your first time starting the Qortal Core, it will need to perform some extra processes. This can take up to 10 mins. Please patiently wait as subsequent launches of the Qortal Core will not take that long.",
-        imageSrc: "/images/Onboarding/CoreSetup/mac/wait.webp"
+        imageSrc: "/images/Onboarding/CoreSetup/mac/wait.png"
       },
       {
         label: "Click Finish",
         description:
           "Once the Qortal Core has finished starting up. You are ready to go.",
-        imageSrc: "/images/Onboarding/CoreSetup/mac/finish.webp"
+        imageSrc: "/images/Onboarding/CoreSetup/mac/finish.png"
       },
       {
         label: "Understanding Syncronization",
         description:
           "Look at the Red Qortal Icon at the top. This will remain red for multiple minutes while the Qortal Core is synchronizing. Once it is syncronized, the Red Qortal Icon will change to a Blue color. You need to be fully syncronized to perform data publishes and blockcahin operations.",
-        imageSrc: "/images/Onboarding/CoreSetup/mac/sync.webp"
+        imageSrc: "/images/Onboarding/CoreSetup/mac/sync.png"
       }
     ],
     videoUrl: "https://www.youtube.com/embed/nwQCMZ8GE2g"
@@ -188,16 +183,14 @@ interface InstallQortalHubProps {
   onBack?: () => void;
   onNext?: () => void;
   osAuto: OS;
-  setSelectedOnBoardingScreenShot: React.Dispatch<
-    React.SetStateAction<string | null>
-  >;
+  openScreenshotModal: OpenOnboardingScreenshot;
 }
 
 export function SetupQortalCore({
   onBack,
   onNext,
   osAuto,
-  setSelectedOnBoardingScreenShot
+  openScreenshotModal
 }: InstallQortalHubProps) {
   const theme = useTheme();
 
@@ -206,6 +199,7 @@ export function SetupQortalCore({
   const [activeStep, setActiveStep] = React.useState(0);
 
   const { textSteps, videoUrl } = tutorialData[os];
+  const stepImages = getStepImageSources(textSteps);
 
   const handleOsChange = (
     _event: React.MouseEvent<HTMLElement>,
@@ -359,7 +353,10 @@ export function SetupQortalCore({
                     {step.imageSrc && (
                       <Box
                         onClick={() =>
-                          setSelectedOnBoardingScreenShot(step.imageSrc!)
+                          openScreenshotModal(
+                            stepImages,
+                            getStepImageIndex(textSteps, index)
+                          )
                         }
                         component="img"
                         src={step.imageSrc}

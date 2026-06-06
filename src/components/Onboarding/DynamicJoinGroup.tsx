@@ -16,6 +16,11 @@ import {
 } from "@mui/material";
 import { TextSteps } from "./CreateNewAccount";
 import { ButtonOnBoarding, ButtonTextOnBoarding } from "./Onboarding-styles";
+import {
+  getStepImageIndex,
+  getStepImageSources,
+  OpenOnboardingScreenshot
+} from "./onboardingScreenshot";
 
 type TutorialMode = "text" | "video";
 
@@ -36,9 +41,7 @@ interface DynamicJoinGroupProps {
   groupInfo: GroupInfo;
   onBack?: () => void;
   onNext?: () => void;
-  setSelectedOnBoardingScreenShot: React.Dispatch<
-    React.SetStateAction<string | null>
-  >;
+  openScreenshotModal: OpenOnboardingScreenshot;
 }
 
 // Generic text steps for joining any group
@@ -105,7 +108,7 @@ export function DynamicJoinGroup({
   groupInfo,
   onBack,
   onNext,
-  setSelectedOnBoardingScreenShot
+  openScreenshotModal
 }: DynamicJoinGroupProps) {
   const [mode, setMode] = React.useState<TutorialMode>("text");
   const [activeStep, setActiveStep] = React.useState(0);
@@ -117,6 +120,7 @@ export function DynamicJoinGroup({
     () => getTextSteps(groupInfo.groupName, groupInfo.groupId),
     [groupInfo.groupName, groupInfo.groupId]
   );
+  const stepImages = getStepImageSources(textSteps);
 
   const handleModeChange = (
     _event: React.SyntheticEvent,
@@ -234,7 +238,10 @@ export function DynamicJoinGroup({
                             cursor: "pointer"
                           }}
                           onClick={() =>
-                            setSelectedOnBoardingScreenShot(step.imageSrc!)
+                            openScreenshotModal(
+                              stepImages,
+                              getStepImageIndex(textSteps, index)
+                            )
                           }
                         />
                       )}

@@ -7,6 +7,7 @@ import {
 } from "./Onboarding-styles";
 import { Box, Button, Typography } from "@mui/material";
 import { APPROVED_EMAIL_PROVIDER_EXAMPLES } from "../../constants/onboardingEmail";
+import { OpenOnboardingScreenshot } from "./onboardingScreenshot";
 export const EBOOK_API: string =
   process.env.NEXT_PUBLIC_EBOOK_API_HOST || "http://localhost:3010";
 
@@ -14,14 +15,12 @@ const normalizeEmail = (value: string) => value.trim().toLowerCase();
 
 interface PropsReceiveQort {
   qortStep: number;
-  setSelectedOnBoardingScreenShot?: React.Dispatch<
-    React.SetStateAction<string | null>
-  >;
+  openScreenshotModal?: OpenOnboardingScreenshot;
 }
 
 const ReceiveQort = ({
   qortStep,
-  setSelectedOnBoardingScreenShot
+  openScreenshotModal
 }: PropsReceiveQort) => {
   const [email, setEmail] = useState("");
   const [code, setCode] = useState("");
@@ -354,9 +353,7 @@ const ReceiveQort = ({
               src="/images/QORT/copyAddress.png"
               alt="Click to copy address - Shows where to find your Qortal address in Qortal Hub"
               onClick={() =>
-                setSelectedOnBoardingScreenShot?.(
-                  "/images/QORT/copyAddress.png"
-                )
+                openScreenshotModal?.(["/images/QORT/copyAddress.png"], 0)
               }
               sx={{
                 maxWidth: "100%",

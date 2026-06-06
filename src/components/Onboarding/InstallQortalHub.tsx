@@ -22,6 +22,11 @@ import WindowsIcon from "@mui/icons-material/Window";
 import AppleIcon from "@mui/icons-material/Apple";
 import TerminalIcon from "@mui/icons-material/Terminal";
 import { ButtonOnBoarding, ButtonTextOnBoarding } from "./Onboarding-styles";
+import {
+  getStepImageIndex,
+  getStepImageSources,
+  OpenOnboardingScreenshot
+} from "./onboardingScreenshot";
 import DownloadIcon from "@mui/icons-material/Download";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 export type OS = "windows" | "mac" | "linux";
@@ -170,7 +175,7 @@ const tutorialData: Record<
       {
         label: "Qortal Hub is Ready",
         description: "",
-        imageSrc: "/images/Onboarding/InstallQortalHub/mac/ready.jpg"
+        imageSrc: "/images/Onboarding/InstallQortalHub/mac/ready.png"
       }
     ],
     videoUrl: "https://www.youtube.com/embed/a0JkrkA4LD8"
@@ -218,16 +223,14 @@ interface InstallQortalHubProps {
   onBack?: () => void;
   onNext?: () => void;
   osAuto: OS;
-  setSelectedOnBoardingScreenShot: React.Dispatch<
-    React.SetStateAction<string | null>
-  >;
+  openScreenshotModal: OpenOnboardingScreenshot;
 }
 
 export function InstallQortalHub({
   onBack,
   onNext,
   osAuto,
-  setSelectedOnBoardingScreenShot
+  openScreenshotModal
 }: InstallQortalHubProps) {
   const theme = useTheme();
 
@@ -236,6 +239,7 @@ export function InstallQortalHub({
   const [activeStep, setActiveStep] = React.useState(0);
 
   const { textSteps, videoUrl } = tutorialData[os];
+  const stepImages = getStepImageSources(textSteps);
 
   const handleOsChange = (
     _event: React.MouseEvent<HTMLElement>,
@@ -389,7 +393,10 @@ export function InstallQortalHub({
                     {step.imageSrc && (
                       <Box
                         onClick={() =>
-                          setSelectedOnBoardingScreenShot(step.imageSrc!)
+                          openScreenshotModal(
+                            stepImages,
+                            getStepImageIndex(textSteps, index)
+                          )
                         }
                         component="img"
                         src={step.imageSrc}
