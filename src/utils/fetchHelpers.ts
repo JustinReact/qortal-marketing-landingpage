@@ -1,27 +1,52 @@
 type FetchJsonOptions = RequestInit & { next?: { revalidate?: number } };
 
+class HttpResponseError extends Error {
+  constructor(
+    message: string,
+    readonly status: number
+  ) {
+    super(message);
+    this.name = "HttpResponseError";
+  }
+}
+
+const isRetryableStatus = (status: number) => status >= 500 || status === 429;
+
 export async function fetchJsonWithRetry(
   url: string,
   options: FetchJsonOptions = {},
   retries = 3,
-  delayMs = 1000
+  delayMs = 1000,
+  timeoutMs = 15_000
 ): Promise<unknown> {
   let lastError: unknown;
 
   for (let attempt = 0; attempt < retries; attempt++) {
     try {
-      const response = await fetch(url, options);
+      const response = await fetch(url, {
+        ...options,
+        signal: AbortSignal.timeout(timeoutMs)
+      });
       if (!response.ok) {
-        throw new Error(`HTTP ${response.status} for ${url}`);
+        throw new HttpResponseError(
+          `HTTP ${response.status} for ${url}`,
+          response.status
+        );
       }
       return await response.json();
     } catch (error) {
       lastError = error;
-      if (attempt < retries - 1) {
-        await new Promise((resolve) =>
-          setTimeout(resolve, delayMs * (attempt + 1))
-        );
-      }
+      const status =
+        error instanceof HttpResponseError ? error.status : undefined;
+      const canRetry =
+        attempt < retries - 1 &&
+        (status === undefined || isRetryableStatus(status));
+
+      if (!canRetry) break;
+
+      await new Promise((resolve) =>
+        setTimeout(resolve, delayMs * (attempt + 1))
+      );
     }
   }
 

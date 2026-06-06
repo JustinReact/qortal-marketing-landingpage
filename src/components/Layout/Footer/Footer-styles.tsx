@@ -3,7 +3,7 @@ import { Box } from "@mui/material";
 import Link from "next/link";
 import { inter, oxygen } from "../../../app/fonts";
 
-export const FooterContainer = styled(Box)(({ theme }) => ({
+export const FooterContainer = styled("footer")(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",

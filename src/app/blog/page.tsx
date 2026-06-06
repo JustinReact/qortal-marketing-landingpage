@@ -9,6 +9,8 @@ export const metadata = {
   description: 'Explore the latest blog posts about Qortal, Web3, decentralization, and much more, on the Qortal Blog!',
 };
 
+export const dynamic = "force-dynamic";
+
 const BlogPage = async (): Promise<JSX.Element> => {
   let blogs: BlogPost[] = [];
   try {

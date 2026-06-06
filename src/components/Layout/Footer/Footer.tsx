@@ -31,10 +31,7 @@ export const Footer = () => {
     return null;
   } else
     return (
-      <FooterContainer
-        component="footer"
-        className="site-footer"
-      >
+      <FooterContainer className="site-footer">
         <FooterInner
           className="site-footer-inner"
           sx={{

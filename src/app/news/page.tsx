@@ -9,6 +9,8 @@ export const metadata = {
   description: "Get the latest news and updates from the Qortal team"
 };
 
+export const dynamic = "force-dynamic";
+
 const NewsPage = async (): Promise<JSX.Element> => {
   let news: NewsPost[] = [];
   try {

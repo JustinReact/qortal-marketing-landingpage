@@ -15,11 +15,17 @@ export async function fetchQortalResourceList(
   const url = `${groupApi}/arbitrary/resources/searchsimple?service=${service}&name=Bester&identifier=${identifierPrefix}&limit=0&mode=ALL&prefix=true&includemetadata=false&reverse=true`;
 
   try {
-    const data = await fetchJsonWithRetry(url, {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-      next: { revalidate }
-    });
+    const data = await fetchJsonWithRetry(
+      url,
+      {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+        next: { revalidate }
+      },
+      1,
+      0,
+      10_000
+    );
 
     if (!Array.isArray(data)) return [];
 
