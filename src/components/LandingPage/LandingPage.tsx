@@ -1,28 +1,25 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import {
   Box,
   GlobalStyles,
+  IconButton,
+  Paper,
   Typography,
   useMediaQuery,
   useTheme
 } from "@mui/material";
 import AdsClickIcon from "@mui/icons-material/AdsClick";
+import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import FileDownloadRoundedIcon from "@mui/icons-material/FileDownloadRounded";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import ReactGA from "react-ga4";
 import { inter, segoeUIHubHeadline } from "../../app/fonts";
-import {
-  EbookPromoButton,
-  EbookPromoContainer,
-  EbookPromoSubTitle,
-  EbookPromoTextCol,
-  EbookPromoTitle
-} from "../../components/LandingPage/LandingPage-styles";
-import { CommonModal } from "../Common/CommonModal/CommonModal";
+import { EbookPromoButton } from "../../components/LandingPage/LandingPage-styles";
 import { BookSVG } from "../Common/Icons/BookSVG";
 import { DownloadSVG } from "../Common/Icons/DownloadSVG";
 import { QortalSVG } from "../Common/Icons/QortalSVG";
@@ -35,6 +32,7 @@ const LandingPage = () => {
   const isMobileViewport = useMediaQuery("(max-width: 1193px)");
   const router = useRouter();
   const [firstTimeVisitor, setFirstTimeVisitor] = useState<boolean>(false);
+  const [isMounted, setIsMounted] = useState<boolean>(false);
   const isDarkMode = theme.palette.mode === "dark";
   const pageBackground = isDarkMode ? "#020713" : theme.palette.background.default;
   const heroTextColor = isDarkMode ? "#f7faff" : "#07111f";
@@ -45,7 +43,11 @@ const LandingPage = () => {
     ? "rgba(218, 229, 243, 0.78)"
     : "rgba(8, 17, 34, 0.62)";
 
-  // Display download ebook modal for first time desktop visitors.
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  // Show the download ebook toast 30s after first-time desktop visitors land.
   useEffect(() => {
     if (isMobileViewport) {
       return;
@@ -57,13 +59,28 @@ const LandingPage = () => {
       const timeoutId = window.setTimeout(() => {
         setFirstTimeVisitor(true);
         localStorage.setItem("isFirstTimeVisitor", "false");
-      }, 30000);
+      }, 5000);
 
       return () => {
         window.clearTimeout(timeoutId);
       };
     }
   }, [isMobileViewport]);
+
+  // Auto-dismiss the toast after 10s.
+  useEffect(() => {
+    if (!firstTimeVisitor) {
+      return;
+    }
+
+    const timeoutId = window.setTimeout(() => {
+      setFirstTimeVisitor(false);
+    }, 10000);
+
+    return () => {
+      window.clearTimeout(timeoutId);
+    };
+  }, [firstTimeVisitor]);
 
   if (isMobileViewport) {
     return <LandingPagePrevious />;
@@ -727,62 +744,131 @@ const LandingPage = () => {
           </Box>
         </Box>
       </Box>
-      {firstTimeVisitor && (
-        <CommonModal
-          openModal={firstTimeVisitor}
-          onClickFunc={() => {
-            setFirstTimeVisitor(false);
-          }}
-          customStyles={{
-            padding: 0,
-            top: "10%",
-            maxHeight: "fit-content !important",
-            height: "100% !important",
-            backgroundColor:
-              theme.palette.mode === "dark" ? "#111112" : "#D9D9D9",
-            borderRadius: "10px"
-          }}
-        >
-          <EbookPromoContainer>
-            <BookSVG
-              color={theme.palette.text.primary}
-              height={"79"}
-              width={"98"}
-            />
-            <EbookPromoTextCol>
-              <EbookPromoTitle>
-                DOWNLOAD OUR{" "}
-                <span style={{ color: theme.palette.customBlue.main }}>
-                  FREE
-                </span>{" "}
-                EBOOK!
-              </EbookPromoTitle>
-              <EbookPromoSubTitle>
-                Learn how Qortal is leveraging the power of blockchain
-                technology to revolutionize many industries on the normal
-                internet.
-              </EbookPromoSubTitle>
-            </EbookPromoTextCol>
-            <EbookPromoButton
+      {isMounted &&
+        firstTimeVisitor &&
+        createPortal(
+          <Paper
+            elevation={8}
+            role="status"
+            aria-live="polite"
+            sx={{
+              position: "fixed",
+              right: { xs: 16, sm: 28 },
+              bottom: { xs: 20, sm: 28 },
+              zIndex: 1300,
+              display: "flex",
+              alignItems: "flex-start",
+              gap: "14px",
+              width: "fit-content",
+              maxWidth: "min(380px, calc(100vw - 32px))",
+              p: "16px 18px 16px 16px",
+              borderRadius: "12px",
+              border: isDarkMode
+                ? "1px solid rgba(132, 175, 240, 0.18)"
+                : "1px solid rgba(17, 91, 197, 0.14)",
+              background: isDarkMode
+                ? "linear-gradient(180deg, rgba(11, 19, 34, 0.97), rgba(5, 11, 22, 0.99))"
+                : "linear-gradient(180deg, rgba(255, 255, 255, 0.99), rgba(239, 245, 252, 0.99))",
+              boxShadow: isDarkMode
+                ? "0 18px 48px rgba(0, 0, 0, 0.46), 0 0 0 1px rgba(12, 72, 148, 0.1)"
+                : "0 16px 40px rgba(17, 91, 197, 0.16), 0 0 0 1px rgba(17, 91, 197, 0.06)",
+              animation: "ebookPromoSlideIn 320ms cubic-bezier(0.22, 1, 0.36, 1)",
+              "@keyframes ebookPromoSlideIn": {
+                from: { opacity: 0, transform: "translateY(16px)" },
+                to: { opacity: 1, transform: "translateY(0)" }
+              }
+            }}
+          >
+            <IconButton
+              aria-label="Dismiss ebook notification"
+              size="small"
               onClick={() => {
-                ReactGA.event({
-                  category: "User",
-                  action: "Clicked Download Ebook Button on Homepage Modal",
-                  label: "Clicked Download Ebook Button on Homepage Modal"
-                });
-                router.push("/ebook");
+                setFirstTimeVisitor(false);
+              }}
+              sx={{
+                position: "absolute",
+                top: 6,
+                right: 6,
+                color: isDarkMode
+                  ? "rgba(218, 229, 243, 0.72)"
+                  : "rgba(8, 17, 34, 0.56)"
               }}
             >
-              <DownloadSVG
-                color={theme.palette.text.primary}
-                height={"14"}
-                width={"14"}
-              />
-              DOWNLOAD HERE
-            </EbookPromoButton>
-          </EbookPromoContainer>
-        </CommonModal>
-      )}
+              <CloseRoundedIcon sx={{ fontSize: "18px" }} />
+            </IconButton>
+            <Box
+              aria-hidden="true"
+              sx={{
+                flex: "0 0 auto",
+                mt: "2px",
+                color: theme.palette.text.primary
+              }}
+            >
+              <BookSVG color="currentColor" height="42" width="52" />
+            </Box>
+            <Box sx={{ minWidth: 0, pr: "18px" }}>
+              <Typography
+                sx={{
+                  m: 0,
+                  color: theme.palette.text.primary,
+                  fontSize: "0.82rem",
+                  fontWeight: 800,
+                  lineHeight: 1.25,
+                  letterSpacing: "0.04em",
+                  textTransform: "uppercase"
+                }}
+              >
+                Download our{" "}
+                <Box
+                  component="span"
+                  sx={{ color: theme.palette.customBlue.main }}
+                >
+                  free
+                </Box>{" "}
+                ebook
+              </Typography>
+              <Typography
+                sx={{
+                  mt: "6px",
+                  color: isDarkMode
+                    ? "rgba(218, 229, 243, 0.72)"
+                    : "rgba(8, 17, 34, 0.68)",
+                  fontSize: "0.78rem",
+                  fontWeight: 400,
+                  lineHeight: 1.4
+                }}
+              >
+                Learn how Qortal is using blockchain to reshape the internet.
+              </Typography>
+              <EbookPromoButton
+                onClick={() => {
+                  ReactGA.event({
+                    category: "User",
+                    action: "Clicked Download Ebook Button on Homepage Modal",
+                    label: "Clicked Download Ebook Button on Homepage Modal"
+                  });
+                  router.push("/ebook");
+                }}
+                sx={{
+                  mt: "12px",
+                  width: "auto",
+                  minWidth: "148px",
+                  height: "30px",
+                  px: "14px",
+                  fontSize: "12px"
+                }}
+              >
+                <DownloadSVG
+                  color={theme.palette.text.primary}
+                  height={"14"}
+                  width={"14"}
+                />
+                DOWNLOAD HERE
+              </EbookPromoButton>
+            </Box>
+          </Paper>,
+          document.body
+        )}
     </>
   );
 };
