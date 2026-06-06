@@ -1,6 +1,5 @@
 import { styled } from "@mui/system";
-import { Box, Grid, Typography } from "@mui/material";
-import Image from "next/image";
+import { Box, Typography } from "@mui/material";
 import { futura, inter, oxygen, redditSans } from "../../app/fonts";
 import { ChromeStoreSVG } from "../Common/Icons/ChromeStoreSVG";
 import { AppleSVG } from "../Common/Icons/AppleSVG";
@@ -9,34 +8,28 @@ import { AndroidSVG } from "../Common/Icons/AndroidSVG";
 export const Container = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
-  padding: "106px 90px 106px 90px",
+  alignItems: "center",
+  padding: "106px 90px 80px",
   width: "100%",
   "@media(max-width: 1444px)": {
-    padding: "50px 20px 34px 20px"
+    padding: "50px 20px 34px"
   },
   [theme.breakpoints.down("sm")]: {
-    padding: "10px 20px 25px 20px",
+    padding: "10px 20px 25px",
     width: "100%"
   }
 }));
 
-export const MainRow = styled(Box)(({ theme }) => ({
-  display: "grid",
-  gridTemplateColumns: "0.3fr 1fr",
-  alignItems: "flex-start",
-  width: "100%",
-  [theme.breakpoints.down("lg")]: {
-    gridTemplateColumns: "1fr"
-  }
-}));
-
-export const MainCol = styled(Box)(({ theme }) => ({
+export const DownloadsContent = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-  justifyContent: "center",
-  gap: "22px",
-  width: "100%"
+  width: "100%",
+  maxWidth: "960px",
+  gap: "48px",
+  [theme.breakpoints.down("sm")]: {
+    gap: "32px"
+  }
 }));
 
 export const DownloadsTitle = styled(Typography)(({ theme }) => ({
@@ -48,130 +41,140 @@ export const DownloadsTitle = styled(Typography)(({ theme }) => ({
   lineHeight: "73px",
   letterSpacing: "calc(0.09 * 55px)",
   userSelect: "none",
+  marginBottom: "8px",
   [theme.breakpoints.down("sm")]: {
     fontSize: "30px",
-    lineHeight: "35px"
+    lineHeight: "35px",
+    marginBottom: "4px"
   }
 }));
 
-export const DownloadContainer = styled(Box)(({ theme }) => ({
+export const DownloadSection = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
-  alignItems: "center",
-  justifyContent: "center",
-  gap: "72px"
-}));
-
-export const DownloadUIRow = styled(Box)({
-  display: "flex",
-  flexDirection: "row",
-  alignItems: "center"
-});
-
-export const DownloadCoreRow = styled(Box)(({ theme }) => ({
-  display: "flex",
-  flexDirection: "row",
-  alignItems: "center",
+  alignItems: "stretch",
   width: "100%",
+  gap: "24px",
+  padding: "32px",
+  borderRadius: "12px",
+  border: `1px solid ${
+    theme.palette.mode === "light"
+      ? "rgba(0, 0, 0, 0.08)"
+      : "rgba(255, 255, 255, 0.1)"
+  }`,
+  backgroundColor:
+    theme.palette.mode === "light"
+      ? "rgba(0, 0, 0, 0.02)"
+      : "rgba(255, 255, 255, 0.03)",
   [theme.breakpoints.down("sm")]: {
-    display: "none"
+    padding: "24px 16px",
+    gap: "20px"
   }
 }));
 
-export const DownloadsUIGrid = styled(Box)({
-  display: "grid",
-  gridTemplateColumns: "repeat(5, 1fr)",
-  gap: "10px",
-  "@media(max-width: 751px)": {
-    gridTemplateColumns: "repeat(3, 1fr)"
-  }
-});
-
-export const DownloadsCoreGrid = styled(Box)({
-  display: "grid",
-  gridTemplateColumns: "repeat(3, 1fr)",
-  gap: "10px"
-});
-
-export const DownloadCard = styled(Box)(({ theme }) => ({
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  justifyContent: "center",
-  gap: "12px",
-  textAlign: "center",
-  flexGrow: 1,
-  backgroundColor: theme.palette.mode === "light" ? "#2F2F2F" : "#ffffff",
-  padding: "12px",
-  borderRadius: "5px",
-  width: "125px",
-  height: "auto",
-  transition: "all 0.3s ease-in-out",
-  "&:hover": {
-    cursor: "pointer",
-    boxShadow:
-      theme.palette.mode === "light"
-        ? "none"
-        : "0px 12px 17px 2px hsla(0, 0%, 100%, 0.08), 0px 5px 22px 4px hsla(0, 0%, 100%, 0.09), 0px 7px 8px -4px hsla(0, 0%, 100%, 0.2),  0px 0px 10px rgba(255, 255, 255, 0.1)",
-    backgroundColor: theme.palette.mode === "dark" ? "#56AEFF" : "#003E78"
-  }
+export const DownloadSectionCore = styled(DownloadSection)(({ theme }) => ({
+  backgroundColor:
+    theme.palette.mode === "light"
+      ? "rgba(0, 62, 120, 0.04)"
+      : "rgba(86, 174, 255, 0.05)",
+  border: `1px solid ${
+    theme.palette.mode === "light"
+      ? "rgba(0, 62, 120, 0.12)"
+      : "rgba(86, 174, 255, 0.15)"
+  }`
 }));
 
-export const DownloadCol = styled(Box)(({ theme }) => ({
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  justifyContent: "center",
-  gap: "40px"
-}));
-
-export const DownloadSubCol = styled(Box)(({ theme }) => ({
+export const DownloadTextCol = styled(Box)({
   display: "flex",
   flexDirection: "column",
   alignItems: "flex-start",
   justifyContent: "center",
-  gap: "22px",
-  width: "100%",
-  [theme.breakpoints.down("lg")]: {
-    alignItems: "center"
-  }
-}));
-
-export const DownloadTextCol = styled(Box)(({ theme }) => ({
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "flex-start",
-  justifyContent: "center",
-  gap: "8px"
-}));
+  gap: "8px",
+  width: "100%"
+});
 
 export const DownloadText = styled(Typography)(({ theme }) => ({
   fontFamily: redditSans.style.fontFamily,
   color: theme.palette.text.primary,
-  fontWeight: 300,
-  fontSize: "30px",
-  marginTop: "98px",
-  lineHeight: "43px",
-  alignSelf: "flex-start",
+  fontWeight: 400,
+  fontSize: "26px",
+  lineHeight: "34px",
   userSelect: "none",
-  [theme.breakpoints.down("lg")]: {
+  [theme.breakpoints.down("sm")]: {
+    fontSize: "22px",
+    lineHeight: "28px",
+    textAlign: "center",
     alignSelf: "center"
   }
 }));
 
 export const DownloadSubText = styled(Typography)(({ theme }) => ({
   fontFamily: redditSans.style.fontFamily,
-  color: theme.palette.text.primary,
-  fontWeight: 300,
-  fontSize: "20px",
-  lineHeight: "22px",
-  alignSelf: "flex-start",
+  color:
+    theme.palette.mode === "light"
+      ? "rgba(0, 0, 0, 0.72)"
+      : "rgba(255, 255, 255, 0.88)",
+  fontWeight: 400,
+  fontSize: "17px",
+  lineHeight: "26px",
   userSelect: "none",
-  [theme.breakpoints.down("lg")]: {
+  maxWidth: "720px",
+  [theme.breakpoints.down("sm")]: {
+    fontSize: "15px",
+    lineHeight: "22px",
+    textAlign: "center",
     alignSelf: "center"
+  }
+}));
+
+export const DownloadsGrid = styled(Box)(({ theme }) => ({
+  display: "grid",
+  gridTemplateColumns: "repeat(3, 1fr)",
+  gap: "12px",
+  width: "100%",
+  [theme.breakpoints.down("sm")]: {
+    gridTemplateColumns: "repeat(2, 1fr)",
+    gap: "10px"
+  }
+}));
+
+export const DownloadsCoreGrid = styled(Box)(({ theme }) => ({
+  display: "grid",
+  gridTemplateColumns: "repeat(3, 1fr)",
+  gap: "12px",
+  width: "100%",
+  [theme.breakpoints.down("sm")]: {
+    gridTemplateColumns: "repeat(3, 1fr)",
+    gap: "10px"
+  }
+}));
+
+export const DownloadCard = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: "10px",
+  textAlign: "center",
+  backgroundColor: theme.palette.mode === "light" ? "#2F2F2F" : "#ffffff",
+  padding: "20px 12px",
+  borderRadius: "8px",
+  width: "100%",
+  minHeight: "110px",
+  transition: "all 0.2s ease-in-out",
+  "&:hover": {
+    cursor: "pointer",
+    transform: "translateY(-2px)",
+    boxShadow:
+      theme.palette.mode === "light"
+        ? "0 8px 24px rgba(0, 62, 120, 0.2)"
+        : "0px 12px 17px 2px hsla(0, 0%, 100%, 0.08), 0px 5px 22px 4px hsla(0, 0%, 100%, 0.09)",
+    backgroundColor: theme.palette.mode === "dark" ? "#56AEFF" : "#003E78"
   },
   [theme.breakpoints.down("sm")]: {
-    textAlign: "center"
+    padding: "16px 8px",
+    minHeight: "100px",
+    gap: "8px"
   }
 }));
 
@@ -179,33 +182,14 @@ export const DownloadText1 = styled(Typography)(({ theme }) => ({
   fontFamily: oxygen.style.fontFamily,
   color: theme.palette.mode === "light" ? "#ffffff" : "#000000",
   fontWeight: 400,
-  fontSize: "20px",
+  fontSize: "18px",
   lineHeight: "22px",
-  userSelect: "none"
-}));
-
-export const DownloadText2 = styled(Typography)(({ theme }) => ({
-  fontFamily: redditSans.style.fontFamily,
-  color: theme.palette.mode === "light" ? "#ffffff" : "#000000",
-  fontWeight: 400,
-  fontSize: "24px",
-  lineHeight: "24px",
   userSelect: "none",
-  "@media(max-width: 1243px)": {
-    fontSize: "20px"
-  },
-  "@media(max-width: 1127px)": {
-    fontSize: "28px"
-  },
-  [theme.breakpoints.down("md")]: {
-    lineHeight: "25px"
-  },
-  "@media(max-width: 743px)": {
-    fontSize: "24px"
+  ".mac-card:hover &, &:hover": {
+    color: theme.palette.mode === "light" ? "#ffffff" : "#000000"
   },
   [theme.breakpoints.down("sm")]: {
-    fontSize: "28px",
-    lineHeight: "28px"
+    fontSize: "16px"
   }
 }));
 
@@ -213,35 +197,42 @@ export const DownloadText3 = styled(Typography)(({ theme }) => ({
   fontFamily: oxygen.style.fontFamily,
   color: theme.palette.mode === "light" ? "#ffffff" : "#000000",
   fontWeight: 400,
-  fontSize: "16px",
-  lineHeight: "22px",
-  userSelect: "none"
+  fontSize: "14px",
+  lineHeight: "18px",
+  userSelect: "none",
+  [theme.breakpoints.down("sm")]: {
+    fontSize: "13px"
+  }
 }));
 
-export const OtherVersionsCol = styled(Box)(({ theme }) => ({
+export const PlatformCardWrapper = styled(Box)(({ theme }) => ({
+  display: "flex",
+  justifyContent: "center",
+  width: "100%",
+  maxWidth: "200px",
+  margin: "0 auto",
+  [theme.breakpoints.down("sm")]: {
+    maxWidth: "180px"
+  }
+}));
+
+export const OtherVersionsCol = styled(Box)({
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
-  alignItems: "flex-start",
-  width: "100%",
-  gap: "20px",
-  marginTop: "50px"
-}));
-
-export const OtherVersionsRow = styled(Box)(({ theme }) => ({
-  display: "flex",
-  flexDirection: "row",
   alignItems: "center",
-  justifyContent: "center"
-}));
+  width: "100%",
+  gap: "12px"
+});
 
 export const OtherVersionsText = styled(Typography)(({ theme }) => ({
   fontFamily: oxygen.style.fontFamily,
   color: theme.palette.text.primary,
   fontWeight: 300,
-  fontSize: "18px",
-  lineHeight: "22px",
+  fontSize: "16px",
+  lineHeight: "24px",
   userSelect: "none",
+  textAlign: "center",
   "& a": {
     textDecoration: "none",
     color: theme.palette.customBlue.main,
@@ -252,63 +243,10 @@ export const OtherVersionsText = styled(Typography)(({ theme }) => ({
       filter: "brightness(0.9)"
     }
   },
-  [theme.breakpoints.down("md")]: {
-    lineHeight: "40px",
-    textAlign: "center"
+  [theme.breakpoints.down("sm")]: {
+    fontSize: "14px",
+    lineHeight: "22px"
   }
-}));
-
-export const ScreenshotContainer = styled(Grid)(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  marginTop: "127px",
-  zIndex: 0,
-  [theme.breakpoints.down("lg")]: {
-    display: "none"
-  }
-}));
-
-export const ScreenshotCol = styled(Grid)(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center"
-}));
-
-export const Screenshot1 = styled(Image)(({ theme }) => ({
-  width: "100%",
-  maxWidth: "100%",
-  height: "auto",
-  objectFit: "contain"
-}));
-
-export const Screenshot2 = styled(Image)(({ theme }) => ({
-  width: "100%",
-  maxWidth: "100%",
-  height: "auto",
-  objectFit: "contain",
-  position: "relative",
-  top: "-70px",
-  left: "700px",
-  zIndex: 5,
-
-  [theme.breakpoints.down("xl")]: {
-    top: "-70px",
-    left: "500px"
-  },
-  "@media(max-width: 1387px)": {
-    left: "400px"
-  },
-  [theme.breakpoints.down("lg")]: {
-    display: "none"
-  }
-}));
-
-export const Screenshot3 = styled(Image)(({ theme }) => ({
-  width: "100%",
-  maxWidth: "100%",
-  height: "auto",
-  objectFit: "contain"
 }));
 
 export const DownloadNowText = styled(Typography)(({ theme }) => ({
@@ -318,15 +256,13 @@ export const DownloadNowText = styled(Typography)(({ theme }) => ({
   fontSize: "50px",
   letterSpacing: 0,
   lineHeight: "65px",
-  marginTop: "200px",
+  marginTop: "24px",
   textAlign: "center",
   userSelect: "none",
-  [theme.breakpoints.down("lg")]: {
-    marginTop: "70px"
-  },
   [theme.breakpoints.down("sm")]: {
     fontSize: "30px",
-    lineHeight: "35px"
+    lineHeight: "35px",
+    marginTop: "16px"
   }
 }));
 
@@ -335,21 +271,6 @@ export const ChromeStoreLogo = styled(ChromeStoreSVG)({});
 export const AppleLogo = styled(AppleSVG)({});
 
 export const AndroidIcon = styled(AndroidSVG)({});
-
-export const IPhoneRow = styled(Box)(({ theme }) => ({
-  display: "flex",
-  flexDirection: "row",
-  alignItems: "center",
-  justifyContent: "center",
-  marginTop: "98px",
-  "@media(max-width: 731px)": {
-    marginTop: "50px",
-    marginBottom: "40px",
-    gap: "60px",
-    gridTemplateColumns: "auto",
-    gridTemplateRows: "repeat(5, 1fr)"
-  }
-}));
 
 export const CommandLineModalContainer = styled(Box)(({ theme }) => ({
   position: "fixed",
@@ -365,7 +286,12 @@ export const CommandLineModalContainer = styled(Box)(({ theme }) => ({
   alignItems: "center",
   padding: "20px",
   gap: "20px",
-  zIndex: 6
+  zIndex: 6,
+  [theme.breakpoints.down("sm")]: {
+    left: "10px",
+    right: "10px",
+    width: "auto"
+  }
 }));
 
 export const CommandLineModalContent = styled(Box)({
