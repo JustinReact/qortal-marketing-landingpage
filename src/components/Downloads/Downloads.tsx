@@ -305,12 +305,16 @@ const Downloads = () => {
         <DownloadSection>
           <DownloadTextCol>
             <DownloadText>
-              <strong>Qortal User Interface</strong>
+              <strong>Qortal Hub</strong>
             </DownloadText>
             <DownloadSubText>
-              This is what most users need. The Qortal User Interface lets you
-              access Qortal apps, messaging, groups, and wallets. Only a simple
-              installation is needed.
+              Access Q-Apps, messaging, groups, wallets, publishing, and the
+              Qortal network through one desktop experience.
+              <br />
+              <br />
+              Use a Local Node for the full decentralized experience, or
+              connect through a Public Node for quick access with some
+              limitations.
             </DownloadSubText>
           </DownloadTextCol>
 

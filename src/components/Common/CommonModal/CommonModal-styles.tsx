@@ -33,7 +33,7 @@ export const Backdrop = styled(Box)({
   background: "rgb(186 186 186 / 26%)",
   overflow: "hidden",
   animation: `${backdrop_blur} cubic-bezier(0.22, 1, 0.36, 1) 1s forwards`,
-  zIndex: 5
+  zIndex: 1300
 });
 
 export const Modalbody = styled(Box)(({ theme }) => ({
@@ -55,7 +55,7 @@ export const Modalbody = styled(Box)(({ theme }) => ({
   overflowY: "auto",
   animation: `1s cubic-bezier(0.22, 1, 0.36, 1) 0s 1 normal forwards running ${modal_transition}`,
   maxHeight: "80%",
-  zIndex: 60,
+  zIndex: 1301,
   [theme.breakpoints.down("sm")]: {
     display: "flex",
     position: "fixed",
@@ -71,7 +71,7 @@ export const Modalbody = styled(Box)(({ theme }) => ({
     right: 0,
     animation:
       "1s cubic-bezier(0.22, 1, 0.36, 1) 0s 1 normal forwards running animation-1wf7x19",
-    zIndex: "60"
+    zIndex: 1301
   }
 }));
 
