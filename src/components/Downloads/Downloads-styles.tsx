@@ -41,11 +41,11 @@ export const DownloadsTitle = styled(Typography)(({ theme }) => ({
   lineHeight: "73px",
   letterSpacing: "calc(0.09 * 55px)",
   userSelect: "none",
-  marginBottom: "8px",
+  marginBottom: "40px",
   [theme.breakpoints.down("sm")]: {
     fontSize: "30px",
     lineHeight: "35px",
-    marginBottom: "4px"
+    marginBottom: "24px"
   }
 }));
 

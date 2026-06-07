@@ -18,15 +18,18 @@ import {
 } from "@mui/material";
 import { TextSteps } from "./CreateNewAccount";
 import { ButtonOnBoarding, ButtonTextOnBoarding } from "./Onboarding-styles";
+import {
+  getStepImageIndex,
+  getStepImageSources,
+  OpenOnboardingScreenshot
+} from "./onboardingScreenshot";
 
 type TutorialMode = "text" | "video";
 
 interface SetupQortalCoreProps {
   onBack?: () => void;
   onNext?: () => void;
-  setSelectedOnBoardingScreenShot: React.Dispatch<
-    React.SetStateAction<string | null>
-  >;
+  openScreenshotModal: OpenOnboardingScreenshot;
 }
 
 const textSteps: TextSteps[] = [
@@ -89,12 +92,13 @@ const textSteps: TextSteps[] = [
 export function JoinGroup({
   onBack,
   onNext,
-  setSelectedOnBoardingScreenShot
+  openScreenshotModal
 }: SetupQortalCoreProps) {
   const theme = useTheme();
 
   const [mode, setMode] = React.useState<TutorialMode>("text");
   const [activeStep, setActiveStep] = React.useState(0);
+  const stepImages = getStepImageSources(textSteps);
 
   const handleModeChange = (
     _event: React.SyntheticEvent,
@@ -193,7 +197,10 @@ export function JoinGroup({
                           cursor: "pointer"
                         }}
                         onClick={() =>
-                          setSelectedOnBoardingScreenShot(step.imageSrc!)
+                          openScreenshotModal(
+                            stepImages,
+                            getStepImageIndex(textSteps, index)
+                          )
                         }
                       />
                     )}

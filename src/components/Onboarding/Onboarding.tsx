@@ -36,6 +36,10 @@ import Modal from "../Common/Modal/Modal";
 import { groupApi } from "../../constants/endpoint";
 import { fetchAPI } from "../../utils/fetchAPI";
 import { ONBOARDING_EMAIL_REQUIREMENT } from "../../constants/onboardingEmail";
+import {
+  OnboardingScreenshotModal,
+  OpenOnboardingScreenshot
+} from "./onboardingScreenshot";
 
 type StepDefinition = {
   key: string;
@@ -65,8 +69,15 @@ const Onboarding = () => {
   const groupIdParam = searchParams?.get("groupId") ?? null;
   const showFreedomCellsStep = referral === "freedomcells";
   const [os, setOS] = useState<OS>("windows");
-  const [selectedOnBoardingScreenShot, setSelectedOnBoardingScreenShot] =
-    useState<null | string>(null);
+  const [screenshotModal, setScreenshotModal] =
+    useState<OnboardingScreenshotModal>(null);
+
+  const openScreenshotModal: OpenOnboardingScreenshot = (
+    images,
+    initialIndex
+  ) => {
+    setScreenshotModal({ images, initialIndex });
+  };
   const [groupInfo, setGroupInfo] = useState<GroupInfo | null>(null);
   const [isLoadingGroup, setIsLoadingGroup] = useState<boolean>(false);
   const [activeStep, setActiveStep] = useState<number>(0);
@@ -122,7 +133,7 @@ const Onboarding = () => {
         render: () => (
           <InstallQortalHub
             osAuto={os}
-            setSelectedOnBoardingScreenShot={setSelectedOnBoardingScreenShot}
+            openScreenshotModal={openScreenshotModal}
           />
         )
       },
@@ -132,7 +143,7 @@ const Onboarding = () => {
         render: () => (
           <SetupQortalCore
             osAuto={os}
-            setSelectedOnBoardingScreenShot={setSelectedOnBoardingScreenShot}
+            openScreenshotModal={openScreenshotModal}
           />
         )
       },
@@ -141,7 +152,7 @@ const Onboarding = () => {
         label: "Create new Qortal account",
         render: () => (
           <CreateNewAccount
-            setSelectedOnBoardingScreenShot={setSelectedOnBoardingScreenShot}
+            openScreenshotModal={openScreenshotModal}
           />
         )
       },
@@ -151,7 +162,7 @@ const Onboarding = () => {
         render: () => (
           <ReceiveQort
             qortStep={1}
-            setSelectedOnBoardingScreenShot={setSelectedOnBoardingScreenShot}
+            openScreenshotModal={openScreenshotModal}
           />
         )
       },
@@ -160,7 +171,7 @@ const Onboarding = () => {
         label: "Register a name",
         render: () => (
           <RegisterName
-            setSelectedOnBoardingScreenShot={setSelectedOnBoardingScreenShot}
+            openScreenshotModal={openScreenshotModal}
           />
         )
       },
@@ -169,7 +180,7 @@ const Onboarding = () => {
         label: "Join 'The Freedom Cell Network' Group",
         render: () => (
           <JoinGroup
-            setSelectedOnBoardingScreenShot={setSelectedOnBoardingScreenShot}
+            openScreenshotModal={openScreenshotModal}
           />
         ),
         requiresFreedomCells: true
@@ -181,7 +192,7 @@ const Onboarding = () => {
           groupInfo ? (
             <DynamicJoinGroup
               groupInfo={groupInfo}
-              setSelectedOnBoardingScreenShot={setSelectedOnBoardingScreenShot}
+              openScreenshotModal={openScreenshotModal}
             />
           ) : null,
         requiresDynamicGroup: true
@@ -382,12 +393,13 @@ const Onboarding = () => {
           </Stack>
         </Paper>
       </Box>
-      {selectedOnBoardingScreenShot && (
+      {screenshotModal && (
         <Modal
-          images={[selectedOnBoardingScreenShot]}
-          openModal={!!selectedOnBoardingScreenShot}
+          images={screenshotModal.images}
+          initialImageIndex={screenshotModal.initialIndex}
+          openModal={!!screenshotModal}
           onClickFunc={() => {
-            setSelectedOnBoardingScreenShot(null);
+            setScreenshotModal(null);
           }}
         ></Modal>
       )}

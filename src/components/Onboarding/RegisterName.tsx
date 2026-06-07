@@ -18,41 +18,45 @@ import {
 } from "@mui/material";
 import { TextSteps } from "./CreateNewAccount";
 import { ButtonOnBoarding, ButtonTextOnBoarding } from "./Onboarding-styles";
+import {
+  getStepImageIndex,
+  getStepImageSources,
+  OpenOnboardingScreenshot
+} from "./onboardingScreenshot";
 
 type TutorialMode = "text" | "video";
 
 interface SetupQortalCoreProps {
   onBack?: () => void;
   onNext?: () => void;
-  setSelectedOnBoardingScreenShot: React.Dispatch<
-    React.SetStateAction<string | null>
-  >;
+  openScreenshotModal: OpenOnboardingScreenshot;
 }
 
 const textSteps: TextSteps[] = [
   {
     label: "Make sure you have a QORT balance",
     description:
-      "In the Qortal Hub home screen, verify if you have the 2 QORT sent to you. Click the refresh button if your balance is still at zero.",
-    imageSrc: "/images/Onboarding/RegisterName/balance.jpg"
+      "In the Qortal Hub home screen, verify if you have the 2 QORT sent to you. This can take a minute or two to show up.",
+    imageSrc: "/images/Onboarding/RegisterName/balance.png"
   },
   {
     label: "Register your first name",
     description:
-      "Click the button 'REGISTER NAME' in red to register your first name.",
-    imageSrc: "/images/Onboarding/RegisterName/balance.jpg"
+      "Click the button 'Register Name' that will appear on top left, to register your first name.",
+    imageSrc: "/images/Onboarding/RegisterName/register.png"
   }
 ];
 
 export function RegisterName({
   onBack,
   onNext,
-  setSelectedOnBoardingScreenShot
+  openScreenshotModal
 }: SetupQortalCoreProps) {
   const theme = useTheme();
 
   const [mode, setMode] = React.useState<TutorialMode>("text");
   const [activeStep, setActiveStep] = React.useState(0);
+  const stepImages = getStepImageSources(textSteps);
 
   const handleModeChange = (
     _event: React.SyntheticEvent,
@@ -159,7 +163,10 @@ export function RegisterName({
                           cursor: "pointer"
                         }}
                         onClick={() =>
-                          setSelectedOnBoardingScreenShot(step.imageSrc!)
+                          openScreenshotModal(
+                            stepImages,
+                            getStepImageIndex(textSteps, index)
+                          )
                         }
                       />
                     )}
