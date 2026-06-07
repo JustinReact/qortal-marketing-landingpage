@@ -191,28 +191,23 @@ const tutorialData: Record<
       {
         label: "Open Terminal",
         description: "Open Terminal, Paste Command & Enter.",
-        imageSrc: "/images/Onboarding/InstallQortalHub/linux/terminal.jpg"
+        imageSrc: "/images/Onboarding/InstallQortalHub/linux/terminal.png"
       },
       {
         label: "Installing",
         description:
-          "While the command is executing, the Qortal Hub window will popup for a moment then automatically close, this is intentional and you need to ignore it",
-        imageSrc: "/images/Onboarding/InstallQortalHub/linux/wait.jpg"
-      },
-      {
-        label: "Installation completed",
-        description: "The command execution completes",
-        imageSrc: "/images/Onboarding/InstallQortalHub/linux/completed.jpg"
+          "Once the command is executed, the installation will commence and you will be notified when it is complete.",
+          imageSrc: "/images/Onboarding/InstallQortalHub/linux/wait.png"
       },
       {
         label: "Open Qortal Hub",
         description: "Search for Qortal, Select Qortal Hub.",
-        imageSrc: "/images/Onboarding/InstallQortalHub/linux/search.jpg"
+        imageSrc: "/images/Onboarding/InstallQortalHub/linux/search.png"
       },
       {
         label: "Welcome to Qortal Hub",
         description: "",
-        imageSrc: "/images/Onboarding/InstallQortalHub/linux/launch.jpg"
+        imageSrc: "/images/Onboarding/InstallQortalHub/linux/launch.png"
       }
     ],
     videoUrl: "https://www.youtube.com/embed/wqpSwONzz-A"

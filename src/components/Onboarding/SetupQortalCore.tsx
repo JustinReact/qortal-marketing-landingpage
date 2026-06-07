@@ -61,22 +61,22 @@ const tutorialData: Record<
         imageSrc: "/images/Onboarding/CoreSetup/windows/welcome.png"
       },
       {
-        label: "Click the cog icon on the bottom right of the page. Once the menu opens, click the \"Download\" button to begin the installation of the Qortal Core.",
+        label: "To download the Qortal Core, which is needed to run a local node, click the cog icon on the bottom right of the page. Once the menu opens, click the \"Download\" button to begin the installation of the Qortal Core.",
         description: "",
         imageSrc: "/images/Onboarding/CoreSetup/windows/install.png"
       },
       {
-        label: "Wait for the download.",
+        label: "Wait for the download to begin.",
         description: "",
         imageSrc: "/images/Onboarding/CoreSetup/windows/wait.png"
       },
       {
-        label: "Qortal Setup Wizard, Click Next.",
+        label: "Qortal Setup Wizard will launch, Click Next.",
         description: "",
         imageSrc: "/images/Onboarding/CoreSetup/windows/wizard.png"
       },
       {
-        label: "More Qortal Setup, Click Accept and Install",
+        label: "More Qortal Setup options will appear, Click Accept and Install",
         description: "",
         imageSrc: "/images/Onboarding/CoreSetup/windows/more.png"
       },
@@ -86,20 +86,14 @@ const tutorialData: Record<
         imageSrc: "/images/Onboarding/CoreSetup/windows/completed.png"
       },
       {
-        label: "Starting Qortal Core, this should start automatically",
+        label: "The Qortal Core should now start automatically. On first launch, the core will need to bootstrap, which automatically copies the existing blockchain and extracts it. It will not take this long on subsequent launches of the core.",
         description: "",
         imageSrc: "/images/Onboarding/CoreSetup/windows/starting.png"
       },
       {
-        label: "Wait for this to finish.",
-        description:
-          "Bootstrapping, this automatically copies the existing blockchain and extracts it. This is so it is available to your Qortal Core.",
-        imageSrc: "/images/Onboarding/CoreSetup/windows/downloading.png"
-      },
-      {
         label: "Click Finish",
         description:
-          "Once the Qortal Core has finished starting up. You are ready to go.",
+          "Once the Qortal Core has finished starting up, both progress bars will be at 100%. You are ready to go and are now running a local node. Click \"Done\" to close the window.",
         imageSrc: "/images/Onboarding/CoreSetup/mac/finish.png"
       }
     ],
@@ -142,37 +136,32 @@ const tutorialData: Record<
   linux: {
     textSteps: [
       {
-        label: "Open Qortal Hub, Search Qortal and select Qortal Hub",
+        label: "Welcome to Qortal Hub! If you would like to run a local node, click on the cog icon in the bottom right of the screen to open the Qortal Core menu.",
         description: "",
-        imageSrc: "/images/Onboarding/CoreSetup/linux/open.jpg"
-      },
-      {
-        label: "Welcome to Qortal Hub, Select Next",
-        description: "",
-        imageSrc: "/images/Onboarding/CoreSetup/linux/welcome.jpg"
+        imageSrc: "/images/Onboarding/CoreSetup/linux/welcome.png"
       },
       {
         label:
-          "Install Java, Install Qortal Core, Run Qortal Core, Click Green Button",
+          "Download and Install the Core by clicking on the \"Download Core\" button.",
         description: "",
-        imageSrc: "/images/Onboarding/CoreSetup/linux/start.jpg"
+        imageSrc: "/images/Onboarding/CoreSetup/linux/start.png"
       },
       {
-        label: "Wait through the installation",
+        label: "Wait through the installation process. Once it is complete, you will see the \"Download Core\" progress bar at 100%.",
         description: "",
-        imageSrc: "/images/Onboarding/CoreSetup/linux/installing.jpg"
+        imageSrc: "/images/Onboarding/CoreSetup/linux/installing.png"
       },
       {
         label: "Starting up",
         description:
-          "When the installation is complete, the Qortal Core will automatically run. It will first bootstrap the blockchain and extract it. When the extraction is done, the core will synchronize and then it will be ready to use.",
-        imageSrc: "/images/Onboarding/CoreSetup/linux/run.jpg"
+          "When the installation is complete, the Qortal Core will automatically run. It will first bootstrap the blockchain and extract it. When the extraction is done, the core will synchronize and then it will be ready to use. It will not take this long on subsequent launches of the core.",
+        imageSrc: "/images/Onboarding/CoreSetup/linux/run.png"
       },
       {
         label: "Click Finish",
         description:
-          "Once the Qortal Core has finished starting up. You are ready to go.",
-        imageSrc: "/images/Onboarding/CoreSetup/mac/finish.webp"
+          "Once the Qortal Core has finished starting up, the progress bar for \"Core Running\" will change be at 100%. You are ready to go and are now running a local node. Click \"Done\" to close the window.",
+        imageSrc: "/images/Onboarding/CoreSetup/linux/done.png"
       }
     ],
     videoUrl: "https://www.youtube.com/embed/KUouFkLvE98"

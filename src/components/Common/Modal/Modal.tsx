@@ -75,6 +75,38 @@ const Modal: FC<ModalProps> = ({
     setSelectedImageIndex(newIndex);
   };
 
+  useEffect(() => {
+    if (!openModal) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        onClickFunc();
+        return;
+      }
+
+      if (images.length <= 1) return;
+
+      if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+        event.preventDefault();
+        setSelectedImageIndex((currentIndex) => {
+          const newIndex =
+            event.key === "ArrowLeft"
+              ? currentIndex === 0
+                ? images.length - 1
+                : currentIndex - 1
+              : currentIndex === images.length - 1
+                ? 0
+                : currentIndex + 1;
+          onImageChangeFunc?.(images[newIndex]);
+          return newIndex;
+        });
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [openModal, onClickFunc, images, onImageChangeFunc]);
+
   // Modal Mobile Swipe Handlers
 
   const imageSwipeHandlers = useSwipeable({
