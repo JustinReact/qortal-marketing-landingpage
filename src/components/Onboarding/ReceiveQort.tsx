@@ -1,12 +1,15 @@
 "use client";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import {
   ButtonOnBoarding,
-  ButtonWarningOnBoarding,
-  Container
+  ButtonWarningOnBoarding
 } from "./Onboarding-styles";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, CircularProgress, Typography } from "@mui/material";
 import { APPROVED_EMAIL_PROVIDER_EXAMPLES } from "../../constants/onboardingEmail";
+import {
+  getAuthErrorMessage,
+  getSendQortErrorMessage
+} from "../../constants/onboardingSendQortErrors";
 import { OpenOnboardingScreenshot } from "./onboardingScreenshot";
 export const EBOOK_API: string =
   process.env.NEXT_PUBLIC_EBOOK_API_HOST || "http://localhost:3010";
@@ -28,12 +31,14 @@ const ReceiveQort = ({
   const [emailSent, setEmailSent] = useState(false);
   const [loadingSend, setLoadingSend] = useState(false);
   const [loadingVerify, setLoadingVerify] = useState(false);
-  const [loadingSession, setLoadingSession] = useState(false);
+  const [loadingSession, setLoadingSession] = useState(true);
   const [loadingSendQort, setLoadingSendQort] = useState(false);
   const [hasSentQort, setHasSentQort] = useState(false);
   const [hasSession, setHasSession] = useState(false);
 
   const [message, setMessage] = useState("");
+  const autoSendAttempted = useRef(false);
+
   const handleSend = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoadingSend(true);
@@ -75,7 +80,6 @@ const ReceiveQort = ({
       const res = await fetch(`${EBOOK_API}/onboarding/verifyCode`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        // If your server sets an HTTP-only cookie with the token, include credentials:
         credentials: "include",
         body: JSON.stringify({
           email: normalizedEmail,
@@ -89,8 +93,6 @@ const ReceiveQort = ({
       if (res.ok) {
         setMessage("✅ Verified!");
         setHasSession(true);
-
-        // TODO: route to next step or unlock UI
       } else {
         setMessage(`❌ ${data.error || "Invalid code."}`);
       }
@@ -102,7 +104,7 @@ const ReceiveQort = ({
     }
   };
 
-  const handleSendQort = async () => {
+  const handleSendQort = useCallback(async () => {
     setLoadingSendQort(true);
     setMessage("");
 
@@ -111,7 +113,6 @@ const ReceiveQort = ({
         `${EBOOK_API}/onboarding/sendQort?qortStep=${qortStep}`,
         {
           headers: { "Content-Type": "application/json" },
-          // If your server sets an HTTP-only cookie with the token, include credentials:
           credentials: "include"
         }
       );
@@ -122,29 +123,34 @@ const ReceiveQort = ({
           "✅ 2 QORT redeemed. It might take up to 2 minutes to receive the 2 QORT."
         );
         setHasSentQort(true);
-        // TODO: route to next step or unlock UI
-      } else {
-        let message = "Unable to send QORT";
-
-        if (data?.reason === "invalid_qort_range_step1") {
-          message =
-            "2 QORT already sent. Please proceed to the next step to redeem the remaining 4 QORT.";
-          setHasSentQort(true);
-        } else if (data?.reason === "invalid_qort_range_step2") {
-          message = "4 QORT already sent";
-        } else if (data?.reason === "ip_limit_reached") {
-          message = "QORT was already sent to you";
-        }
-
-        setMessage(`❌ ${message}`);
+        return;
       }
+
+      if (res.status === 401) {
+        const authMessage = getAuthErrorMessage(data?.reason);
+        setMessage(
+          `❌ ${authMessage ?? "Your session is no longer valid. Use Start over if you need to re-verify."}`
+        );
+        return;
+      }
+
+      if (
+        data?.reason === "invalid_qort_range_step1" ||
+        data?.reason === "invalid_qort_range_step2"
+      ) {
+        setHasSentQort(true);
+      }
+
+      setMessage(`❌ ${getSendQortErrorMessage(data?.reason)}`);
     } catch (err) {
       console.error(err);
-      setMessage("❌ Sending Qort failed. Please try again.");
+      setMessage(
+        "❌ Could not reach the server. Check your connection and refresh the page to try again."
+      );
     } finally {
       setLoadingSendQort(false);
     }
-  };
+  }, [qortStep]);
 
   const checkForSession = useCallback(async () => {
     try {
@@ -152,40 +158,47 @@ const ReceiveQort = ({
 
       const res = await fetch(`${EBOOK_API}/onboarding/session`, {
         headers: { "Content-Type": "application/json" },
-        // If your server sets an HTTP-only cookie with the token, include credentials:
         credentials: "include"
       });
       const data = await res.json();
       if (data?.email) {
         setEmail(data.email);
         setQortalAddress(data.qortalAddress);
+        setEmailSent(true);
         setHasSession(true);
       }
     } catch (error) {
+      console.error(error);
     } finally {
       setLoadingSession(false);
     }
   }, []);
 
   useEffect(() => {
-    if (hasSession) {
-      handleSendQort();
-    }
-  }, [hasSession]);
+    checkForSession();
+  }, [checkForSession]);
 
   useEffect(() => {
-    checkForSession();
-  }, []);
+    if (
+      hasSession &&
+      !hasSentQort &&
+      !loadingSession &&
+      !autoSendAttempted.current
+    ) {
+      autoSendAttempted.current = true;
+      handleSendQort();
+    }
+  }, [hasSession, hasSentQort, loadingSession, handleSendQort]);
 
   const logout = async () => {
     try {
       const res = await fetch(`${EBOOK_API}/onboarding/logout`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        // If your server sets an HTTP-only cookie with the token, include credentials:
         credentials: "include"
       });
       if (res?.ok) {
+        autoSendAttempted.current = false;
         setHasSession(false);
         setEmail("");
         setQortalAddress("");
@@ -199,7 +212,25 @@ const ReceiveQort = ({
     }
   };
 
-  if (loadingSession) return null;
+  if (loadingSession) {
+    return (
+      <Box
+        sx={{
+          width: "100%",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: 2,
+          py: 3
+        }}
+      >
+        <CircularProgress size={28} />
+        <Typography variant="body2" color="text.secondary">
+          Restoring your session…
+        </Typography>
+      </Box>
+    );
+  }
 
   return (
     <>
@@ -254,7 +285,7 @@ const ReceiveQort = ({
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-          disabled={loadingSend || emailSent || hasSession} // lock email after send
+          disabled={loadingSend || emailSent || hasSession}
           style={{
             padding: "8px 10px",
             borderRadius: 6,
@@ -293,7 +324,6 @@ const ReceiveQort = ({
           </ButtonOnBoarding>
         )}
 
-        {/* Code input shows only after email sent */}
         {emailSent && (
           <>
             <label htmlFor="code" style={{ fontWeight: 500, marginTop: 8 }}>
@@ -371,37 +401,47 @@ const ReceiveQort = ({
           </Box>
         )}
 
-        {/* <ButtonOnBoarding
-          onClick={handleSendQort}
-          disabled={loadingSendQort || !hasSession || hasSentQort} // allow 4–6 depending on your backend
-          variant="contained"
-          sx={{
-            marginTop: "10px"
-          }}
-        >
-          REDEEM 2 QORT
-        </ButtonOnBoarding> */}
+        {loadingSendQort && (
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: 1,
+              mt: 1
+            }}
+          >
+            <CircularProgress size={24} />
+            <Typography variant="body2" color="text.secondary">
+              Sending 2 QORT…
+            </Typography>
+          </Box>
+        )}
 
         {message && (
-          <p
-            style={{
-              marginTop: 10,
-              color: message.startsWith("✅") ? "green" : "inherit"
+          <Typography
+            variant="body2"
+            sx={{
+              mt: 1,
+              textAlign: "center",
+              color: message.startsWith("✅") ? "success.main" : "error.main"
             }}
           >
             {message}
-          </p>
+          </Typography>
         )}
         {hasSentQort && (
-          <p
-            style={{
-              marginTop: 10,
-              color: "green"
+          <Typography
+            variant="body2"
+            sx={{
+              mt: 1,
+              textAlign: "center",
+              color: "success.main"
             }}
           >
             Continue to the next step to reedem the remaining 4 QORT. You will
             need to register a name first. Instructions in the next step.
-          </p>
+          </Typography>
         )}
       </form>
     </>
