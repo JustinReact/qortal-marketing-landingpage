@@ -18,7 +18,7 @@ export const getAuthErrorMessage = (reason?: string): string | null => {
 export const getSendQortErrorMessage = (reason?: string): string => {
   switch (reason) {
     case "invalid_qort_range_step1":
-      return "2 QORT already sent. Please proceed to the next step to redeem the remaining 4 QORT.";
+      return "2 QORT has already been sent to that email. Please proceed to the next step to redeem the remaining 4 QORT.";
     case "invalid_qort_range_step2":
       return "4 QORT has already been redeemed for this email.";
     case "step1_not_completed":

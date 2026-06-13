@@ -1,8 +1,15 @@
+"use client";
 import "highlight.js/styles/atom-one-dark.css"; // Use VS Code Dark theme for code blocks
 import hljs from "highlight.js";
-import {  styled } from "@mui/system";
+import { styled } from "@mui/system";
 import { oxygen } from "../fonts";
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
+import Modal from "../../components/Common/Modal/Modal";
+
+type WikiScreenshotModal = {
+  images: string[];
+  initialIndex: number;
+} | null;
 
 // Styled components for MDX elements. Change the styling here to modify the styling of the MDX elements. This is a global style, so it will affect all MDX elements in the app.
 const StyledLayout = styled("div")(({ theme }) => ({
@@ -79,9 +86,42 @@ const StyledLayout = styled("div")(({ theme }) => ({
     fontSize: "16px",
     fontStyle: "italic",
   },
+  "& img": {
+    cursor: "pointer",
+    transition: "opacity 0.2s",
+    "&:hover": {
+      opacity: 0.9
+    }
+  }
 }));
 
 export const MDXComponents = ({ children }: any) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [screenshotModal, setScreenshotModal] =
+    useState<WikiScreenshotModal>(null);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const imgElements = Array.from(container.querySelectorAll("img"));
+    const images = imgElements
+      .map((img) => img.getAttribute("src"))
+      .filter((src): src is string => Boolean(src));
+
+    const cleanupFns: (() => void)[] = [];
+
+    imgElements.forEach((img, index) => {
+      const handler = () => {
+        setScreenshotModal({ images, initialIndex: index });
+      };
+      img.addEventListener("click", handler);
+      cleanupFns.push(() => img.removeEventListener("click", handler));
+    });
+
+    return () => cleanupFns.forEach((fn) => fn());
+  }, [children]);
+
   useEffect(() => {
     document.querySelectorAll("pre code").forEach((block) => {
       hljs.highlightElement(block as HTMLElement);
@@ -127,6 +167,18 @@ export const MDXComponents = ({ children }: any) => {
       }
     });
   }, []);
-  
-  return <StyledLayout>{children}</StyledLayout>;
+
+  return (
+    <>
+      <StyledLayout ref={containerRef}>{children}</StyledLayout>
+      {screenshotModal && (
+        <Modal
+          images={screenshotModal.images}
+          initialImageIndex={screenshotModal.initialIndex}
+          openModal={!!screenshotModal}
+          onClickFunc={() => setScreenshotModal(null)}
+        />
+      )}
+    </>
+  );
 };
