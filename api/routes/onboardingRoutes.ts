@@ -10,7 +10,7 @@ import {
 import { requireOnboardingAuth } from "../middleware/authOnBoardingMiddleware";
 const router = express.Router();
 
-router.post("/sendcode", handleSendCode);
+router.post("/sendCode", handleSendCode);
 
 router.post("/verifyCode", handleVerifyCode);
 

@@ -139,8 +139,21 @@ const handleSendCode = async (
     });
 
     res.json({ success: true });
-  } catch (err) {
-    console.error("[Onboarding] Failed to send code:", err);
+  } catch (err: any) {
+    const detail = err?.message ?? String(err);
+    console.error("[Onboarding] Failed to send code:", detail, err);
+
+    if (
+      detail === "failed_to_fetch_qortal_balance" ||
+      detail === "No usable API found"
+    ) {
+      res.status(503).json({
+        error:
+          "Unable to verify your Qortal address right now. Please try again in a few minutes."
+      });
+      return;
+    }
+
     res.status(500).json({
       error: "Failed to send code. Please try again later."
     });
