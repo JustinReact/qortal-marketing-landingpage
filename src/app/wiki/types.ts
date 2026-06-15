@@ -1,3 +1,12 @@
+export interface WikiSearchResult {
+  sectionTitle: string;
+  pageTitle: string;
+  headingTitle: string | null;
+  parentHeading: string | null;
+  url: string;
+  anchorId: string | null;
+}
+
 export interface WikiPageProps {
   title: string;
   url: string;
@@ -5,6 +14,7 @@ export interface WikiPageProps {
     title: string;
     depth: number;
     id: string;
+    parentTitle?: string;
   }[];
 }
 

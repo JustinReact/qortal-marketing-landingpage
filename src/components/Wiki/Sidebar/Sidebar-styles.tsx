@@ -30,7 +30,7 @@ export const SidebarContainer = styled(Box, {
   justifyContent: "flex-start",
   alignItems: showInFullScreenMobile ? "center" : "unset",
   gap: "20px",
-  height: showInFullScreenMobile ? "100vh" : "70vh",
+  height: showInFullScreenMobile ? "100vh" : "80vh",
   width: showInFullScreenMobile ? "100%" : "auto",
   overflowY: "auto",
   padding: "0 44px 20px 0",

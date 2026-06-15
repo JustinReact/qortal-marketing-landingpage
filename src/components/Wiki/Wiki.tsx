@@ -14,6 +14,10 @@ import {
   FooterRow,
   FooterSubRow,
   MainContainer,
+  MobileHeaderActions,
+  MobileSearchButton,
+  MobileSearchOverlay,
+  MobileSearchOverlayHeader,
   MobileSectionList,
   MobileSectionListContainer,
   ScrollToTopButton,
@@ -23,10 +27,13 @@ import {
   WikiContainer
 } from "./Wiki-styles";
 import { Sidebar } from "./Sidebar/Sidebar";
+import { WikiSearch } from "./WikiSearch";
 import { WikiProps } from "../../app/wiki/types";
 import { usePathname, useRouter } from "next/navigation";
 import LoadingSpinner from "../../app/loading";
 import { Typography, useMediaQuery, useTheme } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
+import { CloseSVG } from "../Common/Icons/CloseSVG";
 import { handleScrollToSectionFunc } from "../../utils/handleScrollToSectionFunc";
 
 export const Wiki: FC<WikiProps> = ({ title, children, sections }) => {
@@ -39,6 +46,7 @@ export const Wiki: FC<WikiProps> = ({ title, children, sections }) => {
   const [isPending, startTransition] = useTransition();
   const [isExpandedMobile, setExpandedMobile] = useState<boolean>(false);
   const [showButton, setShowButton] = useState(false);
+  const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
 
   const handleNavigation = (url: string) => {
     startTransition(() => {
@@ -52,6 +60,36 @@ export const Wiki: FC<WikiProps> = ({ title, children, sections }) => {
       setExpandedMobile(true);
     }
   }, [pathname, isMobile]);
+
+  // Scroll to a section when navigating via search result hash links
+  useEffect(() => {
+    if (isPending) return;
+
+    const hash = window.location.hash.slice(1);
+    if (!hash) return;
+
+    const timer = window.setTimeout(() => {
+      handleScrollToSectionFunc(hash);
+    }, 150);
+
+    return () => window.clearTimeout(timer);
+  }, [pathname, isPending]);
+
+  useEffect(() => {
+    if (!isMobile) {
+      setMobileSearchOpen(false);
+    }
+  }, [isMobile]);
+
+  useEffect(() => {
+    if (!mobileSearchOpen) return;
+
+    document.body.style.cssText = "overflow-y: hidden !important;";
+
+    return () => {
+      document.body.style.cssText = "";
+    };
+  }, [mobileSearchOpen]);
 
   // Intersection observer to show scroll to top button
   useEffect(() => {
@@ -103,15 +141,24 @@ export const Wiki: FC<WikiProps> = ({ title, children, sections }) => {
             {/* Show this header on mobile, and only if they've clicked on a section title */}
             {isMobile && isExpandedMobile && (
               <MobileSectionListContainer>
-                <ChevronIcon
-                  color={theme.palette.text.primary}
-                  height="20px"
-                  width="20px"
-                  onClickFunc={() => {
-                    setExpandedMobile(false);
-                    handleNavigation("/wiki");
-                  }}
-                />
+                <MobileHeaderActions>
+                  <ChevronIcon
+                    color={theme.palette.text.primary}
+                    height="20px"
+                    width="20px"
+                    onClickFunc={() => {
+                      setExpandedMobile(false);
+                      handleNavigation("/wiki");
+                    }}
+                  />
+                  <MobileSearchButton
+                    type="button"
+                    aria-label="Search wiki"
+                    onClick={() => setMobileSearchOpen(true)}
+                  >
+                    <SearchIcon sx={{ fontSize: 22 }} />
+                  </MobileSearchButton>
+                </MobileHeaderActions>
                 {Object.entries(sections).map(([_, pages]) => (
                   <Fragment key={_}>
                     {pages
@@ -204,6 +251,33 @@ export const Wiki: FC<WikiProps> = ({ title, children, sections }) => {
           </>
         )}
       </MainContainer>
+      {isMobile && mobileSearchOpen && (
+        <MobileSearchOverlay>
+          <MobileSearchOverlayHeader>
+            <Typography
+              sx={{
+                fontFamily: "inherit",
+                fontSize: "20px",
+                fontWeight: 600
+              }}
+            >
+              Search Wiki
+            </Typography>
+            <CloseSVG
+              color={theme.palette.text.primary}
+              height="24"
+              width="24"
+              onClickFunc={() => setMobileSearchOpen(false)}
+            />
+          </MobileSearchOverlayHeader>
+          <WikiSearch
+            sections={sections}
+            handleNavigation={handleNavigation}
+            autoFocus
+            onResultSelect={() => setMobileSearchOpen(false)}
+          />
+        </MobileSearchOverlay>
+      )}
     </WikiContainer>
   );
 };

@@ -15,6 +15,7 @@ import { SidebarProps } from "../../../app/wiki/types";
 import { useMediaQuery, useTheme } from "@mui/material";
 import ReactGA from "react-ga4";
 import { handleScrollToSectionFunc } from "../../../utils/handleScrollToSectionFunc";
+import { WikiSearch } from "../WikiSearch";
 
 export const Sidebar: FC<SidebarProps> = ({
   showInFullScreenMobile,
@@ -25,6 +26,7 @@ export const Sidebar: FC<SidebarProps> = ({
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
   const [activeSection, setActiveSection] = useState<string | null>(null);
   const [toggledSection, setToggledSection] = useState<string | null>(null);
+  const [isSearching, setIsSearching] = useState(false);
 
   const pathname = usePathname();
   const theme = useTheme();
@@ -83,18 +85,24 @@ export const Sidebar: FC<SidebarProps> = ({
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-  
-
-  const toggleSection = (sectionTitle: string) => {
-    setExpandedSection((prev) => (prev === sectionTitle ? prev : sectionTitle));
-  };
 
   return (
     <SidebarContainer
       showInFullScreenMobile={showInFullScreenMobile}
       isMobile={isMobile}
     >
-      {Object.entries(sections).map(([sectionTitle, pages]) => {
+      <WikiSearch
+        sections={sections}
+        handleNavigation={handleNavigation}
+        onQueryChange={(query) => setIsSearching(query.trim().length > 0)}
+        onResultSelect={() => {
+          if (isMobile) {
+            setExpandedMobile(true);
+          }
+        }}
+      />
+      {!isSearching &&
+        Object.entries(sections).map(([sectionTitle, pages]) => {
         const isExpanded = expandedSection === sectionTitle;
         const isToggled = toggledSection === sectionTitle;
         return (
@@ -136,7 +144,7 @@ export const Sidebar: FC<SidebarProps> = ({
                     {page.headings.map((heading) => {
                       return (
                         <SectionListItem
-                          key={heading.title}
+                          key={heading.id}
                           id={heading.id}
                           style={{
                             marginLeft: heading.depth === 3 ? "22px" : "0"
@@ -158,6 +166,7 @@ export const Sidebar: FC<SidebarProps> = ({
           </SectionBox>
         );
       })}
+      {!isSearching && (
       <ContributeButton
         onClick={() => {
           ReactGA.event({
@@ -174,6 +183,7 @@ export const Sidebar: FC<SidebarProps> = ({
       >
         Contribute
       </ContributeButton>
+      )}
     </SidebarContainer>
   );
 };

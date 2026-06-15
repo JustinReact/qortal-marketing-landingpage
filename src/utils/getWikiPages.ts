@@ -3,6 +3,7 @@ import { wikiOrder } from "../config/wikiOrder";
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import GithubSlugger from "github-slugger";
 
 // Extract MDX files on the server side
 
@@ -23,20 +24,25 @@ export const getWikiPages = (): Record<string, WikiPageProps[]> => {
     const { data, content } = matter(fileContents);
 
     // Extract `h2` and `h3` headings from MDX content
+    const slugger = new GithubSlugger();
+    let currentH2Title: string | null = null;
+
     const headings = content
       .split("\n")
       .filter((line) => line.startsWith("## ") || line.startsWith("### "))
       .map((line) => {
         const rawTitle = line.replace(/^##+\s/, "").trim();
-        const id = rawTitle
-          .toLowerCase()
-          .replace(/[^a-z0-9\s-]/g, "") // Remove special characters
-          .replace(/\s+/g, "-"); // Convert spaces to dashes
-        
+        const depth = line.startsWith("## ") ? 2 : 3;
+
+        if (depth === 2) {
+          currentH2Title = rawTitle;
+        }
+
         return {
           title: rawTitle,
-          id, // This ID now matches `rehypeSlug` output
-          depth: line.startsWith("## ") ? 2 : 3,
+          id: slugger.slug(rawTitle),
+          depth,
+          parentTitle: depth === 3 ? currentH2Title ?? undefined : undefined
         };
       });
 

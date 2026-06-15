@@ -42,6 +42,51 @@ export const MobileSectionListContainer = styled(Box)(({ theme }) => ({
   marginBottom: "80px",
 }));
 
+export const MobileHeaderActions = styled(Box)({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  gap: "18px",
+  flexShrink: 0
+});
+
+export const MobileSearchButton = styled("button")(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  width: "32px",
+  height: "32px",
+  padding: 0,
+  border: "none",
+  borderRadius: "4px",
+  backgroundColor: "transparent",
+  color: theme.palette.text.primary,
+  cursor: "pointer",
+  transition: "background-color 0.2s ease-in-out",
+  "&:hover": {
+    backgroundColor: theme.palette.mode === "dark" ? "#1a2332" : "#f3f3f3"
+  }
+}));
+
+export const MobileSearchOverlay = styled(Box)(({ theme }) => ({
+  position: "fixed",
+  inset: 0,
+  zIndex: 1300,
+  display: "flex",
+  flexDirection: "column",
+  gap: "20px",
+  padding: "20px 15px",
+  backgroundColor: theme.palette.background.default,
+  overflowY: "auto"
+}));
+
+export const MobileSearchOverlayHeader = styled(Box)({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+  width: "100%"
+});
+
 export const MobileSectionList = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
