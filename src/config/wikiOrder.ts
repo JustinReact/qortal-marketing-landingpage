@@ -8,5 +8,7 @@ export const wikiOrder = [
   "Qortal Groups",
   "Qortal Q-Apps",
   "Minting",
+  "Q-Mintership",
+  "Starting to Mint",
   "Setting Up a New Q-App",
 ];

@@ -1,0 +1,101 @@
+---
+title: "Starting to Mint"
+---
+
+# Starting to Mint 🚀
+
+Nominated and approved? Run a synced node, join the MINTER group, then add your minting account through **Q-Node** in Qortal Hub.
+
+> Not approved yet? Start with [Q-Mintership](/wiki/q-mintership).
+
+⚠️ Use **Qortal Hub** and the **Q-Node** Q-App — the legacy Qortal UI is deprecated.
+
+## Overview
+
+1. **Sync your node** in Qortal Hub
+2. **Join the MINTER group** — accept your invite
+3. **Add a minting account** in Q-Node
+4. **Stay online** until you reach Level 1 (~7,200 online blocks)
+
+## Step 1 — Sync Your Node
+
+1. Install **Qortal Hub** from [qortal.dev/downloads](https://qortal.dev/downloads) — official releases only
+2. Let the node **fully sync** before minting
+3. **Bootstrap** if syncing from scratch is slow — see [Running a Node](/wiki/running-a-node)
+
+<figure>
+  <img src="/images/Wiki/QortalHubNodeInfo.png" alt="Qortal Hub node info showing sync status" style={{ width: "100%", maxWidth: "800px" }} />
+  <figcaption>Qortal Hub — keep your node synced and online</figcaption>
+</figure>
+
+⚠️ Minting credit only accrues while your node is **online**. Offline time does not count.
+
+<figure>
+  <img src="/images/Wiki/SyncedNodeWindows.png" alt="A fully synced Qortal node" style={{ width: "100%", maxWidth: "600px" }} />
+  <figcaption>A synced node ready for minting</figcaption>
+</figure>
+
+## Step 2 — Join the MINTER Group
+
+Once admins have activated your invite, accept it in Qortal Hub with a **JOIN_GROUP** transaction. After it confirms on-chain, you are in the MINTER group.
+
+## Step 3 — Add a Minting Account (Q-Node)
+
+Open **Q-Node** from the Q-Apps dashboard in Hub:
+
+<figure>
+  <img src="/images/Wiki/QortalHubQ-AppsDashboard.png" alt="Qortal Hub Q-Apps dashboard" style={{ width: "100%", maxWidth: "900px" }} />
+  <figcaption>Open Q-Node from the Q-Apps dashboard in Qortal Hub</figcaption>
+</figure>
+
+1. Choose **Add Minting Account** and select your approved account
+2. Confirm the transaction — Q-Node creates and assigns your minting key automatically
+3. Once confirmed, your `blocksMinted` count begins climbing
+
+No manual reward-share steps needed — Q-Node handles it in one action.
+
+## Step 4 — Reach Level 1
+
+Stay online. Level 1 arrives after roughly **7,200 online blocks**, though credits batch every ~1,000 blocks so it may take ~8,000–9,000 blocks in practice. Wait until Hub shows **Level 1**, not just the raw counter.
+
+## Keep Your Account Safe
+
+- Treat your minting key carefully — it lets a node mint for your account
+- Back up your account file and password offline — loss is permanent
+- To move nodes, regenerate or re-add your minting key on the new machine
+
+## Best Practices
+
+### Node reliability
+
+- Run 24/7 — only open Hub when managing things
+- Use stable power and internet (UPS helps)
+- Keep Core updated and monitor sync height
+- Bootstrap if you fall badly out of sync
+- Set up port forwarding or uPnP for better peer connectivity
+
+### Security
+
+- Download only from **qortal.org**, **qortal.dev**, or the official GitHub
+- Never share your backup file, password, or minting key
+- Ignore anyone offering to sell or fast-track minting rights
+
+### One minting account per person
+
+You may have unlimited non-minting accounts, but only **one minting account**. Multiple minting accounts means **all of them get removed** from the MINTER group.
+
+## Nodes & Hardware
+
+Minting is lightweight — **uptime** matters more than raw specs.
+
+| Component | Minimum | Recommended |
+| --- | --- | --- |
+| CPU | Dual-core | Quad-core+ |
+| RAM | 4 GB | 8 GB+ |
+| Storage | SSD | Larger SSD with room to grow |
+| Network | Stable broadband | Wired + port forwarding |
+| Uptime | As much as possible | 24/7 |
+
+**Options:** home PC, **QORTector** appliance, VPS, or single-board computer (use an SSD, not an SD card).
+
+You can run **multiple nodes** with the **same minting account** for redundancy — that is encouraged. Just never run more than one minting account.

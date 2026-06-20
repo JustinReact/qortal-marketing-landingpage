@@ -8,6 +8,7 @@ import { serialize } from "next-mdx-remote/serialize";
 import { MDXRenderer } from "../../components/Common/Wiki/MDXRenderer";
 import { getWikiPages } from "../../utils/getWikiPages";
 import rehypeSlug from "rehype-slug";
+import remarkGfm from "remark-gfm";
 
 // Metadata
 export const metadata = {
@@ -27,6 +28,7 @@ const WikiPage = async (): Promise<JSX.Element> => {
   const { content, data } = matter(welcomeContent);
   const mdxSource: MDXRemoteSerializeResult  = await serialize(content, {
     mdxOptions: {
+      remarkPlugins: [remarkGfm],
       rehypePlugins: [rehypeSlug] // Add IDs to headings
     }
   }); // Compile MDX into JSX

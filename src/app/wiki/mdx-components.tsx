@@ -82,6 +82,23 @@ const StyledLayout = styled("div")(({ theme }) => ({
   "& figure": {
     margin: "32px 0"
   },
+  "& table": {
+    width: "100%",
+    borderCollapse: "collapse",
+    margin: "20px 0",
+    fontFamily: oxygen.style.fontFamily,
+    fontSize: "18px",
+  },
+  "& th, & td": {
+    border: `1px solid ${theme.palette.divider}`,
+    padding: "12px 16px",
+    textAlign: "left",
+    verticalAlign: "top",
+  },
+  "& th": {
+    backgroundColor: theme.palette.action.hover,
+    fontWeight: 600,
+  },
   "& figcaption p": {
     fontSize: "16px",
     fontStyle: "italic",

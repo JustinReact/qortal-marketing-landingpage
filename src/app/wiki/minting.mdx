@@ -2,108 +2,89 @@
 title: "Minting"
 ---
 
-# Earning QORT and Support the Blockchain by Minting ⚙️
+# Minting on Qortal ⛏️
 
-Minting is the process by which Qortal rewards users for running full nodes and contributing to the network's health. It is not mining. There’s no proof-of-work, no competition. Instead, Qortal rewards **consistency, uptime, and contribution**.
+Minting is how the Qortal blockchain produces blocks and stays decentralized. Unlike mining or staking, it is not about money or hardware power — it is about people running nodes and supporting the network.
 
 ## What Is Minting?
 
-When you run a full node on Qortal, you’re helping validate and propagate blocks across the network. Minting is the mechanism that rewards users for doing exactly that (i.e keeping the network alive and decentralized).
+On most blockchains, new blocks are produced by **mining** (Proof of Work) or **staking** (Proof of Stake) — both ultimately give the most power to whoever has the most money.
 
-## Becoming a Minter
+Qortal does something different. Block production is called **minting**, performed by **minters**: accounts granted minting rights that run a full node. Every online minter contributes to each block, and rewards are shared among online minters rather than going to a single winner. You cannot buy your way to more influence — influence is earned through participation over time.
 
-To become a minter, you must now submit a **Minter Card** through the **Q-Mintership** Q-App. This card can contain any information you choose, such as:
+> Minting is about **supporting the network and infrastructure**, not extracting profit. Qortal is sovereignty-driven, not money-driven.
 
-- QDN links (websites, blogs, files, videos)
-- Proof of contributions
-- Activity on the platform
+⚠️ **One minting account per person.** Running multiple minting accounts to multiply rewards is not allowed. The **Minter Admins** actively watch for this, and if the rule is broken, **all related accounts will be removed from the MINTER group**.
 
-Your application will be reviewed by a decentralized group called **Minter Admins**, and if **40%** or more approve, with at least **10** _YES_ votes you'll be accepted into the **MINTER group**.
+## Why Minting Matters
 
-⚠️ Important note: You must consider a 30 day period from first transaction before applying to become a minter. For example, adding a name to your account, or purchasing some QORT via Q-Trade will usually give you the first transaction. Furthermore, once you have published your mintership card, you need to check back on your card regularly to **answer questions** Minter Admins may have for you. You must also check back to **accept** the invitation to the mintership group if you are accepted.
+- **Decentralization & security.** More independent minters running nodes around the world means a more resilient, censorship-resistant network.
+- **Fair rewards.** Block rewards are distributed across all online minters each block, instead of being captured by the largest holder or the most powerful machine.
+- **On-chain influence.** Minters accumulate `blocksMinted`, which translates into a minting **level**. Levels feed into Qortal's polling/voting system, giving long-term contributors a meaningful voice in network decisions.
 
-✅ You **must own a name** on Qortal to become a minter. You’ll also need some QORT for creating the name and submitting your card.
+## Levels & Influence
 
-<style>
-  {`
-    .image-row {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
+Each block a minter's node helps create increases that account's `blocksMinted` count. As this grows, the account climbs through minting **levels**. Higher levels carry more weight in the network's polling system and unlock responsibilities — for example, only **Level 5+** accounts can nominate new minters.
 
-    .image-item {
-      flex: 1 1 200px;
-      max-width: 500px;
-      text-align: center;
-    }
+| Concept | What it means |
+| --- | --- |
+| `blocksMinted` | Total blocks your account has helped mint. Permanent and cumulative — it never resets. |
+| Level | Derived from `blocksMinted`. Determines voting influence and certain permissions (e.g. nominating). |
+| Level 1 | Reached after roughly 7,200 online blocks. The first full minting milestone. |
+| Level 5+ | Experienced minters eligible to **nominate** new candidates for mintership. |
 
-    @media (max-width: 768px) {
-      .image-row {
-        flex-direction: column;
-        align-items: center;
-      }
-    }
-  `}
-</style>
+⚠️ **Block credits are batched.** Since a December 2023 performance change, minted-block credits are applied roughly every **1,000 blocks** rather than block-by-block. The 7,200 blocks needed for Level 1 has not changed, but in practice it can take around 8,000–9,000 blocks of online time before Level 1 shows. Always wait until Qortal Hub actually displays **Level 1** — do not rely on the raw block counter alone.
 
-<div className="image-row">
-<figure className="image-item">
-  <img
-    src="/images/Wiki/Q-MintershipBoard.png"
-    alt="Q-Mintership Q-App Mintership Board"
-    style={{ width: "100%", maxWidth: "520px" }}
-  />
-  <figcaption>Q-Mintership Q-App Mintership Board showing active mintership applications</figcaption>
-</figure>
-<figure className="image-item">
-  <img
-    src="/images/Wiki/Q-MintershipPublishCard.png"
-    alt="Q-Mintership Q-App Publish Minter Card"
-    style={{ width: "100%", maxWidth: "520px" }}
-  />
-  <figcaption>Q-Mintership Q-App Publish Minter Card</figcaption>
-</figure>
-</div>
+## From Sponsorship to Nominations
+
+Qortal **no longer uses sponsorship** to onboard minters. The old model — where a Level 5+ account issued you a reward-share key to mint your way to Level 1 — has been replaced.
+
+The current system is **Mintership**, and the way you get into it is the **Nomination** process, managed through the **Q-Mintership** Q-App and the community-elected **Minter Admins**. Under Nominations, you no longer submit yourself — a **Level 5+ minter nominates you**, the Minter Admins vote, and group-approval transactions deliver the **MINTER group invite** — all verifiable on the Qortal blockchain.
+
+See [Q-Mintership](/wiki/q-mintership) for the full nomination flow, and [Starting to Mint](/wiki/starting-to-mint) for what to do after approval.
+
+## History of Qortal Minting
+
+Every change to Qortal's minting model was driven by the same principle: **no one should be able to buy power over the network**.
+
+| Era | Who decides | Key weakness it solved |
+| --- | --- | --- |
+| QORA (PoS) | Money / stake | — |
+| Genesis (Forgers) | Prior contribution | Removed PoS; fair start |
+| Sponsorship | A single Level 5+ sponsor | Onboarding without buying in |
+| Mintership | Self-created cards + Minter Admins | Decentralized, transparent approval |
+| **Nominations (current)** | Level 5+ nominator + Minter Admins | Adds vouching / web-of-trust |
+
+**2014 — QORA:** Qortal's story starts with QORA, which used Proof of Stake. PoS lets money buy influence — the opposite of Qortal's egalitarian ethos.
+
+**2016–2020 — QORA → Qortal:** The codebase was rebuilt from scratch with **no pre-mine**. QORA holders who burned their coins were credited toward a gradual QORT conversion.
+
+**2020 — Genesis minters:** QORA Forgers and QORTector purchasers were grandfathered in as founding minters.
+
+**2020–2024 — Sponsorship:** Level 5+ accounts issued 0% reward-share keys to newcomers. Sponsors earned nothing extra — it was purely about vouching. Replaced because it leaned on personal connections without transparent, community-wide oversight.
+
+**2024–2025 — Mintership:** Community-elected **Minter Admins** took over approvals using on-chain `GROUP_APPROVAL` transactions. Candidates published cards on the Minter Board; ~40% admin approval triggered a MINTER group invite.
+
+**Current — Nominations:** Level 5+ minters nominate candidates instead of candidates submitting themselves. This adds a **web-of-trust** layer — an established minter stakes their reputation by vouching for a real person they know.
 
 ## Minting Rewards and Tiers
 
-The more you mint, the more your level increases—up to level 10. Higher levels receive greater shares of the block rewards.
+The more you mint, the more your level increases — up to level 10. Higher levels receive greater shares of the block rewards. Minting is how blocks are found and the chain progresses. Without minters, the chain does not move.
 
-Minting is extremely important to the system, as it is the way that blocks are found, and the chain progresses forward. Without the minters, the chain doesn't move. Due to the extreme importance of the minters, they are rewarded a portion of each block reward.
-
-- **Levels 1 and 2** minting accounts share 6% of the block reward
+- **Levels 1 and 2** share 6% of the block reward
 - **Levels 3 and 4** share 13% of the block reward
 - **Levels 5 and 6** share 19% of the block reward
 - **Levels 7 and 8** share 26% of the block reward
-- **Levels 9 and 10** share 32% of the block reward
-- QORA holders transitioning into QORT coin share 1% of the block reward
-- Minter and Dev Admins share a minimum of 3% of the block reward, and/or the 'leftover' percentage, which initially will be higher when there aren't users in all of the various level groups, and will decrease over time.
+- **Levels 9 and 10** share 32% of the block reward (currently inactive — no minters at this tier yet)
+- QORA holders transitioning into QORT share 1% of the block reward
+- Minter and Dev Admins share a minimum of 3% of the block reward, plus the Tier 5 share while that tier has no active minters (see [Q-Mintership](/wiki/q-mintership#minter-admins) for details)
 
-_Note_: There are no more Founder rewards. Founder accounts are no different than any other minting account.
+There are no more Founder rewards. Founder accounts are no different than any other minting account.
 
-## Block Rewards 
+## Block Rewards
 
-The block rewards on Qortal are meant to be never-ending. Since QORT is a coin on chain, there should always be new QORT available to power the various services on the network.
-
-There is no total cap on the amount of QORT coin that can be in circulation in the ecosystem. Approximately every **6 months** (based on a calculation of 60 seconds per block which is slightly higher), there is a decrease in the block reward from its start at 5 QORT, by 0.25, until 2 QORT is the reward. Thereafter, a vote can be made for an increase or decrease of 0.25 to 1 QORT difference per block via vote, however, this type of vote can only take place one time **per year** (in blocks). For example, if the current block reward was 3 QORT, the vote could only be: 2, 2.25, 2.5, 2.75, 3, 3.25, 3.5, 3.75 & 4 QORT. (Only up to a 1 QORT difference up or down or any 0.25 increment between.) Block reward can only be voted to as low as 1 QORT per block, or as high as 5 QORT per block. These are the minimum and maximum points in the block reward range which Qortal will ever potentially see. We are currently at 3 QORT per block as of _April 2025_. You can see the current block height on the **Qortal Trifecta** homepage.
-
-## The Role of Minter Admins
-
-- Minter Admins are elected members of the community who can vote to approve or remove minters and fellow admins.
-- They receive part of the block reward as compensation.
-- Activity requirements will soon ensure only active admins receive rewards.
-
-## How To Start Minting
-
-1. Run your own node (see ["Running a Node"](/wiki/running-a-node) page)
-2. Create and publish a name
-3. Open the **Q-Mintership** Q-App
-4. Submit a **Minter Card**
-5. Wait for approval (check back for comments or questions)
-6. Once approved, start minting and level up over time!
+Block rewards on Qortal are meant to be never-ending. There is no total cap on QORT in circulation. Approximately every **6 months**, the block reward decreases by 0.25 QORT from its start at 5 QORT, until 2 QORT is the reward. Thereafter, a vote can adjust the reward by 0.25 to 1 QORT difference per block, once per year. Block reward can only be voted as low as 1 QORT or as high as 5 QORT per block.
 
 ## Summary
 
-Minting is at the heart of Qortal’s ecosystem. Whether you're running a Raspberry Pi or a full desktop, your consistent presence strengthens the network. By becoming a minter, you not only earn QORT but also play a vital role in the future of decentralized technology. Join us in building a robust and resilient blockchain!
+Minting is at the heart of Qortal's ecosystem. Whether you are running a Raspberry Pi or a full desktop, your consistent presence strengthens the network. To become a minter today, build a real track record on Qortal, get nominated by a Level 5+ minter, and earn approval from the Minter Admins — then follow the [Starting to Mint](/wiki/starting-to-mint) guide to get your node minting.
