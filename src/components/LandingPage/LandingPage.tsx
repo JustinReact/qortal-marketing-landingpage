@@ -58,7 +58,7 @@ const LandingPage = () => {
     if (!isFirstTimeVisitor) {
       const timeoutId = window.setTimeout(() => {
         setFirstTimeVisitor(true);
-        localStorage.setItem("isFirstTimeVisitor", "falsse");
+        localStorage.setItem("isFirstTimeVisitor", "false");
       }, 30000);
 
       return () => {
