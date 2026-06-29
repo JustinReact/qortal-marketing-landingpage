@@ -11,6 +11,7 @@ import { Socials } from "../../Common/Socials/Socials";
 
 const footerLinks = [
   { href: "/support", label: "Support" },
+  { href: "/faq", label: "FAQ" },
   { href: "/creators", label: "For Creators" },
   { href: "/devs", label: "For Developers" },
   { href: "/donate", label: "Donate" },

@@ -96,6 +96,20 @@ export const MobileDrawer: FC<MobileDrawerProps> = ({
         onClick={() => {
           ReactGA.event({
             category: "User",
+            action: "Clicked Mobile FAQ Drawer Link",
+            label: "Clicked Mobile FAQ Drawer Link"
+          });
+          setOpenMobileDrawer();
+          router.push("/faq");
+        }}
+        active={location === "/faq" ? true : false}
+      >
+        FAQ
+      </DrawerButton>
+      <DrawerButton
+        onClick={() => {
+          ReactGA.event({
+            category: "User",
             action: "Clicked Mobile News Drawer Link",
             label: "Clicked Mobile News Drawer Link"
           });

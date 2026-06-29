@@ -41,6 +41,7 @@ const navItems: NavItem[] = [
     label: "Learn",
     items: [
       { label: "Wiki", href: "/wiki" },
+      { label: "FAQ", href: "/faq" },
       { label: "Ebook", href: "/ebook" },
       { label: "Blog", href: "/blog" },
       { label: "News", href: "/news" }

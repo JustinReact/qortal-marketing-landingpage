@@ -1,4 +1,5 @@
 import { styled } from "@mui/system";
+import Link from "next/link";
 import { Box, Typography } from "@mui/material";
 import { futura, inter, oxygen, redditSans } from "../../app/fonts";
 import { ChromeStoreSVG } from "../Common/Icons/ChromeStoreSVG";
@@ -41,11 +42,32 @@ export const DownloadsTitle = styled(Typography)(({ theme }) => ({
   lineHeight: "73px",
   letterSpacing: "calc(0.09 * 55px)",
   userSelect: "none",
-  marginBottom: "40px",
+  marginBottom: "12px",
   [theme.breakpoints.down("sm")]: {
     fontSize: "30px",
     lineHeight: "35px",
+    marginBottom: "8px"
+  }
+}));
+
+export const FaqHint = styled("p")(({ theme }) => ({
+  textAlign: "center",
+  fontFamily: inter.style.fontFamily,
+  fontSize: "15px",
+  lineHeight: "22px",
+  color: theme.palette.text.secondary,
+  margin: "0 0 40px",
+  [theme.breakpoints.down("sm")]: {
     marginBottom: "24px"
+  }
+}));
+
+export const FaqHintLink = styled(Link)(({ theme }) => ({
+  color: theme.palette.customBlue.main,
+  textDecoration: "none",
+  transition: "all 0.2s ease-in-out",
+  "&:hover": {
+    filter: "brightness(1.2)"
   }
 }));
 

@@ -20,6 +20,8 @@ import {
   DownloadText,
   DownloadTextCol,
   DownloadText1,
+  FaqHint,
+  FaqHintLink,
   OtherVersionsCol,
   OtherVersionsText,
   PlatformCardWrapper
@@ -300,6 +302,12 @@ const Downloads = () => {
       <DownloadsTitle>
         {isIOS ? "Access Web App Now" : "DOWNLOADS"}
       </DownloadsTitle>
+      {!isIOS && (
+        <FaqHint>
+          Having trouble installing?{" "}
+          <FaqHintLink href="/faq#installation">Read our FAQ</FaqHintLink>
+        </FaqHint>
+      )}
 
       <DownloadsContent>
         <DownloadSection>

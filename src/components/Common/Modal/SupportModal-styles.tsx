@@ -1,4 +1,5 @@
 import { styled } from "@mui/system";
+import Link from "next/link";
 import { Box, Button, Typography } from "@mui/material";
 import { CloseSVG } from "../Icons/CloseSVG";
 import { futura, inter } from "../../../app/fonts";
@@ -9,7 +10,7 @@ export const SupportModalContainer = styled(Box)(({ theme }) => ({
   bottom: "50px",
   right: "20px",
   width: "450px",
-  height: "250px",
+  height: "280px",
   backgroundColor: theme.palette.mode === "light" ? "#D9D9D9" : "#111112",
   borderRadius: "10px",
   display: "flex",
@@ -42,7 +43,7 @@ export const SupportModalContent = styled(Box)({
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
-  gap: "26px"
+  gap: "16px"
 });
 
 export const SupportModalText = styled(Typography)(({ theme }) => ({
@@ -84,5 +85,17 @@ export const SupportModalButton = styled(Button)(({ theme }) => ({
       transition: "all 0.3s ease-in-out",
       fill: "#ffffff !important",
     },
+  }
+}));
+
+export const SupportModalFaqLink = styled(Link)(({ theme }) => ({
+  fontFamily: inter.style.fontFamily,
+  fontSize: "13px",
+  color: theme.palette.customBlue.main,
+  textDecoration: "none",
+  textAlign: "center",
+  transition: "all 0.2s ease-in-out",
+  "&:hover": {
+    textDecoration: "underline"
   }
 }));

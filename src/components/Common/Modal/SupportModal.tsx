@@ -4,6 +4,7 @@ import {
   SupportModalButton,
   SupportModalContainer,
   SupportModalContent,
+  SupportModalFaqLink,
   SupportModalText,
   CloseIcon
 } from "./SupportModal-styles";
@@ -50,6 +51,9 @@ export const SupportModal: FC<SupportModalProps> = ({
           />{" "}
           CHAT HERE
         </SupportModalButton>
+        <SupportModalFaqLink href="/faq#installation">
+          Or browse common questions in our FAQ
+        </SupportModalFaqLink>
       </SupportModalContent>
     </SupportModalContainer>
   );
