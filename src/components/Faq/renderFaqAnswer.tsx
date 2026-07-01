@@ -47,14 +47,15 @@ export const renderFaqAnswer = (
     const label = match[1];
     const href = match[2];
     const isExternal = href.startsWith("http");
+    const linkKey = `link-${key++}`;
     const linkLabel = searchQuery?.trim()
-      ? highlightFaqText(label, searchQuery, `link-${key++}`)
+      ? highlightFaqText(label, searchQuery, linkKey)
       : label;
 
     if (isExternal) {
       parts.push(
         <FaqExternalAnswerLink
-          key={`ext-${key++}`}
+          key={linkKey}
           href={href}
           target="_blank"
           rel="noopener noreferrer"
@@ -64,7 +65,7 @@ export const renderFaqAnswer = (
       );
     } else {
       parts.push(
-        <FaqInternalAnswerLink key={`int-${key++}`} href={href}>
+        <FaqInternalAnswerLink key={linkKey} href={href}>
           {linkLabel}
         </FaqInternalAnswerLink>
       );

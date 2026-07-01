@@ -81,7 +81,13 @@ const Faq = () => {
   }, [applyHash]);
 
   useEffect(() => {
-    if (!isSearching) return;
+    if (!isSearching) {
+      const hashId = window.location.hash.replace(/^#/, "");
+      setExpanded(
+        hashId && allFaqItemIds.includes(hashId) ? { [hashId]: true } : {}
+      );
+      return;
+    }
 
     const matchingIds = filteredSections.flatMap((section) =>
       section.items.map((item) => item.id)
@@ -138,7 +144,8 @@ const Faq = () => {
             />
           </FaqSearchIcon>
           <FaqSearchInput
-            type="search"
+            type="text"
+            inputMode="search"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search questions and answers..."
