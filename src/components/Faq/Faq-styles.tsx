@@ -60,6 +60,74 @@ export const FaqSubtitle = styled(Typography)(({ theme }) => ({
   marginTop: "-32px"
 }));
 
+export const FaqSearchContainer = styled(Box)({
+  width: "100%",
+  position: "relative",
+  marginTop: "-24px"
+});
+
+export const FaqSearchInput = styled("input")(({ theme }) => ({
+  width: "100%",
+  boxSizing: "border-box",
+  fontFamily: inter.style.fontFamily,
+  fontSize: "16px",
+  lineHeight: "24px",
+  padding: "12px 44px",
+  borderRadius: "8px",
+  border: `1px solid ${
+    theme.palette.mode === "dark"
+      ? "rgba(255, 255, 255, 0.15)"
+      : "rgba(0, 0, 0, 0.12)"
+  }`,
+  backgroundColor: "transparent",
+  color: theme.palette.text.primary,
+  outline: "none",
+  transition: "border-color 0.2s ease-in-out",
+  "&::placeholder": {
+    color: theme.palette.text.secondary
+  },
+  "&:focus": {
+    borderColor: theme.palette.customBlue.main
+  }
+}));
+
+export const FaqSearchIcon = styled(Box)({
+  position: "absolute",
+  left: "14px",
+  top: "50%",
+  transform: "translateY(-50%)",
+  display: "flex",
+  alignItems: "center",
+  pointerEvents: "none"
+});
+
+export const FaqSearchClear = styled(IconButton)({
+  position: "absolute",
+  right: "6px",
+  top: "50%",
+  transform: "translateY(-50%)",
+  padding: "6px"
+});
+
+export const FaqSearchEmpty = styled(Typography)(({ theme }) => ({
+  fontFamily: inter.style.fontFamily,
+  fontSize: "16px",
+  lineHeight: "28px",
+  textAlign: "center",
+  color: theme.palette.text.secondary,
+  padding: "24px 0"
+}));
+
+export const FaqSearchHighlight = styled("mark")(({ theme }) => ({
+  backgroundColor:
+    theme.palette.mode === "dark"
+      ? "rgba(0, 133, 255, 0.35)"
+      : "rgba(0, 133, 255, 0.22)",
+  color: "inherit",
+  padding: "0 2px",
+  borderRadius: "2px"
+}));
+
 export const FaqSectionBlock = styled(Box)({
   display: "flex",
   flexDirection: "column",
