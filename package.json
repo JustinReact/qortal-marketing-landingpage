@@ -44,7 +44,7 @@
     "highlight.js": "^11.11.1",
     "html-react-parser": "^5.1.18",
     "next": "^15.5.16",
-    "next-mdx-remote": "^5.0.0",
+    "next-mdx-remote": "^6.0.0",
     "next-mdx-remote-client": "^1.0.7",
     "prism-react-renderer": "^2.0.4",
     "react": "^18.2.0",
@@ -58,7 +58,7 @@
     "rehype-slug": "^6.0.0",
     "remark-gfm": "^4.0.1",
     "sass": "^1.97.3",
-    "sharp": "^0.33.5",
+    "sharp": "^0.35.3",
     "tiptap-extension-resize-image": "^1.1.9",
     "ua-parser-js": "^1.0.37"
   },
@@ -71,6 +71,8 @@
     "typescript": "^6.0.3"
   },
   "overrides": {
-    "linkifyjs": "^4.3.2"
+    "linkifyjs": "^4.3.2",
+    "sharp": "^0.35.3",
+    "postcss": "^8.5.24"
   }
 }
