@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import {
   AndroidIcon,
   AppleLogo,
-  ChromeStoreLogo,
   CommandLineModalContainer,
   CommandLineModalContent,
   CommandLineModalText,
@@ -55,11 +54,6 @@ const Downloads = () => {
     link.click();
     document.body.removeChild(link);
     setOpenSupportModal(true);
-  };
-
-  const chromeWebStoreRedirect = () => {
-    setOpenSupportModal(true);
-    window.open("https://link.qortal.dev/extension", "_blank");
   };
 
   const windowsDesktopDownload = async () => {
@@ -409,19 +403,6 @@ const Downloads = () => {
                   linuxDesktopDownload();
                 },
                 "Download the Linux Desktop version of Qortal"
-              )}
-              {renderPlatformCard(
-                "Extension",
-                <ChromeStoreLogo width="45" height="45" color="transparent" />,
-                () => {
-                  ReactGA.event({
-                    category: "User",
-                    action: "Clicked Chrome Web Store Download Button",
-                    label: "Clicked Chrome Web Store Download Button"
-                  });
-                  chromeWebStoreRedirect();
-                },
-                "Redirect to the Chrome Web Store"
               )}
               {renderPlatformCard(
                 "Android",

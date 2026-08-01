@@ -2,7 +2,7 @@ import Downloads from "../../components/Downloads/Downloads";
 
 export const metadata = {
   title: "Qortal Downloads",
-  description: "Download links for Qortal Go, Qortal Extension, and Qortal Hub"
+  description: "Download Qortal Hub and Qortal Go for desktop and mobile"
 };
 
 const DownloadsPage = () => {

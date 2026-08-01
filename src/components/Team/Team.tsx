@@ -72,7 +72,7 @@ const Team = () => {
       role: "User Interface Developer",
       image: "/images/Team/phillip.png",
       focus: "User Interface and Q-App development",
-      bio: "Phillip has 7 years of experience in JavaScript/React development and joined Qortal in 2022. He is the lead developer of the Qortal Hub, Qortal Go, and Qortal Extension applications, with a core focus on building unified frameworks for Q-App development.",
+      bio: "Phillip has 7 years of experience in JavaScript/React development and joined Qortal in 2022. He is the lead developer of Qortal Hub and Qortal Go, with a core focus on building unified frameworks for Q-App development.",
       linkedIn: "https://www.linkedin.com/in/philliplangmartinez/"
     },
     {

@@ -43,7 +43,7 @@ export const Header = () => {
   const [openMobileDrawer, setOpenMobileDrawer] = useState<boolean>(false);
 
   const renderHeader = () => {
-    if (location !== "/docs/extension" && location !== "/docs/q-apps") {
+    if (location !== "/docs/q-apps") {
       return (
         <HeaderNav>
           <Divider />

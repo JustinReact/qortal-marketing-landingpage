@@ -92,7 +92,7 @@ export const faqSections: FaqSection[] = [
         id: "get-first-qort",
         question: "How do I get my first QORT?",
         answer:
-          "The most decentralized way to get QORT is through Q-Trade inside Qortal Hub, Qortal Go, or the Qortal Browser Extension. Create an account, fund your built-in Litecoin wallet from any exchange, then use Q-Trade to swap LTC for QORT via a trustless atomic swap. You can also receive QORT from community members, or purchase it on [NonKYC.io](https://nonkyc.io). Visit [qortal.dev/qort](/qort) for more details."
+          "The most decentralized way to get QORT is through Q-Trade inside Qortal Hub or Qortal Go. Create an account, fund your built-in Litecoin wallet from any exchange, then use Q-Trade to swap LTC for QORT via a trustless atomic swap. You can also receive QORT from community members, or purchase it on [NonKYC.io](https://nonkyc.io). Visit [qortal.dev/qort](/qort) for more details."
       },
       {
         id: "why-register-name",
@@ -122,7 +122,7 @@ export const faqSections: FaqSection[] = [
         id: "can-developers-read-messages",
         question: "Can Qortal developers read my messages?",
         answer:
-          "No. Qortal does not operate centralized message servers, and the development team cannot read your private messages. Messaging on Qortal is handled through the decentralized network. Qortal Hub, Qortal Go, and the Qortal Browser Extension do not collect or transmit your personal data to external servers."
+          "No. Qortal does not operate centralized message servers, and the development team cannot read your private messages. Messaging on Qortal is handled through the decentralized network. Qortal Hub and Qortal Go do not collect or transmit your personal data to external servers."
       },
       {
         id: "is-data-encrypted",

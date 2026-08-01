@@ -2,15 +2,17 @@ import type { Metadata } from "next";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import LayoutProvider from "./layout-provider";
 import DeferredNotification from "../components/Common/Notification/DeferredNotification";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../constants/siteMetadata";
 
 export const metadata: Metadata = {
-  title: "Explore Qortal - A Web3 Platform for Everyone",
-  description: "Discover Qortal, the gateway to Web3 innovation.",
+  title: {
+    default: SITE_TITLE,
+    template: "%s | Qortal"
+  },
+  description: SITE_DESCRIPTION,
   openGraph: {
-    title:
-      "Learn About Or Install Qortal - The Most User-Friendly Web3 Project!",
-    description:
-      "Discover Qortal, the gateway to Web3 innovation. Explore our easy-to-use platform for seamless access to decentralized applications.",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
     images: [
       {
         url: "https://res.cloudinary.com/unnamed/image/upload/v1686728321/Q-AppsLogo_ola6of.webp",
@@ -20,6 +22,11 @@ export const metadata: Metadata = {
       }
     ],
     type: "website"
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION
   },
   alternates: {
     canonical: "https://qortal.dev"

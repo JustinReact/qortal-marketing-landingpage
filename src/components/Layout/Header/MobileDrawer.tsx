@@ -159,7 +159,7 @@ export const MobileDrawer: FC<MobileDrawerProps> = ({
           router.push("/docs/q-apps");
         }}
         active={
-          location === "/docs/q-apps" || location === "/docs/extension"
+          location === "/docs/q-apps"
             ? true
             : false
         }

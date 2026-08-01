@@ -13,14 +13,10 @@ import {
   BackHomeButton
 } from "./Api-styles";
 import { tableOfContents } from "../../data/QAppApi";
-import { tableOfContents as tableOfContentsExtension } from "../../data/ExtensionApi";
 import ReactGA from "react-ga4";
 import { motion, AnimatePresence } from "framer-motion";
-import { useParams, useRouter } from "next/navigation";
-import { DocState } from "../../constants/enums";
+import { useRouter } from "next/navigation";
 import { CurlyBackArrowSVG } from "../Common/Icons/CurlyBackArrowSVG";
-
-type DocStateType = DocState.Q_APPS | DocState.EXTENSION;
 
 const Api = () => {
   const theme = useTheme();
@@ -29,35 +25,7 @@ const Api = () => {
   const [selectedSection, setSelectedSection] = useState("");
   const [showButton, setShowButton] = useState(false);
   const [openMobileDrawer, setOpenMobileDrawer] = useState(false);
-  const [docState, setDocState] = useState<DocStateType>(DocState.Q_APPS);
   const topOfPageRef = useRef<HTMLDivElement | null>(null);
-  const params = useParams<{ slug: string }>();
-
-  const slug = params?.slug; // Extract 'slug' from the URL
-
-  // Define content or logic based on the slug
-  let pageTitle;
-  let pageContent;
-
-  if (slug === "q-apps") {
-    pageTitle = "Q-Apps";
-    pageContent = "This is the Q-Apps page with logic specific to Q-Apps.";
-  } else if (slug === "extension") {
-    pageTitle = "Extension";
-    pageContent =
-      "This is the Extension page with logic specific to Extension.";
-  } else {
-    pageTitle = "Unknown Page";
-    pageContent = "This page does not exist.";
-  }
-
-  useEffect(() => {
-    if (slug === "extension") {
-      setDocState(DocState.EXTENSION);
-    } else {
-      setDocState(DocState.Q_APPS);
-    }
-  }, [slug]);
 
   // Tracking page view for Google Analytics
   useEffect(() => {
@@ -147,7 +115,6 @@ const Api = () => {
               setOpenMobileDrawer={() => {
                 setOpenMobileDrawer(false);
               }}
-              docState={docState}
             />
           </motion.div>
         )}
@@ -158,7 +125,6 @@ const Api = () => {
         setOpenMobileDrawer={() => {
           setOpenMobileDrawer(false);
         }}
-        docState={docState}
       />
       <ApiContainer>
     <TopOfPageRef ref={topOfPageRef} />
@@ -173,78 +139,37 @@ const Api = () => {
           </BackHomeButton>
         </DocsNavContainer>
         <Box>
-          {docState === DocState.Q_APPS && (
-            <>
-              {tableOfContents.map(
-                ({ Component, id, index, ...props }: any) => {
-                  if (!Component) return null;
-                  return (
-                    <Fragment key={id}>
-                      <Component
-                        id={id}
-                        {...props}
-                        setSelectedSection={setSelectedSection}
-                      />
-                      {props?.subContent?.map(
-                        ({
-                          Component: Component2,
-                          id,
-                          index,
-                          ...props2
-                        }: any) => {
-                          if (!Component2) return null;
-                          return (
-                            <Component2
-                              key={id}
-                              id={id}
-                              {...props2}
-                              setSelectedSection={setSelectedSection}
-                            />
-                          );
-                        }
-                      )}
-                    </Fragment>
-                  );
-                }
-              )}
-            </>
-          )}
-
-          {docState === DocState.EXTENSION && (
-            <>
-              {tableOfContentsExtension.map(
-                ({ Component, index, id, ...props }: any) => {
-                  if (!Component) return null;
-                  return (
-                    <Fragment key={id}>
-                      <Component
-                        id={id}
-                        {...props}
-                        setSelectedSection={setSelectedSection}
-                      />
-                      {props?.subContent?.map(
-                        ({
-                          Component: Component2,
-                          id,
-                          index,
-                          ...props2
-                        }: any) => {
-                          if (!Component2) return null;
-                          return (
-                            <Component2
-                              id={id}
-                              key={id}
-                              {...props2}
-                              setSelectedSection={setSelectedSection}
-                            />
-                          );
-                        }
-                      )}
-                    </Fragment>
-                  );
-                }
-              )}
-            </>
+          {tableOfContents.map(
+            ({ Component, id, index, ...props }: any) => {
+              if (!Component) return null;
+              return (
+                <Fragment key={id}>
+                  <Component
+                    id={id}
+                    {...props}
+                    setSelectedSection={setSelectedSection}
+                  />
+                  {props?.subContent?.map(
+                    ({
+                      Component: Component2,
+                      id,
+                      index,
+                      ...props2
+                    }: any) => {
+                      if (!Component2) return null;
+                      return (
+                        <Component2
+                          key={id}
+                          id={id}
+                          {...props2}
+                          setSelectedSection={setSelectedSection}
+                        />
+                      );
+                    }
+                  )}
+                </Fragment>
+              );
+            }
           )}
         </Box>
         {showButton && (

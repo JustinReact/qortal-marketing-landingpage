@@ -337,9 +337,8 @@ const Qort = () => {
               >
                 <p>
                   Yes! You can buy QORT directly from within Qortal. Simply
-                  install any of the Qortal user interfaces—Qortal Hub, Qortal
-                  Go, or the Qortal Browser Extension—and create a new Qortal
-                  account.
+                  install any of the Qortal user interfaces—Qortal Hub or Qortal
+                  Go—and create a new Qortal account.
                 </p>
                 <p>
                   Upon creating your account, you’ll automatically get a

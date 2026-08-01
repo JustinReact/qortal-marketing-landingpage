@@ -1,8 +1,5 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
-import { UAParser } from "ua-parser-js";
-import { useDispatch } from "react-redux";
-import { setOS } from "../../state/features/osSlice";
 import { Box } from "@mui/material";
 import {
   BGShape,
@@ -38,11 +35,6 @@ export interface FeatureData {
 }
 
 const Features = () => {
-  // Determine which OS they're on
-  const parser = new UAParser();
-
-  const dispatch = useDispatch();
-
   const router = useRouter();
 
   // Enum for the three features
@@ -62,17 +54,17 @@ const Features = () => {
   const currentFeatureText = Object.freeze({
     [FeaturesEnum.Group_Chat]: {
       title: "Group Encrypted Chats: Secure and Private Messaging",
-      text: "Stay connected with confidence through Group Encrypted Chats on the Qortal Browser Extension. This feature allows you to create and participate in group conversations with complete end-to-end encryption, ensuring that your messages are secure and private. No centralized servers, no third-party data access—just secure communication directly on the blockchain. Whether you're discussing personal matters, community initiatives, or private business, your conversations are safe from censorship and prying eyes.",
+      text: "Stay connected with confidence through Group Encrypted Chats in Qortal Hub and Qortal Go. Create and participate in group conversations with end-to-end encryption, ensuring your messages stay secure and private. No centralized servers, no third-party data access—just secure communication on the network. Whether you're discussing personal matters, community initiatives, or private business, your conversations are safe from censorship and prying eyes.",
       image: "/images/Features/GroupEncryptedChats.png"
     },
     [FeaturesEnum.Qort_Trade]: {
       title: "Decentralized Trading with Qort.Trade",
-      text: "Qort.Trade leverages the power of the Qortal Browser Extension and offers a decentralized trading experience, enabling users to acquire QORT using Litecoin, directly on the Qortal blockchain without intermediaries. Trade securely, with no reliance on centralized exchanges, ensuring you retain full control of your assets at all times. Experience peer-to-peer trading with enhanced privacy and freedom, all from your favorite browser!",
+      text: "Qort.Trade in Qortal Hub and Qortal Go offers a peer-to-peer trading experience, enabling users to acquire QORT using Litecoin directly on the Qortal blockchain without intermediaries. Trade securely, with no reliance on centralized exchanges, ensuring you retain full control of your assets at all times.",
       image: "/images/Features/Qort_TradeScreenshot.png"
     },
     [FeaturesEnum.Q_Apps]: {
       title: "Qortal Q-Apps: Web3 Applications at Your Fingertips",
-      text: "The Qortal Browser Extension makes it easier than ever to use decentralized Web3 applications, directly from your favorite browser. Open the Q-Apps section, click an app, and voila, you're ready to go! No need to install additional software or navigate complex interfaces—just seamless access to the world of decentralized applications. Watch videos, play games, exchange fiat for QORT, all this and more with Q-Apps!",
+      text: "Qortal Hub and Qortal Go make it easy to use Q-Apps built on the Qortal network. Open the Q-Apps section, click an app, and you're ready to go. No complex setup—just seamless access to apps for video, games, messaging, publishing, and more.",
       image: "/images/Features/Q-AppsStore.png"
     }
   });
@@ -189,7 +181,7 @@ const Features = () => {
               action: "Clicked Install Qortal Features Homepage",
               label: "Clicked Install Qortal Features Homepage"
             });
-            window.open("https://bit.ly/qortal-chrome-extension", "_blank");
+            router.push("/downloads");
           }}
         >
           Install Qortal

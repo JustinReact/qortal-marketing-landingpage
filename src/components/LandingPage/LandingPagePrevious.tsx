@@ -735,9 +735,9 @@ const LandingPage = () => {
               <QORTDescriptionCol>
                 <SectionDescriptionTitle>QORT</SectionDescriptionTitle>
                 <SectionDescription>
-                  Fuel the Qortal ecosystem with QORT! Use it to trade, tip,
-                  donate, and even bet in games. It’s more than a coin; it’s
-                  your key to a decentralized world.
+                  QORT is the native coin of the Qortal network. Trade, tip,
+                  donate, and support the apps you use — on an internet you
+                  fully control.
                 </SectionDescription>
                 <SectionDownloadLink href="/downloads">
                   Learn more{" "}

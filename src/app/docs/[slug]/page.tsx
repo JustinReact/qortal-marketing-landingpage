@@ -11,8 +11,6 @@ export async function generateMetadata({
 
   if (slug === "q-apps") {
     pageTitle = "Q-Apps Documentation";
-  } else if (slug === "extension") {
-    pageTitle = "Qortal Browser Extension Documentation";
   } else {
     pageTitle = "Unknown Page";
   }

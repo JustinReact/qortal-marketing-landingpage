@@ -20,13 +20,10 @@ import {
   TitleRow
 } from "./LeftDrawerLinks-styles";
 import { tableOfContents } from "../../../data/QAppApi";
-import { tableOfContents as tableOfContentsExtension } from "../../../data/ExtensionApi";
 import { LightModeSVG } from "../../../components/Common/Icons/LightModeSVG";
 import { DarkModeSVG } from "../../../components/Common/Icons/DarkModeSVG";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
-import { DocState } from "../../../constants/enums";
-import Dropdown from "../Dropdown/Dropdown";
 import { setTheme } from "../../../state/theme/themeSlice";
 import { useDispatch } from "react-redux";
 
@@ -36,14 +33,12 @@ interface LeftDrawerLinksProps {
   selectedSection: string;
   openMobileDrawer: boolean;
   setOpenMobileDrawer: () => void;
-  docState: string;
 }
 
 export const LeftDrawerLinks: FC<LeftDrawerLinksProps> = ({
   selectedSection,
   openMobileDrawer,
-  setOpenMobileDrawer,
-  docState
+  setOpenMobileDrawer
 }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -81,7 +76,6 @@ export const LeftDrawerLinks: FC<LeftDrawerLinksProps> = ({
             width="22"
           />
         )}
-        <Dropdown docState={docState} />
         <HamburgerIcon
           onClickFunc={() => setOpenMobileDrawer()}
           color={theme.palette.text.primary}
@@ -90,22 +84,12 @@ export const LeftDrawerLinks: FC<LeftDrawerLinksProps> = ({
         />
       </ThemeSelectRow>
       <TitleRow>
-        {docState === DocState.Q_APPS && (
-          <QAppsLogo>
-            Q-Apps <span>API</span>
-          </QAppsLogo>
-        )}
-        {docState === DocState.EXTENSION && (
-          <QAppsLogo>
-            Extension <span>API</span>
-          </QAppsLogo>
-        )}
+        <QAppsLogo>
+          Q-Apps <span>API</span>
+        </QAppsLogo>
       </TitleRow>
       <List>
-        {(docState === DocState.EXTENSION
-          ? tableOfContentsExtension
-          : tableOfContents
-        ).map((section: any, index: number) => {
+        {tableOfContents.map((section: any, index: number) => {
           return (
             <Fragment key={section.title}>
               <ListItem

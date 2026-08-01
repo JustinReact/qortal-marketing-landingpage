@@ -73,7 +73,7 @@ export const Links = () => {
             />
             {isMobile
               ? "Downloads Page" // Shortened text for mobile view
-              : "Qortal Hub, Go, Extension, and Core Downloads"}
+              : "Qortal Hub, Go, and Core Downloads"}
           </LinkButton>
           <LinkButton
             href="https://link.qortal.dev/ebook-link"

@@ -300,7 +300,7 @@ const LandingPage = () => {
               }
             }}
           >
-            Your gateway to a decentralized internet.
+            An alternative internet where you fully control your data.
           </Typography>
           <Box
             sx={{

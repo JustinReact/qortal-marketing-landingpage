@@ -1,7 +1,7 @@
 # Welcome to **qortal.dev** 🚀
 
 **qortal.dev** is an elaborate informational resource for the **Qortal** project. Amongst other things, it is the best place to:  
-- Download the latest Qortal **User Interface**, whether that be Hub, Go, or Extension and Qortal **Core** 🖥️  
+- Download the latest Qortal **User Interface**, whether that be Hub or Go, and Qortal **Core** 🖥️  
 - Explore **blogs**, **wiki guides**, and **news** about Qortal 📰  
 - Access our upcoming **Ebook** on how Q-Apps on Qortal are revolutionizing industries on the normal internet 📚  
 

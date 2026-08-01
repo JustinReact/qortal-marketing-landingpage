@@ -16,11 +16,14 @@ import {
 } from "../Promo/Promo-styles";
 import ReactGA from "react-ga4";
 import { Grid, useTheme } from "@mui/material";
+import { useRouter } from "next/navigation";
 import { OpenSourceSVG } from "../Common/Icons/OpenSourceSVG";
 import { HiveSVG } from "../Common/Icons/HiveSVG";
 import { ConnectSVG } from "../Common/Icons/ConnectSVG";
 
 const Promo = () => {
+  const router = useRouter();
+
   return (
     <>
       <Container container>
@@ -53,7 +56,7 @@ const Promo = () => {
                   action: "Clicked Install Qortal Button on Promo page",
                   label: "Clicked Install Qortal Button on Promo page"
                 });
-                window.open("https://bit.ly/qortal-chrome-extension", "_blank");
+                router.push("/downloads");
               }}
             >
               INSTALL QORTAL 

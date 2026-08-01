@@ -52,7 +52,7 @@ const NewBlog = () => {
     "Cryptocurrency",
     "QORT",
     "QDN",
-    "Qortal Browser Extension",
+    "Qortal Hub",
     "Qortal Wallet"
   ];
 
