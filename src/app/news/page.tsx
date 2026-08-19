@@ -10,6 +10,7 @@ export const metadata = {
 };
 
 export const dynamic = "force-dynamic";
+export const maxDuration = 26;
 
 const NewsPage = async (): Promise<JSX.Element> => {
   let news: NewsPost[] = [];

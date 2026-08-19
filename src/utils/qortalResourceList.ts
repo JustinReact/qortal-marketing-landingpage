@@ -24,9 +24,9 @@ export async function fetchQortalResourceList(
         next: { revalidate },
         signal
       },
-      1,
-      0,
-      8_000
+      2,
+      500,
+      10_000
     );
 
     if (!Array.isArray(data)) return [];

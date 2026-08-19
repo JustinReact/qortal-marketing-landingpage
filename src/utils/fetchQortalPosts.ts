@@ -3,23 +3,16 @@ import { fetchAndEvaluateNews } from "./fetchAndEvaluateNews";
 import { mapWithConcurrency } from "./fetchHelpers";
 import { fetchQortalResourceList } from "./qortalResourceList";
 
-const FETCH_CONCURRENCY = 3;
-const NEWS_LISTING_BUDGET_MS = 8_000;
-const NEWS_LISTING_POST_TIMEOUT_MS = 5_000;
-const NEWS_LISTING_POST_RETRIES = 2;
-const BLOG_LISTING_BUDGET_MS = 8_000;
-const BLOG_LISTING_POST_TIMEOUT_MS = 5_000;
-const BLOG_LISTING_POST_RETRIES = 2;
+const FETCH_CONCURRENCY = 4;
+const LISTING_POST_TIMEOUT_MS = 8_000;
+const LISTING_POST_RETRIES = 2;
 
 export async function fetchAllNewsPosts(identifierPrefix: string) {
-  const deadline = AbortSignal.timeout(NEWS_LISTING_BUDGET_MS);
   const items = await fetchQortalResourceList(
     "DOCUMENT",
     identifierPrefix,
-    60,
-    deadline
+    60
   );
-  if (deadline.aborted) return [];
 
   return mapWithConcurrency(
     items,
@@ -29,12 +22,10 @@ export async function fetchAllNewsPosts(identifierPrefix: string) {
         identifier: content.identifier,
         content,
         mode: "card",
-        signal: deadline,
-        timeoutMs: NEWS_LISTING_POST_TIMEOUT_MS,
-        retries: NEWS_LISTING_POST_RETRIES
+        timeoutMs: LISTING_POST_TIMEOUT_MS,
+        retries: LISTING_POST_RETRIES
       }),
-    FETCH_CONCURRENCY,
-    deadline
+    FETCH_CONCURRENCY
   );
 }
 
@@ -42,14 +33,11 @@ export async function fetchAllBlogPosts(
   identifierPrefix: string,
   revalidate = 3600
 ) {
-  const deadline = AbortSignal.timeout(BLOG_LISTING_BUDGET_MS);
   const items = await fetchQortalResourceList(
     "BLOG",
     identifierPrefix,
-    revalidate,
-    deadline
+    revalidate
   );
-  if (deadline.aborted) return [];
 
   return mapWithConcurrency(
     items,
@@ -59,11 +47,9 @@ export async function fetchAllBlogPosts(
         identifier: content.identifier,
         content,
         mode: "card",
-        signal: deadline,
-        timeoutMs: BLOG_LISTING_POST_TIMEOUT_MS,
-        retries: BLOG_LISTING_POST_RETRIES
+        timeoutMs: LISTING_POST_TIMEOUT_MS,
+        retries: LISTING_POST_RETRIES
       }),
-    FETCH_CONCURRENCY,
-    deadline
+    FETCH_CONCURRENCY
   );
 }
