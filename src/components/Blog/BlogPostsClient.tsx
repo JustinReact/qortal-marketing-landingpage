@@ -1,27 +1,23 @@
 "use client";
 import React from "react";
 import {
-  BlogCategoriesRow,
-  BlogDateAndCategoryCol,
   BlogPageTitle,
   BlogPostBody,
   BlogPostCard,
-  BlogPostCategory,
   BlogPostDate,
   BlogPostImage,
   BlogPostsContainer,
   BlogPostTitle,
   BlogSubContainer,
-  Divider,
   MainBlogWrapper
 } from "./BlogPostsClient-styles";
 import { formatDateWithSuffix } from "../../utils/formatDateWithSuffix";
-import parse from "html-react-parser";
-import ReactGA from "react-ga4";
 import { useRouter } from "next/navigation";
+
 export interface BlogPost {
   title: string;
-  body: string;
+  body?: string;
+  excerpt?: string;
   thumbnail: string;
   categories: string[];
   identifier: string;
@@ -63,12 +59,11 @@ const BlogPostsClient: React.FC<BlogPostsClientProps> = ({ blogs }) => {
                 alt={blog.title}
                 width={500}
                 height={500}
+                unoptimized={blog.thumbnail?.startsWith("data:")}
               />
               <BlogSubContainer>
                 <BlogPostTitle>{blog.title}</BlogPostTitle>
-                <BlogPostBody>
-                  {typeof blog.body === "string" ? parse(blog.body) : null}
-                </BlogPostBody>
+                <BlogPostBody>{blog.excerpt || null}</BlogPostBody>
               </BlogSubContainer>
               <BlogPostDate>
                 {formatDateWithSuffix(blog.created)}

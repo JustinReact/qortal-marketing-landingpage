@@ -12,13 +12,13 @@ import {
   NewsTitle
 } from "./NewsPostsClient-styles";
 import ReactGA from "react-ga4";
-import parse from "html-react-parser";
 import { useRouter } from "next/navigation";
 import { formatDateWithSuffix } from "../../utils/formatDateWithSuffix";
 
 export interface NewsPost {
   title: string;
-  body: string;
+  body?: string;
+  excerpt?: string;
   thumbnail: string;
   identifier: string;
   created: number;
@@ -70,11 +70,12 @@ const NewsPostsClient: React.FC<NewsPostsClientProps> = ({ news }) => {
                   width={656}
                   height={440}
                   quality={100}
+                  unoptimized={item.thumbnail?.startsWith("data:")}
                 />
                 <NewsCardWrapper>
                   <NewsCardTitle>{item.title}</NewsCardTitle>
                   <NewsCardBody>
-                    {typeof item.body === "string" ? parse(item.body) : null}
+                    {item.excerpt || null}
                   </NewsCardBody>
                   <NewsCardDate>
                     {formatDateWithSuffix(item.created)}

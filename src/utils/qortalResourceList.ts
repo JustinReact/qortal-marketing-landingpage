@@ -10,7 +10,8 @@ export interface QortalResourceRef {
 export async function fetchQortalResourceList(
   service: "BLOG" | "DOCUMENT",
   identifierPrefix: string,
-  revalidate = 60
+  revalidate = 60,
+  signal?: AbortSignal
 ): Promise<QortalResourceRef[]> {
   const url = `${groupApi}/arbitrary/resources/searchsimple?service=${service}&name=Bester&identifier=${identifierPrefix}&limit=0&mode=ALL&prefix=true&includemetadata=false&reverse=true`;
 
@@ -20,11 +21,12 @@ export async function fetchQortalResourceList(
       {
         method: "GET",
         headers: { "Content-Type": "application/json" },
-        next: { revalidate }
+        next: { revalidate },
+        signal
       },
       1,
       0,
-      10_000
+      8_000
     );
 
     if (!Array.isArray(data)) return [];

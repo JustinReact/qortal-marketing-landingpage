@@ -56,7 +56,7 @@ const NewsPostClient = ({ newsPost }: NewsPostClientProps) => {
           />
         </NewsTitleContainer>
         <NewsPostBody>
-          {parse(newsPost.body)}
+          {typeof newsPost.body === "string" ? parse(newsPost.body) : null}
         </NewsPostBody>
       </NewsSubContainer>
       {openModal && (
