@@ -15,7 +15,6 @@ import AdsClickIcon from "@mui/icons-material/AdsClick";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import FileDownloadRoundedIcon from "@mui/icons-material/FileDownloadRounded";
 import dynamic from "next/dynamic";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import ReactGA from "react-ga4";
 import { inter, segoeUIHubHeadline } from "../../app/fonts";
@@ -24,6 +23,7 @@ import { BookSVG } from "../Common/Icons/BookSVG";
 import { DownloadSVG } from "../Common/Icons/DownloadSVG";
 import { QortalSVG } from "../Common/Icons/QortalSVG";
 import Demo from "./DemoComponent";
+import { HomeCtaCard } from "./HomeCtaCard";
 
 const LandingPagePrevious = dynamic(() => import("./LandingPagePrevious"));
 
@@ -566,7 +566,6 @@ const LandingPage = () => {
         </Box>
         <Box
           component="section"
-          aria-label="Download Qortal Hub"
           sx={{
             position: "relative",
             zIndex: 1,
@@ -575,173 +574,46 @@ const LandingPage = () => {
             maxWidth: "1344px",
             mx: "auto",
             mt: "28px",
+            gap: "12px",
             "@media (min-width: 1194px)": {
-              display: "block"
+              display: "flex",
+              flexDirection: "column"
             }
           }}
         >
-          <Box
-            sx={{
-              position: "relative",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              gap: "30px",
-              minHeight: "102px",
-              px: "46px",
-              py: "24px",
-              overflow: "hidden",
-              border: isDarkMode
-                ? "1px solid rgba(132, 175, 240, 0.14)"
-                : "1px solid rgba(17, 91, 197, 0.12)",
-              borderRadius: "8px",
-              background: isDarkMode
-                ? "linear-gradient(180deg, rgba(11, 19, 34, 0.88), rgba(5, 11, 22, 0.94))"
-                : "linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(239, 245, 252, 0.86))",
-              boxShadow: isDarkMode
-                ? "inset 0 1px 0 rgba(255, 255, 255, 0.055), inset 0 -1px 0 rgba(12, 72, 148, 0.08), 0 24px 86px rgba(0, 0, 0, 0.22), 0 -14px 72px rgba(12, 72, 148, 0.035)"
-                : "inset 0 1px 0 rgba(255, 255, 255, 0.72), 0 22px 64px rgba(17, 91, 197, 0.08)",
-              "&::before": {
-                content: '""',
-                position: "absolute",
-                inset: "0",
-                pointerEvents: "none",
-                background: isDarkMode
-                  ? "radial-gradient(ellipse 36% 130% at 2% 50%, rgba(12, 72, 148, 0.14), transparent 70%), radial-gradient(ellipse 34% 120% at 94% 48%, rgba(12, 72, 148, 0.09), transparent 72%)"
-                  : "radial-gradient(ellipse 36% 130% at 2% 50%, rgba(17, 91, 197, 0.08), transparent 70%), radial-gradient(ellipse 34% 120% at 94% 48%, rgba(17, 91, 197, 0.055), transparent 72%)",
-                opacity: isDarkMode ? 0.68 : 0.54
-              },
-              "&::after": {
-                content: '""',
-                position: "absolute",
-                top: 0,
-                right: "18px",
-                left: "18px",
-                height: "1px",
-                pointerEvents: "none",
-                background: isDarkMode
-                  ? "linear-gradient(90deg, transparent, rgba(132, 175, 240, 0.2) 18%, rgba(132, 175, 240, 0.14) 58%, transparent)"
-                  : "linear-gradient(90deg, transparent, rgba(17, 91, 197, 0.14) 18%, rgba(17, 91, 197, 0.09) 58%, transparent)"
-              }
+          <HomeCtaCard
+            ariaLabel="Get the free Qortal guide"
+            icon={<BookSVG color="currentColor" width="26" height="21" />}
+            title="Get the Qortal getting-started guide"
+            subtitle="Placeholder: swap this for the real ebook pitch."
+            href="/free-guide"
+            buttonLabel="Get the free guide"
+            buttonIcon={<FileDownloadRoundedIcon sx={{ fontSize: "18px" }} />}
+            onClick={() => {
+              ReactGA.event({
+                category: "User",
+                action: "Clicked Free Guide Homepage Card",
+                label: "Clicked Free Guide Homepage Card"
+              });
             }}
-          >
-            <Box
-              sx={{
-                position: "relative",
-                zIndex: 1,
-                display: "flex",
-                alignItems: "center",
-                gap: "12px",
-                minWidth: 0
-              }}
-            >
-              <Box
-                aria-hidden="true"
-                sx={{
-                  width: "50px",
-                  height: "50px",
-                  flex: "0 0 auto",
-                  display: "grid",
-                  placeItems: "center",
-                  borderRadius: "50%",
-                  color: "#35a8ff",
-                  background: isDarkMode
-                    ? "radial-gradient(circle at 48% 45%, rgba(57, 168, 255, 0.16), rgba(12, 72, 148, 0.08) 64%, rgba(6, 12, 24, 0.92) 100%)"
-                    : "radial-gradient(circle at 48% 45%, rgba(57, 168, 255, 0.12), rgba(17, 91, 197, 0.055) 68%, rgba(255, 255, 255, 0.82) 100%)",
-                  border: isDarkMode
-                    ? "1px solid rgba(95, 151, 255, 0.34)"
-                    : "1px solid rgba(17, 91, 197, 0.2)",
-                  boxShadow: isDarkMode
-                    ? "inset 0 1px 0 rgba(255, 255, 255, 0.07), 0 0 22px rgba(12, 72, 148, 0.18)"
-                    : "inset 0 1px 0 rgba(255, 255, 255, 0.74), 0 0 18px rgba(17, 91, 197, 0.08)"
-                }}
-              >
-                <QortalSVG color="currentColor" width="25" height="27" />
-              </Box>
-              <Box sx={{ minWidth: 0 }}>
-                <Typography
-                  component="h2"
-                  sx={{
-                    m: 0,
-                    color: isDarkMode ? "#f5f9ff" : "#07111f",
-                    fontSize: "1rem",
-                    fontWeight: 800,
-                    lineHeight: 1.24,
-                    letterSpacing: 0
-                  }}
-                >
-                  Ready to experience the full power of Qortal?
-                </Typography>
-                <Typography
-                  sx={{
-                    mt: "4px",
-                    color: isDarkMode
-                      ? "rgba(218, 229, 243, 0.64)"
-                      : "rgba(8, 17, 34, 0.58)",
-                    fontSize: "0.86rem",
-                    fontWeight: 500,
-                    lineHeight: 1.35,
-                    letterSpacing: 0
-                  }}
-                >
-                  Download Qortal Hub and start your journey.
-                </Typography>
-              </Box>
-            </Box>
-            <Box
-              component={Link}
-              href="/downloads"
-              onClick={() => {
-                ReactGA.set({ dimension1: "Landing Page Download Button" }); // Event-level dimension
-                ReactGA.event({
-                  category: "User",
-                  action: "Clicked Main Download CTA Button",
-                  label: "Clicked Main Download CTA Button"
-                });
-              }}
-              sx={{
-                position: "relative",
-                zIndex: 1,
-                flex: "0 0 auto",
-                display: "inline-flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "8px",
-                minWidth: "168px",
-                height: "38px",
-                px: "16px",
-                borderRadius: "7px",
-                color: "#ffffff",
-                background: "linear-gradient(180deg, #2088f6 0%, #136fd8 100%)",
-                border: "1px solid rgba(137, 197, 255, 0.28)",
-                boxShadow:
-                  "0 10px 20px rgba(19, 118, 237, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
-                textDecoration: "none",
-                fontSize: "0.8rem",
-                fontWeight: 800,
-                lineHeight: 1,
-                letterSpacing: 0,
-                transition:
-                  "transform 150ms ease, box-shadow 150ms ease, filter 150ms ease, border-color 150ms ease",
-                "&:focus-visible": {
-                  outline: "1px solid rgba(245, 248, 255, 0.72)",
-                  outlineOffset: "4px"
-                },
-                "@media (hover: hover) and (pointer: fine)": {
-                  "&:hover": {
-                    transform: "translateY(-1px)",
-                    filter: "brightness(1.04)",
-                    borderColor: "rgba(245, 248, 255, 0.58)",
-                    boxShadow:
-                      "0 16px 30px rgba(19, 118, 237, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.28)"
-                  }
-                }
-              }}
-            >
-              Download Qortal Hub
-              <FileDownloadRoundedIcon sx={{ fontSize: "18px" }} />
-            </Box>
-          </Box>
+          />
+          <HomeCtaCard
+            ariaLabel="Download Qortal Hub"
+            icon={<QortalSVG color="currentColor" width="25" height="27" />}
+            title="Ready to experience the full power of Qortal?"
+            subtitle="Download Qortal Hub and start your journey."
+            href="/downloads"
+            buttonLabel="Download Qortal Hub"
+            buttonIcon={<FileDownloadRoundedIcon sx={{ fontSize: "18px" }} />}
+            onClick={() => {
+              ReactGA.set({ dimension1: "Landing Page Download Button" });
+              ReactGA.event({
+                category: "User",
+                action: "Clicked Main Download CTA Button",
+                label: "Clicked Main Download CTA Button"
+              });
+            }}
+          />
         </Box>
       </Box>
       {isMounted &&

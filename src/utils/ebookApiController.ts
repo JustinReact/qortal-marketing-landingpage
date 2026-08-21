@@ -3,12 +3,17 @@ import { fetchAPI } from "./fetchAPI";
 const EBOOK_API: string | undefined = process.env.NEXT_PUBLIC_EBOOK_API_HOST! || "http://localhost:3010/api";
 // const EBOOK_API_KEY: string | undefined = process.env.REACT_APP_EBOOK_API_KEY;
 
-export const downloadEbook = async (name: string, email: string) => {
+export const downloadEbook = async (
+  name: string,
+  email: string,
+  source?: string
+) => {
   try {
     const url = `/subscribe`;
     const requestBody = {
       name,
-      email
+      email,
+      ...(source ? { source } : {})
     };
     const response = await fetchAPI(
       EBOOK_API,

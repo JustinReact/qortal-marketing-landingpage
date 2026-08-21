@@ -41,17 +41,20 @@ export const checkIfEmailExists = async (email: string): Promise<boolean> => {
  */
 export const saveSubscriber = async ({
   name,
-  email
+  email,
+  source
 }: {
   name: string;
   email: string;
+  source?: string;
 }) => {
   const timestamp = new Date();
   const subscriberData = {
     name,
     email,
     timestamp,
-    blurb: ""
+    blurb: "",
+    ...(source ? { source } : {})
   };
 
   try {

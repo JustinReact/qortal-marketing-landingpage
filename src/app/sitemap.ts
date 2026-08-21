@@ -73,6 +73,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.5
     },
     {
+      url: "https://qortal.dev/free-guide",
+      lastModified: new Date(),
+      changeFrequency: "yearly" as const,
+      priority: 0.5
+    },
+    {
       url: "https://qortal.dev/creators",
       lastModified: new Date(),
       changeFrequency: "monthly" as const,

@@ -43,7 +43,11 @@ yarn serve
 Description: Subscribe a user by providing name and email.
 
 Request Body:
-{ "name": "User", "email": "user@example.com" }
+{ "name": "User", "email": "user@example.com", "source": "ebook" }
+
+`source` is optional:
+- omitted or `"ebook"` — original ebook MailerLite group (`MAILERLITE_GROUP_ID`). Delivery is the existing MailerLite automation.
+- `"free-guide"` — new free-guide MailerLite group (`MAILERLITE_FREE_GUIDE_GROUP_ID`). Delivery is a separate MailerLite automation on that group.
 
 Response:
 200: { "message": "Subscription successful." }
@@ -82,6 +86,7 @@ FIREBASE_SERVICE_ACCOUNT_JSON=<YOUR_FIREBASE_SERVICE_ACCOUNT_JSON>
 
 MAILERLITE_API_KEY=<YOUR_MAILERLITE_API_KEY>
 MAILERLITE_GROUP_ID=<YOUR_MAILERLITE_GROUP_ID>
+MAILERLITE_FREE_GUIDE_GROUP_ID=<YOUR_FREE_GUIDE_MAILERLITE_GROUP_ID>
 MAILERLITE_SENDER_EMAIL=<YOUR_MAILERLITE_SENDER_EMAIL>
 
 API_SECRET_KEY=<YOUR_API_SECRET_KEY>

@@ -89,13 +89,15 @@ import {
 } from "../../components/LandingPage/LandingPage-styles";
 import { YoutubeVideoContainer } from "../Qort/QORTPage-styles";
 import { YoutubePlaceholder } from "../YouTube/YoutubePlaceholder";
-import { useMediaQuery, useTheme } from "@mui/material";
+import { Box, useMediaQuery, useTheme } from "@mui/material";
+import FileDownloadRoundedIcon from "@mui/icons-material/FileDownloadRounded";
 import { useRouter } from "next/navigation";
 import Modal from "../Common/Modal/Modal";
 import { ScrollToTopButton, TopArrow } from "../Wiki/Wiki-styles";
 import { CommonModal } from "../Common/CommonModal/CommonModal";
 import { DownloadSVG } from "../Common/Icons/DownloadSVG";
 import { BookSVG } from "../Common/Icons/BookSVG";
+import { HomeCtaCard } from "./HomeCtaCard";
 
 const LandingPage = () => {
   const theme = useTheme();
@@ -302,6 +304,32 @@ const LandingPage = () => {
             DOWNLOAD
           </CTAButton2>
         </TopFoldButtonRow>
+        <Box
+          sx={{
+            width: "100%",
+            maxWidth: "720px",
+            px: { xs: "16px", sm: 0 },
+            mt: { xs: 0, sm: "8px" },
+            mb: { xs: "24px", sm: 0 }
+          }}
+        >
+          <HomeCtaCard
+            ariaLabel="Get the free Qortal guide"
+            icon={<BookSVG color="currentColor" width="26" height="21" />}
+            title="Get the Qortal getting-started guide"
+            subtitle="Placeholder: swap this for the real ebook pitch."
+            href="/free-guide"
+            buttonLabel="Get the free guide"
+            buttonIcon={<FileDownloadRoundedIcon sx={{ fontSize: "18px" }} />}
+            onClick={() => {
+              ReactGA.event({
+                category: "User",
+                action: "Clicked Free Guide Homepage Card",
+                label: "Clicked Free Guide Homepage Card Mobile"
+              });
+            }}
+          />
+        </Box>
       </TopFoldCol>
 
       <TopFoldMainCol>
