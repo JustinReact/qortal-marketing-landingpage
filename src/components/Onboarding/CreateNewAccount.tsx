@@ -259,7 +259,7 @@ export function CreateNewAccount({
         }}
       >
         Once you have created your account, you can continue to the next step to
-        redeem the your 2/6 QORT.
+        redeem your 2 QORT.
       </p>
     </Stack>
   );

@@ -29,7 +29,7 @@ const Introduction = () => {
           This guide will help you install Qortal on your desktop and get you
           started with{" "}
           <Box component="span" sx={{ fontWeight: 700, color: "primary.main" }}>
-            6 QORT
+            2 QORT
           </Box>
           . After this, you’ll be able to publish apps and videos, join groups,
           and do much more — completely decentralized.

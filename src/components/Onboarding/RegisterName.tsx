@@ -230,8 +230,7 @@ export function RegisterName({
           color: theme.palette.text.primary
         }}
       >
-        Once you have registered a name, you can continue to the next step to
-        redeem the remaining 4 QORT.
+        Once you have registered a name, you can continue to the next step.
       </p>
     </Stack>
   );

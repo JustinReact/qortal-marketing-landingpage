@@ -18,23 +18,11 @@ export const getAuthErrorMessage = (reason?: string): string | null => {
 export const getSendQortErrorMessage = (reason?: string): string => {
   switch (reason) {
     case "invalid_qort_range_step1":
-      return "2 QORT has already been sent to that email. Please proceed to the next step to redeem the remaining 4 QORT.";
-    case "invalid_qort_range_step2":
-      return "4 QORT has already been redeemed for this email.";
-    case "step1_not_completed":
-      return "Step 1 (2 QORT) is not recorded for this email. Go back to the Redeem 2 QORT step and complete verification again.";
+      return "2 QORT has already been sent to that email.";
+    case "invalid_qort_step":
+      return "This QORT reward is no longer available.";
     case "ip_limit_reached":
       return "QORT was already sent from this connection.";
-    case "name_required_step2":
-      return "Register a Qortal name for this address before redeeming the 4 QORT.";
-    case "buy_name_history_exists":
-      return "The 4 QORT reward is only for addresses that registered a name without buying one. This address has a name purchase on-chain.";
-    case "buy_name_tx_lookup_failed":
-      return "Could not verify name purchase status. Please try again in a few minutes.";
-    case "qortal_lookup_failed":
-      return "Could not verify your name on the network. Please try again in a few minutes.";
-    case "name_check_failed":
-      return "Could not verify your name. Please try again.";
     case "missing_qortal_address":
       return "Missing Qortal address. Please restart onboarding from the Redeem 2 QORT step.";
     case "missing_ip":

@@ -8,7 +8,7 @@ import Diversity3Icon from "@mui/icons-material/Diversity3";
 import PublicIcon from "@mui/icons-material/Public";
 
 const EBOOK_API: string =
-  process.env.NEXT_PUBLIC_EBOOK_API_HOST || "http://localhost:3010";
+  process.env.NEXT_PUBLIC_EBOOK_API_HOST || "http://localhost:3010/api";
 
 const logout = async () => {
   try {

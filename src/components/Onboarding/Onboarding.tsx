@@ -25,7 +25,6 @@ import { RegisterName } from "./RegisterName";
 import { JoinGroup } from "./JoinGroup";
 import { DynamicJoinGroup } from "./DynamicJoinGroup";
 import ReceiveQort from "./ReceiveQort";
-import ReceiveQort2 from "./ReceiveQort2";
 import NextSteps from "./NextSteps";
 import MailingList from "./MailingList";
 import {
@@ -196,11 +195,6 @@ const Onboarding = () => {
             />
           ) : null,
         requiresDynamicGroup: true
-      },
-      {
-        key: "receive-four",
-        label: "Redeem 4 QORT",
-        render: () => <ReceiveQort2 qortStep={2} />
       },
       {
         key: "mailing-list",

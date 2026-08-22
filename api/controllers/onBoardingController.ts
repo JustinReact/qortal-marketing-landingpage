@@ -15,11 +15,7 @@ import {
   getNonReputableDomainLimitError,
   isReputableEmailDomain
 } from "../lib/reputableEmailDomains";
-import {
-  hasConfirmedBuyNameTransaction,
-  hasQortalName,
-  isNewUser
-} from "../services/qortalServices";
+import { hasQortalName, isNewUser } from "../services/qortalServices";
 
 const {
   sendCoin,
@@ -235,48 +231,9 @@ const handleSendQort = async (
     return;
   }
 
-  if (qortStep === 2) {
-    try {
-      // Must own a name, and it must not have been acquired via a BUY_NAME (purchase).
-      const named = await hasQortalName(qortalAddress);
-      if (!named) {
-        res.status(403).json({
-          valid: false,
-          reason: "name_required_step2"
-        });
-        return;
-      }
-
-      const hasBuyNameTx = await hasConfirmedBuyNameTransaction(qortalAddress);
-      if (hasBuyNameTx) {
-        res.status(403).json({
-          valid: false,
-          reason: "buy_name_history_exists"
-        });
-        return;
-      }
-    } catch (err: any) {
-      const lookupFailed = err?.message === "failed_to_fetch_qortal_names";
-      const buyNameLookupFailed =
-        err?.message === "failed_to_fetch_buy_name_transactions";
-      if (lookupFailed) {
-        res.status(502).json({
-          valid: false,
-          reason: "qortal_lookup_failed"
-        });
-        return;
-      }
-      if (buyNameLookupFailed) {
-        res.status(502).json({
-          valid: false,
-          reason: "buy_name_tx_lookup_failed"
-        });
-        return;
-      }
-      console.error("[Onboarding] Step 2 name check failed:", err);
-      res.status(500).json({ valid: false, reason: "name_check_failed" });
-      return;
-    }
+  if (qortStep !== 1) {
+    res.status(403).json({ valid: false, reason: "invalid_qort_step" });
+    return;
   }
 
   // 1) Check & reserve payout (email + IP anti-abuse)
@@ -294,9 +251,8 @@ const handleSendQort = async (
 
   // 2) Try sending QORT
   try {
-    const qortAmount = qortStep === 1 ? 2 : 4;
     const responseSendQort = await sendCoin({
-      amount: qortAmount,
+      amount: 2,
       receiver: qortalAddress
     });
 

@@ -12,7 +12,7 @@ import {
 } from "../../constants/onboardingSendQortErrors";
 import { OpenOnboardingScreenshot } from "./onboardingScreenshot";
 export const EBOOK_API: string =
-  process.env.NEXT_PUBLIC_EBOOK_API_HOST || "http://localhost:3010";
+  process.env.NEXT_PUBLIC_EBOOK_API_HOST || "http://localhost:3010/api";
 
 const normalizeEmail = (value: string) => value.trim().toLowerCase();
 
@@ -134,10 +134,7 @@ const ReceiveQort = ({
         return;
       }
 
-      if (
-        data?.reason === "invalid_qort_range_step1" ||
-        data?.reason === "invalid_qort_range_step2"
-      ) {
+      if (data?.reason === "invalid_qort_range_step1") {
         setHasSentQort(true);
       }
 
@@ -160,6 +157,9 @@ const ReceiveQort = ({
         headers: { "Content-Type": "application/json" },
         credentials: "include"
       });
+      if (!res.ok) {
+        return;
+      }
       const data = await res.json();
       if (data?.email) {
         setEmail(data.email);
@@ -439,8 +439,8 @@ const ReceiveQort = ({
               color: "success.main"
             }}
           >
-            Continue to the next step to reedem the remaining 4 QORT. You will
-            need to register a name first. Instructions in the next step.
+            Continue to the next step to register a name. Instructions are in
+            the next step.
           </Typography>
         )}
       </form>

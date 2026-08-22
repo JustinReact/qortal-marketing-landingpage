@@ -5,7 +5,7 @@ import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import { ButtonOnBoarding } from "./Onboarding-styles";
 
 const EBOOK_API: string =
-  process.env.NEXT_PUBLIC_EBOOK_API_HOST || "http://localhost:3010";
+  process.env.NEXT_PUBLIC_EBOOK_API_HOST || "http://localhost:3010/api";
 
 const MailingList = () => {
   const [email, setEmail] = useState("");

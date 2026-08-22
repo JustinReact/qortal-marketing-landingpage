@@ -148,7 +148,7 @@ export const hasConfirmedBuyNameTransaction = async (
 
 export const isNewUser = async (address: string): Promise<boolean> => {
   const balance = await fetchBalanceByAddress(address);
-  return balance < 6;
+  return balance < 2;
 };
 
 const createEndpoint = (baseUrl: string, urlSuffix: string) => {

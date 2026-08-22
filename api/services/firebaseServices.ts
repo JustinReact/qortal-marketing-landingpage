@@ -12,10 +12,7 @@ const QORT_COLLECTIONS = {
   IPS: "qortIpCounts"
 } as const;
 
-const QORT_PAYOUT_AMOUNTS = {
-  STEP1: 2,
-  STEP2: 4
-} as const;
+const QORT_PAYOUT_AMOUNT = 2;
 
 /**
  * Checks if a subscriber with the given email exists.
@@ -244,13 +241,13 @@ export async function rollbackNonReputableDomainSendCode(
 }
 
 /**
- * Checks & reserves a QORT payout atomically:
- * - Block if email already paid (emailHash doc exists).
- * - Block if IP has ≥ IP_MAX_PREVIOUS_PAYOUTS successful step 1 payouts (only for step 1).
- * - Step 2 payouts are not limited by IP count (legitimate continuation of onboarding).
- * - Otherwise, write:
- *    - qortPayoutsByEmail/{emailHash} with createdAt + ipHash
- *    - qortIpCounts/{ipHash}.step1Count += 1 (for step 1) or step2Count += 1 (for step 2)
+ * Checks & reserves a single 2 QORT payout atomically:
+ * - Reject any qortStep other than 1 (the extra 4 QORT step is retired).
+ * - Block if this email has already received 2 QORT.
+ * - Block if IP has ≥ IP_MAX_PREVIOUS_PAYOUTS successful payouts.
+ * - Otherwise write:
+ *    - qortPayoutsByEmail/{emailHash} with createdAt + ipHash + qort: 2
+ *    - qortIpCounts/{ipHash}.step1Count += 1
  *
  * @returns { allowed: boolean, reason?: string, ipCount?: number }
  */
@@ -266,6 +263,14 @@ export async function checkAndReserveQortPayout(params: {
     return { allowed: false, reason: "missing_email", ipCount: undefined };
   if (!ip) return { allowed: false, reason: "missing_ip", ipCount: undefined };
 
+  if (params.qortStep !== 1) {
+    return {
+      allowed: false,
+      reason: "invalid_qort_step",
+      ipCount: undefined
+    };
+  }
+
   const emailHash = hmacSha256Hex(`email:${email}`);
   const ipHash = hmacSha256Hex(`ip:${ip}`);
 
@@ -274,108 +279,52 @@ export async function checkAndReserveQortPayout(params: {
 
   const result = await db.runTransaction(async (t) => {
     const emailSnap = await t.get(emailDocRef);
-    let prevQort: number = 0;
+    const prevQort: number = emailSnap.exists
+      ? (emailSnap.data()?.qort ?? 0)
+      : 0;
 
-    if (emailSnap.exists) {
-      prevQort = emailSnap.data()?.qort ?? 0;
-    }
-
-    // Validate based on qortStep
-    if (params.qortStep === 1) {
-      // Step 1: email must not have 2 or more QORT already
-      if (!(prevQort < 2)) {
-        return {
-          allowed: false,
-          reason: "invalid_qort_range_step1",
-          ipCount: undefined
-        } as const;
-      }
-    } else if (params.qortStep === 2) {
-      // Step 2 requires that email has exactly 2 QORT from step 1
-      if (prevQort !== 2) {
-        if (prevQort === 4) {
-          return {
-            allowed: false,
-            reason: "invalid_qort_range_step2",
-            ipCount: undefined
-          } as const;
-        } else {
-          // Email hasn't completed step 1 yet (prevQort is 0 or invalid)
-          return {
-            allowed: false,
-            reason: "step1_not_completed",
-            ipCount: undefined
-          } as const;
-        }
-      }
-    } else {
+    if (!(prevQort < QORT_PAYOUT_AMOUNT)) {
       return {
         allowed: false,
-        reason: "invalid_qort_range",
+        reason: "invalid_qort_range_step1",
         ipCount: undefined
       } as const;
     }
 
-    // IP limit check - only for step 1 payouts
     const ipSnap = await t.get(ipDocRef);
     const ipData = ipSnap.exists ? ipSnap.data() : null;
     const step1Count = ipData?.step1Count ?? 0;
     const step2Count = ipData?.step2Count ?? 0;
 
-    // Only check IP limit for step 1 payouts
-    if (params.qortStep === 1) {
-      if (step1Count >= IP_MAX_PREVIOUS_PAYOUTS) {
-        return {
-          allowed: false,
-          reason: "ip_limit_reached",
-          ipCount: step1Count
-        } as const;
-      }
+    if (step1Count >= IP_MAX_PREVIOUS_PAYOUTS) {
+      return {
+        allowed: false,
+        reason: "ip_limit_reached",
+        ipCount: step1Count
+      } as const;
     }
-    // Step 2 payouts are not limited by IP count (legitimate continuation)
 
-    // Select qort amount depending on step
-    const qort =
-      params.qortStep === 1
-        ? QORT_PAYOUT_AMOUNTS.STEP1
-        : QORT_PAYOUT_AMOUNTS.STEP2;
-
-    // Save/overwrite email record
     t.set(emailDocRef, {
       createdAt: FieldValue.serverTimestamp(),
       ipHash,
-      qort,
+      qort: QORT_PAYOUT_AMOUNT,
       version: 1
     });
 
-    // Increment appropriate IP counter
-    if (params.qortStep === 1) {
-      t.set(
-        ipDocRef,
-        {
-          step1Count: FieldValue.increment(1),
-          step2Count: step2Count, // Preserve step2Count
-          updatedAt: FieldValue.serverTimestamp()
-        },
-        { merge: true }
-      );
-    } else {
-      // Step 2: increment step2Count, preserve step1Count
-      t.set(
-        ipDocRef,
-        {
-          step1Count: step1Count, // Preserve step1Count
-          step2Count: FieldValue.increment(1),
-          updatedAt: FieldValue.serverTimestamp()
-        },
-        { merge: true }
-      );
-    }
+    t.set(
+      ipDocRef,
+      {
+        step1Count: FieldValue.increment(1),
+        step2Count: step2Count,
+        updatedAt: FieldValue.serverTimestamp()
+      },
+      { merge: true }
+    );
 
     return {
       allowed: true,
       reason: "ok",
-      ipCount: params.qortStep === 1 ? step1Count : step2Count,
+      ipCount: step1Count,
       existingQort: prevQort
     } as const;
   });
@@ -395,7 +344,6 @@ export async function rollbackQortPayout(params: {
 }) {
   const email = normalizeEmail(params.email);
   const ip = (params.ip || "").trim();
-  const qortStep = params.qortStep ?? 1;
 
   if (!email || !ip) return;
 
@@ -405,50 +353,9 @@ export async function rollbackQortPayout(params: {
   const emailDocRef = db.collection(QORT_COLLECTIONS.EMAILS).doc(emailHash);
   const ipDocRef = db.collection(QORT_COLLECTIONS.IPS).doc(ipHash);
 
-  // ✅ Step 2 rollback: keep the record, just revert to the Step 1 amount
-  if (qortStep === 2) {
-    await db.runTransaction(async (t) => {
-      const emailSnap = await t.get(emailDocRef);
-      const ipSnap = await t.get(ipDocRef);
-
-      if (emailSnap.exists) {
-        t.set(
-          emailDocRef,
-          {
-            qort: QORT_PAYOUT_AMOUNTS.STEP1,
-            updatedAt: FieldValue.serverTimestamp()
-          },
-          { merge: true }
-        );
-      }
-
-      // Decrement step2Count for step 2 rollback
-      if (ipSnap.exists) {
-        const ipData = ipSnap.data();
-        const step1Count = ipData?.step1Count ?? 0;
-        const step2Count = ipData?.step2Count ?? 0;
-        const newStep2Count = Math.max(0, step2Count - 1);
-
-        t.set(
-          ipDocRef,
-          {
-            step1Count: step1Count, // Preserve step1Count
-            step2Count: newStep2Count,
-            updatedAt: FieldValue.serverTimestamp()
-          },
-          { merge: true }
-        );
-      }
-    });
-    return;
-  }
-
   await db.runTransaction(async (t) => {
-    // ✅ All reads first
     const emailSnap = await t.get(emailDocRef);
     const ipSnap = await t.get(ipDocRef);
-
-    // 📝 Then writes/deletes
 
     if (emailSnap.exists) {
       t.delete(emailDocRef);
@@ -458,32 +365,17 @@ export async function rollbackQortPayout(params: {
       const ipData = ipSnap.data();
       const step1Count = ipData?.step1Count ?? 0;
       const step2Count = ipData?.step2Count ?? 0;
+      const newStep1Count = Math.max(0, step1Count - 1);
 
-      // Decrement the appropriate counter based on step
-      if (qortStep === 1) {
-        const newStep1Count = Math.max(0, step1Count - 1);
-        t.set(
-          ipDocRef,
-          {
-            step1Count: newStep1Count,
-            step2Count: step2Count, // Preserve step2Count
-            updatedAt: FieldValue.serverTimestamp()
-          },
-          { merge: true }
-        );
-      } else {
-        // Step 2 rollback: decrement step2Count
-        const newStep2Count = Math.max(0, step2Count - 1);
-        t.set(
-          ipDocRef,
-          {
-            step1Count: step1Count, // Preserve step1Count
-            step2Count: newStep2Count,
-            updatedAt: FieldValue.serverTimestamp()
-          },
-          { merge: true }
-        );
-      }
+      t.set(
+        ipDocRef,
+        {
+          step1Count: newStep1Count,
+          step2Count: step2Count,
+          updatedAt: FieldValue.serverTimestamp()
+        },
+        { merge: true }
+      );
     }
   });
 }
