@@ -90,7 +90,8 @@ export const NewsPostBody = styled(Box)(({ theme }) => ({
   letterSpacing: "0.2px",
   color: theme.palette.text.primary,
   "& p": {
-    lineHeight: "1.6"
+    lineHeight: "1.6",
+    margin: "10px 0"
   },
   "& a": {
     color: "#39a8ff",
