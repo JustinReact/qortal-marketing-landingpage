@@ -584,8 +584,8 @@ const LandingPage = () => {
           <HomeCtaCard
             ariaLabel="Get the free Qortal guide"
             icon={<BookSVG color="currentColor" width="26" height="21" />}
-            title="Get the Qortal getting-started guide"
-            subtitle="Placeholder: swap this for the real ebook pitch."
+            title="Your favorite apps, reimagined on Qortal"
+            subtitle="Discover Q-Apps for video, messaging, file sharing, blogging, shopping, and crowdfunding."
             href="/free-guide"
             buttonLabel="Get the free guide"
             buttonIcon={<FileDownloadRoundedIcon sx={{ fontSize: "18px" }} />}

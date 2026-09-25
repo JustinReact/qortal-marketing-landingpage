@@ -1,8 +1,8 @@
 "use client";
 
 import { Box, Typography, useTheme } from "@mui/material";
+import Image from "next/image";
 import { inter, oxygen } from "../../app/fonts";
-import { BookSVG } from "../Common/Icons/BookSVG";
 import { LeadMagnetForm } from "../LeadMagnet/LeadMagnetForm";
 
 const FreeGuide = () => {
@@ -44,25 +44,23 @@ const FreeGuide = () => {
           }}
         >
           <Box
-            aria-hidden="true"
             sx={{
-              width: { xs: "88px", md: "112px" },
-              height: { xs: "88px", md: "112px" },
+              width: { xs: "180px", md: "220px" },
               mb: "28px",
-              display: "grid",
-              placeItems: "center",
-              borderRadius: "50%",
-              color: "#35a8ff",
-              background: isDarkMode
-                ? "radial-gradient(circle at 48% 45%, rgba(57, 168, 255, 0.16), rgba(12, 72, 148, 0.08) 64%, rgba(6, 12, 24, 0.92) 100%)"
-                : "radial-gradient(circle at 48% 45%, rgba(57, 168, 255, 0.12), rgba(17, 91, 197, 0.055) 68%, rgba(255, 255, 255, 0.82) 100%)",
-              border: isDarkMode
-                ? "1px solid rgba(95, 151, 255, 0.34)"
-                : "1px solid rgba(17, 91, 197, 0.2)"
+              borderRadius: "8px",
+              overflow: "hidden",
+              boxShadow: isDarkMode
+                ? "0 16px 40px rgba(0, 0, 0, 0.4)"
+                : "0 16px 40px rgba(8, 17, 34, 0.18)"
             }}
           >
-            {/* Placeholder cover until real ebook art is provided */}
-            <BookSVG color="currentColor" width="52" height="42" />
+            <Image
+              src="/lead-magnets/qortal-free-guide-cover.png"
+              alt="Cover of Your Favorite Apps, Reimagined on Qortal"
+              width={800}
+              height={1035}
+              style={{ display: "block", width: "100%", height: "auto" }}
+            />
           </Box>
           <Typography
             sx={{
@@ -89,7 +87,7 @@ const FreeGuide = () => {
               color: theme.palette.text.primary
             }}
           >
-            Get the Qortal getting-started guide
+            Your favorite apps, reimagined on Qortal
           </Typography>
           <Typography
             sx={{
@@ -103,7 +101,9 @@ const FreeGuide = () => {
               maxWidth: "460px"
             }}
           >
-            Placeholder: swap this for the real ebook pitch.
+            Discover peer-to-peer alternatives for video, messaging, file
+            sharing, blogging, shopping, and crowdfunding. See what you can do
+            with Q-Apps and how to get started with Qortal.
           </Typography>
         </Box>
         <Box
