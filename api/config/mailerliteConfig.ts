@@ -3,7 +3,8 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const MAILERLITE_API_KEY = process.env.MAILERLITE_API_KEY;
-const MAILERLITE_GROUP_ID = process.env.MAILERLITE_GROUP_ID; // Equivalent to SendGrid list
+const MAILERLITE_GROUP_ID = process.env.MAILERLITE_GROUP_ID; // Existing /ebook list
+const MAILERLITE_FREE_GUIDE_GROUP_ID = process.env.MAILERLITE_FREE_GUIDE_GROUP_ID; // /free-guide list
 const MAILERLITE_SENDER_EMAIL = process.env.MAILERLITE_SENDER_EMAIL;
 
 if (!MAILERLITE_API_KEY) {
@@ -17,5 +18,6 @@ if (!MAILERLITE_GROUP_ID) {
 export {
     MAILERLITE_API_KEY,
     MAILERLITE_GROUP_ID,
+    MAILERLITE_FREE_GUIDE_GROUP_ID,
     MAILERLITE_SENDER_EMAIL,
 };

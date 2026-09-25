@@ -10,21 +10,26 @@ export const SupportModalContainer = styled(Box)(({ theme }) => ({
   bottom: "50px",
   right: "20px",
   width: "450px",
-  height: "280px",
+  height: "auto",
+  maxHeight: "calc(100vh - 80px)",
+  overflowY: "auto",
   backgroundColor: theme.palette.mode === "light" ? "#D9D9D9" : "#111112",
   borderRadius: "10px",
   display: "flex",
   flexDirection: "column",
-  justifyContent: "center",
+  justifyContent: "flex-start",
   alignItems: "center",
-  padding: "40px 37px",
-  gap: "30px",
+  padding: "36px 28px 24px",
+  gap: "18px",
   zIndex: 6,
   [theme.breakpoints.down("sm")]: {
     width: "95vw",
     right: "10px",
     left: "10px",
-  },
+    bottom: "16px",
+    maxHeight: "calc(100vh - 32px)",
+    padding: "32px 20px 20px"
+  }
 }));
 
 export const CloseIcon = styled(CloseSVG)(({ theme }) => ({
@@ -43,8 +48,22 @@ export const SupportModalContent = styled(Box)({
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
-  gap: "16px"
+  gap: "16px",
+  width: "100%"
 });
+
+export const SupportModalFormWrap = styled(Box)({
+  width: "100%"
+});
+
+export const SupportModalDivider = styled(Box)(({ theme }) => ({
+  width: "100%",
+  height: "1px",
+  backgroundColor:
+    theme.palette.mode === "light"
+      ? "rgba(0, 0, 0, 0.12)"
+      : "rgba(255, 255, 255, 0.12)"
+}));
 
 export const SupportModalText = styled(Typography)(({ theme }) => ({
   fontFamily: inter.style.fontFamily,

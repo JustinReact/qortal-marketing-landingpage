@@ -1,4 +1,5 @@
 "use client";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast, ToastContainer, Zoom, Slide } from "react-toastify";
 import { removeNotification } from "../../../state/features/notificationsSlice";
@@ -28,47 +29,51 @@ const Notification = () => {
     />
   );
 
-  if (alertTypes.alertError) {
-    toast.error(`❌ ${alertTypes?.alertError}`, {
-      position: "bottom-right",
-      autoClose: 4000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      icon: false,
-      theme: "light"
-    });
-    dispatch(removeNotification());
-  }
-  if (alertTypes.alertSuccess) {
-    toast.success(`✔️ ${alertTypes?.alertSuccess}`, {
-      position: "bottom-right",
-      autoClose: 4000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      icon: false,
-      theme: "light"
-    });
-    dispatch(removeNotification());
-  }
-  if (alertTypes.alertInfo) {
-    toast.info(`${alertTypes?.alertInfo}`, {
-      position: "top-right",
-      autoClose: 1300,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light"
-    });
-    dispatch(removeNotification());
-  }
+  useEffect(() => {
+    if (alertTypes.alertError) {
+      toast.error(`❌ ${alertTypes.alertError}`, {
+        position: "bottom-right",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        icon: false,
+        theme: "light"
+      });
+      dispatch(removeNotification());
+      return;
+    }
+    if (alertTypes.alertSuccess) {
+      toast.success(`✔️ ${alertTypes.alertSuccess}`, {
+        position: "bottom-right",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        icon: false,
+        theme: "light"
+      });
+      dispatch(removeNotification());
+      return;
+    }
+    if (alertTypes.alertInfo) {
+      toast.info(`${alertTypes.alertInfo}`, {
+        position: "top-right",
+        autoClose: 1300,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light"
+      });
+      dispatch(removeNotification());
+    }
+  }, [alertTypes, dispatch]);
 
   if (alertTypes.alertInfo) {
     return (

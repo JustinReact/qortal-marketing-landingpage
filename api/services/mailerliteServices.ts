@@ -1,22 +1,23 @@
 import axios from "axios";
 import {
   MAILERLITE_API_KEY,
-  MAILERLITE_GROUP_ID,
-  MAILERLITE_SENDER_EMAIL
+  MAILERLITE_GROUP_ID
 } from "../config/mailerliteConfig";
 
 import { MailerSend, EmailParams, Sender, Recipient } from "mailersend";
 
 /**
- * Add a contact to MailerLite group (list)
+ * Add a contact to a MailerLite group (list).
+ * Defaults to the original /ebook group when no groupId is passed.
  */
 export const addToMailerliteGroup = async (
   email: string,
-  name: string
+  name: string,
+  groupId: string = MAILERLITE_GROUP_ID!
 ): Promise<void> => {
   try {
     const response = await axios.post(
-      `https://api.mailerlite.com/api/v2/groups/${MAILERLITE_GROUP_ID}/subscribers`,
+      `https://api.mailerlite.com/api/v2/groups/${groupId}/subscribers`,
       {
         email,
         name
@@ -29,7 +30,7 @@ export const addToMailerliteGroup = async (
       }
     );
 
-    if (response.status === 200) {
+    if (response.status === 200 || response.status === 201) {
       console.log("[MailerLite] Subscriber added successfully");
     } else {
       throw new Error("Unexpected response from MailerLite");
@@ -63,5 +64,5 @@ export async function sendTransactionalEmail(
     .setHtml(html)
     .setText(text ?? html.replace(/<[^>]+>/g, ""));
 
-  await mailerSend.email.send(params); // resolves on success, throws on non-2xx
+  await mailerSend.email.send(params);
 }
