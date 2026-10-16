@@ -48,7 +48,8 @@ const Downloads = () => {
 
   const androidDownload = () => {
     const link = document.createElement("a");
-    link.href = "https://link.qortal.dev/go";
+    link.href =
+      "https://gitea.qortal.link/simon/GO-3.0/releases/download/latest/GO-3.0.apk";
     link.download = "";
     document.body.appendChild(link);
     link.click();
