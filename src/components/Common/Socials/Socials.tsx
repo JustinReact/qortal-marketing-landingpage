@@ -35,14 +35,7 @@ export const Socials = () => {
         height="20"
         width="26"
         onClickFunc={() => {
-          if (location.includes("/links")) {
-            window.open("https://link.qortal.dev/linkedin-link", "_blank");
-          } else {
-            window.open(
-              "https://link.qortal.dev/linked-company-page",
-              "_blank"
-            );
-          }
+          window.open("https://www.linkedin.com/company/95968656/", "_blank");
         }}
       />
       <DiscordIcon
